@@ -1094,7 +1094,7 @@ These 'style tweaks' can be easily included in other stylesheet tiddler so they 
 .BGError	  { background-color:[[ColorPalette::Error]];	 	}
 /*}}}*/</pre>
 </div>
-<div title="ToggleRightSidebar" modifier="ELSDesignStudios" created="200607182328" modified="200909262139" tags="transclusion bookmarklet">
+<div title="ToggleRightSidebar" modifier="EricShulman" created="200607182328" modified="201311082226" tags="transclusion bookmarklet" changecount="1">
 <pre>/%
 !info
 |Name|ToggleRightSidebar|
@@ -1112,7 +1112,15 @@ Usage
 &lt;&lt;tiddler ToggleRightSidebar with: label tooltip&gt;&gt;
 }}}
 Try it: &lt;&lt;tiddler ToggleRightSidebar##show
-	with: {{config.options.chkShowRightSidebar?'�ΉBw��fwC�fwC��f�C�f�C�f�C��6��f�wW&amp;F��㠢f�C�f�C�f�C��6���7FRF�Rf����v��r6WGF��w2��F�F�FF�W&quot;FvvVBv�F�f�C�f�C�Fr7�7FV�6��f�rfwC�fwC��BF�V���F�g�F�Rf�VW2F�7V�B��W&quot;&amp;VfW&amp;V�6W3������6��f�r��F���2�6��6��u&amp;�v�E6�FV&amp;#�G'VS��6��f�r��F���2�G�EF�vv�U&amp;�v�E6�FT&amp;$�&amp;V�6��s�gV�C��ս���)���������ѥ��̹���Q�����I����M���	��1����!������ս��&quot;;
+	with: {{config.options.chkShowRightSidebar?'►':'◄'}}&gt;&gt;
+&lt;&lt;&lt;
+Configuration:
+&lt;&lt;&lt;
+copy/paste the following settings into a tiddler tagged with &lt;&lt;tag systemConfig&gt;&gt; and then modify the values to suit your preferences:
+{{{
+config.options.chkShowRightSidebar=true;
+config.options.txtToggleRightSideBarLabelShow=&quot;◄&quot;;
+config.options.txtToggleRightSideBarLabelHide=&quot;►&quot;;
 }}}
 &lt;&lt;&lt;
 !end
