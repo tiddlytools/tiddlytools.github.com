@@ -44,24 +44,8 @@ DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
 <title>Inside TiddlyWiki — 
-   
-   
-   
-   
-   
 
-
-    
-        
-    
-
-
-
-   
-
-ITW_V1.alpha.001
- - FOR REVIEW ONLY - DO NOT DISTRIBUTE   
-   read-only
+ITW_V1.alpha.002
 </title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 <script src="cordova.js"></script>
@@ -165,8 +149,6 @@ Error message and password prompt
 
 <li>$:/els/phonegap/PinchZoomMarkup</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -233,8 +215,6 @@ Error message and password prompt
 
 <li>$:/theme</li>
 
-<li>$:/themes/tiddlywiki/readonly</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -290,6 +270,8 @@ Error message and password prompt
 <li>Downloading</li>
 
 <li>DownloadSaver</li>
+
+<li>DraftNotice</li>
 
 <li>Editing</li>
 
@@ -5765,7 +5747,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150212024127111" creator="EricShulman" modified="20150322195420608" modifier="EricShulman" title="$:/DefaultTiddlers">
+<div created="20150212024127111" creator="EricShulman" modified="20150322214138303" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>InsideTW</pre>
 </div>
 <div created="20150211181245594" modified="20150211181517518" module-type="macro" tags="" title="$:/els/macros/href.js" type="application/javascript">
@@ -5846,26 +5828,20 @@ exports.startup = function() {
 <pre>&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=8&gt;</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[return10.png]]
-# [[left2.png]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20150212024056319" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/title" modified="20150322075832435" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="$:/SiteSubtitle">
-<pre>@@.subtitle {{InsideTW/Buttons/HomeAndSave}} &amp;nbsp; {{Version}} &amp;nbsp; {{||InsideTW/Buttons/ToggleReadOnly}}@@</pre>
+<div created="20150212024056319" creator="EricShulman" modified="20150322205642832" modifier="EricShulman" title="$:/SiteSubtitle">
+<pre>{{Version}}</pre>
 </div>
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150322195611178" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150322220004411" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150322081806926" modifier="EricShulman" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div modified="20150322203515378" modifier="EricShulman" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div modified="20150322030546487" modifier="EricShulman" title="$:/state/tab--1524405648">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
@@ -5882,7 +5858,7 @@ exports.startup = function() {
 <div modified="20150322030304343" modifier="EricShulman" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150322030325059" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150322203746104" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div modified="20150321230156818" modifier="EricShulman" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -5891,7 +5867,7 @@ exports.startup = function() {
 <div modified="20150322053642544" modifier="EricShulman" title="$:/state/toc/InsideTW-Appendix--833049623">
 <pre>close</pre>
 </div>
-<div modified="20150322065033399" modifier="EricShulman" title="$:/state/toc/InsideTW-Contents--833049623">
+<div modified="20150322214146463" modifier="EricShulman" title="$:/state/toc/InsideTW-Contents--833049623">
 <pre>close</pre>
 </div>
 <div modified="20150322053640135" modifier="EricShulman" title="$:/state/toc/InsideTW-Editing--833049623">
@@ -5927,13 +5903,13 @@ exports.startup = function() {
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div list="InsideTW Cover Introduction" title="$:/StoryList">
+<div list="Version InsideTW" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150322195611178" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150322220004411" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5953,25 +5929,14 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150322014416362" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150322195611178" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150322220004411" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150322195611178" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150322220004411" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>Cover</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
-</div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" created="20150321222853772" creator="EricShulman" dependents="$:/themes/tiddlywiki/snowwhite" description="Theme for removing editing features" modified="20150321222853772" modifier="EricShulman" name="ReadOnly" plugin-type="theme" title="$:/themes/tiddlywiki/readonly" type="application/json" version="5.1.7">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/themes/tiddlywiki/readonly/styles.tid&quot;: {
-            &quot;title&quot;: &quot;$:/themes/tiddlywiki/readonly/styles.tid&quot;,
-            &quot;tags&quot;: &quot;[[$:/tags/Stylesheet]]&quot;,
-            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\nsvg.tc-image-new-button, svg.tc-image-options-button, svg.tc-image-save-button, svg.tc-image-edit-button, svg.tc-image-delete-button, svg.tc-image-cancel-button, svg.tc-image-done-button {\n\tdisplay: none;\t\n}\n&quot;
-        }
-    }
-}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.7">
 <pre>{
@@ -6050,7 +6015,7 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div modified="20150321145313968" modifier="EricShulman" title="$:/view">
+<div modified="20150322203642232" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" modified="20150320232333526" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
@@ -6324,6 +6289,11 @@ However, if you are using FireFox, then there is a browser-based addon called Ti
 Also note that, if you intend to use your TiddlyWii file remotely (i.e., from an http:// URL) or if you are going to be using it locally on other people's systems (e.g., read/save to/from a USB stick), then &quot;download saving&quot; may be the ONLY reliable option available to save your changes.
 </pre>
 </div>
+<div created="20150322211218889" creator="EricShulman" modified="20150322214044487" modifier="EricShulman" title="DraftNotice">
+<pre>@@display:block;text-align:center;color:red;
+''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''
+@@</pre>
+</div>
 <div caption="Creating Content" created="20150212024848622" creator="EricShulman" icon="images/editing.png" list="[[Starting the Editor]] [[Tiddler Editor Parts]] [[Tagging Tiddlers]] [[Basic Formatting]] [[Linking and Embedding]] [[Adding Images]]" modified="20150321144308960" modifier="EricShulman" tags="InsideTW" title="Editing">
 <pre>In this section, you will learn how to create your own content.
 &lt;&lt;list-links [tag[Editing]]&gt;&gt;</pre>
@@ -6583,10 +6553,12 @@ Several customizations have been added to the document layout and interface to m
 @@
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150321230215146" creator="EricShulman" modified="20150322103433984" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
-<pre>&lt;$checkbox tiddler=&quot;InsideTW/StyleSheet/ReadOnly&quot; tag=&quot;$:/tags/Stylesheet&quot;&gt;
+<div created="20150321230215146" creator="EricShulman" modified="20150322213347201" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
+<pre>&lt;nobr&gt;
+&lt;$checkbox tiddler=&quot;InsideTW/StyleSheet/ReadOnly&quot; tag=&quot;$:/tags/Stylesheet&quot;&gt;
    read-only
-&lt;/$checkbox&gt;</pre>
+&lt;/$checkbox&gt;
+&lt;/nobr&gt;</pre>
 </div>
 <div changecount="154" created="20131025064500000" creator="YourName" modified="20150321143451536" modifier="EricShulman" title="InsideTW/MakeADonation" type="text/vnd.tiddlywiki">
 <pre>!!![[Help fund the writing of this book!|http://tiddlytools.github.io/fundraising.html]]
@@ -6627,7 +6599,7 @@ Several customizations have been added to the document layout and interface to m
 &lt;/form&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div created="20150316203756564" creator="EricShulman" list-after="$:/core/ui/ViewTemplate/body" modified="20150322063850272" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Bottom">
+<div created="20150316203756564" creator="EricShulman" list-after="$:/core/ui/ViewTemplate/body" modified="20150322214517290" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Bottom">
 <pre>\define navbarbottom()
 &lt;div class=&quot;navbarbottom&quot;&gt;
 &lt;$set name=&quot;sectiontag&quot; filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;
@@ -6645,7 +6617,7 @@ Several customizations have been added to the document layout and interface to m
    &lt;/$list&gt;
 &lt;/div&gt;
 &lt;br&gt;
-@@display:block;text-align:center;font-size:90%; 
+@@display:block;text-align:center;
    {{||InsideTW/NavBar/Bottom/Toolbar}}
 @@
 @@display:block;clear:both;@@
@@ -6665,15 +6637,10 @@ Several customizations have been added to the document layout and interface to m
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150322062358463" creator="EricShulman" modified="20150322064111719" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
-<pre>@@.authortools
-&lt;!-- REMOVED FOR NOW
-{{||InsideTW/Buttons/SetStatus}} &amp;nbsp;
-{{||InsideTW/Buttons/EditFromHere}}
---&gt;
-@@</pre>
+<div created="20150322062358463" creator="EricShulman" modified="20150322214710626" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
+<pre>{{DraftNotice}}</pre>
 </div>
-<div created="20150317073552035" creator="EricShulman" modified="20150322032757594" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
+<div created="20150317073552035" creator="EricShulman" modified="20150322215001648" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
 <pre>/* STYLED CONTAINERS */
 .navbartop, .navbarbottom {
     clear:both; font-size:80%; line-height:100%;
@@ -6692,6 +6659,7 @@ Several customizations have been added to the document layout and interface to m
    margin:0 auto;
    padding:0.25em 0.5em;
    border-bottom:1px solid #ccc;
+   border-top:1px solid #ccc;
    xborder:1px solid #ccc;
    xborder-radius:1em; 
    xbackground:#e8e8e8;
@@ -6795,20 +6763,20 @@ If you are reading this book online, there are several ways to view the content:
 * In addition to the interactive &quot;browsing&quot; methods, you can also display the entire book content at once by pressing the &quot;view all&quot; button.  You can then ''//print the entire book//'' in one step
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150322073908299" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="text/css">
+<div created="20150314000609556" creator="EricShulman" modified="20150322213546768" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="text/css">
 <pre>/* ADJUSTMENTS TO DEFAULT TW LAYOUT AND COLORS */
 body
    { background-color: #ddf; }
-.tc-tiddler-frame
+.tc-tiddler-frame /* ROUNDED CORNERS ON TIDDLERS */
    { border-radius:1em; }
 .tc-tags-wrapper /* HIDE TAGS */
    { display:none; }
-.tc-subtitle /* ITALICS FOR TIDDLER SUBTITLE */
-   { font-style:italic; font-size:80%; }
+.tc-tiddler-title
+   { border-bottom:2px solid #ccc; }
+.tc-subtitle /* HIDE TIDDLER SUBTITLE */
+   { display:none; }
 .tc-edit-texteditor /* MONO FONT AND LIMIT HEIGHT FOR EDITING */
    { font-family:monospace; max-height:20em; }
-.subtitle
-   { font-size:70%; }
 
 /* FORMATTING SHORTCUTS */
 .smaller
@@ -6823,7 +6791,7 @@ body
 .authortools { display:inline; }
 .viewertools { display:none; }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150322195419169" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150322215956311" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .tc-subtitle
    { display:none; }
@@ -6858,14 +6826,19 @@ body
 &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;
 {{||InsideTW/NavBar/Bottom}}</pre>
 </div>
-<div created="20150212182501517" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/subtitle" modified="20150322073615632" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/ToolBar">
-<pre>@@float:right;font-size:70%;
+<div created="20150212182501517" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/title" modified="20150322212002840" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/ToolBar">
+<pre>@@float:right;text-align:right;font-size:70%;
 {{||InsideTW/Buttons/Back}}&amp;nbsp;
 {{||InsideTW/Buttons/Home}}&amp;nbsp;
 {{||InsideTW/Buttons/Contents}}&amp;nbsp;
 {{||InsideTW/Buttons/Search}}&amp;nbsp;
 {{||InsideTW/Buttons/ChangeView}}
-@@</pre>
+@@
+@@font-size:70%;
+{{InsideTW/Buttons/HomeAndSave}} &amp;nbsp;
+{{Version}} &amp;nbsp;
+{{InsideTW/Buttons/ToggleReadOnly}}
+@@@@display:block;clear:both;@@</pre>
 </div>
 <div caption="Inside TiddlyWiki (all)" created="20150314000135861" creator="EricShulman" modified="20150322052213146" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="$:/tags/Macro" title="InsideTW/ViewAll">
 <pre>\define view-all-body(rootTag,tag,sort:&quot;&quot;,itemClassFilter)
@@ -7045,12 +7018,19 @@ You can also add extra &quot;custom&quot; fields to hold any values you like.  T
 <div created="20150212022840182" creator="EricShulman" modified="20150316001408366" modifier="EricShulman" tags="Roles" title="Readers">
 <pre>* consumers of information.  No input (except for searching)</pre>
 </div>
-<div created="20150321152616393" creator="EricShulman" modified="20150321211048562" modifier="EricShulman" tags="" title="RevisionHistory">
+<div created="20150321152616393" creator="EricShulman" modified="20150322215938720" modifier="EricShulman" tags="" title="RevisionHistory">
 <pre>&lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
-!!!alpha 001 - March 22, 2015
+!!!alpha 002 - March 22, 2015
+* Reworked layout/placement of InsideTW/Toolbar, HomeAndSave, and ToggleReadOnly
+* Moved DraftNotice to NavBar/Bottom (between buttons)
+* Adjusted styles for display of tiddler titlebar in edit mode
+* Hide tiddler subtitle (info not important)
+* Fixed Version link to popup RevisionHistory
+
+!!!alpha 001 - March 21, 2015
 * Initial release for feedback
-* Outline of topics is substantially complete, but subject to continued refactoring
+* Outline of topics is subject to continued refactoring
 * Topics are marked with status flag:
 ** notes - disorganized &quot;brain dump&quot; of ideas
 ** draft - ideas organized and turned into paragraphs
@@ -7236,11 +7216,11 @@ TiddlyWiki is a stand-alone wiki system that can run completely inside your brow
 ** &quot;Zoomin&quot; view shows one tiddler at a time (the most recently opened tiddler).  Closing the currently displayed tiddler will re-display the previously opened tiddler (if any)
 ** &quot;Stacked&quot; view shows all open tiddlers with one &quot;in front&quot; and the remaining tiddlers &quot;stacked&quot; behind it with their titles visible, but with their content covered by the tiddler in front.  You can click on a title of a tiddler to bring it to the front of the stack.</pre>
 </div>
-<div created="20150321150844661" creator="EricShulman" modified="20150322070121056" modifier="EricShulman" savecount="001" tags="" title="Version">
+<div created="20150321150844661" creator="EricShulman" modified="20150322215948072" modifier="EricShulman" savecount="002" tags="" title="Version">
 <pre>&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
-&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;ChangeLog&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;RevisionHistory&quot;/&gt;
 ITW_V1.alpha.{{!!savecount}}
-&lt;/$button&gt; - @@color:red;FOR REVIEW ONLY - DO NOT DISTRIBUTE@@</pre>
+&lt;/$button&gt;</pre>
 </div>
 <div caption="Document or Website?" created="20150212022036079" creator="EricShulman" modified="20150314112428838" modifier="EricShulman" tags="Introduction" title="What is TiddlyWiki">
 <pre>Is TiddlyWiki a document or a website?
