@@ -61,11 +61,7 @@ DAMAGE.
 
 ITW_V1.alpha.001
  - FOR REVIEW ONLY - DO NOT DISTRIBUTE   
-
-   
    read-only
-
-
 </title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 <script src="cordova.js"></script>
@@ -5769,7 +5765,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150212024127111" creator="EricShulman" modified="20150322081827209" modifier="EricShulman" title="$:/DefaultTiddlers">
+<div created="20150212024127111" creator="EricShulman" modified="20150322103505728" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>InsideTW</pre>
 </div>
 <div created="20150211181245594" modified="20150211181517518" module-type="macro" tags="" title="$:/els/macros/href.js" type="application/javascript">
@@ -5865,7 +5861,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150322081833412" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150322103514017" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150322081806926" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -5931,13 +5927,13 @@ exports.startup = function() {
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div list="InsideTW Cover" title="$:/StoryList">
+<div list="InsideTW/Buttons/ToggleReadOnly InsideTW/ViewAll/Stylesheet InsideTW Cover InsideTW/ViewAll" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150322081833412" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150322103514017" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5957,10 +5953,10 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150322014416362" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150322081833412" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150322103514017" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150322081833412" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150322103514017" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>Cover</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
@@ -6571,10 +6567,14 @@ Several customizations have been added to the document layout and interface to m
    {{$:/core/images/advanced-search-button}}search
 &lt;/$button&gt;</pre>
 </div>
-<div created="20150320104455749" creator="EricShulman" modified="20150322062407800" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
-<pre>&lt;nobr&gt;//status: //
-@@.viewertools ''&lt;$view field=&quot;status&quot;&gt;notes&lt;/$view&gt;'' @@
+<div created="20150320104455749" creator="EricShulman" modified="20150322103004763" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
+<pre>&lt;nobr&gt;
+@@.viewertools
+//&lt;br&gt;status://
+''&lt;$view field=&quot;status&quot;&gt;notes&lt;/$view&gt;''
+@@
 @@.authortools
+//status://
 &lt;$select field=&quot;status&quot; default=&quot;notes&quot;&gt;
 &lt;option&gt;notes&lt;/option&gt;
 &lt;option&gt;draft&lt;/option&gt;
@@ -6585,14 +6585,10 @@ Several customizations have been added to the document layout and interface to m
 @@
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150321230215146" creator="EricShulman" modified="20150322075035609" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
+<div created="20150321230215146" creator="EricShulman" modified="20150322103433984" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
 <pre>&lt;$checkbox tiddler=&quot;InsideTW/StyleSheet/ReadOnly&quot; tag=&quot;$:/tags/Stylesheet&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
    read-only
-&lt;/$button&gt;
-&lt;/$checkbox&gt;
-</pre>
+&lt;/$checkbox&gt;</pre>
 </div>
 <div changecount="154" created="20131025064500000" creator="YourName" modified="20150321143451536" modifier="EricShulman" title="InsideTW/MakeADonation" type="text/vnd.tiddlywiki">
 <pre>!!![[Help fund the writing of this book!|http://tiddlytools.github.io/fundraising.html]]
@@ -6829,7 +6825,7 @@ body
 .authortools { display:inline; }
 .viewertools { display:none; }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150322081819879" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150322103447961" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .tc-subtitle
    { display:none; }
@@ -6895,34 +6891,31 @@ body
 
 &lt;&lt;view-all &quot;InsideTW&quot;&gt;&gt;</pre>
 </div>
-<div created="20150322045954818" creator="EricShulman" modified="20150322055809240" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/ViewAll/Stylesheet" type="text/css">
+<div created="20150322045954818" creator="EricShulman" modified="20150322102407432" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/ViewAll/Stylesheet" type="text/css">
 <pre>/* PREVENT NESTED &quot;ROLLUP&quot; DISPLAY */
 .viewall .viewall { display:none; }
 
 /* border styling around pages */
 .viewall .pageView {
    display:block;
-   border-top:1px solid gray;
-   border-left:1px solid gray;
-   border-top-left-radius:1em;
+   border:1px solid gray;
+   border-radius:1em;
    margin:0 0 1em -1em;
-   padding:1em 0 0 1em;
+   padding:1em;
 }</pre>
 </div>
-<div created="20150322045759239" creator="EricShulman" modified="20150322081231649" modifier="EricShulman" tags="" title="InsideTW/ViewAll/Template">
+<div created="20150322045759239" creator="EricShulman" modified="20150322102509344" modifier="EricShulman" tags="" title="InsideTW/ViewAll/Template">
 <pre>@@float:right;font-size:70%;line-height:100%;&lt;nobr&gt;
    @@display:block;height:0.5em;@@
    {{||InsideTW/Buttons/EditFromHere}} &amp;nbsp;
    {{||InsideTW/Buttons/SetStatus}}
 &lt;/nobr&gt;@@
-@@font-size:150%; 
 &lt;$link&gt;
    &lt;span class=&quot;tc-titlebar&quot; style=&quot;font-size:24px;&quot;&gt;
       &lt;$transclude tiddler={{!!icon}}/&gt;
    &lt;/span&gt;
-   &lt;nobr&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/nobr&gt;
+   &lt;nobr&gt;@@font-size:150%;&lt;&lt;toc-caption&gt;&gt;@@&lt;/nobr&gt;
 &lt;/$link&gt;
-@@
 @@.viewall.pageView &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;@@</pre>
 </div>
 <div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" icon="images/concepts.png" list="[[What's in a name?]] [[The Wiki Way]] [[What is TiddlyWiki]] MicroContent Benefits Roles Scenarios Community" modified="20150321144401216" modifier="EricShulman" status="draft" tags="InsideTW" title="Introduction">
