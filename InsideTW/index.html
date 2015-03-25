@@ -132,10 +132,6 @@ Error message and password prompt
 
 <li>$:/core</li>
 
-<li>$:/core/ui/ViewTemplate/subtitle</li>
-
-<li>$:/core/ui/ViewTemplate/title</li>
-
 <li>$:/DefaultTiddlers</li>
 
 <li>$:/els/macros/href.js</li>
@@ -260,7 +256,7 @@ Error message and password prompt
 
 <li>ControlPanel/Settings</li>
 
-<li>Cover</li>
+<li>CoverPage</li>
 
 <li>Credits</li>
 
@@ -5713,50 +5709,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150317080614273" creator="EricShulman" modified="20150322193308176" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/subtitle">
-<pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
-   by &lt;$link to={{!!modifier}}&gt;&lt;$view field=&quot;modifier&quot;/&gt;&lt;/$link&gt;
-   (updated &lt;$view field=&quot;modified&quot; format=&quot;relativedate&quot;/&gt;)
-&lt;/div&gt;@@display:block;clear:both;@@
-</pre>
-</div>
-<div created="20150317081344308" creator="EricShulman" modified="20150317081516965" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/title">
-<pre>\define title-styles()
-fill:$(foregroundColor)$;
-\end
-\define config-title()
-$:/config/ViewToolbarButtons/Visibility/$(listItem)$
-\end
-&lt;div class=&quot;tc-tiddler-title&quot;&gt;
-&lt;div class=&quot;tc-titlebar&quot;&gt;
-&lt;span class=&quot;tc-tiddler-controls&quot;&gt;
-&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
-&lt;/span&gt;
-&lt;$set name=&quot;foregroundColor&quot; value={{!!color}}&gt;
-&lt;span class=&quot;tc-tiddler-title-icon&quot; style=&lt;&lt;title-styles&gt;&gt;&gt;
-&lt;$transclude tiddler={{!!icon}}/&gt;
-&lt;/span&gt;
-&lt;/$set&gt;
-&lt;$list filter=&quot;[all[current]removeprefix[$:/]]&quot;&gt;
-&lt;h2 class=&quot;tc-title&quot; title={{$:/language/SystemTiddler/Tooltip}}&gt;
-&lt;span class=&quot;tc-system-title-prefix&quot;&gt;$:/&lt;/span&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;
-&lt;/h2&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[all[current]!prefix[$:/]]&quot;&gt;
-&lt;h2 class=&quot;tc-title&quot;&gt;
-&lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;
-&lt;/h2&gt;
-&lt;/$list&gt;
-&lt;/div&gt;
-
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot; state=&lt;&lt;tiddlerInfoState&gt;&gt; class=&quot;tc-tiddler-info tc-popup-handle&quot; animate=&quot;yes&quot; retain=&quot;yes&quot;&gt;
-
-&lt;$transclude tiddler=&quot;$:/core/ui/TiddlerInfo&quot;/&gt;
-
-&lt;/$reveal&gt;
-&lt;/div&gt;</pre>
-</div>
-<div created="20150212024127111" creator="EricShulman" modified="20150325060253520" modifier="EricShulman" title="$:/DefaultTiddlers">
+<div created="20150212024127111" creator="EricShulman" modified="20150325111950015" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>InsideTW</pre>
 </div>
 <div created="20150211181245594" modified="20150211181517518" module-type="macro" tags="" title="$:/els/macros/href.js" type="application/javascript">
@@ -5869,7 +5822,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150325060256184" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150325112003329" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150324212319392" modifier="EricShulman" title="$:/state/tab--142253017">
@@ -5941,13 +5894,13 @@ exports.startup = function() {
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div list="InsideTW/StyleSheet Cover InsideTW AboutThisBook Introduction" title="$:/StoryList">
+<div list="InsideTW/Buttons/ChangeView InsideTW/Buttons/HomeAndSave InsideTW/Buttons/EditFromHere InsideTW/NavBar/Top/Toolbar InsideTW/Buttons/SetStatus InsideTW/NavBar/Top InsideTW/NavBar/Bottom InsideTW/NavBar/StyleSheet Cover Contents Tour InsideTW/ViewAll InsideTW CoverPage [[The Wiki Way]] Community Scenarios AboutThisBook" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150325060256184" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150325112003329" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5967,11 +5920,11 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150324124124984" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150325060256184" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150325112003328" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150325060256184" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
-<pre>Cover</pre>
+<div modified="20150325112003329" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<pre>CoverPage</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -6144,10 +6097,8 @@ Please note that, although this book contains examples of basic usage, it is not
 * Company Policies (HR, Medical benefits, stock option plans, etc.)
 * Project Management (QA test results, Status reports, Task lists, etc.)</pre>
 </div>
-<div caption="The Power of Community" created="20150224232735024" creator="EricShulman" icon="images/community.svg" modified="20150324124351032" modifier="EricShulman" tags="Introduction" title="Community">
-<pre>@@float:right;[img[images/community.svg]]@@
-
-* open source means YOU can change anything you want
+<div caption="The Power of Community" created="20150224232735024" creator="EricShulman" icon="images/community.svg" modified="20150325110014177" modifier="EricShulman" tags="Introduction" title="Community">
+<pre>* open source means YOU can change anything you want
 * contributions from others makes your stuff better
 * you can mix and match features as needed
 * everyone benefits
@@ -6205,7 +6156,7 @@ There are several tabs in the control panel:
 <div created="20150320080528003" creator="EricShulman" modified="20150320124902646" modifier="EricShulman" tags="ControlPanel" title="ControlPanel/Settings">
 <pre></pre>
 </div>
-<div caption="Inside TiddlyWiki" created="20150212074808374" creator="EricShulman" modified="20150322193511056" modifier="EricShulman" navbarbottom="yes" navbartop="no" status="draft" tags="InsideTW" title="Cover">
+<div caption="Inside TiddlyWiki" created="20150212074808374" creator="EricShulman" modified="20150325111350496" modifier="EricShulman" navbarbottom="yes" navbartop="no" status="draft" tags="InsideTW" title="CoverPage">
 <pre>&lt;div style=&quot;text-align:center;&quot;&gt;
 &lt;br&gt;&lt;br&gt;
 @@font-size:300%;line-height:100%; __Inside ~TiddlyWiki__@@&lt;br&gt;
@@ -6329,8 +6280,8 @@ However, if you are using FireFox, then there is a browser-based addon called Ti
 Also note that, if you intend to use your TiddlyWii file remotely (i.e., from an http:// URL) or if you are going to be using it locally on other people's systems (e.g., read/save to/from a USB stick), then &quot;download saving&quot; may be the ONLY reliable option available to save your changes.
 </pre>
 </div>
-<div created="20150322211218889" creator="EricShulman" modified="20150322214044487" modifier="EricShulman" title="DraftNotice">
-<pre>@@display:block;text-align:center;color:red;
+<div created="20150322211218889" creator="EricShulman" modified="20150325105917160" modifier="EricShulman" title="DraftNotice">
+<pre>@@color:red;
 ''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''
 @@</pre>
 </div>
@@ -7613,15 +7564,15 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 * exporting to stand-alone
 * exporting to .tid files (for nodejs)</pre>
 </div>
-<div caption="Inside TiddlyWiki" created="20150212052411402" creator="EricShulman" list="Cover Contents Preface Introduction Tour Setup Editing Saving Appendix" modified="20150323210247832" modifier="EricShulman" navbarbottom="no" navbartop="no" title="InsideTW">
+<div caption="Inside TiddlyWiki" created="20150212052411402" creator="EricShulman" list="CoverPage Contents Preface Introduction Tour Setup Editing Saving Appendix" modified="20150325111842208" modifier="EricShulman" navbarbottom="no" navbartop="no" title="InsideTW">
 <pre>&lt;&lt;toc-tabbed-internal-nav
    tag:&quot;InsideTW&quot;
    selectedTiddler:&quot;$:/temp/toc/selectedTiddler&quot;
    unselectedText:&quot;Please select a topic. Click the arrow to expand a topic.&quot;
    template:InsideTW/TOC/Template&gt;&gt;</pre>
 </div>
-<div created="20150322013001149" creator="EricShulman" modified="20150324234258240" modifier="EricShulman" tags="" title="InsideTW/Buttons/Back">
-<pre>&lt;$list filter=&quot;[all[current]!title[InsideTW]!title[Cover]]&quot;&gt;
+<div created="20150322013001149" creator="EricShulman" modified="20150325111322264" modifier="EricShulman" tags="" title="InsideTW/Buttons/Back">
+<pre>&lt;$list filter=&quot;[all[current]!title[InsideTW]!title[CoverPage]]&quot;&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
 &lt;style&gt;.backbutton img { height:1em; }&lt;/style&gt;
 @@.backbutton {{images/back.svg}}@@
@@ -7629,13 +7580,13 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150316085909410" creator="EricShulman" modified="20150322225214993" modifier="EricShulman" tags="" title="InsideTW/Buttons/ChangeView">
+<div created="20150316085909410" creator="EricShulman" modified="20150325111307112" modifier="EricShulman" tags="" title="InsideTW/Buttons/ChangeView">
 <pre>&lt;$list filter=&quot;[all[current]!title[InsideTW/ViewAll]]&quot;&gt;
 &lt;$list filter=&quot;[all[current]!title[InsideTW]]&quot;
    emptyMessage=&quot;
       &lt;$button&gt;
          &lt;$action-navigate $to={{$:/temp/toc/selectedTiddler}}/&gt;
-         &lt;$action-setfield $tiddler='$:/DefaultTiddlers' text='Cover'/&gt;
+         &lt;$action-setfield $tiddler='$:/DefaultTiddlers' text='CoverPage'/&gt;
          hide tabs
       &lt;/$button&gt;
    &quot;&gt;
@@ -7667,25 +7618,24 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150317040059380" creator="EricShulman" modified="20150321143626360" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
+<div created="20150317040059380" creator="EricShulman" modified="20150325111040583" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
 <pre>@@.authortools 
 &lt;nobr&gt;
 {{||$:/core/ui/Buttons/new-tiddler}} &amp;nbsp;
 {{||$:/core/ui/Buttons/edit}} &amp;nbsp;
-{{||$:/core/ui/Buttons/new-here}} &amp;nbsp;
-{{||InsideTW/Buttons/HomeAndSave}}
+{{||$:/core/ui/Buttons/new-here}}
 &lt;/nobr&gt;
 @@</pre>
 </div>
-<div created="20150316091347529" creator="EricShulman" modified="20150324215323579" modifier="EricShulman" tags="" title="InsideTW/Buttons/Home">
+<div created="20150316091347529" creator="EricShulman" modified="20150325111500752" modifier="EricShulman" tags="" title="InsideTW/Buttons/Home">
 <pre>&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
    &lt;$action-navigate $to={{$:/DefaultTiddlers}}/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/toc/selectedTiddler&quot; text=&quot;Cover&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/toc/selectedTiddler&quot; text=&quot;CoverPage&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 {{$:/core/images/home-button}}home
 &lt;/$button&gt;</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20150322060614456" modifier="EricShulman" tags="" title="InsideTW/Buttons/HomeAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20150325111157296" modifier="EricShulman" tags="" title="InsideTW/Buttons/HomeAndSave">
 <pre>&lt;$button message=&quot;tm-save-wiki&quot;
    param={{$:/config/SaveWikiButton/Template}}
    tooltip={{$:/language/Buttons/SaveWiki/Hint}}
@@ -7694,7 +7644,7 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
    &lt;$action-navigate $to={{$:/DefaultTiddlers}}/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/search&quot; text=&quot;&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/advancedsearch&quot; text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/toc/selectedTiddler&quot; text=&quot;Cover&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/toc/selectedTiddler&quot; text=&quot;CoverPage&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;span class=&quot;tc-dirty-indicator&quot;&gt;
 {{$:/core/images/save-button}}
@@ -7721,9 +7671,9 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
    &lt;&lt;untabbedSearch&gt;&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150320104455749" creator="EricShulman" modified="20150322193938242" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
+<div created="20150320104455749" creator="EricShulman" modified="20150325110807008" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
 <pre>&lt;nobr&gt;
-//status://
+//page status://
 @@.viewertools
 ''&lt;$view field=&quot;status&quot;&gt;notes&lt;/$view&gt;''
 @@
@@ -7796,7 +7746,7 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 &lt;/form&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div created="20150316203756564" creator="EricShulman" list-after="$:/core/ui/ViewTemplate/body" modified="20150324233045919" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Bottom">
+<div created="20150316203756564" creator="EricShulman" list-after="$:/core/ui/ViewTemplate/body" modified="20150325110616336" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Bottom">
 <pre>\define navbarbottom()
 &lt;div class=&quot;navbarbottom&quot;&gt;
 &lt;$set name=&quot;sectiontag&quot; filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;
@@ -7811,7 +7761,6 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
       &lt;$link to={{!!title}}&gt;{{$:/core/images/chevron-right}}&lt;/$link&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
-&lt;br&gt;
 @@display:block;text-align:center;
    {{||InsideTW/NavBar/Bottom/Toolbar}}
 @@
@@ -7832,12 +7781,11 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150322062358463" creator="EricShulman" modified="20150324140018696" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
-<pre>{{DraftNotice}}
-{{InsideTW/Buttons/HomeAndSave}} &amp;nbsp; {{RevisionHistory!!popup}}
-</pre>
+<div created="20150322062358463" creator="EricShulman" modified="20150325110656712" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
+<pre>&lt;br&gt;{{DraftNotice}}&lt;br&gt;
+{{InsideTW/Buttons/HomeAndSave}} &amp;nbsp; {{RevisionHistory!!popup}}</pre>
 </div>
-<div created="20150317073552035" creator="EricShulman" modified="20150324220116656" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
+<div created="20150317073552035" creator="EricShulman" modified="20150325105514138" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
 <pre>/* STYLED CONTAINERS */
 .navbartop, .navbarbottom {
     clear:both; font-size:80%; line-height:100%;
@@ -7854,14 +7802,14 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
    display:block;
    width:80%;
    margin:0 auto;
-   padding:0.5em 1em;
+   padding:1em 1em;
    border:1px solid #ccc;
    border-radius:1em; 
    background:#e8e8e8;
    margin:1em auto 0.25em auto;
 }</pre>
 </div>
-<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150324232944083" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
+<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150325111942024" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
 <pre>\define showIcons()
 &lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;&lt;&lt;showIcons&gt;&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]has[icon]]&quot;&gt;
@@ -7874,7 +7822,7 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 \define showTagPath()
 &lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;&lt;&lt;showTagPath&gt;&gt;&amp;gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]] -InsideTW&quot;
-   emptyMessage=&quot;&lt;nobr&gt;[[Inside TiddlyWiki|Cover]]&lt;/nobr&gt; &quot;&gt;
+   emptyMessage=&quot;&lt;nobr&gt;[[Inside TiddlyWiki|CoverPage]]&lt;/nobr&gt; &quot;&gt;
    &lt;$link to={{!!title}}&gt;&lt;nobr&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/nobr&gt;&lt;/$link&gt;
 &lt;/$list&gt;
 &lt;!-- &lt;$macrocall $name=&quot;tag&quot; tag={{!!title}}/&gt; --&gt;
@@ -7920,14 +7868,14 @@ Some changes to the default shadow &quot;view template&quot; definitions were ma
 &lt;$list filter=&quot;[all[current]navbartop[no]]&quot; emptyMessage=&lt;&lt;navbartop&gt;&gt;&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150322052651263" creator="EricShulman" modified="20150322080701423" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/Toolbar">
+<div created="20150322052651263" creator="EricShulman" modified="20150325110922369" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/Toolbar">
 <pre>{{||InsideTW/Buttons/Home}} &amp;nbsp;
 {{||InsideTW/Buttons/Contents}} &amp;nbsp;
 {{||InsideTW/Buttons/Search}} &amp;nbsp;
 &lt;nobr&gt;
-   {{||InsideTW/Buttons/SetStatus}} &amp;nbsp;
-   {{||InsideTW/Buttons/EditFromHere}}
-&lt;/nobr&gt;</pre>
+{{||InsideTW/Buttons/SetStatus}} &amp;nbsp; {{||InsideTW/Buttons/EditFromHere}}&lt;br&gt;
+&lt;/nobr&gt;
+</pre>
 </div>
 <div created="20150316101821466" creator="EricShulman" modified="20150322223136889" modifier="EricShulman" tags="" title="InsideTW/scraps" url="images/eric3.jpg">
 <pre>&lt;$image source={{!!url}}/&gt;
@@ -7946,39 +7894,54 @@ If you are reading this book online, there are several ways to view the content:
 * In addition to the interactive &quot;browsing&quot; methods, you can also display the entire book content at once by pressing the &quot;view all&quot; button.  You can then ''//print the entire book//'' in one step
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150325060009034" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
+<div created="20150314000609556" creator="EricShulman" modified="20150325105112192" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
 <pre>&lt;pre&gt;
-/* ADJUSTMENTS TO DEFAULT TW LAYOUT AND COLORS */
-body
-   { background-color: #ddf; }
-.tc-tiddler-frame /* ROUNDED CORNERS ON TIDDLERS */
-   { border-radius:1em; }
-.tc-subtitle /* HIDE SUBTITLE */
-   { display:none; }
-.tc-tiddler-title /* BORDER ABOVE TITLE */
-   { font-size:80%; border-top:2px solid; padding-top:0.5em; margin-top:0.5em; }
-.tc-tags-wrapper /* BORDER BELOW TAGS */
-   { font-size:80%; border-bottom:2px solid; padding-bottom:0.5em;margin:0; }
-.tc-edit-texteditor /* MONO FONT AND LIMIT HEIGHT FOR EDITING */
-   { font-family:monospace; max-height:20em; }
-.tc-drop-down a
-   { color:#5778d8; }
-
-/* FORMATTING SHORTCUTS */
-.smaller
-   { font-size:80%; line-height:100%; }
-.larger
-   { font-size:120%;line-height:100%; }
-.borderless, .borderless table,
-.borderless td, .borderless tr, .borderless th, .borderless tbody
-   	{ border:0 !important; margin:0 !important; padding:0 !important; }
-
 /* defaults for EDIT mode (unless InsideTW/StyleSheet/ReadOnly is active) */
 .authortools { display:inline; }
 .viewertools { display:none; }
+
+/* PAGE COLOR */
+body { background-color: #ddf; }
+
+/* ROUNDED CORNERS ON TIDDLERS */
+.tc-tiddler-frame { border-radius:1em; }
+
+/* HIDE TIDDLER SUBTITLE */
+.tc-subtitle { display:none; }
+
+/* BORDER AROUND TIDDLER TITLE (EXCEPT BOTTOM) */
+.tc-tiddler-title {
+   font-size:80%;
+   border:2px solid #ccc; border-bottom:0; border-radius:1em 1em 0 0;
+   padding:0.5em; padding-bottom:0;
+   margin-top:0.5em;
+   xbackground-color: #eee;
+}
+
+/* BORDER AROUND TAGS (EXCEPT TOP) */
+.tc-tags-wrapper {
+   font-size:80%;
+   border:2px solid #ccc; border-top:0; border-radius:0 0 1em 1em;
+   padding:0 1em 0.5em 1em;
+   margin:0;
+   xbackground-color: #eee;
+}
+
+/* MONO FONT AND LIMIT HEIGHT FOR EDITING */
+.tc-edit-texteditor { font-family:monospace; max-height:20em; }
+
+/* STANDARD LINK COLOR IN POPUP */
+.tc-drop-down a { color:#5778d8; }
+
+/* FORMATTING SHORTCUTS */
+.smaller { font-size:80%; line-height:100%; }
+.larger  { font-size:120%;line-height:100%; }
+.borderless, .borderless table,
+.borderless td, .borderless tr, .borderless th, .borderless tbody
+   	{ border:0 !important; margin:0 !important; padding:0 !important; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150325060248407" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150325111951576" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
