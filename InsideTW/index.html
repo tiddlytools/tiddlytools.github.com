@@ -408,8 +408,6 @@ Error message and password prompt
 
 <li>InsideTW/NavBar/Top</li>
 
-<li>InsideTW/NavBar/Top/Toolbar</li>
-
 <li>InsideTW/RevisionHistory</li>
 
 <li>InsideTW/scraps</li>
@@ -5744,7 +5742,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150212024127111" creator="EricShulman" modified="20150329231319106" modifier="EricShulman" title="$:/DefaultTiddlers">
+<div created="20150212024127111" creator="EricShulman" modified="20150330000355898" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>CoverPage</pre>
 </div>
 <div created="20150211181245594" modified="20150211181517518" module-type="macro" tags="" title="$:/els/macros/href.js" type="application/javascript">
@@ -5840,13 +5838,13 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150329231321617" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150330001354786" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150324212319392" modifier="EricShulman" title="$:/state/tab--142253017">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div modified="20150329221201647" modifier="EricShulman" title="$:/state/tab--1498284803">
+<div modified="20150330001247335" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div modified="20150322030546487" modifier="EricShulman" title="$:/state/tab--1524405648">
@@ -5924,13 +5922,13 @@ exports.startup = function() {
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div list="InsideTW/StyleSheet InsideTW CoverPage" title="$:/StoryList">
+<div list="$:/core/images/info-button CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150329231321617" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150330001354786" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5950,10 +5948,10 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150329083656523" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150329231321617" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150330001354786" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150329231321617" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150330001354786" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
@@ -7857,12 +7855,12 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150317040059380" creator="EricShulman" modified="20150325111040583" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
+<div created="20150317040059380" creator="EricShulman" modified="20150330000311646" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
 <pre>@@.authortools 
 &lt;nobr&gt;
 {{||$:/core/ui/Buttons/new-tiddler}} &amp;nbsp;
 {{||$:/core/ui/Buttons/edit}} &amp;nbsp;
-{{||$:/core/ui/Buttons/new-here}}
+{{||$:/core/ui/Buttons/more-tiddler-actions}}
 &lt;/nobr&gt;
 @@</pre>
 </div>
@@ -7874,8 +7872,15 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 {{$:/core/images/home-button}}home
 &lt;/$button&gt;</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20150325111157296" modifier="EricShulman" tags="" title="InsideTW/Buttons/HomeAndSave">
-<pre>&lt;$button message=&quot;tm-save-wiki&quot;
+<div created="20150316090221888" creator="EricShulman" modified="20150329235000967" modifier="EricShulman" tags="" title="InsideTW/Buttons/HomeAndSave">
+<pre>&lt;!--
+  * close sidebar
+  * show CoverPage in tabbed viewer
+  * show DefaultTiddlers (either CoverPage or InsideTW tabbed viewer)
+  * clear search and advancedsearch
+  * SAVE THE WIKI!
+--&gt;
+&lt;$button message=&quot;tm-save-wiki&quot;
    param={{$:/config/SaveWikiButton/Template}}
    tooltip={{$:/language/Buttons/SaveWiki/Hint}}
    aria-label={{$:/language/Buttons/SaveWiki/Caption}}
@@ -7885,9 +7890,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
    &lt;$action-setfield $tiddler=&quot;$:/temp/advancedsearch&quot; text=&quot;&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/toc/selectedTiddler&quot; text=&quot;CoverPage&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-&lt;span class=&quot;tc-dirty-indicator&quot;&gt;
-{{$:/core/images/save-button}}
-&lt;/span&gt;
+   &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
 &lt;/$button&gt;</pre>
 </div>
 <div created="20150317062451577" creator="EricShulman" modified="20150325050443546" modifier="EricShulman" tags="" title="InsideTW/Buttons/Search">
@@ -7910,11 +7913,10 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
    &lt;&lt;untabbedSearch&gt;&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150320104455749" creator="EricShulman" modified="20150329221057471" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
+<div created="20150320104455749" creator="EricShulman" modified="20150329233303351" modifier="EricShulman" tags="" title="InsideTW/Buttons/SetStatus">
 <pre>&lt;nobr&gt;
-//page status://
 @@.viewertools
-''&lt;$view field=&quot;status&quot;&gt;notes&lt;/$view&gt;''
+''(&lt;$view field=&quot;status&quot;&gt;notes&lt;/$view&gt;)''
 @@
 @@.authortools
 &lt;$select field=&quot;status&quot; default=&quot;notes&quot;&gt;
@@ -8024,9 +8026,10 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150322062358463" creator="EricShulman" modified="20150329084509599" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
+<div created="20150322062358463" creator="EricShulman" modified="20150330001230727" modifier="EricShulman" tags="" title="InsideTW/NavBar/Bottom/Toolbar">
 <pre>&lt;br&gt;{{InsideTW/DraftNotice}}&lt;br&gt;
-{{InsideTW/Buttons/HomeAndSave}} &amp;nbsp; {{InsideTW/RevisionHistory!!popup}}</pre>
+{{InsideTW/Buttons/HomeAndSave}} &amp;nbsp;
+{{InsideTW/RevisionHistory!!popup}}</pre>
 </div>
 <div created="20150317073552035" creator="EricShulman" modified="20150325105514138" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
 <pre>/* STYLED CONTAINERS */
@@ -8052,7 +8055,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
    margin:1em auto 0.25em auto;
 }</pre>
 </div>
-<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150329230306190" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
+<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150329235416853" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
 <pre>\define showIcons()
 &lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;&lt;&lt;showIcons&gt;&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]has[icon]]&quot;&gt;
@@ -8098,12 +8101,11 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;div class=&quot;navbar_titlebox&quot;&gt;
    @@float:left;margin-right:0.5em;&lt;&lt;showIcons&gt;&gt;@@
    &lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;showTagPath&gt;&gt;&lt;/$tiddler&gt;&lt;br&gt;
-   @@display:block;height:2px;@@
-   @@font-size:140%;line-height:100%;''&lt;&lt;toc-caption&gt;&gt;''@@
+   @@display:block;height:4px;@@
+   @@font-size:80%;float:right;{{||InsideTW/Buttons/SetStatus}}@@
+   @@font-size:150%;line-height:100%;''&lt;&lt;toc-caption&gt;&gt;''@@
 &lt;/div&gt;
-@@display:block;clear:both;text-align:center;
-   {{||InsideTW/NavBar/Top/Toolbar}}
-@@
+@@display:block;clear:both;@@
 
 &lt;/$set&gt;
 &lt;/span&gt;
@@ -8111,15 +8113,6 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 
 &lt;$list filter=&quot;[all[current]navbartop[no]]&quot; emptyMessage=&lt;&lt;navbartop&gt;&gt;&gt;
 &lt;/$list&gt;</pre>
-</div>
-<div created="20150322052651263" creator="EricShulman" modified="20150329224241071" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/Toolbar">
-<pre>{{||InsideTW/Buttons/Home}} &amp;nbsp;
-{{||InsideTW/Buttons/Contents}} &amp;nbsp;
-{{||InsideTW/Buttons/Search}} &amp;nbsp;
-&lt;nobr&gt;
-@@font-size:80%;{{||InsideTW/Buttons/SetStatus}}@@
-&lt;/nobr&gt;
-</pre>
 </div>
 <div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150329084427478" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/RevisionHistory&quot;/&gt; ITW_V1.alpha.{{InsideTW/RevisionHistory!!savecount}} &lt;/$button&gt;" savecount="005" tags="Appendix" title="InsideTW/RevisionHistory" type="">
 <pre>Current build: ITW_V1.alpha.{{!!savecount}}
@@ -8232,7 +8225,7 @@ body { background-color: #ddf; }
    	{ border:0 !important; margin:0 !important; padding:0 !important; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150329231317800" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150330001350703" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
@@ -8264,14 +8257,18 @@ body { background-color: #ddf; }
 &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;
 {{||InsideTW/NavBar/Bottom}}</pre>
 </div>
-<div created="20150212182501517" creator="EricShulman" list-before="" modified="20150329224502213" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/ToolBar">
+<div created="20150212182501517" creator="EricShulman" list-before="" modified="20150329233540719" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/ToolBar">
 <pre>@@float:right;text-align:right;font-size:80%;
    {{InsideTW/Buttons/ToggleReadOnly}}
    {{||InsideTW/Buttons/ChangeView}}
 @@
-@@font-size:90%;
-{{||InsideTW/Buttons/Home}}
+@@font-size:80%;
+&lt;nobr&gt;
+{{||InsideTW/Buttons/Home}} &amp;nbsp;
+{{||InsideTW/Buttons/Contents}} &amp;nbsp;
+{{||InsideTW/Buttons/Search}} &amp;nbsp;
 {{||InsideTW/Buttons/Back}}
+&lt;/nobr&gt;
 @@
 @@display:block;clear:both;@@</pre>
 </div>
