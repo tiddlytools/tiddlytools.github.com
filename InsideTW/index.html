@@ -5839,7 +5839,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150330194701282" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150330230918666" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150324212319392" modifier="EricShulman" title="$:/state/tab--142253017">
@@ -5929,7 +5929,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150330194701282" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150330230918666" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5949,10 +5949,10 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150330103255509" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150330194701282" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150330230918666" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150330194701282" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150330230918666" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
@@ -6142,15 +6142,16 @@ Please note that, although this book contains examples of basic usage, it is not
 * embedding content from one tiddler in another
 * embedding binary file 'assets'</pre>
 </div>
-<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150330120915703" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
-<pre>@@float:left;&lt;$link to=&quot;Preface&quot;&gt;@@.tc-titlebar {{images/newuser.svg}}@@&lt;/$link&gt;@@
-//If you are new to ~TiddlyWiki, you can&lt;br&gt;//[[click here to get started...|Preface]]
-@@.clear @@
-@@float:left;&lt;$link to=&quot;Search&quot;&gt;@@.tc-titlebar {{images/search.svg}}@@&lt;/$link&gt;@@
-//If you are looking for specific info, you can&lt;br&gt;//[[search this book...|Search]]
-@@.clear @@
-@@float:left;&lt;$link to=&quot;Contents&quot;&gt;@@.tc-titlebar {{images/select.svg}}@@&lt;/$link&gt;@@
-//or, you can browse the Table of Contents and&lt;br&gt;//''choose any topic below:''
+<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150330230856789" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
+<pre>\define showIcon(which)
+@@.tc-titlebar {{images/$which$.svg}}@@
+\end
+
+@@.center 
+&lt;$link to=&quot;Preface&quot;&gt;&lt;&lt;showIcon newuser&gt;&gt;Start Here&lt;/$link&gt;//&amp;nbsp;or&amp;nbsp;//
+&lt;$link to=&quot;Search&quot;&gt;&lt;&lt;showIcon search&gt;&gt;Search this book&lt;/$link&gt;//&amp;nbsp;or//
+&lt;$link to=&quot;Contents&quot;&gt;&lt;&lt;showIcon select&gt;&gt;Choose a topic below:&lt;/$link&gt;
+@@
 
 &lt;&lt;toc &quot;InsideTW&quot;&gt;&gt;</pre>
 </div>
@@ -7895,7 +7896,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150316221750153" creator="EricShulman" modified="20150330105356693" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
+<div created="20150316221750153" creator="EricShulman" modified="20150330230449879" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt;
    class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
    {{$:/core/images/menu-button}}contents
@@ -7903,18 +7904,18 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt; retain=&quot;yes&quot;&gt;
 &lt;div class=&quot;tc-drop-down&quot;&gt;
 
-!![[Table of Contents|Contents]]
-&lt;div style=&quot;overflow:scroll;height:30em;border:1px solid #ccc;padding:1em;text-align:left;&quot;&gt;{{Contents}}&lt;/div&gt;
+@@font-size:150%; [[Table of Contents|Contents]]@@
+&lt;div style=&quot;overflow:scroll;height:30em;border:1px solid #ccc;padding:1em;text-align:left;&quot;&gt;&lt;&lt;toc &quot;InsideTW&quot;&gt;&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150317040059380" creator="EricShulman" modified="20150330000311646" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
+<div created="20150317040059380" creator="EricShulman" modified="20150330222956896" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
 <pre>@@.authortools 
 &lt;nobr&gt;
-{{||$:/core/ui/Buttons/new-tiddler}} &amp;nbsp;
+{{||$:/core/ui/Buttons/more-tiddler-actions}} &amp;nbsp;
 {{||$:/core/ui/Buttons/edit}} &amp;nbsp;
-{{||$:/core/ui/Buttons/more-tiddler-actions}}
+{{||$:/core/ui/Buttons/new-tiddler}}
 &lt;/nobr&gt;
 @@</pre>
 </div>
@@ -8295,7 +8296,7 @@ body { background-color: #ddf; }
    	{ border:0 !important; margin:0 !important; padding:0 !important; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150330194628217" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150330230913588" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
