@@ -352,6 +352,8 @@ Error message and password prompt
 
 <li>images/search.svg</li>
 
+<li>images/select.svg</li>
+
 <li>images/setup.svg</li>
 
 <li>images/sidebar.png</li>
@@ -5826,8 +5828,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[storyriver.png]]
-# [[tiddlerviewer.png]]</pre>
+# [[select.svg]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -5838,7 +5839,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150330010833878" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150330105444241" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150324212319392" modifier="EricShulman" title="$:/state/tab--142253017">
@@ -5865,7 +5866,7 @@ exports.startup = function() {
 <div modified="20150329230604631" modifier="EricShulman" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div modified="20150329230853199" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150330102621279" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div modified="20150321230156818" modifier="EricShulman" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -5922,13 +5923,13 @@ exports.startup = function() {
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div list="InsideTW/NavBar/Top CoverPage InsideTW Roles" title="$:/StoryList">
+<div list="InsideTW/Buttons/Contents InsideTW/NavBar/Top InsideTW/NavBar/Bottom InsideTW/ToolBar $:/tags/ViewTemplate CoverPage Search Contents AboutThisBook Preface Introduction [[What's in a name?]] [[The Wiki Way]] PublicPrivatePersonal DocumentOrWebsite MicroContent Benefits Roles Scenarios Community" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150330010833878" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150330105444241" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5945,13 +5946,13 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20150212043200055" creator="EricShulman" modified="20150329083656523" modifier="EricShulman" title="$:/temp/NewTagName">
+<div created="20150212043200055" creator="EricShulman" modified="20150330103255509" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150330010833878" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150330105444241" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150330010833878" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150330105444241" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
@@ -6141,10 +6142,13 @@ Please note that, although this book contains examples of basic usage, it is not
 * embedding content from one tiddler in another
 * embedding binary file 'assets'</pre>
 </div>
-<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150324124909088" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
+<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150330105200871" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
 <pre>@@float:left;&lt;$link to=&quot;Preface&quot;&gt;@@.tc-titlebar {{images/newuser.svg}}@@&lt;/$link&gt;@@
-''If you are new to ~TiddlyWiki,&lt;br&gt;[[Click here to get started...|Preface]]''
-
+''If you are new to ~TiddlyWiki,&lt;br&gt;[[click here to get started...|Preface]]''
+@@.clear @@
+@@float:left;&lt;$link to=&quot;Search&quot;&gt;@@.tc-titlebar {{images/search.svg}}@@&lt;/$link&gt;@@
+''If you are looking for specific info,&lt;br&gt;[[search this book...|Search]]''
+&lt;br&gt;
 or, ''select any topic below:''
 
 &lt;&lt;toc &quot;InsideTW&quot;&gt;&gt;</pre>
@@ -7601,6 +7605,55 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/svg&gt;
 </pre>
 </div>
+<div created="20150330103244199" creator="EricShulman" modified="20150330103257935" modifier="EricShulman" tags="image" title="images/select.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 23.304 23.304&quot; style=&quot;enable-background:new 0 0 23.304 23.304;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;path style=&quot;fill:#010002;&quot; d=&quot;M18.731,13.297c0,0-0.093-1.087-0.807-1.684c-0.399-0.338-0.781-0.382-1.052-0.356v2.044h-0.489
+		v-2.239c-0.146-0.317-0.438-0.807-0.902-0.991c-0.462-0.186-0.935-0.14-1.225-0.084v2.307h-0.487v-2.59
+		c-0.207-0.249-0.579-0.546-1.231-0.585c-0.352-0.021-0.666,0.121-0.914,0.277l-0.048,2.217h-0.49l0.015-4.025
+		c1.58-0.495,2.735-1.953,2.735-3.698C13.835,1.741,12.093,0,9.945,0c-2.149,0-3.89,1.741-3.89,3.891
+		c0,1.682,1.071,3.102,2.565,3.645v6.831c0,0-1.258-2.707-2.327-3.064c-1.067-0.356-1.731,0.285-1.731,0.285
+		s1.212,2.246,2.101,4.736c0.571,1.602,0.742,3.459,1.246,4.379c1.281,2.351,2.917,2.595,4.891,2.595c1.97,0,4.65,0.183,5.362-1.456
+		C18.875,20.205,18.731,13.297,18.731,13.297z M7.729,3.889c0-1.223,0.992-2.216,2.216-2.216c1.223,0,2.216,0.993,2.216,2.216
+		c0,0.797-0.424,1.488-1.053,1.879l0.005-1.433c0,0-0.287-1.492-1.211-1.492c-0.927,0-1.281,1.28-1.281,1.28v1.533
+		C8.083,5.253,7.729,4.615,7.729,3.889z&quot;/&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
 <div created="20150324123742331" creator="EricShulman" modified="20150324125639128" modifier="EricShulman" tags="image" title="images/setup.svg" type="image/svg+xml">
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
@@ -7841,7 +7894,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150316221750153" creator="EricShulman" modified="20150324213413499" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
+<div created="20150316221750153" creator="EricShulman" modified="20150330105356693" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt;
    class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
    {{$:/core/images/menu-button}}contents
@@ -7849,7 +7902,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt; retain=&quot;yes&quot;&gt;
 &lt;div class=&quot;tc-drop-down&quot;&gt;
 
-''Table of Contents:''
+!![[Table of Contents|Contents]]
 &lt;div style=&quot;overflow:scroll;height:30em;border:1px solid #ccc;padding:1em;text-align:left;&quot;&gt;{{Contents}}&lt;/div&gt;
 
 &lt;/div&gt;
@@ -8055,7 +8108,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
    margin:1em auto 0.25em auto;
 }</pre>
 </div>
-<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150330010616130" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
+<div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150330104812525" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
 <pre>\define showIcons()
 &lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;&lt;&lt;showIcons&gt;&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]has[icon]]&quot;&gt;
@@ -8080,20 +8133,24 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;$set name=&quot;section&quot; filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;
 
 @@float:left; 
-&lt;$list filter=&quot;[tag&lt;section&gt;before&lt;currentTiddler&gt;]&quot; emptyMessage=&quot;&amp;nbsp;&quot;&gt;
+&lt;$list filter=&quot;[tag&lt;section&gt;before&lt;currentTiddler&gt;]&quot;
+   emptyMessage=&quot;&lt;$link to=&lt;&lt;section&gt;&gt;&gt;&lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$tiddler&gt;&lt;/$link&gt;&quot;&gt;
    &lt;$link to={{!!title}}&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;
 &lt;/$list&gt;
 @@@@float:right; 
-&lt;$list filter=&quot;[tag&lt;section&gt;after&lt;currentTiddler&gt;]&quot; emptyMessage=&quot;&amp;nbsp;&quot;&gt;
+&lt;$list filter=&quot;[tag&lt;section&gt;after&lt;currentTiddler&gt;]&quot;
+   emptyMessage=&quot;&lt;$link to=&lt;&lt;section&gt;&gt;&gt;&lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$tiddler&gt;&lt;/$link&gt;&quot;&gt;
    &lt;$link to={{!!title}}&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;
 &lt;/$list&gt;
-@@@@display:block;clear:both;@@
-&lt;$list filter=&quot;[tag&lt;section&gt;before&lt;currentTiddler&gt;]&quot;&gt;
+@@@@.clear @@
+&lt;$list filter=&quot;[tag&lt;section&gt;before&lt;currentTiddler&gt;]&quot;
+   emptyMessage=&quot;@@float:left;&lt;$link to=&lt;&lt;section&gt;&gt;&gt;&lt;div class='navbar_button'&gt; {{$:/core/images/chevron-up}}&lt;/div&gt;&lt;/$link&gt;@@&quot;&gt;
    &lt;div class=&quot;navbar_button&quot; style=&quot;float:left&quot;&gt;
       &lt;$link to={{!!title}}&gt;{{$:/core/images/chevron-left}}&lt;/$link&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[tag&lt;section&gt;after&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$list filter=&quot;[tag&lt;section&gt;after&lt;currentTiddler&gt;]&quot;
+   emptyMessage=&quot;@@float:right;&lt;$link to=&lt;&lt;section&gt;&gt;&gt;&lt;div class='navbar_button'&gt; {{$:/core/images/chevron-up}}&lt;/div&gt;&lt;/$link&gt;@@&quot;&gt;
    &lt;div class=&quot;navbar_button&quot; style=&quot;float:right&quot;&gt;
       &lt;$link to={{!!title}}&gt;{{$:/core/images/chevron-right}}&lt;/$link&gt;
    &lt;/div&gt;
@@ -8105,7 +8162,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
    @@display:block;height:4px;@@
    @@font-size:150%;line-height:100%;&lt;nobr&gt;''&lt;&lt;toc-caption&gt;&gt;''&lt;/nobr&gt;@@
 &lt;/div&gt;
-@@display:block;clear:both;@@
+@@.clear @@
 
 &lt;/$set&gt;
 &lt;/span&gt;
@@ -8173,7 +8230,7 @@ If you are reading this book online, there are several ways to view the content:
 * In addition to the interactive &quot;browsing&quot; methods, you can also display the entire book content at once by pressing the &quot;view all&quot; button.  You can then ''//print the entire book//'' in one step
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150329231230047" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
+<div created="20150314000609556" creator="EricShulman" modified="20150330102611495" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
 <pre>&lt;pre&gt;
 /* defaults for EDIT mode (unless InsideTW/StyleSheet/ReadOnly is active) */
 .authortools { display:inline; }
@@ -8206,11 +8263,6 @@ body { background-color: #ddf; }
    xbackground-color: #eee;
 }
 
-/* TAG PILL BACKGROUND COLOR */
-.button.tc-tag-label, span.tc-tag-label {
-   background-color: #eee;
-}
-
 /* MONO FONT AND LIMIT HEIGHT FOR EDITING */
 .tc-edit-texteditor { font-family:monospace; max-height:20em; }
 
@@ -8220,12 +8272,13 @@ body { background-color: #ddf; }
 /* FORMATTING SHORTCUTS */
 .smaller { font-size:80%; line-height:100%; }
 .larger  { font-size:120%;line-height:100%; }
+.clear   { display:block;clear:both; }
 .borderless, .borderless table,
 .borderless td, .borderless tr, .borderless th, .borderless tbody
    	{ border:0 !important; margin:0 !important; padding:0 !important; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150330010827222" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150330105417375" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
