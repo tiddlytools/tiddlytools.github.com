@@ -5758,16 +5758,23 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20150212024127111" creator="EricShulman" modified="20150401102952365" modifier="EricShulman" title="$:/DefaultTiddlers">
+<div created="20150212024127111" creator="EricShulman" modified="20150401125357471" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>CoverPage</pre>
 </div>
-<div created="20150331195446988" creator="EricShulman" modified="20150331204300012" modifier="EricShulman" module-type="filteroperator" tags="" title="$:/els/filters/tagex.js" type="application/javascript">
+<div created="20150331195446988" creator="EricShulman" modified="20150401124014764" modifier="EricShulman" module-type="filteroperator" tags="" title="$:/els/filters/tagex.js" type="application/javascript">
 <pre>/*\
 title: $:/els/filters/tagex.js
 type: application/javascript
 module-type: filteroperator
+original-source: http://www.TiddlyTools.com/#MatchTagsPlugin 
+author: EricShulman
 
 Filter operator for checking for a match with a boolean tag expression
+
+How it works:
+The tagex operand is a &quot;tag expression&quot;, consisting of boolean operators -- AND (&amp;&amp;), OR (||) and NOT (!) -- nested parentheses (as needed), and tag values.
+
+The filter first converts the operators in the tag expression into standard javascript syntax, and then converts each tag value into a regexp test that can be used to scan the tags of each tiddler.
 
 \*/
 (function(){
@@ -5782,9 +5789,10 @@ Export our filter function
 exports.tagex = function(source,operator,options) {
    	var results = [];
 
-   	// convert expression into javascript with regexp tests,
-   	// so that &quot;tag1 AND ( tag2 OR NOT tag3 )&quot; becomes
-   	// &quot;/\~tag1\~/.test(...) &amp;&amp; ( /\~tag2\~/.test(...) || !/\~tag3\~/.test(...) )&quot;
+   // CHANGE THIS:
+   // &quot;tag1 AND ( tag2 OR NOT tag3 )&quot;
+   // TO THIS:
+   // &quot;/\~tag1\~/.test(...) &amp;&amp; ( /\~tag2\~/.test(...) || !/\~tag3\~/.test(...) )&quot;
 
    	// normalize whitespace, tokenize operators, delimit with &quot;~&quot;
    	var c=operator.operand.trim(); // remove leading/trailing spaces
@@ -5810,7 +5818,7 @@ exports.tagex = function(source,operator,options) {
    	}
    	c=terms.join(&quot; &quot;);
 
-   	// scan tiddlers for matches
+   // NOW SCAN THE TIDDLES FOR MATCHES
    		source(function(tiddler,title) {
       if (!tiddler || !tiddler.fields.tags) return;
       	// assemble tags from tiddler into string &quot;~tag1~tag2~tag3~&quot;
@@ -5921,7 +5929,7 @@ exports.startup = function() {
 <div modified="20150331120107061" modifier="EricShulman" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div modified="20150401102954662" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150401130034245" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150324212319392" modifier="EricShulman" title="$:/state/tab--142253017">
@@ -5948,7 +5956,7 @@ exports.startup = function() {
 <div modified="20150331203741652" modifier="EricShulman" title="$:/state/tab/moresidebar-401116514">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div modified="20150401091737849" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150401124109508" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div modified="20150321230156818" modifier="EricShulman" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -6011,7 +6019,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150212182110061" creator="EricShulman" modified="20150401102954662" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150212182110061" creator="EricShulman" modified="20150401130034245" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6031,10 +6039,10 @@ exports.startup = function() {
 <div created="20150212043200055" creator="EricShulman" modified="20150401102206973" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150212020914991" creator="EricShulman" modified="20150401102954661" modifier="EricShulman" title="$:/temp/search">
+<div created="20150212020914991" creator="EricShulman" modified="20150401130034245" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150401102954662" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150401130034245" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
 <div modified="20150321223159112" modifier="EricShulman" title="$:/theme">
@@ -6224,16 +6232,18 @@ Please note that, although this book contains examples of basic usage, it is not
 * embedding content from one tiddler in another
 * embedding binary file 'assets'</pre>
 </div>
-<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150401094533810" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
+<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="images/contents.svg" modified="20150401125945770" modifier="EricShulman" status="draft" tags="InsideTW" title="Contents" type="text/vnd.tiddlywiki">
 <pre>\define showIcon(which)
 @@.tc-titlebar {{images/$which$.svg}}@@
 \end
 
 @@.center 
-&lt;$link to=&quot;Preface&quot;&gt;&lt;&lt;showIcon newuser&gt;&gt;Start Here&lt;/$link&gt;//&amp;nbsp;or&amp;nbsp;//
-&lt;$link to=&quot;Search&quot;&gt;&lt;&lt;showIcon search&gt;&gt;Search this book&lt;/$link&gt;//&amp;nbsp;or//
-&lt;$link to=&quot;Contents&quot;&gt;&lt;&lt;showIcon select&gt;&gt;Choose a topic below&lt;/$link&gt;&lt;br&gt;
-//or, you can// [[View the entire book at once...|ViewAll]]
+&lt;$link to=&quot;Preface&quot;&gt;&lt;&lt;showIcon newuser&gt;&gt;Start Here&lt;/$link&gt;
+//&amp;nbsp;or&amp;nbsp;//
+&lt;$link to=&quot;Search&quot;&gt;&lt;&lt;showIcon search&gt;&gt;Search this book&lt;/$link&gt;
+//&amp;nbsp;or&amp;nbsp;//
+&lt;$link to=&quot;ViewAll&quot;&gt;&lt;&lt;showIcon viewall&gt;&gt;View the entire book&lt;/$link&gt;
+&lt;br&gt;''//or just choose any topic below://''
 @@
 
 &lt;&lt;toc &quot;InsideTW&quot;&gt;&gt;</pre>
@@ -8150,7 +8160,7 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150316221750153" creator="EricShulman" modified="20150401100824882" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
+<div created="20150316221750153" creator="EricShulman" modified="20150401124806722" modifier="EricShulman" tags="" title="InsideTW/Buttons/Contents">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt;
    class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt;
    {{$:/core/images/menu-button}}contents
@@ -8158,8 +8168,12 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/ContentsPopup&quot;&gt;&gt; retain=&quot;yes&quot;&gt;
 &lt;div class=&quot;tc-drop-down&quot;&gt;
 
-@@float:right;font-size:80%;{{InsideTW/Buttons/ViewAll}}@@
-@@font-size:150%; [[Table of Contents|Contents]]@@
+&lt;$link to=&quot;Contents&quot;&gt;
+@@font-size:150%;
+   &lt;$transclude tiddler={{Contents!!icon}}/&gt;
+   Table of Contents
+@@
+&lt;/$link&gt;
 &lt;div style=&quot;clear:both;overflow:scroll;height:30em;border:1px solid #ccc;padding:1em;text-align:left;&quot;&gt;&lt;&lt;toc &quot;InsideTW&quot;&gt;&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -8578,7 +8592,7 @@ body { background-color: #ddf; }
    	{ border:0 !important; margin:0 !important; padding:0 !important; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150401102737636" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150401130030855" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
