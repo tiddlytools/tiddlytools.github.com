@@ -170,6 +170,8 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab--97690941</li>
@@ -6253,8 +6255,11 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150419225712182" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150419234830912" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
+</div>
+<div modified="20150419231958732" modifier="EricShulman" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div modified="20150419063610398" modifier="EricShulman" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -6280,7 +6285,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div modified="20150419225712182" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div modified="20150419234830911" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6303,16 +6308,16 @@ exports.startup = function() {
 <div created="20150419110843991" creator="EricShulman" modified="20150419113009245" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150419225712182" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150419234830911" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150419225712182" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150419234830911" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
-<div modified="20150419225712182" modifier="EricShulman" title="$:/temp/TOCPopup">
+<div modified="20150419234830912" modifier="EricShulman" title="$:/temp/TOCPopup">
 <pre>hide</pre>
 </div>
-<div modified="20150419225712182" modifier="EricShulman" title="$:/theme">
+<div modified="20150419234830912" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -9110,7 +9115,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
    @@font-size:90%;{{||$:/core/ui/AdvancedSearch/Standard}}@@
 &lt;/div&gt;</pre>
 </div>
-<div created="20150419203816208" creator="EricShulman" modified="20150419225537493" modifier="EricShulman" title="InsideTW/Popups/TOC">
+<div created="20150419203816208" creator="EricShulman" modified="20150419233703660" modifier="EricShulman" title="InsideTW/Popups/TOC">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;&gt;
 &lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;show&quot;
    tooltip=&quot;Table of Contents...&quot; class=&quot;itw-button&quot;&gt;
@@ -9125,12 +9130,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$reveal&gt;
 &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot; retain=&quot;yes&quot;&gt;
 &lt;div class=&quot;tc-drop-down itw-drop-down&quot;
-   style=&quot;position:fixed;z-index:1000;top:8vh;left:2vw;&quot;&gt;
+   style=&quot;position:fixed;z-index:1000;top:8vh;left:1vw;&quot;&gt;
    @@font-size:80%;{{||InsideTW/Popups/TOC/Panel}}@@
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150419205530279" creator="EricShulman" modified="20150419220123357" modifier="EricShulman" tags="" title="InsideTW/Popups/TOC/Panel">
+<div created="20150419205530279" creator="EricShulman" modified="20150419234808700" modifier="EricShulman" tags="" title="InsideTW/Popups/TOC/Panel">
 <pre>\define you_are_here()
 &lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
    //you are here://&lt;br&gt;
@@ -9141,16 +9146,29 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$tiddler&gt;
 \end
 
-@@.floatleft  {{||InsideTW/Buttons/Home}} {{||InsideTW/Popups/Search}}@@
-@@.floatright {{||InsideTW/Buttons/ToggleTheme}} {{||InsideTW/Buttons/ViewAll}}@@
-@@.larger.center [[Table of Contents|Contents]]@@
-@@.smaller.center.clear &lt;&lt;you_are_here&gt;&gt;@@
+\define close_button()
+@@.smaller &lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;hide&quot;
+   tooltip=&quot;close this panel&quot; class=&quot;itw-button&quot;&gt;
+   {{$:/core/images/close-button}}
+&lt;/$button&gt;@@
+\end
+
+@@.floatleft &lt;&lt;close_button&gt;&gt;@@
+@@.floatright
+   {{||InsideTW/Buttons/Home}}
+   {{||InsideTW/Popups/Search}}
+   {{||InsideTW/Buttons/ToggleTheme}}
+   {{||InsideTW/Buttons/ViewAll}}
+@@
+@@.larger &amp;nbsp;[[Table of Contents|Contents]] &amp;nbsp;@@
+@@.smaller.center.clear &lt;hr&gt;@@
 &lt;div class=&quot;tc-table-of-contents scroll-y&quot;
-   style=&quot;text-align:left;max-height:70vh;margin-top:1em;padding:0.25em&quot;&gt;
+   style=&quot;text-align:left;max-height:70vh;padding:0.25em&quot;&gt;
    &lt;&lt;tree &quot;InsideTW&quot;&gt;&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+@@.smaller.center.clear &lt;hr&gt;&lt;&lt;you_are_here&gt;&gt;@@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150419225712182" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.19.155652" title="InsideTW/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150419234830912" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.19.164823" title="InsideTW/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9270,7 +9288,7 @@ body { background-color: #ddf; }
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150419225712182" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150419234830912" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
