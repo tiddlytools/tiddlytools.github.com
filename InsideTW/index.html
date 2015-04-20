@@ -268,6 +268,8 @@ Error message and password prompt
 
 <li>DownloadSaver</li>
 
+<li>Draft of '$:/core/ui/EditTemplate/controls'</li>
+
 <li>Editing</li>
 
 <li>Educational</li>
@@ -6257,7 +6259,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150420041233950" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150420042016663" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150419231958732" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6287,7 +6289,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150420024040863" creator="EricShulman" modified="20150420041233949" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150420024040863" creator="EricShulman" modified="20150420042016663" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6310,16 +6312,16 @@ exports.startup = function() {
 <div created="20150419110843991" creator="EricShulman" modified="20150420033549102" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150420041233949" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150420042016663" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150420041233950" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
+<div modified="20150420042016663" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
 <pre>CoverPage</pre>
 </div>
-<div modified="20150420041233950" modifier="EricShulman" title="$:/temp/TOCPopup">
+<div modified="20150420042016663" modifier="EricShulman" title="$:/temp/TOCPopup">
 <pre>hide</pre>
 </div>
-<div modified="20150420041233950" modifier="EricShulman" title="$:/theme">
+<div modified="20150420042016663" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -6737,6 +6739,17 @@ It is important to note that, because of browser security restrictions, the &quo
 However, if you are using FireFox, then there is a browser-based addon called TiddlyFox that automatically adds secure local file I/O handling into the TiddlyWiki core code.  After installing TiddlyFox, TiddlyWiki can then write updates directly to your filesystem.  See http://tiddlywiki.com/#TiddlyFox for details.
 
 Also note that, if you intend to use your TiddlyWii file remotely (i.e., from an http:// URL) or if you are going to be using it locally on other people's systems (e.g., read/save to/from a USB stick), then &quot;download saving&quot; may be the ONLY reliable option available to save your changes.
+</pre>
+</div>
+<div draft.of="$:/core/ui/EditTemplate/controls" draft.title="$:/core/ui/EditTemplate/controls" modified="20150420041812944" modifier="EricShulman" tags="$:/tags/EditTemplate" title="Draft of '$:/core/ui/EditTemplate/controls'">
+<pre>\define config-title()
+$:/config/EditToolbarButtons/Visibility/$(listItem)$
+\end
+&lt;div class=&quot;tc-tiddler-title tc-tiddler-edit-title&quot;&gt;
+&lt;$view field=&quot;title&quot;/&gt;
+&lt;span class=&quot;tc-tiddler-controls tc-titlebar&quot;&gt;&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/EditToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;&lt;/span&gt;
+&lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 </pre>
 </div>
 <div caption="Creating Content" created="20150212024848622" creator="EricShulman" icon="images/editing.svg" list="TiddlerEditor [[Tagging Tiddlers]] [[Basic Formatting]] [[Linking and Embedding]] [[Adding Images]] CustomFields" modified="20150328225618988" modifier="EricShulman" tags="InsideTW" title="Editing">
@@ -8932,7 +8945,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20150317073552035" creator="EricShulman" modified="20150419091309085" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
+<div created="20150317073552035" creator="EricShulman" modified="20150420041642644" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
 <pre>/* STYLED CONTAINERS */
 .navbar {
     clear:both; display:block;
@@ -8958,10 +8971,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
    display:block;
    width:85%;
    padding:0.5em 1em;
-   xborder:1px solid #999;
-   xborder-radius:1em; 
    margin:0em auto 0.25em auto;
-   xbox-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+   border:1px solid #999;
+   border-radius:1em; 
+   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 .navbar_icons {
    font-size:230%;
@@ -9169,7 +9182,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/div&gt;
 </pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150420041233950" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.19.211230" title="InsideTW/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150420042016663" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.19.212015" title="InsideTW/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9257,7 +9270,7 @@ If you are reading this book online, there are several ways to view the content:
 .viewertools { display:none; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150418111702243" creator="EricShulman" modified="20150419111518830" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
+<div created="20150418111702243" creator="EricShulman" modified="20150420041948829" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
 <pre>&lt;pre&gt;
 /* PAGE COLOR */
 body { background-color: #ddf; }
@@ -9267,6 +9280,9 @@ body { background-color: #ddf; }
 
 /* HIDE TIDDLER SUBTITLE */
 .tc-subtitle { display:none; }
+
+/* PADDING ABOVE TITLE IN EDIT MODE */
+.tc-tiddler-edit-title { padding-top:1em; }
 
 /* REDUCE PADDING ON TIDDLER FRAME */
 .tc-tiddler-frame { padding: 0 1em 1em 1em; }
@@ -9289,7 +9305,7 @@ body { background-color: #ddf; }
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150420041233950" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150420042016663" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
