@@ -1,0 +1,400 @@
+[
+    {
+        "text": "\\define config-title()\n$:/config/ViewToolbarButtons/Visibility/$(listItem)$\n\\end\n@@.authortools \n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]\" variable=\"listItem\"><$reveal type=\"nomatch\" state=<<config-title>> text=\"hide\"><$transclude tiddler=<<listItem>>/> </$reveal></$list>\n@@",
+        "title": "InsideTW/Buttons/EditFromHere",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150419064654574",
+        "creator": "EricShulman",
+        "created": "20150413234653608"
+    },
+    {
+        "text": "<$button message=\"tm-home\" tooltip=\"return to home page\"\n   class=\"itw-button\">\n   <$action-setfield $tiddler=\"$:/temp/toc/selectedTiddler\" text=\"CoverPage\"/>\n   <$action-setfield $tiddler=\"$:/state/sidebar\" text=\"no\"/>\n{{$:/core/images/home-button}}\n</$button>",
+        "title": "InsideTW/Buttons/Home",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150419001621671",
+        "creator": "EricShulman",
+        "created": "20150316091347529"
+    },
+    {
+        "text": "<!--\n  * show CoverPage in tabbed viewer\n  * show DefaultTiddlers (either CoverPage or InsideTW tabbed viewer)\n  * clear search and advancedsearch\n  * close sidebar, hide TOC, set read-only, set centralised theme\n  * save timestamp to RevisionHistory\n  * SAVE THE WIKI!\n-->\n@@.authortools \n<$button message=\"tm-save-wiki\"\n   param={{$:/config/SaveWikiButton/Template}}\n   tooltip={{$:/language/Buttons/SaveWiki/Hint}}\n   aria-label={{$:/language/Buttons/SaveWiki/Caption}}\n   class=\"itw-button\">\n   <$action-sendmessage\n      $message=\"tm-home\"/>\n   <$action-setfield $tiddler=\"$:/temp/search\"\n      text=\"\"/>\n   <$action-setfield $tiddler=\"$:/temp/advancedsearch\"\n      text=\"\"/>\n   <$action-setfield $tiddler=\"$:/temp/toc/selectedTiddler\"\n      text=\"CoverPage\"/>\n   <$action-setfield $tiddler=\"$:/state/sidebar\"\n      text=\"no\"/>\n<!--\n   <$action-setfield $tiddler=\"$:/temp/TOCPopup\"\n      text=\"hide\"/>\n-->\n   <$action-setfield $tiddler=\"$:/theme\"\n      text=\"$:/themes/tiddlywiki/centralised\"/>\n   <$action-setfield $tiddler=\"InsideTW/StyleSheet/ReadOnly\"\n      tags=\"$:/tags/Stylesheet\"/>\n   <$action-setfield $tiddler=\"InsideTW/RevisionHistory\"\n      timestamp=<<now \"YY.0MM.0DD.0hh0mm0ss\">>/>\n   <span class=\"tc-dirty-indicator\">{{$:/core/images/save-button}}</span>\n</$button>\n@@",
+        "title": "InsideTW/Buttons/HomeAndSave",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421005623493",
+        "creator": "EricShulman",
+        "created": "20150316090221888"
+    },
+    {
+        "text": "<nobr>\n@@.viewertools\n//@@color:red;<$view field=\"status\">notes</$view>@@//\n@@\n@@.authortools\n<$select field=\"status\" default=\"notes\">\n<option>notes</option>\n<option>draft</option>\n<option>complete</option>\n<option>final</option>\n</$select>\n@@\n</nobr>",
+        "title": "InsideTW/Buttons/SetStatus",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150414074801655",
+        "creator": "EricShulman",
+        "created": "20150320104455749"
+    },
+    {
+        "text": "<$tiddler tiddler=\"InsideTW/StyleSheet/ReadOnly\">\n<$fieldmangler>\n<$list filter=\"[all[current]tag[$:/tags/Stylesheet]]\">\n   <$button message=\"tm-remove-tag\" param=\"$:/tags/Stylesheet\"\n      class=\"itw-button\"\n      tooltip=\"unlock this document (allow editing)\">\n      <$action-setfield $tiddler=\"$:/state/sidebar\" text=\"yes\"/>\n      {{$:/core/images/locked-padlock}}\n   </$button>\n</$list>\n<$list filter=\"[all[current]!tag[$:/tags/Stylesheet]]\">\n   <$button message=\"tm-add-tag\" param=\"$:/tags/Stylesheet\"\n      class=\"itw-button\"\n      tooltip=\"lock this document (disable editing)\">\n      <$action-setfield $tiddler=\"$:/state/sidebar\" text=\"no\"/>\n      {{$:/core/images/unlocked-padlock}}\n   </$button>\n</$list>\n</$fieldmangler></$tiddler>",
+        "title": "InsideTW/Buttons/ToggleReadOnly",
+        "modifier": "EricShulman",
+        "modified": "20150419001521149",
+        "creator": "EricShulman",
+        "created": "20150321230215146"
+    },
+    {
+        "text": "<$list filter=\"[all[current]!title[InsideTW/ViewAll]]\">\n<$list filter=\"[all[current]!title[InsideTW]]\"\n   emptyMessage=\"\n      <$button class='tc-btn-invisible' tooltip='hide tabbed sidebar'>\n         <$action-navigate $to={{$:/temp/toc/selectedTiddler}}/>\n         <$action-setfield $tiddler='$:/DefaultTiddlers' text='CoverPage'/>\n         @@.resize [img[images/tabview.svg]]@@\n      </$button>\n   \">\n   <$button class=\"tc-btn-invisible\" tooltip='show tabbed sidebar'>\n      <$action-setfield\n         $tiddler=\"$:/temp/toc/selectedTiddler\" text=<<currentTiddler>>/>\n      <$action-setfield $tiddler=\"$:/DefaultTiddlers\" text=\"InsideTW\"/>\n      <$action-navigate $to=\"InsideTW\"/>\n      @@.resize [img[images/tabview.svg]]@@\n   </$button>\n</$list>\n</$list>",
+        "title": "InsideTW/Buttons/ToggleTabs",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421014216933",
+        "creator": "EricShulman",
+        "created": "20150316085909410"
+    },
+    {
+        "text": "<$reveal state=\"$:/theme\" type=\"match\" text=\"$:/themes/tiddlywiki/centralised\">\n<$button class=\"itw-button\"\n   tooltip=\"show full screen page view (stretch to fit)\">\n      <$action-setfield $tiddler=\"$:/theme\" text=\"$:/themes/tiddlywiki/snowwhite\"/>\n      {{$:/core/images/full-screen-button}}\n</$button>\n</$reveal>\n<$reveal state=\"$:/theme\" type=\"nomatch\" text=\"$:/themes/tiddlywiki/centralised\">\n<$button class=\"itw-button\" tooltip=\"show standard 'portrait' page view\">\n      <$action-setfield $tiddler=\"$:/theme\"\n         text=\"$:/themes/tiddlywiki/centralised\"/>\n      {{$:/core/images/full-screen-button}}\n</$button>\n</$reveal>",
+        "title": "InsideTW/Buttons/ToggleTheme",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150419001456518",
+        "creator": "EricShulman",
+        "created": "20150402223118689"
+    },
+    {
+        "text": "<$button class=\"itw-button\" tooltip=\"view entire Book\">\n   <$action-navigate $to=\"InsideTW/ViewAll\"/>\n   @@.resize [img[images/viewall.svg]]@@\n</$button>",
+        "title": "InsideTW/Buttons/ViewAll",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421014158669",
+        "creator": "EricShulman",
+        "created": "20150401100651332"
+    },
+    {
+        "text": "@@color:red;\n''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''\n@@",
+        "title": "InsideTW/DraftNotice",
+        "modifier": "EricShulman",
+        "modified": "20150329084222519",
+        "creator": "EricShulman",
+        "created": "20150322211218889"
+    },
+    {
+        "text": "!!![[You can help fund the writing of this book!|http://tiddlytools.github.io/fundraising.html]]\n<table class=\"borderless\" style=\"font-size:80%;\"><tr><td>\n<form action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_blank\" style=\"padding:0;margin:0;\">\n<input type=\"hidden\" name=\"cmd\" value=\"_xclick\">\n<input type=\"hidden\" name=\"business\" value=\"elsdesign@gmail.com\">\n<input type=\"hidden\" name=\"item_name\" value={{!!title}}>\n<input type=\"hidden\" name=\"no_shipping\" value=\"0\">\n<input type=\"hidden\" name=\"cn\" value=\"Your feedback is appreciated!\">\n<input type=\"hidden\" name=\"tax\" value=\"0\">\n<input type=\"hidden\" name=\"lc\" value=\"US\">\n<input type=\"hidden\" name=\"bn\" value=\"PP-DonationsBF\">\n<input type=\"hidden\" name=\"currency_code\" value=\"USD\">\n\t<i>Make a one-time donation:</i><br>\n\t<input type=\"text\" value=\"$50.00\" name=\"amount\" maxlength=\"16\" size=\"24\" id=\"amount\"/><!--\n\t--><input type=\"submit\" name=\"submit\" value=\"  donate   \"><br>\n\t<i>(use a credit/debit card or PayPal account)</i>\n</form>\n</td><td style=\"width:2em\">\n</td><td>\n<form action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_blank\" style=\"padding:0;margin:0;\">\n<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n<input type=\"hidden\" name=\"hosted_button_id\" value=\"E26HYJJQTW87E\">\n<input type=\"hidden\" name=\"currency_code\" value=\"USD\">\n\t<i>Make a recurring monthly pledge:</i><br>\n\t<input type=\"hidden\" name=\"on0\" value=\"Contribution Level\">\n\t<select name=\"os0\">\n\t\t<option selected=\"selected\" value=\"gold\">select a pledge level...</option>\n\t\t<option value=\"bronze\">$10.00/month (bronze)</option>\n\t\t<option value=\"silver\">$20.00/month (silver)</option>\n\t\t<option value=\"gold\">$30.00/month (gold)</option>\n\t\t<option value=\"platinum\">$50.00/month (platinum)</option>\n\t\t<option value=\"diamond\">$100.00/month (diamond)</option>\n\t</select><!--\n\t--><input type=\"submit\" name=\"submit\" value=\"subscribe\"><br>\n\t<i>(12 automatic payments, PayPal account required)</i>\n</form>\n</td></tr></table>",
+        "type": "text/vnd.tiddlywiki",
+        "title": "InsideTW/MakeADonation",
+        "modifier": "EricShulman",
+        "modified": "20150323053621843",
+        "creator": "YourName",
+        "created": "20131025064500000"
+    },
+    {
+        "text": "\\define navbarbottom()\n<div class=\"navbar\">\n<$set name=\"sectiontag\" filter=\"[all[current]tags[]limit[1]]\">\n<$list filter=\"[tag<sectiontag>before<currentTiddler>]\">\n   <<showButton left left>>\n</$list>\n<$list filter=\"[tag<sectiontag>after<currentTiddler>]\">\n   <<showButton right right>>\n</$list>\n@@.navbar_toolbar \n{{InsideTW/DraftNotice}}<br>\n{{InsideTW/RevisionHistory!!popup}}<br>\n{{||InsideTW/Buttons/EditFromHere}}\n@@\n@@.clear @@\n<$list filter=\"[tag<sectiontag>before<currentTiddler>]\">\n   <<showLink left>>\n</$list>\n<$list filter=\"[tag<sectiontag>after<currentTiddler>]\">\n   <<showLink right>>\n</$list>\n@@.clear @@\n\n</$set>\n</div>\n\\end\n<$list filter=\"[all[current]!is[system]]\">\n<$list filter=\"[all[current]navbarbottom[no]]\" emptyMessage=<<navbarbottom>>>\n</$list>\n</$list>",
+        "title": "InsideTW/NavBar/Bottom",
+        "tags": "$:/tags/ViewTemplate",
+        "modifier": "EricShulman",
+        "modified": "20150419064619462",
+        "list-after": "$:/core/ui/ViewTemplate/body",
+        "creator": "EricShulman",
+        "created": "20150316203756564"
+    },
+    {
+        "text": "\\define showLink(pos)\n<$list filter=\"[all[current]] -InsideTW\"\n   emptyMessage=\"<$tiddler tiddler='CoverPage'><<showLink $pos$>></$tiddler>\">\n   @@float:$pos$;<$link to={{!!title}}>@@.navbar_link <<toc-caption>>@@</$link>@@\n</$list>\n\\end\n\n\\define showButton(dir,pos)\n<$list filter=\"[all[current]] -InsideTW\"\n   emptyMessage=\"<$tiddler tiddler='CoverPage'><<showButton $dir$ $pos$>></$tiddler>\">\n   @@float:$pos$;\n      <$link to={{!!title}} tooltip=<<toc-caption>>>\n      @@.navbar_button {{$:/core/images/chevron-$dir$}}@@\n      </$link>\n   @@\n</$list>\n\\end\n\n\\define showIcons()\n<$list filter=\"[all[current]!has[icon]tags[]limit[1]]\"><<showIcons>></$list>\n<$list filter=\"[all[current]has[icon]]\">\n   <$link to={{!!title}} tooltip={{!!caption}}>\n      @@.resize <$transclude tiddler={{!!icon}}/>@@\n   </$link>\n</$list>\n\\end\n\n\\define showTagPath()\n<$list filter=\"[all[current]tags[]limit[1]]\">\n   <<showTagPath>><$macrocall $name=\"tag\" tag={{!!title}}/>\n</$list>\n\\end",
+        "type": "",
+        "title": "InsideTW/NavBar/Macros",
+        "tags": "$:/tags/Macro",
+        "modifier": "EricShulman",
+        "modified": "20150418174427775",
+        "creator": "EricShulman",
+        "created": "20150405080824318"
+    },
+    {
+        "text": "/* STYLED CONTAINERS */\n.navbar {\n    clear:both; display:block;\n}\n.navbar_link {\n   font-size:70%; line-height:100%;\n}\n.navbar_button {\n   font-size:80%; line-height:100%;\n   display:block;\n   text-align:center;\n   border:1px solid #666;\n   padding:4px;\n   border-radius:0.5em;\n   background:#ddd;\n   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);\n}\n.navbar_button:hover {\n   background:#ccc;\n   fill:blue;\n}\n.navbar_titlebox {\n   display:block;\n   width:85%;\n   padding:0.5em 1em;\n   margin:0em auto 0.25em auto;\n   border:1px solid #999;\n   border-radius:1em; \n   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);\n}\n.navbar_icons {\n   font-size:230%;\n   float:left;\n   margin:0 0.25em 0 0;\n}\n.navbar_caption {\n   font-size:150%; line-height:100%;\n   font-weight:bold;\n   display:block;\n}\n.navbar_status {\n   font-size:70%; line-height:100%;\n   float:right;\n}\n.navbar_toolbar {\n   font-size:70%; line-height:100%;\n   display:block; text-align:center; margin:0 auto;\n}\n.navbar_tagpath {\n   font-size:70%; line-height:100%;\n}\n.navbar_titlebox .tc-tag-list-item {\n   margin:1px 0;\n}\n.navbar_titlebox .tc-tag-label {\n   background-color:#eee;\n   border:1px solid #999;\n}\n.navbar_titlebox .tc-tag-label:hover {\n   background-color:#def;\n   border:1px solid #66f;\n}\n.navbar_tiddler_info {\n   display:block;\n   font-size:90%;\n   padding: 0.25em;\n   border: 1px solid #999;\n   border-radius: 0.5em;\n   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);\n}",
+        "type": "text/css",
+        "title": "InsideTW/NavBar/StyleSheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150420041642644",
+        "creator": "EricShulman",
+        "created": "20150317073552035"
+    },
+    {
+        "text": "\\define navbartop()\n<span class=\"navbar\">\n<$set name=\"section\" filter=\"[all[current]tags[]limit[1]]\">\n\n<$list filter=\"[tag<section>before<currentTiddler>]\"\n  emptyMessage=\"<$tiddler tiddler=<<section>>><<showLink left>></$tiddler>\">\n  <<showLink left>>\n</$list>\n<$list filter=\"[tag<section>after<currentTiddler>]\"\n  emptyMessage=\"<$tiddler tiddler=<<section>>><<showLink right>></$tiddler>\">\n  <<showLink right>>\n</$list>\n@@.clear @@\n<$list filter=\"[tag<section>before<currentTiddler>]\"\n  emptyMessage=\"<$tiddler tiddler=<<section>>><<showButton up left>></$tiddler>\">\n  <<showButton left left>>\n</$list>\n<$list filter=\"[tag<section>after<currentTiddler>]\"\n  emptyMessage=\"<$tiddler tiddler=<<section>>><<showButton up right>></$tiddler>\">\n  <<showButton right right>>\n</$list>\n@@.navbar_titlebox {{||InsideTW/NavBar/Top/TitleBox}}@@\n@@.clear @@\n</$set>\n</span>\n\\end\n<$list filter=\"[all[current]navbartop[no]]\" emptyMessage=<<navbartop>>>\n</$list>\n<$reveal type=\"nomatch\" text=\"\" default=\"\" state=<<tiddlerInfoState>>\n   class=\"tc-popup-handle\" retain=\"yes\">\n   @@.navbar_tiddler_info \n      <$transclude tiddler=\"$:/core/ui/TiddlerInfo\"/>\n   @@\n</$reveal>",
+        "type": "",
+        "title": "InsideTW/NavBar/Top",
+        "tags": "$:/tags/ViewTemplate",
+        "modifier": "EricShulman",
+        "modified": "20150419051645979",
+        "list-before": "$:/core/ui/ViewTemplate/body",
+        "creator": "EricShulman",
+        "created": "20150316172842092"
+    },
+    {
+        "text": "@@float:right;{{||InsideTW/Buttons/EditFromHere}}@@\n@@.navbar_icons <<showIcons>>@@\n@@.navbar_caption <<toc-caption>>@@\n<hr style=\"margin:1px\">\n@@.navbar_status {{||InsideTW/Buttons/SetStatus}}@@\n@@.navbar_tagpath <<showTagPath>>@@\n@@.clear @@\n",
+        "title": "InsideTW/NavBar/Top/TitleBox",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150419085055741",
+        "creator": "EricShulman",
+        "created": "20150405081244631"
+    },
+    {
+        "created": "20150414091616661",
+        "creator": "EricShulman",
+        "text": "<$list filter=\"[title{$:/HistoryList!!current-tiddler}!title[InsideTW]!title[CoverPage]]\">\n<$button\n   popup=<<qualify \"$:/temp/HistoryPopup\">>\n   tooltip=\"previously viewed topics\"\n   class=\"itw-button\">\n   @@.resize [img[images/back.svg]]@@\n</$button>\n<$reveal type=\"popup\" state=<<qualify \"$:/temp/HistoryPopup\">> retain=\"no\">\n<div class=\"tc-drop-down itw-drop-down\" style=\"text-align:left;\">\n   {{||InsideTW/Popups/History/Panel}}\n</div>\n</$reveal>\n</$list>",
+        "title": "InsideTW/Popups/History",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421022243004"
+    },
+    {
+        "text": "<$list\n   filter=\"[list[$:/StoryList]!title{$:/HistoryList!!current-tiddler}first[]]\">\n   <$button message=\"tm-close-tiddler\" class=\"tc-btn-invisible\">\n      @@.resize [img[images/back.svg]]@@\n      <$link to={{!!title}} tooltip=<<toc-caption>>>return to the previous topic</$link>\n   </$button>\n   <hr style=\"margin:1px\">\n   ,,//or, //,,\n</$list>\n,,//select a topic below://,,<br>\n<div class=\"scroll-y\" style=\"max-height:80vh\">\n<$list\n   filter=\"[list[$:/StoryList]!title{$:/HistoryList!!current-tiddler}]\">\n   @@margin-left:1em;<$link to={{!!title}}><<toc-caption>></$link><br>@@\n</$list>\n</div>",
+        "title": "InsideTW/Popups/History/Panel",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421014132045",
+        "creator": "EricShulman",
+        "created": "20150415231833689"
+    },
+    {
+        "text": "@@.authortools \n<$button popup=<<qualify \"$:/temp/RecentChangesPopup\">>\n   class=\"itw-button\"\n   tooltip=\"recent changes\">\n   @@.resize [img[images/changes.svg]]@@\n</$button>\n<$reveal type=\"popup\" state=<<qualify \"$:/temp/RecentChangesPopup\">>>\n<div class=\"tc-drop-down itw-drop-down scroll-y\"\n   style=\"max-height:70vh;text-align:left;font-size:80%\">\n   ''Recent Changes:''\n   <hr style=\"margin:1px\">\n   {{$:/core/ui/SideBar/Recent}}\n</div>\n</$reveal>\n@@",
+        "title": "InsideTW/Popups/RecentChanges",
+        "modifier": "EricShulman",
+        "modified": "20150421014232829",
+        "creator": "EricShulman",
+        "created": "20150416225627218"
+    },
+    {
+        "text": "<$button\n   popup=<<qualify \"$:/temp/SearchPopup\">>\n   class=\"itw-button\"\n   tooltip=\"search this book...\">\n   @@.resize {{$:/core/images/advanced-search-button}}@@\n</$button>\n<$reveal type=\"popup\"\n   state=<<qualify \"$:/temp/SearchPopup\">>>\n<div\n   class=\"tc-drop-down tc-popup-keep itw-drop-down\" style=\"text-align:left;\">\n   {{InsideTW/Popups/Search/Panel}}\n</div>\n</$reveal>",
+        "title": "InsideTW/Popups/Search",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150420062223949",
+        "creator": "EricShulman",
+        "created": "20150417021111336"
+    },
+    {
+        "text": "[[Search This Book|$:/AdvancedSearch]]\n<hr style=\"margin:1px\">\n<div class=\"scroll-y\" style=\"max-height:70vh;padding:0em;\">\n   @@font-size:90%;{{||$:/core/ui/AdvancedSearch/Standard}}@@\n</div>",
+        "title": "InsideTW/Popups/Search/Panel",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150418112411598",
+        "creator": "EricShulman",
+        "created": "20150415232134572"
+    },
+    {
+        "text": "<$reveal type=\"nomatch\" text=\"show\" state=\"$:/temp/TOCPopup\">\n<$button set=\"$:/temp/TOCPopup\" setTo=\"show\"\n   tooltip=\"Table of Contents...\" class=\"itw-button\">\n   {{$:/core/images/menu-button}}\n</$button>\n</$reveal>\n<$reveal type=\"match\" text=\"show\" state=\"$:/temp/TOCPopup\">\n<$button set=\"$:/temp/TOCPopup\" setTo=\"hide\"\n   tooltip=\"Table of Contents...\" class=\"itw-button\">\n   {{$:/core/images/menu-button}}\n</$button>\n</$reveal>\n<$reveal type=\"match\" text=\"show\" state=\"$:/temp/TOCPopup\" retain=\"yes\">\n<div class=\"tc-drop-down itw-drop-down itw-TOC\">\n   @@font-size:80%;{{||InsideTW/TOC/Panel}}@@\n</div>\n</$reveal>",
+        "title": "InsideTW/Popups/TOC",
+        "modifier": "EricShulman",
+        "modified": "20150421002616598",
+        "creator": "EricShulman",
+        "created": "20150419203816208"
+    },
+    {
+        "text": "Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@\n<div style=\"overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;\">\n\nThe following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//\n\n!!!April 7, 2015\n* still more tweaks to toolbars, navbar, etc.\n* investigating problem with navbar buttons when tag value contains spaces\n* content updates (based on feedback from Dave Gifford): move MicroContent under Benefits section, re-order Tour (story river before sidebar), re-write of [[DocumentOrWebsite]]\n\n!!!April 1, 2015\n* lots of tweaks to toolbars, navbar, etc.\n* many content updates as well\n\n!!!March 28, 2015\n* fixed float problem in [[InsideTW/ViewAll/Template]]\n* added more screen snaps for [[Tour]] tiddlers\n* refactored PublicPrivatePersonal (split from [[The Wiki Way]])\n* new topics: TiddlerViewer, CustomFields\n* re-organized outline for [[Tour]] section\n* many content updates\n\n!!!March 24, 2015\n* replaced .png icons with .svg for better resolution on high-density displays\n* added padding and margin around navbar titlebox\n* reduced used of bold text in AboutTheAuthor and [[What's in a name?]]\n* content updates to [[The Wiki Way]], [[Funding]], [[Reviewers]]\n* tweaks to toolbar buttons: back, search, home\n* contents toolbar button now shows as a popup!\n\n!!!March 23, 2015\n* content updates: [[Reviewers]], [[How This Book Was Made]], [[Funding]] \n\n!!!March 22, 2015\n* Reworked layout/placement of [[InsideTW/ToolBar]], [[InsideTW/Buttons/HomeAndSave]], and [[InsideTW/Buttons/ToggleReadOnly]]\n* Display [[InsideTW/DraftNotice]] in [[InsideTW/NavBar/Bottom]] (between buttons)\n* Adjusted styles for display of tiddler titlebar in edit mode\n* Hide tiddler subtitle (info not important)\n* Fixed Version link to popup [[InsideTW/RevisionHistory]]\n\n!!!March 21, 2015\n* Initial release for feedback\n* Outline of topics is subject to continued refactoring\n* Topics are marked with status flag:\n** notes - disorganized \"brain dump\" of ideas\n** draft - ideas organized and turned into paragraphs\n** revised - content rewritten based on feedback\n** complete - content complete, including embedded images\n** final - no more changes (except for typos, minor formatting, etc.)\n</div>",
+        "type": "",
+        "title": "InsideTW/RevisionHistory",
+        "timestamp": "15.04.20.193325",
+        "tags": "Appendix",
+        "popup": "<$button class=\"tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves\"> <$action-sendmessage $message=\"tm-modal\" $param=\"InsideTW/RevisionHistory\"/> ITW_V1.alpha @@.smaller {{InsideTW/RevisionHistory!!timestamp}}@@</$button>",
+        "modifier": "EricShulman",
+        "modified": "20150421023454720",
+        "creator": "EricShulman",
+        "created": "20150321152616393",
+        "caption": "Revision History"
+    },
+    {
+        "text": "<$link to=\"Preface\">\n   @@.resize [img[images/newuser.svg]]@@Start Here\n</$link>\n//&nbsp;or&nbsp;//\n<$link to=\"InsideTW/ViewAll\">\n   @@.resize [img[images/viewall.svg]]@@View the entire book\n</$link>\n<br>''//or just choose any topic below://''\n\n----\n\n@@float:right;<a href=\"http://en.wikipedia.org/wiki/Googol\" target=\"_blank\">[img width=\"130px\" [images/googol.jpg]]</a>@@\nOf course, when it first started, \"Google\" was also simply a silly name -- an [[accidental misspelling of the mathematical term, \"googol\"|http://graphics.stanford.edu/~dk/google_name_origin.html]].  Now, only a few years later, \"Google\" is [[listed as both a verb and an adjective in the Oxford English Dictionary|http://www.oxforddictionaries.com/us/definition/american_english/google]]!  \n\n----\n\n!!How to read this book\n<<<\nIf you are reading this book online, there are several ways to view the content:\n\n* Tabbed Viewer: shows outline of topics on left, content on right.  Click a title in the outline to view that page.  If an arrow appears next to the title, there are more topics listed as subsections under that title.  Click the arrow to view the additional topics.  Clicking the arrow again will hide those titles.\n* Single Page: press the \"hide tabs\" button to display individual pages, one at a time.\n* Column of Pages: default ~StoryView is set to \"zoomin\" for one-at-a-time display... change the setting to \"classic\" to see multiple pages\n* All pages have a \"nav bar\" at the top, showing the title of the current page, as well as the \"path\" in the outline.\n* If a page has related topics under the same section, large \"next/previous\" chevrons provide links directly to these topics.\n* In addition to the interactive \"browsing\" methods, you can also display the entire book content at once by pressing the \"view all\" button.  You can then ''//print the entire book//'' in one step\n<<<",
+        "url": "images/eric3.jpg",
+        "title": "InsideTW/scraps",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421014253829",
+        "creator": "EricShulman",
+        "created": "20150316101821466"
+    },
+    {
+        "text": "<pre>\n/* defaults for EDIT mode (unless [[InsideTW/StyleSheet/ReadOnly]] is active) */\n.authortools { display:inline; }\n.viewertools { display:none; }\n</pre>",
+        "type": "",
+        "title": "InsideTW/StyleSheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150419051303022",
+        "creator": "EricShulman",
+        "created": "20150314000609556"
+    },
+    {
+        "text": "<pre>\n/* PAGE COLOR */\nbody { background-color: #ddf; }\n\n/* ROUNDED CORNERS ON TIDDLERS */\n.tc-tiddler-frame { border-radius:1em; }\n\n/* HIDE TIDDLER SUBTITLE */\n.tc-subtitle { display:none; }\n\n/* PADDING ABOVE TITLE IN EDIT MODE */\n.tc-tiddler-edit-title { padding-top:1em; }\n\n/* REDUCE PADDING ON TIDDLER FRAME */\n.tc-tiddler-frame { padding: 0 1em 1em 1em; }\n\n/* MONO FONT AND LIMIT HEIGHT FOR EDITING */\n.tc-edit-texteditor { font-family:monospace; max-height:20em; }\n\n/* AUTO WIDTH FOR POPUPS */\n.tc-drop-down { min-width:100px; }\n\n/* STANDARD LINK COLOR IN POPUPS */\n.tc-drop-down a, .tc-drop-down button { color:#5778d8; }\n</pre>",
+        "type": "",
+        "title": "InsideTW/StyleSheet/Adjustments",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150420041948829",
+        "creator": "EricShulman",
+        "created": "20150418111702243"
+    },
+    {
+        "text": "@media print {\n.itw-toolbar,\n.navbar_button,\n.authortools\n  { display:none; }\n}",
+        "title": "InsideTW/StyleSheet/Print",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150413054649330",
+        "creator": "EricShulman",
+        "created": "20150413054527328"
+    },
+    {
+        "text": "<pre>\n.authortools,\n.tc-tiddler-title,\n.tc-subtitle,\n.tc-tags-wrapper,\n.tc-topbar-right .tc-btn-invisible\n   { display:none; }\n.viewertools\n   { display:inline; }\n\n</pre>",
+        "title": "InsideTW/StyleSheet/ReadOnly",
+        "modifier": "EricShulman",
+        "modified": "20150421023454720",
+        "creator": "EricShulman",
+        "created": "20150321224955892",
+        "tags": "$:/tags/Stylesheet"
+    },
+    {
+        "text": "<pre>\n/* FORMATTING SHORTCUTS */\n.resize img { height:1em; }\n\n.smaller { font-size:80%; line-height:100%; }\n.larger  { font-size:120%;line-height:100%; }\n\n.left    { text-align:left; }\n.right   { text-align:right; }\n.center  { display:block;text-align:center; }\n\n.floatleft  { float:left; }\n.floatright { float:right; }\n.clear      { display:block;clear:both; }\n\n.absolute { position:absolute; }\n.relative { position:relative; }\n.fixed    { position:fixed; }\n\n.scroll   { overflow:scroll; }\n.scroll-x { overflow-x:scroll; }\n.scroll-y { overflow-y:scroll; }\n\n.borderless, .borderless table,\n.borderless td, .borderless tr, .borderless th, .borderless tbody\n   \t{ border:0 !important; margin:0 !important; padding:0 !important; }\n\n.rotate-left-90 {\n    display:block; top:50%; left:50%;\n    transform: rotate(-90deg);\n}\n</pre>",
+        "type": "",
+        "title": "InsideTW/StyleSheet/Shortcuts",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150418111631671",
+        "creator": "EricShulman",
+        "created": "20150418111607835"
+    },
+    {
+        "text": "<<toc-tabbed-internal-nav\n   tag:\"InsideTW\"\n   selectedTiddler:\"$:/temp/toc/selectedTiddler\"\n   unselectedText:\"Please select a topic. Click the arrow to expand a topic.\"\n   template:InsideTW/TabView/Template>>\n@@.floatright {{||InsideTW/Buttons/EditFromHere}}@@",
+        "title": "InsideTW/TabView",
+        "tags": "",
+        "navbartop": "no",
+        "navbarbottom": "no",
+        "modifier": "EricShulman",
+        "modified": "20150419221840598",
+        "list": "CoverPage Contents Preface Introduction Tour Setup Editing Saving Appendix",
+        "creator": "EricShulman",
+        "created": "20150419221746698",
+        "caption": "Inside TiddlyWiki"
+    },
+    {
+        "text": "/* ROUNDED CORNERS ON TABBED TOC */\n.tc-tabbed-table-of-contents .tc-table-of-contents {\n  border-radius: 1em 0 0 1em;\n}\n.tc-tabbed-table-of-contents .tc-tabbed-table-of-contents-content {\n  border-radius: 0 1em 1em 0;\n}\n.tc-tabbed-table-of-contents .tc-table-of-contents .toc-item-selected > a {\n  border-radius: 0.5em 0 0 0.5em;\n}",
+        "type": "text/css",
+        "title": "InsideTW/TabView/StyleSheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150419220842957",
+        "creator": "EricShulman",
+        "created": "20150317073308250"
+    },
+    {
+        "text": "{{||InsideTW/NavBar/Top}}\n<$transclude field=\"text\" mode=\"block\"/>\n{{||InsideTW/NavBar/Bottom}}",
+        "title": "InsideTW/TabView/Template",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150419220919334",
+        "creator": "EricShulman",
+        "created": "20150212092513175"
+    },
+    {
+        "text": "\\define tree_item(tid)\n   <$tiddler tiddler=\"$tid$\">\n   @@.resize <$transclude tiddler={{!!icon}}>&emsp;</$transclude>@@\n   <$reveal type=\"nomatch\" text={{!!title}} state=\"$:/HistoryList!!current-tiddler\">\n      @@.resize.larger.floatright.invisible [img[images/left-arrow.svg]]@@\n      @@.tree_item <$link><<toc-caption>></$link>@@\n   </$reveal>\n   <$reveal type=\"match\"   text={{!!title}} state=\"$:/HistoryList!!current-tiddler\">\n      @@.resize.larger.floatright [img[images/left-arrow.svg]]@@\n      @@.tree_item.selected <<toc-caption>>@@\n   </$reveal>\n   </$tiddler>\n\\end\n\n\\define tree(tag)\n   <$list filter=\"[title[$tag$]tagging[]!has[draft.of]]\">\n      <$macrocall $name=\"tree_item\" tid={{!!title}} />\n      <div style=\"margin-left:1em;\">\n         <$macrocall $name=\"tree\" tag={{!!title}}/>\n      </div>\n   </$list>\n\\end",
+        "title": "InsideTW/TOC/Macros",
+        "tags": "$:/tags/Macro",
+        "modifier": "EricShulman",
+        "modified": "20150421014105813",
+        "creator": "EricShulman",
+        "created": "20150416210433507"
+    },
+    {
+        "created": "20150419205530279",
+        "creator": "EricShulman",
+        "text": "\\define you_are_here()\n<$tiddler tiddler={{$:/HistoryList!!current-tiddler}}>\n   <hr>//you are here://<br>\n   <$button message=\"tm-permalink\"\n       class=\"itw-button\" style=\"text-align:center;width:100%;opacity:1;\">\n       <<toc-caption>>\n   </$button>\n</$tiddler>\n\\end\n\n\\define close_button()\n@@.smaller <$button set=\"$:/temp/TOCPopup\" setTo=\"hide\"\n   tooltip=\"close this panel\" class=\"itw-button\">\n   {{$:/core/images/close-button}}\n</$button>@@\n\\end\n\n@@.floatleft <<close_button>>@@\n@@.floatright \n   {{||InsideTW/Buttons/Home}}\n   {{||InsideTW/Popups/Search}}\n   {{||InsideTW/Popups/History}}\n@@\n@@.larger &nbsp;[[Table of Contents|Contents]]&nbsp;@@\n@@.smaller.center.clear <<you_are_here>>@@\n<div class=\"tc-table-of-contents scroll-y\"\n   style=\"text-align:left;max-height:70vh;margin-top:1em;padding:0.25em\">\n   <<tree \"InsideTW\">>\n</div>\n",
+        "title": "InsideTW/TOC/Panel",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421022350991"
+    },
+    {
+        "text": ".itw-TOC {\n   position:fixed;\n   z-index:1200;\n   top: 2vh;\n   left:3.5vw;\n   margin:0;\n   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);\n}\n.tree_item {\n      border:1px solid transparent;\n      border-radius:0.4em;\n      padding:0 0.25em;\n      margin-right:2px;\n}\n.tree_item.selected {\n      border-color:#66f;\n      background:#ddf;\n}\n.invisible { visibility:hidden; }",
+        "type": "text/css",
+        "title": "InsideTW/TOC/Stylesheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150421012824077",
+        "creator": "EricShulman",
+        "created": "20150418054240175"
+    },
+    {
+        "created": "20150212182501517",
+        "creator": "EricShulman",
+        "text": "<div class=\"itw-topbar itw-toolbar\">\n@@.left.floatleft \n{{||InsideTW/Buttons/Home}}\n{{||InsideTW/Popups/Search}}\n{{||InsideTW/Popups/TOC}}\n{{||InsideTW/Popups/RecentChanges}}\n@@\n@@.right.floatright \n{{||InsideTW/Buttons/HomeAndSave}}\n{{||InsideTW/Buttons/ToggleTheme}}\n{{||InsideTW/Buttons/ViewAll}}\n{{||InsideTW/Buttons/ToggleReadOnly}}\n@@\n@@.center \n<$list\n   filter=\"[title{$:/HistoryList!!current-tiddler}!title[InsideTW]!title[CoverPage]]\">\n   {{||InsideTW/Popups/History}}\n</$list>\n@@\n@@.clear @@\n</div>",
+        "title": "InsideTW/ToolBar",
+        "tags": "$:/tags/PageTemplate",
+        "modifier": "EricShulman",
+        "modified": "20150421021505868",
+        "list-before": ""
+    },
+    {
+        "text": "<div class=\"itw-leftbar itw-toolbar invisible\">\n\n{{||InsideTW/Buttons/Home}}\n\n{{||InsideTW/Popups/Search}}\n\n{{||InsideTW/Popups/TOC}}\n\n<$list\n   filter=\"[title{$:/HistoryList!!current-tiddler}!title[InsideTW]!title[CoverPage]]\">\n   <br>{{||InsideTW/Popups/History}}\n</$list>\n\n<br>\n\n{{||InsideTW/Buttons/ToggleTheme}}\n\n{{||InsideTW/Buttons/ViewAll}}\n\n<br>\n\n{{||InsideTW/Buttons/ToggleReadOnly}}\n\n{{||InsideTW/Popups/RecentChanges}}\n\n{{||InsideTW/Buttons/HomeAndSave}}\n</div>",
+        "title": "InsideTW/ToolBar/Vertical",
+        "tags": "$:/tags/PageTemplate",
+        "modifier": "EricShulman",
+        "modified": "20150421005346269",
+        "list-before": "",
+        "creator": "EricShulman",
+        "created": "20150421001520159"
+    },
+    {
+        "created": "20150401094933322",
+        "creator": "EricShulman",
+        "text": "@@.floatright {{InsideTW/Buttons/EditFromHere}}@@\n<<view-all \"InsideTW\">>\n",
+        "title": "InsideTW/ViewAll",
+        "navbartop": "no",
+        "navbarbottom": "no",
+        "modifier": "EricShulman",
+        "modified": "20150421022848341"
+    },
+    {
+        "text": "\\define view-all-body(rootTag,tag)\n<$list filter=\"\"\"[all[shadows+tiddlers]tag[$tag$]!has[draft.of]]\"\"\">\n<div style=\"padding-left:1em;\">\n   {{||InsideTW/ViewAll/Template}}\n   <$list filter=\"\"\"[all[current]] -[[$rootTag$]]\"\"\">\n      <$macrocall $name=\"view-all-body\"\n         rootTag=\"\"\"$rootTag$\"\"\" tag=<<currentTiddler>>/>\n   </$list>\n</div>\n</$list>\n\\end\n\n\\define view-all(tag)\n@@.viewall <<view-all-body rootTag:\"\"\"$tag$\"\"\" tag:\"\"\"$tag$\"\"\">>@@\n\\end",
+        "title": "InsideTW/ViewAll/Macro",
+        "tags": "$:/tags/Macro",
+        "modifier": "EricShulman",
+        "modified": "20150402225803933",
+        "creator": "EricShulman",
+        "created": "20150314000135861"
+    },
+    {
+        "text": "/* PREVENT NESTED \"ROLLUP\" DISPLAY */\n.viewall .viewall { display:none; }\n\n/* border styling for each topic page */\n.viewall .pageView {\n   display:block;\n   border:1px solid gray;\n   margin:0 0 1em 0;\n   padding:0 0 0 1em;\n   border-radius:0.5em;\n   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);\n}",
+        "type": "text/css",
+        "title": "InsideTW/ViewAll/Stylesheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150419055639760",
+        "creator": "EricShulman",
+        "created": "20150322045954818"
+    },
+    {
+        "created": "20150322045759239",
+        "creator": "EricShulman",
+        "text": "<$link>\n   <span class=\"tc-titlebar\" style=\"font-size:24px;\">\n      <$transclude tiddler={{!!icon}}/>\n   </span>\n   <nobr>@@font-size:150%;<<toc-caption>>@@</nobr>\n</$link>\n@@font-size:70%;line-height:100%;margin-top:0.5em;\n   <nobr>\n   {{||InsideTW/Buttons/EditFromHere}}\n   {{||InsideTW/Buttons/SetStatus}}\n   </nobr>\n@@\n@@.viewall.pageView <$transclude field=\"text\" mode=\"block\"/>@@\n@@display:block;clear:both;@@",
+        "title": "InsideTW/ViewAll/Template",
+        "tags": "",
+        "modifier": "EricShulman",
+        "modified": "20150421022651277"
+    },
+    {
+        "created": "20150419051135299",
+        "creator": "EricShulman",
+        "text": "<pre>\n.itw-topbar {\n   position:fixed;\n   z-index:1200;\n   display: block;\n   text-align: center;\n   top: 2vh;\n   left: calc(50% - ({{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}} / 2));\n   width: {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}};\n}\n.itw-leftbar {\n   position:fixed;\n   z-index:1200;\n   display: block;\n   text-align: left;\n   top:  5px;\n   left: 5px;\n}\n.itw-topbar svg, .itw-leftbar svg {\n   fill: black;\n}\n.itw-toolbar {\n   xpadding: 0.5em;\n   xborder: 1px solid #ccc;\n   xborder-radius: 0.5em;\n   xbackground-color: #fff;\n   xbox-shadow: 5px 5px 10px rgba(0,0,0,0.3);\n}\n\n.itw-button {\n   text-align:center;\n   padding: 0.25em;\n   border: 1px solid #666;\n   border-radius: 0.3em;\n   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);\n}\n.itw-topbar .itw-button       { opacity:{{InsideTW/ToolBar/Stylesheet/ButtonFade}}; }\n.itw-topbar:hover .itw-button { opacity:1.0; }\n.itw-button:hover { opacity:1.0 !important; }\n\n.itw-button:hover {\n   border-color:#333;\n   background-color:#ccc;\n}\n\n.itw-toolbar button {\n   margin:0 0.25em;\n}\n.itw-toolbar .itw-drop-down button {\n   margin:0;\n}\n/* INLINE LINKS AND BUTTONS IN CUSTOM POPUPS */\n.itw-drop-down {\n   border-radius:0.5em;\n   padding:0.5em;\n}\n.itw-drop-down a, .itw-drop-down button\n   { display:inline; width:auto; padding:0; }\n.itw-drop-down .itw-button\n   { padding:0 0.25em !important; }\n</pre>",
+        "type": "",
+        "title": "InsideTW/ToolBar/StyleSheet",
+        "tags": "$:/tags/Stylesheet",
+        "modifier": "EricShulman",
+        "modified": "20150421022942253"
+    },
+    {
+        "created": "20150421021933137",
+        "creator": "EricShulman",
+        "text": "0.3",
+        "title": "InsideTW/ToolBar/Stylesheet/ButtonFade",
+        "tags": "",
+        "modified": "20150421021945228",
+        "modifier": "EricShulman"
+    }
+]
