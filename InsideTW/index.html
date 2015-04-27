@@ -268,6 +268,8 @@ Error message and password prompt
 
 <li>DownloadSaver</li>
 
+<li>Draft of 'InsideTW/TOC'</li>
+
 <li>Editing</li>
 
 <li>Educational</li>
@@ -6162,7 +6164,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150427055133627" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150427060001838" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150426204152852" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6201,7 +6203,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150420024040863" creator="EricShulman" modified="20150427055133627" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150420024040863" creator="EricShulman" modified="20150427060001838" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6224,7 +6226,7 @@ exports.startup = function() {
 <div created="20150419110843991" creator="EricShulman" modified="20150427054633824" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150427055133625" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150427060001838" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150426221136222" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
@@ -6236,7 +6238,7 @@ exports.startup = function() {
 <div created="20150425000708629" creator="EricShulman" modified="20150425124403341" modifier="EricShulman" title="$:/temp/whereto" whereto="InsideTW/TOC/Panel">
 <pre></pre>
 </div>
-<div modified="20150427055133627" modifier="EricShulman" title="$:/theme">
+<div modified="20150427060001838" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -6642,6 +6644,42 @@ It is important to note that, because of browser security restrictions, the &quo
 However, if you are using ~FireFox, then there is a browser-based addon called TiddlyFox that automatically adds secure local file I/O handling into the ~TiddlyWiki core code.  After installing TiddlyFox, ~TiddlyWiki can then write updates directly to your filesystem.  See http://tiddlywiki.com/#TiddlyFox for details.
 
 Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from an `http://` URL) or if you are going to be using it locally on other people's systems (e.g., read/save to/from a USB stick), then &quot;download saving&quot; may be the ONLY reliable option available to save your changes.</pre>
+</div>
+<div created="20150421001520159" creator="EricShulman" draft.of="InsideTW/TOC" draft.title="InsideTW/TOC" modified="20150427055941631" modifier="EricShulman" tags="$:/tags/PageTemplate" title="Draft of 'InsideTW/TOC'">
+<pre>&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;
+   class=&quot;itw-TOC itw-shadowbox&quot; retain=&quot;yes&quot;&gt;
+&lt;!-- TOOLBAR --&gt;
+&lt;div class=&quot;itw-TOC-toolbar center&quot; style=&quot;height:3em;margin-top:-3em;&quot;&gt;
+{{||InsideTW/TOC/ToolBar}}
+&lt;/div&gt;
+
+&lt;!-- TITLEBOX --&gt;
+&lt;div class=&quot;itw-TOC-titlebox itw-shadowbox&quot; style=&quot;font-size:120%;&quot;&gt;
+{{||InsideTW/TOC/TitleBox}}
+&lt;/div&gt;
+
+&lt;!-- YOU ARE HERE --&gt;
+&lt;div style=&quot;margin:0.5em 0&quot;&gt;
+@@.smaller.center.clear //''you are here:''//@@
+@@.center.clear 
+&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
+   &lt;$button message=&quot;tm-permalink&quot; class=&quot;itw-button&quot; 
+       tooltip=&quot;create a 'permalink' to this topic&quot;
+       style=&quot;width:100%;background:#fff;opacity:1.0&quot;&gt;
+       &lt;&lt;toc-caption&gt;&gt;
+   &lt;/$button&gt;
+&lt;/$tiddler&gt;
+@@
+&lt;/div&gt;
+
+&lt;!-- TREE --&gt;
+&lt;div class=&quot;X-itw-shadowbox&quot; style=&quot;height:calc(100% - 7em);&quot;&gt;
+&lt;div class=&quot;tc-table-of-contents scroll-y&quot; style=&quot;height:100%;padding-top:0.5em;&quot;&gt;
+   @@.left &lt;$macrocall $name=&quot;tree&quot; tag={{InsideTW/RootTag}}/&gt;@@
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/$reveal&gt;</pre>
 </div>
 <div caption="Creating Content" created="20150212024848622" creator="EricShulman" icon="images/editing.svg" list="TiddlerEditor [[Tagging Tiddlers]] [[Basic Formatting]] [[Linking and Embedding]] [[Adding Images]] CustomFields" modified="20150328225618988" modifier="EricShulman" tags="InsideTW" title="Editing">
 <pre>In this section, you will learn how to create your own content.
@@ -8888,7 +8926,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150427055133627" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.26.225128" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150427060001838" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.26.225941" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9205,7 +9243,7 @@ body { background-color: #ddf; }
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150427055133627" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150427060001838" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
@@ -9283,8 +9321,9 @@ body { background-color: #ddf; }
 &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;
 {{||InsideTW/NavBar/Bottom}}</pre>
 </div>
-<div created="20150421001520159" creator="EricShulman" modified="20150427052656301" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/TOC">
-<pre>&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot; class=&quot;itw-TOC&quot; retain=&quot;yes&quot;&gt;
+<div created="20150421001520159" creator="EricShulman" modified="20150427055934836" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/TOC">
+<pre>&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;
+   class=&quot;itw-TOC itw-shadowbox&quot; retain=&quot;yes&quot;&gt;
 &lt;!-- TOOLBAR --&gt;
 &lt;div class=&quot;itw-TOC-toolbar center&quot; style=&quot;height:3em;margin-top:-3em;&quot;&gt;
 {{||InsideTW/TOC/ToolBar}}
@@ -9310,7 +9349,7 @@ body { background-color: #ddf; }
 &lt;/div&gt;
 
 &lt;!-- TREE --&gt;
-&lt;div class=&quot;itw-shadowbox&quot; style=&quot;height:calc(100% - 7em);&quot;&gt;
+&lt;div class=&quot;X-itw-shadowbox&quot; style=&quot;height:calc(100% - 7em);&quot;&gt;
 &lt;div class=&quot;tc-table-of-contents scroll-y&quot; style=&quot;height:100%;padding-top:0.5em;&quot;&gt;
    @@.left &lt;$macrocall $name=&quot;tree&quot; tag={{InsideTW/RootTag}}/&gt;@@
 &lt;/div&gt;
