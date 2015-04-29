@@ -156,6 +156,8 @@ Error message and password prompt
 
 <li>$:/els/phonegap/PinchZoomMarkup</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -326,6 +328,8 @@ Error message and password prompt
 
 <li>images/hawaii.gif</li>
 
+<li>images/history.svg</li>
+
 <li>images/ideas.svg</li>
 
 <li>images/knowledge.svg</li>
@@ -375,6 +379,8 @@ Error message and password prompt
 <li>InsideTW</li>
 
 <li>InsideTW/Buttons/AdvancedSearch</li>
+
+<li>InsideTW/Buttons/Back</li>
 
 <li>InsideTW/Buttons/EditFromHere</li>
 
@@ -433,6 +439,8 @@ Error message and password prompt
 <li>InsideTW/NavBar/Top</li>
 
 <li>InsideTW/NavBar/Top/TitleBox</li>
+
+<li>InsideTW/Options/BackgroundColor</li>
 
 <li>InsideTW/RootTag</li>
 
@@ -6177,6 +6185,11 @@ exports.startup = function() {
 <pre>&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=8&gt;</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[history.svg]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -6186,7 +6199,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150428232714918" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150429020826246" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150426204152852" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6234,7 +6247,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150420024040863" creator="EricShulman" modified="20150428232714918" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150420024040863" creator="EricShulman" modified="20150429020826246" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6257,10 +6270,10 @@ exports.startup = function() {
 <div modified="20150419222046646" modifier="EricShulman" title="$:/temp/LeftSidePopup">
 <pre>hide</pre>
 </div>
-<div created="20150419110843991" creator="EricShulman" modified="20150428010908447" modifier="EricShulman" title="$:/temp/NewTagName">
+<div created="20150419110843991" creator="EricShulman" modified="20150429012726101" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150428232714918" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150429020826246" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150426221136222" modifier="EricShulman" title="$:/temp/toc/selectedTiddler">
@@ -6272,7 +6285,7 @@ exports.startup = function() {
 <div created="20150425000708629" creator="EricShulman" modified="20150425124403341" modifier="EricShulman" title="$:/temp/whereto" whereto="InsideTW/TOC/Panel">
 <pre></pre>
 </div>
-<div modified="20150428232714918" modifier="EricShulman" title="$:/theme">
+<div modified="20150429020826246" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -6531,8 +6544,8 @@ Please note that, although this book contains examples of basic usage, it is not
 <div caption="Control Panel: Settings" created="20150320080528003" creator="EricShulman" modified="20150425003938605" modifier="EricShulman" tags="Setup" title="ControlPanelSettings">
 <pre></pre>
 </div>
-<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150425080034870" modifier="EricShulman" navbarbottom="yes" navbartop="no" status="draft" tags="InsideTW" title="CoverPage">
-<pre>&lt;div style=&quot;text-align:center;height:65vh;&quot;&gt;
+<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150429010513940" modifier="EricShulman" navbarbottom="yes" navbartop="no" status="draft" tags="InsideTW" title="CoverPage">
+<pre>&lt;div style=&quot;text-align:center;height:calc(100vh - 15em);&quot;&gt;
 @@font-size:300%;line-height:100%;&lt;br&gt;''//{{$:/SiteTitle}}//''&lt;br&gt;@@
 {{$:/SiteSubtitle}}&lt;br&gt;&lt;br&gt;
 [[by Eric L Shulman|AboutTheAuthor]]&lt;br&gt;
@@ -7575,6 +7588,69 @@ Highlights can include links to old versions and examples of notable customizati
 <div created="20150227050825065" creator="EricShulman" modified="20150317042031253" modifier="EricShulman" tags="image" title="images/hawaii.gif" type="image/gif">
 <pre>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</pre>
 </div>
+<div created="20150429012719709" creator="EricShulman" modified="20150429012727285" modifier="EricShulman" tags="image" title="images/history.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 width=&quot;461.785px&quot; height=&quot;461.784px&quot; viewBox=&quot;0 0 461.785 461.784&quot; style=&quot;enable-background:new 0 0 461.785 461.784;&quot;
+	 xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;path d=&quot;M50.755,170.975C50.755,76.698,127.451,0,221.73,0c78.046,0,143.88,52.614,164.308,124.2
+		c-3.735,4.043-6.349,9.17-7.081,14.975l-1.868,14.919l-3.168,16.898l-17.472-0.018c0-74.29-60.444-134.727-134.719-134.727
+		c-74.295,0-134.736,60.438-134.736,134.727c0,50.392,27.86,94.336,68.935,117.447l-26.347,26.344
+		C82.248,284.319,50.755,231.306,50.755,170.975z M221.73,63.588c-10.016,0-18.119,8.118-18.119,18.122v89.265
+		c0,10.004,8.104,18.119,18.119,18.119h102.528c10.013,0,18.122-8.115,18.122-18.119c0-10.013-8.109-18.128-18.122-18.128h-84.405
+		V81.71C239.853,71.706,231.731,63.588,221.73,63.588z M410.46,143.472c-0.124-4.74-3.883-8.582-8.605-8.825
+		c-4.527-0.26-8.854,3.201-9.451,7.923l-1.934,15.457l-3.387,18.048c-1.4,6.26-2.843,12.729-5.532,19.763l-4.061,11.881
+		l-5.757,12.664c-2.058,5.192-5.178,10.42-8.488,15.959c-1.679,2.802-3.375,5.633-4.965,8.529c-1.667,2.252-3.299,4.539-4.918,6.845
+		c-4.268,6.011-8.287,11.691-13.684,17.348c-4.688,5.852-10.314,11.083-16.248,16.615c-1.75,1.632-3.488,3.251-5.208,4.895
+		c-1.927,1.466-3.836,2.949-5.722,4.421c-6.312,4.918-12.253,9.552-19.334,13.618c-5.461,3.807-11.703,6.887-17.727,9.848
+		c-2.518,1.241-5.018,2.471-7.441,3.735c-3.073,1.105-6.064,2.294-9.014,3.476c-5.521,2.205-10.729,4.279-16.249,5.497
+		l-11.981,3.322l-11.777,2.01c-5.994,1.288-11.266,1.584-16.373,1.891l-9.599,0.733l-1.356-0.035v-42.28
+		c0-3.658-2.205-6.969-5.595-8.375c-3.399-1.396-7.279-0.627-9.883,1.962L98.21,368.358c-1.696,1.702-2.651,4.008-2.651,6.407
+		c0,2.4,0.955,4.705,2.651,6.407l77.963,77.964c1.738,1.726,4.055,2.647,6.41,2.647c1.167,0,2.35-0.225,3.473-0.686
+		c3.39-1.407,5.595-4.717,5.595-8.382v-44.183l16.686-3.056c7.716-1.596,17.324-3.594,26.524-7.005l10.725-3.6l17.78-7.519
+		c7.495-2.955,14.594-7.104,21.456-11.117c2.932-1.721,5.898-3.452,8.925-5.113c0.331-0.184,0.639-0.385,0.958-0.604
+		c2.364-1.702,4.764-3.381,7.182-5.064c7.323-5.084,14.883-10.351,21.355-16.433c7.991-6.366,14.972-13.742,21.722-20.883l4.9-5.154
+		c0.207-0.225,0.414-0.455,0.614-0.703l4.434-5.609c6.035-7.589,12.294-15.462,17.011-23.536c5.296-7.566,9.28-15.451,13.134-23.088
+		c1.324-2.637,2.648-5.249,3.996-7.803c0.177-0.354,0.349-0.709,0.484-1.075c1.206-3.239,2.494-6.401,3.771-9.505
+		c2.813-6.88,5.716-13.984,7.353-20.959l4.185-14.866l2.377-13.075c1.896-8.618,2.446-16.506,2.932-23.46l0.875-11.827
+		L410.46,143.472z&quot;/&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
 <div created="20150324123202091" creator="EricShulman" modified="20150324124118096" modifier="EricShulman" tags="image" title="images/ideas.svg" type="image/svg+xml">
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
 &lt;!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
@@ -8425,6 +8501,17 @@ Highlights can include links to old versions and examples of notable customizati
 &lt;/$reveal&gt;
 @@</pre>
 </div>
+<div created="20150429011446736" creator="EricShulman" modified="20150429020815661" modifier="EricShulman" tags="" title="InsideTW/Buttons/Back">
+<pre>&lt;$list filter=&quot;[&lt;currentTiddler&gt;!title{$:/DefaultTiddlers}]&quot;&gt;
+&lt;$list filter=&quot;[jlist[$:/HistoryList]reverse[]!title&lt;currentTiddler&gt;limit[1]]&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot;
+   tooltip=&quot;return to previous topic&quot;&gt;
+   &lt;$action-navigate $to={{!!title}}/&gt;
+   @@.resize [img[images/back.svg]]@@
+&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;</pre>
+</div>
 <div created="20150413234653608" creator="EricShulman" modified="20150419064654574" modifier="EricShulman" tags="" title="InsideTW/Buttons/EditFromHere">
 <pre>\define config-title()
 $:/config/ViewToolbarButtons/Visibility/$(listItem)$
@@ -8433,13 +8520,13 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; &lt;/$reveal&gt;&lt;/$list&gt;
 @@</pre>
 </div>
-<div created="20150414091616661" creator="EricShulman" modified="20150425070818549" modifier="EricShulman" tags="" title="InsideTW/Buttons/History">
+<div created="20150414091616661" creator="EricShulman" modified="20150429020759173" modifier="EricShulman" tags="" title="InsideTW/Buttons/History">
 <pre>&lt;$list filter=&quot;[&lt;currentTiddler&gt;!title{$:/DefaultTiddlers}]&quot;&gt;
 &lt;$button
    popup=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt;
    tooltip=&quot;previously viewed topics&quot;
    class=&quot;tc-btn-invisible&quot;&gt;
-   @@.resize [img[images/back.svg]]@@
+   @@.resize [img[images/history.svg]]@@
 &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; retain=&quot;no&quot;&gt;
@@ -8599,11 +8686,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$select&gt;
 @@</pre>
 </div>
-<div created="20150419051135299" creator="EricShulman" modified="20150426011545557" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/Buttons/StyleSheet" type="">
-<pre>\define padding() 2vw
-\define tiddlerwidth() {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
-
-&lt;pre&gt;
+<div created="20150419051135299" creator="EricShulman" modified="20150429005022877" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/Buttons/StyleSheet" type="">
+<pre>&lt;pre&gt;
 .itw-button {
    text-align:center;
    padding: 0.25em !important;
@@ -8621,9 +8705,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 .tc-topbar .itw-button       { opacity:0.3; }
 .tc-topbar:hover .itw-button { opacity:1.0; }
 
-/* INLINE LINKS AND BUTTONS IN CUSTOM DROP DOWNS */
+/* DROPDOWNS: INLINE LINKS/BUTTONS  */
 .itw-drop-down                          { border-radius:0.5em; padding:0.5em; }
 .itw-drop-down a, .itw-drop-down button { display:inline; width:auto; padding:0; }
+.itw-drop-down a, .itw-drop-down button { color:#5778d8; }
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150321230215146" creator="EricShulman" modified="20150426221124149" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
@@ -8968,7 +9053,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150428232714918" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.28.162709" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150429020826246" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.28.190824" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9195,17 +9280,20 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
    @@
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150405081244631" creator="EricShulman" modified="20150428010832236" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/TitleBox">
-<pre>@@float:right;
-   {{||InsideTW/Buttons/EditFromHere}} &amp;nbsp;&amp;nbsp;
-   {{||InsideTW/Buttons/History}}
-@@
+<div created="20150405081244631" creator="EricShulman" modified="20150429020701029" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/TitleBox">
+<pre>@@.floatright {{||InsideTW/Buttons/Back}} &amp;nbsp; {{||InsideTW/Buttons/History}}@@
+@@.floatright {{||InsideTW/Buttons/EditFromHere}} &amp;nbsp;&amp;nbsp;@@
 @@.navbar_icons &lt;&lt;showIcons&gt;&gt;@@
 @@.navbar_caption &lt;&lt;toc-caption&gt;&gt;@@
+&lt;!--
 &lt;hr style=&quot;margin:1px&quot;&gt;
 @@.navbar_status {{||InsideTW/Buttons/SetStatus}}@@
+--&gt;
 @@.navbar_tagpath &lt;&lt;showTagPath&gt;&gt;@@
 @@.clear @@</pre>
+</div>
+<div modified="20150429003824015" modifier="EricShulman" title="InsideTW/Options/BackgroundColor">
+<pre>#ddf</pre>
 </div>
 <div created="20150424235330826" creator="EricShulman" modified="20150424235348053" modifier="EricShulman" tags="" title="InsideTW/RootTag">
 <pre>InsideTW</pre>
@@ -9282,65 +9370,51 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;
 {{||InsideTW/NavBar/Bottom}}</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150419051303022" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
-<pre>&lt;pre&gt;
+<div created="20150314000609556" creator="EricShulman" modified="20150429010242333" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
+<pre>\define Vmargin() 42px
+\define height() 100vh - (2 * &lt;&lt;Vmargin&gt;&gt;)
+\define bodyheight() 100vh - 20em
+
+&lt;pre&gt;
+/* ---- TIDDLER HEIGHT/SCROLLING ---- */
+/* FIT WINDOW HEIGHT (LESS MARGINS) */
+.tc-tiddler-frame { min-height:calc(&lt;&lt;height&gt;&gt;); }
+.tc-tiddler-body  { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); }
+
+/* ---- COLORS ----*/
+/* BACKGROUND */
+body { background-color: {{InsideTW/Options/BackgroundColor}}; }
+/* SIDEBAR TEXT/LINKS */
+.tc-sidebar-lists a.tc-tiddlylink { color: #669; }
+.tc-sidebar-header { color:#000; }
+/* TIDDLER TEXT/BACKGROUND */
+.tc-tiddler-frame { color: {{InsideTW/Options/TextColor}}; }
+.tc-tiddler-frame { background-color: {{InsideTW/Options/PageColor}}; }
+
+/* ---- TIDDLER FRAME PADDING/BORDER/SHADOW ---- */
+.tc-tiddler-frame {
+   padding: 0 2em 1em 2em;
+   border-radius:0.5em;
+   border-color:#999;
+   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
 /* defaults for EDIT mode (unless [[InsideTW/StyleSheet/ReadOnly]] is active) */
 .authortools { display:inline; }
 .viewertools { display:none; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150418111702243" creator="EricShulman" modified="20150428212121436" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
-<pre>\define margin() 42px
-\define height() calc(100vh - (2 * &lt;&lt;margin&gt;&gt;))
-
-&lt;pre&gt;
-/* PAGE COLOR */
-body { background-color: &lt;$transclude tiddler=&quot;InsideTW/Options/BackgroundColor&quot;&gt;#ccf&lt;/$transclude&gt;; }
-
-/* SIDEBAR LINK COLOR */
-.tc-sidebar-lists a.tc-tiddlylink { color: #669; }
-
-/* SIDEBAR HEADER COLOR */
-.tc-sidebar-header { color:#000; }
-
-/* TIDDLER TEXT COLOR */
-.tc-tiddler-frame { color: {{InsideTW/Options/TextColor}}; }
-
-/* TIDDLER BACKGROUND COLOR */
-.tc-tiddler-frame { background-color: {{InsideTW/Options/PageColor}}; }
-
-/* ROUNDED CORNERS ON TIDDLER FRAME */
-.tc-tiddler-frame { border-radius:0.5em; }
-
-/* BORDER AND SHADOW ON TIDDLER FRAME */
-.tc-tiddler-frame {
-   border-color:#999;
-   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-}
-
-/* MINIMUM HEIGHT OF TIDDLERS TO FIT WINDOW HEIGHT (LESS MARGINS) */
-.tc-tiddler-frame { min-height: &lt;&lt;height&gt;&gt;; }
-
-/* SCROLLING TIDDLER BODY */
-.X-tc-tiddler-body { height:67.5%; overflow-y:auto; margin-bottom:1em; }
-
-/* REDUCE PADDING ON TIDDLER FRAME */
-.tc-tiddler-frame { padding: 0 2em 1em 2em; }
-
+<div created="20150418111702243" creator="EricShulman" modified="20150429005852813" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
+<pre>&lt;pre&gt;
+/* ---- MISC TWEAKS TO TW STANDARDS ---- */
 /* HIDE TIDDLER SUBTITLE */
 .tc-subtitle { display:none; }
-
 /* PADDING ABOVE TITLE IN EDIT MODE */
 .tc-tiddler-edit-title { padding-top:1em; }
-
-/* MONO FONT AND LIMIT HEIGHT FOR EDITING */
-.tc-edit-texteditor { font-family:monospace; max-height:20em; }
-
+/* MONO FONT FOR EDITING */
+.tc-edit-texteditor { font-family:monospace;  }
 /* AUTO/MIN WIDTH FOR DROP DOWNS */
 .tc-drop-down { min-width:100px; }
-
-/* STANDARD LINK COLOR IN DROP DOWNS */
-.tc-drop-down a, .tc-drop-down button { color:#5778d8; }
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150413054527328" creator="EricShulman" modified="20150425235511835" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Print">
@@ -9349,7 +9423,7 @@ body { background-color: &lt;$transclude tiddler=&quot;InsideTW/Options/Backgrou
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150428232714918" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150429020826246" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
@@ -9579,7 +9653,7 @@ body { background-color: &lt;$transclude tiddler=&quot;InsideTW/Options/Backgrou
 .itw-TOC-item.selected button { color:black; text-decoration:none; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232539664" creator="EricShulman" modified="20150427213422796" modifier="EricShulman" title="InsideTW/TOC/Tree/Template">
+<div created="20150426232539664" creator="EricShulman" modified="20150429010847423" modifier="EricShulman" title="InsideTW/TOC/Tree/Template">
 <pre>&lt;nobr&gt;
 @@.resize &lt;$transclude tiddler={{!!icon}}&gt;&amp;emsp;&lt;/$transclude&gt;@@
 &lt;$reveal type=&quot;nomatch&quot; text={{!!title}} state=&quot;$:/HistoryList!!current-tiddler&quot;&gt;
@@ -9593,10 +9667,14 @@ body { background-color: &lt;$transclude tiddler=&quot;InsideTW/Options/Backgrou
 &lt;$reveal type=&quot;match&quot;   text={{!!title}} state=&quot;$:/HistoryList!!current-tiddler&quot;&gt;
    &lt;span style=&quot;display:inline-block;width:calc(100% - 3.25em);&quot;&gt;
       @@.itw-TOC-item.selected 
+&lt;!--
       &lt;$button message=&quot;tm-permalink&quot; param={{!!title}} class=&quot;tc-btn-invisible&quot;
           tooltip=&quot;create a 'permalink' to this topic&quot;&gt;
           &lt;&lt;toc-caption&gt;&gt;
-      &lt;/$button&gt;@@
+      &lt;/$button&gt;
+--&gt;
+      &lt;&lt;toc-caption&gt;&gt;
+      @@
    &lt;/span&gt;
    &lt;span style=&quot;display:inline-block;&quot;&gt;
       @@.resize [img[images/left-arrow.svg]]@@
