@@ -6229,7 +6229,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150501041748871" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150501052216785" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150429080853756" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6280,7 +6280,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150420024040863" creator="EricShulman" modified="20150501041748871" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150420024040863" creator="EricShulman" modified="20150501052216785" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6300,7 +6300,7 @@ exports.startup = function() {
 <div created="20150419110843991" creator="EricShulman" modified="20150501041412823" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150501041748871" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150501052216785" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150430091144621" modifier="EricShulman" title="$:/temp/TOCPopup">
@@ -6318,7 +6318,7 @@ exports.startup = function() {
 <div modified="20150430221701436" modifier="EricShulman" title="$:/temp/ViewAll/More/Skills">
 <pre>show</pre>
 </div>
-<div modified="20150501041748872" modifier="EricShulman" title="$:/theme">
+<div modified="20150501052216785" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -6441,7 +6441,7 @@ exports.startup = function() {
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
 <pre>{{EricShulman}}</pre>
 </div>
-<div caption="About This Book" created="20150430085057516" creator="EricShulman" modified="20150430215134111" modifier="EricShulman" tags="Preface" title="AboutThisBook">
+<div caption="About This Book" created="20150430085057516" creator="EricShulman" modified="20150501052100989" modifier="EricShulman" tags="Preface" title="AboutThisBook">
 <pre>\define showIcon(tid)
 @@float:left;margin-right:0.5em;font-size:250%;
 &lt;$link to=&quot;$tid$&quot;&gt;@@.resize &lt;$transclude tiddler={{$tid$!!icon}}/&gt;@@&lt;/$link&gt;
@@ -8755,12 +8755,15 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 \end
 &lt;&lt;favorites_button&gt;&gt;</pre>
 </div>
-<div created="20150501025156158" creator="EricShulman" modified="20150501040702933" modifier="EricShulman" tags="" title="InsideTW/Buttons/Favorites/Panel">
-<pre>@@.larger ''Favorite Topics''@@
+<div created="20150501025156158" creator="EricShulman" modified="20150501052013821" modifier="EricShulman" tags="" title="InsideTW/Buttons/Favorites/Panel">
+<pre>\define emptyMessage()
+use {{images/star_empty.svg}} to add a topic
+\end
+
+@@.larger ''Favorite Topics''@@
 @@.thinline @@
 &lt;div class=&quot;scroll-y resize&quot; style=&quot;max-height:60vh;padding:0em;&quot;&gt;
-   &lt;$list filter=&quot;[has[favorite]]&quot;
-      emptyMessage=&quot;use {{images/star_empty.svg}} to add a topic&quot;&gt;
+   &lt;$list filter=&quot;[has[favorite]]&quot; emptyMessage=&lt;&lt;emptyMessage&gt;&gt;&gt;
       &lt;$link to={{!!title}}&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;br&gt;
    &lt;/$list&gt;
 &lt;/div&gt;
@@ -8854,9 +8857,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 |//text color://&lt;hr&gt;&lt;&lt;pick_color &quot;InsideTW/Options/TextColor&quot;&gt;&gt;|&amp;nbsp;|//page color://&lt;hr&gt;&lt;&lt;pick_color &quot;InsideTW/Options/PageColor&quot;&gt;&gt;|&amp;nbsp;|//background color://&lt;hr&gt;&lt;&lt;pick_color &quot;InsideTW/Options/BackgroundColor&quot;&gt;&gt;|
 &lt;/div&gt;</pre>
 </div>
-<div created="20150501033945072" creator="EricShulman" modified="20150501034254077" modifier="EricShulman" tags="" title="InsideTW/Buttons/Permalink">
+<div created="20150501033945072" creator="EricShulman" modified="20150501051411869" modifier="EricShulman" tags="" title="InsideTW/Buttons/Permalink">
 <pre>\define tooltip() create a permalink to '$(tid)$'
-
 &lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
 &lt;$button message=&quot;tm-permalink&quot; class=&quot;itw-button&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
     @@.resize {{images/links.svg}}@@
@@ -8955,21 +8957,25 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 .itw-drop-down a, .itw-drop-down button { color:#5778d8; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150501031210388" creator="EricShulman" modified="20150501032359357" modifier="EricShulman" tags="" title="InsideTW/Buttons/ToggleFavorite">
-<pre>&lt;$fieldmangler&gt;
+<div created="20150501031210388" creator="EricShulman" modified="20150501051622126" modifier="EricShulman" tags="" title="InsideTW/Buttons/ToggleFavorite">
+<pre>\define tooltip_add() add '$(tid)$' to Favorites
+\define tooltip_rem() remove '$(tid)$' from Favorites
+&lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
+&lt;$fieldmangler&gt;
 &lt;$list filter=&quot;[all[current]favorite[yes]]&quot;&gt;
-   &lt;$button class=&quot;itw-button&quot; tooltip=&quot;remove from Favorites&quot;&gt;
+   &lt;$button class=&quot;itw-button&quot; tooltip=&lt;&lt;tooltip_rem&gt;&gt;&gt;
       &lt;$action-deletefield favorite /&gt;
       @@.resize {{images/star_filled.svg}}@@
    &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[all[current]!favorite[yes]]&quot;&gt;
-   &lt;$button class=&quot;itw-button&quot; tooltip=&quot;add to Favorites&quot;&gt;
+   &lt;$button class=&quot;itw-button&quot; tooltip=&lt;&lt;tooltip_add&gt;&gt;&gt;
       &lt;$action-setfield favorite=&quot;yes&quot;/&gt;
       @@.resize {{images/star_empty.svg}}@@
    &lt;/$button&gt;
 &lt;/$list&gt;
-&lt;/$fieldmangler&gt;</pre>
+&lt;/$fieldmangler&gt;
+&lt;/$set&gt;</pre>
 </div>
 <div created="20150321230215146" creator="EricShulman" modified="20150426221124149" modifier="EricShulman" title="InsideTW/Buttons/ToggleReadOnly">
 <pre>&lt;$tiddler tiddler=&quot;InsideTW/StyleSheet/ReadOnly&quot;&gt;
@@ -9306,7 +9312,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150501041748872" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.30.211735" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150501052216785" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.30.222214" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9699,7 +9705,7 @@ body {
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150501041748871" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150501052216785" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
@@ -9824,7 +9830,7 @@ body {
 &lt;&lt;pick_height &quot;InsideTW/TOC/Options/Height&quot;&gt;&gt;
 --&gt;</pre>
 </div>
-<div created="20150428012148986" creator="EricShulman" modified="20150430181724749" modifier="EricShulman" title="InsideTW/TOC/Panel">
+<div created="20150428012148986" creator="EricShulman" modified="20150501051811084" modifier="EricShulman" title="InsideTW/TOC/Panel">
 <pre>&lt;!-- TITLEBOX --&gt;
 &lt;div class=&quot;itw-TOC-titlebox&quot;
      style=&quot;margin-bottom:0.5em&quot;&gt;
@@ -9844,18 +9850,15 @@ body {
 &lt;/div&gt;
 &lt;!-- LOCATION (YOU ARE HERE)--&gt;
 &lt;div class=&quot;itw-TOC-location itw-shadowbox inset&quot;
-     style=&quot;margin-top:0.5em; padding:0.25em 0&quot;&gt;
+     style=&quot;margin-top:0.5em; padding:0.5em&quot;&gt;
      {{||InsideTW/TOC/Panel/Location}}
 &lt;/div&gt;</pre>
 </div>
-<div created="20150427071348784" creator="EricShulman" modified="20150501041729726" modifier="EricShulman" tags="" title="InsideTW/TOC/Panel/Location">
+<div created="20150427071348784" creator="EricShulman" modified="20150501052203157" modifier="EricShulman" tags="" title="InsideTW/TOC/Panel/Location">
 <pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
-@@.floatleft  &amp;nbsp;{{||InsideTW/Buttons/Permalink}}@@
-@@.floatright {{||InsideTW/Buttons/ToggleFavorite}}&amp;nbsp;@@
-@@.center 
-   //@@.smaller you are here:&lt;br&gt;@@//
-   &lt;&lt;toc-caption&gt;&gt;
-@@
+@@.floatleft.larger  {{||InsideTW/Buttons/Permalink}}@@
+@@.floatright.larger {{||InsideTW/Buttons/ToggleFavorite}}@@
+@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
 @@.clear @@
 &lt;/$tiddler&gt;</pre>
 </div>
