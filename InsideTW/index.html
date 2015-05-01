@@ -6229,7 +6229,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150501063707935" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150501072056678" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150429080853756" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6280,7 +6280,7 @@ exports.startup = function() {
 <div created="20150215033656992" creator="EricShulman" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close" modified="20150215033708439" modifier="EricShulman" title="$:/tags/ViewToolbar">
 <pre>&lt;&lt;tag $:/tags/ViewToolbar&gt;&gt;</pre>
 </div>
-<div created="20150420024040863" creator="EricShulman" modified="20150501063707935" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150420024040863" creator="EricShulman" modified="20150501072056678" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6300,7 +6300,7 @@ exports.startup = function() {
 <div created="20150419110843991" creator="EricShulman" modified="20150501041412823" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150419001725990" creator="EricShulman" modified="20150501063707934" modifier="EricShulman" title="$:/temp/search">
+<div created="20150419001725990" creator="EricShulman" modified="20150501072056678" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150430091144621" modifier="EricShulman" title="$:/temp/TOCPopup">
@@ -6318,7 +6318,7 @@ exports.startup = function() {
 <div modified="20150430221701436" modifier="EricShulman" title="$:/temp/ViewAll/More/Skills">
 <pre>show</pre>
 </div>
-<div modified="20150501063707935" modifier="EricShulman" title="$:/theme">
+<div modified="20150501072056678" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -6669,22 +6669,30 @@ are licensed by [[Creative Commons BY 3.0|http://creativecommons.org/licenses/by
 * generating summary tables
 </pre>
 </div>
-<div caption="Document or Website?" created="20150212022036079" creator="EricShulman" modified="20150418104725606" modifier="EricShulman" status="draft" tags="Introduction" title="DocumentOrWebsite">
-<pre>So, is ~TiddlyWiki a document, an application or a website?  All three, depending on who you are and what you use it for.
+<div caption="Document or Website?" created="20150212022036079" creator="EricShulman" modified="20150501072052478" modifier="EricShulman" status="draft" tags="Introduction" title="DocumentOrWebsite">
+<pre>''So, is ~TiddlyWiki a document, an application or a website?''  All three, depending on who you are and what you use it for.
 
-In many ways, a ~TiddlyWiki file is just like any of the other document types that you are familiar with: text files, word processing, spreadsheets, images, sounds, video, etc.  Each of these document types has their own internal structure: text files are a simple &quot;stream of characters&quot;, word processing embodies &quot;pages&quot; of formatted text and images with headers, footers, margins, etc., and spreadsheets provide grids with formulae, variables, graphs, etc.
+!!Familiar document types
 
-~TiddlyWiki provides another type of structured document that you can use to store and interact with your information: //hypertext//, the familiar &quot;links and forms&quot; interface of the web.
+Most people who use computers are already familiar with several common document &quot;types&quot;: text files, word processing, spreadsheets, images, sounds, video, etc.
 
-However, unlike the web, which requires a remote server and an internet connection to access information, ~TiddlyWiki is just like other documents on your computer: it is stored as a single file that is read and displayed by a separate program (in this case, any web browser).  You can also manage it just like any other document file: you can move it, copy it, upload it, attach it to email, etc.
+Each of these document types has their own internal structure: text files are a simple &quot;stream of characters&quot;, word processing embodies &quot;pages&quot; of formatted content with headers, footers, margins, etc., spreadsheets provide grids with formulae, variables, graphs, and media files generally contain compressed data in a media-specific binary format.
+
+In each of these cases, regardles of the file type, you don't really need to worry about how the contents of the document are actually stored.  You simply need to have the correct corresponding application (e.g, Word, Excel, ~MediaPlayer, etc.) to view and/or edit and save changes to those documents.
+
+In many ways, you can think of a ~TiddlyWiki file as merely another type of structured document that you can use to store and interact with your information: in this case, //hypertext//, the familiar &quot;links and forms&quot; interface that is found on every website throughout the internet.
+
+!!Own it like a document, Use it like a website
+
+Because ~TiddlyWiki runs in your browser and uses 'hypertext' links and forms, it seems to work like a website.  As you click on links, additional &quot;pages&quot; of content appear, and there are places to type, buttons to press, lists and checkboxes to select, etc.
+
+However, unlike an internet website, which requires a remote server and an network connection to access information, ~TiddlyWiki is just like other documents on your computer: it is stored as a single file that is read and displayed by a separate program (in this case, any web browser).  You can also manage it just like any other document file: you can move it, copy it, upload it, attach it to email, etc.
+
+!!Self-contained Application
 
 You can also think of ~TiddlyWiki as an application: it includes its own custom programming to handle loading, displaying, editing and saving changes to your files.  However, unlike other document types, which separate the data and the program, each document also contains a complete copy of the &quot;run time&quot; code, combining application and data into a single file.
 
-In addition, ~TiddlyWiki has a rich set of built-in features that let you easily assemble and present your information in many different ways.  ~TiddlyWiki also provides a &quot;plugin&quot; system that permits you to add new features to fit your needs.  Combined, these abilities allow you to create and deliver highly interactive custom &quot;applications&quot; that can be used to gather, analyze, present and summarize highly-structured data to meet your specific goals.
-
-Of course, because ~TiddlyWiki runs in your browser and uses 'hypertext' links and forms, it also seems to work like a website.  As you click on links, additional &quot;pages&quot; of content appear, and there are places to type, buttons to press, lists and checkboxes to select, etc.
-
-!!//Own it like a document, Use it like a website!//</pre>
+In addition, ~TiddlyWiki has a rich set of built-in features that let you easily assemble and present your information in many different ways.  ~TiddlyWiki also provides a &quot;plugin&quot; system that permits you to add new features to fit your needs.  Combined, these abilities allow you to create and deliver highly interactive custom &quot;applications&quot; that can be used to gather, analyze, present and summarize highly-structured data to meet your specific goals.</pre>
 </div>
 <div created="20150215034648492" creator="EricShulman" icon="images/download.svg" modified="20150424221629230" modifier="EricShulman" tags="Installation" title="Downloading">
 <pre>* The fastest way to get started with TiddlyWiki is to visit http://tiddlywiki.com/#GettingStarted, and then download an &quot;empty&quot; TiddlyWiki document to your local device.
@@ -9312,7 +9320,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150501063707935" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.04.30.233650" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150501072056678" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink tc-tiddlylink-resolves&quot;&gt; &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.01.002052" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 &lt;div style=&quot;overflow:scroll;height:20em;padding:1em;border:1px solid #ccc;&quot;&gt;
 
@@ -9705,7 +9713,7 @@ body {
   { display:none; }
 }</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20150501063707935" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
+<div created="20150321224955892" creator="EricShulman" modified="20150501072056678" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/ReadOnly">
 <pre>&lt;pre&gt;
 .authortools,
 .tc-tiddler-title,
@@ -10214,18 +10222,30 @@ You can also add extra &quot;custom&quot; fields to hold any values you like.  T
 * Store on your own computer, tablet, or usb stick
 * Encrypt files for even more security</pre>
 </div>
-<div caption="Public, Private, Personal" created="20150325222247670" creator="EricShulman" modified="20150327085759004" modifier="EricShulman" status="draft" tags="Introduction" title="PublicPrivatePersonal">
-<pre>There are many sites that run a variety of wiki systems that serve numerous different purposes.  [[Wikipedia|http://www.wikipedia.org]], the online encyclopedia, is perhaps the most well known __public wiki__ on the web.  By using a wiki system, Wikipedia enables virtually anyone in the world to contribute their knowledge to the site, which has grown to total nearly 10 million pages -- 4.7 million pages in the English edition alone! -- and has become a reference work of enormous public value.
+<div caption="Public, Private, Personal" created="20150325222247670" creator="EricShulman" modified="20150501071659749" modifier="EricShulman" tags="Introduction" title="PublicPrivatePersonal">
+<pre>There are many sites that run a variety of wiki systems that serve numerous different purposes.
 
-There are also many organizations that run __private wiki__ systems, providing for the varied information needs of businesses, researchers, social clubs, hobbyists, gamers, etc.
+!!Public wiki systems
+
+[[Wikipedia|http://www.wikipedia.org]], the online encyclopedia, is perhaps the most well known __public wiki__ on the web.  By using a wiki system, Wikipedia enables virtually anyone in the world to contribute their knowledge to the site, which has grown to total nearly 10 million pages -- 4.7 million pages in the English edition alone! -- and has become a reference work of enormous public value.
+
+!!Private wiki systems
+
+There are also many organizations that run __private wiki__ systems, providing for the varied information needs of businesses, researchers, social clubs, hobbyists, gamers, etc.  These sytems are often installed on corporate and/or organizational computers that are typically maintained and updated either by professional IT personnel or by the most technically skilled members of the group.
+
+!!Personal wiki systems
 
 Many people, after having experienced the way that wiki systems allow them to easily edit, categorize, search and present a wide range of shared information, would also like to be able to run their own __personal wiki__ at home, without needing to trust their data to a remote server operated by other people.
+
+!!Overcoming the technical challenges
 
 Unfortunately, most wiki systems use a complex combination of database and web server software to store and deliver their content to the user, and -- while it is possible to install these applications on a home computer -- it usually requires advanced technical skills, as well as great deal of time and effort, to properly set up and maintain such a system.
 
 Fortunately, there is one application commonly used with most wiki systems that is //not// difficult to set up at home.  In fact, virtually every computer, tablet, and smartphone comes with some version of this software pre-installed, direct from the factory: it is __the web browser that you use to //view// the wiki content.__
 
-~TiddlyWiki starts with the web browser's ability to render HTML/CSS content, and then uses Javascript -- the programming language embedded in most modern browsers -- to provide the needed storage and delivery functions to create a completely ''//self-contained, private, personal, and portable interactive wiki system//'' in a single file that runs entirely inside your browser without installing any other software.</pre>
+~TiddlyWiki starts with the web browser's ability to render HTML/CSS content, and then uses Javascript -- the programming language embedded in most modern browsers -- to provide storage and delivery functions.
+
+By combining these standard web technologies, ~TiddlyWiki has created a completely ''//self-contained, private, personal, and portable interactive wiki system//'' that is stored in a single file that can be loaded and run entirely inside your browser without installing any other software.</pre>
 </div>
 <div created="20150212022840182" creator="EricShulman" modified="20150316001408366" modifier="EricShulman" tags="Roles" title="Readers">
 <pre>* consumers of information.  No input (except for searching)</pre>
