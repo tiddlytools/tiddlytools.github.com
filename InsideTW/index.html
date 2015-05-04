@@ -120,6 +120,8 @@ Error message and password prompt
 
 <li>$:/config/AnimationDuration</li>
 
+<li>$:/config/SaverFilter</li>
+
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit</li>
@@ -137,8 +139,6 @@ Error message and password prompt
 <li>$:/els/phonegap/PinchZoomInit</li>
 
 <li>$:/els/phonegap/PinchZoomMarkup</li>
-
-<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
@@ -183,6 +183,8 @@ Error message and password prompt
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/LeftBarPopup</li>
 
 <li>$:/temp/NewTagName</li>
 
@@ -418,6 +420,24 @@ Error message and password prompt
 
 <li>InsideTW/Info/RevisionHistory</li>
 
+<li>InsideTW/LeftBar</li>
+
+<li>InsideTW/LeftBar/Buttons/Background</li>
+
+<li>InsideTW/LeftBar/Buttons/Close</li>
+
+<li>InsideTW/LeftBar/Buttons/Toggle</li>
+
+<li>InsideTW/LeftBar/Content</li>
+
+<li>InsideTW/LeftBar/Location</li>
+
+<li>InsideTW/LeftBar/Stylesheet</li>
+
+<li>InsideTW/LeftBar/TitleBox</li>
+
+<li>InsideTW/LeftBar/ToolBar</li>
+
 <li>InsideTW/NavBar/Bottom</li>
 
 <li>InsideTW/NavBar/Bottom/MessageBox</li>
@@ -437,6 +457,8 @@ Error message and password prompt
 <li>InsideTW/Options/BackgroundColor</li>
 
 <li>InsideTW/Options/FontSize/BodyText</li>
+
+<li>InsideTW/Options/FontSize/LeftBar/ToolBar</li>
 
 <li>InsideTW/Options/FontSize/TOC</li>
 
@@ -468,31 +490,13 @@ Error message and password prompt
 
 <li>InsideTW/TOC</li>
 
-<li>InsideTW/TOC/Buttons/Background</li>
-
-<li>InsideTW/TOC/Buttons/CloseTOC</li>
-
-<li>InsideTW/TOC/Buttons/ToggleTOC</li>
-
-<li>InsideTW/TOC/Panel</li>
-
-<li>InsideTW/TOC/Panel/Location</li>
-
-<li>InsideTW/TOC/Panel/TitleBox</li>
-
-<li>InsideTW/TOC/Panel/ToolBar</li>
+<li>InsideTW/TOC/Macros</li>
 
 <li>InsideTW/TOC/Stylesheet</li>
 
-<li>InsideTW/TOC/Tree</li>
+<li>InsideTW/TOC/Template</li>
 
-<li>InsideTW/TOC/Tree/Macros</li>
-
-<li>InsideTW/TOC/Tree/Stylesheet</li>
-
-<li>InsideTW/TOC/Tree/Template</li>
-
-<li>InsideTW/TopLeftbar</li>
+<li>InsideTW/TopLeftBar</li>
 
 <li>InsideTW/TopRightBar</li>
 
@@ -590,6 +594,9 @@ Error message and password prompt
 <div id="storeArea" style="display:none;">
 <div created="20150318024805857" creator="EricShulman" modified="20150421224713302" modifier="EricShulman" title="$:/config/AnimationDuration">
 <pre>0</pre>
+</div>
+<div created="20150504204839109" creator="EricShulman" modified="20150504204907037" modifier="EricShulman" title="$:/config/SaverFilter">
+<pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[[$:/theme]] -[[InsideTW/Info/RevisionHistory]]</pre>
 </div>
 <div modified="20150414000722209" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close">
 <pre>show</pre>
@@ -6170,11 +6177,6 @@ exports.startup = function() {
 <pre>&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=8&gt;</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[star_empty.svg]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -6184,17 +6186,17 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150503082240168" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150504205426218" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150503082240168" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150504205426218" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150503074734708" modifier="EricShulman" title="$:/state/tab--112437242">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
-</div>
-<div modified="20150503080105860" modifier="EricShulman" title="$:/state/tab--1498284803">
+<div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+</div>
+<div modified="20150504205349532" modifier="EricShulman" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div modified="20150427091102652" modifier="EricShulman" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -6223,10 +6225,10 @@ exports.startup = function() {
 <div modified="20150427091156964" modifier="EricShulman" title="$:/state/tab-923509295">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div modified="20150421080955244" modifier="EricShulman" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/Tags</pre>
+<div modified="20150504203644213" modifier="EricShulman" title="$:/state/tab/moresidebar-401116514">
+<pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div modified="20150503080833605" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150504204353272" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
@@ -6235,7 +6237,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div modified="20150503082240168" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150504205426218" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6252,13 +6254,16 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div modified="20150504204346972" modifier="EricShulman" title="$:/temp/LeftBarPopup">
+<pre>show</pre>
+</div>
 <div created="20150419110843991" creator="EricShulman" modified="20150503080658428" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150503082240168" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150504205426218" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
-<div modified="20150503081552574" modifier="EricShulman" title="$:/temp/TOCPopup">
+<div modified="20150504184454900" modifier="EricShulman" title="$:/temp/TOCPopup">
 <pre>show</pre>
 </div>
 <div modified="20150430221700772" modifier="EricShulman" title="$:/temp/ViewAll/More/AboutTheAuthor">
@@ -6273,7 +6278,7 @@ exports.startup = function() {
 <div modified="20150430221701436" modifier="EricShulman" title="$:/temp/ViewAll/More/Skills">
 <pre>show</pre>
 </div>
-<div modified="20150503082240168" modifier="EricShulman" title="$:/theme">
+<div modified="20150504205426218" modifier="EricShulman" title="$:/theme">
 <pre>$:/themes/tiddlywiki/centralised</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with a centred text column" name="Centralised" plugin-type="theme" title="$:/themes/tiddlywiki/centralised" type="application/json" version="5.1.7">
@@ -8799,7 +8804,7 @@ use {{images/star_empty.svg}} to add a topic
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20150502154339654" modifier="EricShulman" title="InsideTW/Buttons/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20150504200505316" modifier="EricShulman" title="InsideTW/Buttons/ResetAndSave">
 <pre>&lt;!--
   * show DefaultTiddlers
   * clear search and advancedsearch
@@ -9145,8 +9150,10 @@ Please note that ''//regardless of funding, my efforts on the &quot;Inside ~Tidd
 &lt;/form&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150423035607756" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
-<pre>The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
+<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150504195252766" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
+<pre>@@color:red;''//NOTE: this content is out of date and needs to be revised//''@@
+
+The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
 
 The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged accordingly so that can be displayed using the ~TiddlyWiki built-in &quot;table of contents&quot; macro, which provides a &quot;tabbed viewer&quot; display of all the tiddlers in the outline.
 
@@ -9185,13 +9192,14 @@ All tiddlers used for customization begin with &quot;InsideTW/&quot; in their ti
 &lt;&lt;list-links filter:&quot;[prefix[InsideTW/]]&quot;&gt;&gt;
 @@</pre>
 </div>
-<div caption="How To Review This Book" created="20150322234136996" creator="EricShulman" modified="20150423035806891" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Reviewers">
+<div caption="How To Review This Book" created="20150322234136996" creator="EricShulman" modified="20150504195107188" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Reviewers">
 <pre>This is an early, work-in-progress, and is being presented exclusively for review and feedback from participants in the [[InsideTiddlyWiki Google Group|https://groups.google.com/forum/#!forum/insidetiddlywiki]] and other invited parties.
 
 ''//__Please review this document for structure, content and functionality__//''
 &lt;br&gt;
 {{InsideTW/Info/DraftNotice}}
 
+&lt;!--
 To track the progress of the writing, each tiddler has a 'status' field that indicates the current stage of writing for that tiddler:
 
 * __''notes'': a topic placeholder and/or rough &quot;brain dump&quot; of ideas.__&lt;br&gt;Content can be simple bullet lists, snippets of prose, editorial reminders (e.g. lists of screensnaps needed), etc.  By default, all tiddlers, even empty ones, have a status of &quot;notes&quot; until another status value is set.
@@ -9199,6 +9207,7 @@ To track the progress of the writing, each tiddler has a 'status' field that ind
 * __''complete'': topic content is ready for full, detailed review__&lt;br&gt;draft feedback has been incorporated as appropriate, embedded images have been finalized and scaled to fit.  Final proofreading for typos, minor errors in grammar, spelling or punctuation.
 * __''final'': content is ready for publication__&lt;br&gt;After correcting any errors found, topic is marked &quot;final&quot; and no more changes are expected to be made to this tiddler.
 
+--&gt;
 When reviewing the document structure (the outline of topics), here are some suggested questions to focus on:
 
 * Are any important topics missing from the overall outline of topics?
@@ -9222,7 +9231,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150503082240168" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.03.012232" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150504205426218" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.04.135424" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9271,6 +9280,185 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 ** revised - content rewritten based on feedback
 ** complete - content complete, including embedded images
 ** final - no more changes (except for typos, minor formatting, etc.)</pre>
+</div>
+<div created="20150421001520159" creator="EricShulman" modified="20150504194417501" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/LeftBar">
+<pre>&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/LeftBarPopup&quot;
+   retain=&quot;yes&quot; class=&quot;itw-leftbar itw-shadowbox&quot;&gt;
+&lt;!-- TITLEBOX --&gt;
+&lt;div class=&quot;itw-leftbar-titlebox&quot;
+     style=&quot;margin-bottom:0.5em&quot;&gt;
+     {{||InsideTW/LeftBar/TitleBox}}
+     @@.thinline @@
+&lt;/div&gt;
+&lt;!-- TOOLBAR --&gt;
+&lt;div class=&quot;itw-leftbar-toolbar&quot;
+     style=&quot;white-space:nowrap;text-align:center;&quot;&gt;
+     {{||InsideTW/LeftBar/ToolBar}}
+&lt;/div&gt;
+&lt;!-- TOC --&gt;
+&lt;div class=&quot;itw-leftbar-content itw-shadowbox inset&quot;
+     style=&quot;height:calc(100% - 9.5em);
+            margin-top:0.5em; padding:0.5em 1px 0.25em 0.75em;&quot;&gt;
+     {{||InsideTW/LeftBar/Content}}
+&lt;/div&gt;
+&lt;!-- LOCATION (YOU ARE HERE)--&gt;
+&lt;div class=&quot;itw-leftbar-location itw-shadowbox inset&quot;
+     style=&quot;margin-top:0.5em; padding:0.5em&quot;&gt;
+     {{||InsideTW/LeftBar/Location}}
+&lt;/div&gt; 
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150426233259184" creator="EricShulman" modified="20150504185440941" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/LeftBar/Buttons/Background">
+<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/temp/LeftBarPopup&quot;&gt;
+&lt;$button set=&quot;$:/temp/LeftBarPopup&quot; setTo=&quot;show&quot;
+   tooltip=&quot;show left sidebar&quot;
+   class=&quot;tc-btn-invisible itw-background-button&quot;&gt;
+   @@.invisible {{$:/core/images/chevron-right}}@@
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/LeftBarPopup&quot;&gt;
+&lt;$button set=&quot;$:/temp/LeftBarPopup&quot; setTo=&quot;hide&quot;
+   tooltip=&quot;hide left sidebar&quot;
+   class=&quot;tc-btn-invisible itw-background-button&quot;&gt;
+   @@.invisible {{$:/core/images/chevron-left}}@@
+&lt;/$button&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150428214220337" creator="EricShulman" modified="20150504185521581" modifier="EricShulman" tags="" title="InsideTW/LeftBar/Buttons/Close">
+<pre>&lt;$button set=&quot;$:/temp/LeftBarPopup&quot; setTo=&quot;hide&quot;
+   tooltip=&quot;hide left sidebar&quot; class=&quot;itw-button&quot;&gt;
+   {{$:/core/images/close-button}}
+&lt;/$button&gt;
+</pre>
+</div>
+<div created="20150419203816208" creator="EricShulman" modified="20150504185950021" modifier="EricShulman" title="InsideTW/LeftBar/Buttons/Toggle">
+<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/temp/LeftBarPopup&quot;&gt;
+&lt;$button set=&quot;$:/temp/LeftBarPopup&quot; setTo=&quot;show&quot;
+   tooltip=&quot;show left sidebar&quot; class=&quot;tc-btn-invisible itw-button&quot;&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/LeftBarPopup&quot;&gt;
+&lt;$button set=&quot;$:/temp/LeftBarPopup&quot; setTo=&quot;hide&quot;
+   tooltip=&quot;hide left sidebar&quot; class=&quot;tc-btn-invisible itw-button&quot;&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150504194427359" creator="EricShulman" modified="20150504200017878" modifier="EricShulman" tags="" title="InsideTW/LeftBar/Content">
+<pre>&lt;div class=&quot;scroll-y&quot; style=&quot;height:100%;padding-top:0.25em;&quot;&gt;
+{{InsideTW/TOC}}
+&lt;/div&gt;</pre>
+</div>
+<div created="20150427071348784" creator="EricShulman" modified="20150504185657492" modifier="EricShulman" tags="" title="InsideTW/LeftBar/Location">
+<pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
+@@.floatleft.larger  {{||InsideTW/Buttons/Permalink}}@@
+@@.floatright.larger {{||InsideTW/Buttons/ToggleFavorite}}@@
+@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
+@@.clear @@
+&lt;/$tiddler&gt;</pre>
+</div>
+<div created="20150418054240175" creator="EricShulman" modified="20150504194955949" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
+<pre>\define Vmargin() 42px
+\define Hmargin() 29px
+\define tiddlerwidth() {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
+\define height() 100vh - (&lt;&lt;Vmargin&gt;&gt; * 2)
+\define width()  50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2) - (&lt;&lt;Hmargin&gt;&gt; * 2)
+\define buttonwidth() 50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2)
+\define toolbarsize() 2 * {{InsideTW/Options/FontSize/LeftBar/ToolBar}}
+
+&lt;pre&gt;
+/* THE POPUP */
+.itw-leftbar {
+   font-size:80%;
+   margin:0;
+   position:fixed;
+   z-index:999; /* BEHIND DROPDOWNS */
+   top:calc(&lt;&lt;Vmargin&gt;&gt;);
+   left:calc(&lt;&lt;Hmargin&gt;&gt;);
+   height:calc(&lt;&lt;height&gt;&gt;);
+   X-min-width:calc(&lt;&lt;width&gt;&gt;);
+}
+
+/* TOOLBAR BUTTON SIZE */
+.itw-leftbar-toolbar .itw-button
+   { font-size:calc(&lt;&lt;toolbarsize&gt;&gt;); }
+
+/* LEFTBAR CONTENT FONT SIZE */
+.itw-leftbar-content
+   { font-size:100%; }
+
+/* SHADOWBOX FOR NICE LOOKS */
+.itw-shadowbox {
+   border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em;
+   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);
+}
+.itw-shadowbox.inset {
+   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;
+}
+
+/* FADE-INS */
+.itw-leftbar.itw-shadowbox       { border-color:#666; background:#eee;
+   box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
+}
+.itw-leftbar.itw-shadowbox:hover { border-color:#66c; background:#eef;
+   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);
+}
+.itw-leftbar:hover .itw-shadowbox.inset {
+   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
+}
+.itw-leftbar       .itw-shadowbox { border-color:#666; background:#eee; }
+.itw-leftbar:hover .itw-shadowbox { border-color:#66c; background:#fff; }
+
+.itw-leftbar       .itw-shadowbox a { color:black; }
+.itw-leftbar:hover .itw-shadowbox a:hover { color:#5778d8; }
+
+.itw-leftbar       .itw-leftbar-toolbar        .itw-button { opacity:0.3; }
+.itw-leftbar:hover .itw-leftbar-toolbar        .itw-button { opacity:0.6; }
+.itw-leftbar       .itw-leftbar-toolbar:hover  .itw-button { opacity:1.0; }
+
+.itw-leftbar       .itw-leftbar-titlebox       .itw-button { opacity:0.3; }
+.itw-leftbar:hover .itw-leftbar-titlebox       .itw-button { opacity:0.6; }
+.itw-leftbar:hover .itw-leftbar-titlebox:hover .itw-button { opacity:1.0; }
+
+.itw-leftbar       .itw-leftbar-location       .itw-button { opacity:0.3; }
+.itw-leftbar:hover .itw-leftbar-location       .itw-button { opacity:0.6; }
+.itw-leftbar:hover .itw-leftbar-location:hover .itw-button { opacity:1.0; }
+
+/* FIXUPS FOR LINK/BUTTON PLACEMENT AND PADDING */
+.itw-leftbar a, .itw-leftbar button { display:inline; width:auto; padding:0; }
+.itw-leftbar .itw-button        { padding:1px 0.25em !important; }
+
+/* BACKGROUND BUTTON */
+.itw-background-button {
+   position:fixed; z-index:0;
+   top: 0px; left: 0px; height:100vh; width:100vw; 
+   width:calc(&lt;&lt;buttonwidth&gt;&gt;);
+   text-align:left; padding-left:0.5em;
+   fill: #999;
+}
+/* DONT SHOW BUTTON WHEN VIEWING THE TIDDLER THAT DEFINES THE BUTTON ITSELF! */
+.tc-tiddler-body .itw-background-button { display:none; }
+/* MAKE SURE THE SIDEBAR IS ABOVE THE BUTTON (ONLY WHEN SIDEBAR IS SHOWN) */
+&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/sidebar&quot;&gt;
+.tc-sidebar-scrollable { z-index:1; }
+&lt;/$reveal&gt;
+&lt;/pre&gt;</pre>
+</div>
+<div created="20150427050900338" creator="EricShulman" modified="20150504185721332" modifier="EricShulman" tags="" title="InsideTW/LeftBar/TitleBox">
+<pre>&lt;nobr&gt;
+@@.larger.floatright {{||InsideTW/Options}}@@
+@@.larger.left ''{{$:/SiteTitle}}''&lt;br&gt;@@
+@@.smaller.left {{$:/SiteSubtitle}}@@
+&lt;/nobr&gt;</pre>
+</div>
+<div created="20150426204558025" creator="EricShulman" modified="20150504185638256" modifier="EricShulman" title="InsideTW/LeftBar/ToolBar">
+<pre>{{||InsideTW/Buttons/Home}} &amp;nbsp;
+{{||InsideTW/Buttons/Search}} &amp;nbsp;
+{{||InsideTW/Buttons/ViewAll}} &amp;nbsp;
+{{||InsideTW/Buttons/ToggleTheme}} &amp;nbsp;
+{{||InsideTW/Buttons/Favorites}}
+</pre>
 </div>
 <div created="20150316203756564" creator="EricShulman" list-after="$:/core/ui/ViewTemplate/body" modified="20150501021828792" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Bottom">
 <pre>\define navbarbottom()
@@ -9450,17 +9638,13 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
    @@
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150405081244631" creator="EricShulman" modified="20150501032653293" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/TitleBox">
+<div created="20150405081244631" creator="EricShulman" modified="20150504194855206" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/TitleBox">
 <pre>@@.navbar_toolbar {{||InsideTW/NavBar/Top/ToolBar}}@@
 @@.navbar_icons &lt;&lt;showIcons&gt;&gt;@@
 @@.navbar_caption &lt;&lt;toc-caption&gt;&gt;@@
 @@.navbar_edit {{||InsideTW/Buttons/EditFromHere}}@@
 @@.navbar_tagpath &lt;&lt;showTagPath&gt;&gt;@@
-@@.clear @@
-&lt;!--
-   &lt;$macrocall $name=&quot;history_button&quot; label=&lt;&lt;toc-caption&gt;&gt; class=&quot;tc-btn-invisible&quot;/&gt;
---&gt;
-</pre>
+@@.clear @@</pre>
 </div>
 <div created="20150501032514620" creator="EricShulman" modified="20150501041108381" modifier="EricShulman" tags="" title="InsideTW/NavBar/Top/ToolBar">
 <pre>{{||InsideTW/Buttons/ToggleFavorite}}
@@ -9485,7 +9669,10 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 <div modified="20150503081622695" modifier="EricShulman" title="InsideTW/Options/FontSize/BodyText">
 <pre>100%</pre>
 </div>
-<div modified="20150503081628407" modifier="EricShulman" title="InsideTW/Options/FontSize/TOC">
+<div modified="20150504192605525" modifier="EricShulman" title="InsideTW/Options/FontSize/LeftBar/ToolBar">
+<pre>100%</pre>
+</div>
+<div modified="20150504192606500" modifier="EricShulman" title="InsideTW/Options/FontSize/TOC">
 <pre>100%</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20150503082111749" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/Options/Macros">
@@ -9544,14 +9731,17 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 <div modified="20150503081632173" modifier="EricShulman" title="InsideTW/Options/PageColor">
 <pre>#fff</pre>
 </div>
-<div caption="Viewing Options" created="20150426205104959" creator="EricShulman" modified="20150503082231669" modifier="EricShulman" title="InsideTW/Options/Panel">
+<div caption="Viewing Options" created="20150426205104959" creator="EricShulman" modified="20150504192545901" modifier="EricShulman" title="InsideTW/Options/Panel">
 <pre>@@.larger.floatright {{$:/core/ui/Buttons/control-panel}}@@
 @@.larger Viewing Options@@
 @@.thinline @@
 //Body text size://&lt;br&gt;
 &lt;&lt;pick_fontsize &quot;InsideTW/Options/FontSize/BodyText&quot;&gt;&gt;
 &lt;hr&gt;
-//Table of Contents text/button size://&lt;br&gt;
+//~LeftBar ~ToolBar button size://&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;InsideTW/Options/FontSize/LeftBar/ToolBar&quot;&gt;&gt;
+&lt;hr&gt;
+//Table of Contents text size://&lt;br&gt;
 &lt;&lt;pick_fontsize &quot;InsideTW/Options/FontSize/TOC&quot;&gt;&gt;
 &lt;hr&gt;
 &lt;div class=&quot;borderless&quot;&gt;
@@ -9717,21 +9907,24 @@ body {
 .viewertools { display:none; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150418111702243" creator="EricShulman" modified="20150501023815126" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
+<div created="20150418111702243" creator="EricShulman" modified="20150504205251892" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
 <pre>&lt;pre&gt;
 /* ---- MISC TWEAKS TO TW STANDARDS ---- */
+
+/* SMALLER FONT IN SIDEBAR */
+.tc-sidebar-scrollable { font-size:80%; }
+
+/* MONO FONT FOR EDITING */
+.tc-edit-texteditor { font-family:monospace;  }
+
+/* MIN WIDTH FOR DROP DOWNS */
+.tc-drop-down { min-width:100px; }
 
 /* HIDE TIDDLER SUBTITLE */
 .tc-subtitle { display:none; }
 
 /* PADDING ABOVE TITLE IN EDIT MODE */
 .tc-tiddler-edit-title { padding-top:1em; }
-
-/* MONO FONT FOR EDITING */
-.tc-edit-texteditor { font-family:monospace;  }
-
-/* AUTO/MIN WIDTH FOR DROP DOWNS */
-.tc-drop-down { min-width:100px; }
 
 /* ROUNDED CORNERS ON TABBED TOC */
 .tc-tabbed-table-of-contents .tc-table-of-contents {
@@ -9742,11 +9935,11 @@ body {
   border-radius: 0.5em 0 0 0.5em; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150413054527328" creator="EricShulman" modified="20150502024646033" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Print">
+<div created="20150413054527328" creator="EricShulman" modified="20150504190447365" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Print">
 <pre>&lt;pre&gt;
 @media print {
 .authortools,
-.itw-TOC,
+.itw-leftbar,
 .itw-button, .navbar_button, .navbar_link,
 .tc-sidebar-scrollable,
 .tc-topbar
@@ -9814,188 +10007,11 @@ body {
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150421001520159" creator="EricShulman" modified="20150429081903268" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/TOC">
-<pre>&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot; retain=&quot;yes&quot;
-   class=&quot;itw-TOC itw-shadowbox&quot;&gt;
-{{||InsideTW/TOC/Panel}}
-&lt;/$reveal&gt;</pre>
+<div created="20150427071526847" creator="EricShulman" modified="20150504194709449" modifier="EricShulman" tags="" title="InsideTW/TOC">
+<pre>@@.itw-TOC &lt;$macrocall $name=&quot;tree&quot; tag={{InsideTW/RootTag}}/&gt;@@</pre>
 </div>
-<div created="20150426233259184" creator="EricShulman" modified="20150429044754363" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/TOC/Buttons/Background">
-<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;&gt;
-&lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;show&quot;
-   tooltip=&quot;show Table of Contents&quot;
-   class=&quot;tc-btn-invisible itw-background-button&quot;&gt;
-   @@.invisible {{$:/core/images/chevron-right}}@@
-&lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;&gt;
-&lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;hide&quot;
-   tooltip=&quot;hide Table of Contents&quot;
-   class=&quot;tc-btn-invisible itw-background-button&quot;&gt;
-   @@.invisible {{$:/core/images/chevron-left}}@@
-&lt;/$button&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150428214220337" creator="EricShulman" modified="20150428214445533" modifier="EricShulman" tags="" title="InsideTW/TOC/Buttons/CloseTOC">
-<pre>&lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;hide&quot;
-   tooltip=&quot;hide Table of Contents&quot; class=&quot;itw-button&quot;&gt;
-   {{$:/core/images/close-button}}
-&lt;/$button&gt;
-</pre>
-</div>
-<div created="20150419203816208" creator="EricShulman" modified="20150429044715997" modifier="EricShulman" title="InsideTW/TOC/Buttons/ToggleTOC">
-<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;&gt;
-&lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;show&quot;
-   tooltip=&quot;show Table of Contents&quot; class=&quot;tc-btn-invisible itw-button&quot;&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/temp/TOCPopup&quot;&gt;
-&lt;$button set=&quot;$:/temp/TOCPopup&quot; setTo=&quot;hide&quot;
-   tooltip=&quot;hide Table of Contents&quot; class=&quot;tc-btn-invisible itw-button&quot;&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150428012148986" creator="EricShulman" modified="20150501051811084" modifier="EricShulman" title="InsideTW/TOC/Panel">
-<pre>&lt;!-- TITLEBOX --&gt;
-&lt;div class=&quot;itw-TOC-titlebox&quot;
-     style=&quot;margin-bottom:0.5em&quot;&gt;
-     {{||InsideTW/TOC/Panel/TitleBox}}
-     @@.thinline @@
-&lt;/div&gt;
-&lt;!-- TOOLBAR --&gt;
-&lt;div class=&quot;itw-TOC-toolbar&quot;
-     style=&quot;white-space:nowrap;text-align:center;&quot;&gt;
-     {{||InsideTW/TOC/Panel/ToolBar}}
-&lt;/div&gt;
-&lt;!-- TREE --&gt;
-&lt;div class=&quot;itw-TOC-tree itw-shadowbox inset&quot;
-     style=&quot;height:calc(100% - 9.5em);
-            margin-top:0.5em; padding:0.5em 1px 0.25em 0.75em;&quot;&gt;
-     {{||InsideTW/TOC/Tree}}
-&lt;/div&gt;
-&lt;!-- LOCATION (YOU ARE HERE)--&gt;
-&lt;div class=&quot;itw-TOC-location itw-shadowbox inset&quot;
-     style=&quot;margin-top:0.5em; padding:0.5em&quot;&gt;
-     {{||InsideTW/TOC/Panel/Location}}
-&lt;/div&gt;</pre>
-</div>
-<div created="20150427071348784" creator="EricShulman" modified="20150501052203157" modifier="EricShulman" tags="" title="InsideTW/TOC/Panel/Location">
-<pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
-@@.floatleft.larger  {{||InsideTW/Buttons/Permalink}}@@
-@@.floatright.larger {{||InsideTW/Buttons/ToggleFavorite}}@@
-@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
-@@.clear @@
-&lt;/$tiddler&gt;</pre>
-</div>
-<div created="20150427050900338" creator="EricShulman" modified="20150503075431527" modifier="EricShulman" tags="" title="InsideTW/TOC/Panel/TitleBox">
-<pre>&lt;nobr&gt;
-@@.larger.floatright {{||InsideTW/Options}}@@
-@@.larger.left ''{{$:/SiteTitle}}''&lt;br&gt;@@
-@@.smaller.left {{$:/SiteSubtitle}}@@
-&lt;/nobr&gt;</pre>
-</div>
-<div created="20150426204558025" creator="EricShulman" modified="20150501030509077" modifier="EricShulman" title="InsideTW/TOC/Panel/ToolBar">
-<pre>{{||InsideTW/Buttons/Home}} &amp;nbsp;
-{{||InsideTW/Buttons/Search}} &amp;nbsp;
-{{||InsideTW/Buttons/ViewAll}} &amp;nbsp;
-{{||InsideTW/Buttons/ToggleTheme}} &amp;nbsp;
-{{||InsideTW/Buttons/Favorites}}
-</pre>
-</div>
-<div created="20150418054240175" creator="EricShulman" modified="20150503074438109" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/TOC/Stylesheet">
-<pre>\define Vmargin() 42px
-\define Hmargin() 29px
-\define tiddlerwidth() {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
-\define height() 100vh - (&lt;&lt;Vmargin&gt;&gt; * 2)
-\define width()  50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2) - (&lt;&lt;Hmargin&gt;&gt; * 2)
-\define buttonwidth() 50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2)
-\define toolbarsize()
-2 * &lt;$transclude tiddler=&quot;InsideTW/Options/FontSize/TOC&quot;&gt;100%&lt;/$transclude&gt;
-\end
-
-&lt;pre&gt;
-/* THE TOC PANEL */
-.itw-TOC {
-   font-size:80%;
-   margin:0;
-   position:fixed;
-   z-index:999; /* BEHIND DROPDOWNS */
-   top:calc(&lt;&lt;Vmargin&gt;&gt;);
-   left:calc(&lt;&lt;Hmargin&gt;&gt;);
-   height:calc(&lt;&lt;height&gt;&gt;);
-   X-min-width:calc(&lt;&lt;width&gt;&gt;);
-}
-
-/* TOOLBAR BUTTON SIZE */
-.itw-TOC-toolbar .itw-button
-   { font-size:calc(&lt;&lt;toolbarsize&gt;&gt;); }
-
-/* SHADOWBOX FOR NICE LOOKS */
-.itw-shadowbox {
-   border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em;
-   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);
-}
-.itw-shadowbox.inset {
-   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;
-}
-
-/* FADE-INS */
-.itw-TOC.itw-shadowbox       { border-color:#666; background:#eee;
-   box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
-}
-.itw-TOC.itw-shadowbox:hover { border-color:#66c; background:#eef;
-   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);
-}
-.itw-TOC:hover .itw-shadowbox.inset {
-   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
-}
-.itw-TOC       .itw-shadowbox { border-color:#666; background:#eee; }
-.itw-TOC:hover .itw-shadowbox { border-color:#66c; background:#fff; }
-
-.itw-TOC       .itw-shadowbox a { color:black; }
-.itw-TOC:hover .itw-shadowbox a:hover { color:#5778d8; }
-
-.itw-TOC       .itw-TOC-toolbar        .itw-button { opacity:0.3; }
-.itw-TOC:hover .itw-TOC-toolbar        .itw-button { opacity:0.6; }
-.itw-TOC:hover .itw-TOC-toolbar:hover  .itw-button { opacity:1.0; }
-
-.itw-TOC       .itw-TOC-titlebox       .itw-button { opacity:0.3; }
-.itw-TOC:hover .itw-TOC-titlebox       .itw-button { opacity:0.6; }
-.itw-TOC:hover .itw-TOC-titlebox:hover .itw-button { opacity:1.0; }
-
-.itw-TOC       .itw-TOC-location       .itw-button { opacity:0.3; }
-.itw-TOC:hover .itw-TOC-location       .itw-button { opacity:0.6; }
-.itw-TOC:hover .itw-TOC-location:hover .itw-button { opacity:1.0; }
-
-/* FIXUPS FOR LINK/BUTTON PLACEMENT AND PADDING */
-.itw-TOC a, .itw-TOC button { display:inline; width:auto; padding:0; }
-.itw-TOC .itw-button        { padding:1px 0.25em !important; }
-
-/* BACKGROUND BUTTON */
-.itw-background-button {
-   position:fixed; z-index:0;
-   top: 0px; left: 0px; height:100vh; width:100vw; 
-   width:calc(&lt;&lt;buttonwidth&gt;&gt;);
-   text-align:left; padding-left:0.5em;
-   fill: #999;
-}
-/* DONT SHOW BUTTON WHEN VIEWING THE TIDDLER THAT DEFINES THE BUTTON ITSELF! */
-.tc-tiddler-body .itw-background-button { display:none; }
-/* MAKE SURE THE SIDEBAR IS ABOVE THE BUTTON (ONLY WHEN SIDEBAR IS SHOWN) */
-&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/sidebar&quot;&gt;
-.tc-sidebar-scrollable { z-index:1; }
-&lt;/$reveal&gt;
-&lt;/pre&gt;</pre>
-</div>
-<div created="20150427071526847" creator="EricShulman" modified="20150430014558649" modifier="EricShulman" tags="" title="InsideTW/TOC/Tree">
-<pre>&lt;div class=&quot;scroll-y left&quot; style=&quot;height:100%;padding-top:0.25em&quot;&gt;
-   &lt;$macrocall $name=&quot;tree&quot; tag={{InsideTW/RootTag}}/&gt;
-&lt;/div&gt;</pre>
-</div>
-<div created="20150426232927130" creator="EricShulman" modified="20150430085914669" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/TOC/Tree/Macros">
-<pre>\define tree(tag,template:&quot;InsideTW/TOC/Tree/Template&quot;)
+<div created="20150426232927130" creator="EricShulman" modified="20150504191536974" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/TOC/Macros">
+<pre>\define tree(tag,template:&quot;InsideTW/TOC/Template&quot;)
    &lt;$list filter=&quot;[title[$tag$]tagging[]!has[draft.of]]&quot;&gt;
       &lt;$transclude tiddler=&quot;$template$&quot; template={{!!title}}/&gt;
       &lt;div style=&quot;margin-left:1em;&quot;&gt;
@@ -10004,17 +10020,18 @@ body {
    &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20150503074448599" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/TOC/Tree/Stylesheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20150504195640476" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/TOC/Stylesheet" type="">
 <pre>&lt;pre&gt;
-.itw-TOC-tree .scroll-y
-   { font-size:{{InsideTW/Options/FontSize/TOC}}; }
-
+/* TOC FONT SIZE */
+.itw-TOC {
+   text-align:left;
+   font-size:{{InsideTW/Options/FontSize/TOC}};
+}
 /* TREE ITEM */
 .itw-TOC-item {
    border:1px solid transparent;
    border-radius:0.4em;
    padding:0 0.25em;
-   X-margin-right:2px;
 }
 /* CURRENT TREE ITEM */
 .itw-TOC-item.selected {
@@ -10022,11 +10039,9 @@ body {
    background:#ddf;
    box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
 }
-.itw-TOC-item.selected:hover  { box-shadow: 3px 3px 5px rgba(0,0,0,0.3) inset; }
-.itw-TOC-item.selected button { color:black; text-decoration:none; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232539664" creator="EricShulman" modified="20150502121548740" modifier="EricShulman" title="InsideTW/TOC/Tree/Template">
+<div created="20150426232539664" creator="EricShulman" modified="20150504190645332" modifier="EricShulman" title="InsideTW/TOC/Template">
 <pre>&lt;nobr&gt;
 @@.resize &lt;$transclude tiddler={{!!icon}}&gt;&amp;emsp;&lt;/$transclude&gt;@@
 &lt;$reveal type=&quot;nomatch&quot; text={{!!title}} state=&quot;$:/HistoryList!!current-tiddler&quot;&gt;
@@ -10055,8 +10070,8 @@ body {
 &lt;/$reveal&gt;
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20150429044728340" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="InsideTW/TopLeftbar">
-<pre>@@.larger {{||InsideTW/TOC/Buttons/ToggleTOC}}@@</pre>
+<div created="20150428010947376" creator="EricShulman" modified="20150504191452722" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="InsideTW/TopLeftBar">
+<pre>@@.larger {{||InsideTW/LeftBar/Buttons/Toggle}}@@</pre>
 </div>
 <div created="20150426192418411" creator="EricShulman" modified="20150428012600205" modifier="EricShulman" tags="$:/tags/TopRightBar" title="InsideTW/TopRightBar">
 <pre>@@.larger
