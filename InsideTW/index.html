@@ -6193,16 +6193,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150508070740376" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150508072707584" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150508070740376" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150508072707584" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150508070740375" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150508072707584" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150508070740376" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150508072707584" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6238,7 +6238,7 @@ exports.startup = function() {
 <div modified="20150427091156964" modifier="EricShulman" title="$:/state/tab-923509295">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div modified="20150508064959374" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150508072246317" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
@@ -6247,7 +6247,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150508070740375" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150508072707584" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6267,7 +6267,7 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150508070059120" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150508070740375" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150508072707584" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6384,8 +6384,8 @@ exports.startup = function() {
 <div created="20150419063632327" creator="EricShulman" modified="20150420235707760" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint">
 <pre>0px</pre>
 </div>
-<div modified="20150508064748949" modifier="EricShulman" title="$:/view">
-<pre>classic</pre>
+<div modified="20150508072707584" modifier="EricShulman" title="$:/view">
+<pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
 <pre>{{EricShulman}}</pre>
@@ -8805,14 +8805,11 @@ use {{images/star_empty.svg}} to add a topic
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20150508055320318" modifier="EricShulman" title="InsideTW/Buttons/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20150508072612839" modifier="EricShulman" title="InsideTW/Buttons/ResetAndSave">
 <pre>&lt;!--
-  * show DefaultTiddlers
-  * clear search and advancedsearch
-  * close sidebar
-  * set read-only
-  * turn off stretch to fit
-  * save timestamp to RevisionHistory
+  * show DefaultTiddlers, clear search, clear advanced search
+  * turn off stretch to fit, close sidebar, show leftbar
+  * set read-only, save timestamp to RevisionHistory
   * SAVE THE WIKI!
 --&gt;
 &lt;$button message=&quot;tm-save-wiki&quot; param={{$:/config/SaveWikiButton/Template}}
@@ -8821,10 +8818,11 @@ use {{images/star_empty.svg}} to add a topic
    &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/search&quot;         text=&quot;&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/advancedsearch&quot; text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot;       text=&quot;no&quot;/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/state/ReadOnly&quot;      text=&quot;yes&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/state/Stretch&quot;       text=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot;       text=&quot;no&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;$:/state/LeftBar&quot;       text=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/state/ReadOnly&quot;      text=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/view&quot;                text=&quot;zoomin&quot;/&gt;
    &lt;$action-setfield $tiddler=&quot;InsideTW/Info/RevisionHistory&quot;
       timestamp=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;/&gt;
    &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
@@ -9270,7 +9268,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150508070740376" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.08.000736" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150508072707584" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.08.002705" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9398,7 +9396,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 @@.clear @@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20150508065815029" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
+<div created="20150418054240175" creator="EricShulman" modified="20150508072644485" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
 <pre>\define Vmargin() 42px
 \define Hmargin() 42px
 \define tiddlerwidth() {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
@@ -9437,7 +9435,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 .itw-leftbar.itw-shadowbox:hover {
    border-color:#66c;
    background-color: #eef;
-   X-background-color: rgba(255,255,255,0.5);
+   background-color: rgba(255,255,255,0.5);
    box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);
 }
 .itw-leftbar:hover .itw-shadowbox.inset {
