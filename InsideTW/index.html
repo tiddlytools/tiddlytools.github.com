@@ -394,8 +394,6 @@ Error message and password prompt
 
 <li>InsideTW/Buttons/Stretch</li>
 
-<li>InsideTW/Buttons/Stretch/StyleSheet</li>
-
 <li>InsideTW/Buttons/StyleSheet</li>
 
 <li>InsideTW/Buttons/ToggleFavorite</li>
@@ -482,13 +480,13 @@ Error message and password prompt
 
 <li>InsideTW/StyleSheet</li>
 
-<li>InsideTW/StyleSheet/Adjustments</li>
-
 <li>InsideTW/StyleSheet/Print</li>
 
 <li>InsideTW/StyleSheet/ReadOnly</li>
 
 <li>InsideTW/StyleSheet/Shortcuts</li>
+
+<li>InsideTW/StyleSheet/Stretch</li>
 
 <li>InsideTW/TOC</li>
 
@@ -6193,16 +6191,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150508083711549" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150508093151983" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150508083711550" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150508093151983" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150508083711549" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150508093151983" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150508083711549" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150508093151983" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6247,7 +6245,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150508083711549" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150508093151983" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6267,7 +6265,7 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150508070059120" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150508083711549" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150508093151983" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6384,7 +6382,7 @@ exports.startup = function() {
 <div created="20150419063632327" creator="EricShulman" modified="20150420235707760" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint">
 <pre>0px</pre>
 </div>
-<div modified="20150508083711550" modifier="EricShulman" title="$:/view">
+<div modified="20150508093151983" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
@@ -8862,46 +8860,6 @@ use {{images/star_empty.svg}} to add a topic
 &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20150508061914119" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/Buttons/Stretch/StyleSheet">
-<pre>\define Vmargin()       42px
-\define Hmargin()       42px
-\define navbarheight()  10em
-\define tiddlerheight() 100vh - (2 * &lt;&lt;Vmargin&gt;&gt;)
-\define tiddlerwidth()  {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
-\define bodyheight()    100vh - (2 * &lt;&lt;navbarheight&gt;&gt;)
-\define sidebarwidth()  (50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2))
-
-&lt;pre&gt;
-/* ALWAYS FIT TIDDLER TO WINDOW HEIGHT (LESS MARGINS) */
-.tc-tiddler-frame   { min-height:calc(&lt;&lt;tiddlerheight&gt;&gt;); }
-.tc-tiddler-body    { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); }
-
-&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/Stretch&quot;&gt;/* STRETCH */
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/sidebar&quot;&gt;/* NO SIDEBAR */
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/LeftBar&quot;&gt;/* NO LEFTBAR */
-   html .tc-story-river {
-      margin: 0;
-      width:  100vw;
-   }
-&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;/* WITH LEFTBAR */
-   html .tc-story-river {
-      margin: 0 0 0 calc(&lt;&lt;sidebarwidth&gt;&gt; - &lt;&lt;Hmargin&gt;&gt;);
-      width:  calc(100vw - &lt;&lt;sidebarwidth&gt;&gt; + &lt;&lt;Hmargin&gt;&gt;)
-   }
-&lt;/$reveal&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/sidebar&quot;&gt;/* WITH SIDEBAR */
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/LeftBar&quot;&gt;/* NO LEFTBAR */
-   html .tc-story-river {
-      margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt; - &lt;&lt;Hmargin&gt;&gt;) 0 0;
-      width:  calc(100vw - &lt;&lt;sidebarwidth&gt;&gt; + &lt;&lt;Hmargin&gt;&gt;)
-   }
-&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;/* WITH LEFTBAR */
-   html .tc-story-river {
-      margin: 0 auto;
-   }
-&lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
-&lt;/pre&gt;</pre>
-</div>
 <div created="20150419051135299" creator="EricShulman" modified="20150508053510615" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/Buttons/StyleSheet" type="">
 <pre>&lt;pre&gt;
 .itw-button {
@@ -9268,7 +9226,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150508083711550" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.08.013707" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150508093151983" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.08.023139" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9318,9 +9276,9 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 ** complete - content complete, including embedded images
 ** final - no more changes (except for typos, minor formatting, etc.)</pre>
 </div>
-<div created="20150421001520159" creator="EricShulman" modified="20150508043254685" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/LeftBar">
+<div created="20150421001520159" creator="EricShulman" modified="20150508092043942" modifier="EricShulman" tags="$:/tags/PageTemplate" title="InsideTW/LeftBar">
 <pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot; retain=&quot;yes&quot;&gt;
-&lt;div class=&quot;itw-leftbar itw-shadowbox&quot;&gt;
+&lt;div class=&quot;itw-leftbar shadowbox&quot;&gt;
 &lt;!-- TITLEBOX --&gt;
 &lt;div class=&quot;itw-leftbar-titlebox&quot;
      style=&quot;margin-bottom:0.5em&quot;&gt;
@@ -9333,13 +9291,13 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
      {{||InsideTW/LeftBar/ToolBar}}
 &lt;/div&gt;
 &lt;!-- TOC --&gt;
-&lt;div class=&quot;itw-leftbar-content itw-shadowbox inset&quot;
+&lt;div class=&quot;itw-leftbar-content shadowbox inset&quot;
      style=&quot;height:calc(100% - 9.25em);
             margin-bottom:0.5em; padding:0.5em 1px 0.25em 0.75em;&quot;&gt;
      {{||InsideTW/LeftBar/Content}}
 &lt;/div&gt;
 &lt;!-- LOCATION (YOU ARE HERE) --&gt;
-&lt;div class=&quot;itw-leftbar-location itw-shadowbox inset&quot;
+&lt;div class=&quot;itw-leftbar-location shadowbox inset&quot;
      style=&quot;margin-bottom:0.5em; padding:0.5em&quot;&gt;
      {{||InsideTW/LeftBar/Location}}
 &lt;/div&gt;
@@ -9396,7 +9354,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 @@.clear @@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20150508083415214" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
+<div created="20150418054240175" creator="EricShulman" modified="20150508092140605" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
 <pre>\define Vmargin() 42px
 \define Hmargin() 42px
 \define tiddlerwidth() {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
@@ -9425,27 +9383,27 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 .itw-leftbar-location            { font-size:100%; }
 
 /* FADE-INS */
-.itw-leftbar.itw-shadowbox       {
+.itw-leftbar.shadowbox       {
    border-color:#666;
    background-color: #eef;
    background-color: rgba(208,208,208,0.5);
    box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
 
 }
-.itw-leftbar.itw-shadowbox:hover {
+.itw-leftbar.shadowbox:hover {
    border-color:#66c;
    background-color: #eef;
    background-color: rgba(255,255,255,0.5);
    box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);
 }
-.itw-leftbar:hover .itw-shadowbox.inset {
+.itw-leftbar:hover .shadowbox.inset {
    box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
 }
-.itw-leftbar       .itw-shadowbox { border-color:#666; background-color:#eef; }
-.itw-leftbar:hover .itw-shadowbox { border-color:#66c; background-color:#fff; }
+.itw-leftbar       .shadowbox { border-color:#666; background-color:#eef; }
+.itw-leftbar:hover .shadowbox { border-color:#66c; background-color:#fff; }
 
-.itw-leftbar       .itw-shadowbox a { color:black; }
-.itw-leftbar:hover .itw-shadowbox a:hover { color:#5778d8; }
+.itw-leftbar       .shadowbox a { color:black; }
+.itw-leftbar:hover .shadowbox a:hover { color:#5778d8; }
 
 .itw-leftbar       .itw-leftbar-toolbar        .itw-button { opacity:0.3; }
 .itw-leftbar:hover .itw-leftbar-toolbar        .itw-button { opacity:0.6; }
@@ -9919,7 +9877,7 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;
 {{||InsideTW/NavBar/Bottom}}</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150508070245285" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
+<div created="20150314000609556" creator="EricShulman" modified="20150508092014838" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
 <pre>&lt;pre&gt;
 /* BACKGROUND COLOR */
 body {
@@ -9946,20 +9904,6 @@ body {
    font-size: {{InsideTW/Options/FontSize/BodyText}};
    line-height: 140%;
 }
-
-/* SHADOWBOX FOR NICE LOOKS */
-.itw-shadowbox {
-   border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em;
-   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);
-}
-.itw-shadowbox.inset {
-   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;
-}
-&lt;/pre&gt;</pre>
-</div>
-<div created="20150418111702243" creator="EricShulman" modified="20150504205251892" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Adjustments" type="">
-<pre>&lt;pre&gt;
-/* ---- MISC TWEAKS TO TW STANDARDS ---- */
 
 /* SMALLER FONT IN SIDEBAR */
 .tc-sidebar-scrollable { font-size:80%; }
@@ -10015,11 +9959,11 @@ body {
 &lt;/$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150418111607835" creator="EricShulman" modified="20150502120123965" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Shortcuts" type="">
+<div created="20150418111607835" creator="EricShulman" modified="20150508092602885" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Shortcuts" type="">
 <pre>&lt;pre&gt;
-/* FORMATTING SHORTCUTS */
-.resize img { height:1em; width:1em; }
+/* ---- FORMATTING SHORTCUTS ---- */
 
+/* FONT SIZES */
 .tiny     { font-size:50%; line-height:100%; }
 .smallest { font-size:70%; line-height:100%; }
 .smaller  { font-size:80%; line-height:100%; }
@@ -10027,35 +9971,94 @@ body {
 .largest  { font-size:150%;line-height:100%; }
 .huge     { font-size:300%;line-height:100%; }
 
+/* ADJUST IMAGES TO FIT WITH TEXT */
+.resize img { height:1em; width:1em; }
+
+/* TEXT ALIGNMENT */
 .left    { display:block;text-align:left; }
 .right   { display:block;text-align:right; }
 .center  { display:block;text-align:center; }
-
 .floatleft  { float:left; }
 .floatright { float:right; }
 .clear      { display:block;clear:both; }
 
+/* POSITIONING */
 .absolute { position:absolute; }
 .relative { position:relative; }
 .fixed    { position:fixed; }
 
-.thinline { display:block;height:1px;border-bottom:1px solid; }
-
+/* HIDDEN/INVISIBLE */
 .hide      { display:none; }
 .invisible { visibility:hidden; }
 
+/* SCROLLY */
 .scroll   { overflow:scroll; }
 .scroll-x { overflow-x:scroll; overflow-y:hidden; }
 .scroll-y { overflow-x:hidden; overflow-y:scroll; }
 
+/* COMPACT BORDERLESS TABLES */
 .borderless, .borderless table,
 .borderless td, .borderless tr, .borderless th, .borderless tbody
    	{ border:0 !important; margin:0 !important; padding:0 !important; }
 
+/* TEXT ROTATION */
 .rotate-left-90 {
     display:block; top:50%; left:50%;
     transform: rotate(-90deg);
 }
+
+/* DECORATIVE LINE (like HR, but thin) */
+.thinline { display:block;height:1px;border-bottom:1px solid; }
+
+/* SHADOWBOXES */
+.shadowbox {
+   border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em;
+   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);
+}
+.shadowbox.inset {
+   box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;
+}
+
+&lt;/pre&gt;</pre>
+</div>
+<div created="20150508051023458" creator="EricShulman" modified="20150508093007645" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet/Stretch">
+<pre>\define Vmargin()       42px
+\define Hmargin()       42px
+\define navbarheight()  10em
+\define tiddlerheight() 100vh - (2 * &lt;&lt;Vmargin&gt;&gt;)
+\define tiddlerwidth()  {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
+\define bodyheight()    100vh - (2 * &lt;&lt;navbarheight&gt;&gt;)
+\define sidebarwidth()  (50vw - (&lt;&lt;tiddlerwidth&gt;&gt; / 2))
+
+&lt;pre&gt;
+/* ALWAYS FIT TIDDLER TO WINDOW HEIGHT (LESS MARGINS) */
+.tc-tiddler-frame   { min-height:calc(&lt;&lt;tiddlerheight&gt;&gt;); }
+.tc-tiddler-body    { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); }
+
+&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/Stretch&quot;&gt;/* STRETCH */
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/sidebar&quot;&gt;/* NO SIDEBAR */
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/LeftBar&quot;&gt;/* NO LEFTBAR */
+   html .tc-story-river {
+      margin: 0;
+      width:  100vw;
+   }
+&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;/* WITH LEFTBAR */
+   html .tc-story-river {
+      margin: 0 0 0 calc(&lt;&lt;sidebarwidth&gt;&gt; - &lt;&lt;Hmargin&gt;&gt;);
+      width:  calc(100vw - &lt;&lt;sidebarwidth&gt;&gt; + &lt;&lt;Hmargin&gt;&gt;)
+   }
+&lt;/$reveal&gt;&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/sidebar&quot;&gt;/* WITH SIDEBAR */
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot;  state=&quot;$:/state/LeftBar&quot;&gt;/* NO LEFTBAR */
+   html .tc-story-river {
+      margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt; - &lt;&lt;Hmargin&gt;&gt;) 0 0;
+      width:  calc(100vw - &lt;&lt;sidebarwidth&gt;&gt; + &lt;&lt;Hmargin&gt;&gt;)
+   }
+&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;/* WITH LEFTBAR */
+   html .tc-story-river {
+      margin: 0 auto;
+   }
+&lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150427071526847" creator="EricShulman" modified="20150504194709449" modifier="EricShulman" tags="" title="InsideTW/TOC">
