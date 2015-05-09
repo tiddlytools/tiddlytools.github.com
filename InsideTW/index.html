@@ -6208,16 +6208,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150509094958047" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150509111008934" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150509094958047" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150509111008934" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150509094958047" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150509111008934" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150509094958047" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150509111008934" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6262,7 +6262,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150509111008934" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6282,7 +6282,7 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150509012936359" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150509111008934" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6402,7 +6402,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150509094958047" modifier="EricShulman" title="$:/view">
+<div modified="20150509111008934" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
@@ -9174,7 +9174,7 @@ Of course, if additional funds can be raised , I can continue to devote my full 
 &lt;/form&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150509094939358" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
+<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150509110918685" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
 <pre>The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
 
 The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged in a manner compatible with the ~TiddlyWiki built-in &quot;table of contents&quot; (`&lt;&lt;toc&gt;&gt;`) macro.
@@ -9183,23 +9183,25 @@ A number of customizations have been implemented to create a &quot;book editing 
 
 !!!__Read-only mode__
 &lt;&lt;&lt;
-A &quot;read-only&quot; mode has been added that hides all the editing features, including the entire sidebar and the sidebar toggle button, as well as the standard tiddler &quot;header&quot; elements (title, subtitle, toolbar, tags).  This provides a cleaner, uncluttered presentation with NO direct access to editing functionality while //reading// the book content.
+A &quot;read-only&quot; mode ([[InsideTW/StyleSheet/ReadOnly]]) has been added that hides all the editing features, including the entire sidebar and the sidebar toggle button, as well as the standard tiddler &quot;header&quot; elements (title, subtitle, toolbar, tags).  This provides a cleaner, uncluttered presentation with NO direct access to editing functionality while //reading// the book content.
 
-The [[InsideTW/Buttons/ToggleReadOnly]]) lock/unlock button is located in the top-right corner of the page.  Unlocking the document adds &quot;authortools&quot; to the display, so that topics can be individually edited.  The right sidebar is also automatically shown, so that all standard ~TiddlyWiki controls are visible and immediately accessible.
+The {{InsideTW/Buttons/ToggleReadOnly}} lock/unlock button ([[InsideTW/Buttons/ToggleReadOnly]]) is located in the top-right corner of the page (see [[InsideTW/TopRightBar]]).
+
+Unlocking the document re-displayes the hidden editing features, so that topics can be individually edited.  The right sidebar is also automatically shown, so that all standard ~TiddlyWiki controls are visible and immediately accessible.
 &lt;&lt;&lt;
 
 !!!__The ~LeftBar Panel__
 &lt;&lt;&lt;
-* Toggle ~LeftBar button
-* Background toggle button (left-side tap)
+The {{InsideTW/LeftBar/Buttons/Toggle}} &quot;menu&quot; button is located in the top-left corner of the page (see [[InsideTW/TopLeftBar]]).  This button toggles the display of the ~LeftBar side panel (see [[InsideTW/LeftBar]]).
+
+There is also an //invisible// [[InsideTW/LeftBar/Buttons/Background]] button that occupies all the space to the left of the tiddler display.  This button allows you to toggle the display of the ~LeftBar simply by clicking/tapping anywhere along the left side of the window.
+
 * Titlebar and Settings button
 * Toolbar
 ** Home
 ** Favorites
 ** Search
-** View All &lt;blockquote&gt;
-The [[InsideTW/ViewAll]] tiddler invokes the [[InsideTW/ViewAll/Macro]] to render the entire outline of topics completely expanded with all content shown inline, all within a single tiddler display.  This allows you to review the entire book just by scrolling the page, as well as print the entire book at once, with a single print command.
-&lt;/blockquote&gt;
+** The [[InsideTW/ViewAll]] tiddler invokes the [[InsideTW/ViewAll/Macro]] to render the entire outline of topics completely expanded with all content shown inline, all within a single tiddler display.  This allows you to review the entire book just by scrolling the page, as well as print the entire book at once, with a single print command.
 ** Stretch to Fit
 * Table of Contents
 * &quot;You are Here!&quot;
@@ -9211,7 +9213,7 @@ The [[InsideTW/ViewAll]] tiddler invokes the [[InsideTW/ViewAll/Macro]] to rende
 &lt;&lt;&lt;
 In order to make navigation between tiddlers easier, each tiddler has an added top and bottom &quot;navbar&quot; ([[InsideTW/NavBar/Top]] and [[InsideTW/NavBar/Bottom]]) which provides an alternative tiddler &quot;header&quot; display that shows the &quot;tag path&quot; to that tiddler (based on the outline), as well as the caption/title of the tiddler and any associated icon (possibly &quot;inherited&quot; from &quot;parent&quot; topics in the outline).
 
-The ~NavBar also provide large, easy-to-press buttons on either side of the header display that let you quickly navigate to the related previous/next &quot;sibling&quot; topics in the outline.  These buttons are repeated below the tiddler content as well, so that they will be readily accessible without need to scroll back to the top after reading a longer topic.  These buttons are particularly useful when viewing the content on a touch-sensitive device such as a tablet or smartphone.
+The ~NavBar also provide large, easy-to-press buttons on either side of the header display that let you quickly navigate to the related previous/next &quot;sibling&quot; topics in the outline.  These buttons are repeated below the tiddler content as well, so that they will be readily accessible without need to scroll back to the top after reading a longer topic.
 
 The bottom ~NavBar also displays some &quot;Draft only&quot; content that will be removed when published.  This includes a [[InsideTW/Info/DraftNotice]], as well as the current document version: [[InsideTW/Info/RevisionHistory]].  Clicking the version text will show the revision notes in a modal popup.
 &lt;&lt;&lt;
@@ -9261,7 +9263,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.024955" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150509111008934" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.040931" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
