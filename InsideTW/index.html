@@ -406,13 +406,15 @@ Error message and password prompt
 
 <li>InsideTW/Filters/JList.js</li>
 
-<li>InsideTW/Filters/TagEx.js</li>
+<li>InsideTW/Filters/TagExp.js</li>
 
 <li>InsideTW/Filters/Unique.js</li>
 
 <li>InsideTW/Info/DraftNotice</li>
 
 <li>InsideTW/Info/Funding</li>
+
+<li>InsideTW/Info/Funding/Donate</li>
 
 <li>InsideTW/Info/Notes</li>
 
@@ -6206,16 +6208,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150509073504295" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150509094958047" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150509073504295" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150509094958047" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150509073504295" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150509094958047" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150509073504295" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150509094958047" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6260,7 +6262,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150509073504295" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6280,7 +6282,7 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150509012936359" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150509073504295" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6400,7 +6402,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150509073504295" modifier="EricShulman" title="$:/view">
+<div modified="20150509094958047" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
@@ -9003,9 +9005,9 @@ exports.jlist = function(source,operator,options) {
 
 })();</pre>
 </div>
-<div created="20150331195446988" creator="EricShulman" modified="20150502094926405" modifier="EricShulman" module-type="filteroperator" tags="" title="InsideTW/Filters/TagEx.js" type="application/javascript">
+<div created="20150331195446988" creator="EricShulman" modified="20150509085941319" modifier="EricShulman" module-type="filteroperator" tags="" title="InsideTW/Filters/TagExp.js" type="application/javascript">
 <pre>/*\
-title: InsideTW/Filters/TagEx.js
+title: InsideTW/Filters/TagExp.js
 type: application/javascript
 module-type: filteroperator
 original-source: http://www.TiddlyTools.com/#MatchTagsPlugin 
@@ -9028,45 +9030,48 @@ The filter first converts the operators in the tag expression into standard java
 /*
 Export our filter function
 */
-exports.tagex = function(source,operator,options) {
-   	var results = [];
+exports.tagexp = function(source,operator,options) {
+   var results = [];
 
-   // CHANGE THIS:
-   // &quot;tag1 AND ( tag2 OR NOT tag3 )&quot;
-   // TO THIS:
-   // &quot;/\~tag1\~/.test(...) &amp;&amp; ( /\~tag2\~/.test(...) || !/\~tag3\~/.test(...) )&quot;
+   // Given input expression like this:
+   // tag1 AND ( tag2 OR NOT tag3 )
 
-   // normalize whitespace, tokenize operators, delimit with &quot;~&quot;
-   var c=operator.operand.trim(); // remove leading/trailing spaces
-   c = c.replace(/\s+/ig,&quot; &quot;); // reduce multiple spaces to single spaces
-   c = c.replace(/\(\s?/ig,&quot;~(~&quot;); // open parens
-   c = c.replace(/\s?\)/ig,&quot;~)~&quot;); // close parens
-   c = c.replace(/(\s|~)?&amp;&amp;(\s|~)?/ig,&quot;~&amp;&amp;~&quot;); // &amp;&amp;
-   c = c.replace(/(\s|~)AND(\s|~)/ig,&quot;~&amp;&amp;~&quot;); // AND
-   c = c.replace(/(\s|~)?\|\|(\s|~)?/ig,&quot;~||~&quot;); // ||
-   c = c.replace(/(\s|~)OR(\s|~)/ig,&quot;~||~&quot;); // OR
-   c = c.replace(/(\s|~)?!(\s|~)?/ig,&quot;~!~&quot;); // !
-   c = c.replace(/(^|~|\s)NOT(\s|~)/ig,&quot;~!~&quot;); // NOT
-   c = c.replace(/(^|~|\s)NOT~\(/ig,&quot;~!~(&quot;); // NOT(
+   // STEP 1: normalize whitespace
+   var exp = operator.operand.trim(); // remove leading/trailing spaces
+   exp = exp.replace(/\s+/ig,&quot; &quot;);    // reduce multiple spaces to single space
 
-   // change tag terms to regexp tests
-   var terms=c.split(&quot;~&quot;);
-   for (var i=0; i&lt;terms.length; i++) {
-      var t=terms[i];
-      	 if (/(&amp;&amp;)|(\|\|)|[!\(\)]/.test(t) || t==&quot;&quot;)
-            continue; // skip operators/parens/spaces
-      if (t=='untagged') terms[i]=&quot;tiddlertags=='~~'&quot;;
-      else 	terms[i]=&quot;/\\~&quot;+t+&quot;\\~/.test(tiddlertags)&quot;;
+   // STEP 2: tokenize operators and delimit tokens with &quot;~&quot;
+   exp = exp.replace( /\(\s?/ig,             &quot;~(~&quot;  ); // open parens
+   exp = exp.replace( /\s?\)/ig,             &quot;~)~&quot;  ); // close parens
+   exp = exp.replace( /(\s|~)?&amp;&amp;(\s|~)?/ig,  &quot;~&amp;&amp;~&quot; ); // &amp;&amp;
+   exp = exp.replace( /(\s|~)AND(\s|~)/ig,   &quot;~&amp;&amp;~&quot; ); // AND
+   exp = exp.replace( /(\s|~)?\|\|(\s|~)?/ig,&quot;~||~&quot; ); // ||
+   exp = exp.replace( /(\s|~)OR(\s|~)/ig,    &quot;~||~&quot; ); // OR
+   exp = exp.replace( /(\s|~)?!(\s|~)?/ig,   &quot;~!~&quot;  ); // !
+   exp = exp.replace( /(^|~|\s)NOT(\s|~)/ig, &quot;~!~&quot;  ); // NOT
+   exp = exp.replace( /(^|~|\s)NOT~\(/ig,    &quot;~!~(&quot; ); // NOT(
+
+   // STEP 3: replace literal tag value tokens with regexp tests:
+   //    /\~tagval\~/.test(tiddlertags)
+   var tokens = exp.split(&quot;~&quot;);
+   for (var i=0; i&lt;tokens.length; i++) { var t=tokens[i];
+      // skip operators, parens, spaces, and empty terms
+      if (/(&amp;&amp;)|(\|\|)|[!\(\)]/.test(t) || t==&quot;&quot;) continue;
+      if (t=='untagged') tokens[i]=&quot;tiddlertags=='~~'&quot;; // TEST FOR NO TAGS
+      else tokens[i]=&quot;/\\~&quot;+t+&quot;\\~/.test(tiddlertags)&quot;; // TEST FOR MATCHING TAG
    }
-   c=terms.join(&quot; &quot;);
+   exp = tokens.join(&quot; &quot;);
 
-   // NOW SCAN THE TIDDLERS FOR MATCHES
+   // After conversion, we have a boolean expression like this:
+   // /\~tag1\~/.test(...) &amp;&amp; ( /\~tag2\~/.test(...) || !/\~tag3\~/.test(...) )
+
+   // STEP 5: for each tiddler in the current filter set, test it's tags
    source(function(tiddler,title) {
       if (!tiddler || !tiddler.fields.tags) return;
-      // assemble tags from this tiddler into a string: &quot;~tag1~tag2~tag3~&quot;
+      // assemble tiddler tags into single string like this: &quot;~tag1~tag2~tag3~&quot;
       var tiddlertags = &quot;~&quot;+tiddler.fields.tags.join(&quot;~&quot;)+&quot;~&quot;;
-      // test tags on this tiddler against expression
-      if(eval(c)) results.push(title);
+      // apply boolean expression test to combined 'tiddlertags' string
+      if(eval(exp)) results.push(title);
    });
    return results;
 };
@@ -9119,15 +9124,20 @@ exports.unique = function(source,operator,options) {
 ''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''
 @@</pre>
 </div>
-<div caption="Help Fund This Project!" created="20150323005952150" creator="EricShulman" icon="images/funding.svg" modified="20150423035432044" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Funding">
-<pre>From November, 2014 through January 2015, an [[IndieGoGo crowdfunding campaign|https://www.indiegogo.com/projects/inside-tiddlywiki-the-missing-manual/x/8816263]] helped raise initial funds to get this book project started by providing living expenses to allow me to focus my time almost exclusively on writing the first volume of &quot;Inside ~TiddlyWiki.&quot;
+<div caption="Help Fund This Project!" created="20150323005952150" creator="EricShulman" icon="images/funding.svg" modified="20150509094619829" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Funding">
+<pre>From November, 2014 through January 2015, an [[IndieGoGo crowdfunding campaign|https://www.indiegogo.com/projects/inside-tiddlywiki-the-missing-manual/x/8816263]] helped raise initial funds to get this book project started.
 
 Unfortunately (quite literally!), the ~IndieGoGo campaign only reached 38% of it's target funding goal and -- despite stretching the partial funding to last almost twice as long as expected -- those funds are now exhausted, and ''//an ongoing appeal for additional donations is underway.//''
 
-Please note that ''//regardless of funding, my efforts on the &quot;Inside ~TiddlyWiki&quot; book project will continue//'', though with some inevitable distractions as I divert my attention to revenue-producing work from other client projects.  Of course, if additional funds can be raised to cover my basic living expenses, I can continue to devote my full attention to writing &quot;Inside ~TiddlyWiki&quot;.
+Please note that ''//regardless of funding, my efforts on the &quot;Inside ~TiddlyWiki&quot; book project will continue//'', though with some inevitable distractions as I divert my attention to revenue-producing work from other client projects in order to cover my basic living expenses.
+
+Of course, if additional funds can be raised , I can continue to devote my full attention and efforts to writing a series of &quot;Inside ~TiddlyWiki&quot; manuals that will help all ~TiddlyWiki Readers, Authors, Designers and Developers get the most from their ~TiddlyWiki use.
 
 !!![[You can help fund the writing of this book!|http://tiddlytools.github.io/fundraising.html]]
-&lt;table class=&quot;borderless&quot; style=&quot;font-size:80%;&quot;&gt;&lt;tr&gt;&lt;td&gt;
+{{||InsideTW/Info/Funding/Donate}}</pre>
+</div>
+<div created="20150509094625606" creator="EricShulman" modified="20150509094652269" modifier="EricShulman" tags="" title="InsideTW/Info/Funding/Donate">
+<pre>&lt;table class=&quot;borderless&quot; style=&quot;font-size:80%;&quot;&gt;&lt;tr&gt;&lt;td&gt;
 &lt;form action=&quot;https://www.paypal.com/cgi-bin/webscr&quot; method=&quot;post&quot; target=&quot;_blank&quot; style=&quot;padding:0;margin:0;&quot;&gt;
 &lt;input type=&quot;hidden&quot; name=&quot;cmd&quot; value=&quot;_xclick&quot;&gt;
 &lt;input type=&quot;hidden&quot; name=&quot;business&quot; value=&quot;elsdesign@gmail.com&quot;&gt;
@@ -9164,47 +9174,53 @@ Please note that ''//regardless of funding, my efforts on the &quot;Inside ~Tidd
 &lt;/form&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150504195252766" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
-<pre>@@color:red;''//NOTE: this content is out of date and needs to be revised//''@@
+<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150509094939358" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Notes">
+<pre>The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
 
-The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
+The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged in a manner compatible with the ~TiddlyWiki built-in &quot;table of contents&quot; (`&lt;&lt;toc&gt;&gt;`) macro.
 
-The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged accordingly so that can be displayed using the ~TiddlyWiki built-in &quot;table of contents&quot; macro, which provides a &quot;tabbed viewer&quot; display of all the tiddlers in the outline.
-
-Several modifications to the standard interface were made to facilitate easier editing and provide various display options.
+A number of customizations have been implemented to create a &quot;book editing and viewing&quot; interface.
 
 !!!__Read-only mode__
-A &quot;read-only&quot; stylesheet [[InsideTW/StyleSheet/ReadOnly]] has been added that hides all the editing features, including the entire sidebar and the sidebar toggle button, as well as the standard tiddler &quot;header&quot; (title, subtitle, toolbar, tags).  This provides a cleaner, uncluttered presentation with NO direct access to editing functionality while //reading// the book content, while also ensuring that the tiddler editing functions are available with a click of a single checkbox, defined in ([[InsideTW/Buttons/ToggleReadOnly]]).  Enabling editing also automatically shows the sidebar so all standard ~TiddlyWiki controls are visible.
+&lt;&lt;&lt;
+A &quot;read-only&quot; mode has been added that hides all the editing features, including the entire sidebar and the sidebar toggle button, as well as the standard tiddler &quot;header&quot; elements (title, subtitle, toolbar, tags).  This provides a cleaner, uncluttered presentation with NO direct access to editing functionality while //reading// the book content.
 
-!!!__~InsideTW tiddler toolbar__
+The [[InsideTW/Buttons/ToggleReadOnly]]) lock/unlock button is located in the top-right corner of the page.  Unlocking the document adds &quot;authortools&quot; to the display, so that topics can be individually edited.  The right sidebar is also automatically shown, so that all standard ~TiddlyWiki controls are visible and immediately accessible.
+&lt;&lt;&lt;
 
-[[InsideTW/ToolBar]] is tagged with &lt;&lt;tag $:/tags/ViewTemplate&gt;&gt; so that it is shown above the title header of each tiddler.  This toolbar offers several quick navigation links on the left: home, contents, search, and back; and display options on the right: read-only, hide/show tabs, and view all.
-
-*&quot;Home&quot; returns to the default starting page.  It also closes the sidebar display (if opened), so that the full page width can be used to display the book content.
-*&quot;Contents&quot; shows a //scrolling popup// with the complete outline of topics, For quick navigation to any page of the book
-*&quot;Search&quot; opens the [[Search this Book|Search]] tiddler, which ''currently'' just transcludes the $:/AdvancedSearch tiddler.  This will eventually be replaced by a custom interface that is restricted to searching just the actual book content.  * *&quot;Back&quot; only appears when the tabbed viewer (see below) is hidden.  This button is actually a re-labelling of the tiddler &quot;close&quot; button which, when used with the &quot;zoomin&quot; ~StoryView setting, closes the current tiddler and displays the previous tiddler in the StoryRiver.  The &quot;back&quot; link is not shown when viewing the default tiddler (i.e., InsideTW).
-
-!!!__Viewing options: tabbed, one-at-a-time, all-in-one__
-
-The [[InsideTW]] tiddler shows the book content using the `&lt;&lt;toc-tabbed-internal-nav InsideTW ...&gt;&gt;` macro.  The [[InsideTW/Buttons/ToggleTabs]] tiddler provides a checkbox to show/hide the tabbed viewer display.
-
-Hiding the tabs allows you to use the full width of the page for displaying tiddler content.  When the tabbed viewer is hidden, the standard StoryRiver display handling is used to show each individual tiddler with the StoryView set to 'zoom-in' for one-tiddler-at-a-time viewing.
-
+!!!__The ~LeftBar Panel__
+&lt;&lt;&lt;
+* Toggle ~LeftBar button
+* Background toggle button (left-side tap)
+* Titlebar and Settings button
+* Toolbar
+** Home
+** Favorites
+** Search
+** View All &lt;blockquote&gt;
 The [[InsideTW/ViewAll]] tiddler invokes the [[InsideTW/ViewAll/Macro]] to render the entire outline of topics completely expanded with all content shown inline, all within a single tiddler display.  This allows you to review the entire book just by scrolling the page, as well as print the entire book at once, with a single print command.
+&lt;/blockquote&gt;
+** Stretch to Fit
+* Table of Contents
+* &quot;You are Here!&quot;
+** ~PermaLink button
+** Favorite Button
+&lt;&lt;&lt;
 
-!!!__Navbar: top and bottom__
-In order to make navigation between tiddlers easier, each tiddler has an added top and bottom &quot;navbar&quot; ([[InsideTW/NavBar/Top]] and [[InsideTW/NavBar/Bottom]]) which provides an alternative tiddler &quot;header&quot; display that shows the &quot;breadcrumb path&quot; to that tiddler (based on the outline), as well as the caption/title of the tiddler and any associated icon (including those &quot;inherited&quot; from &quot;parent&quot; topics in the outline).
+!!!__Tiddler Navbar: top and bottom__
+&lt;&lt;&lt;
+In order to make navigation between tiddlers easier, each tiddler has an added top and bottom &quot;navbar&quot; ([[InsideTW/NavBar/Top]] and [[InsideTW/NavBar/Bottom]]) which provides an alternative tiddler &quot;header&quot; display that shows the &quot;tag path&quot; to that tiddler (based on the outline), as well as the caption/title of the tiddler and any associated icon (possibly &quot;inherited&quot; from &quot;parent&quot; topics in the outline).
 
-The ~NavBar also provide large, easy-to-press buttons on either side of the header display that let you quickly navigate to the related &quot;sibling&quot; topics in the outline.  These buttons are repeated below the tiddler content as well, so that they will be readily accessible without need to scroll back to the top after reading a longer topic.  These buttons are particularly useful when viewing the content on a touch-sensitive device such as a tablet or smartphone.
+The ~NavBar also provide large, easy-to-press buttons on either side of the header display that let you quickly navigate to the related previous/next &quot;sibling&quot; topics in the outline.  These buttons are repeated below the tiddler content as well, so that they will be readily accessible without need to scroll back to the top after reading a longer topic.  These buttons are particularly useful when viewing the content on a touch-sensitive device such as a tablet or smartphone.
 
-The bottom ~NavBar also displays some &quot;Draft only&quot; content that will be removed when published.  This includes a [[InsideTW/Info/DraftNotice]]: &quot;{{InsideTW/Info/DraftNotice}}&quot; as well as the current document version: [[InsideTW/Info/RevisionHistory]].  Clicking the version text will show the revision notes in a modal popup.
+The bottom ~NavBar also displays some &quot;Draft only&quot; content that will be removed when published.  This includes a [[InsideTW/Info/DraftNotice]], as well as the current document version: [[InsideTW/Info/RevisionHistory]].  Clicking the version text will show the revision notes in a modal popup.
+&lt;&lt;&lt;
 
 !!!__List of customizations:__
-All tiddlers used for customization begin with &quot;InsideTW/&quot; in their title.  Some of the ~InsideTW/ customizations are also tagged with &lt;&lt;tag $:/tags/ViewTemplate&gt;&gt; so they are part of the display for all tiddlers (e.g., [[InsideTW/NavBar/Top]], [[InsideTW/NavBar/Bottom]], [[InsideTW/ToolBar]])
-
-&gt;@@font-size:80%;line-height:120%;
-&lt;&lt;list-links filter:&quot;[prefix[InsideTW/]]&quot;&gt;&gt;
-@@</pre>
+&lt;&lt;&lt;
+All tiddlers used for customization begin with &quot;InsideTW/&quot; in their title:
+@@.smaller.twocolumns &lt;&lt;list-links filter:&quot;[prefix[InsideTW/]]&quot;&gt;&gt;@@
+&lt;&lt;&lt;</pre>
 </div>
 <div caption="How To Review This Book" created="20150322234136996" creator="EricShulman" modified="20150504195107188" modifier="EricShulman" status="draft" tags="Appendix" title="InsideTW/Info/Reviewers">
 <pre>This is an early, work-in-progress, and is being presented exclusively for review and feedback from participants in the [[InsideTiddlyWiki Google Group|https://groups.google.com/forum/#!forum/insidetiddlywiki]] and other invited parties.
@@ -9245,7 +9261,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150509073504296" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.003459" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150509094958047" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.024955" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9657,9 +9673,9 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 {{||InsideTW/Buttons/Back}}
 </pre>
 </div>
-<div created="20150426204100552" creator="EricShulman" modified="20150509065921164" modifier="EricShulman" tags="" title="InsideTW/Options">
+<div created="20150426204100552" creator="EricShulman" modified="20150509093727910" modifier="EricShulman" tags="" title="InsideTW/Options">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt; class=&quot;itw-button&quot;
-   tooltip=&quot;options and settings...&quot;&gt;
+   tooltip=&quot;settings...&quot;&gt;
    @@.resize {{$:/core/images/options-button}}@@
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt;&gt;
@@ -9677,8 +9693,8 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 <div modified="20150509045803079" modifier="EricShulman" title="InsideTW/Options/Background/LeftBarHover">
 <pre>rgba(255,255,255,0.4)</pre>
 </div>
-<div created="20150508190826911" creator="EricShulman" modified="20150509045800373" modifier="EricShulman" title="InsideTW/Options/Background/Page">
-<pre>rgba(255,255,255,0.4)</pre>
+<div created="20150508190826911" creator="EricShulman" modified="20150509081432916" modifier="EricShulman" title="InsideTW/Options/Background/Page">
+<pre>#fff</pre>
 </div>
 <div created="20150508015334312" creator="EricShulman" modified="20150509065742901" modifier="EricShulman" title="InsideTW/Options/Background/Window">
 <pre>url(&lt;&lt;datauri images/wood.jpg&gt;&gt;)</pre>
@@ -9686,7 +9702,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 <div created="20150508233847761" creator="EricShulman" modified="20150508235638533" modifier="EricShulman" title="InsideTW/Options/FontColor/BodyText">
 <pre>#000</pre>
 </div>
-<div modified="20150503081622695" modifier="EricShulman" title="InsideTW/Options/FontSize/BodyText">
+<div modified="20150509093142397" modifier="EricShulman" title="InsideTW/Options/FontSize/BodyText">
 <pre>100%</pre>
 </div>
 <div created="20150508233558006" creator="EricShulman" modified="20150508233721031" modifier="EricShulman" title="InsideTW/Options/FontSize/LeftBar/Content">
@@ -9841,9 +9857,9 @@ rgba(255,255,255,0.5)</pre>
 &quot;url(&lt;&lt;datauri images/wood.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri images/wood_dark.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div caption="Viewing Options" created="20150426205104959" creator="EricShulman" modified="20150509072224910" modifier="EricShulman" title="InsideTW/Options/Panel">
-<pre>@@.larger.floatright {{$:/core/ui/Buttons/control-panel}}@@
-@@.larger [[Viewing Options|InsideTW/Options/Panel]]@@
+<div created="20150426205104959" creator="EricShulman" modified="20150509093617693" modifier="EricShulman" title="InsideTW/Options/Panel">
+<pre>@@.smallest.floatright.authortools [[control panel...|$:/ControlPanel]]@@
+@@.larger Settings@@
 @@.thinline @@
 &lt;div class=&quot;borderless&quot;&gt;
 
