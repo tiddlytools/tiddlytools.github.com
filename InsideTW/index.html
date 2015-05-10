@@ -190,6 +190,8 @@ Error message and password prompt
 
 <li>$:/temp/NewTagName</li>
 
+<li>$:/temp/RangeDemo</li>
+
 <li>$:/temp/search</li>
 
 <li>$:/theme</li>
@@ -526,6 +528,10 @@ Error message and password prompt
 
 <li>InsideTW/ViewAll/Template</li>
 
+<li>InsideTW/Widgets/range.js</li>
+
+<li>InsideTW/Widgets/RangeInfo</li>
+
 <li>InsideTW/Widgets/ScrollHere.js</li>
 
 <li>Installation</li>
@@ -596,7 +602,7 @@ Error message and password prompt
 
 <li>Tour</li>
 
-<li>What's in a name?</li>
+<li>WhatsInAName</li>
 
 </ul>
 </p>
@@ -6210,16 +6216,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150509231251278" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150510035228910" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150509231251278" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150510035228910" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150509231251278" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150510035228910" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150509231251278" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150510035228910" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150504204501700" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6264,7 +6270,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150509231251278" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150510035228910" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6284,7 +6290,10 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150509012936359" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150509231251278" modifier="EricShulman" title="$:/temp/search">
+<div amount="57" modified="20150510031315411" modifier="EricShulman" title="$:/temp/RangeDemo">
+<pre></pre>
+</div>
+<div created="20150503075127570" creator="EricShulman" modified="20150510035228910" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6404,7 +6413,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150509231251278" modifier="EricShulman" title="$:/view">
+<div modified="20150510035228910" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.jpg" modified="20150418081410774" modifier="EricShulman" status="draft" tags="Preface" title="AboutTheAuthor">
@@ -6465,14 +6474,17 @@ contains links to ~TiddlyWiki reference resources, Community sites, etc., as wel
 * inline CSS
 * etc.</pre>
 </div>
-<div caption="Benefits of TiddlyWiki" created="20150212021535694" creator="EricShulman" list="MicroContent" modified="20150425010243299" modifier="EricShulman" tags="Introduction" title="Benefits">
+<div caption="Benefits of TiddlyWiki" created="20150212021535694" creator="EricShulman" list="MicroContent" modified="20150510010503340" modifier="EricShulman" tags="Introduction" title="Benefits">
 <pre>There are several major advantages to using ~TiddlyWiki...
 
+&lt;&lt;showStartHere class:&quot;floatleft shadowbox&quot;&gt;&gt;
 * [[MicroContent]]: smaller pieces of information, recombined in many ways
 * [[Flexibility]]: standard web tech (HTML/CSS/JS) allows full customization of layout and features
 * [[Portability]]: standard web tech also means &quot;run anywhere&quot;
 * [[Privacy]]: you control your data, not some hosting service
-* [[Sharing]]: you publish what you want, where you want</pre>
+* [[Sharing]]: you publish what you want, where you want
+
+</pre>
 </div>
 <div created="20150212023646816" creator="EricShulman" modified="20150221235303673" modifier="EricShulman" tags="Scenarios" title="Business">
 <pre>* Client Records (Orders, Invoices, Payments, Meeting notes, etc.)
@@ -9265,7 +9277,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150509231251278" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.161248" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150510035228910" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.09.205223" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9393,7 +9405,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 @@.clear @@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20150509185803670" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
+<div created="20150418054240175" creator="EricShulman" modified="20150510032246349" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/LeftBar/Stylesheet">
 <pre>\define Vmargin()      42px
 \define Hmargin()      42px
 \define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
@@ -9403,7 +9415,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 \define barleft()      29px
 \define barheight()    (100vh - (&lt;&lt;Vmargin&gt;&gt; * 2))
 \define barwidth()     (50vw - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2))
-\define toolbarsize()  (2 * {{InsideTW/Settings/FontSize/LeftBar/ToolBar}})
+\define toolbarsize()  (2 * {{InsideTW/Settings/FontSize/LeftBar/ToolBar}}%)
 
 &lt;pre&gt;
 /* PANEL */
@@ -9514,7 +9526,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 {{InsideTW/Info/RevisionHistory!!popup}}&lt;br&gt;
 {{||InsideTW/Buttons/EditFromHere}}</pre>
 </div>
-<div created="20150405080824318" creator="EricShulman" modified="20150424235530294" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/NavBar/Macros" type="">
+<div created="20150405080824318" creator="EricShulman" modified="20150510010700412" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/NavBar/Macros" type="">
 <pre>\define showLink(pos)
 &lt;$list filter=&quot;[all[current]!title{InsideTW/RootTag}]&quot;
    emptyMessage=&quot;&lt;$tiddler tiddler={{$:/DefaultTiddlers}}&gt;&lt;&lt;showLink $pos$&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
@@ -9546,6 +9558,24 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 &lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;
    &lt;&lt;showTagPath&gt;&gt;&lt;$macrocall $name=&quot;tag&quot; tag={{!!title}}/&gt;
 &lt;/$list&gt;
+\end
+
+\define showStartHere(caption:&quot;&quot;,class:&quot;floatleft shadowbox&quot;)
+&lt;div class=&quot;$class$&quot; style=&quot;margin:0.5em 1em; padding:0.5em 0.5em 0 0.5em;&quot;&gt;
+&lt;div&gt;$caption$&lt;/div&gt;
+&lt;div style=&quot;margin-left:1em;&quot;&gt;
+&lt;$list filter=&quot;[tag{!!title}limit[1]]&quot;&gt;
+   &lt;&lt;showButton right left&gt;&gt;
+   &amp;nbsp; &lt;$link to={{!!title}} tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;,,//start here://,,&lt;/$link&gt;&lt;br&gt;
+   &amp;nbsp; &lt;$link to={{!!title}} tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;''&lt;&lt;toc-caption&gt;&gt;''&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;div style=&quot;clear:left&quot;&gt;,,//or, select any topic below://,,&lt;/div&gt;
+&lt;&lt;list-links [tag{!!title}rest[]]&gt;&gt;
+\end
+
+\define captionlink(tid)
+&lt;$tiddler tiddler=&quot;$tid$&quot;&gt;&lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;/$tiddler&gt;
 \end</pre>
 </div>
 <div created="20150317073552035" creator="EricShulman" modified="20150508221437751" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
@@ -9680,7 +9710,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 <div created="20150424235330826" creator="EricShulman" modified="20150424235348053" modifier="EricShulman" tags="" title="InsideTW/RootTag">
 <pre>InsideTW</pre>
 </div>
-<div created="20150316101821466" creator="EricShulman" modified="20150508234708621" modifier="EricShulman" tags="" title="InsideTW/Scraps" url="images/eric3.jpg">
+<div created="20150316101821466" creator="EricShulman" modified="20150510031426532" modifier="EricShulman" tags="" title="InsideTW/Scraps" url="images/eric3.jpg">
 <pre>&lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
 &lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
 
@@ -9809,16 +9839,16 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 <div created="20150508233847761" creator="EricShulman" modified="20150508235638533" modifier="EricShulman" title="InsideTW/Settings/FontColor/BodyText">
 <pre>#000</pre>
 </div>
-<div modified="20150509093142397" modifier="EricShulman" title="InsideTW/Settings/FontSize/BodyText">
-<pre>100%</pre>
+<div modified="20150510033611949" modifier="EricShulman" title="InsideTW/Settings/FontSize/BodyText">
+<pre>100</pre>
 </div>
-<div created="20150508233558006" creator="EricShulman" modified="20150508233721031" modifier="EricShulman" title="InsideTW/Settings/FontSize/LeftBar/Content">
-<pre>100%</pre>
+<div created="20150508233558006" creator="EricShulman" modified="20150510033525988" modifier="EricShulman" title="InsideTW/Settings/FontSize/LeftBar/Content">
+<pre>100</pre>
 </div>
-<div modified="20150508184747400" modifier="EricShulman" title="InsideTW/Settings/FontSize/LeftBar/ToolBar">
-<pre>100%</pre>
+<div modified="20150510033545276" modifier="EricShulman" title="InsideTW/Settings/FontSize/LeftBar/ToolBar">
+<pre>100</pre>
 </div>
-<div created="20150429051729816" creator="EricShulman" modified="20150509231003341" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/Settings/Macros">
+<div created="20150429051729816" creator="EricShulman" modified="20150510035223070" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/Settings/Macros">
 <pre>\define dec()         0 1 2 3 4 5 6 7 8 9
 \define dec_reverse() 9 8 7 6 5 4 3 2 1 0
 \define hex()         0 1 2 3 4 5 6 7 8 9 a b c d e f
@@ -9916,16 +9946,6 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 &lt;$tiddler tiddler=&quot;$tid$&quot;&gt;&lt;&lt;shade_palette&gt;&gt;&lt;/$tiddler&gt;
 \end
 
-\define pick_fontsize(tid)
-&lt;$tiddler tiddler=&quot;$tid$&quot;&gt;
-   &lt;$radio value=&quot;70%&quot; &gt;@@font-size:70%;  smallest @@&lt;/$radio&gt;
-   &lt;$radio value=&quot;90%&quot; &gt;@@font-size:90%;  smaller  @@&lt;/$radio&gt;
-   &lt;$radio value=&quot;100%&quot;&gt;@@font-size:100%; normal   @@&lt;/$radio&gt;
-   &lt;$radio value=&quot;120%&quot;&gt;@@font-size:120%; larger   @@&lt;/$radio&gt;
-   &lt;$radio value=&quot;140%&quot;&gt;@@font-size:140%; largest  @@&lt;/$radio&gt;
-&lt;/$tiddler&gt;
-\end
-
 \define palette_popup(tid)
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;
 &lt;$macrocall $name=&quot;color_box&quot; color={{$tid$}} w=&quot;3em&quot; h=&quot;1em&quot;/&gt;
@@ -9935,6 +9955,15 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
    &lt;$set name=&quot;tid&quot; value=&quot;$tid$&quot;&gt;{{InsideTW/Settings/Palettes/Panel}}&lt;/$set&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
+\end
+
+\define pick_fontsize(tid,class,style)
+&lt;$tiddler tiddler=&quot;$tid$&quot;&gt;
+   &lt;$range field=&quot;text&quot; min=&quot;0&quot; max=&quot;200&quot; step=&quot;10&quot; default=&quot;100&quot;
+      class=&quot;$class$&quot; style=&quot;$style$&quot;&gt;
+      {{$tid$}}%
+   &lt;/$range&gt;
+&lt;/$tiddler&gt;
 \end</pre>
 </div>
 <div created="20150508070548674" creator="EricShulman" modified="20150508225517788" modifier="EricShulman" tags="" title="InsideTW/Settings/Palettes/Colors" type="text/plain">
@@ -9984,36 +10013,38 @@ rgba(255,255,255,0.5)</pre>
 &quot;url(&lt;&lt;datauri images/wood.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri images/wood_dark.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20150509182707214" modifier="EricShulman" title="InsideTW/Settings/Panel">
+<div created="20150426205104959" creator="EricShulman" modified="20150510035026261" modifier="EricShulman" title="InsideTW/Settings/Panel">
 <pre>@@.smallest.floatright.authortools [[control panel...|$:/ControlPanel]]@@
 @@.larger Settings@@
 @@.thinline @@
-&lt;div class=&quot;borderless&quot;&gt;
+Topic text:&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/BodyText&quot;&gt;&gt;&lt;br&gt;
+Table of Contents:&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/LeftBar/Content&quot;&gt;&gt;&lt;br&gt;
+~ToolBar:&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/LeftBar/ToolBar&quot;&gt;&gt;&lt;br&gt;
 
-| Topic text:|&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/BodyText&quot;&gt;&gt;|
-|   Contents:|&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/LeftBar/Content&quot;&gt;&gt;|
-|   ~ToolBar:|&lt;&lt;pick_fontsize &quot;InsideTW/Settings/FontSize/LeftBar/ToolBar&quot;&gt;&gt;|
-&lt;/div&gt;
-&lt;div class=&quot;twocolumns&quot;&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/Background/Window&quot;&gt;&gt;Window background&lt;br&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/Background/Page&quot;&gt;&gt;Topic background&lt;br&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/FontColor/BodyText&quot;&gt;&gt;Topic text&lt;br&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/Background/LeftBar&quot;&gt;&gt;Contents frame&lt;br&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/Background/LeftBarHover&quot;&gt;&gt;Contents frame (hover)&lt;br&gt;
 &lt;&lt;palette_popup &quot;InsideTW/Settings/Background/DropDowns&quot;&gt;&gt;Drop downs&lt;br&gt;
-&lt;/div&gt;</pre>
+</pre>
 </div>
-<div created="20150314000609556" creator="EricShulman" modified="20150508234025981" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
-<pre>&lt;pre&gt;
+<div created="20150314000609556" creator="EricShulman" modified="20150510032929125" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/StyleSheet" type="">
+<pre>\define background()     {{InsideTW/Settings/Background/Window}}
+\define bodybackground() {{InsideTW/Settings/Background/Page}}
+\define bodytextsize()   {{InsideTW/Settings/FontSize/BodyText}}%
+\define bodytextcolor()  {{InsideTW/Settings/FontColor/BodyText}}
+&lt;pre&gt;
 /* BACKGROUND COLOR */
-body {
-   background: {{InsideTW/Settings/Background/Window}}
-}
+body { background: &lt;&lt;background&gt;&gt; }
 
 /* TIDDLER TEXT/BACKGROUND COLOR */
 .tc-tiddler-frame {
-   color: {{InsideTW/Settings/FontColor/BodyText}};
-   background: {{InsideTW/Settings/Background/Page}};
+   color: &lt;&lt;bodytextcolor&gt;&gt;;
+   background: &lt;&lt;bodybackground &gt;&gt;;
 }
 
 /* TIDDLER PADDING/BORDER/SHADOW */
@@ -10026,7 +10057,7 @@ body {
 
 /* TIDDLER BODY FONT SIZE */
 .tc-tiddler-frame .tc-tiddler-body {
-   font-size: {{InsideTW/Settings/FontSize/BodyText}};
+   font-size: &lt;&lt;bodytextsize&gt;&gt;;
    line-height: 140%;
 }
 
@@ -10214,12 +10245,12 @@ html .tc-story-river {
    &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20150509073457934" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/TOC/Stylesheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20150510032327452" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/TOC/Stylesheet" type="">
 <pre>&lt;pre&gt;
 /* TOC FONT SIZE */
 .itw-TOC {
    text-align:left;
-   font-size:{{InsideTW/Settings/FontSize/LeftBar/Content}};
+   font-size:{{InsideTW/Settings/FontSize/LeftBar/Content}}%;
 }
 /* TREE ITEM */
 .itw-TOC-item {
@@ -10351,6 +10382,170 @@ html .tc-story-river {
 @@display:block;clear:both;@@
 &lt;/div&gt;</pre>
 </div>
+<div created="20150510021109538" creator="EricShulman" modified="20150510034422972" modifier="EricShulman" module-type="widget" tags="" title="InsideTW/Widgets/range.js" type="application/javascript">
+<pre>/*\
+title: InsideTW/Widgets/range.js
+type: application/javascript
+module-type: widget
+
+Derived from $:/core/modules/widgets/checkbox.js
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
+var RangeWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+
+/*
+Inherit from the base widget class
+*/
+RangeWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+RangeWidget.prototype.render = function(parent,nextSibling) {
+	// Save the parent dom node
+	this.parentDomNode = parent;
+	// Compute our attributes
+	this.computeAttributes();
+	// Execute our logic
+	this.execute();
+	// Create our elements
+	this.labelDomNode = this.document.createElement(&quot;label&quot;);
+	this.labelDomNode.setAttribute(&quot;class&quot;,this.rangeClass);
+	this.inputDomNode = this.document.createElement(&quot;input&quot;);
+	this.inputDomNode.setAttribute(&quot;type&quot;,&quot;range&quot;);
+	this.inputDomNode.setAttribute(&quot;style&quot;,this.rangeStyle);
+	this.inputDomNode.setAttribute(&quot;value&quot;,this.getValue());
+	this.inputDomNode.setAttribute(&quot;min&quot;,this.rangeMin);
+	this.inputDomNode.setAttribute(&quot;max&quot;,this.rangeMax);
+	this.inputDomNode.setAttribute(&quot;step&quot;,this.rangeStep);
+	this.labelDomNode.appendChild(this.inputDomNode);
+	this.spanDomNode = this.document.createElement(&quot;span&quot;);
+	this.labelDomNode.appendChild(this.spanDomNode);
+	// Add a range input change event handler
+	$tw.utils.addEventListeners(this.inputDomNode,[
+	{name: &quot;input&quot;, handlerObject: this, handlerMethod: &quot;handleChangeEvent&quot;}
+	]);
+	// Insert the label into the DOM and render any children
+	parent.insertBefore(this.labelDomNode,nextSibling);
+	this.renderChildren(this.spanDomNode,null);
+	this.domNodes.push(this.labelDomNode);
+};
+
+RangeWidget.prototype.getValue = function() {
+	var value   = this.rangeDefault || &quot;&quot;;
+	var tiddler = this.wiki.getTiddler(this.rangeTitle);
+	if(tiddler &amp;&amp; this.rangeField)
+		value = tiddler.fields[this.rangeField]
+	return value;
+};
+
+RangeWidget.prototype.handleChangeEvent = function(event) {
+
+	var value = this.inputDomNode.value,
+		tiddler = this.wiki.getTiddler(this.rangeTitle),
+		fallbackFields = {text: &quot;&quot;},
+		newFields = {title: this.rangeTitle},
+		hasChanged = false;
+	// Set the field if specified
+	if(this.rangeField) {
+		if(!tiddler || tiddler.fields[this.rangeField] !== value) {
+			newFields[this.rangeField] = value;
+			hasChanged = true;
+		}
+	}
+	if(hasChanged) {
+		this.wiki.addTiddler(new $tw.Tiddler(fallbackFields,tiddler,newFields,this.wiki.getModificationFields()));
+	}
+};
+
+/*
+Compute the internal state of the widget
+*/
+RangeWidget.prototype.execute = function() {
+	// Get the parameters from the attributes
+	this.rangeTitle   = this.getAttribute(&quot;tiddler&quot;,this.getVariable(&quot;currentTiddler&quot;));
+	this.rangeField   = this.getAttribute(&quot;field&quot;);
+	this.rangeMin     = this.getAttribute(&quot;min&quot;)  || 0;
+	this.rangeMax     = this.getAttribute(&quot;max&quot;)  || 100;
+	this.rangeStep    = this.getAttribute(&quot;step&quot;) || 1;
+	this.rangeDefault = this.getAttribute(&quot;default&quot;);
+	this.rangeClass   = this.getAttribute(&quot;class&quot;,&quot;&quot;);
+	this.rangeStyle   = this.getAttribute(&quot;style&quot;,&quot;&quot;);
+	// Make the child widgets
+	this.makeChildWidgets();
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+RangeWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedAttributes.tiddler
+		|| changedAttributes.field
+		|| changedAttributes[&quot;min&quot;]
+		|| changedAttributes[&quot;max&quot;]
+		|| changedAttributes[&quot;step&quot;]
+		|| changedAttributes[&quot;default&quot;]
+		|| changedAttributes[&quot;style&quot;]
+		|| changedAttributes[&quot;class&quot;]) {
+		this.refreshSelf();
+		return true;
+	} else {
+		var refreshed = false;
+		if(changedTiddlers[this.rangeTitle]) {
+			this.inputDomNode.value = this.getValue();
+			refreshed = true;
+		}
+		return this.refreshChildren(changedTiddlers) || refreshed;
+	}
+};
+
+exports.range = RangeWidget;
+
+})();
+</pre>
+</div>
+<div created="20150510024613624" creator="EricShulman" modified="20150510031209789" modifier="EricShulman" tags="" title="InsideTW/Widgets/RangeInfo">
+<pre>! Introduction
+
+The range widget displays an HTML `&lt;input type=&quot;range&quot;&gt;` element that is dynamically bound the value of a specified field of a specified tiddler
+
+! Content and Attributes
+
+The content of the `&lt;$range&gt;` widget is displayed within an HTML `&lt;label&gt;` element immediately after the range itself.
+
+|!Attribute |!Description |
+|tiddler |Title of the tiddler to manipulate (defaults to the [[current tiddler|Current Tiddler]]) |
+|field |The name of the field to which the range should be bound |
+|min |The minimum value for the range (default=0) |
+|max |The maximum value for the range (default=100) |
+|step |The increment for the range (default=1) |
+|default |The default value to use if the field is not defined |
+|class |The class that will be assigned to the label element |
+
+This example creates a range that is stored in a tiddler field:
+
+```
+&lt;$range tiddler=&quot;$:/temp/RangeDemo&quot; field=&quot;amount&quot; default=&quot;50&quot;&gt;
+slide me!
+&lt;/$range&gt;
+```
+&lt;$range tiddler=&quot;$:/temp/RangeDemo&quot; field=&quot;amount&quot; default=&quot;50&quot;&gt;
+slide me!
+&lt;/$range&gt;
+
+amount={{$:/temp/RangeDemo!!amount}}</pre>
+</div>
 <div created="20150502090132984" creator="EricShulman" modified="20150502112409358" modifier="EricShulman" module-type="widget" tags="" title="InsideTW/Widgets/ScrollHere.js" type="application/javascript">
 <pre>/*\
 title: InsideTW/Widgets/ScrollHere.js
@@ -10391,13 +10586,15 @@ At the end of this section, the user should be ready to start exploring TiddlyWi
 
 &lt;&lt;list-links [tag[Setup]]&gt;&gt;</pre>
 </div>
-<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" icon="images/concepts.svg" list="[[What's in a name?]] [[The Wiki Way]] PublicPrivatePersonal DocumentOrWebsite MicroContent Benefits Roles Scenarios Community" modified="20150326203039425" modifier="EricShulman" status="draft" tags="InsideTW" title="Introduction">
+<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" icon="images/concepts.svg" list="WhatsInAName [[The Wiki Way]] PublicPrivatePersonal DocumentOrWebsite MicroContent Benefits Roles Scenarios Community" modified="20150510005102020" modifier="EricShulman" status="draft" tags="InsideTW" title="Introduction">
 <pre>@@float:right;text-align:right;[img width=300 [images/twcomsnap.png]]@@
 ''//&quot;Unless you've already seen ~TiddlyWiki, we guarantee you've never seen anything like ~TiddlyWiki.&quot;//''
 @@font-size:70%;line-height:100%;&lt;br&gt;(a quote from [[Discover TiddlyWiki|http://tiddlywiki.com/#Discover%20TiddlyWiki]] on [ext[http://tiddlywiki.com]])@@
 
-In this section, we will discuss the &quot;big picture&quot; of ~TiddlyWiki... the concepts that guide the general philosophy and unique advantages of using ~TiddlyWiki to help manage all your information:
-&lt;&lt;list-links [tag{!!title}]&gt;&gt;</pre>
+Although almost every application claims to be unique, ~TiddlyWiki really is very different from nearly every other application you may be familiar with.
+
+The following topics will help you learn more about the overall concepts and general philosophy of ~TiddlyWiki that helps it to deliver it's unique advantages:
+&lt;&lt;showStartHere&gt;&gt;</pre>
 </div>
 <div caption="Knowledge Capture" created="20150314122923731" creator="EricShulman" icon="images/knowledge.svg" modified="20150425103650446" modifier="EricShulman" tags="MicroContent" title="KnowledgeCapture">
 <pre>* When you are busy entering information, you don't want to have a lot of work to do to manage the process.
@@ -10452,22 +10649,19 @@ In this section, we will discuss the &quot;big picture&quot; of ~TiddlyWiki... t
 &lt;/blockquote&gt;
 * etc.</pre>
 </div>
-<div created="20150212022243927" creator="EricShulman" modified="20150405195452318" modifier="EricShulman" status="draft" tags="Benefits" title="MicroContent">
+<div created="20150212022243927" creator="EricShulman" modified="20150510010630949" modifier="EricShulman" status="draft" tags="Benefits" title="MicroContent">
 <pre>Most wiki systems consist of a set of pages, sometimes sub-divided into &quot;sections&quot; that can be edited individually.  Each page usually encompasses an entire topic of interest, with embedded images, and links to other related topics.  While all pages start out &quot;empty&quot;, a typical wiki page can grow to be quite large over time, as more information is added.
 
-Unlike most wiki pages, which can contain huge amounts of information, TiddlyWiki introduces the idea of [[MicroContent]], smaller pieces of information, stored in individual &quot;tiddlers&quot;, that can then be combined in a variety of meaningful ways, depending on the particular use-case needs.  This allows for greater flexibility.
+Unlike most wiki pages, which can contain huge amounts of information, ~TiddlyWiki introduces the idea of ~MicroContent, smaller pieces of information, stored in individual &quot;tiddlers&quot;, that can then be combined in a variety of meaningful ways, depending on the particular use-case needs.  This allows for greater flexibility.
+&lt;&lt;showStartHere
+   &quot;@@.smaller ''//Learn more about ~MicroContent://''&lt;hr&gt;@@&quot;
+   &quot;floatright shadowbox&quot;&gt;&gt;
 
-A &quot;tiddler&quot; is the basic unit of storage in a ~TiddlyWiki document.  In technical terms, a tiddler functions much like a structured record in a database.  Each tiddler has a few very simple standard &quot;fields&quot;:
+In ~TiddlyWiki, the basic unit of ~MicroContent is called a &quot;tiddler&quot; (see &lt;&lt;captionlink &quot;WhatsInAName&quot;&gt;&gt;).  In technical terms, a tiddler functions much like a structured record in a database.  Each tiddler &quot;record&quot; is composed of a set of &quot;fields&quot;
 
-* The title, which is used as a unique ID.
-* The body of text to be displayed.
-* A set of keywords (or &quot;tags&quot;), used for categorizing and searching (more on that later)
-* An optional &quot;type&quot;, which uses &quot;MIME types&quot; to apply special handling to certain kinds of data (more on that later as well)
+The default tiddler fields include a ''title'', which is used as a //unique ID// for each tiddler, the ''content'' to be formatted and displayed, and a set of keyword ''tags'', used for categorizing and searching.  You can also add ''extra fields'' to hold any values you like.  This allows you to use tiddlers to create your own unique database-like applications, where each tiddler holds whatever details you want.
 
-You can also add extra &quot;custom&quot; fields to hold any values you like.  This allows you to create unique database-like applications.
-
-!!MicroContent can be used a variety of ways:
-&lt;&lt;list-links [tag[MicroContent]]&gt;&gt;</pre>
+Tiddlers also have an optional &quot;type&quot; field, which uses standard [[&quot;MIME&quot; Internet media types|http://en.wikipedia.org/wiki/Internet_media_type]] to apply special handling to certain kinds of data.  This allows ~TiddlyWiki to recognize and process tiddlers that include embedded binary content, such as images, audio, video, etc.</pre>
 </div>
 <div created="20150212023457543" creator="EricShulman" modified="20150310120213782" modifier="EricShulman" tags="Scenarios" title="Personal">
 <pre>* Recipes (the standard cliche)
@@ -10777,10 +10971,10 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing your ~TiddlyWiki document.</pre>
 </div>
-<div created="20150212020808213" creator="EricShulman" modified="20150509013219790" modifier="EricShulman" status="draft" tags="Introduction" title="What's in a name?">
+<div caption="Silly Name, Great Idea!" created="20150212020808213" creator="EricShulman" modified="20150510010251220" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
 
-@@font-size:150%;''&quot;~TiddlyWiki&quot;''@@... when you first hear the name out loud, you might laugh a little, and then think of the child's game, &lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;~TiddlyWinks&lt;/a&gt;.
+@@font-size:150%;''&quot;~TiddlyWiki&quot;''@@... Let's be honest, when you first hear the name out loud, you might laugh a little, and then perhaps think of the child's game, &lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;~TiddlyWinks&lt;/a&gt;.  You might also wonder if a program with such a silly name can really be used for serious work.
 
 However, no matter how silly the name sounds, ''//~TiddlyWiki is no toy.  It is actually a very powerful tool that can help you create and manage lots of different kinds of information that you use in your daily life.//''
 
