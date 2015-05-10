@@ -278,6 +278,8 @@ Error message and password prompt
 
 <li>DownloadSaver</li>
 
+<li>Draft of 'InsideTW/NavBar/Macros'</li>
+
 <li>Editing</li>
 
 <li>Educational</li>
@@ -6248,16 +6250,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150510204013683" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150510205539943" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150510204013683" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150510205539943" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150510204013683" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150510205539943" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150510204013683" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150510205539943" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150510063806838" modifier="EricShulman" title="$:/state/tab--112437242">
@@ -6338,7 +6340,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150510204013683" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150510205539943" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6358,7 +6360,7 @@ exports.startup = function() {
 <div created="20150508070058573" creator="EricShulman" modified="20150510135902959" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150510204013683" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150510205539943" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6478,7 +6480,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150510204013683" modifier="EricShulman" title="$:/view">
+<div modified="20150510205539943" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -6731,6 +6733,54 @@ It is important to note that, because of browser security restrictions, the &quo
 However, if you are using ~FireFox, then there is a browser-based addon called TiddlyFox that automatically adds secure local file I/O handling into the ~TiddlyWiki core code.  After installing TiddlyFox, ~TiddlyWiki can then write updates directly to your filesystem.  See http://tiddlywiki.com/#TiddlyFox for details.
 
 Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from an `http://` URL) or if you are going to be using it locally on other people's systems (e.g., read/save to/from a USB stick), then &quot;download saving&quot; may be the ONLY reliable option available to save your changes.</pre>
+</div>
+<div created="20150405080824318" creator="EricShulman" draft.of="InsideTW/NavBar/Macros" draft.title="InsideTW/NavBar/Macros" modified="20150510205241298" modifier="EricShulman" tags="$:/tags/Macro" title="Draft of 'InsideTW/NavBar/Macros'" type="">
+<pre>\define NavBarLink(pos)
+&lt;$list filter=&quot;[all[current]!title{InsideTW/RootTag}]&quot;
+   emptyMessage=&quot;&lt;$tiddler tiddler={{$:/DefaultTiddlers}}&gt;&lt;&lt;NavBarLink $pos$&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
+   @@float:$pos$;&lt;$link to={{!!title}}&gt;@@.itw-navbar-link &lt;&lt;toc-caption&gt;&gt;@@&lt;/$link&gt;@@
+&lt;/$list&gt;
+\end
+
+\define NavBarButton(dir,pos)
+&lt;$list filter=&quot;[all[current]!title{InsideTW/RootTag}]&quot;
+   emptyMessage=&quot;&lt;$tiddler tiddler={{$:/DefaultTiddlers}}&gt;&lt;&lt;NavBarButton $dir$ $pos$&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
+   @@float:$pos$;
+      &lt;$link to={{!!title}} tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;
+      @@.itw-navbar-button {{$:/core/images/chevron-$dir$}}@@
+      &lt;/$link&gt;
+   @@
+&lt;/$list&gt;
+\end
+
+\define NavBarIcons()
+&lt;$list filter=&quot;[all[current]!has[icon]tags[]limit[1]]&quot;&gt;&lt;&lt;NavBarIcons&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[icon]]&quot;&gt;
+   &lt;$link to={{!!title}} tooltip={{!!caption}}&gt;
+      @@.resize &lt;$transclude tiddler={{!!icon}}/&gt;@@
+   &lt;/$link&gt;
+&lt;/$list&gt;
+\end
+
+\define NavBarTagPath()
+&lt;$list filter=&quot;[all[current]tags[]limit[1]]&quot;&gt;
+   &lt;&lt;NavBarTagPath&gt;&gt;&lt;$macrocall $name=&quot;tag&quot; tag={{!!title}}/&gt;
+&lt;/$list&gt;
+\end
+
+\define NavBarStartHere(caption:&quot;&quot;,class:&quot;floatleft shadowbox&quot;,style)
+&lt;div class=&quot;itw-navbar-starthere $class$&quot; style=&quot;$style$&quot;&gt;
+&lt;div&gt;$caption$&lt;/div&gt;
+&lt;div style=&quot;margin-left:1em;&quot;&gt;
+&lt;$list filter=&quot;[tag{!!title}limit[1]]&quot;&gt;
+   &lt;&lt;NavBarButton right left&gt;&gt;
+   &amp;nbsp; &lt;$link to={{!!title}} tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;,,//start here://,,&lt;/$link&gt;&lt;br&gt;
+   &amp;nbsp; &lt;$link to={{!!title}} tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;''&lt;&lt;toc-caption&gt;&gt;''&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;div style=&quot;clear:left&quot;&gt;,,//or, select any topic below://,,&lt;/div&gt;
+&lt;&lt;list-links [tag{!!title}rest[]]&gt;&gt;
+\end</pre>
 </div>
 <div caption="Creating Content" created="20150212024848622" creator="EricShulman" icon="images/editing.svg" list="TiddlerEditor [[Tagging Tiddlers]] [[Basic Formatting]] [[Linking and Embedding]] [[Adding Images]] CustomFields" modified="20150328225618988" modifier="EricShulman" tags="InsideTW" title="Editing">
 <pre>In this section, you will learn how to create your own content.
@@ -9430,7 +9480,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150510204013683" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.10.134011" title="InsideTW/Info/RevisionHistory" type="">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150510205539943" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;InsideTW/Info/RevisionHistory&quot;/&gt; ITW_V1.alpha @@.smaller {{InsideTW/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" tags="Appendix" timestamp="15.05.10.135538" title="InsideTW/Info/RevisionHistory" type="">
 <pre>Current build: ''ITW_V1.alpha'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9743,8 +9793,8 @@ Limited use of &quot;ELS Design Studios&quot;, &quot;~TiddlyTools&quot; and &quo
 &lt;&lt;list-links [tag{!!title}rest[]]&gt;&gt;
 \end</pre>
 </div>
-<div created="20150317073552035" creator="EricShulman" modified="20150510170650890" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet" type="text/css">
-<pre>/* STYLED CONTAINERS */
+<div created="20150317073552035" creator="EricShulman" modified="20150510205424647" modifier="EricShulman" tags="$:/tags/Stylesheet" title="InsideTW/NavBar/StyleSheet">
+<pre>&lt;pre&gt;
 .itw-navbar {
     clear:both; display:block;
 }
@@ -9828,7 +9878,7 @@ Limited use of &quot;ELS Design Studios&quot;, &quot;~TiddlyTools&quot; and &quo
    line-height:120%;
    margin:0.5em 1em !important; padding:0.5em 1em 0 0.5em !important;
 }
-</pre>
+&lt;/pre&gt;</pre>
 </div>
 <div created="20150316172842092" creator="EricShulman" list-before="$:/core/ui/ViewTemplate/body" modified="20150510122843167" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="InsideTW/NavBar/Top" type="">
 <pre>\define navbartop()
@@ -10043,7 +10093,7 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 <div modified="20150510033545276" modifier="EricShulman" title="InsideTW/Settings/FontSize/LeftBar/ToolBar">
 <pre>100</pre>
 </div>
-<div modified="20150510075428278" modifier="EricShulman" title="InsideTW/Settings/FontSize/StartHere">
+<div modified="20150510205531910" modifier="EricShulman" title="InsideTW/Settings/FontSize/StartHere">
 <pre>100</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20150510035223070" modifier="EricShulman" tags="$:/tags/Macro" title="InsideTW/Settings/Macros">
