@@ -520,6 +520,8 @@ Error message and password prompt
 
 <li>TWBook/Info/Notes</li>
 
+<li>TWBook/Info/PartsList</li>
+
 <li>TWBook/Info/Reviewers</li>
 
 <li>TWBook/Info/RevisionHistory</li>
@@ -6246,23 +6248,23 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150513102813497" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150513121122459" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150513102813497" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150513121122460" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150513102813497" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150513121122459" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150513102813497" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150513121122459" modifier="EricShulman" title="$:/state/Stretch">
 <pre>no</pre>
 </div>
 <div modified="20150510063806838" modifier="EricShulman" title="$:/state/tab--112437242">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div modified="20150513084721847" modifier="EricShulman" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div modified="20150513113938247" modifier="EricShulman" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div modified="20150427091102652" modifier="EricShulman" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -6300,7 +6302,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150504204436318" creator="EricShulman" modified="20150513102813497" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150504204436318" creator="EricShulman" modified="20150513121122459" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6317,10 +6319,10 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20150508070058573" creator="EricShulman" modified="20150513095402568" modifier="EricShulman" title="$:/temp/NewTagName">
+<div created="20150508070058573" creator="EricShulman" modified="20150513105253601" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150503075127570" creator="EricShulman" modified="20150513102813497" modifier="EricShulman" title="$:/temp/search">
+<div created="20150503075127570" creator="EricShulman" modified="20150513121122459" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20150513042818399" creator="EricShulman" modified="20150513042820020" modifier="EricShulman" title="$:/temp/whereto" whereto="CoverPage">
@@ -6443,7 +6445,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150513102813497" modifier="EricShulman" title="$:/view">
+<div modified="20150513121122460" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9961,7 +9963,7 @@ Of course, if additional funds can be raised , I can continue to devote my full 
 
 &lt;$macrocall $name=&quot;ListAll&quot; tag={{TWBook/RootTag}}/&gt;</pre>
 </div>
-<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150513085309674" modifier="EricShulman" tags="Appendix" title="TWBook/Info/Notes">
+<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150513105354550" modifier="EricShulman" tags="Appendix" title="TWBook/Info/Notes">
 <pre>The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
 
 The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged in a manner compatible with the ~TiddlyWiki built-in &quot;table of contents&quot; (`&lt;&lt;toc&gt;&gt;`) macro.
@@ -10003,17 +10005,42 @@ In order to make navigation between tiddlers easier, each tiddler has an added t
 The ~NavBar also provide large, easy-to-press buttons on either side of the header display that let you quickly navigate to the related previous/next &quot;sibling&quot; topics in the outline.  These buttons are repeated below the tiddler content as well, so that they will be readily accessible without need to scroll back to the top after reading a longer topic.
 
 The bottom ~NavBar also displays some &quot;Draft only&quot; content that will be removed when published.  This includes a [[TWBook/Info/DraftNotice]], as well as the current document version: [[TWBook/Info/RevisionHistory]].  Clicking the version text will show the revision notes in a modal popup.
-&lt;&lt;&lt;
-
-!!!__List of customizations:__
-&lt;&lt;&lt;
-All tiddlers used for customization begin with &quot;TWBook/&quot; in their title:
-@@.smaller.twocolumns
-&lt;$list filter=&quot;[prefix[TWBook/]sort[]]&quot;&gt;
-&lt;$link&gt;&lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;br&gt;&lt;/$set&gt;&lt;/$link&gt;
-&lt;/$list&gt;
-@@
 &lt;&lt;&lt;</pre>
+</div>
+<div caption="List of Customizations" created="20150513105208020" creator="EricShulman" modified="20150513121035047" modifier="EricShulman" tags="TWBook/Info/Notes" title="TWBook/Info/PartsList">
+<pre>\define ShowLink()
+&lt;$link&gt;&lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;&lt;/$link&gt;
+\end
+@@.smallest.threecolumns 
+
+''__TWBook__''&lt;br&gt;
+&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]!suffix[/]] -[removeprefix[TWBook/]splitbefore[/]removesuffix[/]] +[sort[]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TWBook/]]&quot;&gt;
+   &lt;&lt;ShowLink&gt;&gt;
+&lt;br&gt;&lt;/$list&gt;
+&lt;/$list&gt;
+
+&lt;br&gt;
+&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]removesuffix[/]] +[sort[]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TWBook/]]&quot;&gt;
+''__&lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;__''&lt;br&gt;
+&lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;]&quot;&gt;
+   &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;br&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+''__Modified Shadows__''&lt;br&gt;
+&lt;$list filter=&quot;[is[shadow]] -[prefix[$:/temp]] +[sort[]]&quot;&gt;
+   &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;br&gt;
+''__State tracking__''&lt;br&gt;
+&lt;$list filter=&quot;[prefix[$:/state]] -[prefix[$:/state/tab]] +[sort[]]&quot;&gt;
+   &lt;&lt;ShowLink&gt;&gt; ={{!!text}}&lt;br&gt;
+&lt;/$list&gt;
+@@</pre>
 </div>
 <div caption="How To Review This Book" created="20150322234136996" creator="EricShulman" modified="20150513083224344" modifier="EricShulman" tags="Appendix" title="TWBook/Info/Reviewers">
 <pre>This is an early, work-in-progress, and is being presented exclusively for review and feedback from participants in the [[InsideTiddlyWiki Google Group|https://groups.google.com/forum/#!forum/insidetiddlywiki]] and other invited parties.
@@ -10054,7 +10081,7 @@ When reviewing the document's interactive functions, emphasis should be on:
 
 You can [[post your review feedback on the InsideTiddlyWiki GoogleGroup|https://groups.google.com/forum/#!forum/insidetiddlywiki]] so that others can see what issues have been raised.  Alternatively, if you prefer to send me private feedback, you can [[email your review directly to me|mailto:elsdesign@gmail.com]]</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150513102813497" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="Appendix" timestamp="15.05.13.032802" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150513121122460" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="Appendix" timestamp="15.05.13.051116" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
