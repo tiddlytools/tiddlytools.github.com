@@ -6208,16 +6208,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150523052731281" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150523052731281" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150523052731281" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150523052731281" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/state/Stretch">
 <pre>yes</pre>
 </div>
 <div modified="20150522225143860" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6226,7 +6226,7 @@ exports.startup = function() {
 <div modified="20150523001041925" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div modified="20150523052731281" modifier="EricShulman" title="$:/state/TopLeftBar">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/state/TopLeftBar">
 <pre>yes</pre>
 </div>
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
@@ -6255,7 +6255,7 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150523052731281" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150523184255300" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6375,7 +6375,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150523052731282" modifier="EricShulman" title="$:/view">
+<div modified="20150523184255301" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9802,7 +9802,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150523052731282" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.22.222718" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150523184255301" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.23.114252" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9912,15 +9912,25 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 {{TWBook/TOC}}
 &lt;/div&gt;</pre>
 </div>
-<div created="20150427071348784" creator="EricShulman" modified="20150513080008183" modifier="EricShulman" tags="" title="TWBook/LeftBar/Location">
+<div created="20150427071348784" creator="EricShulman" modified="20150523184232238" modifier="EricShulman" tags="" title="TWBook/LeftBar/Location">
 <pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
+&lt;table class=&quot;borderless&quot; style=&quot;width:100%;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;
+@@.larger  {{||TWBook/Buttons/Permalink}}@@
+&lt;/td&gt;&lt;td&gt;
+@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
+&lt;/td&gt;&lt;td style=&quot;text-align:right;&quot;&gt;
+@@.larger {{||TWBook/Favorites/Toggle}}@@
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;!--
 @@.floatleft.larger  {{||TWBook/Buttons/Permalink}}@@
 @@.floatright.larger {{||TWBook/Favorites/Toggle}}@@
 @@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
 @@.clear @@
+--&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20150523051747905" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/LeftBar/Stylesheet">
+<div created="20150418054240175" creator="EricShulman" modified="20150523181026603" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/LeftBar/Stylesheet">
 <pre>\define Vmargin()      42px
 \define Hmargin()      42px
 \define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
@@ -9930,11 +9940,11 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 \define barleft()      29px
 \define barheight()    (100vh - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
 \define barwidth()     (50vw - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
+\define barfontsize()  (0.9em * ({{TWBook/Settings/FontSize/LeftBar}} / 100))
 
 &lt;pre&gt;
 /* PANEL */
 .twb-leftbar {
-   font-size:{{TWBook/Settings/FontSize/LeftBar}}%;
    margin:   0;
    position: fixed;
    z-index:  999; /* BEHIND DROPDOWNS */
@@ -9942,6 +9952,7 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
    left:      calc(&lt;&lt;barleft&gt;&gt;);
    height:    calc(&lt;&lt;barheight&gt;&gt;);
    min-width: calc(&lt;&lt;barwidth&gt;&gt;);
+   font-size: calc(&lt;&lt;barfontsize&gt;&gt;);
 }
 
 /* BACKGROUND BUTTON */
@@ -10349,13 +10360,13 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 <div modified="20150522224744739" modifier="EricShulman" title="TWBook/Settings/FontSize/BodyText">
 <pre>100</pre>
 </div>
-<div created="20150508233558006" creator="EricShulman" modified="20150523052301026" modifier="EricShulman" title="TWBook/Settings/FontSize/LeftBar">
+<div created="20150508233558006" creator="EricShulman" modified="20150523183016478" modifier="EricShulman" title="TWBook/Settings/FontSize/LeftBar">
 <pre>100</pre>
 </div>
 <div modified="20150512073930255" modifier="EricShulman" title="TWBook/Settings/FontSize/StartHere">
 <pre>100</pre>
 </div>
-<div modified="20150523052623440" modifier="EricShulman" title="TWBook/Settings/FontSize/ToolBar">
+<div modified="20150523182602302" modifier="EricShulman" title="TWBook/Settings/FontSize/ToolBar">
 <pre>140</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20150522224831627" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
@@ -10747,10 +10758,10 @@ background: &lt;&lt;background&gt;&gt;;
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20150523014910372" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/StyleSheet/Stretch">
+<div created="20150508051023458" creator="EricShulman" modified="20150523182501905" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/StyleSheet/Stretch">
 <pre>\define storywidth()    {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
-\define toolbarsize()   {{TWBook/Settings/FontSize/ToolBar}}
-\define topmargin()     (42px * (&lt;&lt;toolbarsize&gt;&gt; / 100))
+\define toolbarsize()   (1em  * ({{TWBook/Settings/FontSize/ToolBar}} / 100))
+\define topmargin()     (42px * ({{TWBook/Settings/FontSize/ToolBar}} / 100))
 \define botmargin()     42px
 \define navbarheight()  10em
 \define tiddlerheight() (100vh - &lt;&lt;topmargin&gt;&gt; - &lt;&lt;botmargin&gt;&gt;)
@@ -10766,7 +10777,7 @@ background: &lt;&lt;background&gt;&gt;;
 
 /* SCALEABLE TOOLBAR BUTTONS AND ADJUSTABLE TOP PADDING */
 .tc-topbar button
-   { font-size: &lt;&lt;toolbarsize&gt;&gt;%; }
+   { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
 html .tc-story-river, .tc-sidebar-scrollable
    { padding-top:calc(&lt;&lt;topmargin&gt;&gt;); }
 
@@ -10937,7 +10948,7 @@ html .tc-story-river {
 
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20150523050328766" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/Stylesheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20150523183908994" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/Stylesheet" type="">
 <pre>&lt;pre&gt;
 .twb-TOC { text-align:left; }
 
@@ -10957,7 +10968,7 @@ html .tc-story-river {
 .twb-TOC-togglebutton {
    fill: rgba(0,0,0,0.5);
 }
-/* HIDE TOGGLE BUTTONS WHEN &quot;SHOW ALL&quot; IS USED
+/* HIDE TOGGLE BUTTONS WHEN &quot;SHOW ALL&quot; IS USED */
 .twb-TOC-showall .twb-TOC-togglebutton {
    display:none;
 }
@@ -10984,9 +10995,9 @@ html .tc-story-river {
 &lt;&lt;TOCShowFavorite&gt;&gt;
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20150523052535872" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
+<div created="20150428010947376" creator="EricShulman" modified="20150523180718615" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
 <pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/TopLeftBar&quot;&gt;
-{{||TWBook/LeftBar/Buttons/Toggle}}
+   {{||TWBook/LeftBar/Buttons/Toggle}}
    &amp;nbsp;
    {{||TWBook/Buttons/Home}}
    &amp;nbsp;
