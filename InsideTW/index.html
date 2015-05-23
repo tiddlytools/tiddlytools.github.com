@@ -152,6 +152,8 @@ Error message and password prompt
 
 <li>$:/state/tab--1498284803</li>
 
+<li>$:/state/tab-1691732326</li>
+
 <li>$:/state/tab/sidebar--1835078512</li>
 
 <li>$:/state/TopLeftBar</li>
@@ -165,6 +167,8 @@ Error message and password prompt
 <li>$:/temp/HidePluginWarning</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/NewTagName</li>
 
 <li>$:/temp/search</li>
 
@@ -424,9 +428,13 @@ Error message and password prompt
 
 <li>TWBook/Buttons/StyleSheet</li>
 
+<li>TWBook/Buttons/ToggleLeftBar</li>
+
 <li>TWBook/Buttons/ToggleReadOnly</li>
 
 <li>TWBook/Buttons/ToggleStretch</li>
+
+<li>TWBook/Buttons/ViewAll</li>
 
 <li>TWBook/Favorites</li>
 
@@ -497,8 +505,6 @@ Error message and password prompt
 <li>TWBook/LeftBar/Buttons/Background</li>
 
 <li>TWBook/LeftBar/Buttons/Close</li>
-
-<li>TWBook/LeftBar/Buttons/Toggle</li>
 
 <li>TWBook/LeftBar/Content</li>
 
@@ -591,8 +597,6 @@ Error message and password prompt
 <li>TWBook/TopRightBar</li>
 
 <li>TWBook/ViewAll</li>
-
-<li>TWBook/ViewAll/Button</li>
 
 <li>TWBook/ViewAll/Macros</li>
 
@@ -6197,7 +6201,8 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[changes.svg]]</pre>
+# [[file72.svg]]
+# [[document68.svg]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -6208,25 +6213,28 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150523230302683" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150523230302683" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150523230302683" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150523230302683" modifier="EricShulman" title="$:/state/Stretch">
 <pre>yes</pre>
 </div>
 <div modified="20150522225143860" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
+<div modified="20150523224819670" modifier="EricShulman" title="$:/state/tab-1691732326">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+</div>
 <div modified="20150523001041925" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/state/TopLeftBar">
+<div modified="20150523230302683" modifier="EricShulman" title="$:/state/TopLeftBar">
 <pre>yes</pre>
 </div>
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
@@ -6235,8 +6243,8 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150522225106852" modifier="EricShulman" title="$:/temp/advancedsearch">
-<pre>71px</pre>
+<div created="20150522165255033" creator="EricShulman" modified="20150523224828740" modifier="EricShulman" title="$:/temp/advancedsearch">
+<pre>twb-col</pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
 <pre>yes</pre>
@@ -6255,7 +6263,10 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150523184255300" modifier="EricShulman" title="$:/temp/search">
+<div created="20150523193715516" creator="EricShulman" modified="20150523193837206" modifier="EricShulman" title="$:/temp/NewTagName">
+<pre></pre>
+</div>
+<div created="20150522222129469" creator="EricShulman" modified="20150523230302683" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6375,7 +6386,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150523184255301" modifier="EricShulman" title="$:/view">
+<div modified="20150523230302685" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -8823,8 +8834,11 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
    {{||$:/core/ui/AdvancedSearch/Standard}}
 &lt;/div&gt;</pre>
 </div>
-<div created="20150419051135299" creator="EricShulman" modified="20150509065117845" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/Buttons/StyleSheet" type="">
-<pre>&lt;pre&gt;
+<div created="20150419051135299" creator="EricShulman" modified="20150523225558671" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/Buttons/StyleSheet" type="">
+<pre>\define dropdownbg()  {{TWBook/Settings/Background/DropDowns}}
+\define toolbarsize() (1em  * ({{TWBook/Settings/FontSize/ToolBar}} / 100))
+
+&lt;pre&gt;
 .twb-button {
    text-align:center;
    padding: 0.25em !important;
@@ -8840,17 +8854,36 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
    background-color:#ccc !important;
    box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.3) inset;
 }
-.twb-button svg           { fill: black; }
+.twb-button svg    { fill: black; }
 
+.twb-btn-invisible { padding: 0; margin: 0; background: none; border: none; }
+
+/* TOP TOOLBAR BUTTON SIZE AND FADEIN */
+.tc-topbar .twb-button       { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
+.tc-topbar .tc-btn-invisible { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
 .tc-topbar .twb-button       { opacity:0.3; }
 .tc-topbar:hover .twb-button { opacity:1.0; }
 
-/* DROPDOWNS: INLINE LINKS/BUTTONS  */
-.twb-drop-down { background:{{TWBook/Settings/Background/DropDowns}}; }
-.twb-drop-down                          { border-radius:0.5em; padding:1em; }
-.twb-drop-down a, .twb-drop-down button { display:inline; width:auto; padding:0; }
-.twb-drop-down a, .twb-drop-down button { color:#5778d8; }
+/* DROPDOWNS, INLINE LINKS AND BUTTONS  */
+.twb-drop-down        { background:&lt;&lt;dropdownbg&gt;&gt;; }
+.twb-drop-down        { border-radius:0.5em; padding:1em; }
+.twb-drop-down a,
+.twb-drop-down button { display:inline; width:auto; padding:0; }
+.twb-drop-down a      { color:#5778d8; }
 &lt;/pre&gt;</pre>
+</div>
+<div created="20150419203816208" creator="EricShulman" modified="20150523215611786" modifier="EricShulman" title="TWBook/Buttons/ToggleLeftBar">
+<pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;
+&lt;$button class=&quot;twb-button&quot;
+   tooltip=&quot;hide Table of Contents&quot;&gt;
+   &lt;$action-deletetiddler $tiddler=&quot;$:/state/LeftBar&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;
+&lt;$button class=&quot;twb-button&quot;
+   tooltip=&quot;show Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/state/LeftBar&quot; text=&quot;yes&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150321230215146" creator="EricShulman" modified="20150522161350445" modifier="EricShulman" title="TWBook/Buttons/ToggleReadOnly">
 <pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/ReadOnly&quot;&gt;
@@ -8868,20 +8901,23 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
    {{$:/core/images/unlocked-padlock}}
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
-<div created="20150402223118689" creator="EricShulman" modified="20150522160439098" modifier="EricShulman" tags="" title="TWBook/Buttons/ToggleStretch">
+<div created="20150402223118689" creator="EricShulman" modified="20150523225542771" modifier="EricShulman" tags="" title="TWBook/Buttons/ToggleStretch">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&quot;$:/state/Stretch&quot;&gt;
-&lt;$button set=&quot;$:/state/Stretch&quot; setTo=&quot;yes&quot; class=&quot;twb-button&quot;
-   tooltip=&quot;stretch to fit is OFF&quot;&gt;
-   {{$:/core/images/full-screen-button}}
+&lt;$button set=&quot;$:/state/Stretch&quot; setTo=&quot;yes&quot; class=&quot;twb-btn-invisible&quot;&gt;
+   &lt;input type=&quot;checkbox&quot;&gt; stretch to fit
 &lt;/$button&gt;
 &lt;/$reveal&gt;
-
 &lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/Stretch&quot;&gt;
-&lt;$button set=&quot;$:/state/Stretch&quot; setTo=&quot;no&quot; class=&quot;twb-button inset&quot;
-   tooltip=&quot;stretch to fit is ON&quot;&gt;
-   {{$:/core/images/full-screen-button}}
+&lt;$button set=&quot;$:/state/Stretch&quot; setTo=&quot;no&quot; class=&quot;twb-btn-invisible&quot;&gt;
+   &lt;input type=&quot;checkbox&quot; checked=&quot;yes&quot;&gt; stretch to fit
 &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
+</div>
+<div created="20150401100651332" creator="EricShulman" modified="20150523215750497" modifier="EricShulman" tags="" title="TWBook/Buttons/ViewAll">
+<pre>&lt;$button class=&quot;twb-button&quot; tooltip=&quot;view entire Book&quot;&gt;
+   &lt;$action-navigate $to=&quot;TWBook/ViewAll&quot;/&gt;
+   @@.resize [img[TWBook/images/viewall.svg]]@@
+&lt;/$button&gt;</pre>
 </div>
 <div created="20150501025156158" creator="EricShulman" modified="20150522002313324" modifier="EricShulman" tags="" title="TWBook/Favorites">
 <pre>&lt;$button
@@ -9710,7 +9746,7 @@ Of course, if additional funds can be raised , I can continue to devote my full 
 
 &lt;$macrocall $name=&quot;ListAll&quot; tag={{TWBook/RootTag}}/&gt;</pre>
 </div>
-<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150522163125344" modifier="EricShulman" tags="Appendix" title="TWBook/Info/Notes">
+<div caption="How This Book Was Made" created="20150212223132324" creator="EricShulman" modified="20150523215644044" modifier="EricShulman" tags="Appendix" title="TWBook/Info/Notes">
 <pre>The process began by creating a simple text file with a short outline of intended topics.  This text file was then imported into an empty ~TiddlyWiki5 document (by drag-and-drop) to create a tiddler named [[InsideTW]].
 
 The items in the initial outline, along with any subitems below then in the outline, were then refactored into separate tiddlers and tagged in a manner compatible with the ~TiddlyWiki built-in &quot;table of contents&quot; (`&lt;&lt;toc&gt;&gt;`) macro.
@@ -9728,7 +9764,7 @@ Unlocking the document re-displayes the hidden editing features, so that topics 
 
 !!!__The ~LeftBar Panel__
 &lt;&lt;&lt;
-The {{TWBook/LeftBar/Buttons/Toggle}} &quot;menu&quot; button is located in the top-left corner of the page (see [[TWBook/TopLeftBar]]).  This button toggles the display of the ~LeftBar side panel (see [[TWBook/LeftBar]]).
+The {{TWBook/Buttons/ToggleLeftBar}} &quot;menu&quot; button is located in the top-left corner of the page (see [[TWBook/TopLeftBar]]).  This button toggles the display of the ~LeftBar side panel (see [[TWBook/LeftBar]]).
 
 There is also an //invisible// [[TWBook/LeftBar/Buttons/Background]] button that occupies all the space to the left of the tiddler display.  This button allows you to toggle the display of the ~LeftBar simply by clicking/tapping anywhere along the left side of the window.
 
@@ -9802,7 +9838,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150523184255301" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.23.114252" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150523230302685" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.23.160255" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -9893,19 +9929,6 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
    &lt;$action-deletetiddler $tiddler=&quot;$:/state/LeftBar&quot;/&gt;
    {{$:/core/images/close-button}}
 &lt;/$button&gt;</pre>
-</div>
-<div created="20150419203816208" creator="EricShulman" modified="20150522223956367" modifier="EricShulman" title="TWBook/LeftBar/Buttons/Toggle">
-<pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;
-&lt;$button class=&quot;twb-button&quot;
-   tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$:/state/LeftBar&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&quot;$:/state/LeftBar&quot;&gt;
-&lt;$button class=&quot;twb-button&quot;
-   tooltip=&quot;show Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/state/LeftBar&quot; text=&quot;yes&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150504194427359" creator="EricShulman" modified="20150504200017878" modifier="EricShulman" tags="" title="TWBook/LeftBar/Content">
 <pre>&lt;div class=&quot;scroll-y&quot; style=&quot;height:100%;padding-top:0.25em;&quot;&gt;
@@ -10004,9 +10027,9 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 .twb-leftbar:hover .twb-leftbar-location:hover .twb-button { opacity:1.0; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150427050900338" creator="EricShulman" modified="20150523052247353" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
+<div created="20150427050900338" creator="EricShulman" modified="20150523221731661" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
 <pre>&lt;nobr&gt;
-@@.larger.floatright {{||TWBook/Settings}}@@
+@@.larger.floatright &lt;&lt;TOCToggleAllButton&gt;&gt;@@
 @@.larger.left ''{{$:/SiteTitle}}''&lt;br&gt;@@
 @@.smaller.left {{$:/SiteSubtitle}}@@
 &lt;/nobr&gt;</pre>
@@ -10319,12 +10342,12 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 		domNode.style.left = 0;
 ```</pre>
 </div>
-<div created="20150426204100552" creator="EricShulman" modified="20150509093727910" modifier="EricShulman" tags="" title="TWBook/Settings">
+<div created="20150426204100552" creator="EricShulman" modified="20150523221355796" modifier="EricShulman" tags="" title="TWBook/Settings">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt; class=&quot;twb-button&quot;
    tooltip=&quot;settings...&quot;&gt;
    @@.resize {{$:/core/images/options-button}}@@
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt;&gt;
+&lt;$reveal type=&quot;popup&quot; position=&quot;belowleft&quot; state=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-drop-down tc-popup-keep twb-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    {{TWBook/Settings/Panel}}
 &lt;/div&gt;
@@ -10351,7 +10374,7 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 <div created="20150515023717198" creator="EricShulman" modified="20150515023718596" modifier="EricShulman" title="TWBook/Settings/Background/StartHere">
 <pre>url(&lt;&lt;datauri TWBook/images/textures/notepaper.jpg&gt;&gt;)</pre>
 </div>
-<div created="20150508015334312" creator="EricShulman" modified="20150515023658543" modifier="EricShulman" title="TWBook/Settings/Background/Window">
+<div created="20150508015334312" creator="EricShulman" modified="20150523223216781" modifier="EricShulman" title="TWBook/Settings/Background/Window">
 <pre>url(&lt;&lt;datauri TWBook/images/textures/wood.jpg&gt;&gt;)</pre>
 </div>
 <div created="20150508233847761" creator="EricShulman" modified="20150508235638533" modifier="EricShulman" title="TWBook/Settings/FontColor/BodyText">
@@ -10366,10 +10389,10 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 <div modified="20150512073930255" modifier="EricShulman" title="TWBook/Settings/FontSize/StartHere">
 <pre>100</pre>
 </div>
-<div modified="20150523182602302" modifier="EricShulman" title="TWBook/Settings/FontSize/ToolBar">
-<pre>140</pre>
+<div modified="20150523225738656" modifier="EricShulman" title="TWBook/Settings/FontSize/ToolBar">
+<pre>150</pre>
 </div>
-<div created="20150429051729816" creator="EricShulman" modified="20150522224831627" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
+<div created="20150429051729816" creator="EricShulman" modified="20150523224933489" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
 <pre>\define dec()         0 1 2 3 4 5 6 7 8 9
 \define dec_reverse() 9 8 7 6 5 4 3 2 1 0
 \define hex()         0 1 2 3 4 5 6 7 8 9 a b c d e f
@@ -10384,12 +10407,12 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 
 \define color_button(color:&quot;white&quot;,w:&quot;1em&quot;,h:&quot;1em&quot;)
 &lt;$reveal type=&quot;match&quot; text=&quot;$color$&quot; state={{!!title}}&gt;&lt;!--SELECTED--&gt;
-&lt;$button set={{!!title}} setTo=&quot;$color$&quot; tooltip=&quot;$color$&quot; class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$button set={{!!title}} setTo=&quot;$color$&quot; tooltip=&quot;$color$&quot; class=&quot;twb-btn-invisible&quot;&gt;
 &lt;$macrocall $name=&quot;color_box&quot; color=&quot;$color$&quot; w=&quot;$w$&quot; h=&quot;$h$&quot; inset=&quot;inset&quot;/&gt;
 &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;$color$&quot; state={{!!title}}&gt;&lt;!--UNSELECTED--&gt;
-&lt;$button set={{!!title}} setTo=&quot;$color$&quot; tooltip=&quot;$color$&quot; class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$button set={{!!title}} setTo=&quot;$color$&quot; tooltip=&quot;$color$&quot; class=&quot;twb-btn-invisible&quot;&gt;
 &lt;$macrocall $name=&quot;color_box&quot; color=&quot;$color$&quot; w=&quot;$w$&quot; h=&quot;$h$&quot;/&gt;
 &lt;/$button&gt;
 &lt;/$reveal&gt;
@@ -10468,7 +10491,7 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 \end
 
 \define palette_popup(tid)
-&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt; class=&quot;twb-btn-invisible&quot;&gt;
 &lt;$macrocall $name=&quot;color_box&quot; color={{$tid$}} w=&quot;3em&quot; h=&quot;1em&quot;/&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt;&gt;
@@ -10565,12 +10588,8 @@ rgba(0,0,0,1.0)</pre>
 &quot;url(&lt;&lt;datauri TWBook/images/textures/notepaper.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri TWBook/images/textures/whitepaper.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20150523045550747" modifier="EricShulman" title="TWBook/Settings/Panel">
-<pre>@@.floatright.authortools 
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip='open system $:/ControlPanel'&gt;
-   &lt;$action-navigate $to=&quot;$:/ControlPanel&quot;/&gt;
-   @@.resize {{$:/core/images/options-button}}@@
-&lt;/$button&gt;@@
+<div created="20150426205104959" creator="EricShulman" modified="20150523225010500" modifier="EricShulman" title="TWBook/Settings/Panel">
+<pre>@@.floatright {{||TWBook/Buttons/ToggleStretch}}@@
 @@.larger Settings@@
 @@.thinline @@
 &lt;table class=&quot;borderless&quot;&gt;&lt;tr&gt;&lt;td&gt;
@@ -10758,7 +10777,7 @@ background: &lt;&lt;background&gt;&gt;;
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20150523182501905" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/StyleSheet/Stretch">
+<div created="20150508051023458" creator="EricShulman" modified="20150523222424803" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/StyleSheet/Stretch">
 <pre>\define storywidth()    {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
 \define toolbarsize()   (1em  * ({{TWBook/Settings/FontSize/ToolBar}} / 100))
 \define topmargin()     (42px * ({{TWBook/Settings/FontSize/ToolBar}} / 100))
@@ -10775,9 +10794,7 @@ background: &lt;&lt;background&gt;&gt;;
 .tc-tiddler-body
    { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); overflow-y:auto; }
 
-/* SCALEABLE TOOLBAR BUTTONS AND ADJUSTABLE TOP PADDING */
-.tc-topbar button
-   { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
+/* ADJUST TOP PADDING TO FIT SCALEABLE TOOLBAR BUTTONS */
 html .tc-story-river, .tc-sidebar-scrollable
    { padding-top:calc(&lt;&lt;topmargin&gt;&gt;); }
 
@@ -10813,9 +10830,11 @@ html .tc-story-river {
 &lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150427071526847" creator="EricShulman" modified="20150513063912151" modifier="EricShulman" tags="" title="TWBook/TOC">
-<pre>@@position:absolute;right:2em;&lt;&lt;TOCToggleAllButton&gt;&gt;@@
-@@.twb-TOC 
+<div created="20150427071526847" creator="EricShulman" modified="20150523221702966" modifier="EricShulman" tags="" title="TWBook/TOC">
+<pre>@@.twb-TOC 
+&lt;!-- OMIT
+@@position:absolute;right:2em;&lt;&lt;TOCToggleAllButton&gt;&gt;@@
+--&gt;
 &lt;$reveal type=&quot;match&quot;   text=&quot;yes&quot; state=&quot;$:/state/TOC/OpenAll&quot;&gt;
    &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{TWBook/RootTag}}/&gt;
 &lt;/$reveal&gt;
@@ -10995,9 +11014,9 @@ html .tc-story-river {
 &lt;&lt;TOCShowFavorite&gt;&gt;
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20150523180718615" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
+<div created="20150428010947376" creator="EricShulman" modified="20150523223807880" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
 <pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/TopLeftBar&quot;&gt;
-   {{||TWBook/LeftBar/Buttons/Toggle}}
+   {{||TWBook/Buttons/ToggleLeftBar}}
    &amp;nbsp;
    {{||TWBook/Buttons/Home}}
    &amp;nbsp;
@@ -11005,9 +11024,7 @@ html .tc-story-river {
    &amp;nbsp;
    {{||TWBook/Buttons/Search}}
    &amp;nbsp;
-   {{||TWBook/ViewAll/Button}}
-   &amp;nbsp;
-   {{||TWBook/Buttons/ToggleStretch}}
+   {{||TWBook/Buttons/ViewAll}}
 &lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/state/TopLeftBar&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide tools&quot;&gt;
    {{$:/core/images/chevron-left}}
@@ -11018,25 +11035,22 @@ html .tc-story-river {
    &lt;$action-setfield $tiddler=&quot;$:/state/TopLeftBar&quot; text=&quot;yes&quot;/&gt;
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
-<div created="20150426192418411" creator="EricShulman" modified="20150523051714819" modifier="EricShulman" tags="$:/tags/TopRightBar" title="TWBook/TopRightBar">
+<div created="20150426192418411" creator="EricShulman" modified="20150523224042297" modifier="EricShulman" tags="$:/tags/TopRightBar" title="TWBook/TopRightBar">
 <pre>{{||TWBook/Buttons/ResetAndSave}}
 &amp;nbsp;
 {{||TWBook/Buttons/AdvancedSearch}}
 &amp;nbsp;
 {{||TWBook/Buttons/RecentChanges}}
 &amp;nbsp;
-{{||TWBook/Buttons/ToggleReadOnly}}</pre>
+{{||TWBook/Buttons/ToggleReadOnly}}
+&amp;nbsp;
+{{||TWBook/Settings}}
+</pre>
 </div>
 <div created="20150401094933322" creator="EricShulman" modified="20150513073954080" modifier="EricShulman" navbarbottom="yes" navbartop="no" title="TWBook/ViewAll">
 <pre>@@.floatright {{||TWBook/Buttons/EditFromHere}}@@
 @@.viewall    &lt;$macrocall $name=&quot;ViewAll&quot; tag={{TWBook/RootTag}}/&gt;@@
 </pre>
-</div>
-<div created="20150401100651332" creator="EricShulman" modified="20150515022857054" modifier="EricShulman" tags="" title="TWBook/ViewAll/Button">
-<pre>&lt;$button class=&quot;twb-button&quot; tooltip=&quot;view entire Book&quot;&gt;
-   &lt;$action-navigate $to=&quot;TWBook/ViewAll&quot;/&gt;
-   @@.resize [img[TWBook/images/viewall.svg]]@@
-&lt;/$button&gt;</pre>
 </div>
 <div created="20150513073717572" creator="EricShulman" modified="20150513073742207" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/ViewAll/Macros">
 <pre>\define ViewAll(tag)
