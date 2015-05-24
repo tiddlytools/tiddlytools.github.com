@@ -586,6 +586,14 @@ Error message and password prompt
 
 <li>TWBook/TOC</li>
 
+<li>TWBook/TOC/Buttons/CloseBranch</li>
+
+<li>TWBook/TOC/Buttons/OpenBranch</li>
+
+<li>TWBook/TOC/Buttons/ToggleAll</li>
+
+<li>TWBook/TOC/Buttons/ToggleBranch</li>
+
 <li>TWBook/TOC/Macros</li>
 
 <li>TWBook/TOC/Stylesheet</li>
@@ -6213,16 +6221,16 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150523230302683" modifier="EricShulman" title="$:/state/LeftBar">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/state/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150523230302683" modifier="EricShulman" title="$:/state/ReadOnly">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/state/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150523230302683" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div modified="20150523230302683" modifier="EricShulman" title="$:/state/Stretch">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/state/Stretch">
 <pre>yes</pre>
 </div>
 <div modified="20150522225143860" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6231,10 +6239,10 @@ exports.startup = function() {
 <div modified="20150523224819670" modifier="EricShulman" title="$:/state/tab-1691732326">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div modified="20150523001041925" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
+<div modified="20150524030821332" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div modified="20150523230302683" modifier="EricShulman" title="$:/state/TopLeftBar">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/state/TopLeftBar">
 <pre>yes</pre>
 </div>
 <div created="20150212025258726" creator="e" modified="20150212025303189" modifier="EricShulma" title="$:/status/UserName">
@@ -6266,7 +6274,7 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150523193837206" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150523230302683" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150524051318641" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6386,7 +6394,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150523230302685" modifier="EricShulman" title="$:/view">
+<div modified="20150524051318641" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -6464,7 +6472,7 @@ Using commonly available web tech also provides virtually universal [[Portabilit
 &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{TWBook/RootTag}}/&gt;
 @@</pre>
 </div>
-<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150523015009200" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="InsideTW twbook-cover" title="CoverPage">
+<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150524042810596" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="InsideTW twbook-cover" title="CoverPage">
 <pre>&lt;br&gt;&lt;br&gt;
 @@.center.huge ''//{{$:/SiteTitle}}//''@@
 @@.center {{$:/SiteSubtitle}}@@
@@ -6475,7 +6483,7 @@ Using commonly available web tech also provides virtually universal [[Portabilit
       [img height=&quot;100%&quot; [images/cover.png]]
    &lt;/div&gt;
 &lt;/$link&gt;@@
-@@position:absolute;right:6em;margin-top:-6em; 
+@@position:absolute;right:25%;margin-top:-6em; 
 &lt;$tiddler tiddler=&quot;Preface&quot;&gt;
    @@.right.smallest &lt;$link tooltip=&quot;Preface&quot;&gt;Start Here&lt;/$link&gt;@@
    &lt;&lt;NavBarButton right right&gt;&gt;
@@ -9838,7 +9846,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150523230302685" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.23.160255" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150524051318641" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.23.212844" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 The following are ''//highlights//'' of changes.  For a complete list of all changes, please refer to the github history, online.  //TBD: need proper link//
@@ -10027,9 +10035,9 @@ The following are ''//highlights//'' of changes.  For a complete list of all cha
 .twb-leftbar:hover .twb-leftbar-location:hover .twb-button { opacity:1.0; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150427050900338" creator="EricShulman" modified="20150523221731661" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
+<div created="20150427050900338" creator="EricShulman" modified="20150524031500230" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
 <pre>&lt;nobr&gt;
-@@.larger.floatright &lt;&lt;TOCToggleAllButton&gt;&gt;@@
+@@.larger.floatright {{TWBook/TOC/Buttons/ToggleAll}}@@
 @@.larger.left ''{{$:/SiteTitle}}''&lt;br&gt;@@
 @@.smaller.left {{$:/SiteSubtitle}}@@
 &lt;/nobr&gt;</pre>
@@ -10830,11 +10838,8 @@ html .tc-story-river {
 &lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150427071526847" creator="EricShulman" modified="20150523221702966" modifier="EricShulman" tags="" title="TWBook/TOC">
+<div created="20150427071526847" creator="EricShulman" modified="20150524031523915" modifier="EricShulman" tags="" title="TWBook/TOC">
 <pre>@@.twb-TOC 
-&lt;!-- OMIT
-@@position:absolute;right:2em;&lt;&lt;TOCToggleAllButton&gt;&gt;@@
---&gt;
 &lt;$reveal type=&quot;match&quot;   text=&quot;yes&quot; state=&quot;$:/state/TOC/OpenAll&quot;&gt;
    &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{TWBook/RootTag}}/&gt;
 &lt;/$reveal&gt;
@@ -10843,42 +10848,21 @@ html .tc-story-river {
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20150513102801335" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
-<pre>\define TOCBranchIsOpen()    $:/state/TOC/$(tid)$
-\define TOCOpenAllBranches() $:/state/TOC/OpenAll
-
-\define TOCCloseButton()
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;collapse this item&quot;&gt;
+<div created="20150524030829342" creator="EricShulman" modified="20150524030949739" modifier="EricShulman" tags="" title="TWBook/TOC/Buttons/CloseBranch">
+<pre>&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;collapse this item&quot;&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;TOCBranchIsOpen&gt;&gt;/&gt;
    @@.resize.smaller {{$:/core/images/down-arrow}}@@
 &lt;/$button&gt;
-\end
-
-\define TOCOpenButton()
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;expand this item&quot;&gt;
+</pre>
+</div>
+<div created="20150524030933989" creator="EricShulman" modified="20150524031005766" modifier="EricShulman" tags="" title="TWBook/TOC/Buttons/OpenBranch">
+<pre>&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;expand this item&quot;&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;TOCBranchIsOpen&gt;&gt; text=&quot;yes&quot;/&gt;
    @@.resize.smaller {{$:/core/images/right-arrow}}@@
-&lt;/$button&gt;
-\end
-
-\define TOCToggleButton()
-&lt;span class=&quot;twb-TOC-togglebutton&quot;&gt;
-&lt;$set name=&quot;tid&quot;  value={{!!title}}&gt;
-   &lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
-      &lt;&lt;TOCCloseButton&gt;&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
-      &lt;$list filter=&quot;[&lt;tid&gt;tagging[]limit[1]]&quot; variable=&quot;x&quot;
-         emptyMessage=&quot;@@.resize.smaller &amp;emsp;@@&quot;&gt;
-         &lt;&lt;TOCOpenButton&gt;&gt;
-      &lt;/$list&gt;
-   &lt;/$reveal&gt;
-&lt;/$set&gt;
-&lt;/span&gt;
-\end
-
-\define TOCToggleAllButton()
-&lt;$reveal type=&quot;match&quot;   text=&quot;yes&quot; state=&lt;&lt;TOCOpenAllBranches&gt;&gt;&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div created="20150524031349750" creator="EricShulman" modified="20150524031407808" modifier="EricShulman" tags="" title="TWBook/TOC/Buttons/ToggleAll">
+<pre>&lt;$reveal type=&quot;match&quot;   text=&quot;yes&quot; state=&lt;&lt;TOCOpenAllBranches&gt;&gt;&gt;
 &lt;$button class=&quot;twb-button inset&quot; tooltip=&quot;collapse all items&quot;&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;TOCOpenAllBranches&gt;&gt;/&gt;
    @@.resize {{$:/core/images/chevron-up}}@@
@@ -10889,19 +10873,32 @@ html .tc-story-river {
    &lt;$action-setfield $tiddler=&lt;&lt;TOCOpenAllBranches&gt;&gt; text=&quot;yes&quot;/&gt;
    @@.resize {{$:/core/images/chevron-down}}@@
 &lt;/$button&gt;
-&lt;/$reveal&gt;
-\end
-
-\define TOCShowAll(tag,template:&quot;TWBook/TOC/Template&quot;)
-&lt;div class=&quot;twb-TOC-showall&quot;&gt;
-&lt;$list filter=&quot;[title[$tag$]tagging[]!has[draft.of]]&quot;&gt;
-   &lt;$transclude tiddler=&quot;$template$&quot; template={{!!title}}/&gt;
-   &lt;div class=&quot;twb-TOC-showall&quot; style=&quot;margin-left:1.5em;&quot;&gt;
-      &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{!!title}} template=&quot;$template$&quot;/&gt;
-   &lt;/div&gt;
-&lt;/$list&gt;
-&lt;/div&gt;
-\end
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150524031049358" creator="EricShulman" modified="20150524031208082" modifier="EricShulman" tags="" title="TWBook/TOC/Buttons/ToggleBranch">
+<pre>&lt;span class=&quot;twb-TOC-togglebutton&quot;&gt;
+&lt;$set name=&quot;tid&quot;  value={{!!title}}&gt;
+   &lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
+      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;collapse this item&quot;&gt;
+         &lt;$action-deletetiddler $tiddler=&lt;&lt;TOCBranchIsOpen&gt;&gt;/&gt;
+         @@.resize.smaller {{$:/core/images/down-arrow}}@@
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;tagging[]limit[1]]&quot; variable=&quot;x&quot;
+         emptyMessage=&quot;@@.resize.smaller &amp;emsp;@@&quot;&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;expand this item&quot;&gt;
+            &lt;$action-setfield $tiddler=&lt;&lt;TOCBranchIsOpen&gt;&gt; text=&quot;yes&quot;/&gt;
+            @@.resize.smaller {{$:/core/images/right-arrow}}@@
+         &lt;/$button&gt;
+      &lt;/$list&gt;
+   &lt;/$reveal&gt;
+&lt;/$set&gt;
+&lt;/span&gt;</pre>
+</div>
+<div created="20150426232927130" creator="EricShulman" modified="20150524031959426" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
+<pre>\define TOCBranchIsOpen()    $:/state/TOC/$(tid)$
+\define TOCOpenAllBranches() $:/state/TOC/OpenAll
 
 \define TOCShowItem()
 &lt;$transclude tiddler=&lt;&lt;template&gt;&gt; template=&lt;&lt;tid&gt;&gt;/&gt;
@@ -10922,6 +10919,17 @@ html .tc-story-river {
 &lt;$list filter=&quot;[title[$here$]tags[]limit[1]]&quot;&gt;
    &lt;$macrocall $name=&quot;TOCFindParent&quot; here={{!!title}}/&gt;
 &lt;/$list&gt;
+\end
+
+\define TOCShowAll(tag,template:&quot;TWBook/TOC/Template&quot;)
+&lt;div class=&quot;twb-TOC-showall&quot;&gt;
+&lt;$list filter=&quot;[title[$tag$]tagging[]!has[draft.of]]&quot;&gt;
+   &lt;$transclude tiddler=&quot;$template$&quot; template={{!!title}}/&gt;
+   &lt;div class=&quot;twb-TOC-showall&quot; style=&quot;margin-left:1.5em;&quot;&gt;
+      &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{!!title}} template=&quot;$template$&quot;/&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
 \end
 
 \define TOCShowTree(tag,template:&quot;TWBook/TOC/Template&quot;)
@@ -10949,20 +10957,6 @@ html .tc-story-river {
 &lt;/$list&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;
-\end
-
-\define TOCShowFavorite()
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;favorite[yes]]&quot;
-   emptyMessage=&quot;@@.invisible.resize [img[images/star_empty.svg]]@@&quot;&gt;
-   @@.resize [img[images/star_filled.svg]]@@
-&lt;/$list&gt;
-\end
-
-\define TOCShowIcon()
-&lt;!-- INHERIT ICON IF NONE ON CURRENT
-&lt;$list filter=&quot;[all[current]!has[icon]tags[]limit[1]]&quot;&gt;&lt;&lt;TOCShowIcon&gt;&gt;&lt;/$list&gt;
---&gt;
-@@.resize &lt;$transclude tiddler={{!!icon}}&gt;&amp;emsp;&lt;/$transclude&gt;@@
 \end
 
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
@@ -10993,10 +10987,10 @@ html .tc-story-river {
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232539664" creator="EricShulman" modified="20150512072555759" modifier="EricShulman" title="TWBook/TOC/Template">
+<div created="20150426232539664" creator="EricShulman" modified="20150524031926822" modifier="EricShulman" title="TWBook/TOC/Template">
 <pre>&lt;nobr&gt;
-&lt;&lt;TOCToggleButton&gt;&gt;
-&lt;&lt;TOCShowIcon&gt;&gt;
+{{||TWBook/TOC/Buttons/ToggleBranch}}
+@@.resize &lt;$transclude tiddler={{!!icon}}&gt;&amp;emsp;&lt;/$transclude&gt;@@
 &lt;$reveal type=&quot;nomatch&quot; text={{!!title}} state=&quot;$:/HistoryList!!current-tiddler&quot;&gt;
    &lt;span style=&quot;display:inline-block;width:calc(100% - 4em);&quot;&gt;
       @@.twb-TOC-item 
@@ -11011,7 +11005,10 @@ html .tc-story-river {
       @@ &lt;$scrollhere/&gt;
    &lt;/span&gt;
 &lt;/$reveal&gt;
-&lt;&lt;TOCShowFavorite&gt;&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;favorite[yes]]&quot;
+   emptyMessage=&quot;@@.invisible.resize [img[images/star_empty.svg]]@@&quot;&gt;
+   @@.resize [img[images/star_filled.svg]]@@
+&lt;/$list&gt;
 &lt;/nobr&gt;</pre>
 </div>
 <div created="20150428010947376" creator="EricShulman" modified="20150523223807880" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
