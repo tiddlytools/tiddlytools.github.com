@@ -679,16 +679,16 @@ Error message and password prompt
 <div modified="20150523225738656" modifier="EricShulman" title="$:/config/twb/FontSize/ToolBar">
 <pre>150</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/config/twb/LeftBar">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/config/twb/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/config/twb/ReadOnly">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/config/twb/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/config/twb/Stretch">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/config/twb/Stretch">
 <pre>yes</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/config/twb/TopLeftBar">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/config/twb/TopLeftBar">
 <pre>yes</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.8">
@@ -6278,7 +6278,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150525063434307" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6296,7 +6296,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150525085632478" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150525101824619" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6319,10 +6319,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150525044433211" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525084410114" creator="EricShulman" modified="20150525085630283" modifier="EricShulman" title="$:/temp/note">
-<pre></pre>
+<div created="20150525101121127" creator="EricShulman" modified="20150525101821498" modifier="EricShulman" title="$:/temp/note">
+<pre>more cleanup for reset and save</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150525085632478" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150525101824619" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6442,7 +6442,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150525085632478" modifier="EricShulman" title="$:/view">
+<div modified="20150525101824620" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9048,8 +9048,20 @@ use {{TWBook/images/star_empty.svg}} to add a topic
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20150525084930343" modifier="EricShulman" title="TWBook/Buttons/ResetAndSave">
-<pre>\define update_revision()
+<div created="20150316090221888" creator="EricShulman" modified="20150525101755013" modifier="EricShulman" title="TWBook/Buttons/ResetAndSave">
+<pre>\define reset_config()
+&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/temp/search&quot;           text=&quot;&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/temp/advancedsearch&quot;   text=&quot;&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/state/sidebar&quot;         text=&quot;no&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/view&quot;                  text=&quot;zoomin&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/config/twb/Stretch&quot;    text=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/config/twb/LeftBar&quot;    text=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/config/twb/TopLeftBar&quot; text=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/config/twb/ReadOnly&quot;   text=&quot;yes&quot;/&gt;
+\end
+
+\define update_revision()
 &lt;$tiddler tiddler=&quot;TWBook/Info/RevisionHistory&quot;&gt;
 &lt;$set name=&quot;timestamp&quot; value=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;&gt;
 &lt;$action-setfield timestamp=&lt;&lt;timestamp&gt;&gt;/&gt;
@@ -9068,31 +9080,10 @@ $(oldtext)$
 * $(timestamp)$ $(newtext)$
 \end
 
-\define reset_config()
-&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/temp/search&quot;           text=&quot;&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/temp/advancedsearch&quot;   text=&quot;&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/state/sidebar&quot;         text=&quot;no&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/view&quot;                  text=&quot;zoomin&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/twb/Stretch&quot;    text=&quot;yes&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/twb/LeftBar&quot;    text=&quot;yes&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/twb/TopLeftBar&quot; text=&quot;yes&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/twb/ReadOnly&quot;   text=&quot;yes&quot;/&gt;
-\end
-
-\define close_popup()
-&lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/SavePopup&quot;&gt;&gt;/&gt;
-\end
-
-\define save_wiki()
-&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;
-   $param={{$:/config/SaveWikiButton/Template}}/&gt;
-\end
-
 \define ok_button()
 &lt;$button class=&quot;twb-button&quot; style=&quot;font-size:1em;&quot; tooltip=&quot;save changes&quot;&gt;
-   &lt;&lt;update_revision&gt;&gt;
    &lt;&lt;reset_config&gt;&gt;
+   &lt;&lt;update_revision&gt;&gt;
    &lt;&lt;close_popup&gt;&gt;
    &lt;&lt;save_wiki&gt;&gt;
    @@.resize {{$:/core/images/done-button}}@@
@@ -9106,25 +9097,38 @@ $(oldtext)$
 &lt;/$button&gt;
 \end
 
-\define popup_contents()
-@@.floatright &lt;&lt;ok_button&gt;&gt; &lt;&lt;cancel_button&gt;&gt;@@
-''Save changes''
-^^&lt;br&gt;rev: ''&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;''^^
-@@.thinline.clear @@
-@@.smaller //add notes (optional)://&lt;br&gt;@@
-&lt;$edit-text tiddler=&quot;$:/temp/note&quot;/&gt;
+\define clear_notes()
+&lt;$action-setfield $tiddler=&quot;$:/temp/note&quot; text=&quot;&quot;/&gt;
+\end
+
+\define close_popup()
+&lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/SavePopup&quot;&gt;&gt;/&gt;
+\end
+
+\define save_wiki()
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;
+   $param={{$:/config/SaveWikiButton/Template}}/&gt;
+\end
+
+\define show_popup()
+&lt;div class=&quot;tc-drop-down tc-popup-keep twb-drop-down&quot; style=&quot;text-align:left&quot;&gt;
+   @@.floatright &lt;&lt;ok_button&gt;&gt; &lt;&lt;cancel_button&gt;&gt;@@
+   ''Save changes''
+   ^^&lt;br&gt;rev: ''&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;''^^
+   @@.thinline.clear @@
+   @@.smaller //add revision notes (optional)://&lt;br&gt;@@
+   &lt;$edit-text tiddler=&quot;$:/temp/note&quot;/&gt;
+&lt;/div&gt;
 \end
 
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/SavePopup&quot;&gt;&gt;
-   tooltip=&quot;enter revision notes, reset to defaults, and save changes&quot;
+   tooltip=&quot;enter notes, set startup defaults, and save changes&quot;
    class=&quot;authortools twb-button&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/note&quot; text=&quot;&quot;/&gt;
+   &lt;&lt;clear_notes&gt;&gt;
    &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/SavePopup&quot;&gt;&gt; position=&quot;below&quot;&gt;
-&lt;div class=&quot;tc-drop-down tc-popup-keep twb-drop-down&quot; style=&quot;text-align:left&quot;&gt;
-   &lt;&lt;popup_contents&gt;&gt;
-&lt;/div&gt;
+   &lt;&lt;show_popup&gt;&gt;
 &lt;/$reveal&gt;</pre>
 </div>
 <div created="20150417021111336" creator="EricShulman" modified="20150522002337263" modifier="EricShulman" tags="" title="TWBook/Buttons/Search">
@@ -10093,12 +10097,13 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150525085632475" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.25.015630" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150525101824620" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.25.031821" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
 * 15.05.25.011818 new revision history mechanism
-* 15.05.25.014422 cleanup [[TWBook/Buttons/ResetAndSave]]</pre>
+* 15.05.25.014422 cleanup [[TWBook/Buttons/ResetAndSave]]
+* 15.05.25.031821 more cleanup for reset and save</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150522224113004" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/config/twb/LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10463,74 +10468,61 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 <div created="20150424235330826" creator="EricShulman" modified="20150424235348053" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>InsideTW</pre>
 </div>
-<div created="20150316101821466" creator="EricShulman" modified="20150525063410616" modifier="EricShulman" tags="" title="TWBook/Scraps" url="images/eric3.jpg">
-<pre>\define append()
-$(oldtext)$
+<div created="20150316101821466" creator="EricShulman" modified="20150525095609161" modifier="EricShulman" tags="" title="TWBook/Scraps" url="images/eric3.jpg">
+<pre>&lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
+&lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
 
-$(newtext)$
+!!Checkbox toggle config flag
+```
+\define check(id,label)
+&lt;$checkbox tooltip=&quot;$label$&quot;
+   tiddler=&quot;$:/config/twb/$id$&quot; field=&quot;text&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;
+   $label$
+&lt;/$checkbox&gt;
 \end
+&lt;&lt;check id:&quot;Stretch&quot;    label:&quot;Stretch to fit&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;check id:&quot;LeftBar&quot;    label:&quot;Show Table of Contents&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;check id:&quot;TopLeftBar&quot; label:&quot;Show Toolbar buttons&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;check id:&quot;ReadOnly&quot;   label:&quot;Lock (Read-Only)&quot;&gt;&gt;&lt;br&gt;
+```
 
-&lt;$edit-text tiddler=&quot;$:/temp/revnote&quot; field=&quot;note&quot;/&gt;
-&lt;$button&gt;
-   &lt;$set name=&quot;oldtext&quot; value={{TWBook/Info/RevisionHistory!!text}}&gt;
-   &lt;$set name=&quot;newtext&quot; value={{$:/temp/revnote!!note}}&gt;
-   &lt;$action-setfield $tiddler=&quot;TWBook/Info/RevisionHistory&quot; text=&lt;&lt;append&gt;&gt;/&gt;
-   ok
-   &lt;/$set&gt;
-   &lt;/$set&gt;
-&lt;/$button&gt;
-
-
+!!Slider button
+```
 \define b(s,t)
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;show&quot; state=&quot;$:/state/$s$&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;more details&quot;&gt;
       &lt;$action-setfield $tiddler=&quot;$:/state/$s$&quot; text=&quot;show&quot;/&gt;
-      $t$
+      ...
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/state/$s$&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;less details&quot;&gt;
       &lt;$action-deletetiddler $tiddler=&quot;$:/state/$s$&quot;/&gt;
-      $t$
+      .
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
 
-&lt;&lt;b 1 &quot;I went to the store...&quot;&gt;&gt;
+I went to the store&lt;&lt;b 1&gt;&gt;
 &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/state/1&quot;&gt;
 
-   &lt;&lt;b 2 &quot;It was raining so I decided to drive instead of walk...&quot;&gt;&gt;
+   It was raining so I decided to drive instead of walk&lt;&lt;b 2&gt;&gt;
    &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/state/2&quot;&gt;
 
       The car took a while to start since it was so cold.
    &lt;/$reveal&gt;
-   &lt;&lt;b 3 &quot;I arrived at 5pm...&quot;&gt;&gt;
+   I arrived at 5pm&lt;&lt;b 3&gt;&gt;
    &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/state/3&quot;&gt;
 
        It was Sunday so they were just closing up.
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
-&lt;&lt;b 4 &quot;Then I bought a tomato...&quot;&gt;&gt;
+Then I bought a tomato&lt;&lt;b 4&gt;&gt;
 &lt;$reveal type=&quot;match&quot; text=&quot;show&quot; state=&quot;$:/state/4&quot;&gt;
 
    It was delicious.
 &lt;/$reveal&gt;
-
-----
-
-&lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
-&lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
-
-----
-
-To track the progress of the writing, each tiddler has a 'status' field that indicates the current stage of writing for that tiddler:
-
-* __''notes'': a topic placeholder and/or rough &quot;brain dump&quot; of ideas.__&lt;br&gt;Content can be simple bullet lists, snippets of prose, editorial reminders (e.g. lists of screensnaps needed), etc.  By default, all tiddlers, even empty ones, have a status of &quot;notes&quot; until another status value is set.
-* __''draft'': an initial writeup (or major rewrite), based on notes.__&lt;br&gt;Some content may be refactored by creating new tiddlers or combining existing ones.  //''Tiddlers marked as &quot;draft&quot; may be incomplete, but are generally ready for some degree of review and feedback''//.  Any embedded images may be simple placeholders, pending final screensnaps.
-* __''complete'': topic content is ready for full, detailed review__&lt;br&gt;draft feedback has been incorporated as appropriate, embedded images have been finalized and scaled to fit.  Final proofreading for typos, minor errors in grammar, spelling or punctuation.
-* __''final'': content is ready for publication__&lt;br&gt;After correcting any errors found, topic is marked &quot;final&quot; and no more changes are expected to be made to this tiddler.
-
-----
+```
 
 !!Some RGB test palettes:
 &lt;&lt;&lt;
@@ -10569,7 +10561,16 @@ if (!window.ELS_stopDebug) window.ELS_stopDebug=!confirm(window.ELS_debugMsg);
 		domNode.style.left = rightEdge - this.popup.width;
 	if(this.popup.left &amp;lt; 0)
 		domNode.style.left = 0;
-```</pre>
+```
+
+----
+
+To track the progress of the writing, each tiddler has a 'status' field that indicates the current stage of writing for that tiddler:
+
+* __''notes'': a topic placeholder and/or rough &quot;brain dump&quot; of ideas.__&lt;br&gt;Content can be simple bullet lists, snippets of prose, editorial reminders (e.g. lists of screensnaps needed), etc.  By default, all tiddlers, even empty ones, have a status of &quot;notes&quot; until another status value is set.
+* __''draft'': an initial writeup (or major rewrite), based on notes.__&lt;br&gt;Some content may be refactored by creating new tiddlers or combining existing ones.  //''Tiddlers marked as &quot;draft&quot; may be incomplete, but are generally ready for some degree of review and feedback''//.  Any embedded images may be simple placeholders, pending final screensnaps.
+* __''complete'': topic content is ready for full, detailed review__&lt;br&gt;draft feedback has been incorporated as appropriate, embedded images have been finalized and scaled to fit.  Final proofreading for typos, minor errors in grammar, spelling or punctuation.
+* __''final'': content is ready for publication__&lt;br&gt;After correcting any errors found, topic is marked &quot;final&quot; and no more changes are expected to be made to this tiddler.</pre>
 </div>
 <div created="20150426204100552" creator="EricShulman" modified="20150523221355796" modifier="EricShulman" tags="" title="TWBook/Settings">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/OptionsPopup&quot;&gt;&gt; class=&quot;twb-button&quot;
