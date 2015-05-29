@@ -158,6 +158,8 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/modules/widgets/edit-text.js</li>
+
 <li>$:/core/ui/ViewTemplate/tags</li>
 
 <li>$:/core/ui/ViewTemplate/title</li>
@@ -620,10 +622,6 @@ Error message and password prompt
 
 <li>TWBook/Widgets/cookie.js</li>
 
-<li>TWBook/Widgets/range.js</li>
-
-<li>TWBook/Widgets/range.js.info</li>
-
 <li>TWBook/Widgets/scrollhere.js</li>
 
 <li>TWBook/Widgets/scrollhere.js.info</li>
@@ -682,19 +680,19 @@ Error message and password prompt
 <div modified="20150526232153820" modifier="EricShulman" title="$:/config/twb/FontSize/StartHere">
 <pre>100</pre>
 </div>
-<div modified="20150527160154037" modifier="EricShulman" title="$:/config/twb/FontSize/ToolBar">
+<div created="20150529233240565" creator="EricShulman" modified="20150529233242463" modifier="EricShulman" title="$:/config/twb/FontSize/ToolBar">
 <pre>150</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/config/twb/LeftBar">
+<div modified="20150529233452669" modifier="EricShulman" title="$:/config/twb/LeftBar">
 <pre>yes</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/config/twb/ReadOnly">
+<div modified="20150529233452670" modifier="EricShulman" title="$:/config/twb/ReadOnly">
 <pre>yes</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/config/twb/Stretch">
+<div modified="20150529233452669" modifier="EricShulman" title="$:/config/twb/Stretch">
 <pre>yes</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/config/twb/Toolbar">
+<div modified="20150529233452670" modifier="EricShulman" title="$:/config/twb/Toolbar">
 <pre>yes</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.8">
@@ -6173,6 +6171,300 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20150529222345632" creator="EricShulman" modified="20150529223433631" modifier="EricShulman" module-type="widget" title="$:/core/modules/widgets/edit-text.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/widgets/edit-text.js
+type: application/javascript
+module-type: widget
+
+Edit-text widget
+
+ELS 2015.05.29
+   Added params
+     &quot;min&quot; (rangeMin), &quot;max&quot; (rangeMax), and &quot;step&quot; (rangeStep)
+   for use with
+      tag=&quot;input&quot; type=&quot;range&quot;
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+var DEFAULT_MIN_TEXT_AREA_HEIGHT = &quot;100px&quot;; // Minimum height of textareas in pixels
+
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
+var EditTextWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+
+/*
+Inherit from the base widget class
+*/
+EditTextWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+EditTextWidget.prototype.render = function(parent,nextSibling) {
+	var self = this;
+	// Save the parent dom node
+	this.parentDomNode = parent;
+	// Compute our attributes
+	this.computeAttributes();
+	// Execute our logic
+	this.execute();
+	// Create our element
+	var editInfo = this.getEditInfo(),
+		tag = this.editTag;
+	if($tw.config.htmlUnsafeElements.indexOf(tag) !== -1) {
+		tag = &quot;input&quot;;
+	}
+	var domNode = this.document.createElement(tag);
+	if(this.editType) {
+		domNode.setAttribute(&quot;type&quot;,this.editType);
+	}
+	if(editInfo.value === &quot;&quot; &amp;&amp; this.editPlaceholder) {
+		domNode.setAttribute(&quot;placeholder&quot;,this.editPlaceholder);
+	}
+	if(this.editSize) {
+		domNode.setAttribute(&quot;size&quot;,this.editSize);
+	}
+	if(this.rangeMin) {
+		domNode.setAttribute(&quot;min&quot;,this.rangeMin);
+	}
+	if(this.rangeMax) {
+		domNode.setAttribute(&quot;max&quot;,this.rangeMax);
+	}
+	if(this.rangeStep) {
+		domNode.setAttribute(&quot;step&quot;,this.rangeStep);
+	}
+	// Assign classes
+	if(this.editClass) {
+		domNode.className = this.editClass;
+	}
+	// Set the text
+	if(this.editTag === &quot;textarea&quot;) {
+		domNode.appendChild(this.document.createTextNode(editInfo.value));
+	} else {
+		domNode.value = editInfo.value;
+	}
+	// Add an input event handler
+	$tw.utils.addEventListeners(domNode,[
+		{name: &quot;focus&quot;, handlerObject: this, handlerMethod: &quot;handleFocusEvent&quot;},
+		{name: &quot;input&quot;, handlerObject: this, handlerMethod: &quot;handleInputEvent&quot;}
+	]);
+	// Insert the element into the DOM
+	parent.insertBefore(domNode,nextSibling);
+	this.domNodes.push(domNode);
+	if(this.postRender) {
+		this.postRender();
+	}
+	// Fix height
+	this.fixHeight();
+	// Focus field
+	if(this.editFocus === &quot;true&quot;) {
+		if(domNode.focus &amp;&amp; domNode.select) {
+			domNode.focus();
+			domNode.select();			
+		}
+	}
+};
+
+/*
+Get the tiddler being edited and current value
+*/
+EditTextWidget.prototype.getEditInfo = function() {
+	// Get the edit value
+	var self = this,
+		value,
+		update;
+	if(this.editIndex) {
+		value = this.wiki.extractTiddlerDataItem(this.editTitle,this.editIndex,this.editDefault);
+		update = function(value) {
+			var data = self.wiki.getTiddlerData(self.editTitle,{});
+			if(data[self.editIndex] !== value) {
+				data[self.editIndex] = value;
+				self.wiki.setTiddlerData(self.editTitle,data);
+			}
+		};
+	} else {
+		// Get the current tiddler and the field name
+		var tiddler = this.wiki.getTiddler(this.editTitle);
+		if(tiddler) {
+			// If we've got a tiddler, the value to display is the field string value
+			value = tiddler.getFieldString(this.editField);
+		} else {
+			// Otherwise, we need to construct a default value for the editor
+			switch(this.editField) {
+				case &quot;text&quot;:
+					value = &quot;Type the text for the tiddler '&quot; + this.editTitle + &quot;'&quot;;
+					break;
+				case &quot;title&quot;:
+					value = this.editTitle;
+					break;
+				default:
+					value = &quot;&quot;;
+					break;
+			}
+			if(this.editDefault !== undefined) {
+				value = this.editDefault;
+			}
+		}
+		update = function(value) {
+			var tiddler = self.wiki.getTiddler(self.editTitle),
+				updateFields = {
+					title: self.editTitle
+				};
+			updateFields[self.editField] = value;
+			self.wiki.addTiddler(new $tw.Tiddler(self.wiki.getCreationFields(),tiddler,updateFields,self.wiki.getModificationFields()));
+		};
+	}
+	return {value: value, update: update};
+};
+
+/*
+Compute the internal state of the widget
+*/
+EditTextWidget.prototype.execute = function() {
+	// Get our parameters
+	this.editTitle = this.getAttribute(&quot;tiddler&quot;,this.getVariable(&quot;currentTiddler&quot;));
+	this.editField = this.getAttribute(&quot;field&quot;,&quot;text&quot;);
+	this.editIndex = this.getAttribute(&quot;index&quot;);
+	this.editDefault = this.getAttribute(&quot;default&quot;);
+	this.editClass = this.getAttribute(&quot;class&quot;);
+	this.editPlaceholder = this.getAttribute(&quot;placeholder&quot;);
+	this.editSize  = this.getAttribute(&quot;size&quot;);
+	this.rangeMin  = this.getAttribute(&quot;min&quot;);
+	this.rangeMax  = this.getAttribute(&quot;max&quot;);
+	this.rangeStep = this.getAttribute(&quot;step&quot;);
+	this.editAutoHeight = this.getAttribute(&quot;autoHeight&quot;,&quot;yes&quot;) === &quot;yes&quot;;
+	this.editMinHeight = this.getAttribute(&quot;minHeight&quot;,DEFAULT_MIN_TEXT_AREA_HEIGHT);
+	this.editFocusPopup = this.getAttribute(&quot;focusPopup&quot;);
+	this.editFocus = this.getAttribute(&quot;focus&quot;);
+	// Get the editor element tag and type
+	var tag,type;
+	if(this.editField === &quot;text&quot;) {
+		tag = &quot;textarea&quot;;
+	} else {
+		tag = &quot;input&quot;;
+		var fieldModule = $tw.Tiddler.fieldModules[this.editField];
+		if(fieldModule &amp;&amp; fieldModule.editTag) {
+			tag = fieldModule.editTag;
+		}
+		if(fieldModule &amp;&amp; fieldModule.editType) {
+			type = fieldModule.editType;
+		}
+		type = type || &quot;text&quot;;
+	}
+	// Get the rest of our parameters
+	this.editTag = this.getAttribute(&quot;tag&quot;,tag);
+	this.editType = this.getAttribute(&quot;type&quot;,type);
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+EditTextWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	// Completely rerender if any of our attributes have changed
+	if(changedAttributes.tiddler || changedAttributes.field || changedAttributes.index || changedAttributes[&quot;default&quot;] || changedAttributes[&quot;class&quot;] || changedAttributes.placeholder || changedAttributes.size || changedAttributes.autoHeight || changedAttributes.minHeight || changedAttributes.focusPopup) {
+		this.refreshSelf();
+		return true;
+	} else if(changedTiddlers[this.editTitle]) {
+		this.updateEditor(this.getEditInfo().value);
+		return true;
+	}
+	return false;
+};
+
+/*
+Update the editor with new text. This method is separate from updateEditorDomNode()
+so that subclasses can override updateEditor() and still use updateEditorDomNode()
+*/
+EditTextWidget.prototype.updateEditor = function(text) {
+	this.updateEditorDomNode(text);
+};
+
+/*
+Update the editor dom node with new text
+*/
+EditTextWidget.prototype.updateEditorDomNode = function(text) {
+	// Replace the edit value if the tiddler we're editing has changed
+	var domNode = this.domNodes[0];
+	if(!domNode.isTiddlyWikiFakeDom) {
+		if(this.document.activeElement !== domNode) {
+			domNode.value = text;
+		}
+		// Fix the height if needed
+		this.fixHeight();
+	}
+};
+
+/*
+Fix the height of textareas to fit their content
+*/
+EditTextWidget.prototype.fixHeight = function() {
+	var self = this,
+		domNode = this.domNodes[0];
+	if(this.editAutoHeight &amp;&amp; domNode &amp;&amp; !domNode.isTiddlyWikiFakeDom &amp;&amp; this.editTag === &quot;textarea&quot;) {
+		// Resize the textarea to fit its content, preserving scroll position
+		var scrollPosition = $tw.utils.getScrollPosition(),
+			scrollTop = scrollPosition.y;
+		// Measure the specified minimum height
+		domNode.style.height = self.editMinHeight;
+		var minHeight = domNode.offsetHeight;
+		// Set its height to auto so that it snaps to the correct height
+		domNode.style.height = &quot;auto&quot;;
+		// Calculate the revised height
+		var newHeight = Math.max(domNode.scrollHeight + domNode.offsetHeight - domNode.clientHeight,minHeight);
+		// Only try to change the height if it has changed
+		if(newHeight !== domNode.offsetHeight) {
+			domNode.style.height =  newHeight + &quot;px&quot;;
+			// Make sure that the dimensions of the textarea are recalculated
+			$tw.utils.forceLayout(domNode);
+			// Check that the scroll position is still visible before trying to scroll back to it
+			scrollTop = Math.min(scrollTop,self.document.body.scrollHeight - window.innerHeight);
+			window.scrollTo(scrollPosition.x,scrollTop);
+		}
+	}
+};
+
+/*
+Handle a dom &quot;input&quot; event
+*/
+EditTextWidget.prototype.handleInputEvent = function(event) {
+	this.saveChanges(this.domNodes[0].value);
+	this.fixHeight();
+	return true;
+};
+
+EditTextWidget.prototype.handleFocusEvent = function(event) {
+	if(this.editFocusPopup) {
+		$tw.popup.triggerPopup({
+			domNode: this.domNodes[0],
+			title: this.editFocusPopup,
+			wiki: this.wiki,
+			force: true
+		});
+	}
+	return true;
+};
+
+EditTextWidget.prototype.saveChanges = function(text) {
+	var editInfo = this.getEditInfo();
+	if(text !== editInfo.value) {
+		editInfo.update(text);
+	}
+};
+
+exports[&quot;edit-text&quot;] = EditTextWidget;
+
+})();
+</pre>
+</div>
 <div created="20150413235204298" creator="EricShulman" modified="20150413235204298" modifier="EricShulman" title="$:/core/ui/ViewTemplate/tags">
 <pre>&lt;div class=&quot;tc-tags-wrapper&quot;&gt;&lt;$list filter=&quot;[all[current]tags[]sort[title]]&quot; template=&quot;$:/core/ui/TagTemplate&quot; storyview=&quot;pop&quot;/&gt;&lt;/div&gt;
 </pre>
@@ -6273,7 +6565,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TWBook/Buttons/ResetAndSave]]</pre>
+# [[$:/core/modules/widgets/edit-text.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -6284,7 +6576,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150529233452669" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150528051112781" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6302,7 +6594,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150529220636610" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150529233452669" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20150529031850452" creator="EricShulman" modified="20150529044358339" modifier="EricShulman" somefield="abcdefgijklm" title="$:/temp/CookieTest">
@@ -6328,10 +6620,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150529052249634" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150529220630940" modifier="EricShulman" title="$:/temp/revnote">
-<pre>cookie.js deletes cookie if value is blank</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150529233449053" modifier="EricShulman" title="$:/temp/revnote">
+<pre></pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150529220636610" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150529233452669" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6451,7 +6743,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150529220636611" modifier="EricShulman" title="$:/view">
+<div modified="20150529233452669" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10111,7 +10403,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150529220636611" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.29.150630" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150529233452670" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.29.163449" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10143,7 +10435,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 * 15.05.28.230239 added Stretch to Cookies
 * 15.05.28.231736 restored borders on toolbar buttons
 * 15.05.29.095051 LeftBar/TitleBox layout (close and toggle all buttons, centered text, smaller subtitle)
-* 15.05.29.150630 cookie.js deletes cookie if value is blank</pre>
+* 15.05.29.150630 cookie.js deletes cookie if value is blank
+* 15.05.29.162914 remove range.js and modify core edit-text.js to support min, max, and step params for type=&quot;range&quot;</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150529164902250" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb/LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10642,7 +10935,7 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;&lt;cookie Background/LeftBarHover&gt;&gt;
 &lt;&lt;cookie Background/NavBarTitle&gt;&gt;</pre>
 </div>
-<div created="20150429051729816" creator="EricShulman" modified="20150528231543298" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
+<div created="20150429051729816" creator="EricShulman" modified="20150529233231377" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
 <pre>\define dec()         0 1 2 3 4 5 6 7 8 9
 \define dec_reverse() 9 8 7 6 5 4 3 2 1 0
 \define hex()         0 1 2 3 4 5 6 7 8 9 a b c d e f
@@ -10758,13 +11051,10 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/$reveal&gt;
 \end
 
-\define pick_fontsize(tid,class,style)
-&lt;$tiddler tiddler=&quot;$tid$&quot;&gt;
-   &lt;$range field=&quot;text&quot; min=&quot;50&quot; max=&quot;300&quot; step=&quot;10&quot; default=&quot;100&quot;
-      class=&quot;$class$&quot; style=&quot;$style$&quot;&gt;
-      {{$tid$}}%
-   &lt;/$range&gt;
-&lt;/$tiddler&gt;
+\define pick_fontsize(tid)
+&lt;$edit-text tag=&quot;input&quot; type=&quot;range&quot; tiddler=&quot;$:/config/twb/$tid$&quot;
+   min=&quot;50&quot; max=&quot;300&quot; step=&quot;10&quot; default=&quot;100&quot;/&gt;
+   {{$:/config/twb/$tid$}}%
 \end
 
 \define toggle_option(tid,label)
@@ -10852,7 +11142,7 @@ rgba(0,0,0,1.0)</pre>
 &quot;url(&lt;&lt;datauri TWBook/images/textures/notepaper.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri TWBook/images/textures/whitepaper.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20150528232115397" modifier="EricShulman" title="TWBook/Settings/Panel">
+<div created="20150426205104959" creator="EricShulman" modified="20150529233200940" modifier="EricShulman" title="TWBook/Settings/Panel">
 <pre>@@.floatright &lt;&lt;toggle_option tid:&quot;Stretch&quot; label:&quot;Stretch to fit&quot;&gt;&gt;@@
 @@.larger Display Settings@@
 &lt;hr&gt;
@@ -10861,13 +11151,13 @@ rgba(0,0,0,1.0)</pre>
 &lt;&lt;toggle_option tid:&quot;Toolbar&quot; label:&quot;Show Toolbar buttons&quot;&gt;&gt;&lt;br&gt;
 &lt;hr&gt;
 Topic text:&lt;br&gt;
-&lt;&lt;pick_fontsize &quot;$:/config/twb/FontSize/BodyText&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;FontSize/BodyText&quot;&gt;&gt;&lt;br&gt;
 Table of Contents:&lt;br&gt;
-&lt;&lt;pick_fontsize &quot;$:/config/twb/FontSize/LeftBar&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&gt;&gt;&lt;br&gt;
 ~ToolBar Buttons:&lt;br&gt;
-&lt;&lt;pick_fontsize &quot;$:/config/twb/FontSize/ToolBar&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;FontSize/ToolBar&quot;&gt;&gt;&lt;br&gt;
 ~StartHere boxes:&lt;br&gt;
-&lt;&lt;pick_fontsize &quot;$:/config/twb/FontSize/StartHere&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;pick_fontsize &quot;FontSize/StartHere&quot;&gt;&gt;&lt;br&gt;
 &lt;/td&gt;&lt;td&gt;
 &amp;nbsp;
 &lt;/td&gt;&lt;td&gt;
@@ -11446,171 +11736,6 @@ exports.cookie = CookieWidget;
 
 })();
 </pre>
-</div>
-<div created="20150510021109538" creator="EricShulman" modified="20150510041735092" modifier="EricShulman" module-type="widget" tags="" title="TWBook/Widgets/range.js" type="application/javascript">
-<pre>/*\
-title: TWBook/Widgets/range.js
-type: application/javascript
-module-type: widget
-author: Eric Shulman elsdesign@gmail.com
-revision: 1.0
-
-Derived from $:/core/modules/widgets/checkbox.js
-
-\*/
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
-
-var RangeWidget = function(parseTreeNode,options) {
-	this.initialise(parseTreeNode,options);
-};
-
-/*
-Inherit from the base widget class
-*/
-RangeWidget.prototype = new Widget();
-
-/*
-Render this widget into the DOM
-*/
-RangeWidget.prototype.render = function(parent,nextSibling) {
-	// Save the parent dom node
-	this.parentDomNode = parent;
-	// Compute our attributes
-	this.computeAttributes();
-	// Execute our logic
-	this.execute();
-	// Create our elements
-	this.labelDomNode = this.document.createElement(&quot;label&quot;);
-	this.labelDomNode.setAttribute(&quot;class&quot;,this.rangeClass);
-	this.inputDomNode = this.document.createElement(&quot;input&quot;);
-	this.inputDomNode.setAttribute(&quot;type&quot;,&quot;range&quot;);
-	this.inputDomNode.setAttribute(&quot;style&quot;,this.rangeStyle);
-	this.inputDomNode.setAttribute(&quot;value&quot;,this.getValue());
-	this.inputDomNode.setAttribute(&quot;min&quot;,this.rangeMin);
-	this.inputDomNode.setAttribute(&quot;max&quot;,this.rangeMax);
-	this.inputDomNode.setAttribute(&quot;step&quot;,this.rangeStep);
-	this.labelDomNode.appendChild(this.inputDomNode);
-	this.spanDomNode = this.document.createElement(&quot;span&quot;);
-	this.labelDomNode.appendChild(this.spanDomNode);
-	// Add a range input change event handler
-	$tw.utils.addEventListeners(this.inputDomNode,[
-	{name: &quot;input&quot;, handlerObject: this, handlerMethod: &quot;handleChangeEvent&quot;}
-	]);
-	// Insert the label into the DOM and render any children
-	parent.insertBefore(this.labelDomNode,nextSibling);
-	this.renderChildren(this.spanDomNode,null);
-	this.domNodes.push(this.labelDomNode);
-};
-
-RangeWidget.prototype.getValue = function() {
-	var value   = this.rangeDefault || &quot;&quot;;
-	var tiddler = this.wiki.getTiddler(this.rangeTitle);
-	if(tiddler &amp;&amp; this.rangeField)
-		value = tiddler.fields[this.rangeField]
-	return value;
-};
-
-RangeWidget.prototype.handleChangeEvent = function(event) {
-
-	var value = this.inputDomNode.value,
-		tiddler = this.wiki.getTiddler(this.rangeTitle),
-		fallbackFields = {text: &quot;&quot;},
-		newFields = {title: this.rangeTitle},
-		hasChanged = false;
-	// Set the field if specified
-	if(this.rangeField) {
-		if(!tiddler || tiddler.fields[this.rangeField] !== value) {
-			newFields[this.rangeField] = value;
-			hasChanged = true;
-		}
-	}
-	if(hasChanged) {
-		this.wiki.addTiddler(new $tw.Tiddler(fallbackFields,tiddler,newFields,this.wiki.getModificationFields()));
-	}
-};
-
-/*
-Compute the internal state of the widget
-*/
-RangeWidget.prototype.execute = function() {
-	// Get the parameters from the attributes
-	this.rangeTitle   = this.getAttribute(&quot;tiddler&quot;,this.getVariable(&quot;currentTiddler&quot;));
-	this.rangeField   = this.getAttribute(&quot;field&quot;);
-	this.rangeMin     = this.getAttribute(&quot;min&quot;)  || 0;
-	this.rangeMax     = this.getAttribute(&quot;max&quot;)  || 100;
-	this.rangeStep    = this.getAttribute(&quot;step&quot;) || 1;
-	this.rangeDefault = this.getAttribute(&quot;default&quot;);
-	this.rangeClass   = this.getAttribute(&quot;class&quot;,&quot;&quot;);
-	this.rangeStyle   = this.getAttribute(&quot;style&quot;,&quot;&quot;);
-	// Make the child widgets
-	this.makeChildWidgets();
-};
-
-/*
-Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
-*/
-RangeWidget.prototype.refresh = function(changedTiddlers) {
-	var changedAttributes = this.computeAttributes();
-	if(changedAttributes.tiddler
-		|| changedAttributes.field
-		|| changedAttributes[&quot;min&quot;]
-		|| changedAttributes[&quot;max&quot;]
-		|| changedAttributes[&quot;step&quot;]
-		|| changedAttributes[&quot;default&quot;]
-		|| changedAttributes[&quot;style&quot;]
-		|| changedAttributes[&quot;class&quot;]) {
-		this.refreshSelf();
-		return true;
-	} else {
-		var refreshed = false;
-		if(changedTiddlers[this.rangeTitle]) {
-			this.inputDomNode.value = this.getValue();
-			refreshed = true;
-		}
-		return this.refreshChildren(changedTiddlers) || refreshed;
-	}
-};
-
-exports.range = RangeWidget;
-
-})();
-</pre>
-</div>
-<div created="20150510024613624" creator="EricShulman" modified="20150511105151505" modifier="EricShulman" tags="" title="TWBook/Widgets/range.js.info">
-<pre>! Introduction
-
-The range widget displays an HTML `&lt;input type=&quot;range&quot;&gt;` element that is dynamically bound the value of a specified field of a specified tiddler
-
-! Content and Attributes
-
-The content of the `&lt;$range&gt;` widget is displayed within an HTML `&lt;label&gt;` element immediately after the range itself.
-
-|!Attribute |!Description |
-|tiddler |Title of the tiddler to manipulate (defaults to the [[current tiddler|Current Tiddler]]) |
-|field |The name of the field to which the range should be bound |
-|min |The minimum value for the range (default=0) |
-|max |The maximum value for the range (default=100) |
-|step |The increment for the range (default=1) |
-|default |The default value to use if the field is not defined |
-|class |CSS class(es) that will be assigned to the label element |
-|style |CSS styles that will be assigned to the label element |
-
-This example creates a range that is stored in a tiddler field:
-
-```
-&lt;$range tiddler=&quot;$:/temp/RangeDemo&quot; field=&quot;amount&quot; default=&quot;50&quot;&gt;
-amount={{$:/temp/RangeDemo!!amount}}
-&lt;/$range&gt;
-```
-&lt;$range tiddler=&quot;$:/temp/RangeDemo&quot; field=&quot;amount&quot; default=&quot;50&quot;&gt;
-amount={{$:/temp/RangeDemo!!amount}}
-&lt;/$range&gt;</pre>
 </div>
 <div created="20150502090132984" creator="EricShulman" modified="20150511092540712" modifier="EricShulman" module-type="widget" tags="" title="TWBook/Widgets/scrollhere.js" type="application/javascript">
 <pre>/*\
