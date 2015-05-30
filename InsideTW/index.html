@@ -610,7 +610,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150530091910814" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150530205246045" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;ToolBar&quot;: &quot;yes&quot;,
@@ -6512,7 +6512,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150530091910813" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150530205246044" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150528051112781" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6530,7 +6530,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150530091910813" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150530205246044" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20150529031850452" creator="EricShulman" modified="20150529044358339" modifier="EricShulman" somefield="abcdefgijklm" title="$:/temp/CookieTest">
@@ -6556,10 +6556,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150530091909291" modifier="EricShulman" title="$:/temp/revnote">
-<pre>Show [[$:/config/twb]] details in [[TWBook/Info/PartsList]]</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150530205244363" modifier="EricShulman" title="$:/temp/revnote">
+<pre></pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150530091910813" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150530205246044" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6679,7 +6679,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150530091910813" modifier="EricShulman" title="$:/view">
+<div modified="20150530205246044" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9219,17 +9219,17 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150513080040632" creator="EricShulman" modified="20150524074855372" modifier="EricShulman" tags="" title="TWBook/Buttons/Favorites/Panel">
-<pre>\define emptyMessage()
-use {{TWBook/images/star_empty.svg}} to add a topic
-\end
+<div created="20150513080040632" creator="EricShulman" modified="20150530200644714" modifier="EricShulman" tags="" title="TWBook/Buttons/Favorites/Panel">
+<pre>\define favorite() $:/config/twb/favorites/
 
 @@.larger ''Favorite Topics''@@
 @@.thinline @@
 &lt;div class=&quot;scroll-y resize&quot; style=&quot;max-height:60vh;padding:0em;&quot;&gt;
-   &lt;$list filter=&quot;[has[favorite]]&quot;
-      emptyMessage=&lt;&lt;emptyMessage&gt;&gt;&gt;
-      &lt;$link to={{!!title}}&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;br&gt;
+   &lt;$list filter=&quot;[removeprefix&lt;favorite&gt;]&quot;
+      emptyMessage=&quot;&quot;&quot;
+      use {{TWBook/images/star_empty.svg}} to add a topic
+      &quot;&quot;&quot;&gt;
+      &lt;nobr&gt;&lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;/nobr&gt;&lt;br&gt;
    &lt;/$list&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -9429,20 +9429,23 @@ $(old)$
 .twb-drop-down button { display:inline; width:auto; padding:0; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150501031210388" creator="EricShulman" modified="20150525211201431" modifier="EricShulman" tags="" title="TWBook/Buttons/ToggleFavorite">
-<pre>\define tooltip_add() add '$(tid)$' to Favorites
+<div created="20150501031210388" creator="EricShulman" modified="20150530200621557" modifier="EricShulman" tags="" title="TWBook/Buttons/ToggleFavorite">
+<pre>\define favorite() $:/config/twb/favorites/$(tid)$
+
+\define tooltip_add() add '$(tid)$' to Favorites
 \define tooltip_rem() remove '$(tid)$' from Favorites
+
 &lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
-&lt;$list filter=&quot;[all[current]favorite[yes]]&quot;&gt;
-   &lt;$button class=&quot;twb-button&quot; tooltip=&lt;&lt;tooltip_rem&gt;&gt;&gt;
-      &lt;$action-deletefield favorite /&gt;
-      @@.resize {{TWBook/images/star_filled.svg}}@@
-   &lt;/$button&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[all[current]!favorite[yes]]&quot;&gt;
+&lt;$list filter=&quot;[title&lt;favorite&gt;is[tiddler]]&quot;
+   emptyMessage=&quot;&quot;&quot;
    &lt;$button class=&quot;twb-button&quot; tooltip=&lt;&lt;tooltip_add&gt;&gt;&gt;
-      &lt;$action-setfield favorite=&quot;yes&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;favorite&gt;&gt; text=&lt;&lt;now&gt;&gt;/&gt;
       @@.resize {{TWBook/images/star_empty.svg}}@@
+   &lt;/$button&gt;
+   &quot;&quot;&quot;&gt;
+   &lt;$button class=&quot;twb-button&quot; tooltip=&lt;&lt;tooltip_rem&gt;&gt;&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;favorite&gt;&gt;/&gt;
+      @@.resize {{TWBook/images/star_filled.svg}}@@
    &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;/$set&gt;</pre>
@@ -10336,7 +10339,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150530091910814" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.30.021909" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150530205246045" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.30.135244" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10376,7 +10379,9 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** cookies.js handling for &quot;index&quot; param (DataTiddlers)
 ** update Settings/Cookies to track $:/config/twb data indexes instead of separate tiddlers text fields.
 * 15.05.30.011847 prevent cookies.js from creating extra cookies for unchanged values
-* 15.05.30.021909 Show [[$:/config/twb]] details in [[TWBook/Info/PartsList]]</pre>
+* 15.05.30.021909 Show [[$:/config/twb]] details in [[TWBook/Info/PartsList]]
+* 15.05.30.135128 reworked favorites to use $:/config/twb/favorites
+** also reworked [[TWBook/Settings/Cookies]] to include tracking of favorites</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10744,11 +10749,11 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 <div created="20150424235330826" creator="EricShulman" modified="20150424235348053" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>InsideTW</pre>
 </div>
-<div created="20150316101821466" creator="EricShulman" modified="20150526224337039" modifier="EricShulman" tags="" title="TWBook/Scraps" url="images/eric3.jpg">
+<div created="20150316101821466" creator="EricShulman" modified="20150530201428005" modifier="EricShulman" tags="" title="TWBook/Scraps" url="images/eric3.jpg">
 <pre>&lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
 &lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
 &lt;$button&gt;
-&lt;$action-deletetiddler $filter=&quot;[prefix[$:/config/twb]]&quot;/&gt;
+&lt;$action-deletetiddler $filter=&quot;[prefix[$:/config/twb/]]&quot;/&gt;
 clear settings
 &lt;/$button&gt;
 
@@ -10854,26 +10859,41 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150529051003783" creator="EricShulman" modified="20150530075654188" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/Cookies">
-<pre>\define cookie(id)
-&lt;$cookie name=&quot;$id$&quot; tiddler=&quot;$:/config/twb&quot; index=&quot;$id$&quot;/&gt;
+<div created="20150529051003783" creator="EricShulman" modified="20150530205237012" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/Cookies">
+<pre>\define settings()
+Stretch
+LeftBar
+ToolBar
+FontSize/BodyText
+FontSize/LeftBar
+FontSize/ToolBar
+FontSize/StartHere
+FontColor/BodyText
+Background/Window
+Background/Cover
+Background/Page
+Background/StartHere
+Background/DropDowns
+Background/LeftBar
+Background/LeftBarHover
+Background/NavBarTitle
 \end
-&lt;&lt;cookie Stretch&gt;&gt;
-&lt;&lt;cookie LeftBar&gt;&gt;
-&lt;&lt;cookie ToolBar&gt;&gt;
-&lt;&lt;cookie FontSize/BodyText&gt;&gt;
-&lt;&lt;cookie FontSize/LeftBar&gt;&gt;
-&lt;&lt;cookie FontSize/ToolBar&gt;&gt;
-&lt;&lt;cookie FontSize/StartHere&gt;&gt;
-&lt;&lt;cookie FontColor/BodyText&gt;&gt;
-&lt;&lt;cookie Background/Window&gt;&gt;
-&lt;&lt;cookie Background/Cover&gt;&gt;
-&lt;&lt;cookie Background/Page&gt;&gt;
-&lt;&lt;cookie Background/StartHere&gt;&gt;
-&lt;&lt;cookie Background/DropDowns&gt;&gt;
-&lt;&lt;cookie Background/LeftBar&gt;&gt;
-&lt;&lt;cookie Background/LeftBarHover&gt;&gt;
-&lt;&lt;cookie Background/NavBarTitle&gt;&gt;</pre>
+
+\define favorite()  $:/config/twb/favorites/$(id)$
+
+&lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;
+&lt;$list filter=&lt;&lt;settings&gt;&gt; variable=&quot;id&quot;&gt;
+   &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;&lt;br&gt;
+   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+&lt;/$list&gt;
+
+&lt;$list filter=&quot;[!is[system]!prefix[images/]!prefix[TWBook/]]&quot; variable=&quot;id&quot;&gt;
+   &lt;$list filter=&quot;[&lt;favorite&gt;is[tiddler]]&quot;&gt;
+      &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&lt;&lt;favorite&gt;&gt; field=&quot;text&quot;/&gt;&lt;br&gt;
+   &lt;/$list&gt;
+   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&lt;&lt;favorite&gt;&gt; field=&quot;text&quot;/&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20150530061101693" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
 <pre>\define dec()         0 1 2 3 4 5 6 7 8 9
@@ -11424,8 +11444,10 @@ html .tc-story-river {
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232539664" creator="EricShulman" modified="20150525035304727" modifier="EricShulman" title="TWBook/TOC/Template">
-<pre>&lt;nobr&gt;
+<div created="20150426232539664" creator="EricShulman" modified="20150530201018082" modifier="EricShulman" title="TWBook/TOC/Template">
+<pre>\define favorite() $:/config/twb/favorites/$(tid)$
+
+&lt;nobr&gt;
 {{||TWBook/TOC/ToggleBranch}}
 @@.resize &lt;$transclude tiddler={{!!icon}}&gt;&amp;emsp;&lt;/$transclude&gt;@@
 &lt;$reveal type=&quot;nomatch&quot; text={{!!title}} state=&quot;$:/HistoryList!!current-tiddler&quot;&gt;
@@ -11442,10 +11464,12 @@ html .tc-story-river {
       @@ &lt;$scrollhere/&gt;
    &lt;/span&gt;
 &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;favorite[yes]]&quot;
+&lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
+&lt;$list filter=&quot;[title&lt;favorite&gt;is[tiddler]]&quot;
    emptyMessage=&quot;@@.invisible.resize [img[images/star_empty.svg]]@@&quot;&gt;
    @@.resize [img[images/star_filled.svg]]@@
 &lt;/$list&gt;
+&lt;/$set&gt;
 &lt;/nobr&gt;</pre>
 </div>
 <div created="20150524031349750" creator="EricShulman" modified="20150529163455173" modifier="EricShulman" tags="" title="TWBook/TOC/ToggleAll">
