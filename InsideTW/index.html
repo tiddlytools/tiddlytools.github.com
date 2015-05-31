@@ -624,7 +624,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150531185105577" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150531192459775" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ToolBar&quot;: &quot;yes&quot;,
     &quot;TOCOpenAll&quot;: &quot;no&quot;,
@@ -6534,14 +6534,14 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150531185105576" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150531192459774" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150531072526199" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div modified="20150531182232507" modifier="EricShulman" title="$:/state/tab-1347519459">
-<pre>TWBook/Info/PartsList/Config</pre>
+<div modified="20150531192312337" modifier="EricShulman" title="$:/state/tab-1347519459">
+<pre>TWBook/Info/PartsList/System</pre>
 </div>
 <div modified="20150530060440631" modifier="EricShulman" title="$:/state/tab-1691732326">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
@@ -6555,7 +6555,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150531185105576" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150531192459772" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6578,10 +6578,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150531185026250" modifier="EricShulman" title="$:/temp/revnote">
-<pre>cleanup [[TWBook/Settings/Info]]</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150531192454404" modifier="EricShulman" title="$:/temp/revnote">
+<pre>update [[TWBook/PartsList/System]] to show image thumbnails</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150531185105576" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150531192459772" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6701,7 +6701,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150531185105576" modifier="EricShulman" title="$:/view">
+<div modified="20150531192459774" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10325,7 +10325,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="TWBook" created="20150530232329990" creator="EricShulman" modified="20150530234342417" modifier="EricShulman" title="TWBook/Info/PartsList/System">
+<div caption="System" created="20150530232329990" creator="EricShulman" modified="20150531192209308" modifier="EricShulman" title="TWBook/Info/PartsList/System">
 <pre>\define favorite()    $:/config/twb/favorites##$(id)$
 \define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
 \define ShowLink()    &lt;$link&gt;&lt;&lt;ShowTitle&gt;&gt;&lt;/$link&gt;
@@ -10341,7 +10341,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 
 &lt;br&gt;
 
-&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]removesuffix[/]] +[sort[]]&quot;&gt;
+&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]removesuffix[/]!prefix[images]] +[sort[]]&quot;&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TWBook/]]&quot;&gt;
 ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;
 &lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;]&quot;&gt;&lt;&lt;ShowLink&gt;&gt;&lt;br&gt;&lt;/$list&gt;
@@ -10349,13 +10349,20 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 &lt;/$list&gt;
 
+''__TWBook/Images__''&lt;br&gt;
+&lt;$list filter=&quot;[prefix[TWBook/images/]] +[sort[]]&quot;&gt;
+   &lt;nobr&gt;@@.resize &lt;$transclude tiddler={{!!title}}/&gt;@@ &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;&lt;/nobr&gt;
+&lt;/$list&gt;
+
+&lt;br&gt;
+
 ''__Modified Shadows__''&lt;br&gt;
 &lt;$list filter=&quot;[is[shadow]] -[prefix[$:/temp]] +[sort[]]&quot;&gt;
    &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150531185105577" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.31.115026" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150531192459776" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.31.122454" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10408,7 +10415,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** delete-index.js
 ** use `&lt;$action-deleteindex&gt;` in [[TWBook/Buttons/ToggleFavorite]]
 * 15.05.31.111207 [[TWBook/Settings/Info]] and [[TWBook/Info/PartsList/Config]]
-* 15.05.31.115026 cleanup [[TWBook/Settings/Info]]</pre>
+* 15.05.31.115026 cleanup [[TWBook/Settings/Info]]
+* 15.05.31.122454 update [[TWBook/PartsList/System]] to show image thumbnails</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
