@@ -504,8 +504,6 @@ Error message and password prompt
 
 <li>TWBook/Info/PartsList/Content</li>
 
-<li>TWBook/Info/PartsList/Cookies</li>
-
 <li>TWBook/Info/PartsList/Favorites</li>
 
 <li>TWBook/Info/PartsList/Settings</li>
@@ -620,7 +618,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150531003725284" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150531005645120" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;ToolBar&quot;: &quot;yes&quot;,
@@ -6523,14 +6521,14 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150531003725283" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150531005645119" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150528051112781" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
-<div modified="20150531000019041" modifier="EricShulman" title="$:/state/tab-1347519459">
-<pre>TWBook/Info/PartsList/Cookies</pre>
+<div modified="20150531005339659" modifier="EricShulman" title="$:/state/tab-1347519459">
+<pre>TWBook/Info/PartsList/Settings</pre>
 </div>
 <div modified="20150530060440631" modifier="EricShulman" title="$:/state/tab-1691732326">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
@@ -6544,7 +6542,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150531003725283" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150531005645119" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6567,10 +6565,11 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150531003718698" modifier="EricShulman" title="$:/temp/revnote">
-<pre>remove extra &quot;&gt;&quot; from PartsList/Favorites</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150531005639628" modifier="EricShulman" title="$:/temp/revnote">
+<pre>* hide output in Settings/Cookies (it was appearing on the page background, behind the tiddler!)
+* removed PartsList/Cookies tab</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150531003725283" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150531005645119" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6690,7 +6689,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150531003725284" modifier="EricShulman" title="$:/view">
+<div modified="20150531005645119" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10312,14 +10311,6 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Cookies" created="20150530233927771" creator="EricShulman" modified="20150530235827705" modifier="EricShulman" tags="" title="TWBook/Info/PartsList/Cookies">
-<pre>@@.smaller 
-
-The following settings are being tracked as browser cookie values, as defined by
-[[TWBook/Settings/Cookies]]:&lt;br&gt;
-&lt;blockquote&gt;{{TWBook/Settings/Cookies}}&lt;/blockquote&gt;
-@@</pre>
-</div>
 <div caption="Favorites" created="20150530234758069" creator="EricShulman" modified="20150531003622031" modifier="EricShulman" tags="" title="TWBook/Info/PartsList/Favorites">
 <pre>@@.smaller 
 [[$:/config/twb/favorites]] =&lt;br&gt;
@@ -10397,7 +10388,7 @@ The following settings are being tracked as browser cookie values, as defined by
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150531003725285" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.30.173718" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150531005645121" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.05.30.175639" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10446,7 +10437,9 @@ The following settings are being tracked as browser cookie values, as defined by
 * 15.05.30.153820 fix favorites display in TOC/Template
 ** also, tweaked PartsList
 * 15.05.30.170045 refactored PartsList into tabs
-* 15.05.30.173718 remove extra &quot;&gt;&quot; from PartsList/Favorites</pre>
+* 15.05.30.173718 remove extra &quot;&gt;&quot; from PartsList/Favorites
+* 15.05.30.175639 * hide output in Settings/Cookies (it was appearing on the page background, behind the tiddler!)
+* removed PartsList/Cookies tab</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10924,40 +10917,42 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150529051003783" creator="EricShulman" modified="20150530221414028" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/Cookies">
+<div created="20150529051003783" creator="EricShulman" modified="20150531005313560" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/Cookies">
 <pre>\define settings()
-Stretch
-LeftBar
-ToolBar
-TOCOpenAll
-FontSize/BodyText
-FontSize/LeftBar
-FontSize/ToolBar
-FontSize/StartHere
-FontColor/BodyText
-Background/Window
 Background/Cover
-Background/Page
-Background/StartHere
 Background/DropDowns
 Background/LeftBar
 Background/LeftBarHover
 Background/NavBarTitle
+Background/Page
+Background/StartHere
+Background/Window
+FontColor/BodyText
+FontSize/BodyText
+FontSize/LeftBar
+FontSize/ToolBar
+FontSize/StartHere
+LeftBar
+Stretch
+TOCOpenAll
+ToolBar
 \end
 
 \define favorite()  $:/config/twb/favorites##$(id)$
-
 &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;
 &lt;$list filter=&lt;&lt;settings&gt;&gt; variable=&quot;id&quot;&gt;
-   &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;&lt;br&gt;
    &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+&lt;!--
+   &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;&lt;br&gt;
+--&gt;
 &lt;/$list&gt;
-
-&lt;$list filter=&quot;[!is[system]!prefix[TWBook/]!prefix[images/]]&quot; variable=&quot;id&quot;&gt;
-   &lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; state=&lt;&lt;favorite&gt;&gt;&gt;
-      &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&quot;$:/config/twb/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;&lt;br&gt;
-   &lt;/$reveal&gt;
+&lt;$list filter=&quot;[!is[system]!prefix[images/]]&quot; variable=&quot;id&quot;&gt;
    &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+&lt;!--
+   &lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; state=&lt;&lt;favorite&gt;&gt;&gt;
+   &lt;&lt;id&gt;&gt; = &lt;$view tiddler=&quot;$:/config/twb/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;&lt;br&gt;
+   &lt;/$reveal&gt;
+--&gt;
 &lt;/$list&gt;
 &lt;/$set&gt;</pre>
 </div>
