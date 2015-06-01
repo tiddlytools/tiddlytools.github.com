@@ -626,7 +626,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150601204728932" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150601211625577" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ToolBar&quot;: &quot;yes&quot;,
     &quot;TOCOpenAll&quot;: &quot;no&quot;,
@@ -6616,7 +6616,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150601204728932" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150601211625576" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150531072526199" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6637,7 +6637,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150601204728932" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150601211625576" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6660,10 +6660,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150601204721211" modifier="EricShulman" title="$:/temp/revnote">
-<pre>fix page background texture</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150601211616869" modifier="EricShulman" title="$:/temp/revnote">
+<pre>adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150601204728931" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150601211625576" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6783,7 +6783,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150601204728932" modifier="EricShulman" title="$:/view">
+<div modified="20150601211625576" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -6861,7 +6861,7 @@ Using commonly available web tech also provides virtually universal [[Portabilit
 &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{TWBook/RootTag}}/&gt;
 @@</pre>
 </div>
-<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150524042810596" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="InsideTW twbook-cover" title="CoverPage">
+<div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150601211233092" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="InsideTW twbook-cover" title="CoverPage">
 <pre>&lt;br&gt;&lt;br&gt;
 @@.center.huge ''//{{$:/SiteTitle}}//''@@
 @@.center {{$:/SiteSubtitle}}@@
@@ -6872,12 +6872,19 @@ Using commonly available web tech also provides virtually universal [[Portabilit
       [img height=&quot;100%&quot; [images/cover.png]]
    &lt;/div&gt;
 &lt;/$link&gt;@@
-@@position:absolute;right:25%;margin-top:-6em; 
-&lt;$tiddler tiddler=&quot;Preface&quot;&gt;
+@@position:absolute;right:1em;top:1em; 
+   {{||TWBook/Buttons/EditFromHere}}
+@@
+@@position:absolute;left:1em;bottom:1em; 
+   &lt;div class=&quot;smaller&quot;&gt;{{||TWBook/NavBar/Bottom/MessageBox}}&lt;/div&gt;
+@@
+@@position:absolute;right:1em;bottom:1em; 
+   &lt;$tiddler tiddler=&quot;Preface&quot;&gt;
    @@.right.smallest &lt;$link tooltip=&quot;Preface&quot;&gt;Start Here&lt;/$link&gt;@@
    &lt;&lt;NavBarButton right right&gt;&gt;
-&lt;/$tiddler&gt;@@
-@@.center.smallest {{||TWBook/NavBar/Bottom/MessageBox}}@@</pre>
+   &lt;/$tiddler&gt;
+@@
+</pre>
 </div>
 <div caption="Acknowledgements" created="20150212072900375" creator="EricShulman" icon="images/gold-star.png" modified="20150511040434534" modifier="EricShulman" tags="Preface" title="Credits">
 <pre>\define star() [img[images/gold-star.png]]
@@ -10444,7 +10451,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150601204728933" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.134721" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150601211625577" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.141616" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10502,7 +10509,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 * 15.06.01.023413 added &quot;reset favorites&quot; button to TWBook/Button/Favorites/Panel]]
 * 15.06.01.120207 added &quot;clear cookies&quot; buttons to [[TWBook/PartsList/Config]]
 * 15.06.01.134022 fix clear cookies button in [[TWBook/Settings/Info]]
-* 15.06.01.134721 fix page background texture</pre>
+* 15.06.01.134721 fix page background texture
+* 15.06.01.141616 adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10677,10 +10685,9 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150501021835611" creator="EricShulman" modified="20150513082431456" modifier="EricShulman" tags="" title="TWBook/NavBar/Bottom/MessageBox">
+<div created="20150501021835611" creator="EricShulman" modified="20150601211305639" modifier="EricShulman" tags="" title="TWBook/NavBar/Bottom/MessageBox">
 <pre>{{TWBook/Info/DraftNotice}}&lt;br&gt;
-{{TWBook/Info/RevisionHistory!!popup}}&lt;br&gt;
-{{||TWBook/Buttons/EditFromHere}}</pre>
+{{TWBook/Info/RevisionHistory!!popup}}</pre>
 </div>
 <div created="20150405080824318" creator="EricShulman" modified="20150513065622070" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/NavBar/Macros" type="">
 <pre>\define NavBarLink(pos)
