@@ -174,6 +174,8 @@ Error message and password prompt
 
 <li>$:/temp/NewTagName</li>
 
+<li>$:/temp/notify</li>
+
 <li>$:/temp/revnote</li>
 
 <li>$:/temp/search</li>
@@ -626,7 +628,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150602022954700" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150602053223427" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ToolBar&quot;: &quot;yes&quot;,
     &quot;TOCOpenAll&quot;: &quot;no&quot;,
@@ -6616,7 +6618,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150602022954698" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150602053223426" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150531072526199" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6637,7 +6639,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150602022954698" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150602053223426" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6660,10 +6662,13 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150602022948553" modifier="EricShulman" title="$:/temp/revnote">
-<pre>remove FontSize/StartHere setting and adjust Settings/Panel layout</pre>
+<div modified="20150602052713604" modifier="EricShulman" title="$:/temp/notify">
+<pre>clear favorites  cookies...DONE!&lt;br&gt;,,(Refresh window to use defaults),,</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150602022954697" modifier="EricShulman" title="$:/temp/search">
+<div created="20150525233822499" creator="EricShulman" modified="20150602053222096" modifier="EricShulman" title="$:/temp/revnote">
+<pre></pre>
+</div>
+<div created="20150522222129469" creator="EricShulman" modified="20150602053223426" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6783,7 +6788,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150602022954698" modifier="EricShulman" title="$:/view">
+<div modified="20150602053223426" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10448,7 +10453,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150602022954700" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.192948" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150602053223427" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.223222" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10509,7 +10514,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 * 15.06.01.134721 fix page background texture
 * 15.06.01.141616 adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]
 * 15.06.01.183650 [[TWBook/Settings/Advanced]] button and panel
-* 15.06.01.192948 remove FontSize/StartHere setting and adjust Settings/Panel layout</pre>
+* 15.06.01.192948 remove FontSize/StartHere setting and adjust Settings/Panel layout
+* 15.06.01.222156 [[TWBook/Settings/Advanced/Panel]] - added edit-text for $:/state tiddlers, added notify for delete cookies</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10984,7 +10990,7 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150602011242588" creator="EricShulman" modified="20150602012757318" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced">
+<div created="20150602011242588" creator="EricShulman" modified="20150602053040289" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/AdvancedOptionsPopup&quot;&gt;&gt;
    class=&quot;X-twb-button twb-btn-invisible&quot; style=&quot;font-size:1em;&quot;
    tooltip=&quot;open advanced settings...&quot;&gt;
@@ -10992,23 +10998,20 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; position=&quot;belowleft&quot; state=&lt;&lt;qualify &quot;$:/temp/AdvancedOptionsPopup&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-popup-keep twb-drop-down&quot;&gt;
-   @@.larger Advanced Settings@@
-   &lt;hr&gt;
-   &lt;div class=&quot;scroll-y&quot; style=&quot;max-height:50vh&quot;&gt;
    {{TWBook/Settings/Advanced/Panel}}
-   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150531175811013" creator="EricShulman" modified="20150602013112358" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced/Panel">
+<div created="20150531175811013" creator="EricShulman" modified="20150602053129098" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced/Panel">
 <pre>\define ShowData(tid)
-[[$tid$]] =&lt;br&gt;
-&lt;blockquote&gt;
+[[$tid$]]&lt;br&gt;
 &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;
+
+&lt;&lt;&lt;
 &lt;table class=&quot;borderless&quot;&gt;
 &lt;$list filter=&quot;[title[$tid$]indexes[]]&quot; variable=&quot;i&quot;
    emptyMessage=&quot;&quot;&quot;
-   {{$tid$}}
+   &lt;$edit-text tag=&quot;input&quot; size=&quot;50&quot; tiddler=&quot;$tid$&quot;/&gt;
    &quot;&quot;&quot;&gt;
    &lt;tr&gt;
    &lt;td align=&quot;right&quot;&gt;&lt;nobr&gt;&lt;&lt;i&gt;&gt;&lt;/nobr&gt;&amp;nbsp;&lt;/td&gt;
@@ -11016,35 +11019,41 @@ After a final proofreading for to ensure there are no more typos, minor errors i
    &lt;/tr&gt;
 &lt;/$list&gt;
 &lt;/table&gt;
+&lt;&lt;&lt;
 &lt;/$set&gt;
-&lt;/blockquote&gt;
+\end
+
+\define Notify(msg)
+&lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;$msg$&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
 \end
 
 \define DeleteCookies(label,filter)
-&lt;div class=&quot;floatright&quot;&gt;
 &lt;$button&gt; $label$
 &lt;$list filter=&quot;$filter$&quot; variable=&quot;id&quot;&gt;
    &lt;$action-deletecookie $name=&lt;&lt;id&gt;&gt;/&gt;
 &lt;/$list&gt;
+&lt;&lt;Notify &quot;$label$...DONE!&lt;br&gt;,,(Refresh window to use defaults),,&quot;&gt;&gt;
 &lt;/$button&gt;
-&lt;/div&gt;
 \end
 
-@@.smaller 
-&lt;$macrocall $name=&quot;DeleteCookies&quot;
+@@.larger Advanced Settings@@
+&lt;hr&gt;
+&lt;div class=&quot;scroll-y smaller&quot; style=&quot;max-height:60vh&quot;&gt;
+@@.floatright &lt;$macrocall $name=&quot;DeleteCookies&quot;
    label=&quot;clear settings cookies&quot;
-   filter={{TWBook/Settings/CookieList}}/&gt;
+   filter={{TWBook/Settings/CookieList}}/&gt;@@
 &lt;&lt;ShowData &quot;$:/config/twb&quot;&gt;&gt;
 
-&lt;$macrocall $name=&quot;DeleteCookies&quot;
+@@.floatright &lt;$macrocall $name=&quot;DeleteCookies&quot;
    label=&quot;clear favorites  cookies&quot;
-   filter=&quot;[title[$:/config/twb/favorites]indexes[]]&quot;/&gt;
+   filter=&quot;[title[$:/config/twb/favorites]indexes[]]&quot;/&gt;@@
 &lt;&lt;ShowData &quot;$:/config/twb/favorites&quot;&gt;&gt;
 
 &lt;$list filter=&quot;[prefix[$:/state]] -[prefix[$:/state/tab]] -[prefix[$:/state/popup]]&quot;&gt;
    &lt;$macrocall $name=&quot;ShowData&quot; tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
-@@</pre>
+&lt;/div&gt;</pre>
 </div>
 <div created="20150529051003783" creator="EricShulman" modified="20150602022741740" modifier="EricShulman" title="TWBook/Settings/CookieList" type="text/plain">
 <pre>Background/Cover
