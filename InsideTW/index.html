@@ -506,8 +506,6 @@ Error message and password prompt
 
 <li>TWBook/Info/PartsList</li>
 
-<li>TWBook/Info/PartsList/Config</li>
-
 <li>TWBook/Info/PartsList/Content</li>
 
 <li>TWBook/Info/PartsList/System</li>
@@ -548,11 +546,13 @@ Error message and password prompt
 
 <li>TWBook/Settings</li>
 
+<li>TWBook/Settings/Advanced</li>
+
+<li>TWBook/Settings/Advanced/Panel</li>
+
 <li>TWBook/Settings/CookieList</li>
 
 <li>TWBook/Settings/CookieSyncer</li>
-
-<li>TWBook/Settings/Info</li>
 
 <li>TWBook/Settings/Macros</li>
 
@@ -626,7 +626,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150601211625577" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150602013700061" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ToolBar&quot;: &quot;yes&quot;,
     &quot;TOCOpenAll&quot;: &quot;no&quot;,
@@ -6616,14 +6616,14 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150601211625576" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150602013700058" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150531072526199" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div modified="20150601190104884" modifier="EricShulman" title="$:/state/tab-1347519459">
-<pre>TWBook/Info/PartsList/Config</pre>
+<div modified="20150602013620940" modifier="EricShulman" title="$:/state/tab-1347519459">
+<pre>TWBook/Info/PartsList/Content</pre>
 </div>
 <div modified="20150601090704278" modifier="EricShulman" title="$:/state/tab-1691732326">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -6637,7 +6637,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150601211625576" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150602013700057" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6660,10 +6660,10 @@ exports.startup = function() {
 <div created="20150523193715516" creator="EricShulman" modified="20150530075314473" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150601211616869" modifier="EricShulman" title="$:/temp/revnote">
-<pre>adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]</pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150602013650667" modifier="EricShulman" title="$:/temp/revnote">
+<pre>[[TWBook/Settings/Advanced]] button and panel</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150601211625576" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150602013700057" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6783,7 +6783,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150601211625576" modifier="EricShulman" title="$:/view">
+<div modified="20150602013700058" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10392,9 +10392,6 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 <div caption="Parts List" created="20150513105208020" creator="EricShulman" modified="20150530235955224" modifier="EricShulman" tags="TWBook/Info/Notes" title="TWBook/Info/PartsList">
 <pre>&lt;&lt;tabs &quot;[prefix[TWBook/Info/PartsList/]] +[sort[]]&quot;&gt;&gt;</pre>
 </div>
-<div caption="Config" created="20150530231940481" creator="EricShulman" modified="20150531180012245" modifier="EricShulman" title="TWBook/Info/PartsList/Config">
-<pre>{{TWBook/Settings/Info}}</pre>
-</div>
 <div caption="Content" created="20150530231606963" creator="EricShulman" modified="20150530232919521" modifier="EricShulman" title="TWBook/Info/PartsList/Content">
 <pre>\define favorite()    $:/config/twb/favorites##$(id)$
 \define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
@@ -10451,7 +10448,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150601211625577" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.141616" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150602013700061" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.01.183650" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21.162000 Initial release for feedback
@@ -10510,7 +10507,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 * 15.06.01.120207 added &quot;clear cookies&quot; buttons to [[TWBook/PartsList/Config]]
 * 15.06.01.134022 fix clear cookies button in [[TWBook/Settings/Info]]
 * 15.06.01.134721 fix page background texture
-* 15.06.01.141616 adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]</pre>
+* 15.06.01.141616 adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]
+* 15.06.01.183650 [[TWBook/Settings/Advanced]] button and panel</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -10987,34 +10985,23 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150529051003783" creator="EricShulman" modified="20150531012704823" modifier="EricShulman" title="TWBook/Settings/CookieList" type="text/plain">
-<pre>Background/Cover
-Background/DropDowns
-Background/LeftBar
-Background/LeftBarHover
-Background/NavBarTitle
-Background/Page
-Background/StartHere
-Background/Window
-FontColor/BodyText
-FontSize/BodyText
-FontSize/LeftBar
-FontSize/ToolBar
-FontSize/StartHere
-LeftBar
-Stretch
-TOCOpenAll
-ToolBar</pre>
+<div created="20150602011242588" creator="EricShulman" modified="20150602012757318" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/AdvancedOptionsPopup&quot;&gt;&gt;
+   class=&quot;X-twb-button twb-btn-invisible&quot; style=&quot;font-size:1em;&quot;
+   tooltip=&quot;open advanced settings...&quot;&gt;
+   @@.resize {{$:/core/images/chevron-down}}@@
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; position=&quot;belowleft&quot; state=&lt;&lt;qualify &quot;$:/temp/AdvancedOptionsPopup&quot;&gt;&gt;&gt;
+&lt;div class=&quot;tc-popup-keep twb-drop-down&quot;&gt;
+   @@.larger Advanced Settings@@
+   &lt;hr&gt;
+   &lt;div class=&quot;scroll-y&quot; style=&quot;max-height:50vh&quot;&gt;
+   {{TWBook/Settings/Advanced/Panel}}
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;</pre>
 </div>
-<div created="20150531011925302" creator="EricShulman" modified="20150531013228002" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/CookieSyncer">
-<pre>&lt;$list filter={{TWBook/Settings/CookieList}} variable=&quot;id&quot;&gt;
-   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[!is[system]!prefix[images/]]&quot; variable=&quot;id&quot;&gt;
-   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;
-&lt;/$list&gt;</pre>
-</div>
-<div created="20150531175811013" creator="EricShulman" modified="20150601203509268" modifier="EricShulman" tags="" title="TWBook/Settings/Info">
+<div created="20150531175811013" creator="EricShulman" modified="20150602013112358" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced/Panel">
 <pre>\define ShowData(tid)
 [[$tid$]] =&lt;br&gt;
 &lt;blockquote&gt;
@@ -11025,8 +11012,8 @@ ToolBar</pre>
    {{$tid$}}
    &quot;&quot;&quot;&gt;
    &lt;tr&gt;
-   &lt;td&gt;&lt;nobr&gt;&lt;&lt;i&gt;&gt;&lt;/nobr&gt;&lt;/td&gt;
-   &lt;td&gt;&lt;nobr&gt;&amp;nbsp;= &lt;$view tiddler=&quot;$tid$&quot; index=&lt;&lt;i&gt;&gt;/&gt;&lt;/nobr&gt;&lt;/td&gt;
+   &lt;td align=&quot;right&quot;&gt;&lt;nobr&gt;&lt;&lt;i&gt;&gt;&lt;/nobr&gt;&amp;nbsp;&lt;/td&gt;
+   &lt;td&gt;&lt;$edit-text tag=&quot;input&quot; size=&quot;50&quot; tiddler=&quot;$tid$&quot; index=&lt;&lt;i&gt;&gt;/&gt;&lt;/td&gt;
    &lt;/tr&gt;
 &lt;/$list&gt;
 &lt;/table&gt;
@@ -11059,6 +11046,33 @@ ToolBar</pre>
    &lt;$macrocall $name=&quot;ShowData&quot; tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
 @@</pre>
+</div>
+<div created="20150529051003783" creator="EricShulman" modified="20150531012704823" modifier="EricShulman" title="TWBook/Settings/CookieList" type="text/plain">
+<pre>Background/Cover
+Background/DropDowns
+Background/LeftBar
+Background/LeftBarHover
+Background/NavBarTitle
+Background/Page
+Background/StartHere
+Background/Window
+FontColor/BodyText
+FontSize/BodyText
+FontSize/LeftBar
+FontSize/ToolBar
+FontSize/StartHere
+LeftBar
+Stretch
+TOCOpenAll
+ToolBar</pre>
+</div>
+<div created="20150531011925302" creator="EricShulman" modified="20150531013228002" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Settings/CookieSyncer">
+<pre>&lt;$list filter={{TWBook/Settings/CookieList}} variable=&quot;id&quot;&gt;
+   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[!is[system]!prefix[images/]]&quot; variable=&quot;id&quot;&gt;
+   &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20150530061101693" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/Settings/Macros">
 <pre>\define dec()         0 1 2 3 4 5 6 7 8 9
@@ -11266,11 +11280,12 @@ rgba(0,0,0,1.0)</pre>
 &quot;url(&lt;&lt;datauri TWBook/images/textures/notepaper.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri TWBook/images/textures/whitepaper.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20150530071843186" modifier="EricShulman" title="TWBook/Settings/Panel">
-<pre>@@.floatright &lt;&lt;toggle_option tid:&quot;Stretch&quot; label:&quot;Stretch to fit&quot;&gt;&gt;@@
+<div created="20150426205104959" creator="EricShulman" modified="20150602011357406" modifier="EricShulman" title="TWBook/Settings/Panel">
+<pre>@@.floatright {{TWBook/Settings/Advanced}}@@
 @@.larger Display Settings@@
 &lt;hr&gt;
 &lt;table class=&quot;borderless&quot; style=&quot;width:100%&quot;&gt;&lt;tr&gt;&lt;td&gt;
+&lt;&lt;toggle_option tid:&quot;Stretch&quot; label:&quot;Stretch to fit&quot;&gt;&gt;
 &lt;&lt;toggle_option tid:&quot;LeftBar&quot; label:&quot;Show Table of Contents&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;toggle_option tid:&quot;ToolBar&quot; label:&quot;Show Toolbar buttons&quot;&gt;&gt;&lt;br&gt;
 &lt;hr&gt;
