@@ -636,7 +636,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150604065555777" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150604070517121" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6625,7 +6625,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150604065555776" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150604070517120" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150604054413979" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6634,8 +6634,8 @@ exports.startup = function() {
 <div modified="20150602213714960" modifier="EricShulman" title="$:/state/tab-1347519459">
 <pre>TWBook/Info/PartsList/System</pre>
 </div>
-<div modified="20150601090704278" modifier="EricShulman" title="$:/state/tab-1691732326">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div modified="20150604070129111" modifier="EricShulman" title="$:/state/tab-1691732326">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div modified="20150604054630029" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -6646,7 +6646,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150604065555776" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150604070517120" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6672,10 +6672,10 @@ exports.startup = function() {
 <div modified="20150604060215985" modifier="EricShulman" title="$:/temp/notify">
 <pre>clear favorites cookies...DONE!&lt;br&gt;,,(Refresh window to use defaults),,</pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150604065554366" modifier="EricShulman" title="$:/temp/revnote">
+<div created="20150525233822499" creator="EricShulman" modified="20150604070515766" modifier="EricShulman" title="$:/temp/revnote">
 <pre></pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150604065555776" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150604070517120" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6795,7 +6795,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150604065555776" modifier="EricShulman" title="$:/view">
+<div modified="20150604070517120" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9796,7 +9796,7 @@ exports.cookie = CookieWidget;
 
 })();</pre>
 </div>
-<div created="20150531011925302" creator="EricShulman" modified="20150604065452432" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Cookies/CookieJar">
+<div created="20150531011925302" creator="EricShulman" modified="20150604070234260" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/Cookies/CookieJar">
 <pre>&lt;!--
 This &quot;CookieJar&quot; binds cookie names with settings and favorites.
 
@@ -9806,7 +9806,7 @@ and updates the cookie value to keep it in sync.
 
 Tagging with PageTemplate ensures that the cookie widgets keep listening
 --&gt;
-&lt;$list filter=&quot;[title[$:/config/twb]indexes[]] -[ReadOnly]&quot; variable=&quot;id&quot;&gt;
+&lt;$list filter=&quot;[title[$:/config/twb]indexes[]] -ReadOnly&quot; variable=&quot;id&quot;&gt;
    &lt;$cookie name=&lt;&lt;id&gt;&gt; tiddler=&quot;$:/config/twb&quot; index=&lt;&lt;id&gt;&gt;/&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[!is[system]!prefix[images/]]&quot; variable=&quot;id&quot;&gt;
@@ -10722,44 +10722,44 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150604065555777" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.03.235554" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150604070517121" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.04.000515" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
-* 15.03.21.162000 Initial release for feedback
+* 15.03.21 Initial release for feedback
 * 15.03.22 - 15.05.24 manual revision notes were spotty at best
-* 15.05.25.210140
+* 15.05.25
 ** new automatic revision history mechanism
 ** cleanup [[TWBook/Buttons/ResetAndSave]]
 ** removed unneeded `&lt;$fieldmangler&gt;` in [[TWBook/Buttons/ToggleFavorite]]
 ** [[TWBook/TOC/Macros]] - cleaned up `TOCShowParent` recursion
 ** tweaks to .twb-btn-invisible for [[TWBook/TOC/ToggleAll]]
 ** added `toggle_option()` to [[TWBook/Settings/Macros]], used in [[TWBook/Settings/Panel]]
-* 15.05.26.163149
+* 15.05.26
 ** handle clearing of all settings ($:/config/twb). Affects all Toggle buttons and TopLeftBar (embedded toggle)
 ** tweaked [[TWBook/Buttons/ResetAndSave]]
 ** [[TWBook/Settings]] uses &quot;position:fixed&quot; to avoid jumpiness when changing toolbar buttons size
-* 15.05.27.023624
+* 15.05.27
 ** [[TWBook/Settings/Macros] tweak color_box() to attempt to handle textures.  Making progress but not quite done.
 ** in [[TWBook/Butons/StyleSheet]], added border and shadow to twb-drop-down
 ** removed use of tc-drop-down in buttons: Search, AdvancedSearch, History, RecentChanges, ResetAndSave.  Allows color-buttons to display better (but still not right)
-* 15.05.27.221319 
+* 15.05.27
 **[[TWBook/Settings/Macros]] color_button() handling for textures FIXED!
 ** also fixed [[TWBook/Settings/Panel]] for toggling toolbar
-* 15.05.28.162300
+* 15.05.28
 ** bigger color buttons and tweaks to settings panel layout
 ** close button in leftbar titlebox ,move ShowAll button into TOC corner
 ** fix 'word wrap' for buttons in [[TWBook/Settings/Palettes/Panel]]
 ** move TOC/ToggleAll button from LeftBar/Content to /TOC
 ** Save/Restore settings using new $cookie widget (works on-line only)
 ** added Stretch to Cookies
-* 15.05.29.095051
+* 15.05.29
 ** LeftBar/TitleBox layout (close and toggle all buttons, centered text, smaller subtitle)
 ** cookie.js deletes cookie if value is blank
 ** remove range.js and modify core edit-text.js to support min, max, and step params for type=&quot;range&quot;
 ** code cleanup cookie.js
 ** $:/config/twb as DataTiddler for settings
 *** affects most buttons, Settings/Macros, Settings/Panel, Settings/Palettes/Panel, most stylesheets.
-* 15.05.30.190203
+* 15.05.30
 ** cookies.js handling for &quot;index&quot; param (DataTiddlers)
 ** update Settings/Cookies to track $:/config/twb data indexes instead of separate tiddlers text fields.
 ** prevent cookies.js from creating extra cookies for unchanged values
@@ -10771,25 +10771,24 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** refactored PartsList into tabs, added Favorites
 ** set some default Favorites
 ** tweak saved favorites and set default tab for PartsList
-* 15.05.31.004030
+* 15.05.31
 ** [[TWBook/Settings/Info]] and [[TWBook/Info/PartsList/Config]]
 ** cleanup [[TWBook/Settings/Info]]
 ** update [[TWBook/PartsList/System]] to show image thumbnails
 ** extend core action-deletefield.js to support $index param - used in [[TWBook/Buttons/ToggleFavorite]]
-* 15.06.01.222156
+* 15.06.01
 ** added &quot;reset favorites&quot; button to TWBook/Button/Favorites/Panel]]
 ** added &quot;clear cookies&quot; buttons to [[TWBook/PartsList/Config]]
 ** fix clear cookies button in [[TWBook/Settings/Info]]
 ** fix page background texture
 ** adjusted CoverPage layout and removed EditFromHere from [[TWBook/NavBar/Bottom/MessageBox]]
-** [[TWBook/Settings/Advanced]] button and panel
-* 15.06.02.140311
+* 15.06.03
 ** remove FontSize/StartHere setting and adjust Settings/Panel layout
+** [[TWBook/Settings/Advanced]] button and panel
 ** [[TWBook/Settings/Advanced/Panel]] - added edit-text for $:/state tiddlers, added notify for delete cookies
 ** added [[TWBook/Settings/Reset]] and [[TWBook/Settings/Defaults]]
-* 15.06.03.230439
 ** refactor Cookies/ and Settings/ and added cookienames.js, action-setcookie.js, getcookie.js
-* 15.06.03.235512 exclude ReadOnly from CookieJar</pre>
+** exclude ReadOnly from CookieJar</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
