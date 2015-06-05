@@ -460,8 +460,6 @@ Error message and password prompt
 
 <li>TWBook/Cookies/action-setcookie.js</li>
 
-<li>TWBook/Cookies/ClearAll</li>
-
 <li>TWBook/Cookies/cookie.js</li>
 
 <li>TWBook/Cookies/CookieJar</li>
@@ -469,6 +467,8 @@ Error message and password prompt
 <li>TWBook/Cookies/cookienames.js</li>
 
 <li>TWBook/Cookies/getcookie.js</li>
+
+<li>TWBook/Cookies/Panel</li>
 
 <li>TWBook/Filters/JList.js</li>
 
@@ -636,7 +636,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150604070517121" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150605123455036" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6625,7 +6625,7 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150604070517120" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150605123455035" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150604054413979" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6634,8 +6634,8 @@ exports.startup = function() {
 <div modified="20150602213714960" modifier="EricShulman" title="$:/state/tab-1347519459">
 <pre>TWBook/Info/PartsList/System</pre>
 </div>
-<div modified="20150604070129111" modifier="EricShulman" title="$:/state/tab-1691732326">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+<div modified="20150605115027607" modifier="EricShulman" title="$:/state/tab-1691732326">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div modified="20150604054630029" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -6646,7 +6646,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150604070517120" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150605123455035" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6672,10 +6672,10 @@ exports.startup = function() {
 <div modified="20150604060215985" modifier="EricShulman" title="$:/temp/notify">
 <pre>clear favorites cookies...DONE!&lt;br&gt;,,(Refresh window to use defaults),,</pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150604070515766" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150605123442289" modifier="EricShulman" title="$:/temp/revnote">
+<pre>move cookie buttons from Settings/Advanced/Panel to Cookies/Panel, cleanup Settings/Reset and tweak Layout for Settings/Panel</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150604070517120" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150605123455035" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6795,7 +6795,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150604070517120" modifier="EricShulman" title="$:/view">
+<div modified="20150605123455035" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9669,12 +9669,6 @@ exports[&quot;action-setcookie&quot;] = SetCookieWidget;
 
 })();</pre>
 </div>
-<div created="20150604053332054" creator="EricShulman" modified="20150604065111960" modifier="EricShulman" tags="" title="TWBook/Cookies/ClearAll">
-<pre>&lt;!-- button action for clearing all cookies --&gt;
-&lt;$list filter=&lt;&lt;cookienames&gt;&gt; variable=&quot;id&quot;&gt;
-   &lt;$action-setcookie $name=&lt;&lt;id&gt;&gt; $value=&quot;&quot;/&gt;
-&lt;/$list&gt;</pre>
-</div>
 <div created="20150529025643756" creator="EricShulman" modified="20150604052323219" modifier="EricShulman" module-type="widget" tags="" title="TWBook/Cookies/cookie.js" type="application/javascript">
 <pre>/*\
 title: TWBook/Cookies/cookie.js
@@ -9870,6 +9864,34 @@ exports.run = function(name) {
 	return &quot;&quot;;
 };
 })();</pre>
+</div>
+<div created="20150605115125590" creator="EricShulman" modified="20150605122542627" modifier="EricShulman" tags="" title="TWBook/Cookies/Panel">
+<pre>\define Notify(msg)
+&lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;$msg$&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
+\end
+
+\define ClearCookies(label,filter)
+&lt;$button&gt; $label$
+&lt;$list filter=&quot;$filter$&quot; variable=&quot;id&quot;&gt;
+   &lt;$action-setcookie $name=&lt;&lt;id&gt;&gt; $value=&quot;&quot;/&gt;
+&lt;/$list&gt;
+&lt;&lt;Notify &quot;$label$...DONE!&lt;br&gt;,,(Refresh window to use defaults),,&quot;&gt;&gt;
+&lt;/$button&gt;&lt;br&gt;
+&lt;$list filter=&quot;$filter$&quot; variable=&quot;id&quot;&gt;&lt;$text text=&lt;&lt;id&gt;&gt;/&gt;, &lt;/$list&gt;
+\end
+
+&lt;&lt;ClearCookies
+   label:&quot;clear settings cookies&quot;
+   filter:&quot;[title[$:/config/twb]indexes[]]&quot;&gt;&gt;
+
+&lt;&lt;ClearCookies
+   label:&quot;clear favorites cookies&quot;
+   filter:&quot;[title[$:/config/twb/favorites]indexes[]]&quot;&gt;&gt;
+
+&lt;$macrocall $name=&quot;ClearCookies&quot;
+   label=&quot;clear real cookies&quot;
+   filter=&lt;&lt;cookienames&gt;&gt;/&gt;</pre>
 </div>
 <div created="20150422101236608" creator="EricShulman" modified="20150502094900917" modifier="EricShulman" module-type="filteroperator" tags="" title="TWBook/Filters/JList.js" type="application/javascript">
 <pre>/*\
@@ -10722,7 +10744,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150604070517121" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.04.000515" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150605123455037" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.05.053442" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21 Initial release for feedback
@@ -10788,7 +10810,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** [[TWBook/Settings/Advanced/Panel]] - added edit-text for $:/state tiddlers, added notify for delete cookies
 ** added [[TWBook/Settings/Reset]] and [[TWBook/Settings/Defaults]]
 ** refactor Cookies/ and Settings/ and added cookienames.js, action-setcookie.js, getcookie.js
-** exclude ReadOnly from CookieJar</pre>
+** exclude ReadOnly from CookieJar
+* 15.06.05.053442 move cookie buttons from Settings/Advanced/Panel to Cookies/Panel, cleanup Settings/Reset and tweak Layout for Settings/Panel</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -11272,7 +11295,7 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150531175811013" creator="EricShulman" modified="20150604053815087" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced/Panel">
+<div created="20150531175811013" creator="EricShulman" modified="20150605114952543" modifier="EricShulman" tags="" title="TWBook/Settings/Advanced/Panel">
 <pre>\define ShowData(tid)
 [[$tid$]]&lt;br&gt;
 &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;
@@ -11293,33 +11316,11 @@ After a final proofreading for to ensure there are no more typos, minor errors i
 &lt;/$set&gt;
 \end
 
-\define Notify(msg)
-&lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;$msg$&quot;/&gt;
-&lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
-\end
-
-\define ClearCookies(label,filter)
-&lt;$button&gt; $label$
-&lt;$list filter=&quot;$filter$&quot; variable=&quot;id&quot;&gt;
-   &lt;$action-setcookie $name=&lt;&lt;id&gt;&gt; $value=&quot;&quot;/&gt;
-&lt;/$list&gt;
-&lt;&lt;Notify &quot;$label$...DONE!&lt;br&gt;,,(Refresh window to use defaults),,&quot;&gt;&gt;
-&lt;/$button&gt;
-\end
-
 @@.larger Advanced Settings@@
 &lt;hr&gt;
 &lt;div class=&quot;scroll-y smaller&quot; style=&quot;max-height:60vh&quot;&gt;
-@@.floatright &lt;$macrocall $name=&quot;ClearCookies&quot;
-   label=&quot;clear settings cookies&quot;
-   filter=&quot;[title[$:/config/twb]indexes[]]&quot;/&gt;@@
 &lt;&lt;ShowData &quot;$:/config/twb&quot;&gt;&gt;
-
-@@.floatright &lt;$macrocall $name=&quot;ClearCookies&quot;
-   label=&quot;clear favorites cookies&quot;
-   filter=&quot;[title[$:/config/twb/favorites]indexes[]]&quot;/&gt;@@
 &lt;&lt;ShowData &quot;$:/config/twb/favorites&quot;&gt;&gt;
-
 &lt;$list filter=&quot;[prefix[$:/state]] -[prefix[$:/state/tab]] -[prefix[$:/state/popup]]&quot;&gt;
    &lt;$macrocall $name=&quot;ShowData&quot; tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
@@ -11552,9 +11553,9 @@ rgba(0,0,0,1.0)</pre>
 &quot;url(&lt;&lt;datauri TWBook/images/textures/notepaper.jpg&gt;&gt;)&quot;
 &quot;url(&lt;&lt;datauri TWBook/images/textures/whitepaper.jpg&gt;&gt;)&quot;</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20150604060125050" modifier="EricShulman" title="TWBook/Settings/Panel">
-<pre>@@.floatright {{TWBook/Settings/Advanced}}@@
-@@.larger Display Settings@@ @@.smaller {{TWBook/Settings/Reset}}@@
+<div created="20150426205104959" creator="EricShulman" modified="20150605123243448" modifier="EricShulman" title="TWBook/Settings/Panel">
+<pre>@@.floatright {{TWBook/Settings/Reset}} {{TWBook/Settings/Advanced}}@@
+@@.larger Display Settings@@
 &lt;hr&gt;
 &lt;table class=&quot;borderless&quot; style=&quot;width:100%&quot;&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
 &lt;&lt;toggle_option tid:&quot;LeftBar&quot; label:&quot;Show Table of Contents&quot;&gt;&gt;&lt;br&gt;
@@ -11580,15 +11581,28 @@ Table of Contents:&lt;br&gt; &lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&
 &lt;&lt;palette_popup &quot;Background/DropDowns&quot;&gt;&gt;Drop downs&lt;br&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div created="20150602204127670" creator="EricShulman" modified="20150604055901998" modifier="EricShulman" tags="" title="TWBook/Settings/Reset">
-<pre>&lt;$button tooltip=&quot;use default settings&quot;&gt; use defaults
-&lt;$action-setfield $tiddler=&quot;$:/config/twb&quot; text={{TWBook/Settings/Defaults}}/&gt;
-{{TWBook/Cookies/ClearAll}}
-&lt;/$button&gt;
-&lt;$button tooltip=&quot;clear all settings&quot;&gt; clear all
+<div created="20150602204127670" creator="EricShulman" modified="20150605122824615" modifier="EricShulman" tags="" title="TWBook/Settings/Reset">
+<pre>\define ClearCookies()
+&lt;$list filter=&quot;[title[$:/config/twb]indexes[]]&quot; variable=&quot;id&quot;&gt;
+   &lt;$action-setcookie $name=&lt;&lt;id&gt;&gt; $value=&quot;&quot;/&gt;
+&lt;/$list&gt;
+\end
+
+\define ClearSettings()
 &lt;$action-setfield $tiddler=&quot;$:/config/twb&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/config/twb&quot; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
-{{TWBook/Cookies/ClearAll}}
+\end
+
+\define UseDefaults()
+&lt;$action-setfield $tiddler=&quot;$:/config/twb&quot; text={{TWBook/Settings/Defaults}}/&gt;
+\end
+
+&lt;$button tooltip=&quot;use default settings&quot;&gt; use defaults
+&lt;&lt;ClearCookies&gt;&gt;&lt;&lt;UseDefaults&gt;&gt;
+&lt;/$button&gt;
+
+&lt;$button tooltip=&quot;clear all settings&quot;&gt; clear all
+&lt;&lt;ClearCookies&gt;&gt;&lt;&lt;ClearSettings&gt;&gt;
 &lt;/$button&gt;</pre>
 </div>
 <div created="20150314000609556" creator="EricShulman" modified="20150530055913060" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/StyleSheet" type="">
