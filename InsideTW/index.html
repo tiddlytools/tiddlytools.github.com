@@ -636,7 +636,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150613223207718" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150613233654738" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6625,13 +6625,13 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150613223207717" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150613233654738" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20150608225259576" modifier="EricShulman" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div modified="20150613222748037" modifier="EricShulman" title="$:/state/tab-1347519459">
+<div modified="20150602213714960" modifier="EricShulman" title="$:/state/tab-1347519459">
 <pre>TWBook/Info/PartsList/System</pre>
 </div>
 <div modified="20150605115027607" modifier="EricShulman" title="$:/state/tab-1691732326">
@@ -6646,7 +6646,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150522165255033" creator="EricShulman" modified="20150613223207717" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150522165255033" creator="EricShulman" modified="20150613233654738" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div modified="20150522225128589" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -6672,10 +6672,10 @@ exports.startup = function() {
 <div modified="20150604060215985" modifier="EricShulman" title="$:/temp/notify">
 <pre>clear favorites cookies...DONE!&lt;br&gt;,,(Refresh window to use defaults),,</pre>
 </div>
-<div created="20150525233822499" creator="EricShulman" modified="20150613223206196" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20150525233822499" creator="EricShulman" modified="20150613233652256" modifier="EricShulman" title="$:/temp/revnote">
+<pre>loop prevention take 2</pre>
 </div>
-<div created="20150522222129469" creator="EricShulman" modified="20150613223207717" modifier="EricShulman" title="$:/temp/search">
+<div created="20150522222129469" creator="EricShulman" modified="20150613233654737" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6795,7 +6795,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150613223207717" modifier="EricShulman" title="$:/view">
+<div modified="20150613233654738" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10744,7 +10744,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150613223207718" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.13.153206" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150613233654739" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.06.13.163652" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21 Initial release for feedback
@@ -10811,15 +10811,12 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** added [[TWBook/Settings/Reset]] and [[TWBook/Settings/Defaults]]
 ** refactor Cookies/ and Settings/ and added cookienames.js, action-setcookie.js, getcookie.js
 ** exclude ReadOnly from CookieJar
-* 15.06.05
-** move cookie buttons from Settings/Advanced/Panel to Cookies/Panel, cleanup Settings/Reset and tweak Layout for Settings/Panel
-* 15.06.08
-** tweak sidebar font colors
-* 15.06.12
-** [[TWBook/TOC/Macros]] - handle multiple parents (remove limit[1] in ~TOCShowParents) and prevent loops (&quot;exclude&quot; param)
-* 15.06.13
-** [[TWBook/TOC/ToggleBranch]] - suppress arrow for pruned branches
-** fix ~TOCShowParents recursion (oops!)</pre>
+* 15.06.05.053442 move cookie buttons from Settings/Advanced/Panel to Cookies/Panel, cleanup Settings/Reset and tweak Layout for Settings/Panel
+* 15.06.08.160230 tweak sidebar font colors
+* 15.06.13.160124 TOC/Macros - multiple parents - TAKE 2
+** TOC/Template - fixed references to star_filled and star_empty
+* 15.06.13.160906 TOCShowAll loop blocker
+* 15.06.13.163652 loop prevention take 2</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -11843,7 +11840,7 @@ html .tc-story-river {
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20150613222732728" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20150613233634913" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
 <pre>\define TOCBranchIsOpen()    $:/state/TOC/$(tid)$
 
 \define TOCShowItem()
@@ -11851,15 +11848,14 @@ html .tc-story-river {
 \end
 
 \define TOCShowBranch()
-&lt;$macrocall $name=&quot;TOCShowTree&quot; tag=&lt;&lt;tid&gt;&gt; template=&lt;&lt;template&gt;&gt;
-   exclude=&quot;&quot;&quot;$(exclude)$&quot;&quot;&quot;/&gt;
+&lt;$macrocall $name=&quot;TOCShowTree&quot; tag=&lt;&lt;tid&gt;&gt; template=&lt;&lt;template&gt;&gt;/&gt;
 \end
 
-\define TOCShowParents(here)
+\define TOCShowParents(here,exclude:&quot;&quot;)
 &lt;$list filter=&quot;[title[$here$]tag&lt;tid&gt;]&quot;
    emptyMessage=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[title[$here$]tags[]]&quot;&gt;
-         &lt;$macrocall $name=&quot;TOCShowParents&quot; here={{!!title}}/&gt;
+      &lt;$list filter=&quot;[title[$here$]tags[]] $exclude$&quot;&gt;
+         &lt;$macrocall $name=&quot;TOCShowParents&quot; here={{!!title}} exclude=&quot;$exclude$ -$here$&quot;/&gt;
       &lt;/$list&gt;
    &quot;&quot;&quot;&gt;
    &lt;&lt;TOCShowBranch&gt;&gt;
@@ -11934,7 +11930,7 @@ html .tc-story-river {
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232539664" creator="EricShulman" modified="20150530223340079" modifier="EricShulman" title="TWBook/TOC/Template">
+<div created="20150426232539664" creator="EricShulman" modified="20150613230013080" modifier="EricShulman" title="TWBook/TOC/Template">
 <pre>\define favorite() $:/config/twb/favorites##$(id)$
 
 &lt;nobr&gt;
@@ -11957,10 +11953,10 @@ html .tc-story-river {
 
 &lt;$set name=&quot;id&quot; value={{!!title}}&gt;
 &lt;$reveal type=&quot;match&quot; text=&quot;&quot; state=&lt;&lt;favorite&gt;&gt;&gt;
-   @@.invisible.resize [img[images/star_empty.svg]]@@
+   @@.invisible.resize [img[TWBook/images/star_empty.svg]]@@
 &lt;/$reveal&gt;
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; state=&lt;&lt;favorite&gt;&gt;&gt;
-   @@.resize [img[images/star_filled.svg]]@@
+   @@.resize [img[TWBook/images/star_filled.svg]]@@
 &lt;/$reveal&gt;
 &lt;/$set&gt;
 &lt;/nobr&gt;</pre>
@@ -11979,10 +11975,8 @@ html .tc-story-river {
 &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150524031049358" creator="EricShulman" modified="20150613220334721" modifier="EricShulman" tags="" title="TWBook/TOC/ToggleBranch">
-<pre>\define hasChildren() [&lt;tid&gt;tagging[]] $(exclude)$ +[limit[1]]
-
-&lt;span class=&quot;twb-TOC-togglebutton&quot;&gt;
+<div created="20150524031049358" creator="EricShulman" modified="20150525035346602" modifier="EricShulman" tags="" title="TWBook/TOC/ToggleBranch">
+<pre>&lt;span class=&quot;twb-TOC-togglebutton&quot;&gt;
 &lt;$set name=&quot;tid&quot;  value={{!!title}}&gt;
    &lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
       &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;collapse this item&quot;&gt;
@@ -11991,7 +11985,7 @@ html .tc-story-river {
       &lt;/$button&gt;
    &lt;/$reveal&gt;
    &lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&lt;&lt;TOCBranchIsOpen&gt;&gt;&gt;
-      &lt;$list filter=&lt;&lt;hasChildren&gt;&gt; variable=&quot;x&quot;
+      &lt;$list filter=&quot;[&lt;tid&gt;tagging[]limit[1]]&quot; variable=&quot;x&quot;
          emptyMessage=&quot;@@.resize.smaller &amp;emsp;@@&quot;&gt;
          &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;expand this item&quot;&gt;
             &lt;$action-setfield $tiddler=&lt;&lt;TOCBranchIsOpen&gt;&gt; text=&quot;yes&quot;/&gt;
