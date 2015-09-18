@@ -142,10 +142,6 @@ Error message and password prompt
 
 <li>$:/els/macros/href.js</li>
 
-<li>$:/els/phonegap/PinchZoomInit</li>
-
-<li>$:/els/phonegap/PinchZoomMarkup</li>
-
 <li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
@@ -155,6 +151,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab-1691732326</li>
 
 <li>$:/state/tab/sidebar--1835078512</li>
 
@@ -205,6 +203,10 @@ Error message and password prompt
 <li>Connections</li>
 
 <li>Contents</li>
+
+<li>Cordova/pinchzoom.js</li>
+
+<li>Cordova/pinchzoom.markup</li>
 
 <li>CoverPage</li>
 
@@ -628,7 +630,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20150703163416894" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20150918013145184" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -655,7 +657,7 @@ Error message and password prompt
     &quot;TWBook/Info/Funding&quot;: &quot;22:20, 31st May 2015&quot;
 }</pre>
 </div>
-<div created="20150614063430605" creator="EricShulman" modified="20150703163416894" modifier="EricShulman" title="$:/config/twb/TOC" type="application/json">
+<div created="20150614063430605" creator="EricShulman" modified="20150918013145184" modifier="EricShulman" title="$:/config/twb/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6809,278 +6811,10 @@ exports.run = function() {
 
 })();</pre>
 </div>
-<div created="20150212062530288" creator="EricShulman" modified="20150212063119461" modifier="EricShulman" module-type="startup" tags="" title="$:/els/phonegap/PinchZoomInit" type="application/javascript">
-<pre>(function(){
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-// Export name and synchronous status
-exports.name = &quot;pinchzoom&quot;;
-exports.platforms = [&quot;browser&quot;];
-exports.after = [&quot;startup&quot;];
-exports.synchronous = true;
-		
-// PhoneGap Pinch Zoom Init
-exports.startup = function() {
-   if (typeof cordova !== &quot;undefined&quot;){
-      //enabling zoom control
-      cordova.plugins.ZoomControl.ZoomControl(&quot;true&quot;);
-      // enabling built in zoom control
-      cordova.plugins.ZoomControl.setBuiltInZoomControls(&quot;true&quot;);
-      // enabling display zoom control
-      cordova.plugins.ZoomControl.setDisplayZoomControls(&quot;true&quot;);
-   }
-};
-
-})();</pre>
-</div>
-<div created="20150212062340891" creator="EricShulman" modified="20150212062517319" modifier="EricShulman" tags="$:/tags/RawMarkup" title="$:/els/phonegap/PinchZoomMarkup">
-<pre>&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=8&gt;</pre>
-</div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/config/AnimationDuration]]
-# [[$:/config/SaverFilter]]
-# [[$:/config/twb]]
-# [[$:/config/twb/favorites]]
-# [[$:/config/twb/TOC]]
-# [[$:/core/modules/widgets/action-deletefield.js]]
-# [[$:/core/modules/widgets/edit-text.js]]
-# [[$:/core/ui/ViewTemplate/tags]]
-# [[$:/core/ui/ViewTemplate/title]]
-# [[$:/DefaultTiddlers]]
-# [[$:/els/macros/href.js]]
-# [[$:/els/phonegap/PinchZoomInit]]
-# [[$:/els/phonegap/PinchZoomMarkup]]
-# [[$:/Import]]
-# [[$:/isEncrypted]]
-# [[$:/SiteSubtitle]]
-# [[$:/SiteTitle]]
-# [[$:/status/UserName]]
-# [[$:/theme]]
-# [[$:/themes/tiddlywiki/centralised]]
-# [[$:/themes/tiddlywiki/snowwhite]]
-# [[$:/themes/tiddlywiki/vanilla]]
-# [[$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint]]
-# [[$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth]]
-# [[$:/view]]
-# [[AboutTheAuthor]]
-# [[Adding Images]]
-# [[AdvancedSearch]]
-# [[Appendix]]
-# [[Authors]]
-# [[Basic Formatting]]
-# [[Benefits]]
-# [[Business]]
-# [[Community]]
-# [[Connections]]
-# [[Contents]]
-# [[CoverPage]]
-# [[Credits]]
-# [[CustomFields]]
-# [[Designers]]
-# [[Developers]]
-# [[Discovery]]
-# [[DocumentOrWebsite]]
-# [[Downloading]]
-# [[DownloadSaver]]
-# [[Editing]]
-# [[Educational]]
-# [[EricShulman]]
-# [[FindingContent]]
-# [[Flexibility]]
-# [[Glossary]]
-# [[History]]
-# [[images/appendix.svg]]
-# [[images/calendar.svg]]
-# [[images/community.svg]]
-# [[images/concepts.svg]]
-# [[images/connections.svg]]
-# [[images/contract.svg]]
-# [[images/cover.png]]
-# [[images/discovery.svg]]
-# [[images/download.svg]]
-# [[images/editing.svg]]
-# [[images/editing2.svg]]
-# [[images/eric3.png]]
-# [[images/funding.svg]]
-# [[images/gears.svg]]
-# [[images/glossary.svg]]
-# [[images/gold-star.png]]
-# [[images/hawaii.gif]]
-# [[images/ideas.svg]]
-# [[images/info.svg]]
-# [[images/knowledge.svg]]
-# [[images/preface.svg]]
-# [[images/presentations.svg]]
-# [[images/questions.svg]]
-# [[images/saving.svg]]
-# [[images/setup.svg]]
-# [[images/sidebar.png]]
-# [[images/skills.svg]]
-# [[images/stickleback.png]]
-# [[images/storyriver.png]]
-# [[images/tiddlereditor.png]]
-# [[images/tiddlerviewer.png]]
-# [[images/tiddlywinks.png]]
-# [[images/tour.svg]]
-# [[images/transfer.svg]]
-# [[images/ttsnap_small.png]]
-# [[images/twcomsnap.png]]
-# [[images/view.svg]]
-# [[Importing and Exporting]]
-# [[InsideTW]]
-# [[Installation]]
-# [[Introduction]]
-# [[KnowledgeCapture]]
-# [[KnowledgeTransfer]]
-# [[Legal]]
-# [[Legal/Copyrights]]
-# [[Legal/Liability]]
-# [[Legal/Licenses]]
-# [[Legal/Privacy]]
-# [[Legal/TermsOfUse]]
-# [[Legal/Trademarks]]
-# [[Linking and Embedding]]
-# [[Links]]
-# [[MicroContent]]
-# [[Personal]]
-# [[Portability]]
-# [[Preface]]
-# [[Presentations]]
-# [[Privacy]]
-# [[PublicPrivatePersonal]]
-# [[Readers]]
-# [[Roles]]
-# [[Saving]]
-# [[Scenarios]]
-# [[Setup]]
-# [[Setup/Appearance]]
-# [[Setup/Info]]
-# [[Setup/Plugins]]
-# [[Setup/Saving]]
-# [[Setup/Settings]]
-# [[Sharing]]
-# [[Skills]]
-# [[Social]]
-# [[Starting TiddlyWiki]]
-# [[Tabbed Lists]]
-# [[Tagging Tiddlers]]
-# [[The Wiki Way]]
-# [[TheControlPanel]]
-# [[ThePageControls]]
-# [[TheSidebar]]
-# [[TheStoryRiver]]
-# [[TheTiddlerViewer]]
-# [[TiddlerEditor]]
-# [[TiddlyDesktop]]
-# [[TiddlyFox]]
-# [[TiddlyWiki]]
-# [[TiddlyWikiClassic]]
-# [[Tour]]
-# [[TWBook/Buttons/AdvancedSearch]]
-# [[TWBook/Buttons/Back]]
-# [[TWBook/Buttons/EditFromHere]]
-# [[TWBook/Buttons/Favorites]]
-# [[TWBook/Buttons/Favorites/Panel]]
-# [[TWBook/Buttons/History]]
-# [[TWBook/Buttons/History/Panel]]
-# [[TWBook/Buttons/Home]]
-# [[TWBook/Buttons/Permalink]]
-# [[TWBook/Buttons/RecentChanges]]
-# [[TWBook/Buttons/ResetAndSave]]
-# [[TWBook/Buttons/Search]]
-# [[TWBook/Buttons/Search/Panel]]
-# [[TWBook/Buttons/StyleSheet]]
-# [[TWBook/Buttons/ToggleFavorite]]
-# [[TWBook/Buttons/ToggleLeftBar]]
-# [[TWBook/Buttons/ToggleReadOnly]]
-# [[TWBook/Buttons/ViewAll]]
-# [[TWBook/Cookies/action-setcookie.js]]
-# [[TWBook/Cookies/cookie.js]]
-# [[TWBook/Cookies/CookieJar]]
-# [[TWBook/Cookies/cookienames.js]]
-# [[TWBook/Cookies/getcookie.js]]
-# [[TWBook/Cookies/Panel]]
-# [[TWBook/Filters/JList.js]]
-# [[TWBook/Filters/TagExp.js]]
-# [[TWBook/Filters/Unique.js]]
-# [[TWBook/images/back.svg]]
-# [[TWBook/images/changes.svg]]
-# [[TWBook/images/favorites.svg]]
-# [[TWBook/images/history.svg]]
-# [[TWBook/images/permalink.svg]]
-# [[TWBook/images/search.svg]]
-# [[TWBook/images/star_empty.svg]]
-# [[TWBook/images/star_filled.svg]]
-# [[TWBook/images/textures/gridpaper.jpg]]
-# [[TWBook/images/textures/nicesnow.png]]
-# [[TWBook/images/textures/notepaper.jpg]]
-# [[TWBook/images/textures/ricepaper.jpg]]
-# [[TWBook/images/textures/whitepaper.jpg]]
-# [[TWBook/images/textures/wood_dark.jpg]]
-# [[TWBook/images/textures/wood_light.jpg]]
-# [[TWBook/images/textures/wood.jpg]]
-# [[TWBook/images/viewall.svg]]
-# [[TWBook/Info/DraftNotice]]
-# [[TWBook/Info/Funding]]
-# [[TWBook/Info/Funding/Donate]]
-# [[TWBook/Info/ListAll]]
-# [[TWBook/Info/Notes]]
-# [[TWBook/Info/PartsList]]
-# [[TWBook/Info/PartsList/Content]]
-# [[TWBook/Info/PartsList/System]]
-# [[TWBook/Info/RevisionHistory]]
-# [[TWBook/LeftBar]]
-# [[TWBook/LeftBar/Buttons/Background]]
-# [[TWBook/LeftBar/Buttons/Close]]
-# [[TWBook/LeftBar/Content]]
-# [[TWBook/LeftBar/Location]]
-# [[TWBook/LeftBar/StyleSheet]]
-# [[TWBook/LeftBar/TitleBox]]
-# [[TWBook/NavBar/Bottom]]
-# [[TWBook/NavBar/Bottom/MessageBox]]
-# [[TWBook/NavBar/Macros]]
-# [[TWBook/NavBar/StyleSheet]]
-# [[TWBook/NavBar/Top]]
-# [[TWBook/NavBar/Top/TitleBox]]
-# [[TWBook/NavBar/Top/ToolBar]]
-# [[TWBook/RootTag]]
-# [[TWBook/Scraps]]
-# [[TWBook/Settings]]
-# [[TWBook/Settings/Advanced]]
-# [[TWBook/Settings/Advanced/Panel]]
-# [[TWBook/Settings/Defaults]]
-# [[TWBook/Settings/Macros]]
-# [[TWBook/Settings/Palettes/Colors]]
-# [[TWBook/Settings/Palettes/Flares]]
-# [[TWBook/Settings/Palettes/Panel]]
-# [[TWBook/Settings/Palettes/Shades]]
-# [[TWBook/Settings/Palettes/Textures]]
-# [[TWBook/Settings/Panel]]
-# [[TWBook/Settings/Reset]]
-# [[TWBook/StyleSheet]]
-# [[TWBook/StyleSheet/Print]]
-# [[TWBook/StyleSheet/ReadOnly]]
-# [[TWBook/StyleSheet/Shortcuts]]
-# [[TWBook/StyleSheet/Stretch]]
-# [[TWBook/TOC]]
-# [[TWBook/TOC/Macros]]
-# [[TWBook/TOC/StyleSheet]]
-# [[TWBook/TOC/Template]]
-# [[TWBook/TOC/ToggleAll]]
-# [[TWBook/TOC/ToggleBranch]]
-# [[TWBook/TopLeftBar]]
-# [[TWBook/TopRightBar]]
-# [[TWBook/ViewAll]]
-# [[TWBook/ViewAll/Macros]]
-# [[TWBook/ViewAll/StyleSheet]]
-# [[TWBook/Widgets/scrollhere.js]]
-# [[TWBook/Widgets/scrollhere.js.info]]
-# [[WhatsInAName]]</pre>
+# [[PhoneGap/pinchzoom.markup]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7091,8 +6825,11 @@ exports.startup = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20150703163416893" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20150918013145183" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
+</div>
+<div modified="20150918012901029" modifier="EricShulman" title="$:/state/tab-1691732326">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div modified="20150703163345629" modifier="EricShulman" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -7103,7 +6840,7 @@ exports.startup = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div modified="20150703163416893" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150918012855398" creator="EricShulman" modified="20150918013145183" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7120,10 +6857,10 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20150703163410862" creator="EricShulman" modified="20150703163414765" modifier="EricShulman" title="$:/temp/revnote">
-<pre>upgrade to TW5.1.9</pre>
+<div created="20150703163410862" creator="EricShulman" modified="20150918013141150" modifier="EricShulman" title="$:/temp/revnote">
+<pre>updated cordova/pinchzoom to use event listener</pre>
 </div>
-<div modified="20150703163416893" modifier="EricShulman" title="$:/temp/search">
+<div modified="20150918013145183" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -7251,7 +6988,7 @@ exports.startup = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20150703163416893" modifier="EricShulman" title="$:/view">
+<div modified="20150918013145183" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -7328,6 +7065,40 @@ Using commonly available web tech also provides virtually universal [[Portabilit
 ''//Please select a topic://''&lt;hr&gt;
 &lt;$macrocall $name=&quot;TOCShowAll&quot; tag={{TWBook/RootTag}}/&gt;
 @@</pre>
+</div>
+<div created="20150212062530288" creator="EricShulman" modified="20150918013057324" modifier="EricShulman" module-type="startup" tags="" title="Cordova/pinchzoom.js" type="application/javascript">
+<pre>(function(){
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+// Export name and synchronous status
+exports.name = &quot;pinchzoom&quot;;
+exports.platforms = [&quot;browser&quot;];
+exports.after = [&quot;startup&quot;];
+exports.synchronous = true;
+		
+// Cordova Pinch Zoom Init
+exports.startup = function() {
+   if (typeof cordova !== &quot;undefined&quot;){
+      document.addEventListener('deviceready', function(){
+         // enabling zoom control
+         cordova.plugins.ZoomControl.ZoomControl(&quot;true&quot;);
+         // enabling built in zoom control
+         cordova.plugins.ZoomControl.setBuiltInZoomControls(&quot;true&quot;);
+         // enabling display zoom control
+         cordova.plugins.ZoomControl.setDisplayZoomControls(&quot;true&quot;);
+     }, function(){
+         alert('PinchZoomInit: error deviceready');
+     });
+   }
+};
+
+})();</pre>
+</div>
+<div created="20150212062340891" creator="EricShulman" modified="20150918013122296" modifier="EricShulman" tags="$:/tags/RawMarkup" title="Cordova/pinchzoom.markup">
+<pre>&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=8&gt;</pre>
 </div>
 <div caption="Cover Page" created="20150212074808374" creator="EricShulman" icon="images/cover.png" modified="20150621060412235" modifier="EricShulman" navbarbottom="no" navbartop="no" tags="InsideTW twbook-cover" title="CoverPage">
 <pre>&lt;br&gt;&lt;br&gt;
@@ -11214,7 +10985,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150703163416894" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.07.03.093414" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20150918013145185" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.09.17.183141" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21 Initial release for feedback
@@ -11309,7 +11080,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 * 15.06.25.104524 new background texture (nicesnow.png)
 * 15.06.25.110232 changed default textures
 * 15.06.27.131648 [[TWBook/NavBar/Macros]] - added nobr in NavBarLink() and NavBarStartHere()
-* 15.07.03.093414 upgrade to TW5.1.9</pre>
+* 15.07.03.093414 upgrade to TW5.1.9
+* 15.09.17.183141 updated cordova/pinchzoom to use event listener</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
