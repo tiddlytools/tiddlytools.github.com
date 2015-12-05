@@ -348,6 +348,10 @@ Error message and password prompt
 
 <li>Links</li>
 
+<li>macros/more</li>
+
+<li>macros/more/info</li>
+
 <li>MicroContent</li>
 
 <li>Personal</li>
@@ -616,7 +620,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20151112233153876" creator="EricShulman" modified="20151118012442908" modifier="EricShulman" title="$:/config/TOC" type="application/json">
+<div created="20151112233153876" creator="EricShulman" modified="20151205231238511" modifier="EricShulman" title="$:/config/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -628,7 +632,7 @@ Error message and password prompt
     &quot;AboutTheAuthor&quot;: &quot;12:57, 13th November 2015&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151118012442908" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151205231238510" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6806,7 +6810,7 @@ exports.run = function() {
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20151118012442908" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151205231238510" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151118012023756" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -6830,7 +6834,7 @@ exports.run = function() {
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20150918012855398" creator="EricShulman" modified="20151118012442908" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20150918012855398" creator="EricShulman" modified="20151205231238510" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6847,10 +6851,10 @@ exports.run = function() {
     }
 }</pre>
 </div>
-<div created="20150703163410862" creator="EricShulman" modified="20151118012439625" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20150703163410862" creator="EricShulman" modified="20151205231233281" modifier="EricShulman" title="$:/temp/revnote">
+<pre>added macros/more (experimental)</pre>
 </div>
-<div modified="20151118012442908" modifier="EricShulman" title="$:/temp/search">
+<div modified="20151205231238509" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div modified="20150508064658701" modifier="EricShulman" title="$:/theme">
@@ -6978,7 +6982,7 @@ exports.run = function() {
 <div created="20150509044344374" creator="EricShulman" modified="20150509044345182" modifier="EricShulman" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>100%</pre>
 </div>
-<div modified="20151118012442908" modifier="EricShulman" title="$:/view">
+<div modified="20151205231238510" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9103,6 +9107,87 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/blockquote&gt;
 * etc.</pre>
 </div>
+<div created="20151203215640514" modified="20151205135159661" tags="$:/tags/Macro" title="macros/more">
+<pre>\define more-text()   &lt;div&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/div&gt;
+\define more-link()   &lt;div&gt;&lt;$link&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$link&gt;&lt;/div&gt;
+\define more-comma()  &lt;$link&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$link&gt;, 
+\define more-bullet() &lt;li&gt;&lt;$link&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$link&gt;&lt;/li&gt;
+
+\define more-body(list,size,template,id,level:&quot;+&quot;)
+&lt;$set name=&quot;id&quot;   value=&lt;&lt;qualify &quot;$:/state/popup/more/$id$/$level$&quot;&gt;&gt;&gt;
+&lt;$set name=&quot;rest&quot; filter=&quot;&quot;&quot;$list$ +[rest[$size$]]&quot;&quot;&quot;&gt;
+&lt;!-- SHOW THIS PAGE OF ITEMS --&gt;
+&lt;$list filter=&quot;&quot;&quot;$list$ +[limit[$size$]]&quot;&quot;&quot;&gt;&lt;&lt;$template$&gt;&gt;{{||$template$}}&lt;/$list&gt;
+&lt;!-- IF MORE ITEMS TO BE SHOWN --&gt;
+&lt;$reveal text=&lt;&lt;rest&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+   &lt;!-- IF NEXT PAGE NOT ALREADY SHOWN --&gt;
+   &lt;$reveal state=&lt;&lt;id&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;!-- TOGGLE NEXT PAGE VIEW --&gt;
+      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;show next $size$ items&quot;&gt;
+         +&lt;$count filter=&lt;&lt;rest&gt;&gt;/&gt; more{{$:/core/images/right-arrow}}
+         &lt;$action-setfield $tiddler=&lt;&lt;id&gt;&gt; text=&quot;show&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;!-- IF NEXT PAGE IS ALREADY SHOWN --&gt;
+   &lt;$reveal state=&lt;&lt;id&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;!-- HIDE ALL PAGES AFTER THIS ONE --&gt;
+      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide additional items&quot;&gt;
+         {{$:/core/images/left-arrow}}less
+         &lt;$action-deletetiddler
+            $filter=&quot;[prefix[$:/state/popup/more/$id$/$level$]suffix&lt;qualify&gt;]&quot;/&gt;
+      &lt;/$button&gt;
+      &lt;!-- SHOW NEXT PAGE CONTENT --&gt;
+      &lt;$macrocall $name=&quot;more-body&quot; list=&lt;&lt;rest&gt;&gt; size=&quot;$size$&quot;
+         template=&quot;$template$&quot; id=&quot;$id$&quot; level=&quot;$level$+&quot;/&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+\end
+
+\define more(filter,size:&quot;10&quot;,template:&quot;more-bullet&quot;,id:&quot;0&quot;)
+&lt;$set name=&quot;results&quot; filter=&quot;&quot;&quot;$filter$ -[prefix[$:/state/popup/more/]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=&quot;more-body&quot;
+   list=&lt;&lt;results&gt;&gt; size=&quot;$size$&quot; template=&quot;$template$&quot; id=&quot;$id$&quot; /&gt;
+&lt;/$set&gt;
+\end
+
+\define info() $(storyTiddler)$/info
+&lt;$transclude tiddler=&lt;&lt;info&gt;&gt; mode=&quot;block&quot;/&gt;
+&lt;h3&gt;Code&lt;/h3&gt;@@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
+</div>
+<div created="20151205115034144" modified="20151205132219105" title="macros/more/info">
+<pre>!!!About
+&lt;&lt;&lt;
+|author:|Eric Shulman|
+|source:|http://five.tiddlytools.com/#macros/more|
+|license:|http://five.tiddlytools.com/#LegalStatements|
+|revision:|1.0|
+&lt;&lt;&lt;
+!!!Usage
+&lt;&lt;&lt;
+``&lt;&lt;more filter:&quot;...&quot; size:&quot;...&quot; template:&quot;...&quot; id:&quot;...&quot;&gt;&gt;``
+
+* ''filter'' (required)&lt;br&gt;Generates the list of items to display
+* ''size'' (default:10)&lt;br&gt;Number of items to show per 'page'
+* ''template'' (default:more-bullet)&lt;br&gt;Format for displaying one item.  Use keyword ``more-text``, ``more-link``, ``more-comma``, or ``more-bullet`` or specify a tiddler title or macro callback definition for your own custom output format.
+* ''id'' (optional)&lt;br&gt;If multiple uses of ``&lt;&lt;more&gt;&gt;`` are embedded //in the same tiddler//, you can provide a unique id value for each instance so that they are handled separately.
+&lt;&lt;&lt;
+!!!Examples
+&lt;&lt;&lt;
+//numbered links//&lt;br&gt;
+``&lt;ol&gt;&lt;&lt;more &quot;[all[tiddlers]]&quot;&gt;&gt;&lt;/ol&gt;``&lt;br&gt;
+&lt;ol&gt;&lt;&lt;more &quot;[all[tiddlers]]&quot;&gt;&gt;&lt;/ol&gt;
+
+//comma-separated links//&lt;br&gt;
+``&lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-comma id:1&gt;&gt;``&lt;br&gt;
+&lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-comma id:1&gt;&gt;
+
+//plain text//&lt;br&gt;
+``&lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-text id:2&gt;&gt;``&lt;br&gt;
+&lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-text id:2&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
 <div created="20150212022243927" creator="EricShulman" list="KnowledgeCapture Discovery Connections Presentations KnowledgeTransfer" modified="20150512082718254" modifier="EricShulman" status="draft" tags="Benefits" title="MicroContent">
 <pre>\define CaptionLink(tid)
 &lt;$tiddler tiddler=&quot;$tid$&quot;&gt;&lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;/$tiddler&gt;
@@ -10748,7 +10833,7 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20151118012442908" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.11.17.172439" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
+<div caption="Revision History" created="20150321152616393" creator="EricShulman" modified="20151205231238511" modifier="EricShulman" popup="&lt;$button class=&quot;tc-btn-invisible&quot;&gt;&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;TWBook/Info/RevisionHistory&quot;/&gt;  @@.smaller {{TWBook/Info/RevisionHistory!!version}} {{TWBook/Info/RevisionHistory!!timestamp}}@@&lt;/$button&gt;" revision="ITW_V1.alpha" tags="TWBook/Info/Notes" timestamp="15.12.05.151233" title="TWBook/Info/RevisionHistory" type="" version="ITW_V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21 Initial release for feedback
@@ -10872,7 +10957,8 @@ The bottom ~NavBar also displays some &quot;Draft only&quot; content that will b
 ** TOC/Stylesheet renamed classes to tt-*, TOC/Macros renamed macros to lowercase with hyphens
 ** TOC/Template, NavBar/Toolbar, LeftBar/TitleBox, LeftBar/Contents, LeftBar/Location, TopLeftBar use new macro names and CSS classes
 **renamed config/TOC and config/TOC/favorites (removed 'twb' from path)
-** TOC/Macros - fix line-height for favorite stars (90%)</pre>
+** TOC/Macros - fix line-height for favorite stars (90%)
+* 15.12.05.151233 added macros/more (experimental)</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
