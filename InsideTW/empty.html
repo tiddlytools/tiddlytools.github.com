@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/tags/Macro</li>
+
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
@@ -202,6 +204,12 @@ Error message and password prompt
 <li>macros/more</li>
 
 <li>macros/more/info</li>
+
+<li>Test1</li>
+
+<li>test1.1</li>
+
+<li>test1.1.1</li>
 
 <li>TWBook/Buttons/AdvancedSearch</li>
 
@@ -350,7 +358,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20151207225558234" modified="20151214042644838" title="$:/config/TOC" type="application/json">
+<div created="20151207225558234" modified="20151217210617689" title="$:/config/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -360,7 +368,7 @@ Error message and password prompt
     &quot;CoverPage&quot;: &quot;17:55, 7th December 2015&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151214042644835" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151217210617689" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6494,26 +6502,27 @@ exports[&quot;edit-text&quot;] = EditTextWidget;
 &lt;/$list&gt;
 &lt;/$button&gt;</pre>
 </div>
-<div created="20151208013539771" modified="20151208013617234" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/title">
+<div created="20151208013539771" modified="20151217204526961" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/title">
 <pre>\define title-styles()
 fill:$(foregroundColor)$;
 \end
 \define config-title()
 $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 \end
+&lt;&lt;toc-path&gt;&gt; &lt;!-- ADDED --&gt;
 &lt;div class=&quot;tc-tiddler-title&quot;&gt;
 &lt;div class=&quot;tc-titlebar&quot;&gt;
-&lt;span class=&quot;tc-tiddler-controls authortools&quot;&gt;
+&lt;span class=&quot;tc-tiddler-controls authortools&quot;&gt; &lt;!-- ADDED 'authortools' class --&gt;
 &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
 &lt;/span&gt;
-&lt;span class=&quot;tc-tiddler-controls viewertools&quot;&gt;
+&lt;span class=&quot;tc-tiddler-controls viewertools&quot;&gt; &lt;!-- ADDED entire span with 'viewertools' and filter for $:/tags/ReadOnly --&gt;
 &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]tag[$:/tags/ReadOnly]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
 &lt;/span&gt;
 &lt;$set name=&quot;tv-wikilinks&quot; value={{$:/config/Tiddlers/TitleLinks}}&gt;
 &lt;$link&gt;
 &lt;$set name=&quot;foregroundColor&quot; value={{!!color}}&gt;
 &lt;span class=&quot;tc-tiddler-title-icon&quot; style=&lt;&lt;title-styles&gt;&gt;&gt;
-&lt;$transclude tiddler={{!!icon}}/&gt;
+&lt;&lt;toc-icon&gt;&gt; &lt;!-- REPLACES &lt;$transclude tiddler={{!!icon}}/&gt; --&gt;
 &lt;/span&gt;
 &lt;/$set&gt;
 &lt;$list filter=&quot;[all[current]removeprefix[$:/]]&quot;&gt;
@@ -6550,7 +6559,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151214042644835" title="$:/state/sidebar">
+<div modified="20151217210617689" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151210005011325" title="$:/state/tab--1498284803">
@@ -6562,8 +6571,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207201328764" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Advanced</pre>
 </div>
-<div modified="20151214035525182" title="$:/state/tab-1691732326">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div modified="20151217203250151" title="$:/state/tab-1691732326">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div modified="20151207213513168" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
@@ -6580,7 +6589,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" modified="20151214042644835" title="$:/temp/advancedsearch">
+<div created="20151217204711830" modified="20151217204711830" tags="Appendix" title="$:/tags/Macro">
+<pre></pre>
+</div>
+<div created="20151208003735299" modified="20151217210617689" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6597,13 +6609,13 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20151207223850169" modified="20151209164325663" title="$:/temp/NewTagName">
+<div created="20151207223850169" modified="20151217204708821" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" modified="20151214042642962" title="$:/temp/revnote">
-<pre></pre>
+<div created="20151207200702481" modified="20151217210614643" title="$:/temp/revnote">
+<pre>TOC/macros toc-path with popups</pre>
 </div>
-<div created="20151207200108777" modified="20151214042644835" title="$:/temp/search">
+<div created="20151207200108777" modified="20151217210617689" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6723,7 +6735,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151214042644835" title="$:/view">
+<div modified="20151217210617689" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after="" modified="20151209232733100" modifier="EricShulman" tags="Contents" title="Appendix">
@@ -6762,7 +6774,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/$list&gt;
 @@</pre>
 </div>
-<div created="20151208012527893" list-before="" modified="20151209232711511" tags="Contents" title="CoverPage">
+<div created="20151208012527893" icon="$:/core/images/home-button" list-before="" modified="20151217040523465" tags="Contents" title="CoverPage">
 <pre>Enter your cover page content here.
 Suggestions: Title, Author, Date, image, direct link to first page</pre>
 </div>
@@ -6840,6 +6852,15 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 ``&lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-text id:2&gt;&gt;``&lt;br&gt;
 &lt;&lt;more &quot;[all[tiddlers]]&quot; template:more-text id:2&gt;&gt;
 &lt;&lt;&lt;</pre>
+</div>
+<div created="20151217034104208" modified="20151217034110786" tags="CoverPage" title="Test1">
+<pre></pre>
+</div>
+<div created="20151217034113269" modified="20151217034120896" tags="Test1" title="test1.1">
+<pre></pre>
+</div>
+<div created="20151217034128397" modified="20151217035211921" tags="test1.1" title="test1.1.1">
+<pre></pre>
 </div>
 <div created="20150426211642738" creator="EricShulman" modified="20150621055519325" modifier="EricShulman" tags="" title="TWBook/Buttons/AdvancedSearch">
 <pre>@@.authortools 
@@ -7556,8 +7577,11 @@ exports.run = function(name) {
 &lt;/svg&gt;
 </pre>
 </div>
-<div modified="20151214042644838" timestamp="15.12.13.202643" title="TWBook/Info/RevisionHistory">
-<pre>* 15.12.13.201816 added macros/more</pre>
+<div modified="20151217210617689" timestamp="15.12.17.130614" title="TWBook/Info/RevisionHistory">
+<pre>* 15.12.13.201816 added macros/more
+* 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
+* 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
+* 15.12.17.130614 TOC/macros toc-path with popups</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -8345,7 +8369,7 @@ html .tc-story-river {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20151118011827716" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20151217210146537" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
 <pre>\define toc-config()           $:/config/TOC
 \define toc-favorites()        $:/config/TOC/favorites
 \define toc-template()         TWBook/TOC/Template
@@ -8379,7 +8403,7 @@ html .tc-story-river {
 \define toc-show-tree(here,exclude,path)
 &lt;!-- EXPANDABLE TREE WITH OPEN/CLOSE ALL, OPEN/CLOSE BRANCH, AUTO-OPEN CURRENT BRANCH --&gt;
 &lt;span class=&quot;tt-toc-tree&quot;&gt;
-&lt;$list filter=&quot;&quot;&quot;[tag[$here$]] $exclude$ -[[$here$]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[title[$here$]tagging[]] $exclude$ -[[$here$]]&quot;&quot;&quot;&gt;
    &lt;$vars item=&lt;&lt;currentTiddler&gt;&gt; path=&quot;&quot;&quot;$path$/$here$&quot;&quot;&quot; excluded=&quot;&quot;&quot;$exclude$ -[[$here$]]&quot;&quot;&quot;&gt;
    &lt;&lt;toc-show-item&gt;&gt;
    &lt;div class=&quot;tt-toc-indent&quot;&gt;
@@ -8410,6 +8434,39 @@ html .tc-story-river {
       &lt;$macrocall $name=&quot;toc-show-if-parent&quot; here=&lt;&lt;currentTiddler&gt;&gt; exclude=&quot;&quot;&quot;$exclude$ -[[$here$]]&quot;&quot;&quot;/&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
+\end
+
+\define toc-path()
+&lt;span class=&quot;tt-toc-path&quot;&gt;
+&lt;$vars curr=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$macrocall $name=&quot;toc-path-body&quot; here=&lt;&lt;curr&gt;&gt;/&gt;&lt;/$vars&gt;
+&lt;/span&gt;
+\end
+\define toc-path-body(here,exclude)
+&lt;$list filter=&quot;&quot;&quot;[title[$here$]tags[]] $exclude$ -[[$here$]] +[limit[1]]&quot;&quot;&quot;&gt;
+   &lt;$macrocall $name=&quot;toc-path-body&quot; here=&lt;&lt;currentTiddler&gt;&gt; exclude=&quot;&quot;&quot;$exclude$ -[[$here$]]&quot;&quot;&quot;/&gt;
+   &lt;$button popup=&lt;&lt;toc-path-popup&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;&lt;$text text={{!!title}} /&gt;&lt;/$button&gt;
+   &lt;$reveal state=&lt;&lt;toc-path-popup&gt;&gt; type=&quot;popup&quot; position=&quot;below&quot; animate=&quot;yes&quot;&gt;
+      &lt;div class=&quot;tc-drop-down&quot;&gt;
+      &lt;$transclude tiddler=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
+      &lt;hr&gt;
+      &lt;$list filter=&quot;[all[current]tagging[]]&quot; template=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
+      &lt;/div&gt;
+   &lt;/$reveal&gt;
+   &lt;$list filter=&quot;&quot;&quot;[title[$(curr)$]!tag&lt;currentTiddler&gt;]&quot;&quot;&quot;&gt;&amp;gt;&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+\define toc-path-popup() &lt;&lt;qualify &quot;&quot;&quot;$:/state/popup/tocpath/$(currentTiddler)$&quot;&quot;&quot;&gt;&gt;
+
+\define toc-icon()
+&lt;span class=&quot;tt-toc-icon&quot;&gt;
+&lt;$macrocall $name=&quot;toc-icon-body&quot; here=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/span&gt;
+\end
+\define toc-icon-body(here,exclude)
+&lt;$list filter=&quot;&quot;&quot;[title[$here$]!has[icon]tags[]] $exclude$ -[[$here$]] +[limit[1]]&quot;&quot;&quot;&gt;
+   &lt;$macrocall $name=&quot;toc-icon-body&quot; here=&lt;&lt;currentTiddler&gt;&gt; exclude=&quot;&quot;&quot;$exclude$ -[[$here$]]&quot;&quot;&quot;/&gt;
+&lt;/$list&gt;
+&lt;$link tooltip={{!!caption}}&gt;&lt;$transclude tiddler={{!!icon}}/&gt;&lt;/$link&gt;
 \end
 
 \define toc-toggle-branch()
@@ -8533,7 +8590,7 @@ ScrollHereWidget.prototype.refresh = function(changedTiddlers) {
 exports.scrollhere = ScrollHereWidget;
 })();</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20151208014841355" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/StyleSheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20151217035720440" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/StyleSheet" type="">
 <pre>&lt;pre&gt;
 
 /* INDENT FOR EACH LEVEL */
@@ -8555,6 +8612,9 @@ exports.scrollhere = ScrollHereWidget;
    box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
    background:#ddf;
 }
+
+/* PATH FROM ROOT (in tiddler titlebar)*/
+.tt-toc-path { font-size:70%; line-height:100%; }
 
 /* FAVORITE BUTTON FADE-IN */
 .tt-toc-item       .tt-toc-favorite        { opacity:0.0; }
@@ -8580,7 +8640,7 @@ exports.scrollhere = ScrollHereWidget;
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20151110042433614" creator="EricShulman" modified="20151208015546804" modifier="EricShulman" title="TWBook/TOC/Template">
+<div created="20151110042433614" creator="EricShulman" modified="20151217210446067" modifier="EricShulman" title="TWBook/TOC/Template">
 <pre>\define toc-maketooltip() view $(path)$/$(currentTiddler)$
 
 &lt;!-- SHOW NEW HERE AND FAVORITE STAR (ON RIGHT) --&gt;
