@@ -402,7 +402,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20150525085604720" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/Info/RevisionHistory]]</pre>
 </div>
-<div created="20151207225558234" creator="EricShulman" modified="20151218104919355" modifier="EricShulman" title="$:/config/TOC" type="application/json">
+<div created="20151207225558234" creator="EricShulman" modified="20151218144545927" modifier="EricShulman" title="$:/config/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -414,7 +414,7 @@ Error message and password prompt
     &quot;test1.1.1.3&quot;: &quot;02:47, 18th December 2015&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151218104919355" modifier="EricShulman" title="$:/config/twb" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151218144545927" modifier="EricShulman" title="$:/config/twb" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -6609,7 +6609,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151218104919355" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151218144545927" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151210005011325" title="$:/state/tab--1498284803">
@@ -6642,7 +6642,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151218104919355" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151218144545927" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6662,10 +6662,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151207223850169" creator="EricShulman" modified="20151218100328842" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151218104917305" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20151207200702481" creator="EricShulman" modified="20151218144541295" modifier="EricShulman" title="$:/temp/revnote">
+<pre>ViewAll tweaks</pre>
 </div>
-<div created="20151207200108777" modified="20151218104919355" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" modified="20151218144545927" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6785,7 +6785,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151218104919355" modifier="EricShulman" title="$:/view">
+<div modified="20151218144545927" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after=" " modified="20151218064815400" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -6794,7 +6794,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151218063937417" creator="EricShulman" list="TableOfContents Test1 Test2" modified="20151218063937417" modifier="EricShulman" title="Contents">
 <pre></pre>
 </div>
-<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="$:/core/images/home-button" list-before="" modified="20151218104653555" modifier="EricShulman" tags="MyBook" title="CoverPage" toc-nav="no">
+<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="$:/core/images/home-button" list-before="" modified="20151218143841614" modifier="EricShulman" tags="MyBook" title="CoverPage" toc-nav="no">
 <pre>\define first-page() TableOfContents
 &lt;br&gt;&lt;br&gt;
 @@.center.huge ''//{{$:/SiteTitle}}//''@@
@@ -6805,12 +6805,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;/div&gt;@@
 @@position:absolute;right:1em;bottom:1em; 
 &lt;$tiddler tiddler=&lt;&lt;first-page&gt;&gt;&gt;
-   @@.right.smallest &lt;$link&gt;Start Here&lt;/$link&gt;@@
-   &lt;$list filter=&quot;[all[current]!title{TWBook/RootTag}]&quot;&gt;
-      &lt;span class=&quot;tt-toc-nav-button&quot; style=&quot;float:right;&quot;&gt;
-      &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;{{$:/core/images/chevron-right}}&lt;/$link&gt;
-      &lt;/span&gt;
-   &lt;/$list&gt;
+   &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;
+      @@.right.smallest Start Here@@
+      @@.tt-toc-nav-button {{$:/core/images/chevron-right}}@@
+   &lt;/$link&gt;
 &lt;/$tiddler&gt;@@
 </pre>
 </div>
@@ -7497,7 +7495,7 @@ $(old)$
 &lt;/svg&gt;
 </pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151218104919355" modifier="EricShulman" tags="Appendix" timestamp="15.12.18.024917" title="TWBook/Info/RevisionHistory">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151218144545927" modifier="EricShulman" tags="Appendix" timestamp="15.12.18.064541" title="TWBook/Info/RevisionHistory">
 <pre>* 15.12.13.201816 added macros/more
 * 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
 * 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
@@ -7509,7 +7507,8 @@ $(old)$
 * 15.12.18.015752 tweak settings/panel and settings/advanced/panel
 * 15.12.18.020709 added legal stuff
 * 15.12.18.021439 tweak CoverPage
-* 15.12.18.024529 moved ViewAll into TOC and Cookies into Settings</pre>
+* 15.12.18.024529 moved ViewAll into TOC and Cookies into Settings
+* 15.12.18.064541 ViewAll tweaks</pre>
 </div>
 <div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
 <pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/twb##LeftBar&quot; retain=&quot;no&quot;&gt;
@@ -8564,7 +8563,7 @@ html .tc-story-river {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20151218103042894" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20151218142248192" modifier="EricShulman" tags="$:/tags/Macro" title="TWBook/TOC/Macros">
 <pre>\define toc-config()           $:/config/TOC
 \define toc-favorites()        $:/config/TOC/favorites
 \define toc-template()         TWBook/TOC/Template
@@ -8631,15 +8630,6 @@ html .tc-story-river {
 &lt;/$reveal&gt;
 \end
 
-\define toc-viewall(here,exclude)
-&lt;$list filter=&quot;[tag[$here$]] $exclude$ -[[$here$]]&quot;&gt;
-   @@.largest.resize &lt;$transclude tiddler={{!!icon}}/&gt; &lt;&lt;toc-caption&gt;&gt;@@
-   @@.viewall.pageView &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;@@
-   @@.clear @@
-   &lt;$macrocall $name=&quot;toc-viewall&quot; here={{!!title}} exclude=&quot;$exclude$ -[[$here$]]&quot;/&gt;
-&lt;/$list&gt;
-\end
-
 \define toc-path()
 &lt;span class=&quot;tt-toc-path&quot;&gt;
 &lt;$vars curr=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$macrocall $name=&quot;toc-path-body&quot; here=&lt;&lt;curr&gt;&gt;/&gt;&lt;/$vars&gt;
@@ -8651,8 +8641,6 @@ html .tc-story-river {
    &lt;$button popup=&lt;&lt;toc-path-popup&gt;&gt; class=&quot;tc-btn-invisible&quot;&gt;&lt;$text text={{!!title}} /&gt;&lt;/$button&gt;
    &lt;$reveal state=&lt;&lt;toc-path-popup&gt;&gt; type=&quot;popup&quot; position=&quot;below&quot; animate=&quot;yes&quot;&gt;
       &lt;div class=&quot;tc-drop-down&quot;&gt;
-      &lt;$transclude tiddler=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
-      &lt;hr&gt;
       &lt;$list filter=&quot;[all[current]tagging[]]&quot; template=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
       &lt;/div&gt;
    &lt;/$reveal&gt;
@@ -8881,7 +8869,7 @@ ScrollHereWidget.prototype.refresh = function(changedTiddlers) {
 exports.scrollhere = ScrollHereWidget;
 })();</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20151218102759221" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/StyleSheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20151218143045292" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/TOC/StyleSheet" type="">
 <pre>&lt;pre&gt;
 
 /* INDENT FOR EACH LEVEL */
@@ -8941,17 +8929,15 @@ exports.scrollhere = ScrollHereWidget;
 }
 
 /* VIEW ALL TOPICS &quot;PAGE&quot; STYLE */
-.tt-toc-viewall .pageView {
+.tt-toc-viewall.pageView {
    display:block;
    border:1px solid gray;
    margin:0 0 1em 0;
    padding:0 0 0 1em;
-   border-bottom:0; border-left:0; border-right:0;
-   xborder-radius:0.5em;
-   xbox-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+   background-color: rgba(255,255,255,0.3);
+   border-radius:0.5em;
+   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
-/* PREVENT NESTED VIEWALL &quot;ROLLUP&quot; DISPLAY */
-.tt-toc-viewall .tt-toc-viewall { display:none; }
 
 /* FAVORITE BUTTON FADE-IN */
 .tt-toc-item       .tt-toc-favorite        { opacity:0.0; }
@@ -9002,9 +8988,16 @@ exports.scrollhere = ScrollHereWidget;
 &lt;!-- END FLOAT FOR FAVORITE STAR --&gt;
 @@display:block;clear:both;@@</pre>
 </div>
-<div created="20150401094933322" creator="EricShulman" modified="20151218103131886" modifier="EricShulman" title="TWBook/TOC/ViewAll" toc-nav="no">
-<pre>@@.tt-toc-viewall &lt;$macrocall $name=&quot;toc-viewall&quot; here={{TWBook/RootTag}}/&gt;@@
-</pre>
+<div created="20150401094933322" creator="EricShulman" modified="20151218142710562" modifier="EricShulman" title="TWBook/TOC/ViewAll" toc-nav="no">
+<pre>\define toc-viewall(here,exclude)
+&lt;$list filter=&quot;[tag[$here$]] $exclude$ -[[$here$]]&quot;&gt;
+   @@.largest.resize &lt;$transclude tiddler={{!!icon}}/&gt; &lt;&lt;toc-caption&gt;&gt;@@
+   @@.tt-toc-viewall.pageView &lt;$transclude field=&quot;text&quot; mode=&quot;block&quot;/&gt;@@
+   @@.clear @@
+   &lt;$macrocall $name=&quot;toc-viewall&quot; here={{!!title}} exclude=&quot;$exclude$ -[[$here$]]&quot;/&gt;
+&lt;/$list&gt;
+\end
+@@.tt-toc-viewall &lt;$macrocall $name=&quot;toc-viewall&quot; here={{TWBook/RootTag}}/&gt;@@</pre>
 </div>
 <div created="20150428010947376" creator="EricShulman" modified="20151209165349908" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
 <pre>&lt;nobr&gt;
