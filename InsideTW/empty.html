@@ -251,9 +251,13 @@ Error message and password prompt
 
 <li>TiddlyTools/Buttons/AdvancedSearch</li>
 
-<li>TiddlyTools/Buttons/Favorites</li>
+<li>TiddlyTools/Buttons/History</li>
 
-<li>TiddlyTools/Buttons/Favorites.svg</li>
+<li>TiddlyTools/Buttons/History.svg</li>
+
+<li>TiddlyTools/Buttons/History/Filters/JList.js</li>
+
+<li>TiddlyTools/Buttons/History/Filters/Unique.js</li>
 
 <li>TiddlyTools/Buttons/Home</li>
 
@@ -263,45 +267,9 @@ Error message and password prompt
 
 <li>TiddlyTools/Buttons/ResetAndSave</li>
 
-<li>TiddlyTools/Buttons/Search</li>
-
-<li>TiddlyTools/Buttons/Search.svg</li>
-
 <li>TiddlyTools/Buttons/ToggleReadOnly</li>
 
-<li>TiddlyTools/Buttons/ViewAll</li>
-
-<li>TiddlyTools/Buttons/ViewAll.svg</li>
-
 <li>TiddlyTools/Filters/TagExp.js</li>
-
-<li>TiddlyTools/History</li>
-
-<li>TiddlyTools/History.svg</li>
-
-<li>TiddlyTools/History/Filters/JList.js</li>
-
-<li>TiddlyTools/History/Filters/Unique.js</li>
-
-<li>TWBook/LeftBar</li>
-
-<li>TWBook/LeftBar/Buttons/Background</li>
-
-<li>TWBook/LeftBar/Buttons/Close</li>
-
-<li>TWBook/LeftBar/Buttons/PermaLink</li>
-
-<li>TWBook/LeftBar/Buttons/PermaLink.svg</li>
-
-<li>TWBook/LeftBar/Buttons/Toggle</li>
-
-<li>TWBook/LeftBar/Content</li>
-
-<li>TWBook/LeftBar/Location</li>
-
-<li>TWBook/LeftBar/StyleSheet</li>
-
-<li>TWBook/LeftBar/TitleBox</li>
 
 <li>TiddlyTools/Macros/linkbox</li>
 
@@ -373,6 +341,10 @@ Error message and password prompt
 
 <li>TiddlyTools/Stylesheet/Stretch</li>
 
+<li>TiddlyTools/TOC/Buttons/Favorites</li>
+
+<li>TiddlyTools/TOC/Buttons/Favorites.svg</li>
+
 <li>TiddlyTools/TOC/Macros</li>
 
 <li>TiddlyTools/TOC/scrollhere.js</li>
@@ -385,7 +357,35 @@ Error message and password prompt
 
 <li>Topic2</li>
 
+<li>TWBook/Buttons/Search</li>
+
+<li>TWBook/Buttons/Search.svg</li>
+
+<li>TWBook/Buttons/ViewAll</li>
+
+<li>TWBook/Buttons/ViewAll.svg</li>
+
 <li>TWBook/CoverPage</li>
+
+<li>TWBook/LeftBar</li>
+
+<li>TWBook/LeftBar/Buttons/Background</li>
+
+<li>TWBook/LeftBar/Buttons/Close</li>
+
+<li>TWBook/LeftBar/Buttons/PermaLink</li>
+
+<li>TWBook/LeftBar/Buttons/PermaLink.svg</li>
+
+<li>TWBook/LeftBar/Buttons/Toggle</li>
+
+<li>TWBook/LeftBar/Content</li>
+
+<li>TWBook/LeftBar/Location</li>
+
+<li>TWBook/LeftBar/StyleSheet</li>
+
+<li>TWBook/LeftBar/TitleBox</li>
 
 <li>TWBook/NavBarBottom</li>
 
@@ -421,7 +421,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151221110617826" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151221161923337" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -441,7 +441,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20151221110617826" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20151221161923337" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6617,7 +6617,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151221110617826" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151221161923337" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6659,7 +6659,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="TWBook/CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151221110617826" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151221161923337" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6679,10 +6679,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151207223850169" creator="EricShulman" modified="20151220214638508" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151221110615296" modifier="EricShulman" title="$:/temp/revnote">
-<pre>hide scraps</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20151221161915528" modifier="EricShulman" title="$:/temp/revnote">
+<pre>refactor TWBook/Buttons, TiddlyTools/Buttons, TiddlyTools/TOC/Buttons</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20151221110617826" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20151221161923337" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6802,7 +6802,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151221110617826" modifier="EricShulman" title="$:/view">
+<div modified="20151221161923337" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after=" " modified="20151221021554478" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7418,42 +7418,51 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20151218220936286" creator="EricShulman" modified="20151220001424323" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Favorites">
-<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt; tooltip=&quot;favorite topics&quot; class=&quot;tt-button&quot;&gt;
-   {{TiddlyTools/Buttons/Favorites.svg}}
-&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt;&gt;
-&lt;div class=&quot;tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
-   ''Favorite Topics''
+<div caption="History" created="20150414091616661" creator="EricShulman" description="Recently viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151221160649622" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="TiddlyTools/Buttons/History">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; tooltip=&quot;show viewed topics&quot; class=&quot;tc-btn-invisible resize&quot;&gt;
+   @@opacity:0.2;{{TiddlyTools/Buttons/History.svg}}@@
+&lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
+&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;font-size:50%;white-space:nowrap;&quot;&gt;
+   ''Recently viewed topics:''
    &lt;hr style=&quot;margin:1px&quot;&gt;
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
-   &lt;&lt;toc-show-favorites&gt;&gt;
+      &lt;$list filter=&quot;[jlist[$:/HistoryList]unique[]reverse[]!title&lt;currentTiddler&gt;]&quot;
+         emptyMessage=&quot;&quot;&quot;//none//&quot;&quot;&quot;&gt;
+         &lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;br&gt;
+      &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150501030059678" creator="EricShulman" modified="20151220001438235" modifier="EricShulman" tags="image" title="TiddlyTools/Buttons/Favorites.svg" type="image/svg+xml">
+<div created="20150429012719709" creator="EricShulman" modified="20151221160723469" modifier="EricShulman" tags="image" title="TiddlyTools/Buttons/History.svg" type="image/svg+xml">
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
-&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
 &lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 viewBox=&quot;0 0 27.759 27.759&quot; style=&quot;enable-background:new 0 0 27.759 27.759;&quot; xml:space=&quot;preserve&quot;&gt;
+	 width=&quot;461.785px&quot; height=&quot;461.784px&quot; viewBox=&quot;0 0 461.785 461.784&quot; style=&quot;enable-background:new 0 0 461.785 461.784;&quot;
+	 xml:space=&quot;preserve&quot;&gt;
 &lt;g&gt;
-	&lt;g&gt;
-		&lt;path style=&quot;fill:#010002;&quot; d=&quot;M13.695,20.648l-3.037-2.96c-0.478-0.466-0.653-1.175-0.446-1.811
-			c0.206-0.632,0.764-1.103,1.425-1.197l4.194-0.611l1.878-3.804c0.092-0.185,0.215-0.346,0.357-0.484V4.637
-			c0-0.226-0.09-0.442-0.25-0.602c-0.159-0.161-0.377-0.25-0.603-0.25L1.778,3.794c0-0.905,0.933-0.935,0.933-0.935h15.438
-			c0.47,0,0.852,0.382,0.852,0.852v5.601c0.095-0.016,0.188-0.027,0.287-0.027c0.426,0,0.823,0.15,1.134,0.413v-5.91
-			c0-1.314-1.065-2.379-2.378-2.379H2.379C1.064,1.409,0,2.474,0,3.788V23.97c0,1.314,1.064,2.38,2.379,2.38h11.07
-			c-0.388-0.4-0.567-0.958-0.472-1.521L13.695,20.648z M4.44,7.157h9.326v1.764H4.44V7.157z&quot;/&gt;
-		&lt;path style=&quot;fill:#010002;&quot; d=&quot;M27.733,16.407c-0.062-0.191-0.228-0.332-0.429-0.362l-5.02-0.728L20.04,10.77
-			c-0.091-0.184-0.274-0.297-0.478-0.297s-0.388,0.113-0.478,0.297l-2.244,4.547l-5.018,0.728c-0.201,0.03-0.368,0.171-0.43,0.362
-			c-0.063,0.193-0.011,0.405,0.135,0.549l3.63,3.536L14.3,25.493c-0.034,0.197,0.048,0.4,0.212,0.519
-			c0.163,0.119,0.382,0.137,0.56,0.04l4.489-2.358l4.489,2.358c0.078,0.041,0.163,0.062,0.247,0.062c0.11,0,0.221-0.035,0.313-0.103
-			c0.165-0.118,0.247-0.321,0.213-0.519l-0.858-5.001l3.632-3.537C27.745,16.813,27.795,16.601,27.733,16.407z M23.024,19.927
-			c-0.126,0.122-0.185,0.299-0.154,0.471l0.722,4.211l-3.78-1.987c-0.079-0.04-0.164-0.062-0.248-0.062
-			c-0.085,0-0.171,0.021-0.247,0.062l-3.782,1.987l0.724-4.211c0.027-0.174-0.028-0.349-0.154-0.471l-3.06-2.982l4.229-0.615
-			c0.173-0.022,0.322-0.132,0.398-0.291l1.893-3.831l1.891,3.831c0.078,0.159,0.229,0.267,0.4,0.291l4.229,0.615L23.024,19.927z&quot;/&gt;
-	&lt;/g&gt;
+	&lt;path d=&quot;M50.755,170.975C50.755,76.698,127.451,0,221.73,0c78.046,0,143.88,52.614,164.308,124.2
+		c-3.735,4.043-6.349,9.17-7.081,14.975l-1.868,14.919l-3.168,16.898l-17.472-0.018c0-74.29-60.444-134.727-134.719-134.727
+		c-74.295,0-134.736,60.438-134.736,134.727c0,50.392,27.86,94.336,68.935,117.447l-26.347,26.344
+		C82.248,284.319,50.755,231.306,50.755,170.975z M221.73,63.588c-10.016,0-18.119,8.118-18.119,18.122v89.265
+		c0,10.004,8.104,18.119,18.119,18.119h102.528c10.013,0,18.122-8.115,18.122-18.119c0-10.013-8.109-18.128-18.122-18.128h-84.405
+		V81.71C239.853,71.706,231.731,63.588,221.73,63.588z M410.46,143.472c-0.124-4.74-3.883-8.582-8.605-8.825
+		c-4.527-0.26-8.854,3.201-9.451,7.923l-1.934,15.457l-3.387,18.048c-1.4,6.26-2.843,12.729-5.532,19.763l-4.061,11.881
+		l-5.757,12.664c-2.058,5.192-5.178,10.42-8.488,15.959c-1.679,2.802-3.375,5.633-4.965,8.529c-1.667,2.252-3.299,4.539-4.918,6.845
+		c-4.268,6.011-8.287,11.691-13.684,17.348c-4.688,5.852-10.314,11.083-16.248,16.615c-1.75,1.632-3.488,3.251-5.208,4.895
+		c-1.927,1.466-3.836,2.949-5.722,4.421c-6.312,4.918-12.253,9.552-19.334,13.618c-5.461,3.807-11.703,6.887-17.727,9.848
+		c-2.518,1.241-5.018,2.471-7.441,3.735c-3.073,1.105-6.064,2.294-9.014,3.476c-5.521,2.205-10.729,4.279-16.249,5.497
+		l-11.981,3.322l-11.777,2.01c-5.994,1.288-11.266,1.584-16.373,1.891l-9.599,0.733l-1.356-0.035v-42.28
+		c0-3.658-2.205-6.969-5.595-8.375c-3.399-1.396-7.279-0.627-9.883,1.962L98.21,368.358c-1.696,1.702-2.651,4.008-2.651,6.407
+		c0,2.4,0.955,4.705,2.651,6.407l77.963,77.964c1.738,1.726,4.055,2.647,6.41,2.647c1.167,0,2.35-0.225,3.473-0.686
+		c3.39-1.407,5.595-4.717,5.595-8.382v-44.183l16.686-3.056c7.716-1.596,17.324-3.594,26.524-7.005l10.725-3.6l17.78-7.519
+		c7.495-2.955,14.594-7.104,21.456-11.117c2.932-1.721,5.898-3.452,8.925-5.113c0.331-0.184,0.639-0.385,0.958-0.604
+		c2.364-1.702,4.764-3.381,7.182-5.064c7.323-5.084,14.883-10.351,21.355-16.433c7.991-6.366,14.972-13.742,21.722-20.883l4.9-5.154
+		c0.207-0.225,0.414-0.455,0.614-0.703l4.434-5.609c6.035-7.589,12.294-15.462,17.011-23.536c5.296-7.566,9.28-15.451,13.134-23.088
+		c1.324-2.637,2.648-5.249,3.996-7.803c0.177-0.354,0.349-0.709,0.484-1.075c1.206-3.239,2.494-6.401,3.771-9.505
+		c2.813-6.88,5.716-13.984,7.353-20.959l4.185-14.866l2.377-13.075c1.896-8.618,2.446-16.506,2.932-23.46l0.875-11.827
+		L410.46,143.472z&quot;/&gt;
 &lt;/g&gt;
 &lt;g&gt;
 &lt;/g&gt;
@@ -7487,6 +7496,101 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/g&gt;
 &lt;/svg&gt;
 </pre>
+</div>
+<div created="20150422101236608" creator="EricShulman" modified="20151221161511403" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/Buttons/History/Filters/JList.js" type="application/javascript">
+<pre>/*\
+title: TiddlyTools/Buttons/History/Filters/JList.js
+type: application/javascript
+module-type: filteroperator
+author: EricShulman
+
+Filter operator for getting a list of field values from a JSON tiddler
+(e.g, extract all titles in the $:/HistoryList)
+
+Note: this is equivalent to the TWCore list[TiddlerName!!fieldname] filter, except it works with a JSON DataTiddler instead of a standard tiddler list field.
+
+Syntax:
+   jlist[TiddlerName!!JSONfield]
+
+* operand specifies source tiddler and JSON field name (not a TIDDLER field!)
+* default source is current tiddler
+* default JSON fieldname is &quot;title&quot;
+* use ! prefix to remove listed items from filter set
+
+NOTES:
+* Currently does not support retrieving nested object fields.  Only &quot;top-level&quot; simple text fields.
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+Export our filter function
+*/
+exports.jlist = function(source,operator,options) {
+	var results = [];
+	var list    = [];
+	var tr      = $tw.utils.parseTextReference(operator.operand)
+	var curr    = options.widget &amp;&amp; options.widget.getVariable(&quot;currentTiddler&quot;);
+	var tid     = tr.title || curr;
+	var field   = tr.field || &quot;title&quot;;
+	var data    = $tw.wiki.getTiddlerData(tid,[]);
+	// get field data
+	for (var i = 0; i &lt; data.length-1; i++)
+		list.push(data[i][field]);
+	if(operator.prefix === &quot;!&quot;)
+		source(function(tiddler,title) {
+			if(list.indexOf(title) === -1) results.push(title);
+		});
+	else results = list;
+   	return results;
+};
+
+})();</pre>
+</div>
+<div created="20150422220335249" creator="EricShulman" modified="20151221161538064" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/Buttons/History/Filters/Unique.js" type="application/javascript">
+<pre>/*\
+title: TiddlyTools/Buttons/History/Filters/Unique.js
+type: application/javascript
+module-type: filteroperator
+author: EricShulman
+
+Filter operator for removing duplicate values.
+
+Syntax:
+   unique[]
+      keeps the *last* of each duplicate in the list
+   unique[first]
+      keeps the *first* of each duplicate in the list
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+Export our filter function
+*/
+exports.unique = function(source,operator,options) {
+	var results = [];
+	var list    = [];
+	source(function(tiddler,title) { list.push(title); } );
+	if (operator.operand != &quot;first&quot;) {
+		for (var i = list.length-1; i &gt;= 0; i--)
+			if (results.indexOf(list[i])==-1) results.unshift(list[i]);
+	} else {
+		for (var i = 0; i &lt; list.length; i++)
+			if (results.indexOf(list[i])==-1) results.push(list[i]);
+	}
+   	return results;
+};
+
+})();</pre>
 </div>
 <div created="20150316091347529" creator="EricShulman" modified="20151218222851447" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Home">
 <pre>&lt;$button message=&quot;tm-home&quot; tooltip=&quot;return to home page&quot; class=&quot;tt-button&quot;&gt;
@@ -7651,71 +7755,6 @@ $(old)$
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150417021111336" creator="EricShulman" modified="20151220001529761" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Search">
-<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt; tooltip=&quot;search this book...&quot; class=&quot;tt-button&quot;&gt;
-   {{TiddlyTools/Buttons/Search.svg}}
-&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt;&gt;
-&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
-   ''Search This Book''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
-   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
-      {{||$:/core/ui/AdvancedSearch/Standard}}
-   &lt;/div&gt;
-&lt;/div&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150324123313348" creator="EricShulman" modified="20151220001547673" modifier="EricShulman" tags="image" title="TiddlyTools/Buttons/Search.svg" type="image/svg+xml">
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
-&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
-&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 viewBox=&quot;0 0 26.064 26.064&quot; style=&quot;enable-background:new 0 0 26.064 26.064;&quot; xml:space=&quot;preserve&quot;&gt;
-&lt;g&gt;
-	&lt;path style=&quot;fill:#010002;&quot; d=&quot;M19.27,23.146l-1.218-1.22c-0.555,0.253-1.146,0.419-1.75,0.49
-		c-0.446,0.067-0.729,0.053-1.222,0.021l-0.059-0.004c-3.077-0.291-5.397-2.843-5.397-5.938c0.005-1.614,0.631-3.109,1.762-4.232
-		c1.131-1.122,2.631-1.737,4.224-1.729c1.381,0.004,2.65,0.484,3.66,1.279V3.369c0-0.511-0.412-0.923-0.921-0.923L2.626,2.438
-		c0-0.633,0.953-0.955,0.953-0.955h15.692c0.982,0,0.954,0.865,0.954,0.865v10.4c0.831,1.025,1.331,2.329,1.331,3.746
-		c-0.002,0.865-0.184,1.699-0.531,2.464l0.654,0.656V0.866C21.678,0.175,20.812,0,20.812,0H3.406C0.809,0,0.809,2.405,0.809,2.405
-		v22.156c0,0.509,0.412,0.923,0.923,0.923h16.617c0.51,0,0.921-0.414,0.921-0.923h1.414l-0.93-0.932L19.27,23.146z M5.347,5.875
-		h9.53v1.803h-9.53V5.875z M25.004,24.611l-5.375-5.374c0.546-0.782,0.868-1.729,0.871-2.754c0.009-2.674-2.152-4.85-4.826-4.856
-		c-2.673-0.012-4.85,2.15-4.859,4.824c-0.008,2.523,1.915,4.603,4.381,4.836h0.024c0.483,0.034,0.667,0.041,0.998-0.011
-		c0.815-0.093,1.568-0.391,2.208-0.838l5.376,5.375c0.332,0.334,0.871,0.334,1.203,0.002C25.337,25.482,25.337,24.945,25.004,24.611
-		z M15.646,20.099c-2.006-0.006-3.627-1.638-3.62-3.646c0.006-2.004,1.64-3.624,3.645-3.616c2.005,0.006,3.625,1.638,3.618,3.643
-		C19.284,18.487,17.65,20.106,15.646,20.099z&quot;/&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-</pre>
-</div>
 <div created="20150321230215146" creator="EricShulman" modified="20151221093554972" modifier="EricShulman" title="TiddlyTools/Buttons/ToggleReadOnly">
 <pre>\define config()   $:/config/TiddlyTools
 \define readonly() $(config)$##ReadOnly
@@ -7734,75 +7773,6 @@ $(old)$
    &lt;$action-setfield $tiddler=&lt;&lt;sidebar&gt;&gt; text=&quot;no&quot;/&gt;
    {{$:/core/images/unlocked-padlock}}
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150401100651332" creator="EricShulman" modified="20151221083236248" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/ViewAll">
-<pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;view/print entire book&quot;&gt;
-   &lt;$action-navigate $to=&quot;TWBook/ViewAll&quot;/&gt;
-   @@.resize [img[TiddlyTools/Buttons/ViewAll.svg]]@@
-&lt;/$button&gt;</pre>
-</div>
-<div created="20150401102133716" creator="EricShulman" modified="20151220000912201" modifier="EricShulman" tags="image" title="TiddlyTools/Buttons/ViewAll.svg" type="image/svg+xml">
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
-&lt;!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
-&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
-&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 viewBox=&quot;0 0 494.907 494.907&quot; style=&quot;enable-background:new 0 0 494.907 494.907;&quot; xml:space=&quot;preserve&quot;&gt;
-&lt;g&gt;
-	&lt;path d=&quot;M70.571,459.196c-6.131,0-11.114-4.983-11.114-11.106V105.993c0-6.123,4.983-11.104,11.114-11.104H308.28
-		c6.131,0,11.115,4.98,11.115,11.104v147.911c10.565-3.519,21.644-5.855,33.132-6.844V105.993c0-24.396-19.849-44.236-44.247-44.236
-		H121.157V44.236c0-6.124,4.982-11.104,11.113-11.104h237.711c6.13,0,11.113,4.98,11.113,11.104V247.36
-		c11.517,1.279,22.586,4.013,33.131,7.839V44.236C414.225,19.841,394.378,0,369.981,0H132.27c-24.397,0-44.245,19.841-44.245,44.236
-		v17.521H70.571c-24.397,0-44.246,19.841-44.246,44.236V448.09c0,24.395,19.849,44.238,44.246,44.238h190.666
-		c-9.543-9.811-17.714-20.943-24.203-33.132H70.571z&quot;/&gt;
-	&lt;path d=&quot;M126.913,190.86h95.61c9.158,0,16.565-7.418,16.565-16.565c0-9.149-7.407-16.566-16.565-16.566h-95.61
-		c-9.153,0-16.561,7.418-16.561,16.566C110.352,183.442,117.759,190.86,126.913,190.86z&quot;/&gt;
-	&lt;path d=&quot;M268.514,247.846c0-9.148-7.407-16.566-16.566-16.566H126.913c-9.153,0-16.561,7.418-16.561,16.566
-		c0,9.149,7.407,16.566,16.561,16.566h125.035C261.107,264.412,268.514,256.995,268.514,247.846z&quot;/&gt;
-	&lt;path d=&quot;M249.055,304.808H126.913c-9.153,0-16.561,7.417-16.561,16.565c0,9.148,7.407,16.566,16.561,16.566h103.521
-		C235.172,326.022,241.483,314.926,249.055,304.808z&quot;/&gt;
-	&lt;path d=&quot;M126.913,378.342c-9.153,0-16.561,7.418-16.561,16.565c0,9.148,7.407,16.566,16.561,16.566h94.737
-		c-0.907-6.584-1.552-13.267-1.552-20.103c0-4.4,0.274-8.728,0.664-13.029H126.913z&quot;/&gt;
-	&lt;path d=&quot;M365.047,357.148c-28.438,0-53.614,23.563-63.545,34.223c9.931,10.655,35.107,34.209,63.545,34.209
-		c28.553,0,53.658-23.547,63.545-34.199C418.675,380.728,393.504,357.148,365.047,357.148z M365.047,416.22
-		c-13.718,0-24.846-11.128-24.846-24.849c0-13.732,11.128-24.847,24.846-24.847s24.846,11.114,24.846,24.847
-		C389.893,405.092,378.765,416.22,365.047,416.22z&quot;/&gt;
-	&lt;path d=&quot;M365.047,287.837c-57.186,0-103.536,46.349-103.536,103.534c0,57.173,46.35,103.536,103.536,103.536
-		c57.186,0,103.535-46.363,103.535-103.536C468.582,334.185,422.233,287.837,365.047,287.837z M365.047,442.143
-		c-44.681,0-79.594-43.791-81.064-45.652c-2.345-3.008-2.345-7.23,0-10.23c1.471-1.868,36.384-45.678,81.064-45.678
-		c44.679,0,79.592,43.809,81.064,45.678c2.345,3,2.345,7.223,0,10.23C444.639,398.353,409.726,442.143,365.047,442.143z&quot;/&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-</pre>
 </div>
 <div created="20150331195446988" creator="EricShulman" modified="20151220073247377" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/Filters/TagExp.js" type="application/javascript">
 <pre>/*\
@@ -7876,398 +7846,6 @@ exports.tagexp = function(source,operator,options) {
 };
 
 })();</pre>
-</div>
-<div caption="History" created="20150414091616661" creator="EricShulman" description="Recently viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151220001328717" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="TiddlyTools/History">
-<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; tooltip=&quot;show viewed topics&quot; class=&quot;tc-btn-invisible resize&quot;&gt;
-   @@opacity:0.2;{{TiddlyTools/History.svg}}@@
-&lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
-&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;font-size:50%;white-space:nowrap;&quot;&gt;
-   ''Recently viewed topics:''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
-   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
-      &lt;$list filter=&quot;[jlist[$:/HistoryList]unique[]reverse[]!title&lt;currentTiddler&gt;]&quot;
-         emptyMessage=&quot;&quot;&quot;//none//&quot;&quot;&quot;&gt;
-         &lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;br&gt;
-      &lt;/$list&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150429012719709" creator="EricShulman" modified="20151220001345475" modifier="EricShulman" tags="image" title="TiddlyTools/History.svg" type="image/svg+xml">
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
-&lt;!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
-&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
-&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 width=&quot;461.785px&quot; height=&quot;461.784px&quot; viewBox=&quot;0 0 461.785 461.784&quot; style=&quot;enable-background:new 0 0 461.785 461.784;&quot;
-	 xml:space=&quot;preserve&quot;&gt;
-&lt;g&gt;
-	&lt;path d=&quot;M50.755,170.975C50.755,76.698,127.451,0,221.73,0c78.046,0,143.88,52.614,164.308,124.2
-		c-3.735,4.043-6.349,9.17-7.081,14.975l-1.868,14.919l-3.168,16.898l-17.472-0.018c0-74.29-60.444-134.727-134.719-134.727
-		c-74.295,0-134.736,60.438-134.736,134.727c0,50.392,27.86,94.336,68.935,117.447l-26.347,26.344
-		C82.248,284.319,50.755,231.306,50.755,170.975z M221.73,63.588c-10.016,0-18.119,8.118-18.119,18.122v89.265
-		c0,10.004,8.104,18.119,18.119,18.119h102.528c10.013,0,18.122-8.115,18.122-18.119c0-10.013-8.109-18.128-18.122-18.128h-84.405
-		V81.71C239.853,71.706,231.731,63.588,221.73,63.588z M410.46,143.472c-0.124-4.74-3.883-8.582-8.605-8.825
-		c-4.527-0.26-8.854,3.201-9.451,7.923l-1.934,15.457l-3.387,18.048c-1.4,6.26-2.843,12.729-5.532,19.763l-4.061,11.881
-		l-5.757,12.664c-2.058,5.192-5.178,10.42-8.488,15.959c-1.679,2.802-3.375,5.633-4.965,8.529c-1.667,2.252-3.299,4.539-4.918,6.845
-		c-4.268,6.011-8.287,11.691-13.684,17.348c-4.688,5.852-10.314,11.083-16.248,16.615c-1.75,1.632-3.488,3.251-5.208,4.895
-		c-1.927,1.466-3.836,2.949-5.722,4.421c-6.312,4.918-12.253,9.552-19.334,13.618c-5.461,3.807-11.703,6.887-17.727,9.848
-		c-2.518,1.241-5.018,2.471-7.441,3.735c-3.073,1.105-6.064,2.294-9.014,3.476c-5.521,2.205-10.729,4.279-16.249,5.497
-		l-11.981,3.322l-11.777,2.01c-5.994,1.288-11.266,1.584-16.373,1.891l-9.599,0.733l-1.356-0.035v-42.28
-		c0-3.658-2.205-6.969-5.595-8.375c-3.399-1.396-7.279-0.627-9.883,1.962L98.21,368.358c-1.696,1.702-2.651,4.008-2.651,6.407
-		c0,2.4,0.955,4.705,2.651,6.407l77.963,77.964c1.738,1.726,4.055,2.647,6.41,2.647c1.167,0,2.35-0.225,3.473-0.686
-		c3.39-1.407,5.595-4.717,5.595-8.382v-44.183l16.686-3.056c7.716-1.596,17.324-3.594,26.524-7.005l10.725-3.6l17.78-7.519
-		c7.495-2.955,14.594-7.104,21.456-11.117c2.932-1.721,5.898-3.452,8.925-5.113c0.331-0.184,0.639-0.385,0.958-0.604
-		c2.364-1.702,4.764-3.381,7.182-5.064c7.323-5.084,14.883-10.351,21.355-16.433c7.991-6.366,14.972-13.742,21.722-20.883l4.9-5.154
-		c0.207-0.225,0.414-0.455,0.614-0.703l4.434-5.609c6.035-7.589,12.294-15.462,17.011-23.536c5.296-7.566,9.28-15.451,13.134-23.088
-		c1.324-2.637,2.648-5.249,3.996-7.803c0.177-0.354,0.349-0.709,0.484-1.075c1.206-3.239,2.494-6.401,3.771-9.505
-		c2.813-6.88,5.716-13.984,7.353-20.959l4.185-14.866l2.377-13.075c1.896-8.618,2.446-16.506,2.932-23.46l0.875-11.827
-		L410.46,143.472z&quot;/&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-</pre>
-</div>
-<div created="20150422101236608" creator="EricShulman" modified="20151219000130489" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/History/Filters/JList.js" type="application/javascript">
-<pre>/*\
-title: TiddlyTools/History/Filters/JList.js
-type: application/javascript
-module-type: filteroperator
-author: EricShulman
-
-Filter operator for getting a list of field values from a JSON tiddler
-(e.g, extract all titles in the $:/HistoryList)
-
-Note: this is equivalent to the TWCore list[TiddlerName!!fieldname] filter, except it works with a JSON DataTiddler instead of a standard tiddler list field.
-
-Syntax:
-   jlist[TiddlerName!!JSONfield]
-
-* operand specifies source tiddler and JSON field name (not a TIDDLER field!)
-* default source is current tiddler
-* default JSON fieldname is &quot;title&quot;
-* use ! prefix to remove listed items from filter set
-
-NOTES:
-* Currently does not support retrieving nested object fields.  Only &quot;top-level&quot; simple text fields.
-
-\*/
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-/*
-Export our filter function
-*/
-exports.jlist = function(source,operator,options) {
-	var results = [];
-	var list    = [];
-	var tr      = $tw.utils.parseTextReference(operator.operand)
-	var curr    = options.widget &amp;&amp; options.widget.getVariable(&quot;currentTiddler&quot;);
-	var tid     = tr.title || curr;
-	var field   = tr.field || &quot;title&quot;;
-	var data    = $tw.wiki.getTiddlerData(tid,[]);
-	// get field data
-	for (var i = 0; i &lt; data.length-1; i++)
-		list.push(data[i][field]);
-	if(operator.prefix === &quot;!&quot;)
-		source(function(tiddler,title) {
-			if(list.indexOf(title) === -1) results.push(title);
-		});
-	else results = list;
-   	return results;
-};
-
-})();</pre>
-</div>
-<div created="20150422220335249" creator="EricShulman" modified="20151219000205979" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/History/Filters/Unique.js" type="application/javascript">
-<pre>/*\
-title: TiddlyTools/History/Filters/Unique.js
-type: application/javascript
-module-type: filteroperator
-author: EricShulman
-
-Filter operator for removing duplicate values.
-
-Syntax:
-   unique[]
-      keeps the *last* of each duplicate in the list
-   unique[first]
-      keeps the *first* of each duplicate in the list
-
-\*/
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-
-/*
-Export our filter function
-*/
-exports.unique = function(source,operator,options) {
-	var results = [];
-	var list    = [];
-	source(function(tiddler,title) { list.push(title); } );
-	if (operator.operand != &quot;first&quot;) {
-		for (var i = list.length-1; i &gt;= 0; i--)
-			if (results.indexOf(list[i])==-1) results.unshift(list[i]);
-	} else {
-		for (var i = 0; i &lt; list.length; i++)
-			if (results.indexOf(list[i])==-1) results.push(list[i]);
-	}
-   	return results;
-};
-
-})();</pre>
-</div>
-<div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
-<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot; retain=&quot;no&quot;&gt;
-&lt;div class=&quot;tt-leftbar shadowbox&quot;&gt;
-&lt;!-- TITLEBOX --&gt;
-&lt;div class=&quot;tt-leftbar-titlebox&quot;
-     style=&quot;margin-bottom:0.5em&quot;&gt;
-     {{||TWBook/LeftBar/TitleBox}}
-     @@.X-thinline @@
-&lt;/div&gt;
-&lt;!-- TOC --&gt;
-&lt;div class=&quot;tt-leftbar-content shadowbox inset&quot;
-     style=&quot;height:calc(100% - 6em);
-            margin-bottom:0.5em; padding:0.5em 2px 0.5em 0.25em;&quot;&gt;
-     {{||TWBook/LeftBar/Content}}
-&lt;/div&gt;
-&lt;!-- LOCATION (YOU ARE HERE) --&gt;
-&lt;div class=&quot;tt-leftbar-location shadowbox inset&quot;
-     style=&quot;margin-bottom:0.5em; padding:0.5em&quot;&gt;
-     {{||TWBook/LeftBar/Location}}
-&lt;/div&gt;
-&lt;/div&gt; 
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150426233259184" creator="EricShulman" modified="20151221092809646" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar/Buttons/Background">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
-
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;hide Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;show Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150428214220337" creator="EricShulman" modified="20151209164916948" modifier="EricShulman" tags="" title="TWBook/LeftBar/Buttons/Close">
-<pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   {{$:/core/images/close-button}}
-&lt;/$button&gt;</pre>
-</div>
-<div created="20150501033945072" creator="EricShulman" modified="20151220001005984" modifier="EricShulman" tags="" title="TWBook/LeftBar/Buttons/PermaLink">
-<pre>\define tooltip() create a permalink to '$(tid)$'
-&lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
-&lt;$button message=&quot;tm-permalink&quot; class=&quot;tt-button&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
-    @@.resize {{TWBook/LeftBar/Buttons/PermaLink.svg}}@@
-&lt;/$button&gt;
-&lt;/$set&gt;</pre>
-</div>
-<div created="20150324123222044" creator="EricShulman" modified="20151220001114730" modifier="EricShulman" tags="image" title="TWBook/LeftBar/Buttons/PermaLink.svg" type="image/svg+xml">
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
-&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
-&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 viewBox=&quot;0 0 26 26&quot; style=&quot;enable-background:new 0 0 26 26;&quot; xml:space=&quot;preserve&quot;&gt;
-&lt;g&gt;
-	&lt;path style=&quot;fill:#030104;&quot; d=&quot;M18,17.759v3.366C18,22.159,17.159,23,16.125,23H4.875C3.841,23,3,22.159,3,21.125V9.875
-		C3,8.841,3.841,8,4.875,8h3.429l3.001-3h-6.43C2.182,5,0,7.182,0,9.875v11.25C0,23.818,2.182,26,4.875,26h11.25
-		C18.818,26,21,23.818,21,21.125v-6.367L18,17.759z&quot;/&gt;
-	&lt;g&gt;
-		&lt;path style=&quot;fill:#030104;&quot; d=&quot;M22.581,0H12.322c-1.886,0.002-1.755,0.51-0.76,1.504l3.22,3.22l-5.52,5.519
-			c-1.145,1.144-1.144,2.998,0,4.141l2.41,2.411c1.144,1.141,2.996,1.142,4.14-0.001l5.52-5.52l3.16,3.16
-			c1.101,1.1,1.507,1.129,1.507-0.757L26,3.419C25.999-0.018,26.024-0.001,22.581,0z&quot;/&gt;
-	&lt;/g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-</pre>
-</div>
-<div created="20150419203816208" creator="EricShulman" modified="20151221092623947" modifier="EricShulman" title="TWBook/LeftBar/Buttons/Toggle">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
-
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150504194427359" creator="EricShulman" modified="20151221065658282" modifier="EricShulman" tags="" title="TWBook/LeftBar/Content">
-<pre>&lt;div class=&quot;scroll-y&quot; style=&quot;height:100%;padding-top:0.25em;&quot;&gt;
-&lt;$macrocall $name=&quot;toc-tree&quot; here={{TWBook/RootTag}}/&gt;
-&lt;/div&gt;</pre>
-</div>
-<div created="20150427071348784" creator="EricShulman" modified="20151220001049000" modifier="EricShulman" tags="" title="TWBook/LeftBar/Location">
-<pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
-&lt;table class=&quot;borderless&quot; style=&quot;width:100%;&quot;&gt;
-&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;
-@@.larger  {{||TWBook/LeftBar/Buttons/PermaLink}}@@
-&lt;/td&gt;&lt;td&gt;
-@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
-&lt;/td&gt;&lt;td style=&quot;text-align:right;&quot;&gt;
-@@.larger &lt;&lt;toc-toggle-favorite class:&quot;tt-button&quot;&gt;&gt;@@
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/$tiddler&gt;</pre>
-</div>
-<div created="20150418054240175" creator="EricShulman" modified="20151221092354107" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/LeftBar/StyleSheet">
-<pre>\define config()       $:/config/TiddlyTools##
-\define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
-\define Vmargin()      42px
-\define Hmargin()      42px
-\define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
-\define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
-\define buttonheight() 100%
-\define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
-\define barleft()      29px
-\define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
-\define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
-\define barfontsize()  (0.9em * ({{$(config)$FontSize/LeftBar}} / 100))
-\define leftbarbg()    {{$(config)$Background/LeftBar}}
-\define leftbarhover() {{$(config)$Background/LeftBarHover}}
-
-&lt;pre&gt;
-/* PANEL */
-.tt-leftbar {
-   margin:   0;
-   position: fixed;
-   z-index:  999; /* BEHIND DROPDOWNS */
-   top:       calc(&lt;&lt;bartop&gt;&gt;);
-   left:      calc(&lt;&lt;barleft&gt;&gt;);
-   height:    calc(&lt;&lt;barheight&gt;&gt;);
-   min-width: calc(&lt;&lt;barwidth&gt;&gt;);
-   font-size: calc(&lt;&lt;barfontsize&gt;&gt;);
-}
-
-/* BACKGROUND BUTTON */
-.tt-leftbar-background-button {
-   position:fixed; z-index:0; top: 0px; left: 0px;
-   height:calc(&lt;&lt;buttonheight&gt;&gt;);
-   width:calc(&lt;&lt;buttonwidth&gt;&gt;);
-}
-/* DONT SHOW BUTTON WHEN VIEWING THE TIDDLER THAT DEFINES THE BUTTON ITSELF! */
-.tc-tiddler-body .tt-leftbar-background-button { display:none; }
-
-/* FONT SIZES */
-.tt-leftbar-titlebox    { font-size:100%; line-height:110%; }
-.tt-leftbar-content     { font-size:100%; line-height:110%; }
-.tt-leftbar-location    { font-size:100%; line-height:110%; }
-
-/* SHADOWBOX HOVERS */
-.tt-leftbar.shadowbox       {
-   border-color:#666;
-   background: &lt;&lt;leftbarbg&gt;&gt;;
-   box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
-
-}
-.tt-leftbar.shadowbox:hover {
-   border-color:#66c;
-   background: &lt;&lt;leftbarhover&gt;&gt;;
-   box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5);
-}
-.tt-leftbar:hover .shadowbox.inset {
-   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
-}
-.tt-leftbar       .shadowbox { border-color:#666; background-color:#eee; }
-.tt-leftbar:hover .shadowbox { border-color:#66c; background-color:#eee; }
-
-.tt-leftbar       .shadowbox a       { color:black; }
-.tt-leftbar:hover .shadowbox a:hover { color:#5778d8; }
-
-/* BUTTON HOVERS */
-.tt-leftbar       .tt-leftbar-titlebox       .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-titlebox       .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-titlebox:hover .tt-button { opacity:1.0; }
-
-.tt-leftbar       .tt-leftbar-content        .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-content        .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-content:hover  .tt-button { opacity:1.0; }
-
-.tt-leftbar       .tt-leftbar-location       .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-location       .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-location:hover .tt-button { opacity:1.0; }
-&lt;/pre&gt;</pre>
-</div>
-<div created="20150427050900338" creator="EricShulman" modified="20151220043007337" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
-<pre>&lt;nobr&gt;
-@@.floatright {{TWBook/LeftBar/Buttons/Close}}@@
-@@.floatleft  &lt;&lt;toc-toggle-all class:&quot;tt-button&quot;&gt;&gt;@@
-@@.larger.center ''{{$:/SiteTitle}}''&lt;br&gt;@@
-@@.smallest.center {{$:/SiteSubtitle}}@@
-@@.clear @@
-&lt;/nobr&gt;</pre>
 </div>
 <div created="20151219060704757" creator="EricShulman" modified="20151221021623353" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/linkbox">
 <pre>\define linkbox(caption,class:&quot;floatleft shadowbox&quot;,style:&quot;margin-right:1em;&quot;)
@@ -9331,6 +8909,76 @@ html .tc-story-river {
 &lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
+<div created="20151218220936286" creator="EricShulman" modified="20151221155239968" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Buttons/Favorites">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt; tooltip=&quot;favorite topics&quot; class=&quot;tt-button&quot;&gt;
+   {{TiddlyTools/TOC/Buttons/Favorites.svg}}
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt;&gt;
+&lt;div class=&quot;tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
+   ''Favorite Topics''
+   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
+   &lt;&lt;toc-show-favorites&gt;&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150501030059678" creator="EricShulman" modified="20151221155306421" modifier="EricShulman" tags="image" title="TiddlyTools/TOC/Buttons/Favorites.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 27.759 27.759&quot; style=&quot;enable-background:new 0 0 27.759 27.759;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;g&gt;
+		&lt;path style=&quot;fill:#010002;&quot; d=&quot;M13.695,20.648l-3.037-2.96c-0.478-0.466-0.653-1.175-0.446-1.811
+			c0.206-0.632,0.764-1.103,1.425-1.197l4.194-0.611l1.878-3.804c0.092-0.185,0.215-0.346,0.357-0.484V4.637
+			c0-0.226-0.09-0.442-0.25-0.602c-0.159-0.161-0.377-0.25-0.603-0.25L1.778,3.794c0-0.905,0.933-0.935,0.933-0.935h15.438
+			c0.47,0,0.852,0.382,0.852,0.852v5.601c0.095-0.016,0.188-0.027,0.287-0.027c0.426,0,0.823,0.15,1.134,0.413v-5.91
+			c0-1.314-1.065-2.379-2.378-2.379H2.379C1.064,1.409,0,2.474,0,3.788V23.97c0,1.314,1.064,2.38,2.379,2.38h11.07
+			c-0.388-0.4-0.567-0.958-0.472-1.521L13.695,20.648z M4.44,7.157h9.326v1.764H4.44V7.157z&quot;/&gt;
+		&lt;path style=&quot;fill:#010002;&quot; d=&quot;M27.733,16.407c-0.062-0.191-0.228-0.332-0.429-0.362l-5.02-0.728L20.04,10.77
+			c-0.091-0.184-0.274-0.297-0.478-0.297s-0.388,0.113-0.478,0.297l-2.244,4.547l-5.018,0.728c-0.201,0.03-0.368,0.171-0.43,0.362
+			c-0.063,0.193-0.011,0.405,0.135,0.549l3.63,3.536L14.3,25.493c-0.034,0.197,0.048,0.4,0.212,0.519
+			c0.163,0.119,0.382,0.137,0.56,0.04l4.489-2.358l4.489,2.358c0.078,0.041,0.163,0.062,0.247,0.062c0.11,0,0.221-0.035,0.313-0.103
+			c0.165-0.118,0.247-0.321,0.213-0.519l-0.858-5.001l3.632-3.537C27.745,16.813,27.795,16.601,27.733,16.407z M23.024,19.927
+			c-0.126,0.122-0.185,0.299-0.154,0.471l0.722,4.211l-3.78-1.987c-0.079-0.04-0.164-0.062-0.248-0.062
+			c-0.085,0-0.171,0.021-0.247,0.062l-3.782,1.987l0.724-4.211c0.027-0.174-0.028-0.349-0.154-0.471l-3.06-2.982l4.229-0.615
+			c0.173-0.022,0.322-0.132,0.398-0.291l1.893-3.831l1.891,3.831c0.078,0.159,0.229,0.267,0.4,0.291l4.229,0.615L23.024,19.927z&quot;/&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
 <div created="20150426232927130" creator="EricShulman" modified="20151221065948761" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()           $:/config/TOC
 \define toc-favorites()        $:/config/TOC/favorites
@@ -9749,6 +9397,141 @@ exports.scrollhere = ScrollHereWidget;
 <div created="20151221020127440" creator="EricShulman" modified="20151221021109601" modifier="EricShulman" tags="MyBook" title="Topic2">
 <pre></pre>
 </div>
+<div created="20150417021111336" creator="EricShulman" modified="20151221155845238" modifier="EricShulman" tags="" title="TWBook/Buttons/Search">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt; tooltip=&quot;search this book...&quot; class=&quot;tt-button&quot;&gt;
+   {{TWBook/Buttons/Search.svg}}
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt;&gt;
+&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
+   ''Search This Book''
+   &lt;hr style=&quot;margin:1px&quot;&gt;
+   ,,pending: limit search to TOC topics only,,
+   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
+      {{||$:/core/ui/AdvancedSearch/Standard}}
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150324123313348" creator="EricShulman" modified="20151221155904905" modifier="EricShulman" tags="image" title="TWBook/Buttons/Search.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 26.064 26.064&quot; style=&quot;enable-background:new 0 0 26.064 26.064;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;path style=&quot;fill:#010002;&quot; d=&quot;M19.27,23.146l-1.218-1.22c-0.555,0.253-1.146,0.419-1.75,0.49
+		c-0.446,0.067-0.729,0.053-1.222,0.021l-0.059-0.004c-3.077-0.291-5.397-2.843-5.397-5.938c0.005-1.614,0.631-3.109,1.762-4.232
+		c1.131-1.122,2.631-1.737,4.224-1.729c1.381,0.004,2.65,0.484,3.66,1.279V3.369c0-0.511-0.412-0.923-0.921-0.923L2.626,2.438
+		c0-0.633,0.953-0.955,0.953-0.955h15.692c0.982,0,0.954,0.865,0.954,0.865v10.4c0.831,1.025,1.331,2.329,1.331,3.746
+		c-0.002,0.865-0.184,1.699-0.531,2.464l0.654,0.656V0.866C21.678,0.175,20.812,0,20.812,0H3.406C0.809,0,0.809,2.405,0.809,2.405
+		v22.156c0,0.509,0.412,0.923,0.923,0.923h16.617c0.51,0,0.921-0.414,0.921-0.923h1.414l-0.93-0.932L19.27,23.146z M5.347,5.875
+		h9.53v1.803h-9.53V5.875z M25.004,24.611l-5.375-5.374c0.546-0.782,0.868-1.729,0.871-2.754c0.009-2.674-2.152-4.85-4.826-4.856
+		c-2.673-0.012-4.85,2.15-4.859,4.824c-0.008,2.523,1.915,4.603,4.381,4.836h0.024c0.483,0.034,0.667,0.041,0.998-0.011
+		c0.815-0.093,1.568-0.391,2.208-0.838l5.376,5.375c0.332,0.334,0.871,0.334,1.203,0.002C25.337,25.482,25.337,24.945,25.004,24.611
+		z M15.646,20.099c-2.006-0.006-3.627-1.638-3.62-3.646c0.006-2.004,1.64-3.624,3.645-3.616c2.005,0.006,3.625,1.638,3.618,3.643
+		C19.284,18.487,17.65,20.106,15.646,20.099z&quot;/&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
+<div created="20150401100651332" creator="EricShulman" modified="20151221155059283" modifier="EricShulman" tags="" title="TWBook/Buttons/ViewAll">
+<pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;view/print entire book&quot;&gt;
+   &lt;$action-navigate $to=&quot;TWBook/ViewAll&quot;/&gt;
+   @@.resize [img[TWBook/Buttons/ViewAll.svg]]@@
+&lt;/$button&gt;</pre>
+</div>
+<div created="20150401102133716" creator="EricShulman" modified="20151221155118607" modifier="EricShulman" tags="image" title="TWBook/Buttons/ViewAll.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 494.907 494.907&quot; style=&quot;enable-background:new 0 0 494.907 494.907;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;path d=&quot;M70.571,459.196c-6.131,0-11.114-4.983-11.114-11.106V105.993c0-6.123,4.983-11.104,11.114-11.104H308.28
+		c6.131,0,11.115,4.98,11.115,11.104v147.911c10.565-3.519,21.644-5.855,33.132-6.844V105.993c0-24.396-19.849-44.236-44.247-44.236
+		H121.157V44.236c0-6.124,4.982-11.104,11.113-11.104h237.711c6.13,0,11.113,4.98,11.113,11.104V247.36
+		c11.517,1.279,22.586,4.013,33.131,7.839V44.236C414.225,19.841,394.378,0,369.981,0H132.27c-24.397,0-44.245,19.841-44.245,44.236
+		v17.521H70.571c-24.397,0-44.246,19.841-44.246,44.236V448.09c0,24.395,19.849,44.238,44.246,44.238h190.666
+		c-9.543-9.811-17.714-20.943-24.203-33.132H70.571z&quot;/&gt;
+	&lt;path d=&quot;M126.913,190.86h95.61c9.158,0,16.565-7.418,16.565-16.565c0-9.149-7.407-16.566-16.565-16.566h-95.61
+		c-9.153,0-16.561,7.418-16.561,16.566C110.352,183.442,117.759,190.86,126.913,190.86z&quot;/&gt;
+	&lt;path d=&quot;M268.514,247.846c0-9.148-7.407-16.566-16.566-16.566H126.913c-9.153,0-16.561,7.418-16.561,16.566
+		c0,9.149,7.407,16.566,16.561,16.566h125.035C261.107,264.412,268.514,256.995,268.514,247.846z&quot;/&gt;
+	&lt;path d=&quot;M249.055,304.808H126.913c-9.153,0-16.561,7.417-16.561,16.565c0,9.148,7.407,16.566,16.561,16.566h103.521
+		C235.172,326.022,241.483,314.926,249.055,304.808z&quot;/&gt;
+	&lt;path d=&quot;M126.913,378.342c-9.153,0-16.561,7.418-16.561,16.565c0,9.148,7.407,16.566,16.561,16.566h94.737
+		c-0.907-6.584-1.552-13.267-1.552-20.103c0-4.4,0.274-8.728,0.664-13.029H126.913z&quot;/&gt;
+	&lt;path d=&quot;M365.047,357.148c-28.438,0-53.614,23.563-63.545,34.223c9.931,10.655,35.107,34.209,63.545,34.209
+		c28.553,0,53.658-23.547,63.545-34.199C418.675,380.728,393.504,357.148,365.047,357.148z M365.047,416.22
+		c-13.718,0-24.846-11.128-24.846-24.849c0-13.732,11.128-24.847,24.846-24.847s24.846,11.114,24.846,24.847
+		C389.893,405.092,378.765,416.22,365.047,416.22z&quot;/&gt;
+	&lt;path d=&quot;M365.047,287.837c-57.186,0-103.536,46.349-103.536,103.534c0,57.173,46.35,103.536,103.536,103.536
+		c57.186,0,103.535-46.363,103.535-103.536C468.582,334.185,422.233,287.837,365.047,287.837z M365.047,442.143
+		c-44.681,0-79.594-43.791-81.064-45.652c-2.345-3.008-2.345-7.23,0-10.23c1.471-1.868,36.384-45.678,81.064-45.678
+		c44.679,0,79.592,43.809,81.064,45.678c2.345,3,2.345,7.223,0,10.23C444.639,398.353,409.726,442.143,365.047,442.143z&quot;/&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
 <div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="images/Motovun Jack.svg" list-before="" modified="20151221070452849" modifier="EricShulman" tags="MyBook bookcover" title="TWBook/CoverPage" toc-nav="no">
 <pre>&lt;br&gt;&lt;br&gt;
 @@.center.huge
@@ -9773,6 +9556,224 @@ exports.scrollhere = ScrollHereWidget;
       tiddler:&quot;TWBook/RevisionHistory&quot;&gt;&gt;
 @@</pre>
 </div>
+<div created="20150421001520159" creator="EricShulman" modified="20150530061852923" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar">
+<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot; retain=&quot;no&quot;&gt;
+&lt;div class=&quot;tt-leftbar shadowbox&quot;&gt;
+&lt;!-- TITLEBOX --&gt;
+&lt;div class=&quot;tt-leftbar-titlebox&quot;
+     style=&quot;margin-bottom:0.5em&quot;&gt;
+     {{||TWBook/LeftBar/TitleBox}}
+     @@.X-thinline @@
+&lt;/div&gt;
+&lt;!-- TOC --&gt;
+&lt;div class=&quot;tt-leftbar-content shadowbox inset&quot;
+     style=&quot;height:calc(100% - 6em);
+            margin-bottom:0.5em; padding:0.5em 2px 0.5em 0.25em;&quot;&gt;
+     {{||TWBook/LeftBar/Content}}
+&lt;/div&gt;
+&lt;!-- LOCATION (YOU ARE HERE) --&gt;
+&lt;div class=&quot;tt-leftbar-location shadowbox inset&quot;
+     style=&quot;margin-bottom:0.5em; padding:0.5em&quot;&gt;
+     {{||TWBook/LeftBar/Location}}
+&lt;/div&gt;
+&lt;/div&gt; 
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150426233259184" creator="EricShulman" modified="20151221092809646" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar/Buttons/Background">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+      tooltip=&quot;hide Table of Contents&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   &lt;/$button&gt;&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+      tooltip=&quot;show Table of Contents&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150428214220337" creator="EricShulman" modified="20151209164916948" modifier="EricShulman" tags="" title="TWBook/LeftBar/Buttons/Close">
+<pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   {{$:/core/images/close-button}}
+&lt;/$button&gt;</pre>
+</div>
+<div created="20150501033945072" creator="EricShulman" modified="20151220001005984" modifier="EricShulman" tags="" title="TWBook/LeftBar/Buttons/PermaLink">
+<pre>\define tooltip() create a permalink to '$(tid)$'
+&lt;$set name=&quot;tid&quot; value={{!!title}}&gt;
+&lt;$button message=&quot;tm-permalink&quot; class=&quot;tt-button&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
+    @@.resize {{TWBook/LeftBar/Buttons/PermaLink.svg}}@@
+&lt;/$button&gt;
+&lt;/$set&gt;</pre>
+</div>
+<div created="20150324123222044" creator="EricShulman" modified="20151220001114730" modifier="EricShulman" tags="image" title="TWBook/LeftBar/Buttons/PermaLink.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;svg version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 26 26&quot; style=&quot;enable-background:new 0 0 26 26;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;path style=&quot;fill:#030104;&quot; d=&quot;M18,17.759v3.366C18,22.159,17.159,23,16.125,23H4.875C3.841,23,3,22.159,3,21.125V9.875
+		C3,8.841,3.841,8,4.875,8h3.429l3.001-3h-6.43C2.182,5,0,7.182,0,9.875v11.25C0,23.818,2.182,26,4.875,26h11.25
+		C18.818,26,21,23.818,21,21.125v-6.367L18,17.759z&quot;/&gt;
+	&lt;g&gt;
+		&lt;path style=&quot;fill:#030104;&quot; d=&quot;M22.581,0H12.322c-1.886,0.002-1.755,0.51-0.76,1.504l3.22,3.22l-5.52,5.519
+			c-1.145,1.144-1.144,2.998,0,4.141l2.41,2.411c1.144,1.141,2.996,1.142,4.14-0.001l5.52-5.52l3.16,3.16
+			c1.101,1.1,1.507,1.129,1.507-0.757L26,3.419C25.999-0.018,26.024-0.001,22.581,0z&quot;/&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
+<div created="20150419203816208" creator="EricShulman" modified="20151221092623947" modifier="EricShulman" title="TWBook/LeftBar/Buttons/Toggle">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+&lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150504194427359" creator="EricShulman" modified="20151221065658282" modifier="EricShulman" tags="" title="TWBook/LeftBar/Content">
+<pre>&lt;div class=&quot;scroll-y&quot; style=&quot;height:100%;padding-top:0.25em;&quot;&gt;
+&lt;$macrocall $name=&quot;toc-tree&quot; here={{TWBook/RootTag}}/&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20150427071348784" creator="EricShulman" modified="20151220001049000" modifier="EricShulman" tags="" title="TWBook/LeftBar/Location">
+<pre>&lt;$tiddler tiddler={{$:/HistoryList!!current-tiddler}}&gt;
+&lt;table class=&quot;borderless&quot; style=&quot;width:100%;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;
+@@.larger  {{||TWBook/LeftBar/Buttons/PermaLink}}@@
+&lt;/td&gt;&lt;td&gt;
+@@.center.smaller you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
+&lt;/td&gt;&lt;td style=&quot;text-align:right;&quot;&gt;
+@@.larger &lt;&lt;toc-toggle-favorite class:&quot;tt-button&quot;&gt;&gt;@@
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/$tiddler&gt;</pre>
+</div>
+<div created="20150418054240175" creator="EricShulman" modified="20151221092354107" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/LeftBar/StyleSheet">
+<pre>\define config()       $:/config/TiddlyTools##
+\define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
+\define Vmargin()      42px
+\define Hmargin()      42px
+\define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
+\define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
+\define buttonheight() 100%
+\define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
+\define barleft()      29px
+\define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
+\define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
+\define barfontsize()  (0.9em * ({{$(config)$FontSize/LeftBar}} / 100))
+\define leftbarbg()    {{$(config)$Background/LeftBar}}
+\define leftbarhover() {{$(config)$Background/LeftBarHover}}
+
+&lt;pre&gt;
+/* PANEL */
+.tt-leftbar {
+   margin:   0;
+   position: fixed;
+   z-index:  999; /* BEHIND DROPDOWNS */
+   top:       calc(&lt;&lt;bartop&gt;&gt;);
+   left:      calc(&lt;&lt;barleft&gt;&gt;);
+   height:    calc(&lt;&lt;barheight&gt;&gt;);
+   min-width: calc(&lt;&lt;barwidth&gt;&gt;);
+   font-size: calc(&lt;&lt;barfontsize&gt;&gt;);
+}
+
+/* BACKGROUND BUTTON */
+.tt-leftbar-background-button {
+   position:fixed; z-index:0; top: 0px; left: 0px;
+   height:calc(&lt;&lt;buttonheight&gt;&gt;);
+   width:calc(&lt;&lt;buttonwidth&gt;&gt;);
+}
+/* DONT SHOW BUTTON WHEN VIEWING THE TIDDLER THAT DEFINES THE BUTTON ITSELF! */
+.tc-tiddler-body .tt-leftbar-background-button { display:none; }
+
+/* FONT SIZES */
+.tt-leftbar-titlebox    { font-size:100%; line-height:110%; }
+.tt-leftbar-content     { font-size:100%; line-height:110%; }
+.tt-leftbar-location    { font-size:100%; line-height:110%; }
+
+/* SHADOWBOX HOVERS */
+.tt-leftbar.shadowbox       {
+   border-color:#666;
+   background: &lt;&lt;leftbarbg&gt;&gt;;
+   box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
+
+}
+.tt-leftbar.shadowbox:hover {
+   border-color:#66c;
+   background: &lt;&lt;leftbarhover&gt;&gt;;
+   box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5);
+}
+.tt-leftbar:hover .shadowbox.inset {
+   box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
+}
+.tt-leftbar       .shadowbox { border-color:#666; background-color:#eee; }
+.tt-leftbar:hover .shadowbox { border-color:#66c; background-color:#eee; }
+
+.tt-leftbar       .shadowbox a       { color:black; }
+.tt-leftbar:hover .shadowbox a:hover { color:#5778d8; }
+
+/* BUTTON HOVERS */
+.tt-leftbar       .tt-leftbar-titlebox       .tt-button { opacity:0.3; }
+.tt-leftbar:hover .tt-leftbar-titlebox       .tt-button { opacity:0.6; }
+.tt-leftbar:hover .tt-leftbar-titlebox:hover .tt-button { opacity:1.0; }
+
+.tt-leftbar       .tt-leftbar-content        .tt-button { opacity:0.3; }
+.tt-leftbar:hover .tt-leftbar-content        .tt-button { opacity:0.6; }
+.tt-leftbar:hover .tt-leftbar-content:hover  .tt-button { opacity:1.0; }
+
+.tt-leftbar       .tt-leftbar-location       .tt-button { opacity:0.3; }
+.tt-leftbar:hover .tt-leftbar-location       .tt-button { opacity:0.6; }
+.tt-leftbar:hover .tt-leftbar-location:hover .tt-button { opacity:1.0; }
+&lt;/pre&gt;</pre>
+</div>
+<div created="20150427050900338" creator="EricShulman" modified="20151220043007337" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
+<pre>&lt;nobr&gt;
+@@.floatright {{TWBook/LeftBar/Buttons/Close}}@@
+@@.floatleft  &lt;&lt;toc-toggle-all class:&quot;tt-button&quot;&gt;&gt;@@
+@@.larger.center ''{{$:/SiteTitle}}''&lt;br&gt;@@
+@@.smallest.center {{$:/SiteSubtitle}}@@
+@@.clear @@
+&lt;/nobr&gt;</pre>
+</div>
 <div created="20151218040735076" creator="EricShulman" modified="20151221064910284" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TWBook/NavBarBottom">
 <pre>&lt;$macrocall $name=&quot;toc-navbar-bottom&quot; root={{TWBook/RootTag}}/&gt;</pre>
 </div>
@@ -9788,10 +9789,10 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div caption="Parts List" created="20151218064105590" creator="EricShulman" modified="20151221070325886" modifier="EricShulman" tags="Appendix" title="TWBook/PartsList">
+<div caption="Parts List" created="20151218064105590" creator="EricShulman" modified="20151221160223956" modifier="EricShulman" tags="Appendix" title="TWBook/PartsList">
 <pre>\define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
 \define ShowLink()    &lt;$link&gt;&lt;&lt;ShowTitle&gt;&gt;&lt;/$link&gt;
-!!!TWBook system
+!!!TWBook
 &lt;&lt;&lt;
 &lt;div class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
 @@.larger ''__TWBook__''&lt;br&gt;@@
@@ -9810,7 +9811,15 @@ exports.scrollhere = ScrollHereWidget;
 &lt;br&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
-
+@@.larger ''__Modified Shadows__''&lt;br&gt;@@
+&lt;$list filter=&quot;[is[shadow]] -[prefix[$:/temp]] +[sort[]]&quot;&gt;
+   &lt;nobr&gt;&lt;&lt;ShowLink&gt;&gt;&lt;br&gt;&lt;/nobr&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;&lt;&lt;
+!!!~TiddlyTools
+&lt;&lt;&lt;
+&lt;div class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
 &lt;$list filter=&quot;[removeprefix[TiddlyTools/]splitbefore[/]removesuffix[/]sort[]]&quot;&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TiddlyTools/]]&quot;&gt;
 @@.larger ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;@@
@@ -9819,11 +9828,6 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$list&gt;
 &lt;br&gt;
 &lt;/$list&gt;
-&lt;/$list&gt;
-
-@@.larger ''__Modified Shadows__''&lt;br&gt;@@
-&lt;$list filter=&quot;[is[shadow]] -[prefix[$:/temp]] +[sort[]]&quot;&gt;
-   &lt;nobr&gt;&lt;&lt;ShowLink&gt;&gt;&lt;br&gt;&lt;/nobr&gt;
 &lt;/$list&gt;
 &lt;/div&gt;
 &lt;&lt;&lt;
@@ -9843,7 +9847,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/div&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151221110617826" modifier="EricShulman" tags="Appendix" timestamp="15.12.21.030615" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151221161923337" modifier="EricShulman" tags="Appendix" timestamp="15.12.21.081915" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
 <pre>* 15.12.13.201816 added macros/more
 * 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
 * 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
@@ -9885,7 +9889,8 @@ exports.scrollhere = ScrollHereWidget;
 * 15.12.20.181444 added sample topics
 * 15.12.20.231015 refactor: &quot;twb-&quot; classes renamed &quot;tt-&quot;, TWBook/TOC renamed TiddlyTools/TOC, moved navbar macros to TOC/Macros, moved RootTag, PartsList, etc, to TWBook/*
 * 15.12.21.014853 define config() for $:/config/TiddlyTools (17 tiddlers)
-* 15.12.21.030615 hide scraps</pre>
+* 15.12.21.030615 hide scraps
+* 15.12.21.081915 refactor TWBook/Buttons, TiddlyTools/Buttons, TiddlyTools/TOC/Buttons</pre>
 </div>
 <div created="20151221063122517" creator="EricShulman" modified="20151221063134510" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>MyBook</pre>
@@ -9897,7 +9902,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;$macrocall $name=&quot;toc-all&quot; here={{TWBook/RootTag}}/&gt;
 @@</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20151221095838773" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
+<div created="20150428010947376" creator="EricShulman" modified="20151221155712308" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
 <pre>\define config()  $:/config/TiddlyTools##
 \define toolbar() $(config)$ToolBar
 
@@ -9907,11 +9912,11 @@ exports.scrollhere = ScrollHereWidget;
    &amp;nbsp;
    {{||TiddlyTools/Buttons/Home}}
    &amp;nbsp;
-   {{||TiddlyTools/Buttons/Favorites}}
+   {{||TiddlyTools/TOC/Buttons/Favorites}}
    &amp;nbsp;
-   {{||TiddlyTools/Buttons/Search}}
+   {{||TWBook/Buttons/Search}}
    &amp;nbsp;
-   {{||TiddlyTools/Buttons/ViewAll}}
+   {{||TWBook/Buttons/ViewAll}}
 &lt;/$reveal&gt;
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;toolbar&gt;&gt;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide tools&quot;&gt;
