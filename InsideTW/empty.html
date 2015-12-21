@@ -123,6 +123,8 @@ Error message and password prompt
 
 <li>$:/config/TiddlyTools</li>
 
+<li>$:/config/TiddlyTools/TOC</li>
+
 <li>$:/config/TOC</li>
 
 <li>$:/config/TOC/favorites</li>
@@ -419,7 +421,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151221090209111" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151221094855110" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -437,6 +439,11 @@ Error message and password prompt
     &quot;Background/Page&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/whitepaper.jpg&gt;&gt;)&quot;,
     &quot;Background/TitleBar&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/gridpaper.jpg&gt;&gt;)&quot;,
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
+}</pre>
+</div>
+<div created="20151221094855110" creator="EricShulman" modified="20151221094855110" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<pre>{
+    &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
 </div>
 <div created="20151207225558234" creator="EricShulman" modified="20151221090209111" modifier="EricShulman" title="$:/config/TOC" type="application/json">
@@ -6610,7 +6617,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151221090209111" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151221094855110" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6652,7 +6659,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="TWBook/CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151221090209111" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151221094855109" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6672,10 +6679,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151207223850169" creator="EricShulman" modified="20151220214638508" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151221090207258" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20151207200702481" creator="EricShulman" modified="20151221094853039" modifier="EricShulman" title="$:/temp/revnote">
+<pre>define config() for $:/config/TiddlyTools (17 tiddlers)</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20151221090209111" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20151221094855109" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6795,7 +6802,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151221090209111" modifier="EricShulman" title="$:/view">
+<div modified="20151221094855110" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after=" " modified="20151221021554478" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7813,16 +7820,19 @@ exports.unique = function(source,operator,options) {
 &lt;/div&gt; 
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150426233259184" creator="EricShulman" modified="20150530061840285" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar/Buttons/Background">
-<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot;&gt;
+<div created="20150426233259184" creator="EricShulman" modified="20151221092809646" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar/Buttons/Background">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
    &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
       tooltip=&quot;hide Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
    &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot;&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
    &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
       tooltip=&quot;show Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150428214220337" creator="EricShulman" modified="20151209164916948" modifier="EricShulman" tags="" title="TiddlyTools/LeftBar/Buttons/Close">
@@ -7887,14 +7897,17 @@ exports.unique = function(source,operator,options) {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150419203816208" creator="EricShulman" modified="20151209165006605" modifier="EricShulman" title="TiddlyTools/LeftBar/Buttons/Toggle">
-<pre>&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot;&gt;
+<div created="20150419203816208" creator="EricShulman" modified="20151221092623947" modifier="EricShulman" title="TiddlyTools/LeftBar/Buttons/Toggle">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
 &lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
    {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##LeftBar&quot;&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
 &lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
    {{$:/core/images/menu-button}}
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
@@ -7915,20 +7928,21 @@ exports.unique = function(source,operator,options) {
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20151219040406932" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
-<pre>\define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
+<div created="20150418054240175" creator="EricShulman" modified="20151221092354107" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
+<pre>\define config()       $:/config/TiddlyTools##
+\define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define Vmargin()      42px
 \define Hmargin()      42px
 \define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
-\define buttonwidth()  (50% - (&lt;&lt;storywidth&gt;&gt; / 2) + &lt;&lt;Hmargin&gt;&gt;)
+\define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
 \define buttonheight() 100%
 \define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
 \define barleft()      29px
 \define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
 \define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
-\define barfontsize()  (0.9em * ({{$:/config/TiddlyTools##FontSize/LeftBar}} / 100))
-
-\define buttonwidth() &lt;&lt;Hmargin&gt;&gt;
+\define barfontsize()  (0.9em * ({{$(config)$FontSize/LeftBar}} / 100))
+\define leftbarbg()    {{$(config)$Background/LeftBar}}
+\define leftbarhover() {{$(config)$Background/LeftBarHover}}
 
 &lt;pre&gt;
 /* PANEL */
@@ -7960,13 +7974,13 @@ exports.unique = function(source,operator,options) {
 /* SHADOWBOX HOVERS */
 .tt-leftbar.shadowbox       {
    border-color:#666;
-   background: {{$:/config/TiddlyTools##Background/LeftBar}};
+   background: &lt;&lt;leftbarbg&gt;&gt;;
    box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
 
 }
 .tt-leftbar.shadowbox:hover {
    border-color:#66c;
-   background: {{$:/config/TiddlyTools##Background/LeftBarHover}};
+   background: &lt;&lt;leftbarhover&gt;&gt;;
    box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5);
 }
 .tt-leftbar:hover .shadowbox.inset {
@@ -8026,7 +8040,7 @@ exports.unique = function(source,operator,options) {
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150531175811013" creator="EricShulman" modified="20151219205347532" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Advanced/Panel">
+<div created="20150531175811013" creator="EricShulman" modified="20151221094253792" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Advanced/Panel">
 <pre>\define config() $:/config/TiddlyTools
 
 \define ShowData(tid)
@@ -8068,16 +8082,15 @@ exports.unique = function(source,operator,options) {
 &lt;hr style=&quot;margin:1px;clear:both&quot;&gt;
 &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;&quot;&gt;
 &lt;div style=&quot;font-size:80%&quot;&gt;
-&lt;$list filter=&quot;[prefix[$:/config/TiddlyTools]] [prefix[$:/state]] -[prefix[$:/state/tab]] -[prefix[$:/state/popup]]&quot;&gt;
+&lt;$list filter=&quot;[prefix&lt;config&gt;] [prefix[$:/state]] -[prefix[$:/state/tab]] -[prefix[$:/state/popup]]&quot;&gt;
    &lt;$macrocall $name=&quot;ShowData&quot; tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150531011925302" creator="EricShulman" modified="20151218104128962" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/Settings/CookieJar">
+<div created="20150531011925302" creator="EricShulman" modified="20151221094152407" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/Settings/CookieJar">
 <pre>\define getOptName() OPT_$(id)$
 \define getFavName() FAV_$(id)$
-\define getTOCName() TOC_$(id)$
 
 &lt;!--
 This &quot;CookieJar&quot; binds cookie names with tiddler values.
@@ -8093,11 +8106,11 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 
 &lt;!-- FAVORITES (all content tiddlers) --&gt;
 &lt;$list filter=&quot;[!is[system]]&quot; variable=&quot;id&quot;&gt;
-   &lt;$cookie name=&lt;&lt;getFavName&gt;&gt; tiddler=&quot;$:/config/TOC/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;
+   &lt;$cookie name=&lt;&lt;getFavName&gt;&gt; tiddler=&quot;$:/config/TiddlyTools/TOC/favorites&quot; index=&lt;&lt;id&gt;&gt;/&gt;
 &lt;/$list&gt;
 
 &lt;!-- TOC (open all toggle) --&gt;
-&lt;$cookie name=&quot;TOC_OpenAll&quot; tiddler=&quot;$:/config/TOC&quot; index=&quot;OpenAll&quot;/&gt;</pre>
+&lt;$cookie name=&quot;TOC_OpenAll&quot; tiddler=&quot;$:/config/TiddlyTools/TOC&quot; index=&quot;OpenAll&quot;/&gt;</pre>
 </div>
 <div created="20150601085028266" creator="EricShulman" modified="20151218103921032" modifier="EricShulman" module-type="widget" tags="" title="TiddlyTools/Settings/Cookies/action-setcookie.js" type="application/javascript">
 <pre>/*\
@@ -8358,8 +8371,10 @@ exports.run = function(name) {
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20150429051729816" creator="EricShulman" modified="20150602214354699" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Settings/Macros">
-<pre>\define dec()         0 1 2 3 4 5 6 7 8 9
+<div created="20150429051729816" creator="EricShulman" modified="20151221094740160" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Settings/Macros">
+<pre>\define config()      $:/config/TiddlyTools
+
+\define dec()         0 1 2 3 4 5 6 7 8 9
 \define dec_reverse() 9 8 7 6 5 4 3 2 1 0
 \define hex()         0 1 2 3 4 5 6 7 8 9 a b c d e f
 \define hex_reverse() f e d c b a 9 8 7 6 5 4 3 2 1 0
@@ -8465,7 +8480,7 @@ exports.run = function(name) {
 
 \define palette_popup(tid)
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt; class=&quot;tt-btn-invisible&quot;&gt;
-&lt;$macrocall $name=&quot;color_box&quot; color={{$:/config/TiddlyTools##$tid$}} w=&quot;3em&quot; h=&quot;1.5em&quot;/&gt;
+&lt;$macrocall $name=&quot;color_box&quot; color={{$(config)$##$tid$}} w=&quot;3em&quot; h=&quot;1.5em&quot;/&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/PalettePopup/$tid$&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot;&gt;
@@ -8475,19 +8490,19 @@ exports.run = function(name) {
 \end
 
 \define pick_fontsize(id)
-&lt;$edit-text tag=&quot;input&quot; type=&quot;range&quot; tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;$id$&quot;
+&lt;$edit-text tag=&quot;input&quot; type=&quot;range&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;$id$&quot;
    min=&quot;50&quot; max=&quot;300&quot; step=&quot;10&quot; default=&quot;100&quot;/&gt;
-   &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;$id$&quot;&gt;100&lt;/$transclude&gt;%
+   &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;$id$&quot;&gt;100&lt;/$transclude&gt;%
 \end
 
 \define toggle_option(tid,label)
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##$tid$&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$(config)$##$tid$&quot;&gt;
 &lt;$button class=&quot;tt-btn-invisible&quot; tooltip=&quot;$label$&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;$tid$&quot; $value=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;$tid$&quot; $value=&quot;no&quot;/&gt;
    &lt;input type=&quot;checkbox&quot; checked=&quot;yes&quot;&gt; $label$
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##$tid$&quot;&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&quot;$(config)$##$tid$&quot;&gt;
 &lt;$button class=&quot;tt-btn-invisible&quot; tooltip=&quot;$label$&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;$tid$&quot; $value=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;$tid$&quot; $value=&quot;yes&quot;/&gt;
    &lt;input type=&quot;checkbox&quot;&gt; $label$
 &lt;/$button&gt;&lt;/$reveal&gt;
 \end
@@ -8520,12 +8535,14 @@ rgba(255,255,255,0.8)
 rgba(255,255,255,0.9)
 rgba(255,255,255,1.0)</pre>
 </div>
-<div created="20150509223438003" creator="EricShulman" modified="20150530055247050" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
-<pre>\define palette(pal:&quot;Colors&quot;)
+<div created="20150509223438003" creator="EricShulman" modified="20151221094407328" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
+<pre>\define config() $:/config/TiddlyTools##
+
+\define palette(pal:&quot;Colors&quot;)
 &lt;tr&gt;
 &lt;td style=&quot;text-align:right&quot;&gt;[[$pal$|TiddlyTools/Settings/Palettes/$pal$]]:&amp;nbsp;&lt;/td&gt;
 &lt;td&gt;&lt;nobr&gt;
-   &lt;&lt;pick_color &quot;$:/config/TiddlyTools##$(tid)$&quot; &quot;TiddlyTools/Settings/Palettes/$pal$&quot;&gt;&gt;
+   &lt;&lt;pick_color &quot;$(config)$$(tid)$&quot; &quot;TiddlyTools/Settings/Palettes/$pal$&quot;&gt;&gt;
 &lt;/nobr&gt;&lt;/td&gt;
 &lt;/tr&gt;
 \end
@@ -8617,11 +8634,11 @@ Table of Contents:&lt;br&gt; &lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&
 &lt;&lt;palette_popup &quot;Background/DropDowns&quot;&gt;&gt;Drop downs&lt;br&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
 </div>
-<div created="20151219191004090" creator="EricShulman" modified="20151221083350794" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet" type="">
+<div created="20151219191004090" creator="EricShulman" modified="20151221092952213" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet" type="">
 <pre>\define config()      $:/config/TiddlyTools##
 \define coverbg()     {{$(config)$Background/Cover}}
 \define linkboxbg()   {{$(config)$Background/LinkBox}}
-\define dropdownbg()  {{$:/config/TiddlyTools##Background/DropDowns}}
+\define dropdownbg()  {{$(config)$Background/DropDowns}}
 \define toolbarsize() (1em  * (&lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt; / 100))
 
 &lt;pre&gt;
@@ -8653,10 +8670,10 @@ Table of Contents:&lt;br&gt; &lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&
 }
 
 /* TOP TOOLBAR BUTTON SIZE AND FADEIN */
-.tc-topbar .tt-button       { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
+.tc-topbar .tt-button        { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
 .tc-topbar .tc-btn-invisible { font-size: calc(&lt;&lt;toolbarsize&gt;&gt;); }
-.tc-topbar .tt-button       { opacity:0.3; }
-.tc-topbar:hover .tt-button { opacity:1.0; }
+.tc-topbar .tt-button        { opacity:0.3; }
+.tc-topbar:hover .tt-button  { opacity:1.0; }
 
 /* DROPDOWNS WITH INLINE LINKS AND BUTTONS  */
 .tt-drop-down {
@@ -8742,14 +8759,16 @@ body.tc-body { overflow-x:hidden; background: &lt;&lt;background&gt;&gt;; }
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150321224955892" creator="EricShulman" modified="20151208012906379" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/ReadOnly">
-<pre>&lt;pre&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/config/TiddlyTools##ReadOnly&quot;&gt;
+<div created="20150321224955892" creator="EricShulman" modified="20151221093109493" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/ReadOnly">
+<pre>\define readonly() $:/config/TiddlyTools##ReadOnly
+
+&lt;pre&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&lt;&lt;readonly&gt;&gt;&gt;
    .authortools { display:none; }
    .viewertools { display:inline; }
    .tc-topbar-right .tc-btn-invisible { visibility:hidden; } /* HIDE SIDEBAR BUTTON */ 
 &lt;/$reveal&gt;
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&quot;$:/config/TiddlyTools##ReadOnly&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&lt;&lt;readonly&gt;&gt;&gt;
    .authortools { display:inline; }
    .viewertools { display:none; }
 &lt;/$reveal&gt;
@@ -8853,7 +8872,7 @@ body.tc-body { overflow-x:hidden; background: &lt;&lt;background&gt;&gt;; }
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20151221090054058" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
+<div created="20150508051023458" creator="EricShulman" modified="20151221093128644" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
 <pre>\define toolbarsize()   &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define storywidth()    {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
 \define topmargin()     (42px * (&lt;&lt;toolbarsize&gt;&gt; / 100))
@@ -8866,6 +8885,7 @@ body.tc-body { overflow-x:hidden; background: &lt;&lt;background&gt;&gt;; }
 \define stretch()       $:/config/TiddlyTools##Stretch
 \define leftbar()       $:/config/TiddlyTools##LeftBar
 \define sidebar()       $:/state/sidebar
+
 &lt;pre&gt;
 /* ALWAYS FIT TIDDLER TO WINDOW HEIGHT (LESS MARGINS) */
 .tc-tiddler-frame
@@ -9189,9 +9209,10 @@ ScrollHereWidget.prototype.refresh = function(changedTiddlers) {
 exports.scrollhere = ScrollHereWidget;
 })();</pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20151221070028755" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/TOC/StyleSheet" type="">
-<pre>&lt;pre&gt;
+<div created="20150427123424930" creator="EricShulman" modified="20151221093318329" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/TOC/StyleSheet" type="">
+<pre>\define titleboxbg() {{$:/config/TiddlyTools##Background/TitleBox}}
 
+&lt;pre&gt;
 /* INDENT FOR EACH LEVEL */
 .tt-toc-indent { margin-left:1.5em; }
 
@@ -9250,7 +9271,7 @@ exports.scrollhere = ScrollHereWidget;
    margin:0em auto 0.25em auto;
    border:1px solid #999;
    border-radius:1em;
-   background:{{$:/config/TiddlyTools##Background/TitleBar}};
+   background:&lt;&lt;titleboxbg&gt;&gt;;
    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
@@ -9320,9 +9341,12 @@ exports.scrollhere = ScrollHereWidget;
 &lt;!-- END FLOAT FOR FAVORITE STAR --&gt;
 @@display:block;clear:both;@@</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20151218222820071" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TiddlyTools/Toolbars/TopLeft">
-<pre>&lt;nobr&gt;
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##ToolBar&quot;&gt;
+<div created="20150428010947376" creator="EricShulman" modified="20151221094031683" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TiddlyTools/Toolbars/TopLeft">
+<pre>\define config()  $:/config/TiddlyTools##
+\define toolbar() $(config)$ToolBar
+
+&lt;nobr&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;toolbar&gt;&gt;&gt;
    {{||TiddlyTools/LeftBar/Buttons/Toggle}}
    &amp;nbsp;
    {{||TiddlyTools/Toolbars/TopLeft/Home}}
@@ -9333,15 +9357,15 @@ exports.scrollhere = ScrollHereWidget;
    &amp;nbsp;
    {{||TiddlyTools/Toolbars/TopLeft/ViewAll}}
 &lt;/$reveal&gt;
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##ToolBar&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;toolbar&gt;&gt;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide tools&quot;&gt;
    {{$:/core/images/chevron-left}}
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ToolBar&quot; $value=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ToolBar&quot; $value=&quot;no&quot;/&gt;
 &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&quot;$:/config/TiddlyTools##ToolBar&quot;&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;toolbar&gt;&gt;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;show tools&quot;&gt;
    {{$:/core/images/chevron-right}}
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ToolBar&quot; $value=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ToolBar&quot; $value=&quot;yes&quot;/&gt;
 &lt;/$button&gt;&lt;/$reveal&gt;
 &lt;/nobr&gt;</pre>
 </div>
@@ -9655,8 +9679,9 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20151221083128544" modifier="EricShulman" title="TiddlyTools/Toolbars/TopRight/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20151221093820453" modifier="EricShulman" title="TiddlyTools/Toolbars/TopRight/ResetAndSave">
 <pre>\define revision_history() TWBook/RevisionHistory
+\define config()           $:/config/TiddlyTools
 
 \define reset_config()
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
@@ -9668,13 +9693,13 @@ exports.scrollhere = ScrollHereWidget;
 &lt;$action-setfield    $tiddler=&quot;$:/view&quot;                text=&quot;zoomin&quot;/&gt;
 
 &lt;!-- TIDDLYTOOLS LAYOUT --&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot;  $value=&quot;yes&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ToolBar&quot;  $value=&quot;yes&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot;  $value=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ToolBar&quot;  $value=&quot;yes&quot;/&gt;
+&lt;$action-setfield    $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
 
 &lt;!-- TOC OPEN/CLOSED (CLEAR ALL, CLOSE ALL) --&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/TOC&quot; $field=&quot;text&quot;     $value=&quot;&quot;/&gt;
-&lt;$action-setfield    $tiddler=&quot;$:/config/TOC&quot; $index=&quot;OpenAll&quot;  $value=&quot;no&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$(config)$/TOC&quot; $field=&quot;text&quot;     $value=&quot;&quot;/&gt;
+&lt;$action-setfield    $tiddler=&quot;$(config)$/TOC&quot; $index=&quot;OpenAll&quot;  $value=&quot;no&quot;/&gt;
 \end
 
 \define update_revision()
@@ -9739,18 +9764,22 @@ $(old)$
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150321230215146" creator="EricShulman" modified="20151218222656443" modifier="EricShulman" title="TiddlyTools/Toolbars/TopRight/ToggleReadOnly">
-<pre>&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&quot;$:/config/TiddlyTools##ReadOnly&quot;&gt;
+<div created="20150321230215146" creator="EricShulman" modified="20151221093554972" modifier="EricShulman" title="TiddlyTools/Toolbars/TopRight/ToggleReadOnly">
+<pre>\define config()   $:/config/TiddlyTools
+\define readonly() $(config)$##ReadOnly
+\define sidebar()  $:/state/sidebar
+
+&lt;$reveal type=&quot;match&quot; text=&quot;yes&quot; state=&lt;&lt;readonly&gt;&gt;&gt;
 &lt;$button class=&quot;tt-button&quot;
    tooltip=&quot;unlock this document (allow editing)&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ReadOnly&quot; $value=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ReadOnly&quot; $value=&quot;no&quot;/&gt;
    {{$:/core/images/locked-padlock}}
 &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&quot;$:/config/TiddlyTools##ReadOnly&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;yes&quot; state=&lt;&lt;readonly&gt;&gt;&gt;
 &lt;$button class=&quot;tt-button&quot;
    tooltip=&quot;lock this document (disable editing)&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot;                text=&quot;no&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;sidebar&gt;&gt; text=&quot;no&quot;/&gt;
    {{$:/core/images/unlocked-padlock}}
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
@@ -9854,7 +9883,7 @@ $(old)$
 &lt;/div&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151221090209111" modifier="EricShulman" tags="Appendix" timestamp="15.12.21.010207" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151221094855111" modifier="EricShulman" tags="Appendix" timestamp="15.12.21.014853" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
 <pre>* 15.12.13.201816 added macros/more
 * 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
 * 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
@@ -9894,7 +9923,8 @@ $(old)$
 * 15.12.20.130426 use SVG for cover image (fish poster)
 * 15.12.20.133624 fixed linkbox macro layout overflow error
 * 15.12.20.181444 added sample topics
-* 15.12.20.231015 refactor: &quot;twb-&quot; classes renamed &quot;tt-&quot;, TWBook/TOC renamed TiddlyTools/TOC, moved navbar macros to TOC/Macros, moved RootTag, PartsList, etc, to TWBook/*</pre>
+* 15.12.20.231015 refactor: &quot;twb-&quot; classes renamed &quot;tt-&quot;, TWBook/TOC renamed TiddlyTools/TOC, moved navbar macros to TOC/Macros, moved RootTag, PartsList, etc, to TWBook/*
+* 15.12.21.014853 define config() for $:/config/TiddlyTools (17 tiddlers)</pre>
 </div>
 <div created="20151221063122517" creator="EricShulman" modified="20151221063134510" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>MyBook</pre>
