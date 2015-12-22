@@ -425,7 +425,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151222044931412" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151222214106607" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -445,7 +445,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20151222044931412" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20151222214106607" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6621,7 +6621,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151222044931412" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151222214106607" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6669,7 +6669,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="TWBook/CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151222044931412" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151222214106607" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6689,10 +6689,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151207223850169" creator="EricShulman" modified="20151220214638508" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151222044927545" modifier="EricShulman" title="$:/temp/revnote">
-<pre>fix readonly in Settings/Defaults</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20151222214105061" modifier="EricShulman" title="$:/temp/revnote">
+<pre></pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20151222044931412" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20151222214106607" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6812,7 +6812,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151222044931412" modifier="EricShulman" title="$:/view">
+<div modified="20151222214106607" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after=" " modified="20151221021554478" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7412,7 +7412,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 <div created="20151218042051732" creator="EricShulman" modified="20151218042057111" modifier="EricShulman" tags="test1.1.1" title="test1.1.1.1">
 <pre></pre>
 </div>
-<div created="20150426211642738" creator="EricShulman" modified="20151219204034474" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
+<div created="20150426211642738" creator="EricShulman" modified="20151222211747340" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
 <pre>@@.authortools 
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/AdvancedSearchPopup&quot;&gt;&gt; tooltip=&quot;search this file...&quot; class=&quot;tt-button&quot;&gt;
    {{$:/core/images/advanced-search-button}}
@@ -7420,26 +7420,28 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/AdvancedSearchPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    [[$:/AdvancedSearch]]
-   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div class=&quot;shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
       {{||$:/AdvancedSearch}}
+   &lt;/div&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="History" created="20150414091616661" creator="EricShulman" description="Jump to previously viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151221234620972" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="TiddlyTools/Buttons/Back">
+<div caption="History" created="20150414091616661" creator="EricShulman" description="Jump to previously viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151222213028400" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="TiddlyTools/Buttons/Back">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; tooltip=&quot;Jump to previously viewed topics&quot; class=&quot;tc-btn-invisible resize&quot;&gt;
    @@opacity:0.2;{{TiddlyTools/Buttons/Back.svg}}@@
 &lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;font-size:50%;white-space:nowrap;&quot;&gt;
    ''Previously viewed topics:''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
       &lt;$list filter=&quot;[jlist[$:/HistoryList]unique[]reverse[]!title&lt;currentTiddler&gt;]&quot;
          emptyMessage=&quot;&quot;&quot;//none//&quot;&quot;&quot;&gt;
          &lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;br&gt;
       &lt;/$list&gt;
+   &lt;/div&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
@@ -7513,7 +7515,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 {{$:/core/images/home-button}}
 &lt;/$button&gt;</pre>
 </div>
-<div created="20150425231909337" creator="EricShulman" modified="20151220001214770" modifier="EricShulman" title="TiddlyTools/Buttons/RecentChanges">
+<div created="20150425231909337" creator="EricShulman" modified="20151222212011170" modifier="EricShulman" title="TiddlyTools/Buttons/RecentChanges">
 <pre>@@.authortools 
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/RecentChangesPopup&quot;&gt;&gt; tooltip=&quot;show recent changes&quot; class=&quot;tt-button&quot;&gt;
    {{TiddlyTools/Buttons/RecentChanges.svg}}
@@ -7521,9 +7523,10 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/RecentChangesPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    ''Recent Changes:''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div class=&quot;shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
       {{$:/core/ui/SideBar/Recent}}
+   &lt;/div&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
@@ -7585,7 +7588,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20151221093820453" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20151222213120928" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
 <pre>\define revision_history() TWBook/RevisionHistory
 \define config()           $:/config/TiddlyTools
 
@@ -7664,9 +7667,10 @@ $(old)$
    @@float:right;&lt;&lt;ok_button&gt;&gt; &lt;&lt;cancel_button&gt;&gt;@@
    ''Save changes''
    ^^&lt;br&gt;rev: ''&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;''^^
-   &lt;hr style=&quot;margin:1px;clear:both&quot;&gt;
-   //revision notes (optional)://&lt;br&gt;
-   &lt;$edit-text tiddler=&quot;$:/temp/revnote&quot;/&gt;
+   &lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
+   __//Notes (optional)://__&lt;br&gt;
+   &lt;$edit-text tiddler=&quot;$:/temp/revnote&quot; class=&quot;borderless transparent&quot;/&gt;
+   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
@@ -8269,7 +8273,7 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150531175811013" creator="EricShulman" modified="20151221094253792" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Advanced/Panel">
+<div created="20150531175811013" creator="EricShulman" modified="20151222214049965" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Advanced/Panel">
 <pre>\define config() $:/config/TiddlyTools
 
 \define ShowData(tid)
@@ -8308,12 +8312,13 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 &lt;/$button&gt;
 @@
 ''Advanced Settings''
-&lt;hr style=&quot;margin:1px;clear:both&quot;&gt;
+&lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
 &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;&quot;&gt;
 &lt;div style=&quot;font-size:80%&quot;&gt;
 &lt;$list filter=&quot;[prefix&lt;config&gt;] [prefix[$:/state]] -[prefix[$:/state/tab]] -[prefix[$:/state/popup]]&quot;&gt;
    &lt;$macrocall $name=&quot;ShowData&quot; tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -8501,7 +8506,7 @@ rgba(255,255,255,0.8)
 rgba(255,255,255,0.9)
 rgba(255,255,255,1.0)</pre>
 </div>
-<div created="20150509223438003" creator="EricShulman" modified="20151221094407328" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
+<div created="20150509223438003" creator="EricShulman" modified="20151222213609080" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
 <pre>\define config() $:/config/TiddlyTools##
 
 \define palette(pal:&quot;Colors&quot;)
@@ -8513,8 +8518,8 @@ rgba(255,255,255,1.0)</pre>
 &lt;/tr&gt;
 \end
 
-Select a color, texture, or shading:
-@@.thinline.clear @@
+''Select a color, texture, or shading:''
+&lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
 &lt;table class=&quot;borderless&quot;&gt;
 &lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;''Opaque''&lt;/td&gt;&lt;/tr&gt;
    &lt;&lt;palette Colors&gt;&gt;
@@ -8523,7 +8528,7 @@ Select a color, texture, or shading:
    &lt;&lt;palette Shades&gt;&gt;
    &lt;&lt;palette Flares&gt;&gt;
 &lt;/table&gt;
-</pre>
+&lt;/div&gt;</pre>
 </div>
 <div created="20150508225353465" creator="EricShulman" modified="20150510053613068" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Shades" type="text/plain">
 <pre>rgba(0,0,0,0.0)
@@ -8572,10 +8577,10 @@ rgba(0,0,0,1.0)</pre>
 <div created="20150508004522270" creator="EricShulman" modified="20151110105014896" modifier="EricShulman" tags="image" title="TiddlyTools/Settings/Palettes/Textures/wood.jpg" type="image/jpeg">
 <pre>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</pre>
 </div>
-<div created="20150426205104959" creator="EricShulman" modified="20151222022453295" modifier="EricShulman" title="TiddlyTools/Settings/Panel">
+<div created="20150426205104959" creator="EricShulman" modified="20151222211922314" modifier="EricShulman" title="TiddlyTools/Settings/Panel">
 <pre>@@float:right;{{TiddlyTools/Settings/Advanced}}@@
 ''Display Settings''
-&lt;hr style=&quot;margin:1px;clear:both&quot;&gt;
+&lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
 &lt;table class=&quot;borderless&quot; style=&quot;width:100%&quot;&gt;&lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
 &lt;&lt;toggle_option tid:&quot;LeftBar&quot; label:&quot;Show Table of Contents&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;toggle_option tid:&quot;ToolBar&quot; label:&quot;Show Toolbar buttons&quot;&gt;&gt;&lt;br&gt;
@@ -8598,9 +8603,11 @@ Table of Contents:&lt;br&gt; &lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&
 &lt;&lt;palette_popup &quot;Background/LeftBar&quot;&gt;&gt;Sidebar frame&lt;br&gt;
 &lt;&lt;palette_popup &quot;Background/LeftBarHover&quot;&gt;&gt;Sidebar frame (hover)&lt;br&gt;
 &lt;&lt;palette_popup &quot;Background/DropDowns&quot;&gt;&gt;Drop downs&lt;br&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</pre>
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;/div&gt;</pre>
 </div>
-<div created="20151219191004090" creator="EricShulman" modified="20151221092952213" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet" type="">
+<div created="20151219191004090" creator="EricShulman" modified="20151222211233293" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet" type="">
 <pre>\define config()      $:/config/TiddlyTools##
 \define coverbg()     {{$(config)$Background/Cover}}
 \define linkboxbg()   {{$(config)$Background/LinkBox}}
@@ -8647,7 +8654,7 @@ Table of Contents:&lt;br&gt; &lt;&lt;pick_fontsize &quot;FontSize/LeftBar&quot;&
    background: #fff;
    background:&lt;&lt;dropdownbg&gt;&gt;;
    border: 1px solid #999 !important;
-   border-radius:0.5em; padding:1em;
+   border-radius:0.5em; padding:0.5em;
    box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.3);
    line-height:120%;
  }
@@ -8895,16 +8902,17 @@ html .tc-story-river {
 &lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
-<div created="20151218220936286" creator="EricShulman" modified="20151221155239968" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Buttons/Favorites">
+<div created="20151218220936286" creator="EricShulman" modified="20151222211530053" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Buttons/Favorites">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt; tooltip=&quot;favorite topics&quot; class=&quot;tt-button&quot;&gt;
    {{TiddlyTools/TOC/Buttons/Favorites.svg}}
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/FavoritesPopup&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    ''Favorite Topics''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div class=&quot;shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
    &lt;&lt;toc-show-favorites&gt;&gt;
+   &lt;/div&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
@@ -9383,17 +9391,18 @@ exports.scrollhere = ScrollHereWidget;
 <div created="20151221020127440" creator="EricShulman" modified="20151221021109601" modifier="EricShulman" tags="MyBook" title="Topic2">
 <pre></pre>
 </div>
-<div created="20150417021111336" creator="EricShulman" modified="20151221155845238" modifier="EricShulman" tags="" title="TWBook/Buttons/Search">
+<div created="20150417021111336" creator="EricShulman" modified="20151222211715980" modifier="EricShulman" tags="" title="TWBook/Buttons/Search">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt; tooltip=&quot;search this book...&quot; class=&quot;tt-button&quot;&gt;
    {{TWBook/Buttons/Search.svg}}
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    ''Search This Book''
-   &lt;hr style=&quot;margin:1px&quot;&gt;
+   &lt;div class=&quot;shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
    ,,pending: limit search to TOC topics only,,
    &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
       {{||$:/core/ui/AdvancedSearch/Standard}}
+   &lt;/div&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
@@ -9853,7 +9862,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/$list&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151222044931412" modifier="EricShulman" tags="Appendix" timestamp="15.12.21.204927" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151222214106607" modifier="EricShulman" tags="Appendix" timestamp="15.12.22.134105" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
 <pre>* 15.12.13.201816 added macros/more
 * 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
 * 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
@@ -9900,7 +9909,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 15.12.21.151540 tweak PartsList
 * 15.12.21.155142 more refactoring
 * 15.12.21.182523 fix Background/TitleBox
-* 15.12.21.204927 fix readonly in Settings/Defaults</pre>
+* 15.12.21.204927 fix readonly in Settings/Defaults
+* 15.12.22.133159 inset shadowboxes in dropdowns</pre>
 </div>
 <div created="20151221063122517" creator="EricShulman" modified="20151221063134510" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>MyBook</pre>
