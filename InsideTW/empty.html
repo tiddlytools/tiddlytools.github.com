@@ -425,7 +425,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151223013241414" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151223185614983" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -445,7 +445,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20151223013241414" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20151223185614983" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6552,7 +6552,7 @@ exports[&quot;edit-text&quot;] = EditTextWidget;
 })();
 </pre>
 </div>
-<div caption="{{$:/core/images/close-button}} {{$:/language/Buttons/Close/Caption}}" created="20151208013746228" description="{{$:/language/Buttons/Close/Hint}}" modified="20151208013746228" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="$:/core/ui/Buttons/close">
+<div caption="{{$:/core/images/close-button}} {{$:/language/Buttons/Close/Caption}}" created="20151208013746228" creator="EricShulman" description="{{$:/language/Buttons/Close/Hint}}" modified="20151223185428927" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ViewerTools" title="$:/core/ui/Buttons/close">
 <pre>&lt;$button message=&quot;tm-close-tiddler&quot; tooltip={{$:/language/Buttons/Close/Hint}} aria-label={{$:/language/Buttons/Close/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]&quot;&gt;
 {{$:/core/images/close-button}}
@@ -6562,7 +6562,7 @@ exports[&quot;edit-text&quot;] = EditTextWidget;
 &lt;/$list&gt;
 &lt;/$button&gt;</pre>
 </div>
-<div created="20151208013539771" creator="EricShulman" modified="20151219015855135" modifier="EricShulman" title="$:/core/ui/ViewTemplate/title">
+<div created="20151208013539771" creator="EricShulman" modified="20151223185517279" modifier="EricShulman" title="$:/core/ui/ViewTemplate/title">
 <pre>\define title-styles()
 fill:$(foregroundColor)$;
 \end
@@ -6574,8 +6574,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 &lt;span class=&quot;tc-tiddler-controls authortools&quot;&gt;&lt;!-- ADDED 'authortools' class --&gt;
 &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
 &lt;/span&gt;
-&lt;span class=&quot;tc-tiddler-controls viewertools&quot;&gt;&lt;!-- ADDED entire span with 'viewertools' and filter for $:/tags/ReadOnly --&gt;
-&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]tag[$:/tags/ReadOnly]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
+&lt;span class=&quot;tc-tiddler-controls viewertools&quot;&gt;&lt;!-- ADDED entire span with 'viewertools' class and tag filter --&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]tag[$:/tags/ViewerTools]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$reveal&gt;&lt;/$list&gt;
 &lt;/span&gt;
 &lt;$set name=&quot;tv-wikilinks&quot; value={{$:/config/Tiddlers/TitleLinks}}&gt;
 &lt;$link&gt;
@@ -6621,7 +6621,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20151223013241414" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151223185614983" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6642,7 +6642,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151221071047159" modifier="EricShulman" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div modified="20151221233454313" modifier="EricShulman" title="$:/state/tab-1916292289">
+<div modified="20151223185520863" modifier="EricShulman" title="$:/state/tab-1916292289">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div modified="20151221085500092" modifier="EricShulman" title="$:/state/tab-2033792853">
@@ -6669,7 +6669,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="TWBook/CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151223013241414" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151223185614983" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -6686,13 +6686,13 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20151207223850169" creator="EricShulman" modified="20151220214638508" modifier="EricShulman" title="$:/temp/NewTagName">
+<div created="20151207223850169" creator="EricShulman" modified="20151223185417072" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151223013238402" modifier="EricShulman" title="$:/temp/revnote">
-<pre>fix TopLeftBar toggle</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20151223185612916" modifier="EricShulman" title="$:/temp/revnote">
+<pre>changed $:/tags/ReadOnly to $:/tags/ViewerTools</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20151223013241414" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20151223185614983" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -6812,7 +6812,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151223013241414" modifier="EricShulman" title="$:/view">
+<div modified="20151223185614983" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" list-after=" " modified="20151221021554478" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7429,7 +7429,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="History" created="20150414091616661" creator="EricShulman" description="Jump to previously viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151222213028400" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ReadOnly" title="TiddlyTools/Buttons/Back">
+<div caption="History" created="20150414091616661" creator="EricShulman" description="Jump to previously viewed topics" list-before="$:/core/ui/Buttons/more-tiddler-actions" modified="20151223185537111" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ViewerTools" title="TiddlyTools/Buttons/Back">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; tooltip=&quot;Jump to previously viewed topics&quot; class=&quot;tc-btn-invisible resize&quot;&gt;
    @@opacity:0.2;{{TiddlyTools/Buttons/Back.svg}}@@
 &lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/HistoryPopup&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
@@ -7588,7 +7588,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20151222213120928" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20151223184847255" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
 <pre>\define revision_history() TWBook/RevisionHistory
 \define config()           $:/config/TiddlyTools
 
@@ -7669,7 +7669,7 @@ $(old)$
    ^^&lt;br&gt;rev: ''&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;''^^
    &lt;div class=&quot;shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
    __//Notes (optional)://__&lt;br&gt;
-   &lt;$edit-text tiddler=&quot;$:/temp/revnote&quot; class=&quot;borderless transparent&quot;/&gt;
+   &lt;$edit-text tiddler=&quot;$:/temp/revnote&quot; placeholder=&quot;enter notes here&quot; class=&quot;borderless transparent&quot;/&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
@@ -9808,46 +9808,37 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div caption="Parts List" created="20151218064105590" creator="EricShulman" modified="20151221231507567" modifier="EricShulman" tags="Appendix" title="TWBook/PartsList">
+<div caption="Parts List" created="20151218064105590" creator="EricShulman" modified="20151223184506739" modifier="EricShulman" tags="Appendix" title="TWBook/PartsList">
 <pre>\define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
 \define ShowLink()    &lt;$link&gt;&lt;&lt;ShowTitle&gt;&gt;&lt;/$link&gt;
 
-!!!System
-&lt;blockquote class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
-@@.larger ''__TWBook__''&lt;br&gt;@@
-&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]!suffix[/]] -[removeprefix[TWBook/]splitbefore[/]removesuffix[/]] +[sort[]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TWBook/]!tag[image]]&quot;&gt;
-      &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;
-&lt;br&gt;
-&lt;$list filter=&quot;[removeprefix[TWBook/]splitbefore[/]removesuffix[/]sort[]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TWBook/]]&quot;&gt;
-      @@.larger ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;@@
-      &lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-         &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
-      &lt;/$list&gt;
-      &lt;br&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[removeprefix[TiddlyTools/]splitbefore[/]removesuffix[/]sort[]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[TiddlyTools/]]&quot;&gt;
-      @@.larger ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;@@
-      &lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-         &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
-      &lt;/$list&gt;
-      &lt;br&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;
+\define ShowModifiedShadows()
 @@.larger ''__Modified Shadows__''&lt;br&gt;@@
 &lt;$list filter=&quot;[is[shadow]] -[prefix[$:/temp]] +[sort[]]&quot;&gt;
    &lt;nobr&gt;&lt;&lt;ShowLink&gt;&gt;&lt;br&gt;&lt;/nobr&gt;
 &lt;/$list&gt;
-&lt;/blockquote&gt;
+\end
 
-!!!Content
-&lt;blockquote class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
-&lt;$list filter=&quot;[!is[system]!prefix[TWBook/]!prefix[images/]] +[sort[]]&quot;&gt;
+\define ShowParts(pre)
+&lt;$list filter=&quot;[removeprefix[$pre$/]splitbefore[/]!suffix[/]] -[removeprefix[$pre$/]splitbefore[/]removesuffix[/]] +[sort[]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[$pre$/]!tag[image]]&quot;&gt;
+      &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;br&gt;
+&lt;$list filter=&quot;[removeprefix[$pre$/]splitbefore[/]removesuffix[/]sort[]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;addprefix[$pre$/]]&quot;&gt;
+      @@.larger ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;@@
+      &lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
+         &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
+      &lt;/$list&gt;
+      &lt;br&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define ShowContents()
+&lt;$list filter=&quot;[!is[system]!prefix[TWBook/]!prefix[TiddlyTools/]!prefix[images/]] +[sort[]]&quot;&gt;
    &lt;$list filter=&quot;[&lt;currentTiddler&gt;tagging[]limit[1]]&quot; variable=&quot;x&quot;&gt;
       @@.larger ''__&lt;&lt;ShowTitle&gt;&gt;__''&lt;br&gt;@@
       &lt;$list filter=&quot;[tag&lt;currentTiddler&gt;]&quot;&gt;
@@ -9860,9 +9851,25 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;$list filter=&quot;[prefix[images/]] +[sort[]]&quot;&gt;
    @@.resize &lt;$transclude tiddler={{!!title}}/&gt;@@ &lt;&lt;ShowLink&gt;&gt;&lt;br&gt;
 &lt;/$list&gt;
+\end
+
+!!!TWBook
+&lt;blockquote class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
+&lt;&lt;ShowParts &quot;TWBook&quot;&gt;&gt;
+&lt;&lt;ShowModifiedShadows&gt;&gt;
+&lt;/blockquote&gt;
+
+!!!~TiddlyTools
+&lt;blockquote class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
+&lt;&lt;ShowParts &quot;TiddlyTools&quot;&gt;&gt;
+&lt;/blockquote&gt;
+
+!!!Content
+&lt;blockquote class=&quot;smaller threecolumns clear&quot; style=&quot;line-height:110%&quot;&gt;
+&lt;&lt;ShowContents&gt;&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151223013241414" modifier="EricShulman" tags="Appendix" timestamp="15.12.22.173238" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" modified="20151223185614983" modifier="EricShulman" tags="Appendix" timestamp="15.12.23.105612" title="TWBook/RevisionHistory" version="TWBook V1.alpha">
 <pre>* 15.12.13.201816 added macros/more
 * 15.12.16.194014 TOC/macros: added toc-show-path (from old NavBar/Macros)
 * 15.12.16.201818 toc-show-path and toc-show-icon added to ViewTemplate/title
@@ -9911,7 +9918,9 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 15.12.21.182523 fix Background/TitleBox
 * 15.12.21.204927 fix readonly in Settings/Defaults
 * 15.12.22.133159 inset shadowboxes in dropdowns
-* 15.12.22.173238 fix TopLeftBar toggle</pre>
+* 15.12.22.173238 fix TopLeftBar toggle
+* 15.12.23.104902 tweaks to PartsList
+* 15.12.23.105612 changed $:/tags/ReadOnly to $:/tags/ViewerTools</pre>
 </div>
 <div created="20151221063122517" creator="EricShulman" modified="20151221063134510" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>MyBook</pre>
