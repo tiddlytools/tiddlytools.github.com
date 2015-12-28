@@ -135,6 +135,8 @@ Error message and password prompt
 
 <li>$:/core/modules/widgets/edit-text.js</li>
 
+<li>$:/core/modules/widgets/reveal.js</li>
+
 <li>$:/core/ui/Buttons/close</li>
 
 <li>$:/core/ui/Buttons/delete</li>
@@ -617,7 +619,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20151228013205133" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20151228190238597" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -638,7 +640,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20151228013205133" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20151228190238597" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6742,6 +6744,225 @@ exports[&quot;edit-text&quot;] = EditTextWidget;
 })();
 </pre>
 </div>
+<div created="20151228181613304" creator="EricShulman" modified="20151228184321273" modifier="EricShulman" module-type="widget" title="$:/core/modules/widgets/reveal.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/widgets/reveal.js
+type: application/javascript
+module-type: widget
+
+Reveal widget
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
+var RevealWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+
+/*
+Inherit from the base widget class
+*/
+RevealWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+RevealWidget.prototype.render = function(parent,nextSibling) {
+	this.parentDomNode = parent;
+	this.computeAttributes();
+	this.execute();
+	var tag = this.parseTreeNode.isBlock ? &quot;div&quot; : &quot;span&quot;;
+	if(this.revealTag &amp;&amp; $tw.config.htmlUnsafeElements.indexOf(this.revealTag) === -1) {
+		tag = this.revealTag;
+	}
+	var domNode = this.document.createElement(tag);
+	var classes = this[&quot;class&quot;].split(&quot; &quot;) || [];
+	classes.push(&quot;tc-reveal&quot;);
+	domNode.className = classes.join(&quot; &quot;);
+	if(this.style) {
+		domNode.setAttribute(&quot;style&quot;,this.style);
+	}
+	parent.insertBefore(domNode,nextSibling);
+	this.renderChildren(domNode,null);
+	if(!domNode.isTiddlyWikiFakeDom &amp;&amp; this.type === &quot;popup&quot; &amp;&amp; this.isOpen) {
+		this.positionPopup(domNode);
+		$tw.utils.addClass(domNode,&quot;tc-popup&quot;); // Make sure that clicks don't dismiss popups within the revealed content
+	}
+	if(!this.isOpen) {
+		domNode.setAttribute(&quot;hidden&quot;,&quot;true&quot;);
+	}
+	this.domNodes.push(domNode);
+};
+
+RevealWidget.prototype.positionPopup = function(domNode) {
+	domNode.style.position = &quot;absolute&quot;;
+	domNode.style.zIndex = &quot;1000&quot;;
+	switch(this.position) {
+		case &quot;left&quot;:
+			domNode.style.top = this.popup.top + &quot;px&quot;;
+/* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - this.popup.left + &quot;px&quot;;
+			break;
+		case &quot;above&quot;:
+			domNode.style.left = this.popup.left + &quot;px&quot;;
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top) + &quot;px&quot;;
+			break;
+		case &quot;aboveright&quot;:
+			domNode.style.left = (this.popup.left + this.popup.width) + &quot;px&quot;;
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top + this.popup.height) + &quot;px&quot;;
+			break;
+/* ELS */	case &quot;aboveleft&quot;:
+/* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - (this.popup.left + this.popup.width) + &quot;px&quot;;
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top + this.popup.height) + &quot;px&quot;;
+/* ELS */		break;
+		case &quot;right&quot;:
+			domNode.style.left = (this.popup.left + this.popup.width) + &quot;px&quot;;
+			domNode.style.top = this.popup.top + &quot;px&quot;;
+			break;
+		case &quot;belowleft&quot;:
+			domNode.style.top = (this.popup.top + this.popup.height) + &quot;px&quot;;
+/* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - (this.popup.left + this.popup.width) + &quot;px&quot;;
+			break;
+		default: // Below
+			domNode.style.left = this.popup.left + &quot;px&quot;;
+			domNode.style.top = (this.popup.top + this.popup.height) + &quot;px&quot;;
+			break;
+	}
+};
+
+/*
+Compute the internal state of the widget
+*/
+RevealWidget.prototype.execute = function() {
+	// Get our parameters
+	this.state = this.getAttribute(&quot;state&quot;);
+	this.revealTag = this.getAttribute(&quot;tag&quot;);
+	this.type = this.getAttribute(&quot;type&quot;);
+	this.text = this.getAttribute(&quot;text&quot;);
+	this.position = this.getAttribute(&quot;position&quot;);
+	this[&quot;class&quot;] = this.getAttribute(&quot;class&quot;,&quot;&quot;);
+	this.style = this.getAttribute(&quot;style&quot;,&quot;&quot;);
+	this[&quot;default&quot;] = this.getAttribute(&quot;default&quot;,&quot;&quot;);
+	this.animate = this.getAttribute(&quot;animate&quot;,&quot;no&quot;);
+	this.retain = this.getAttribute(&quot;retain&quot;,&quot;no&quot;);
+	this.openAnimation = this.animate === &quot;no&quot; ? undefined : &quot;open&quot;;
+	this.closeAnimation = this.animate === &quot;no&quot; ? undefined : &quot;close&quot;;
+	// Compute the title of the state tiddler and read it
+	this.stateTitle = this.state;
+	this.readState();
+	// Construct the child widgets
+	var childNodes = this.isOpen ? this.parseTreeNode.children : [];
+	this.hasChildNodes = this.isOpen;
+	this.makeChildWidgets(childNodes);
+};
+
+/*
+Read the state tiddler
+*/
+RevealWidget.prototype.readState = function() {
+	// Read the information from the state tiddler
+	var state = this.stateTitle ? this.wiki.getTextReference(this.stateTitle,this[&quot;default&quot;],this.getVariable(&quot;currentTiddler&quot;)) : this[&quot;default&quot;];
+	switch(this.type) {
+		case &quot;popup&quot;:
+			this.readPopupState(state);
+			break;
+		case &quot;match&quot;:
+			this.readMatchState(state);
+			break;
+		case &quot;nomatch&quot;:
+			this.readMatchState(state);
+			this.isOpen = !this.isOpen;
+			break;
+	}
+};
+
+RevealWidget.prototype.readMatchState = function(state) {
+	this.isOpen = state === this.text;
+};
+
+RevealWidget.prototype.readPopupState = function(state) {
+	var popupLocationRegExp = /^\((-?[0-9\.E]+),(-?[0-9\.E]+),(-?[0-9\.E]+),(-?[0-9\.E]+)\)$/,
+		match = popupLocationRegExp.exec(state);
+	// Check if the state matches the location regexp
+	if(match) {
+		// If so, we're open
+		this.isOpen = true;
+		// Get the location
+		this.popup = {
+			left: parseFloat(match[1]),
+			top: parseFloat(match[2]),
+			width: parseFloat(match[3]),
+			height: parseFloat(match[4])
+		};
+	} else {
+		// If not, we're closed
+		this.isOpen = false;
+	}
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+RevealWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedAttributes.state || changedAttributes.type || changedAttributes.text || changedAttributes.position || changedAttributes[&quot;default&quot;] || changedAttributes.animate) {
+		this.refreshSelf();
+		return true;
+	} else {
+		var refreshed = false,
+			currentlyOpen = this.isOpen;
+		this.readState();
+		if(this.isOpen !== currentlyOpen) {
+			if(this.retain === &quot;yes&quot;) {
+				this.updateState();
+			} else {
+				this.refreshSelf();
+				refreshed = true;
+			}
+		}
+		return this.refreshChildren(changedTiddlers) || refreshed;
+	}
+};
+
+/*
+Called by refresh() to dynamically show or hide the content
+*/
+RevealWidget.prototype.updateState = function() {
+	// Read the current state
+	this.readState();
+	// Construct the child nodes if needed
+	var domNode = this.domNodes[0];
+	if(this.isOpen &amp;&amp; !this.hasChildNodes) {
+		this.hasChildNodes = true;
+		this.makeChildWidgets(this.parseTreeNode.children);
+		this.renderChildren(domNode,null);
+	}
+	// Animate our DOM node
+	if(!domNode.isTiddlyWikiFakeDom &amp;&amp; this.type === &quot;popup&quot; &amp;&amp; this.isOpen) {
+		this.positionPopup(domNode);
+		$tw.utils.addClass(domNode,&quot;tc-popup&quot;); // Make sure that clicks don't dismiss popups within the revealed content
+
+	}
+	if(this.isOpen) {
+		domNode.removeAttribute(&quot;hidden&quot;);
+        $tw.anim.perform(this.openAnimation,domNode);
+	} else {
+		$tw.anim.perform(this.closeAnimation,domNode,{callback: function() {
+			domNode.setAttribute(&quot;hidden&quot;,&quot;true&quot;);
+        }});
+	}
+};
+
+exports.reveal = RevealWidget;
+
+})();
+</pre>
+</div>
 <div caption="{{$:/core/images/close-button}} {{$:/language/Buttons/Close/Caption}}" created="20151208013746228" creator="EricShulman" description="{{$:/language/Buttons/Close/Hint}}" modified="20151223185428927" modifier="EricShulman" tags="$:/tags/ViewToolbar $:/tags/ViewerTools" title="$:/core/ui/Buttons/close">
 <pre>&lt;$button message=&quot;tm-close-tiddler&quot; tooltip={{$:/language/Buttons/Close/Hint}} aria-label={{$:/language/Buttons/Close/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]&quot;&gt;
@@ -6816,8 +7037,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Settings/Advanced]]
-# [[TiddlyTools/Settings/Advanced/Panel]]</pre>
+# [[$:/core/modules/widgets/reveal.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -6828,7 +7048,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20151228013205133" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20151228190238596" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6876,20 +7096,20 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20151228013205133" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20151228190238596" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20151224073748099" creator="EricShulman" modified="20151225213705784" modifier="EricShulman" title="$:/temp/goto">
 <pre></pre>
 </div>
-<div created="20151225222016670" creator="EricShulman" modified="20151228011837998" modifier="EricShulman" title="$:/temp/goto/input">
-<pre>adv</pre>
+<div created="20151225222016670" creator="EricShulman" modified="20151228190206525" modifier="EricShulman" title="$:/temp/goto/input">
+<pre></pre>
 </div>
 <div created="20151225215059132" creator="EricShulman" modified="20151225220458680" modifier="EricShulman" title="$:/temp/goto/search">
 <pre>te</pre>
 </div>
-<div modified="20151228011844168" modifier="EricShulman" title="$:/temp/goto/showsys">
-<pre>show</pre>
+<div modified="20151228190238597" modifier="EricShulman" title="$:/temp/goto/showsys">
+<pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -6908,10 +7128,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151207223850169" creator="EricShulman" modified="20151226055423855" modifier="EricShulman" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20151228013203236" modifier="EricShulman" title="$:/temp/revnote">
+<div created="20151207200702481" creator="EricShulman" modified="20151228190235540" modifier="EricShulman" title="$:/temp/revnote">
 <pre></pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20151228013205133" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20151228190238596" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -7031,7 +7251,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20151228013205133" modifier="EricShulman" title="$:/view">
+<div modified="20151228190238596" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9463,7 +9683,7 @@ If you are createing a new tiddler, start by choosing a title:
 <div created="20150320064014832" creator="EricShulman" modified="20150320064022101" modifier="EricShulman" tags="Saving" title="TiddlyFox">
 <pre></pre>
 </div>
-<div created="20150426211642738" creator="EricShulman" modified="20151222211747340" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
+<div created="20150426211642738" creator="EricShulman" modified="20151228184559529" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
 <pre>@@.authortools 
 &lt;$button popup=&lt;&lt;qualify &quot;$:/temp/AdvancedSearchPopup&quot;&gt;&gt; tooltip=&quot;search this file...&quot; class=&quot;tt-button&quot;&gt;
    {{$:/core/images/advanced-search-button}}
@@ -9472,7 +9692,7 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    [[$:/AdvancedSearch]]
    &lt;div class=&quot;shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
-   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
+   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;white-space:nowrap&quot;&gt;
       {{||$:/AdvancedSearch}}
    &lt;/div&gt;
    &lt;/div&gt;
@@ -9541,9 +9761,10 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20151224191845018" creator="EricShulman" modified="20151227145905284" modifier="EricShulman" title="TiddlyTools/Buttons/Goto">
+<div created="20151224191845018" creator="EricShulman" modified="20151228180752940" modifier="EricShulman" title="TiddlyTools/Buttons/Goto">
 <pre>\define input()        $:/temp/goto/input
 \define showsys()      $:/temp/goto/showsys
+\define showlist()     $:/temp/goto/showlist
 \define buttonimg()    {{TiddlyTools/Buttons/Goto.svg}}
 
 \define all()          [all[]] -[prefix[$:/state]] -[prefix[$:/temp]] 
@@ -9552,11 +9773,63 @@ If you are createing a new tiddler, start by choosing a title:
 \define searchnosys()  [search:title{$(input)$}sort[]] -[is[system]] -[prefix[TiddlyTools]] -[prefix[TWBook]]
 \define history()      [jlist[$:/HistoryList]unique[]reverse[]!title&lt;currentTiddler&gt;]
 
+\define titlebar()
+''Go to:''
+&lt;$edit-text tiddler=&lt;&lt;input&gt;&gt; tag=&quot;input&quot; default=&quot;&quot;
+   placeholder=&quot;search for a title&quot; class=&quot;tc-popup-handle&quot;/&gt;
+&lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;$button popup=&lt;&lt;showlist&gt;&gt; class=&quot;tc-btn-invisible&quot; tooltip=&quot;list all titles&quot;&gt;
+         {{$:/core/images/down-arrow}}
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;$button popup=&lt;&lt;showlist&gt;&gt; class=&quot;tc-btn-invisible&quot; tooltip=&quot;close list&quot;&gt;
+         {{$:/core/images/close-button}}
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button set=&lt;&lt;input&gt;&gt; setTo=&quot;&quot; class=&quot;tc-btn-invisible&quot; tooltip=&quot;reset input&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt; text=&quot;&quot;/&gt;
+      {{$:/core/images/close-button}}
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+\end
+
+\define panel()
+&lt;div class=&quot;shadowbox inset clear&quot; style=&quot;margin-top:0.5em; background:#f0f0f0;&quot;&gt;
+   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;&lt;togglesys&gt;&gt;
+      &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+         &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;searchnosys&gt;&gt; heading=&quot;matching&quot; /&gt;
+      &lt;/$reveal&gt;
+      &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+         &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt; heading=&quot;matching&quot; /&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+         &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;history&gt;&gt; heading=&quot;previously viewed&quot; /&gt;
+      &lt;/$reveal&gt;
+      &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+         &lt;&lt;togglesys&gt;&gt;
+         &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+            &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;nosys&gt;&gt; heading=&quot;all&quot; /&gt;
+         &lt;/$reveal&gt;
+         &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+            &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;all&gt;&gt; heading=&quot;all&quot; /&gt;
+         &lt;/$reveal&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+&lt;/div&gt;
+\end
+
 \define togglesys()
 &lt;div style=&quot;font-size:80%;float:right;&quot;&gt;
-&lt;$checkbox class=&quot;tc-popup-handle authortools&quot; tiddler=&lt;&lt;showsys&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;
-   include system
-&lt;/$checkbox&gt;
+   &lt;$checkbox class=&quot;tc-popup-handle authortools&quot; tiddler=&lt;&lt;showsys&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;
+      include system
+   &lt;/$checkbox&gt;
 &lt;/div&gt;
 \end
 
@@ -9575,55 +9848,10 @@ If you are createing a new tiddler, start by choosing a title:
    tooltip=&quot;Go to a Tiddler&quot; class=&quot;tc-btn-invisible resize&quot;&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; text=&quot;&quot;/&gt;
    @@opacity:0.15;&lt;&lt;buttonimg&gt;&gt;@@
-&lt;/$button&gt;&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
-&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left; white-space:nowrap;&quot;&gt;
-   &lt;!-- TITLEBAR --&gt;
-   ''Go to:''
-   &lt;$edit-text tiddler=&lt;&lt;input&gt;&gt; tag=&quot;input&quot; default=&quot;&quot;
-      placeholder=&quot;search for a title&quot; class=&quot;tc-popup-handle&quot;/&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-         &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; class=&quot;tc-btn-invisible&quot; tooltip=&quot;list all titles&quot;&gt;
-            {{$:/core/images/down-arrow}}
-         &lt;/$button&gt;
-      &lt;/$reveal&gt;
-      &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-         &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; class=&quot;tc-btn-invisible&quot; tooltip=&quot;close list&quot;&gt;
-            {{$:/core/images/close-button}}
-         &lt;/$button&gt;
-      &lt;/$reveal&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;$button set=&lt;&lt;input&gt;&gt; setTo=&quot;&quot; class=&quot;tc-btn-invisible&quot; tooltip=&quot;reset input&quot;&gt;
-         {{$:/core/images/close-button}}
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-   &lt;!-- PANEL --&gt;
-   &lt;div class=&quot;shadowbox inset clear&quot; style=&quot;margin-top:0.5em; background:#f0f0f0;&quot;&gt;
-      &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-         &lt;&lt;togglesys&gt;&gt;
-         &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-            &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;searchnosys&gt;&gt; heading=&quot;matching&quot; /&gt;
-         &lt;/$reveal&gt;
-         &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-            &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt; heading=&quot;matching&quot; /&gt;
-         &lt;/$reveal&gt;
-      &lt;/$reveal&gt;
-      &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-         &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-            &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;history&gt;&gt; heading=&quot;previously viewed&quot; /&gt;
-         &lt;/$reveal&gt;
-         &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto/list&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-            &lt;&lt;togglesys&gt;&gt;
-            &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-               &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;nosys&gt;&gt; heading=&quot;all&quot; /&gt;
-            &lt;/$reveal&gt;
-            &lt;$reveal state=&lt;&lt;showsys&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-               &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;all&gt;&gt; heading=&quot;all&quot; /&gt;
-            &lt;/$reveal&gt;
-         &lt;/$reveal&gt;
-      &lt;/$reveal&gt;
-   &lt;/div&gt;
+&lt;/$button&gt;&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
+&lt;div class=&quot;tc-popup-keep tc-popup-handle tt-drop-down&quot; style=&quot;text-align:left; white-space:nowrap;&quot;&gt;
+   &lt;&lt;titlebar&gt;&gt;
+   &lt;&lt;panel&gt;&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
@@ -9813,7 +10041,7 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20151226091411895" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
+<div created="20150316090221888" creator="EricShulman" modified="20151228185608782" modifier="EricShulman" title="TiddlyTools/Buttons/ResetAndSave">
 <pre>\define log()    TWBook/VersionInfo
 \define config() $:/config/TiddlyTools
 
@@ -9831,9 +10059,12 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;$action-setfield    $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ToolBar&quot;  $value=&quot;yes&quot;/&gt;
 &lt;$action-setfield    $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;ReadOnly&quot; $value=&quot;yes&quot;/&gt;
 
-&lt;!-- TOC OPEN/CLOSED (CLEAR ALL, CLOSE ALL) --&gt;
+&lt;!-- TOC CLOSED (CLEAR ALL, CLOSE ALL) --&gt;
 &lt;$action-setfield    $tiddler=&quot;$(config)$/TOC&quot; $field=&quot;text&quot;     $value=&quot;&quot;/&gt;
 &lt;$action-setfield    $tiddler=&quot;$(config)$/TOC&quot; $index=&quot;OpenAll&quot;  $value=&quot;no&quot;/&gt;
+
+&lt;!-- GOTO RESULTS OMIT SYSTEM TIDDLERS --&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/temp/goto/showsys&quot; text=&quot;&quot;/&gt;
 \end
 
 \define update_revision()
@@ -12085,7 +12316,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 {{||TiddlyTools/Settings}}
 </pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" modified="20151228013205134" modifier="EricShulman" tags="Appendix" timestamp="15.12.27.173203" title="TWBook/VersionInfo" version="TWBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" modified="20151228190238597" modifier="EricShulman" tags="Appendix" timestamp="15.12.28.110235" title="TWBook/VersionInfo" version="TWBook V1.alpha">
 <pre>Current build: ''{{!!version}}'' @@.smaller {{!!timestamp}}@@
 
 * 15.03.21 Initial release for feedback
@@ -12242,7 +12473,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 15.12.24.123913 tweaks to Goto
 * 15.12.24.152441 combined History into Goto
 * 15.12.24.194223 tweaks to Goto (placement, buttons styles, wording, etc.)
-* 15.12.24.194446 added ``tt-drop-box { font-size: initial; }``
+* 15.12.24.194446 added ``tt-dropbox { font-size: initial; }``
 * 15.12.25.144455 TiddlyTools/Buttons/Goto cleanup
 * 15.12.25.224250 fix default &quot;hide system&quot; in goto popup
 * 15.12.26.000643 fix Glossary (macro name change)
@@ -12252,9 +12483,11 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 15.12.26.224433 more cleanup for Goto
 * 15.12.26.230225 more goto and back button position tweaks
 * 15.12.26.231934 Goto/Back positioning
-* 15.12.27.073256 added TWBook/ViewerTools (for Goto/Back buttons)
-* 15.12.27.152944 adjust ViewerTools, CoverPage, PartsList, adde &quot;more&quot; button to TOC, removed test data
-* 15.12.27.172548 added $:/config/TiddlyTools##Path to show/hide toc-path in titlebar</pre>
+* 15.12.27.073256 added TWBook/ViewerTools
+* 15.12.27.151006 CoverPage viewertools, TOC authortools (more button), show $:/config in PartsList, removed test topics
+* 15.12.27.172346 added $:/config/TiddlyTools##Path to show hide toc-path in titlebar
+* 15.12.28.042635 fixed goto popup handling (but not positioning, yet)
+* 15.12.28.104440 reveal.js positionPopup() use correct anchoring corner for domNode</pre>
 </div>
 <div created="20151221062640380" creator="EricShulman" modified="20151221063051886" modifier="EricShulman" tags="" title="TWBook/ViewAll" toc-nav="no">
 <pre>@@.tt-toc-viewall &lt;$macrocall $name=&quot;toc-view-all&quot; here={{TWBook/RootTag}}/&gt;@@</pre>
