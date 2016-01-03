@@ -633,7 +633,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160103132838693" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160103150734040" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -654,7 +654,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160103132838693" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160103150734040" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7052,7 +7052,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20160103132838692" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20160103150734039" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -7100,7 +7100,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20160103132838692" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20160103150734039" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20151224073748099" creator="EricShulman" modified="20151225213705784" modifier="EricShulman" title="$:/temp/goto">
@@ -7126,10 +7126,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20160103130058076" modifier="EricShulman" title="$:/temp/notify">
 <pre>The history list is empty</pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20160103132837076" modifier="EricShulman" title="$:/temp/revnote">
-<pre></pre>
+<div created="20151207200702481" creator="EricShulman" modified="20160103150732327" modifier="EricShulman" title="$:/temp/revnote">
+<pre>Goto: combine search and list panels</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20160103132838692" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20160103150734039" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160101220732240" creator="EricShulman" modified="20160101220732789" modifier="EricShulman" title="$:/temp/whereto" whereto="foo">
@@ -7252,7 +7252,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20160103132838692" modifier="EricShulman" title="$:/view">
+<div modified="20160103150734039" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -9772,11 +9772,11 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20151224191845018" creator="EricShulman" modified="20160103131649293" modifier="EricShulman" title="TiddlyTools/Buttons/Goto">
+<div created="20160103143047828" creator="EricShulman" modified="20160103150508297" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Goto">
 <pre>\define input()        $:/temp/goto/input
 \define showsystem()   $:/temp/goto/showsystem
 \define showshadows()  $:/temp/goto/showshadows
-\define showlist()     $:/temp/goto/showlist
+\define showsearch()   $:/temp/goto/showsearch
 \define showhistory()  $:/temp/goto/showhistory
 \define buttonimg()    &lt;span class=&quot;resize&quot; style=&quot;opacity:0.15;&quot;&gt;{{TiddlyTools/Buttons/Goto.svg}}&lt;/span&gt;
 \define historyimg()   &lt;span class=&quot;resize&quot; style=&quot;opacity:0.15;&quot;&gt;{{TiddlyTools/Buttons/History.svg}}&lt;/span&gt;
@@ -9800,27 +9800,25 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;div class=&quot;tt-goto-titlebar&quot;&gt;
    ''Go to:''
    &lt;$edit-text tiddler=&lt;&lt;input&gt;&gt; tag=&quot;input&quot; class=&quot;tc-popup-handle&quot; default=&quot;&quot;
-      placeholder=&quot;enter a title, caption, or tag&quot; focusPopup=&lt;&lt;showlist&gt;&gt;/&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;   &lt;&lt;togglelist&gt;&gt;  &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;clearinput&gt;&gt; &lt;/$reveal&gt;
+      placeholder=&quot;enter a title, caption, or tag&quot; focusPopup=&lt;&lt;showsearch&gt;&gt;/&gt;
+   &lt;&lt;togglesearch&gt;&gt;
    &lt;&lt;togglehistory&gt;&gt;
-   &lt;span class=&quot;authortools&quot;&gt;
-      &lt;$list filter=&lt;&lt;missing&gt;&gt;&gt;&lt;&lt;createtiddler&gt;&gt;&lt;/$list&gt;
-      &lt;$list filter=&lt;&lt;existing&gt;&gt;&gt;&lt;&lt;edittiddler&gt;&gt;&lt;/$list&gt;
-   &lt;/span&gt;
+    &lt;$list filter=&lt;&lt;missing&gt;&gt;&gt;&lt;&lt;createtiddler&gt;&gt;&lt;/$list&gt;
+    &lt;$list filter=&lt;&lt;existing&gt;&gt;&gt;&lt;&lt;edittiddler&gt;&gt;&lt;/$list&gt;
 \end
 
-\define togglelist()
-&lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+\define togglesearch()
+&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;list all titles&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt; text=&quot;show&quot;/&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;    text=&quot;&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;show&quot;/&gt;
       {{$:/core/images/down-arrow}}
    &lt;/$button&gt;
 &lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button set=&lt;&lt;showlist&gt;&gt; setTo=&quot;&quot; class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;hide title list&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt; text=&quot;&quot;/&gt;
+&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;reset search&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;&quot;/&gt;
       {{$:/core/images/close-button}}
    &lt;/$button&gt;
 &lt;/$reveal&gt;
@@ -9834,27 +9832,21 @@ If you are createing a new tiddler, start by choosing a title:
             &lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;The history list is empty&quot;/&gt;
             &lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
          &quot;&quot;&quot;&gt;
-         &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;       text=&quot;&quot;/&gt;
-         &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt;    text=&quot;&quot;/&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
       &lt;/$list&gt;
       &lt;&lt;historyimg&gt;&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal state=&lt;&lt;showhistory&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;hide history list&quot;&gt;
-      &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-         &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-            &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;&quot;/&gt;
-         &lt;/$reveal&gt;
-         &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-            &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt;    text=&quot;&quot;/&gt;
-            &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
-         &lt;/$reveal&gt;
+      &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;&quot;/&gt;
       &lt;/$reveal&gt;
-      &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;       text=&quot;&quot;/&gt;
-         &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt;    text=&quot;&quot;/&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
       &lt;/$reveal&gt;
       &lt;&lt;historyimg&gt;&gt;
@@ -9862,25 +9854,22 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;/$reveal&gt;
 \end
 
-\define clearinput()
-&lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;clear search input&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; text=&quot;&quot;/&gt;
-   {{$:/core/images/close-button}}
-&lt;/$button&gt;
-\end
-
 \define createtiddler()
+&lt;span class=&quot;authortools&quot;&gt;
 &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;create this tiddler&quot;&gt;
    &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title={{$(input)$}}/&gt;
    {{$:/core/images/new-button}}
 &lt;/$button&gt;
+&lt;/span&gt;
 \end
 
 \define edittiddler()
+&lt;span class=&quot;authortools&quot;&gt;
 &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;edit this tiddler&quot;&gt;
    &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; title={{$(input)$}}/&gt;
    {{$:/core/images/edit-button}}
 &lt;/$button&gt;
+&lt;/span&gt;
 \end
 
 \define panel()
@@ -9888,17 +9877,12 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;$set name=&quot;refreshhack&quot; value={{$(showsystem)$}}&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
 &lt;$set name=&quot;types&quot; filter=&quot;[title[$(showshadows)$]text[show]]&quot; value=&quot;tiddlers+shadows&quot; emptyValue=&quot;tiddlers&quot;&gt;
 &lt;$set name=&quot;types&quot; filter=&quot;[title[$(showsystem)$]text[show]]&quot;  value=&lt;&lt;types&gt;&gt;          emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;&lt;searchpanel&gt;&gt;
 &lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;&lt;listpanel&gt;&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;showlist&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$reveal state=&lt;&lt;showhistory&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-         &lt;&lt;historypanel&gt;&gt;
-      &lt;/$reveal&gt;
+&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$reveal state=&lt;&lt;showhistory&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;&lt;historypanel&gt;&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 &lt;/$set&gt;
@@ -9922,33 +9906,6 @@ If you are createing a new tiddler, start by choosing a title:
 &lt;/$set&gt;
 \end
 
-\define listpanel()
-&lt;$set name=&quot;filter&quot; filter=&quot;[title[$(showsystem)$]text[show]]&quot;
-   value=&quot;&quot;&quot;$(all)$&quot;&quot;&quot; emptyValue=&quot;$(all)$ $(nosystem)$&quot;&gt;
-&lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt;
-   &lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
-      @@float:right;margin-left:0.5em; &lt;&lt;togglesystem&gt;&gt;@@
-      ''All titles:'' &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt;
-   &lt;/div&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;background:#f0f0f0;&quot;&gt;
-      &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;filter&gt;&gt; /&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-&lt;/$set&gt;
-\end
-
-\define historypanel()
-&lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt;
-   &lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
-      @@float:right;margin-left:0.5em; &lt;&lt;clearhistory&gt;&gt;@@
-      ''Previously viewed:'' &lt;$count filter=&lt;&lt;history&gt;&gt;/&gt;
-   &lt;/div&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;background:#f0f0f0;&quot;&gt;
-      &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;history&gt;&gt; /&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-\end
-
 \define togglesystem()
 &lt;div class=&quot;authortools&quot;&gt;
 &lt;$checkbox class=&quot;tc-popup-handle&quot;
@@ -9961,6 +9918,18 @@ If you are createing a new tiddler, start by choosing a title:
       checked=&quot;show&quot; unchecked=&quot;&quot;&gt;shadows
    &lt;/$checkbox&gt;
 &lt;/$reveal&gt;
+&lt;/div&gt;
+\end
+
+\define historypanel()
+&lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt;
+   &lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
+      @@float:right;margin-left:0.5em; &lt;&lt;clearhistory&gt;&gt;@@
+      ''Previously viewed:'' &lt;$count filter=&lt;&lt;history&gt;&gt;/&gt;
+   &lt;/div&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;background:#f0f0f0;&quot;&gt;
+      &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;history&gt;&gt; /&gt;
+   &lt;/div&gt;
 &lt;/div&gt;
 \end
 
@@ -9994,8 +9963,8 @@ If you are createing a new tiddler, start by choosing a title:
 
 &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt;
    tooltip=&quot;Go to a Tiddler&quot; class=&quot;tc-btn-invisible&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;    text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;showlist&gt;&gt; text=&quot;&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;&quot;/&gt;
    &lt;&lt;buttonimg&gt;&gt;
 &lt;/$button&gt;&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
    &lt;div class=&quot;tc-popup-keep tc-popup-handle tt-drop-down&quot;
@@ -12611,7 +12580,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20151228011322706" modifier="EricShulman" title="TWBook/ViewerTools">
 <pre>{{||TiddlyTools/Buttons/Goto}}{{||TiddlyTools/Buttons/Back}}</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160103132838693" modifier="EricShulman" tags="Appendix" timestamp="16.01.03.052837" title="VersionInfo" version="TWBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160103150734040" modifier="EricShulman" tags="Appendix" timestamp="16.01.03.070732" title="VersionInfo" version="TWBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -12822,7 +12791,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.03.030519 Goto: floating panels
 * 16.01.03.051123 Goto: toggle history
 * 16.01.03.051940 Goto: input and list panel are cleared when popup first opens
-* 16.01.03.052755 TWBook/Reset: clear all $:/temp/goto/* settings to use defaults</pre>
+* 16.01.03.052755 TWBook/Reset: clear all $:/temp/goto/* settings to use defaults
+* 16.01.03.070732 Goto: combine search and list panels</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
