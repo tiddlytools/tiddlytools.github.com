@@ -441,7 +441,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160104212435521" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160104234526888" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -462,7 +462,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160104212435521" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160104234526888" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6846,12 +6846,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Scraps]]</pre>
+# [[TiddlyTools/Goto/Toolbar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20160104212435520" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20160104234526887" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6899,7 +6899,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20160104212435520" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20160104234526887" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20151224073748099" creator="EricShulman" modified="20151225213705784" modifier="EricShulman" title="$:/temp/goto">
@@ -6925,10 +6925,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20160103204944979" modifier="EricShulman" title="$:/temp/notify">
 <pre>Viewing history has been cleared</pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20160104212431793" modifier="EricShulman" title="$:/temp/revnote">
-<pre>Goto: refactor to TiddlyTools/Goto and added Popup, Toolbar, Panel, and History tranclusions for easy embedding</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20160104234517285" modifier="EricShulman" title="$:/temp/revnote">
+<pre>Goto: showsearch when turning off showhistory if input is not empty</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20160104212435520" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20160104234526887" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -7048,7 +7048,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20160104212435520" modifier="EricShulman" title="$:/view">
+<div modified="20160104234526887" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -8698,7 +8698,7 @@ exports.unique = function(source,operator,options) {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20160104204907956" creator="EricShulman" modified="20160104210237567" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Macros">
+<div created="20160104204907956" creator="EricShulman" modified="20160104233815986" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Macros">
 <pre>\define input()        $:/temp/goto/input
 \define showsystem()   $:/temp/goto/showsystem
 \define showshadows()  $:/temp/goto/showshadows
@@ -8759,8 +8759,8 @@ exports.unique = function(source,operator,options) {
 \define togglehistory()
 &lt;$reveal state=&lt;&lt;showhistory&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;show history list&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
       &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
       @@opacity:0.15;&lt;&lt;historyimg&gt;&gt;@@
    &lt;/$button&gt;
 &lt;/$reveal&gt;
@@ -8768,13 +8768,16 @@ exports.unique = function(source,operator,options) {
    &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
       &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;hide history list&quot;&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;&quot;/&gt;
+         &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+            &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;show&quot;/&gt;
+         &lt;/$reveal&gt;
          @@opacity:1.0;&lt;&lt;historyimg&gt;&gt;@@
       &lt;/$button&gt;
    &lt;/$reveal&gt;
    &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
       &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;show history list&quot;&gt;
-         &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;showhistory&gt;&gt; text=&quot;show&quot;/&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt;  text=&quot;&quot;/&gt;
          @@opacity:0.15;&lt;&lt;historyimg&gt;&gt;@@
       &lt;/$button&gt;
    &lt;/$reveal&gt;
@@ -10727,7 +10730,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20160104211029292" modifier="EricShulman" title="TWBook/ViewerTools">
 <pre>{{||TiddlyTools/Goto/Popup}}{{||TiddlyTools/Goto/Back}}</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160104212435522" modifier="EricShulman" tags="Appendix" timestamp="16.01.04.132431" title="VersionInfo" version="TWBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160104234526890" modifier="EricShulman" tags="Appendix" timestamp="16.01.04.154517" title="VersionInfo" version="TWBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -10948,7 +10951,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.03.162739 Goto: fix hiding of edittiddler() when readonly mode
 * 16.01.03.174543 Goto: added embed() and popup() entry points
 * 16.01.03.192812 RecentChanges and SaveChanges: fix reveal retain and remove junk code.  Also, deleted ResetAndSave (obsolete)
-* 16.01.04.132431 Goto: refactor to TiddlyTools/Goto and added Popup, Toolbar, Panel, and History tranclusions for easy embedding</pre>
+* 16.01.04.132431 Goto: refactor to TiddlyTools/Goto and added Popup, Toolbar, Panel, and History tranclusions for easy embedding
+* 16.01.04.154517 Goto: showsearch when turning off showhistory if input is not empty</pre>
 </div>
 
 </div>
