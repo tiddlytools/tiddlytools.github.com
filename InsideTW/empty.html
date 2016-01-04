@@ -435,7 +435,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160104002741123" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160104014544197" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -456,7 +456,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160104002741123" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160104014544197" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6840,12 +6840,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Buttons/Goto]]</pre>
+# [[TiddlyTools/Scraps]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div modified="20160104002741123" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20160104014544197" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -6893,7 +6893,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20160104002741123" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20160104014544197" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20151224073748099" creator="EricShulman" modified="20151225213705784" modifier="EricShulman" title="$:/temp/goto">
@@ -6919,10 +6919,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20160103204944979" modifier="EricShulman" title="$:/temp/notify">
 <pre>Viewing history has been cleared</pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20160104002739923" modifier="EricShulman" title="$:/temp/revnote">
-<pre>Goto: fix hiding of edittiddler() when readonly mode</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20160104014543117" modifier="EricShulman" title="$:/temp/revnote">
+<pre>Goto: added embed() and popup() entry points</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20160104002741123" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20160104014544197" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.9">
@@ -7042,7 +7042,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20160104002741123" modifier="EricShulman" title="$:/view">
+<div modified="20160104014544197" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -8005,7 +8005,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20160103143047828" creator="EricShulman" modified="20160104002622913" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Goto">
+<div created="20160103143047828" creator="EricShulman" modified="20160104014427702" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/Goto">
 <pre>\define input()        $:/temp/goto/input
 \define showsystem()   $:/temp/goto/showsystem
 \define showshadows()  $:/temp/goto/showshadows
@@ -8137,7 +8137,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt;
    &lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
       @@float:right;margin-left:0.5em; &lt;&lt;togglesystem&gt;&gt;@@
-      &lt;&lt;closepanel showsearch&gt;&gt;
+      &lt;&lt;close showsearch&gt;&gt;
       ''Matching titles: &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt;''
    &lt;/div&gt;
    &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;filter&gt;&gt; /&gt;
@@ -8149,14 +8149,14 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 &lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt;
    &lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
       @@float:right;margin-left:0.5em; &lt;&lt;clearhistory&gt;&gt;@@
-      &lt;&lt;closepanel showhistory&gt;&gt;
+      &lt;&lt;close showhistory&gt;&gt;
       ''Recently viewed: &lt;$count filter=&lt;&lt;history&gt;&gt;/&gt;''
    &lt;/div&gt;
    &lt;$macrocall $name=&quot;results&quot; filter=&lt;&lt;history&gt;&gt; /&gt;
 &lt;/div&gt;
 \end
 
-\define closepanel(panelid)
+\define close(panelid)
 &lt;$button set=&lt;&lt;$panelid$&gt;&gt; setTo=&quot;&quot; tooltip=&quot;close panel&quot;&gt;
    {{$:/core/images/close-button}}
 &lt;/$button&gt;
@@ -8203,6 +8203,11 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 \end
 \define results_tooltip() title=&quot;{{!!title}}&quot; tags=[{{!!tags}}]
 
+\define embed()
+&lt;div style=&quot;position:relative&quot;&gt;&lt;&lt;titlebar&gt;&gt;&lt;&lt;panel&gt;&gt;&lt;/div&gt;
+\end
+
+\define popup()
 &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt;
    tooltip=&quot;Go to a Tiddler&quot; class=&quot;tc-btn-invisible&quot;&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
@@ -8214,7 +8219,10 @@ Such use does not create or imply any endorsement, agency or partner relationshi
       &lt;&lt;titlebar&gt;&gt;
       &lt;&lt;panel&gt;&gt;
    &lt;/div&gt;
-&lt;/$reveal&gt;</pre>
+&lt;/$reveal&gt;
+\end
+
+&lt;&lt;popup&gt;&gt;</pre>
 </div>
 <div created="20151224195223623" creator="EricShulman" modified="20151224195245887" modifier="EricShulman" tags="image" title="TiddlyTools/Buttons/Goto.svg" type="image/svg+xml">
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
@@ -9119,17 +9127,18 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
-<div created="20150316101821466" creator="EricShulman" modified="20160103103746662" modifier="EricShulman" tags="" title="TiddlyTools/Scraps">
+<div created="20150316101821466" creator="EricShulman" modified="20160104014228958" modifier="EricShulman" tags="" title="TiddlyTools/Scraps">
 <pre>!!!Open a tiddler directly for editing (avoid recursive renderings!):&lt;br&gt;
 &lt;&lt;&lt;
 &lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
 &lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
 &lt;&lt;&lt;
 
-!!!Embedded Goto
+!!!Popup and Embedded Goto
 &lt;&lt;&lt;
 &lt;$importvariables filter=&quot;[title[TiddlyTools/Buttons/Goto]]&quot;&gt;
-&lt;div style=&quot;position:relative&quot;&gt;&lt;&lt;titlebar&gt;&gt;&lt;&lt;panel&gt;&gt;&lt;/div&gt;
+   @@.right &lt;&lt;popup&gt;&gt;@@
+   &lt;&lt;embed&gt;&gt;
 &lt;/$importvariables&gt;
 &lt;&lt;&lt;
 
@@ -10746,7 +10755,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20151228011322706" modifier="EricShulman" title="TWBook/ViewerTools">
 <pre>{{||TiddlyTools/Buttons/Goto}}{{||TiddlyTools/Buttons/Back}}</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160104002741124" modifier="EricShulman" tags="Appendix" timestamp="16.01.03.162739" title="VersionInfo" version="TWBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160104014544199" modifier="EricShulman" tags="Appendix" timestamp="16.01.03.174543" title="VersionInfo" version="TWBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -10964,7 +10973,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.03.144451 Goto: added closepanel() button
 * 16.01.03.150438 Goto: cleanup togglesearch()
 * 16.01.03.150736 Goto: clearhistory() closes history panel
-* 16.01.03.162739 Goto: fix hiding of edittiddler() when readonly mode</pre>
+* 16.01.03.162739 Goto: fix hiding of edittiddler() when readonly mode
+* 16.01.03.174543 Goto: added embed() and popup() entry points</pre>
 </div>
 
 </div>
