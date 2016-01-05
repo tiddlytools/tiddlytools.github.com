@@ -591,19 +591,19 @@ Error message and password prompt
 
 <li>TWBook/LeftBar</li>
 
-<li>TWBook/LeftBar/Buttons/Background</li>
-
-<li>TWBook/LeftBar/Buttons/Close</li>
-
-<li>TWBook/LeftBar/Buttons/Toggle</li>
+<li>TWBook/LeftBar/Close</li>
 
 <li>TWBook/LeftBar/Content</li>
 
 <li>TWBook/LeftBar/Location</li>
 
+<li>TWBook/LeftBar/SideToggle</li>
+
 <li>TWBook/LeftBar/StyleSheet</li>
 
 <li>TWBook/LeftBar/TitleBox</li>
+
+<li>TWBook/LeftBar/Toggle</li>
 
 <li>TWBook/NavBarBottom</li>
 
@@ -651,7 +651,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TWBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160105121327704" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160105123209970" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -672,7 +672,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160105121327704" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160105123209970" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7072,7 +7072,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div modified="20160105121327704" modifier="EricShulman" title="$:/state/sidebar">
+<div modified="20160105123209970" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div modified="20151220004532835" modifier="EricShulman" title="$:/state/tab--1486601695">
@@ -7120,7 +7120,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20151208003735299" creator="EricShulman" modified="20160105121327704" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20151208003735299" creator="EricShulman" modified="20160105123209970" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20151224073748099" creator="EricShulman" modified="20151225213705784" modifier="EricShulman" title="$:/temp/goto">
@@ -7146,10 +7146,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20160103130058076" modifier="EricShulman" title="$:/temp/notify">
 <pre>The history list is empty</pre>
 </div>
-<div created="20151207200702481" creator="EricShulman" modified="20160105121325279" modifier="EricShulman" title="$:/temp/revnote">
-<pre>TOC/Favorites: renamed</pre>
+<div created="20151207200702481" creator="EricShulman" modified="20160105123203969" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar/Buttons renamed</pre>
 </div>
-<div created="20151207200108777" creator="EricShulman" modified="20160105121327703" modifier="EricShulman" title="$:/temp/search">
+<div created="20151207200108777" creator="EricShulman" modified="20160105123209970" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160101220732240" creator="EricShulman" modified="20160101220732789" modifier="EricShulman" title="$:/temp/whereto" whereto="foo">
@@ -7272,7 +7272,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div modified="20160105121327704" modifier="EricShulman" title="$:/view">
+<div modified="20160105123209970" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -12218,40 +12218,11 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/div&gt; 
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150426233259184" creator="EricShulman" modified="20151221092809646" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar/Buttons/Background">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
-
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;hide Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;show Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150428214220337" creator="EricShulman" modified="20151209164916948" modifier="EricShulman" tags="" title="TWBook/LeftBar/Buttons/Close">
+<div created="20150428214220337" creator="EricShulman" modified="20160105122648033" modifier="EricShulman" tags="" title="TWBook/LeftBar/Close">
 <pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
    {{$:/core/images/close-button}}
 &lt;/$button&gt;</pre>
-</div>
-<div created="20150419203816208" creator="EricShulman" modified="20151221092623947" modifier="EricShulman" title="TWBook/LeftBar/Buttons/Toggle">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
-
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150504194427359" creator="EricShulman" modified="20151221065658282" modifier="EricShulman" tags="" title="TWBook/LeftBar/Content">
 <pre>&lt;div class=&quot;scroll-y&quot; style=&quot;height:100%;padding-top:0.25em;&quot;&gt;
@@ -12269,6 +12240,21 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 @@.larger &lt;&lt;toc-toggle-favorite class:&quot;tt-button&quot;&gt;&gt;@@
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/$tiddler&gt;</pre>
+</div>
+<div created="20150426233259184" creator="EricShulman" modified="20160105122749787" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TWBook/LeftBar/SideToggle">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+      tooltip=&quot;hide Table of Contents&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   &lt;/$button&gt;&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+      tooltip=&quot;show Table of Contents&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+&lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150418054240175" creator="EricShulman" modified="20151221092354107" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TWBook/LeftBar/StyleSheet">
 <pre>\define config()       $:/config/TiddlyTools##
@@ -12348,14 +12334,28 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 .tt-leftbar:hover .tt-leftbar-location:hover .tt-button { opacity:1.0; }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150427050900338" creator="EricShulman" modified="20151220043007337" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
+<div created="20150427050900338" creator="EricShulman" modified="20160105122820900" modifier="EricShulman" tags="" title="TWBook/LeftBar/TitleBox">
 <pre>&lt;nobr&gt;
-@@.floatright {{TWBook/LeftBar/Buttons/Close}}@@
+@@.floatright {{TWBook/LeftBar/Close}}@@
 @@.floatleft  &lt;&lt;toc-toggle-all class:&quot;tt-button&quot;&gt;&gt;@@
 @@.larger.center ''{{$:/SiteTitle}}''&lt;br&gt;@@
 @@.smallest.center {{$:/SiteSubtitle}}@@
 @@.clear @@
 &lt;/nobr&gt;</pre>
+</div>
+<div created="20150419203816208" creator="EricShulman" modified="20160105122708331" modifier="EricShulman" title="TWBook/LeftBar/Toggle">
+<pre>\define config()  $:/config/TiddlyTools
+\define leftbar() $(config)$##LeftBar
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
+&lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
 <div created="20151218040735076" creator="EricShulman" modified="20151221064910284" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TWBook/NavBarBottom">
 <pre>&lt;$macrocall $name=&quot;toc-navbar-bottom&quot; root={{TWBook/RootTag}}/&gt;</pre>
@@ -12409,13 +12409,13 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151221063122517" creator="EricShulman" modified="20151226055458496" modifier="EricShulman" tags="" title="TWBook/RootTag">
 <pre>InsideTW</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20160105120822513" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
+<div created="20150428010947376" creator="EricShulman" modified="20160105122849730" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TWBook/TopLeftBar">
 <pre>\define config()  $:/config/TiddlyTools
 \define toolbar() $(config)$##ToolBar
 
 &lt;nobr&gt;
 &lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;toolbar&gt;&gt;&gt;
-   {{||TWBook/LeftBar/Buttons/Toggle}}
+   {{||TWBook/LeftBar/Toggle}}
    &amp;nbsp;
    {{||TiddlyTools/Buttons/Home}}
    &amp;nbsp;
@@ -12568,7 +12568,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20160104211029292" modifier="EricShulman" title="TWBook/ViewerTools">
 <pre>{{||TiddlyTools/Goto/Popup}}{{||TiddlyTools/Goto/Back}}</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160105121327706" modifier="EricShulman" tags="Appendix" timestamp="16.01.05.041325" title="VersionInfo" version="TWBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160105123209971" modifier="EricShulman" tags="Appendix" timestamp="16.01.05.043203" title="VersionInfo" version="TWBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -12800,7 +12800,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.04.231506 Goto/Macros: create &quot;New Tiddler&quot; plus code cleanup: reduce use of  when possible
 * 16.01.05.025100 Goto: refactor macros into tiddlers
 * 16.01.05.025954 Goto: cleanup loose ends
-* 16.01.05.041325 TOC/Favorites: renamed</pre>
+* 16.01.05.041325 TOC/Favorites: renamed
+* 16.01.05.043203 LeftBar/Buttons renamed</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
