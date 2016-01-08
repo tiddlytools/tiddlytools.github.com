@@ -393,6 +393,8 @@ Error message and password prompt
 
 <li>TTBook/ReaderToolbar</li>
 
+<li>TTBook/RelatedTopics</li>
+
 <li>TTBook/Reset</li>
 
 <li>TTBook/RootTag</li>
@@ -421,7 +423,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TTBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160108015002211" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -442,7 +444,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160108015002212" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7183,7 +7185,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108015002211" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108014808428" creator="EricShulman" modified="20160108014808428" modifier="EricShulman" title="$:/state/tab-532198014">
@@ -7195,7 +7197,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108015002211" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7212,10 +7214,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160108014954835" modifier="EricShulman" title="$:/temp/revnote">
-<pre>toc-nav-button inline-block</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160108030734684" modifier="EricShulman" title="$:/temp/revnote">
+<pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108015002211" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7335,7 +7337,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108015002211" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160108030735996" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -10269,7 +10271,7 @@ html .tc-story-river {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20151231054232460" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20160108025748045" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()           $:/config/TiddlyTools/TOC
 \define toc-favorites()        $:/config/TiddlyTools/TOC/favorites
 \define toc-template()         TiddlyTools/TOC/Template
@@ -10463,6 +10465,9 @@ html .tc-story-river {
   emptyMessage=&quot;&lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;toc-navbar-link right&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
   &lt;&lt;toc-navbar-link right&gt;&gt;
 &lt;/$list&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/NavBarTop]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
+   &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;
+&lt;/$list&gt;
 &lt;div style=&quot;clear:both&quot;&gt;&lt;/div&gt;
 &lt;$list filter=&quot;[title&lt;section&gt;tagging[]before&lt;currentTiddler&gt;]&quot;
   emptyMessage=&quot;&lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;toc-navbar-button up left&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
@@ -10488,6 +10493,9 @@ html .tc-story-river {
 &lt;$list filter=&quot;[title&lt;section&gt;tagging[]after&lt;currentTiddler&gt;]&quot;
   emptyMessage=&quot;&lt;$tiddler tiddler=&lt;&lt;section&gt;&gt;&gt;&lt;&lt;toc-navbar-button up right&gt;&gt;&lt;/$tiddler&gt;&quot;&gt;
   &lt;&lt;toc-navbar-button right right&gt;&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/NavBarBottom]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
+   &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;
 &lt;/$list&gt;
 &lt;div style=&quot;clear:both&quot;&gt;&lt;/div&gt;
 &lt;$list filter=&quot;[title&lt;section&gt;tagging[]before&lt;currentTiddler&gt;]&quot;
@@ -11016,6 +11024,20 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20160107062625091" modifier="EricShulman" title="TTBook/ReaderToolbar">
 <pre>&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ReaderToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$list&gt;</pre>
 </div>
+<div created="20160108020442846" creator="EricShulman" modified="20160108030728125" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="TTBook/RelatedTopics">
+<pre>\define _btnclass() tt-button $(popup-buttonclass)$
+
+&lt;$list filter=&quot;[title{!!title}tagging[]limit[1]]&quot; variable=&quot;if-tiddler-is-tagging&quot;&gt;
+@@.center &lt;br&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/relatedtopics&quot;&gt;&gt; tooltip=&quot;topics in this section&quot; class=&lt;&lt;_btnclass&gt;&gt;&gt;
+   {{$:/core/images/menu-button}}
+&lt;/$button&gt;@@
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/relatedtopics&quot;&gt;&gt; position=&quot;above&quot;&gt;
+   &lt;&lt;linkbox &quot;Topics in this section:&lt;hr&gt;&quot;&gt;&gt;
+&lt;/$reveal&gt;
+&lt;/$list&gt;
+</pre>
+</div>
 <div created="20151230031204587" creator="EricShulman" modified="20160103132618587" modifier="EricShulman" tags="$:/tags/Macro" title="TTBook/Reset">
 <pre>\define reset_config()
 
@@ -11123,7 +11145,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160108015002213" modifier="EricShulman" tags="Appendix" timestamp="16.01.07.174954" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160108030735998" modifier="EricShulman" tags="Appendix" timestamp="16.01.07.190734" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11365,7 +11387,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.07.151840 TOC/Seach: moved from TTBook/Buttons/Search
 * 16.01.07.172455 TW5.1.10
 * 16.01.07.173114 CoverPage: link to VersionInfo instead of modal() display
-* 16.01.07.174954 toc-nav-button inline-block</pre>
+* 16.01.07.174954 toc-nav-button inline-block
+* 16.01.07.190612 TTBook/RelatedTopics and TOC/Macros ($:/tags/NavBarTop, $:/tags/NavBarBottom)</pre>
 </div>
 
 </div>
