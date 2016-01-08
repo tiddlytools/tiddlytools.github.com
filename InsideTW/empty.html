@@ -423,7 +423,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TTBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -444,7 +444,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Settings/Palettes/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -6888,7 +6888,7 @@ exports[&quot;edit-text&quot;] = EditTextWidget;
 })();
 </pre>
 </div>
-<div created="20151228181613304" creator="EricShulman" modified="20151228184321273" modifier="EricShulman" module-type="widget" title="$:/core/modules/widgets/reveal.js" type="application/javascript">
+<div created="20151228181613304" creator="EricShulman" modified="20160108033652650" modifier="EricShulman" module-type="widget" title="$:/core/modules/widgets/reveal.js" type="application/javascript">
 <pre>/*\
 title: $:/core/modules/widgets/reveal.js
 type: application/javascript
@@ -6953,28 +6953,28 @@ RevealWidget.prototype.positionPopup = function(domNode) {
 /* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - this.popup.left + &quot;px&quot;;
 			break;
 		case &quot;above&quot;:
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - this.popup.top + &quot;px&quot;;
 			domNode.style.left = this.popup.left + &quot;px&quot;;
-/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top) + &quot;px&quot;;
 			break;
 		case &quot;aboveright&quot;:
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - this.popup.top + &quot;px&quot;;
 			domNode.style.left = (this.popup.left + this.popup.width) + &quot;px&quot;;
-/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top + this.popup.height) + &quot;px&quot;;
 			break;
 /* ELS */	case &quot;aboveleft&quot;:
+/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - this.popup.top + &quot;px&quot;;
 /* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - (this.popup.left + this.popup.width) + &quot;px&quot;;
-/* ELS */		domNode.style.bottom = domNode.offsetParent.offsetHeight - (this.popup.top + this.popup.height) + &quot;px&quot;;
 /* ELS */		break;
 		case &quot;right&quot;:
-			domNode.style.left = (this.popup.left + this.popup.width) + &quot;px&quot;;
 			domNode.style.top = this.popup.top + &quot;px&quot;;
+			domNode.style.left = (this.popup.left + this.popup.width) + &quot;px&quot;;
 			break;
 		case &quot;belowleft&quot;:
 			domNode.style.top = (this.popup.top + this.popup.height) + &quot;px&quot;;
 /* ELS */		domNode.style.right = domNode.offsetParent.offsetWidth - (this.popup.left + this.popup.width) + &quot;px&quot;;
 			break;
 		default: // Below
-			domNode.style.left = this.popup.left + &quot;px&quot;;
 			domNode.style.top = (this.popup.top + this.popup.height) + &quot;px&quot;;
+			domNode.style.left = this.popup.left + &quot;px&quot;;
 			break;
 	}
 };
@@ -7180,12 +7180,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[CoverPage]]</pre>
+# [[$:/core/modules/widgets/reveal.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108014808428" creator="EricShulman" modified="20160108014808428" modifier="EricShulman" title="$:/state/tab-532198014">
@@ -7197,7 +7197,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7214,10 +7214,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160108032124391" modifier="EricShulman" title="$:/temp/revnote">
-<pre>TTBook/RelatedTopics: adjust popup format and list output</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160108034001182" modifier="EricShulman" title="$:/temp/revnote">
+<pre>reveal.js: fix aboveleft</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7337,7 +7337,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160108032134129" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160108034002339" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -11155,7 +11155,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160108032134130" modifier="EricShulman" tags="Appendix" timestamp="16.01.07.192124" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160108034002341" modifier="EricShulman" tags="Appendix" timestamp="16.01.07.194001" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11399,7 +11399,8 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 * 16.01.07.173114 CoverPage: link to VersionInfo instead of modal() display
 * 16.01.07.174954 toc-nav-button inline-block
 * 16.01.07.190612 TTBook/RelatedTopics and TOC/Macros ($:/tags/NavBarTop, $:/tags/NavBarBottom)
-* 16.01.07.192124 TTBook/RelatedTopics: adjust popup format and list output</pre>
+* 16.01.07.192124 TTBook/RelatedTopics: adjust popup format and list output
+* 16.01.07.194001 reveal.js: fix aboveleft</pre>
 </div>
 
 </div>
