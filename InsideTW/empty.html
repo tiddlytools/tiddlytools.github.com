@@ -433,7 +433,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -457,7 +457,7 @@ Error message and password prompt
     &quot;AutoHideLeftBar&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7193,14 +7193,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyBook/ViewTemplateMacros]]
-# [[TiddlyTools/NavBar/TitlePopup]]
-# [[TiddlyBook/DraftNotice]]</pre>
+# [[TiddlyTools/LeftBar/StyleSheet]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7227,7 +7225,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7244,10 +7242,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160109105437580" modifier="EricShulman" title="$:/temp/revnote">
-<pre>NavBar/TitlePopup used in ViewTemplateMacros</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160109124706071" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar/Stylesheet: added opacity and margin transitions for fade-in and fade-out</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7367,7 +7365,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109105449165" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160109124707765" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -9434,7 +9432,7 @@ exports.unique = function(source,operator,options) {
    &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20160109082105099" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
+<div created="20150418054240175" creator="EricShulman" modified="20160109124329439" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
 <pre>\define config()       $:/config/TiddlyTools##
 \define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define Vmargin()      42px
@@ -9464,11 +9462,18 @@ exports.unique = function(source,operator,options) {
    font-size: calc(&lt;&lt;barfontsize&gt;&gt;);
 }
 
+&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;yes&quot;&gt;
 /* AUTO-HIDE PANEL */
-.tt-leftbar-mouseover       .tt-leftbar { display:none; }
-.tt-leftbar-mouseover:hover .tt-leftbar { display:block;  }
+.tt-leftbar-mouseover       .tt-leftbar
+   { visibility: hidden;  opacity: 0.0; margin-left:-100%;
+     transition: visibility 0s 3s, opacity 3s 0s, margin 2s 1s; }
+.tt-leftbar-mouseover:hover .tt-leftbar
+   { visibility: visible; opacity: 1.0; margin-left:0%;
+     transition: visibility 0s 0s, opacity 2s 0s, margin 1s 0s; }
+&lt;/$reveal&gt;
 
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;/* FORCE PANEL TO SHOW */
+&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+/* FORCE PANEL TO SHOW */
 .tt-leftbar-mouseover       .tt-leftbar { display:block; z-index:-1; }
 .tt-leftbar-mouseover:hover .tt-leftbar { display:block; z-index:999; }
 &lt;/$reveal&gt;
@@ -11123,7 +11128,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109105449166" modifier="EricShulman" tags="Appendix" timestamp="16.01.09.025437" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109124707766" modifier="EricShulman" tags="Appendix" timestamp="16.01.09.044706" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11382,7 +11387,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.08.223151 LeftBar/Pin replaces LeftBar/Close
 * 16.01.08.234136 LeftBar/Stylesheet: use display:block/none instead of z-index for mouseover
 * 16.01.09.003042 LeftBar: z-index back-to-front on hover and added pin toggle to background button
-* 16.01.09.025437 NavBar/TitlePopup used in ViewTemplateMacros</pre>
+* 16.01.09.025437 NavBar/TitlePopup used in ViewTemplateMacros
+* 16.01.09.044706 LeftBar/Stylesheet: added opacity and margin transitions for fade-in and fade-out</pre>
 </div>
 
 </div>
