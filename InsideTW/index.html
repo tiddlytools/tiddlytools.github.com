@@ -615,7 +615,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -636,7 +636,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7373,7 +7373,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/NavBar/TopicsPopup]]</pre>
+# [[TiddlyTools/TOC/Macros]]
+# [[TiddlyTools/Scraps]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7384,7 +7385,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7399,7 +7400,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7416,10 +7417,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160109004959090" modifier="EricShulman" title="$:/temp/revnote">
-<pre>TopicsPopup: use inline centering</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160109032526762" modifier="EricShulman" title="$:/temp/revnote">
+<pre>use $t$ method in TOC/Macros togglefavorite() tooltips</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7539,7 +7540,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11600,19 +11601,20 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 <div created="20151227145602030" creator="EricShulman" list-before="" modified="20160108202619274" modifier="EricShulman" title="TiddlyTools/ReadOnly/Toolbar">
 <pre>&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ReaderToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$list&gt;</pre>
 </div>
-<div created="20150316101821466" creator="EricShulman" modified="20160104014228958" modifier="EricShulman" tags="" title="TiddlyTools/Scraps">
+<div created="20150316101821466" creator="EricShulman" modified="20160109032351698" modifier="EricShulman" tags="" title="TiddlyTools/Scraps">
 <pre>!!!Open a tiddler directly for editing (avoid recursive renderings!):&lt;br&gt;
 &lt;&lt;&lt;
 &lt;$edit-text tiddler=&quot;$:/temp/whereto&quot; field=&quot;whereto&quot;/&gt;
 &lt;$button message=&quot;tm-edit-tiddler&quot; param={{$:/temp/whereto!!whereto}}&gt;blick&lt;/$button&gt;
 &lt;&lt;&lt;
 
-!!!Popup and Embedded Goto
+!!!Dynamic link building
 &lt;&lt;&lt;
-&lt;$importvariables filter=&quot;[title[TiddlyTools/Buttons/Goto]]&quot;&gt;
-   @@.right &lt;&lt;popup&gt;&gt;@@
-   &lt;&lt;embed&gt;&gt;
-&lt;/$importvariables&gt;
+&lt;$vars
+   now=&lt;&lt;now YYYY0MM0DD&gt;&gt;
+   link=&quot;[[open notes for $(currentTiddler)$...|$(currentTiddler)$ notes from $(now)$]]&quot;&gt;
+   &lt;&lt;link&gt;&gt;
+&lt;/$vars&gt;
 &lt;&lt;&lt;
 
 !!!Generic &quot;options&quot; button and popup
@@ -12369,7 +12371,7 @@ html .tc-story-river {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20160108145033266" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20160109031415845" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()           $:/config/TiddlyTools/TOC
 \define toc-favorites()        $:/config/TiddlyTools/TOC/favorites
 \define toc-template()         TiddlyTools/TOC/Template
@@ -12482,25 +12484,24 @@ html .tc-story-river {
 &lt;/$list&gt;
 \end
 
+\define tip(t) $t$
 \define toc-toggle-favorite(class:&quot;tc-btn-invisible&quot;)
 &lt;!-- ADD/REMOVE ITEM FROM FAVORITES --&gt;
 &lt;$vars item=&lt;&lt;currentTiddler&gt;&gt;&gt;
 &lt;$reveal state=&lt;&lt;toc-item-is-favorite&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;toc_favtip_add&gt;&gt;&gt;
+   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;tip &quot;add '$(item)$' to Favorites&quot;&gt;&gt;&gt;
       &lt;$action-setfield $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&lt;&lt;now&gt;&gt;/&gt;
       @@.tt-toc-favorite &lt;&lt;toc-emptystar&gt;&gt;@@
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal state=&lt;&lt;toc-item-is-favorite&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;toc_favtip_rem&gt;&gt;&gt;
+   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;tip &quot;remove '$(item)$' from Favorites&quot;&gt;&gt;&gt;
       &lt;$action-setfield    $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&quot;&quot;/&gt;
       &lt;$action-deletefield $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt;/&gt;
       @@.tt-toc-favorite.show &lt;&lt;toc-filledstar&gt;&gt;@@
    &lt;/$button&gt;&lt;/$reveal&gt;
 &lt;/$vars&gt;
 \end
-\define toc_favtip_add() add '$(item)$' to Favorites
-\define toc_favtip_rem() remove '$(item)$' from Favorites
 
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
@@ -12833,7 +12834,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109005000309" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.164959" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109032527873" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.192526" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -13087,7 +13088,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.08.085726 TiddlyBook/RelatedTopics moved to NavBar/TopicsPopup
 * 16.01.08.123227 refactor TiddlyTools/ReadOnly/*
 * 16.01.08.131023 Goto/Panels/History: fix clear history handling
-* 16.01.08.164959 TopicsPopup: use inline centering</pre>
+* 16.01.08.164959 TopicsPopup: use inline centering
+* 16.01.08.192526 use $t$ method in TOC/Macros togglefavorite() tooltips</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
