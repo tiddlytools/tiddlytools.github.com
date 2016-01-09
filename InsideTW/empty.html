@@ -433,7 +433,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160109195822818" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -457,7 +457,7 @@ Error message and password prompt
     &quot;AutoHideLeftBar&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160109195822818" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7193,12 +7193,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/LeftBar/StyleSheet]]</pre>
+# [[TiddlyTools/LeftBar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160109195822817" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7225,7 +7225,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160109195822817" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7242,10 +7242,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160109130745955" modifier="EricShulman" title="$:/temp/revnote">
-<pre>LeftBar/Stylesheet: set default background colors when config is missing</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160109195810760" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar: fix toggle button - define config()</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160109195822817" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7365,7 +7365,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160109130746903" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160109195822817" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -9391,8 +9391,10 @@ exports.unique = function(source,operator,options) {
    &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;hide &quot;close title list&quot;&gt;&gt; &lt;/$reveal&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150421001520159" creator="EricShulman" modified="20160109082747097" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar">
-<pre>\define leftbar()      $:/config/TiddlyTools##LeftBar
+<div created="20150421001520159" creator="EricShulman" modified="20160109195712569" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar">
+<pre>\define config()       $:/config/TiddlyTools
+\define leftbar()      $(config)$##LeftBar
+
 &lt;div class=&quot;tt-leftbar-mouseover&quot;&gt;
    &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
       &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
@@ -11128,7 +11130,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109130746904" modifier="EricShulman" tags="Appendix" timestamp="16.01.09.050745" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109195822819" modifier="EricShulman" tags="Appendix" timestamp="16.01.09.115810" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11389,7 +11391,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.09.003042 LeftBar: z-index back-to-front on hover and added pin toggle to background button
 * 16.01.09.025437 NavBar/TitlePopup used in ViewTemplateMacros
 * 16.01.09.044706 LeftBar/Stylesheet: added opacity and margin transitions for fade-in and fade-out
-* 16.01.09.050745 LeftBar/Stylesheet: set default background colors when config is missing</pre>
+* 16.01.09.050745 LeftBar/Stylesheet: set default background colors when config is missing
+* 16.01.09.115810 LeftBar: fix toggle button - define config()</pre>
 </div>
 
 </div>
