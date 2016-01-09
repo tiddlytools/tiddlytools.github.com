@@ -615,7 +615,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -636,7 +636,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7373,7 +7373,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Goto/Panels/History]]</pre>
+# [[TiddlyTools/NavBar/TopicsPopup]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7384,7 +7384,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7399,7 +7399,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7416,10 +7416,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160108211023189" modifier="EricShulman" title="$:/temp/revnote">
-<pre>Goto/Panels/History: fix clear history handling</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160109004959090" modifier="EricShulman" title="$:/temp/revnote">
+<pre>TopicsPopup: use inline centering</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7539,7 +7539,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160108211024348" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160109005000307" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11539,11 +11539,11 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 &lt;/$reveal&gt;
 &lt;/$set&gt;</pre>
 </div>
-<div created="20160108020442846" creator="EricShulman" modified="20160108165555438" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="TiddlyTools/NavBar/TopicsPopup">
+<div created="20160108020442846" creator="EricShulman" modified="20160109004905885" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="TiddlyTools/NavBar/TopicsPopup">
 <pre>\define _btnclass() tt-button $(popup-buttonclass)$
 
 &lt;$list filter=&quot;[title{!!title}tagging[]limit[1]]&quot; variable=&quot;if-tiddler-is-tagging&quot;&gt;
-@@.center &lt;br&gt;
+@@display:block;text-align:center; &lt;br&gt;
 &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/navbar/topics&quot;&gt;&gt; tooltip=&quot;topics in this section&quot; class=&lt;&lt;_btnclass&gt;&gt;&gt;
    {{$:/core/images/menu-button}}
 &lt;/$button&gt;@@
@@ -12833,7 +12833,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160108211024350" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.131023" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109005000309" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.164959" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -13086,7 +13086,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.08.084538 TiddlyTools/Book renamed TiddlyBook
 * 16.01.08.085726 TiddlyBook/RelatedTopics moved to NavBar/TopicsPopup
 * 16.01.08.123227 refactor TiddlyTools/ReadOnly/*
-* 16.01.08.131023 Goto/Panels/History: fix clear history handling</pre>
+* 16.01.08.131023 Goto/Panels/History: fix clear history handling
+* 16.01.08.164959 TopicsPopup: use inline centering</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
