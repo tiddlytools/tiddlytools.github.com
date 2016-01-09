@@ -615,7 +615,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -636,7 +636,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7373,8 +7373,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/TOC/Macros]]
-# [[TiddlyTools/Scraps]]</pre>
+# [[TiddlyTools/LeftBar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7385,7 +7384,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7400,7 +7399,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7417,10 +7416,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160109032526762" modifier="EricShulman" title="$:/temp/revnote">
-<pre>use $t$ method in TOC/Macros togglefavorite() tooltips</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160109050746942" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar: hover and stretch</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7540,7 +7539,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160109032527871" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160109050748978" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11126,27 +11125,30 @@ exports.unique = function(source,operator,options) {
    &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;hide &quot;close title list&quot;&gt;&gt; &lt;/$reveal&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150421001520159" creator="EricShulman" modified="20160107205040074" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar">
+<div created="20150421001520159" creator="EricShulman" modified="20160109050509338" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/LeftBar">
 <pre>\define config()  $:/config/TiddlyTools
 \define leftbar() $(config)$##LeftBar
 
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;show Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
-      tooltip=&quot;hide Table of Contents&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   &lt;/$button&gt;
+&lt;div class=&quot;tt-leftbar-mouseover&quot;&gt;
+   &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
+      &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+         tooltip=&quot;Pin Table of Contents&quot;&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
+         &lt;$button class=&quot;tc-btn-invisible tt-leftbar-background-button&quot;
+            tooltip=&quot;Unpin Table of Contents&quot;&gt;
+            &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
+         &lt;/$button&gt;
+   &lt;/$reveal&gt;
    &lt;div class=&quot;tt-leftbar tt-shadowbox&quot;&gt;
       &lt;$list filter=&quot;[tag[$:/tags/LeftBar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
          &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;
       &lt;/$list&gt;
-   &lt;/div&gt; 
-&lt;/$reveal&gt;</pre>
+   &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 </div>
 <div created="20150428214220337" creator="EricShulman" modified="20160105132508138" modifier="EricShulman" tags="" title="TiddlyTools/LeftBar/Close">
 <pre>&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
@@ -11154,7 +11156,7 @@ exports.unique = function(source,operator,options) {
    {{$:/core/images/close-button}}
 &lt;/$button&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20160107201446955" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
+<div created="20150418054240175" creator="EricShulman" modified="20160109044359064" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
 <pre>\define config()       $:/config/TiddlyTools##
 \define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define Vmargin()      42px
@@ -11163,7 +11165,7 @@ exports.unique = function(source,operator,options) {
 \define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
 \define buttonheight() 100%
 \define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
-\define barleft()      29px
+\define barleft()      42px
 \define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
 \define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
 \define barfontsize()  (0.9em * ({{$(config)$FontSize/LeftBar}} / 100))
@@ -11184,8 +11186,8 @@ exports.unique = function(source,operator,options) {
 }
 
 /* PANEL BACK-TO-FRONT */
-.tt-leftbar       { z-index:-1; }
-.tt-leftbar:hover { z-index: 999; }
+.tt-leftbar-mouseover       .tt-leftbar { z-index:-1; }
+.tt-leftbar-mouseover:hover .tt-leftbar { z-index: 999; }
 
 /* BACKGROUND BUTTON */
 .tt-leftbar-background-button {
@@ -11201,39 +11203,38 @@ exports.unique = function(source,operator,options) {
 .tt-leftbar-content     { font-size:100%; line-height:110%; }
 .tt-leftbar-location    { font-size:100%; line-height:110%; }
 
-/* tt-shadowbox HOVERS */
-.tt-leftbar.tt-shadowbox       {
+/* tt-shadowbox GLOW */
+.tt-leftbar-mouseover       .tt-leftbar.tt-shadowbox {
    border-color:#666;
    background: &lt;&lt;leftbarbg&gt;&gt;;
    box-shadow: 0.3em 0.3em 0.6em rgba(48,48,48,0.5);
 
 }
-.tt-leftbar.tt-shadowbox:hover {
+.tt-leftbar-mouseover:hover .tt-leftbar.tt-shadowbox {
    border-color:#66c;
    background: &lt;&lt;leftbarhover&gt;&gt;;
    box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5);
 }
-.tt-leftbar:hover .tt-shadowbox.inset {
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-shadowbox.inset {
    box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset;
 }
-.tt-leftbar       .tt-shadowbox { border-color:#666; background-color:#eee; }
-.tt-leftbar:hover .tt-shadowbox { border-color:#66c; background-color:#eee; }
+.tt-leftbar-mouseover       .tt-leftbar .tt-shadowbox { border-color:#666; background-color:#eee; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-shadowbox { border-color:#66c; background-color:#eee; }
+.tt-leftbar-mouseover       .tt-leftbar .tt-shadowbox a       { color:black; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-shadowbox a:hover { color:#5778d8; }
 
-.tt-leftbar       .tt-shadowbox a       { color:black; }
-.tt-leftbar:hover .tt-shadowbox a:hover { color:#5778d8; }
+/* BUTTON FADE-INS */
+.tt-leftbar-mouseover       .tt-leftbar .tt-leftbar-titlebox       .tt-button { opacity:0.3; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-titlebox       .tt-button { opacity:0.6; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-titlebox:hover .tt-button { opacity:1.0; }
 
-/* BUTTON HOVERS */
-.tt-leftbar       .tt-leftbar-titlebox       .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-titlebox       .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-titlebox:hover .tt-button { opacity:1.0; }
+.tt-leftbar-mouseover       .tt-leftbar .tt-leftbar-content        .tt-button { opacity:0.3; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-content        .tt-button { opacity:0.6; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-content:hover  .tt-button { opacity:1.0; }
 
-.tt-leftbar       .tt-leftbar-content        .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-content        .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-content:hover  .tt-button { opacity:1.0; }
-
-.tt-leftbar       .tt-leftbar-location       .tt-button { opacity:0.3; }
-.tt-leftbar:hover .tt-leftbar-location       .tt-button { opacity:0.6; }
-.tt-leftbar:hover .tt-leftbar-location:hover .tt-button { opacity:1.0; }
+.tt-leftbar-mouseover       .tt-leftbar .tt-leftbar-location       .tt-button { opacity:0.3; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-location       .tt-button { opacity:0.6; }
+.tt-leftbar-mouseover:hover .tt-leftbar .tt-leftbar-location:hover .tt-button { opacity:1.0; }
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150419203816208" creator="EricShulman" modified="20160105132535626" modifier="EricShulman" title="TiddlyTools/LeftBar/Toggle">
@@ -12218,7 +12219,7 @@ body.tc-body { overflow-x:hidden; background: &lt;&lt;background&gt;&gt;; }
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20151221093128644" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
+<div created="20150508051023458" creator="EricShulman" modified="20160109045803197" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
 <pre>\define toolbarsize()   &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define storywidth()    {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
 \define topmargin()     (42px * (&lt;&lt;toolbarsize&gt;&gt; / 100))
@@ -12244,35 +12245,41 @@ html .tc-story-river, .tc-sidebar-scrollable
    { padding-top:calc(&lt;&lt;topmargin&gt;&gt;); }
 
 &lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;stretch&gt;&gt;&gt;/* NO STRETCH */
-html .tc-story-river {
-   margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
-   width:  &lt;&lt;storywidth&gt;&gt;;
-}
+   html .tc-story-river {
+      margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
+      width:  &lt;&lt;storywidth&gt;&gt;;
+   }
 &lt;/$reveal&gt;
 &lt;$reveal state=&lt;&lt;stretch&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;/* STRETCH */
-&lt;$reveal state=&lt;&lt;sidebar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO SIDEBAR */
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO LEFTBAR */
-html .tc-story-river {
-   margin: 0;
-   width:  100%;
-}
-&lt;/$reveal&gt;&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;/* WITH LEFTBAR */
-html .tc-story-river {
-   margin: 0 0 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
-   width:  calc(100% - &lt;&lt;sidebarwidth&gt;&gt;);
-}
-&lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal state=&lt;&lt;sidebar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;/* WITH SIDEBAR */
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO LEFTBAR */
-html .tc-story-river {
-   margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;) 0 0;
-   width:  calc(100% - &lt;&lt;sidebarwidth&gt;&gt;);
-}
-&lt;/$reveal&gt;&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;/* WITH LEFTBAR */
-html .tc-story-river {
-   margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
-   width:  &lt;&lt;storywidth&gt;&gt;;
-}
-&lt;/$reveal&gt;&lt;/$reveal&gt;&lt;$reveal&gt;
+   &lt;$reveal state=&lt;&lt;sidebar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO SIDEBAR */
+      &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO LEFTBAR */
+         html .tc-story-river {
+            margin: 0;
+            width:  100%;
+         }
+      &lt;/$reveal&gt;
+      &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;/* LEFTBAR PINNED */
+         html .tc-story-river {
+            margin: 0 0 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
+            width:  calc(100% - &lt;&lt;sidebarwidth&gt;&gt;);
+         }
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;sidebar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;/* WITH SIDEBAR */
+      &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;/* NO LEFTBAR */
+         html .tc-story-river {
+            margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;) 0 0;
+            width:  calc(100% - &lt;&lt;sidebarwidth&gt;&gt;);
+         }
+      &lt;/$reveal&gt;
+      &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;/* LEFTBAR PINNED */
+         html .tc-story-river {
+            margin: 0 calc(&lt;&lt;sidebarwidth&gt;&gt;);
+            width:  &lt;&lt;storywidth&gt;&gt;;
+         }
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150511052932487" creator="EricShulman" modified="20151110105157065" modifier="EricShulman" tags="image" title="TiddlyTools/Textures/gridpaper.jpg" type="image/jpeg">
@@ -12834,7 +12841,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109032527873" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.192526" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160109050748979" modifier="EricShulman" tags="Appendix" timestamp="16.01.08.210746" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -13089,7 +13096,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.08.123227 refactor TiddlyTools/ReadOnly/*
 * 16.01.08.131023 Goto/Panels/History: fix clear history handling
 * 16.01.08.164959 TopicsPopup: use inline centering
-* 16.01.08.192526 use $t$ method in TOC/Macros togglefavorite() tooltips</pre>
+* 16.01.08.192526 use $t$ method in TOC/Macros togglefavorite() tooltips
+* 16.01.08.210746 LeftBar: hover and stretch</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
