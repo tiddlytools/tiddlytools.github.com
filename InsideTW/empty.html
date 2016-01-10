@@ -197,6 +197,8 @@ Error message and password prompt
 
 <li>CoverPage</li>
 
+<li>DraftNotice</li>
+
 <li>Glossary</li>
 
 <li>Glossary/TiddlyWiki</li>
@@ -236,8 +238,6 @@ Error message and password prompt
 <li>PartsList/System</li>
 
 <li>TiddlyBook/CookieJar</li>
-
-<li>TiddlyBook/DraftNotice</li>
 
 <li>TiddlyBook/LeftBar</li>
 
@@ -435,7 +435,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -459,7 +459,7 @@ Error message and password prompt
     &quot;AutoHideLeftBar&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7200,7 +7200,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7227,7 +7227,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7244,10 +7244,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160110145229948" modifier="EricShulman" title="$:/temp/revnote">
-<pre>fluid-fixed story $:/themes/tiddlywiki/vanilla/metrics/storywidth set to 50%</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160110211056705" modifier="EricShulman" title="$:/temp/revnote">
+<pre>DraftNotice and CoverPage</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7370,7 +7370,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110145231849" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7396,23 +7396,17 @@ This section contains technical and legal information about this book.
 &lt;$macrocall $name=&quot;toc-all&quot; here={{TiddlyBook/RootTag}}/&gt;
 @@</pre>
 </div>
-<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="images/Motovun Jack.svg" list-before="" modified="20160109105228774" modifier="EricShulman" navbar="no" tags="bookcover MyBook" title="CoverPage">
+<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="images/Motovun Jack.svg" list-before="" modified="20160110210845837" modifier="EricShulman" navbar="no" tags="bookcover MyBook" title="CoverPage">
 <pre>\define start-here()     Contents
-\define version-link()   [[$(tt-version)$ $(tt-timestamp)$|VersionInfo]]
 
 @@float:right;font-size:235%; 
    &lt;span class=&quot;tc-tiddler-controls readertools&quot;&gt;{{||TiddlyTools/ReadOnly/Toolbar}}&lt;/span&gt;@@
-@@display:block;text-align:center;font-size:300%;line-height:110%; 
+@@display:block;text-align:center;font-size:300%;line-height:110%;
    ''//{{$:/SiteTitle}}//''@@
-@@display:block;text-align:center; 
+@@display:block;text-align:center;
    {{$:/SiteSubtitle}}@@
 @@position:absolute;left:1em;bottom:1em; 
-   &lt;$set name=&quot;tt-version&quot;   value={{VersionInfo!!version}}&gt;
-   &lt;$set name=&quot;tt-timestamp&quot; value={{VersionInfo!!timestamp}}&gt;
-   {{TiddlyBook/DraftNotice}}
-   @@.smaller &lt;&lt;version-link&gt;&gt; (TW&lt;&lt;version&gt;&gt;)@@
-   &lt;/$set&gt;
-   &lt;/$set&gt;@@
+   {{DraftNotice}}@@
 &lt;$tiddler tiddler=&lt;&lt;start-here&gt;&gt;&gt;&lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;
    @@display:block;text-align:center;height:calc(100vh - 20em); 
       [img height=&quot;100%&quot; [images/cover.svg]]@@
@@ -7420,6 +7414,16 @@ This section contains technical and legal information about this book.
       ,,Start Here,,&lt;br&gt;
       &lt;div class=&quot;tt-navbar-button&quot;&gt;{{$:/core/images/chevron-right}}&lt;/div&gt;@@
 &lt;/$link&gt;&lt;/$tiddler&gt;</pre>
+</div>
+<div created="20160109104545771" creator="EricShulman" modified="20160110210900996" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="DraftNotice">
+<pre>&lt;div style=&quot;text-align:center;font-size:80%;line-height:110%;&quot;&gt;
+   &lt;span style=&quot;color:red;&quot;&gt;''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''&lt;/span&gt;&lt;br&gt;
+   &lt;$vars what={{VersionInfo!!version}}
+          when={{VersionInfo!!timestamp}}
+          link=&quot;[[$(what)$ $(when)$|VersionInfo]] (TW&lt;&lt;version&gt;&gt;)&quot;&gt;
+      &lt;&lt;link&gt;&gt;
+   &lt;/$vars&gt;
+&lt;/div&gt;</pre>
 </div>
 <div caption="Glossary of terms" created="20150511042858649" creator="EricShulman" icon="images/glossary.svg" modified="20151231053854373" modifier="EricShulman" tags="Appendix" title="Glossary">
 <pre>&lt;$macrocall $name=&quot;tt-viewall&quot; here=&lt;&lt;currentTiddler&gt;&gt;/&gt;@@</pre>
@@ -8255,12 +8259,6 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 
 &lt;!-- TOC VIEW (open all toggle) --&gt;
 &lt;$cookie name=&quot;TOC_OpenAll&quot; tiddler=&quot;$:/config/TiddlyTools/TOC&quot; index=&quot;OpenAll&quot;/&gt;</pre>
-</div>
-<div created="20160109104545771" creator="EricShulman" modified="20160109105201733" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="TiddlyBook/DraftNotice">
-<pre>@@color:red;display:block;text-align:center; 
-&lt;br&gt;
-''//FOR REVIEW ONLY - DO NOT DISTRIBUTE//''
-@@</pre>
 </div>
 <div created="20150427050900338" creator="EricShulman" modified="20160109061026951" modifier="EricShulman" tags="$:/tags/LeftBar" title="TiddlyBook/LeftBar">
 <pre>&lt;!-- TITLEBOX --&gt;
@@ -11131,7 +11129,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160110145231850" modifier="EricShulman" tags="Appendix" timestamp="16.01.10.065229" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160110211102580" modifier="EricShulman" tags="Appendix" timestamp="16.01.10.131056" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11398,7 +11396,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.09.143414 LeftBar/Stylesheet - tweak transitions (slide in, fade out)
 * 16.01.09.181915 LeftBar/Stylesheet - more transition tweaks
 * 16.01.09.221559 LeftBar/Stylesheet: adjust transition timing
-* 16.01.10.065229 fluid-fixed story $:/themes/tiddlywiki/vanilla/metrics/storywidth set to 50%</pre>
+* 16.01.10.065229 fluid-fixed story $:/themes/tiddlywiki/vanilla/metrics/storywidth set to 50%
+* 16.01.10.131056 DraftNotice and CoverPage</pre>
 </div>
 
 </div>
