@@ -435,7 +435,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -459,7 +459,7 @@ Error message and password prompt
     &quot;AutoHideLeftBar&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7195,12 +7195,13 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/themes/tiddlywiki/vanilla/metrics/storywidth]]</pre>
+# [[TiddlyTools/Stylesheet/Stretch]]
+# [[CoverPage]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7227,7 +7228,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7244,10 +7245,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160110211056705" modifier="EricShulman" title="$:/temp/revnote">
-<pre>DraftNotice and CoverPage</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160110215134715" modifier="EricShulman" title="$:/temp/revnote">
+<pre>Stylesheet/Stretch adjusts tiddler body height for authormode, CoverPage cleanup</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7370,7 +7371,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160110211102579" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160110215142936" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7396,24 +7397,32 @@ This section contains technical and legal information about this book.
 &lt;$macrocall $name=&quot;toc-all&quot; here={{TiddlyBook/RootTag}}/&gt;
 @@</pre>
 </div>
-<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="images/Motovun Jack.svg" list-before="" modified="20160110210845837" modifier="EricShulman" navbar="no" tags="bookcover MyBook" title="CoverPage">
+<div caption="Cover Page" created="20151208012527893" creator="EricShulman" icon="images/Motovun Jack.svg" list-before="" modified="20160110215107977" modifier="EricShulman" navbar="no" tags="bookcover MyBook" title="CoverPage">
 <pre>\define start-here()     Contents
 
-@@float:right;font-size:235%; 
-   &lt;span class=&quot;tc-tiddler-controls readertools&quot;&gt;{{||TiddlyTools/ReadOnly/Toolbar}}&lt;/span&gt;@@
-@@display:block;text-align:center;font-size:300%;line-height:110%;
-   ''//{{$:/SiteTitle}}//''@@
-@@display:block;text-align:center;
-   {{$:/SiteSubtitle}}@@
-@@position:absolute;left:1em;bottom:1em; 
-   {{DraftNotice}}@@
-&lt;$tiddler tiddler=&lt;&lt;start-here&gt;&gt;&gt;&lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;
-   @@display:block;text-align:center;height:calc(100vh - 20em); 
-      [img height=&quot;100%&quot; [images/cover.svg]]@@
-   @@position:absolute;right:1em;bottom:1em;text-align:right; 
+&lt;span class=&quot;tc-tiddler-controls readertools&quot; style=&quot;float:right;font-size:235%;&quot;&gt;
+   {{||TiddlyTools/ReadOnly/Toolbar}}
+&lt;/span&gt;
+&lt;div style=&quot;text-align:center;padding-top:2em;&quot;&gt;
+   &lt;div style=&quot;display:inline-block;&quot;&gt;
+      ''//@@font-size:350%;line-height:110%;{{$:/SiteTitle}}@@//''&lt;br&gt;{{$:/SiteSubtitle}}
+   &lt;/div&gt;
+   &lt;$link to=&lt;&lt;start-here&gt;&gt;&gt;
+      &lt;div style=&quot;height:calc(100vh - 25em);&quot;&gt; 
+         [img height=&quot;100%&quot; [images/cover.svg]]
+      &lt;/div&gt;
+   &lt;/$link&gt;
+&lt;/div&gt;
+&lt;div style=&quot;position:absolute;left:1em;bottom:1em;&quot;&gt;
+   {{DraftNotice}}
+&lt;/div&gt;
+&lt;div style=&quot;position:absolute;right:1em;bottom:1em;text-align:right;&quot;&gt; 
+   &lt;$link to=&lt;&lt;start-here&gt;&gt;&gt;
       ,,Start Here,,&lt;br&gt;
-      &lt;div class=&quot;tt-navbar-button&quot;&gt;{{$:/core/images/chevron-right}}&lt;/div&gt;@@
-&lt;/$link&gt;&lt;/$tiddler&gt;</pre>
+      &lt;div class=&quot;tt-navbar-button&quot;&gt;{{$:/core/images/chevron-right}}&lt;/div&gt;
+   &lt;/$link&gt;
+&lt;/div&gt;
+</pre>
 </div>
 <div created="20160109104545771" creator="EricShulman" modified="20160110210900996" modifier="EricShulman" tags="$:/tags/NavBarBottom" title="DraftNotice">
 <pre>&lt;div style=&quot;text-align:center;font-size:80%;line-height:110%;&quot;&gt;
@@ -10514,26 +10523,32 @@ body.tc-body { overflow-x:hidden; background: &lt;&lt;background&gt;&gt;; }
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150508051023458" creator="EricShulman" modified="20160109201114774" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
+<div created="20150508051023458" creator="EricShulman" modified="20160110212527623" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Stretch">
 <pre>\define toolbarsize()   &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define storywidth()    {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
 \define topmargin()     (42px * (&lt;&lt;toolbarsize&gt;&gt; / 100))
 \define botmargin()     42px
 \define navbarheight()  10em
+\define authorheight()  2.5em
 \define tiddlerheight() (100vh - &lt;&lt;topmargin&gt;&gt; - &lt;&lt;botmargin&gt;&gt;)
 \define bodyheight()    (100vh - (2 * &lt;&lt;navbarheight&gt;&gt;))
 \define sidebarwidth()  (50% - (&lt;&lt;storywidth&gt;&gt; / 2))
 
+\define readonly()      $:/config/TiddlyTools##ReadOnly
 \define stretch()       $:/config/TiddlyTools##Stretch
 \define leftbar()       $:/config/TiddlyTools##LeftBar
 \define sidebar()       $:/state/sidebar
 
 &lt;pre&gt;
 /* ALWAYS FIT TIDDLER TO WINDOW HEIGHT (LESS MARGINS) */
-.tc-tiddler-frame
-   { min-height:calc(&lt;&lt;tiddlerheight&gt;&gt;); }
-.tc-tiddler-body
-   { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); overflow-y:auto; }
+.tc-tiddler-frame   { min-height:calc(&lt;&lt;tiddlerheight&gt;&gt;); }
+
+&lt;$reveal state=&lt;&lt;readonly&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot; &gt;/* READONLY */
+   .tc-tiddler-body { min-height:calc(&lt;&lt;bodyheight&gt;&gt;); overflow-y:auto; }
+&lt;/$reveal&gt;
+&lt;$reveal state=&lt;&lt;readonly&gt;&gt; type=&quot;nomatch&quot; text=&quot;yes&quot; &gt;/* EDITING */
+   .tc-tiddler-body { min-height:calc(&lt;&lt;bodyheight&gt;&gt; - &lt;&lt;authorheight&gt;&gt;); overflow-y:auto; }
+&lt;/$reveal&gt;
 
 /* ADJUST TOP PADDING TO FIT SCALEABLE TOOLBAR BUTTONS */
 html .tc-story-river, .tc-sidebar-scrollable
@@ -11129,7 +11144,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160110211102580" modifier="EricShulman" tags="Appendix" timestamp="16.01.10.131056" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160110215142937" modifier="EricShulman" tags="Appendix" timestamp="16.01.10.135134" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11397,7 +11412,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.09.181915 LeftBar/Stylesheet - more transition tweaks
 * 16.01.09.221559 LeftBar/Stylesheet: adjust transition timing
 * 16.01.10.065229 fluid-fixed story $:/themes/tiddlywiki/vanilla/metrics/storywidth set to 50%
-* 16.01.10.131056 DraftNotice and CoverPage</pre>
+* 16.01.10.131056 DraftNotice and CoverPage
+* 16.01.10.135134 Stylesheet/Stretch adjusts tiddler body height for authormode, CoverPage cleanup</pre>
 </div>
 
 </div>
