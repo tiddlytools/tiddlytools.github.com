@@ -435,7 +435,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -459,7 +459,7 @@ Error message and password prompt
     &quot;AutoHideLeftBar&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7200,7 +7200,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7227,7 +7227,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7244,10 +7244,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160111085015178" modifier="EricShulman" title="$:/temp/revnote">
-<pre>TOC/StyleSheet, TiddlyBook/LeftBar, and Goto/Panels/ShowList adjust image size to fit text</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160111181200667" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar/StyleSheet: fix mouseover overlap with dropzone (z-index:0 instead of -1)</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7370,7 +7370,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160111085020713" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160111181202647" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -9446,7 +9446,7 @@ exports.unique = function(source,operator,options) {
    &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20160111030945939" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
+<div created="20150418054240175" creator="EricShulman" modified="20160111181007434" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
 <pre>\define config()       $:/config/TiddlyTools##
 \define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define Vmargin()      42px
@@ -9486,8 +9486,8 @@ exports.unique = function(source,operator,options) {
 &lt;/$reveal&gt;
 
 &lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt; /* FORCE PANEL TO SHOW */
-.tt-leftbar-mouseover       .tt-leftbar { display:block; z-index:-1; }
-.tt-leftbar-mouseover:hover .tt-leftbar { display:block; z-index:999; }
+.tt-leftbar-mouseover       .tt-leftbar { display:block; z-index:0; }   /* BEHIND TIDDLERS */
+.tt-leftbar-mouseover:hover .tt-leftbar { display:block; z-index:999; } /* IN FRONT OF TIDDLERS */
 &lt;/$reveal&gt;
 
 /* BACKGROUND BUTTON */
@@ -11146,7 +11146,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160111085020715" modifier="EricShulman" tags="Appendix" timestamp="16.01.11.005015" title="VersionInfo" version="TTBook V1.alpha">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160111181202649" modifier="EricShulman" tags="Appendix" timestamp="16.01.11.101200" title="VersionInfo" version="TTBook V1.alpha">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
 &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(255,255,255,0.5);&quot;&gt;
@@ -11418,7 +11418,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.10.135134 Stylesheet/Stretch adjusts tiddler body height for authormode, CoverPage cleanup
 * 16.01.10.185932 LeftBar/Stylesheet: remove 0.9em scale from barfontsize
 * 16.01.10.191656 LeftBar/Stylesheet: added scrolling to tt-leftbar and adjusted TiddlyBook/LeftBar content to fit without scrolling
-* 16.01.11.005015 TOC/StyleSheet, TiddlyBook/LeftBar, and Goto/Panels/ShowList adjust image size to fit text</pre>
+* 16.01.11.005015 TOC/StyleSheet, TiddlyBook/LeftBar, and Goto/Panels/ShowList adjust image size to fit text
+* 16.01.11.101200 LeftBar/StyleSheet: fix mouseover overlap with dropzone (z-index:0 instead of -1)</pre>
 </div>
 
 </div>
