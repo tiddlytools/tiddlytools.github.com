@@ -629,7 +629,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160111200242384" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;ReadOnly&quot;: &quot;yes&quot;,
     &quot;Stretch&quot;: &quot;yes&quot;,
@@ -650,7 +650,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160111200242384" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7387,9 +7387,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyBook/LeftBar]]
-# [[TiddlyTools/TOC/StyleSheet]]
-# [[TiddlyTools/Goto/Panels/ShowList]]</pre>
+# [[TiddlyTools/TOC/Search]]
+# [[TiddlyTools/Goto/Popup]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7400,7 +7399,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160111200242383" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7427,7 +7426,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160111200242383" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7444,10 +7443,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160111200234790" modifier="EricShulman" title="$:/temp/revnote">
-<pre>VersionInfo - no links</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160112010020212" modifier="EricShulman" title="$:/temp/revnote">
+<pre>TOC/Search fix popup state, Goto/Popup don't clear input on open</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160111200242383" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7573,7 +7572,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160111200242383" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160112010021328" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11011,12 +11010,9 @@ exports.unique = function(source,operator,options) {
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20160104205030644" creator="EricShulman" list-before="" modified="20160107062736747" modifier="EricShulman" tags="$:/tags/ReaderToolbar" title="TiddlyTools/Goto/Popup">
-<pre>&lt;$importvariables filter=&quot;[title[TiddlyTools/Goto/Macros]]&quot;&gt;
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt;
+<div created="20160104205030644" creator="EricShulman" list-before="" modified="20160112005315842" modifier="EricShulman" tags="$:/tags/ReaderToolbar" title="TiddlyTools/Goto/Popup">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt;
    tooltip=&quot;Go to a Tiddler&quot; class=&quot;tc-btn-invisible&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;&quot;/&gt;
    &lt;span class=&quot;resize&quot; style=&quot;opacity:0.15;&quot;&gt;{{TiddlyTools/Goto/Popup.svg}}&lt;/span&gt;
 &lt;/$button&gt;&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
    &lt;div class=&quot;tc-popup-keep tc-popup-handle tt-drop-down&quot;
@@ -12616,11 +12612,11 @@ ScrollHereWidget.prototype.refresh = function(changedTiddlers) {
 exports.scrollhere = ScrollHereWidget;
 })();</pre>
 </div>
-<div created="20150417021111336" creator="EricShulman" modified="20160107231446160" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Search">
+<div created="20150417021111336" creator="EricShulman" modified="20160112005814931" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Search">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/toc/search&quot;&gt;&gt; tooltip=&quot;search this book...&quot; class=&quot;tt-button&quot;&gt;
    {{TiddlyTools/TOC/Search.svg}}
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/SearchPopup&quot;&gt;&gt;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/toc/search&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
    ''Search This Book''
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
@@ -12911,7 +12907,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160111200242385" modifier="EricShulman" tags="Appendix" timestamp="16.01.11.120234" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160112010021330" modifier="EricShulman" tags="Appendix" timestamp="16.01.11.170020" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13191,7 +13187,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.11.103633 theme tweaks: sidebarwidth=25%, storyright=75%
 * 16.01.11.114539 TiddlyBook v0.9 beta
 * 16.01.11.115328 LeftBar/Stylesheet: delay auto-hide 0.5s and removed default scrolling from tt-leftbar (was clipping popups)
-* 16.01.11.120234 VersionInfo - no links</pre>
+* 16.01.11.120234 VersionInfo - no links
+* 16.01.11.170020 TOC/Search fix popup state, Goto/Popup don't clear input on open</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
