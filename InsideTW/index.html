@@ -633,7 +633,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;yes&quot;,
@@ -653,10 +653,10 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160114082737532" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7406,7 +7406,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7436,7 +7436,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7453,10 +7453,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160114082735234" modifier="EricShulman" title="$:/temp/revnote">
-<pre>remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160114150911451" modifier="EricShulman" title="$:/temp/revnote">
+<pre>LeftBar/Stylesheet - fix reveals for mouseover to use nomatch &quot;no&quot; so default is to show leftbar when setting is missing</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7582,7 +7582,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160114082737531" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160114150913309" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11210,7 +11210,7 @@ exports.unique = function(source,operator,options) {
    &lt;/$button&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150418054240175" creator="EricShulman" modified="20160111195219899" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
+<div created="20150418054240175" creator="EricShulman" modified="20160114150329305" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/LeftBar/StyleSheet">
 <pre>\define config()       $:/config/TiddlyTools##
 \define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 \define Vmargin()      42px
@@ -11232,7 +11232,7 @@ exports.unique = function(source,operator,options) {
 .tt-leftbar {
    margin:   0;
    position: fixed;
-   z-index:  999; /* BEHIND DROPDOWNS, ON TOP OF TIDDLERS */
+   z-index:  999; /* IN FRONT OF TIDDLERS, BEHIND POPUPS */
    top:       calc(&lt;&lt;bartop&gt;&gt;);
    left:      calc(&lt;&lt;barleft&gt;&gt;);
    height:    calc(&lt;&lt;barheight&gt;&gt;);
@@ -11240,16 +11240,16 @@ exports.unique = function(source,operator,options) {
    font-size: calc(&lt;&lt;barfontsize&gt;&gt;);
 }
 
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;yes&quot;&gt; /* AUTO-HIDE PANEL */
+&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt; /* AUTO-HIDE PANEL */
 .tt-leftbar-mouseover       .tt-leftbar { visibility: hidden;  opacity: 0.0; margin-left:-100%; }
 .tt-leftbar-mouseover:hover .tt-leftbar { visibility: visible; opacity: 1.0; margin-left:0%;    }
 .tt-leftbar-mouseover       .tt-leftbar { transition: visibility 0s 4s, opacity 4s 0s, margin 3.5s 0.5s ease-in; }
 .tt-leftbar-mouseover:hover .tt-leftbar { transition: visibility 0s 0s, opacity 2s 0s, margin 0.5s 0s ease-out; }
 &lt;/$reveal&gt;
 
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt; /* FORCE PANEL TO SHOW */
+&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt; /* STICKY PANEL */
 .tt-leftbar-mouseover       .tt-leftbar { display:block; z-index:0; }   /* BEHIND TIDDLERS */
-.tt-leftbar-mouseover:hover .tt-leftbar { display:block; z-index:999; } /* IN FRONT OF TIDDLERS */
+.tt-leftbar-mouseover:hover .tt-leftbar { display:block; z-index:999; } /* IN FRONT OF TIDDLERS, BEHIND POPUPS */
 &lt;/$reveal&gt;
 
 /* BACKGROUND BUTTON */
@@ -12925,7 +12925,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160114082737533" modifier="EricShulman" tags="Appendix" timestamp="16.01.14.002735" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160114150913310" modifier="EricShulman" tags="Appendix" timestamp="16.01.14.070911" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13211,7 +13211,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.13.210447 move $:/config/TiddlyTools##ReadOnly to $:/config/TiddlyTools/ReadOnly
 * 16.01.13.213856 added tag and caption to Settings/Defaults
 * 16.01.13.214335 add focus=&quot;true&quot; to Goto/Toolbar and SaveChanges
-* 16.01.14.002735 remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler</pre>
+* 16.01.14.002735 remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler
+* 16.01.14.070911 LeftBar/Stylesheet - fix reveals for mouseover to use nomatch &quot;no&quot; so default is to show leftbar when setting is missing</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
