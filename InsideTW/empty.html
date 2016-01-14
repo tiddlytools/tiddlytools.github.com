@@ -443,7 +443,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;yes&quot;,
@@ -463,10 +463,10 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7207,7 +7207,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7234,7 +7234,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7251,10 +7251,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160114054335072" modifier="EricShulman" title="$:/temp/revnote">
-<pre>add focus=&quot;true&quot; to Goto/Toolbar and SaveChanges</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160114082715627" modifier="EricShulman" title="$:/temp/revnote">
+<pre>remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160114053202457" creator="EricShulman" modified="20160114053223314" modifier="EricShulman" title="$:/temp/settings/newname">
@@ -7386,7 +7386,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160114054343360" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160114082723851" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -9216,10 +9216,8 @@ exports.unique = function(source,operator,options) {
 {{||TiddlyTools/Goto/Panels/ShowList}}
 &lt;/$set&gt;</pre>
 </div>
-<div created="20160105072918565" creator="EricShulman" modified="20160105094123114" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Panels/Search">
+<div created="20160105072918565" creator="EricShulman" modified="20160114082432649" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Panels/Search">
 <pre>&lt;$importvariables filter=&quot;[title[TiddlyTools/Goto/Macros]]&quot;&gt;
-&lt;$set name=&quot;refreshhack&quot; value={{$:/temp/goto/showshadows}}&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
-&lt;$set name=&quot;refreshhack&quot; value={{$:/temp/goto/showsystem}}&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
 &lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showshadows&gt;text[show]]&quot; value=&quot;tiddlers+shadows&quot; emptyValue=&quot;tiddlers&quot;&gt;
 &lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;types&gt;&gt;          emptyValue=&quot;tiddlers&quot;&gt;
 &lt;$set name=&quot;filter&quot; filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;search&gt;&gt;         emptyValue=&lt;&lt;searchnosys&gt;&gt;&gt;
@@ -9242,8 +9240,7 @@ exports.unique = function(source,operator,options) {
    ''Matching titles: &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt;''
 &lt;/div&gt;
 {{||TiddlyTools/Goto/Panels/ShowList}}
-&lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;
-&lt;/$set&gt;&lt;/$set&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;</pre>
+&lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;</pre>
 </div>
 <div created="20160105083052025" creator="EricShulman" modified="20160111084044148" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Panels/ShowList">
 <pre>\define tooltip()  title=&quot;{{!!title}}&quot; tags=[{{!!tags}}]
@@ -9344,12 +9341,11 @@ exports.unique = function(source,operator,options) {
    {{||TiddlyTools/Goto/Toolbar/History}}
 &lt;/div&gt;</pre>
 </div>
-<div created="20160105080332649" creator="EricShulman" modified="20160105094210221" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Toolbar/EditTiddler">
+<div created="20160105080332649" creator="EricShulman" modified="20160114082311002" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Toolbar/EditTiddler">
 <pre>\define maketip(action) $action$ &quot;$(tid)$&quot;
 
 &lt;$importvariables filter=&quot;[title[TiddlyTools/Goto/Macros]]&quot;&gt;
 &lt;span class=&quot;authortools&quot;&gt;
-&lt;$set name=&quot;refreshhack&quot; value={{$:/temp/goto/input}}&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
 &lt;$set name=&quot;tid&quot; filter=&quot;[title&lt;input&gt;get[text]]&quot;
    emptyValue={{$:/language/DefaultNewTiddlerTitle}}&gt;
 &lt;$list filter=&lt;&lt;missing&gt;&gt;&gt;
@@ -9365,7 +9361,6 @@ exports.unique = function(source,operator,options) {
    &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;/$set&gt;
-&lt;/$set&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
 &lt;/span&gt;</pre>
 </div>
 <div created="20160105075208292" creator="EricShulman" modified="20160105105334623" modifier="EricShulman" tags="" title="TiddlyTools/Goto/Toolbar/History">
@@ -11031,7 +11026,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;!-- END FLOAT FOR FAVORITE STAR --&gt;
 @@display:block;clear:both;@@</pre>
 </div>
-<div created="20151221062640380" creator="EricShulman" modified="20160108135325610" modifier="EricShulman" navbar="no" tags="$:/tags/Macro" title="TiddlyTools/ViewAll">
+<div created="20151221062640380" creator="EricShulman" modified="20160114082253469" modifier="EricShulman" navbar="no" tags="$:/tags/Macro" title="TiddlyTools/ViewAll">
 <pre>\define tt-viewall-config() TiddlyBook/RootTag
 \define tt-viewall-input()  $:/temp/viewall/roottag
 
@@ -11060,11 +11055,9 @@ exports.scrollhere = ScrollHereWidget;
       &lt;$list filter=&quot;[tags[]]&quot;&gt;&lt;option value={{!!title}}&gt;{{!!title}}&lt;/option&gt;&lt;/$list&gt;
    &lt;/$select&gt;
    &lt;hr&gt;
-   &lt;$set name=&quot;refreshhack&quot; value={{$:/temp/viewall/roottag}}&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
    &lt;$set name=&quot;roottag&quot; filter=&quot;[title&lt;tt-viewall-input&gt;get[text]]&quot;&gt;
       &lt;$macrocall $name=&quot;tt-viewall&quot; here=&lt;&lt;roottag&gt;&gt;/&gt;
    &lt;/$set&gt;
-   &lt;/$set&gt;&lt;!-- REMOVE IN 5.1.10 --&gt;
 &lt;/$reveal&gt;
 &lt;/$set&gt;</pre>
 </div>
@@ -11172,7 +11165,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160114054343361" modifier="EricShulman" tags="Appendix" timestamp="16.01.13.214335" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160114082723852" modifier="EricShulman" tags="Appendix" timestamp="16.01.14.002715" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -11458,7 +11451,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.11.170653 Goto/Toolbar fix placeholder/default input
 * 16.01.13.210447 move $:/config/TiddlyTools##ReadOnly to $:/config/TiddlyTools/ReadOnly
 * 16.01.13.213856 added tag and caption to Settings/Defaults
-* 16.01.13.214335 add focus=&quot;true&quot; to Goto/Toolbar and SaveChanges</pre>
+* 16.01.13.214335 add focus=&quot;true&quot; to Goto/Toolbar and SaveChanges
+* 16.01.14.002715 remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler</pre>
 </div>
 
 </div>
