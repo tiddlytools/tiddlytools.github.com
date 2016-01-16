@@ -175,6 +175,8 @@ Error message and password prompt
 
 <li>$:/temp/advancedsearch</li>
 
+<li>$:/temp/combo/notify</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/input</li>
@@ -639,7 +641,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160116001224906" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;yes&quot;,
@@ -659,10 +661,10 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160116001224907" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160116001224907" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7411,7 +7413,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160116001224906" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108151839738" creator="EricShulman" modified="20160108151839738" modifier="EricShulman" title="$:/state/tab--1942751756">
@@ -7441,8 +7443,11 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160116001224906" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
+</div>
+<div created="20160116001552122" creator="EricShulman" modified="20160116001552122" modifier="EricShulman" title="$:/temp/combo/notify">
+<pre>You selected: ''</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -7461,10 +7466,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160115072846836" creator="EricShulman" modified="20160115075257661" modifier="EricShulman" title="$:/temp/input">
 <pre>PartsList</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160116001223713" modifier="EricShulman" title="$:/temp/revnote">
-<pre>TiddlyTools/macros/combo (new) - enter a value or select from a list</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160116002355743" modifier="EricShulman" title="$:/temp/revnote">
+<pre>macros/combo: removed 'done' button</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160116001224906" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160116002410439" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160115002615675" creator="EricShulman" modified="20160115003254234" modifier="EricShulman" title="$:/temp/settings/select">
@@ -7593,7 +7598,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160116001224906" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160116002410440" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -11330,13 +11335,13 @@ exports.unique = function(source,operator,options) {
    {{$:/core/images/menu-button}}
 &lt;/$button&gt;&lt;/$reveal&gt;</pre>
 </div>
-<div created="20160115230544319" creator="EricShulman" modified="20160116000617133" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/macros/combo">
+<div created="20160115230544319" creator="EricShulman" modified="20160116002321673" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/macros/combo">
 <pre>\define combobox(
    target:&quot;$:/temp/combo/input&quot;
    default:&quot;&quot;
    prompt:&quot;enter or select a title...&quot;
    filter:&quot;[all[]] -[is[system]]&quot;
-   editsize:&quot;25&quot;
+   editsize:&quot;35&quot;
    listsize:&quot;10&quot;
 )
 &lt;style&gt;
@@ -11350,9 +11355,16 @@ exports.unique = function(source,operator,options) {
 &lt;span class=&quot;tt-combo-wrapper&quot;&gt;
    &lt;$edit-text tag=&quot;input&quot; size=&quot;&quot;&quot;$editsize$&quot;&quot;&quot; focusPopup=&lt;&lt;popup&gt;&gt;
       tiddler=&quot;&quot;&quot;$target$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$prompt$&quot;&quot;&quot; default=&quot;&quot;&quot;$default$&quot;&quot;&quot; /&gt;
-   &lt;$button class=&quot;tt-combo-button&quot; popup=&lt;&lt;popup&gt;&gt; tooltip=&quot;show list&quot;&gt;
-      {{$:/core/images/down-arrow}}
-   &lt;/$button&gt;
+   &lt;$reveal state=&quot;&quot;&quot;$target$&quot;&quot;&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;$button class=&quot;tt-combo-button&quot; tooltip=&quot;show list&quot; popup=&lt;&lt;popup&gt;&gt;&gt;
+         {{$:/core/images/down-arrow}}
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&quot;&quot;&quot;$target$&quot;&quot;&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;$button class=&quot;tt-combo-button&quot; tooltip=&quot;clear input&quot;&gt; {{$:/core/images/close-button}}
+         &lt;$action-deletetiddler $tiddler=&quot;&quot;&quot;$target$&quot;&quot;&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
    &lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; style=&quot;position:absolute&quot;&gt;
       &lt;$select tiddler=&quot;&quot;&quot;$target$&quot;&quot;&quot; size=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;&gt;
          &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;listItem&quot;&gt;
@@ -11362,17 +11374,6 @@ exports.unique = function(source,operator,options) {
    &lt;/$reveal&gt;
 &lt;/span&gt;
 &lt;/$vars&gt;
-&lt;$reveal state=&quot;&quot;&quot;$target$&quot;&quot;&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button tooltip=&quot;cancel&quot;&gt; {{$:/core/images/close-button}}
-      &lt;$action-deletetiddler $tiddler=&quot;&quot;&quot;$target$&quot;&quot;&quot;/&gt;
-   &lt;/$button&gt;
-   &lt;$button tooltip=&quot;ok&quot;&gt; {{$:/core/images/done-button}}
-      &lt;$vars input={{$target$}} msg=&quot;You selected: '$(input)$'&quot;&gt;
-      &lt;$action-setfield $tiddler=&quot;$:/temp/combo/notify&quot; text=&lt;&lt;msg&gt;&gt;/&gt;
-      &lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/combo/notify&quot;/&gt;
-      &lt;/$vars&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
 \end
 
 &lt;&lt;combobox&gt;&gt;</pre>
@@ -13018,7 +13019,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160116001224908" modifier="EricShulman" tags="Appendix" timestamp="16.01.15.161223" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160116002410441" modifier="EricShulman" tags="Appendix" timestamp="16.01.15.162355" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13307,7 +13308,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.14.002735 remove refresh hacks from ViewAll, Goto/Panels/Search, and Goto/Toolbar/EditTiddler
 * 16.01.14.070911 LeftBar/Stylesheet - fix reveals for mouseover to use nomatch &quot;no&quot; so default is to show leftbar when setting is missing
 * 16.01.14.235629 Scraps - edit/listbox experiment
-* 16.01.15.161223 TiddlyTools/macros/combo (new) - enter a value or select from a list</pre>
+* 16.01.15.161223 TiddlyTools/macros/combo (new) - enter a value or select from a list
+* 16.01.15.162355 macros/combo: removed 'done' button</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
