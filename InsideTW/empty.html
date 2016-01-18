@@ -455,7 +455,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;yes&quot;,
@@ -475,10 +475,10 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7214,12 +7214,12 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/LeftBar/StyleSheet]]</pre>
+# [[TiddlyTools/Goto/TopBar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7246,7 +7246,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20160116005733434" creator="EricShulman" field="text" modified="20160116021407645" modifier="EricShulman" title="$:/temp/combo/input">
@@ -7290,10 +7290,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160116013227444" creator="EricShulman" foo="" modified="20160116075958553" modifier="EricShulman" somefield="" title="$:/temp/other/target">
 <pre></pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160118210516814" modifier="EricShulman" title="$:/temp/revnote">
-<pre>leftbar slideout delay  fadeout of box-shadow glow</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160118231446865" modifier="EricShulman" title="$:/temp/revnote">
+<pre>goto/topbar suspend fade in/out when listbox is open</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160114053202457" creator="EricShulman" modified="20160114053223314" modifier="EricShulman" title="$:/temp/settings/newname">
@@ -7425,7 +7425,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160118210520679" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160118231447744" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -8907,13 +8907,16 @@ exports.tagexp = function(source,operator,options) {
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
 </div>
-<div created="20160118022409765" creator="EricShulman" modified="20160118025354479" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/Goto/TopBar">
+<div created="20160118022409765" creator="EricShulman" modified="20160118231303138" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/Goto/TopBar">
 <pre>&lt;style&gt;
    .topcenter    { position:fixed; top:0.25em; left:35%; z-index:1200; }
-   .fadein       { transition: 2.0s 0.5s; opacity:0.2;
+&lt;$list filter=&quot;[prefix[$:/state/popup/combo/$:/temp/goto/input]limit[1]]&quot; emptyMessage=&quot;&quot;&quot;
+   .fadein       { transition: 1.0s 0.0s; opacity:0.2;
       background:transparent; border:1px solid transparent; box-shadow: none; }
    .fadein:hover { transition: 0.5s 0.0s; opacity:1.0;
       background:#f0f0f0; border:1px solid #999; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
+   &quot;&quot;&quot;&gt;
+&lt;/$list&gt;
 }
 &lt;/style&gt;
 &lt;div class=&quot;authortools&quot;&gt;
@@ -11076,7 +11079,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160118210520680" modifier="EricShulman" tags="Appendix" timestamp="16.01.18.130516" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160118231447745" modifier="EricShulman" tags="Appendix" timestamp="16.01.18.151446" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -11400,7 +11403,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.18.123103 LeftBar/Stylesheet - fade in/out transitions
 * 16.01.18.124210 undo leftbar fadein transitions (messed up slide-in)
 * 16.01.18.125441 leftbar/stylesheet - fade-in transitions fixed
-* 16.01.18.130516 leftbar slideout delay  fadeout of box-shadow glow</pre>
+* 16.01.18.130516 leftbar slideout delay  fadeout of box-shadow glow
+* 16.01.18.151446 goto/topbar suspend fade in/out when listbox is open</pre>
 </div>
 
 </div>
