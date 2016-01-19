@@ -455,7 +455,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20151221082938168" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[TiddlyBook/RevisionHistory]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;yes&quot;,
@@ -475,10 +475,10 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7219,7 +7219,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160108135257474" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7246,7 +7246,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20160116005733434" creator="EricShulman" field="text" modified="20160116021407645" modifier="EricShulman" title="$:/temp/combo/input">
@@ -7290,10 +7290,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160116013227444" creator="EricShulman" foo="" modified="20160116075958553" modifier="EricShulman" somefield="" title="$:/temp/other/target">
 <pre></pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160119054541110" modifier="EricShulman" title="$:/temp/revnote">
-<pre>goto/panel - code cleanup (combine macros)</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160119195157036" modifier="EricShulman" title="$:/temp/revnote">
+<pre>goto/panel - toggle 'match', better filter construction logic</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160119195157947" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160114053202457" creator="EricShulman" modified="20160114053223314" modifier="EricShulman" title="$:/temp/settings/newname">
@@ -7425,7 +7425,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160119054542740" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160119195157948" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -8853,37 +8853,45 @@ exports.tagexp = function(source,operator,options) {
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20160118022151773" creator="EricShulman" modified="20160119054423221" modifier="EricShulman" title="TiddlyTools/Goto/Panel">
+<div created="20160118022151773" creator="EricShulman" modified="20160119194914966" modifier="EricShulman" title="TiddlyTools/Goto/Panel">
 <pre>\define input()        $:/temp/goto/input
+\define matchinput()   $:/temp/goto/matchinput
 \define showsystem()   $:/temp/goto/showsystem
 \define showshadows()  $:/temp/goto/showshadows
 
 \define types()        tiddlers+shadows
-\define all()          [all[$(types)$]!prefix[$:/state]!prefix[$:/temp]]
+\define all()          [all[$(types)$]sort[]]
 \define titles()       [all[$(types)$]search:title{$(input)$}]
 \define captions()     [all[$(types)$]search:caption{$(input)$}]
 \define tags()         [all[$(types)$]search:tags{$(input)$}]
 \define search()       $(titles)$ $(captions)$ $(tags)$ +[sort[]]
-\define nosystem()     -[is[system]] -[all[shadows]is[shadow]] -[prefix[TiddlyTools]]
-\define searchnosys()  $(search)$ $(nosystem)$
+\define nosystem()     $(filter)$ -[is[system]] -[all[shadows]is[shadow]] -[prefix[TiddlyTools]]
 
-&lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showshadows&gt;text[show]]&quot; value=&quot;tiddlers+shadows&quot; emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;types&gt;&gt;          emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$set name=&quot;filter&quot; filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;search&gt;&gt;         emptyValue=&lt;&lt;searchnosys&gt;&gt;&gt;
-   &lt;!-- TOGGLE SYSTEM/SHADOW OPTIONS --&gt;
+\define toggle(tid,label,tip)
+&lt;span title=&quot;&quot;&quot;$tip$&quot;&quot;&quot;&gt;
+   &lt;$checkbox class=&quot;tc-popup-handle&quot; tiddler=&lt;&lt;$tid$&gt;&gt; field=&quot;text&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;
+      $label$
+   &lt;/$checkbox&gt;
+&lt;/span&gt;
+\end
+
+&lt;$set name=&quot;types&quot;   filter=&quot;[title&lt;showshadows&gt;text[yes]]&quot; value=&quot;tiddlers+shadows&quot; emptyValue=&quot;tiddlers&quot;&gt;
+&lt;$set name=&quot;types&quot;   filter=&quot;[title&lt;showsystem&gt;text[yes]]&quot;  value=&lt;&lt;types&gt;&gt;          emptyValue=&quot;tiddlers&quot;&gt;
+&lt;$set name=&quot;filter&quot;  filter=&quot;[title&lt;matchinput&gt;text[yes]]&quot;  value=&lt;&lt;search&gt;&gt;         emptyValue=&lt;&lt;all&gt;&gt;&gt;
+&lt;$set name=&quot;filter&quot;  filter=&quot;[title&lt;showsystem&gt;text[yes]]&quot;  value=&lt;&lt;filter&gt;&gt;         emptyValue=&lt;&lt;nosystem&gt;&gt;&gt;
+   &lt;!-- OPTIONS: MATCH TEXT, INCLUDE SYSTEM, INCLUDE SHADOWS --&gt;
    &lt;span style=&quot;float:right;margin-left:0.5em;&quot;&gt;
-      &lt;$checkbox class=&quot;tc-popup-handle&quot;
-         tiddler=&lt;&lt;showsystem&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;system
-      &lt;/$checkbox&gt;
-      &lt;$reveal state=&lt;&lt;showsystem&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-         &lt;$checkbox class=&quot;tc-popup-handle&quot;
-            tiddler=&lt;&lt;showshadows&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;shadows
-         &lt;/$checkbox&gt;
+      &lt;&lt;toggle matchinput  &quot;match&quot; &quot;filter list to match input&quot;&gt;&gt;
+      &lt;&lt;toggle showsystem  &quot;system&quot; &quot;include system tiddlers&quot;&gt;&gt;
+      &lt;$reveal state=&lt;&lt;showsystem&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+         &lt;&lt;toggle showshadows &quot;shadows&quot; &quot;include shadow tiddlers&quot;&gt;&gt;
       &lt;/$reveal&gt;
    &lt;/span&gt;
    &lt;!-- HEADING --&gt;
-   &lt;$set name=&quot;heading&quot; filter=&quot;[title&lt;input&gt;get[text]]&quot; value=&quot;matching titles&quot; emptyValue=&quot;all titles&quot;&gt;
+   &lt;$set name=&quot;heading&quot; filter=&quot;[title&lt;matchinput&gt;text[yes]]&quot;  value=&quot;matching titles&quot;  emptyValue=&quot;all titles&quot;&gt;
+   &lt;$set name=&quot;heading&quot; filter=&quot;[title&lt;input&gt;get[text]]&quot;       value=&lt;&lt;heading&gt;&gt;        emptyValue=&quot;all titles&quot;&gt;
       &lt;&lt;heading&gt;&gt;: &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt;
+   &lt;/$set&gt;
    &lt;/$set&gt;
    &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
    &lt;!-- ENTER/SELECT A TIDDLER - USES TiddlyTools/Macros/combobox --&gt;
@@ -8895,6 +8903,7 @@ exports.tagexp = function(source,operator,options) {
       listsize=10 listclass=&quot;stretch30vw&quot; listtip=&quot;select a tiddler&quot;
       oklabel=&quot;{{TiddlyTools/Goto.svg}}&quot;    oktip=&quot;open this tiddler&quot;
       okaction=&quot;&quot;&quot;&lt;$action-navigate $to={{$(input)$}}/&gt;&quot;&quot;&quot; /&gt;
+&lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
@@ -11076,7 +11085,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160119054542741" modifier="EricShulman" tags="Appendix" timestamp="16.01.18.214541" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160119195157949" modifier="EricShulman" tags="Appendix" timestamp="16.01.19.115157" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -11405,7 +11414,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.18.164336 goto/topbar - remain visible when input not empty, combobox - suppress cancel button if no okaction
 * 16.01.18.193633 goto/topbar slide-down and fade in/out
 * 16.01.18.203109 fix goto/topbar panel background color
-* 16.01.18.214541 goto/panel - code cleanup (combine macros)</pre>
+* 16.01.18.214541 goto/panel - code cleanup (combine macros)
+* 16.01.19.115157 goto/panel - toggle 'match', better filter construction logic</pre>
 </div>
 
 </div>
