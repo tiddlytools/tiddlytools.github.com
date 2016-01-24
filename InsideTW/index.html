@@ -443,6 +443,8 @@ Error message and password prompt
 
 <li>TiddlyBook/RootTag</li>
 
+<li>TiddlyBook/TopCenter</li>
+
 <li>TiddlyBook/TopLeftBar</li>
 
 <li>TiddlyBook/TopRightBar</li>
@@ -486,6 +488,8 @@ Error message and password prompt
 <li>TiddlyTools/Goto/Panel</li>
 
 <li>TiddlyTools/Goto/TopBar</li>
+
+<li>TiddlyTools/Goto/TopCenter</li>
 
 <li>TiddlyTools/History</li>
 
@@ -540,8 +544,6 @@ Error message and password prompt
 <li>TiddlyTools/ReadOnly/Toolbar</li>
 
 <li>TiddlyTools/Scraps</li>
-
-<li>TiddlyTools/Scraps/Goto</li>
 
 <li>TiddlyTools/Settings</li>
 
@@ -607,6 +609,8 @@ Error message and password prompt
 
 <li>TiddlyTools/TOC/Template</li>
 
+<li>TiddlyTools/TopCenter</li>
+
 <li>TiddlyTools/ViewAll</li>
 
 <li>TiddlyTools/ViewAll/Button</li>
@@ -639,7 +643,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20160120121927721" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[VersionInfo]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160124025116133" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160124044950687" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;no&quot;,
@@ -675,10 +679,10 @@ Error message and password prompt
     &quot;sortfilter&quot;: &quot;[sort[title]]&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160124025116133" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160124044950687" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160124025116133" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160124044950687" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7415,7 +7419,9 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Goto/TopBar]]</pre>
+# [[TiddlyTools/TopCenter]]
+# [[TiddlyBook/TopCenter]]
+# [[TiddlyTools/Goto/TopCenter]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7426,7 +7432,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160124025116132" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160124044950686" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160116185548006" creator="EricShulman" modified="20160116185548006" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7459,7 +7465,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160124025116132" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160124044950686" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div created="20160123075024023" creator="EricShulman" modified="20160124003740156" modifier="EricShulman" title="$:/temp/goto/input">
@@ -7485,10 +7491,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160116191511289" creator="EricShulman" modified="20160120135226607" modifier="EricShulman" title="$:/temp/notify">
 <pre>settings loaded from 'TiddlyTools/Settings/Defaults'</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160124025110811" modifier="EricShulman" title="$:/temp/revnote">
-<pre>topbar - don't show TOC panel if leftbar is pinned</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160124044943846" modifier="EricShulman" title="$:/temp/revnote">
+<pre>refactor TopCenter (isolate stayvisible logic)</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160124025116132" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160124044950686" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7614,7 +7620,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160124025116132" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160124044950686" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10032,6 +10038,16 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151221063122517" creator="EricShulman" modified="20151226055458496" modifier="EricShulman" tags="" title="TiddlyBook/RootTag">
 <pre>InsideTW</pre>
 </div>
+<div created="20160124040200769" creator="EricShulman" modified="20160124044319001" modifier="EricShulman" tags="$:/tags/TopCenter" title="TiddlyBook/TopCenter">
+<pre>&lt;$list filter=&quot;[title[TiddlyBook/LeftBar]is[tiddler]]&quot;&gt;
+   &lt;$list filter=&quot;[title[$:/config/TiddlyTools]getindex[LeftBar]] -[[yes]]&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox tt-topcenter-shadowbox tt-fadein&quot;
+         style=&quot;padding:0.5em; min-width:25vw; max-width:60vw&quot;&gt;
+         {{||TiddlyBook/LeftBar}}
+      &lt;/div&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;</pre>
+</div>
 <div created="20150428010947376" creator="EricShulman" modified="20160107231521088" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TiddlyBook/TopLeftBar">
 <pre>\define config()  $:/config/TiddlyTools
 \define toolbar() $(config)$##ToolBar
@@ -10782,6 +10798,24 @@ exports.tagexp = function(source,operator,options) {
          {{||TiddlyBook/LeftBar}}
       &lt;/div&gt;
    &lt;/$list&gt;
+   &lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20160118022409765" creator="EricShulman" list-before="" modified="20160124044535247" modifier="EricShulman" tags="$:/tags/TopCenter" title="TiddlyTools/Goto/TopCenter">
+<pre>\define hasinput()     [title[$:/temp/goto/input]get[text]]
+\define listshown()    [prefix[$:/state/popup/combo/$:/temp/goto/input]limit[1]]
+\define optionsshown() [prefix[$:/state/popup/goto/showoptions]limit[1]]
+\define stayvisible()  $(hasinput)$ $(listshown)$ $(optionsshown)$
+
+&lt;$list filter=&lt;&lt;stayvisible&gt;&gt;&gt;
+   &lt;style&gt; .tt-fadein.tt-stayvisible { margin-top:0; opacity:1; transition:none; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;div class=&quot;authortools&quot;&gt;
+   &lt;$list filter=&quot;[title[TiddlyTools/Goto/Panel]is[tiddler]]&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox tt-topcenter-shadowbox tt-fadein tt-stayvisible&quot;
+         style=&quot;padding:0.25em 0.5em;margin-bottom:0.25em;&quot;&gt;
+         {{||TiddlyTools/Goto/Panel}}
+      &lt;/div&gt;
    &lt;/$list&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -11775,142 +11809,6 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
    &lt;$macrocall $name=&quot;rgb_button&quot; r=&quot;f&quot;   g=&quot;9&quot;   b=&lt;&lt;x&gt;&gt; /&gt;&lt;/$list&gt;&lt;br&gt;
 &lt;/$tiddler&gt;
 &lt;&lt;&lt;</pre>
-</div>
-<div created="20160104205030644" creator="EricShulman" list-before="" modified="20160118195951489" modifier="EricShulman" title="TiddlyTools/Scraps/Goto">
-<pre>\define input()        $:/temp/goto/input
-\define showsystem()   $:/temp/goto/showsystem
-\define showshadows()  $:/temp/goto/showshadows
-\define showsearch()   $:/temp/goto/showsearch
-\define showhistory()  $:/temp/goto/showhistory
-
-\define panelclass()   tt-drop-down
-\define panelstyle()   position:absolute;top:100%;right:0;min-width:100%;
-\define buttonclass()  tt-button tt-btn-invisible tc-btn-invisible
-\define headingstyle() font-size:80%;
-
-\define types()        tiddlers+shadows
-\define all()          [all[$(types)$]!prefix[$:/state]!prefix[$:/temp]]
-\define titles()       [all[$(types)$]search:title{$(input)$}]
-\define captions()     [all[$(types)$]search:caption{$(input)$}]
-\define tags()         [all[$(types)$]search:tags{$(input)$}]
-\define search()       $(titles)$ $(captions)$ $(tags)$ +[sort[]]
-\define nosystem()     -[is[system]] -[all[shadows]is[shadow]] -[prefix[TiddlyTools]]
-\define searchnosys()  $(search)$ $(nosystem)$
-\define notempty()     $(filter)$ +[limit[1]]
-\define missing()      [title{$(input)$}is[missing]]
-\define existing()     [title{$(input)$}is[tiddler]]
-
-\define buttontip(action) $action$ &quot;$(tid)$&quot;
-\define linktip()         title=&quot;{{!!title}}&quot; tags=[{{!!tags}}]
-
-\define toolbar()
-&lt;div class=&quot;tt-goto-toolbar&quot;&gt;
-   ''Go to:''
-   &lt;$edit-text tiddler=&lt;&lt;input&gt;&gt; tag=&quot;input&quot; focus=&quot;true&quot; class=&quot;tc-popup-handle&quot;
-      default=&quot;&quot; placeholder=&quot;enter a title, caption, or tag&quot;/&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;&lt;hidepanel &quot;reset search&quot;&gt;&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;   &lt;&lt;showpanel &quot;list all titles&quot;&gt;&gt;  &lt;/$reveal&gt;
-      &lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;hidepanel &quot;close title list&quot;&gt;&gt; &lt;/$reveal&gt;
-   &lt;/$reveal&gt;
-   &lt;span class=&quot;authortools&quot;&gt;
-   &lt;$set name=&quot;tid&quot; filter=&quot;[title&lt;input&gt;get[text]]&quot; emptyValue={{$:/language/DefaultNewTiddlerTitle}}&gt;
-   &lt;$list filter=&lt;&lt;missing&gt;&gt;&gt;
-      &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&lt;&lt;buttontip &quot;create&quot;&gt;&gt;&gt;
-         {{$:/core/images/new-button}}
-         &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;tid&gt;&gt;/&gt;
-      &lt;/$button&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&lt;&lt;existing&gt;&gt;&gt;
-      &lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&lt;&lt;buttontip &quot;edit&quot;&gt;&gt;&gt;
-         {{$:/core/images/edit-button}}
-         &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; title=&lt;&lt;tid&gt;&gt;/&gt;
-      &lt;/$button&gt;
-   &lt;/$list&gt;
-   &lt;/$set&gt;
-   &lt;/span&gt;
-&lt;/div&gt;
-\end
-
-\define showpanel(tooltip)
-&lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
-   {{$:/core/images/down-arrow}}
-   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;show&quot;/&gt;
-&lt;/$button&gt;
-\end
-
-\define hidepanel(tooltip)
-&lt;$button class=&lt;&lt;buttonclass&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
-   {{$:/core/images/close-button}}
-   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;&quot;/&gt;
-&lt;/$button&gt;
-\end
-
-\define panel()
-&lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showshadows&gt;text[show]]&quot; value=&quot;tiddlers+shadows&quot; emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$set name=&quot;types&quot;  filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;types&gt;&gt;          emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$set name=&quot;filter&quot; filter=&quot;[title&lt;showsystem&gt;text[show]]&quot;  value=&lt;&lt;search&gt;&gt;         emptyValue=&lt;&lt;searchnosys&gt;&gt;&gt;
-&lt;div style=&quot;position:relative;&quot;&gt; 
-&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt; &lt;&lt;panel_heading&gt;&gt;&lt;&lt;panel_list&gt;&gt; &lt;/div&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;showsearch&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$reveal state=&lt;&lt;input&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;div class=&lt;&lt;panelclass&gt;&gt; style=&lt;&lt;panelstyle&gt;&gt;&gt; &lt;&lt;panel_heading&gt;&gt;&lt;&lt;panel_list&gt;&gt; &lt;/div&gt;
-   &lt;/$reveal&gt;
-&lt;/$reveal&gt;
-&lt;/div&gt;
-&lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;
-\end
-
-\define panel_heading()
-&lt;div style=&lt;&lt;headingstyle&gt;&gt;&gt;
-   &lt;span class=&quot;authortools&quot; style=&quot;float:right;margin-left:0.5em;&quot;&gt;
-      &lt;$checkbox class=&quot;tc-popup-handle&quot;
-         tiddler=&lt;&lt;showsystem&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;system
-      &lt;/$checkbox&gt;
-      &lt;$reveal state=&lt;&lt;showsystem&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-         &lt;$checkbox class=&quot;tc-popup-handle&quot;
-            tiddler=&lt;&lt;showshadows&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;&quot;&gt;shadows
-         &lt;/$checkbox&gt;
-      &lt;/$reveal&gt;
-   &lt;/span&gt;
-   &lt;$button tooltip=&quot;reset search&quot;&gt;
-      {{$:/core/images/close-button}}
-      &lt;$action-setfield $tiddler=&lt;&lt;showsearch&gt;&gt; text=&quot;&quot;/&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt;      text=&quot;&quot;/&gt;
-   &lt;/$button&gt;
-   ''Matching titles: &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt;''
-&lt;/div&gt;
-\end
-
-\define panel_list()
-&lt;$list filter=&lt;&lt;notempty&gt;&gt; variable=&quot;if-results-not-empty&quot;&gt;
-&lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;background:#f0f0f0;&quot;&gt;
-&lt;div style=&quot;clear:both;overflow-x:auto;overflow-y:auto;padding-right:1em;max-height:50vh;&quot;&gt;
-   &lt;style&gt; .smallimg img, .smallimg svg { height:1em; width:1em; } &lt;/style&gt;
-   &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;
-      &lt;div class=&quot;smallimg&quot;&gt; &lt;$link tooltip=&lt;&lt;linktip&gt;&gt;&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt; &lt;/div&gt;
-   &lt;/$list&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/$list&gt;
-\end
-
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt;
-   tooltip=&quot;Go to a Tiddler&quot; class=&quot;tc-btn-invisible&quot;&gt;
-   &lt;span class=&quot;resize&quot;&gt;{{TiddlyTools/Goto.svg}}&lt;/span&gt;
-&lt;/$button&gt;&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/goto&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
-   &lt;div class=&quot;tc-popup-keep tc-popup-handle tt-drop-down&quot;
-      style=&quot;text-align:left; white-space:nowrap;&quot;&gt;
-      &lt;&lt;toolbar&gt;&gt;
-      &lt;&lt;panel&gt;&gt;
-   &lt;/div&gt;
-&lt;/$reveal&gt;</pre>
 </div>
 <div created="20150426204100552" creator="EricShulman" modified="20160118054212255" modifier="EricShulman" tags="" title="TiddlyTools/Settings">
 <pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/settings&quot;&gt;&gt; class=&quot;tt-button&quot;
@@ -12977,6 +12875,28 @@ exports.scrollhere = ScrollHereWidget;
 &lt;!-- END FLOAT FOR FAVORITE STAR --&gt;
 @@display:block;clear:both;@@</pre>
 </div>
+<div created="20160124035409515" creator="EricShulman" modified="20160124040829116" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/TopCenter">
+<pre>&lt;style&gt;
+.tt-topcenter
+   { position:fixed; top:0.25em; left:35%; z-index:1200; height:3em;}
+.tt-topcenter-shadowbox
+   {  margin-left:auto; margin-right:auto; padding:0.25em 0.5em; background:#f0f0f0; border:1px solid #999; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
+.tt-topcenter       .tt-fadein
+   { opacity:0; margin-top:-100%; transition: all 3s 1s,   opacity 4s; }
+.tt-topcenter:hover .tt-fadein
+   { opacity:1; margin-top:0%;    transition: all 0.5s 0s, opacity 2s; }
+.tt-topcenter .tt-toc
+   { max-height:60vh; }
+&lt;/style&gt;
+&lt;div class=&quot;tt-topcenter&quot;&gt;
+   &lt;$button style=&quot;width:100%;height:100%;position:absolute;visibility:hidden&quot;&gt;
+      invisible background button for focus on platforms without hover (i.e., tablets)
+   &lt;/$button&gt;
+   &lt;$list filter=&quot;[tag[$:/tags/TopCenter]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
+      &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;
+   &lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
 <div created="20151221062640380" creator="EricShulman" modified="20160114082253469" modifier="EricShulman" navbar="no" tags="$:/tags/Macro" title="TiddlyTools/ViewAll">
 <pre>\define tt-viewall-config() TiddlyBook/RootTag
 \define tt-viewall-input()  $:/temp/viewall/roottag
@@ -13090,7 +13010,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160124025116135" modifier="EricShulman" tags="Appendix" timestamp="16.01.23.185110" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160124044950687" modifier="EricShulman" tags="Appendix" timestamp="16.01.23.204943" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13466,7 +13386,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.23.164341 added TiddlyBook/LeftBar to TiddlyTools/Goto/TopBar, TiddlyBook/Reset default to hide LeftBar on startup
 * 16.01.23.171729 TopBar - set min/max width for TOC display
 * 16.01.23.172351 adjust max-width for topbar toc so it just avoids overflowing document right margin (35% + 60vw)
-* 16.01.23.185110 topbar - don't show TOC panel if leftbar is pinned</pre>
+* 16.01.23.185110 topbar - don't show TOC panel if leftbar is pinned
+* 16.01.23.204943 refactor TopCenter (isolate stayvisible logic)</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
