@@ -265,8 +265,6 @@ Error message and password prompt
 
 <li>TiddlyBook/TopRightBar</li>
 
-<li>TiddlyBook/TopSlideBar</li>
-
 <li>TiddlyBook/ViewTemplateMacros</li>
 
 <li>TiddlyTools/Bundles/Goto</li>
@@ -389,6 +387,8 @@ Error message and password prompt
 
 <li>TiddlyTools/SlideBars/Left</li>
 
+<li>TiddlyTools/SlideBars/Stylesheet</li>
+
 <li>TiddlyTools/SlideBars/Top</li>
 
 <li>TiddlyTools/Stylesheet</li>
@@ -459,7 +459,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20160120121927721" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[VersionInfo]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160126070628592" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160126103430980" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;no&quot;,
@@ -470,8 +470,8 @@ Error message and password prompt
     &quot;FontSize/ToolBar&quot;: &quot;150&quot;,
     &quot;FontColor/BodyText&quot;: &quot;#000&quot;,
     &quot;Background/Cover&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/whitepaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/LeftBar&quot;: &quot;rgba(0,0,0,0.1)&quot;,
-    &quot;Background/LeftBarHover&quot;: &quot;#ddd&quot;,
+    &quot;Background/LeftBar&quot;: &quot;#eee&quot;,
+    &quot;Background/LeftBarHover&quot;: &quot;#eef&quot;,
     &quot;Background/Window&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/nicesnow.png&gt;&gt;)&quot;,
     &quot;Background/DropDowns&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/gridpaper.jpg&gt;&gt;)&quot;,
     &quot;Background/Page&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/whitepaper.jpg&gt;&gt;)&quot;,
@@ -479,7 +479,7 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
-<div created="20160123062407850" creator="EricShulman" modified="20160125231224571" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
+<div created="20160123062407850" creator="EricShulman" modified="20160126103048795" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
 <pre>{
     &quot;matchinput&quot;: &quot;yes&quot;,
     &quot;matchtitles&quot;: &quot;yes&quot;,
@@ -487,18 +487,18 @@ Error message and password prompt
     &quot;matchtags&quot;: &quot;yes&quot;,
     &quot;matchtext&quot;: &quot;no&quot;,
     &quot;matchcustom&quot;: &quot;no&quot;,
-    &quot;customfilter&quot;: &quot;-[prefix[TiddlyTools]]&quot;,
-    &quot;showhidden&quot;: &quot;no&quot;,
-    &quot;showsystem&quot;: &quot;no&quot;,
-    &quot;showshadows&quot;: &quot;no&quot;,
+    &quot;customfilter&quot;: &quot;-[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[TiddlyTools]]&quot;,
+    &quot;showhidden&quot;: &quot;yes&quot;,
+    &quot;showsystem&quot;: &quot;yes&quot;,
+    &quot;showshadows&quot;: &quot;yes&quot;,
     &quot;sortlist&quot;: &quot;no&quot;,
     &quot;sortfilter&quot;: &quot;[sort[title]]&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160126070628592" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160126103430980" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160126070628592" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160126103430980" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7235,13 +7235,15 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
+# [[TiddlyTools/SlideBars/Left]]
 # [[TiddlyBook/SlideBars/Left]]
-# [[TiddlyTools/SlideBars/Left]]</pre>
+# [[TiddlyTools/SlideBars/Top]]
+# [[TiddlyTools/SlideBars/Stylesheet]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160126070628591" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108012457634" creator="EricShulman" modified="20160126103430979" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160108135257474" creator="EricShulman" modified="20160124064409978" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7268,10 +7270,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160126070628591" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108012457634" creator="EricShulman" modified="20160126103430979" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
-<div created="20160121065839179" creator="EricShulman" modified="20160126070628592" modifier="EricShulman" title="$:/temp/goto/input">
+<div created="20160121065839179" creator="EricShulman" modified="20160126103430980" modifier="EricShulman" title="$:/temp/goto/input">
 <pre></pre>
 </div>
 <div created="20160124072703082" creator="EricShulman" modified="20160124072703082" modifier="EricShulman" title="$:/temp/HidePluginWarning">
@@ -7294,10 +7296,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160115212942175" creator="EricShulman" modified="20160120162211165" modifier="EricShulman" title="$:/temp/notify">
 <pre>'MySettings' has been deleted</pre>
 </div>
-<div created="20160108012438666" creator="EricShulman" modified="20160126070627415" modifier="EricShulman" title="$:/temp/revnote">
-<pre>use DefaultSettings</pre>
+<div created="20160108012438666" creator="EricShulman" modified="20160126103430107" modifier="EricShulman" title="$:/temp/revnote">
+<pre>updated default settings</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160126070628591" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108012457634" creator="EricShulman" modified="20160126103430979" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7423,7 +7425,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160126070628591" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160126103430979" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -8317,14 +8319,13 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 <div created="20151221063122517" creator="EricShulman" modified="20151221063134510" modifier="EricShulman" tags="" title="TiddlyBook/RootTag">
 <pre>MyBook</pre>
 </div>
-<div created="20160126062832795" creator="EricShulman" modified="20160126065340251" modifier="EricShulman" tags="$:/tags/LeftSlideBar" title="TiddlyBook/SlideBars/Left">
-<pre>&lt;$list filter=&quot;[title[TiddlyBook/LeftBar]is[tiddler]]&quot;&gt;
-   &lt;$list filter=&quot;[title[$:/config/TiddlyTools]getindex[LeftBar]] -[[yes]]&quot;&gt;
-      &lt;div class=&quot;tt-shadowbox tt-fadein&quot; style=&quot;height:100%&quot;&gt;
-         {{||TiddlyBook/LeftBar}}
-      &lt;/div&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;</pre>
+<div created="20160126062832795" creator="EricShulman" modified="20160126092656470" modifier="EricShulman" tags="$:/tags/LeftSlideBar" title="TiddlyBook/SlideBars/Left">
+<pre>&lt;$list filter=&quot;[title[$:/config/TiddlyTools]getindex[LeftBar]] -[[yes]]&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox tt-fadein&quot; style=&quot;height:100%&quot;&gt;
+      {{||TiddlyBook/LeftBar}}
+   &lt;/div&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div created="20160124040200769" creator="EricShulman" modified="20160126063428214" modifier="EricShulman" tags="$:/tags/TopSlideBar" title="TiddlyBook/SlideBars/Top">
 <pre>&lt;$list filter=&quot;[title[TiddlyBook/LeftBar]is[tiddler]]&quot;&gt;
@@ -8376,17 +8377,6 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &amp;nbsp;
 {{||TiddlyTools/Settings}}
 </pre>
-</div>
-<div created="20160124040200769" creator="EricShulman" modified="20160125102110918" modifier="EricShulman" tags="$:/tags/TopSlideBar" title="TiddlyBook/TopSlideBar">
-<pre>&lt;$list filter=&quot;[title[TiddlyBook/LeftBar]is[tiddler]]&quot;&gt;
-   &lt;$list filter=&quot;[title[$:/config/TiddlyTools]getindex[LeftBar]] -[[yes]]&quot;&gt;
-      &lt;div class=&quot;tt-fadein&quot; style=&quot;height:0px&quot;&gt; &amp;nbsp; &lt;/div&gt; &lt;!-- HACK TO MAKE TOC FULLY RETRACT --&gt;
-      &lt;div class=&quot;tt-shadowbox tt-fadein&quot;
-         style=&quot;padding:0.5em; min-width:25vw; max-width:60vw&quot;&gt;
-         {{||TiddlyBook/LeftBar}}
-      &lt;/div&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;</pre>
 </div>
 <div created="20160105181947736" creator="EricShulman" modified="20160109104223833" modifier="EricShulman" tags="$:/tags/ViewTemplateMacros" title="TiddlyBook/ViewTemplateMacros">
 <pre>\define tc-tiddler-controls()
@@ -10229,7 +10219,7 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 &lt;&lt;clear &quot;{{$:/core/images/close-all-button}}&quot;&gt;&gt;
 &lt;/nobr&gt;</pre>
 </div>
-<div caption="Default settings" created="20160107203302186" creator="EricShulman" modified="20160124180932244" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Defaults" type="application/json">
+<div created="20160126102714111" creator="EricShulman" modified="20160126103213109" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Defaults" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;LeftBar&quot;: &quot;no&quot;,
@@ -10240,8 +10230,8 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
     &quot;FontSize/ToolBar&quot;: &quot;150&quot;,
     &quot;FontColor/BodyText&quot;: &quot;#000&quot;,
     &quot;Background/Cover&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/whitepaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/LeftBar&quot;: &quot;rgba(0,0,0,0.1)&quot;,
-    &quot;Background/LeftBarHover&quot;: &quot;#ddd&quot;,
+    &quot;Background/LeftBar&quot;: &quot;#eee&quot;,
+    &quot;Background/LeftBarHover&quot;: &quot;#eef&quot;,
     &quot;Background/Window&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/nicesnow.png&gt;&gt;)&quot;,
     &quot;Background/DropDowns&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/gridpaper.jpg&gt;&gt;)&quot;,
     &quot;Background/Page&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/whitepaper.jpg&gt;&gt;)&quot;,
@@ -10492,45 +10482,8 @@ Toolbar buttons:&lt;br&gt;  &lt;&lt;pick_fontsize &quot;FontSize/ToolBar&quot;&g
 &lt;/div&gt;
 @@display:block;text-align:center;{{TiddlyTools/Settings/Controls}}@@</pre>
 </div>
-<div created="20160126054052706" creator="EricShulman" modified="20160126065441440" modifier="EricShulman" title="TiddlyTools/SlideBars/Left">
-<pre>\define config()       $:/config/TiddlyTools##
-\define toolbarsize()  &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
-\define Vmargin()      42px
-\define Hmargin()      42px
-\define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
-\define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
-\define buttonheight() 100%
-\define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
-\define barleft()      42px
-\define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
-\define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
-\define barfontsize()  (1em * ({{$(config)$FontSize/LeftBar}} / 100))
-\define leftbarbg()    &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;Background/LeftBar&quot;&gt;#eee&lt;/$transclude&gt;
-\define leftbarhover() &lt;$transclude tiddler=&quot;$:/config/TiddlyTools&quot; index=&quot;Background/LeftBarHover&quot;&gt;#eee&lt;/$transclude&gt;
-\define leftbar()      $(config)$LeftBar
-
-&lt;style&gt;
-.tt-left-slidebar
-   { position:fixed; z-index:0; top:0; left:0; height:&lt;&lt;buttonheight&gt;&gt;; }
-.tt-left-slidebar-button
-   { z-index:-1; position:absolute; height:100%; width:&lt;&lt;buttonwidth&gt;&gt;; opacity:0.15; transition: opacity 1s; }
-.tt-left-slidebar-button:hover
-   { opacity:0.0; transition: opacity 1s; }
-.tt-left-slidebar .tt-shadowbox
-   { background: &lt;&lt;leftbarbg&gt;&gt;; transition: background 0s 0s; }
-.tt-left-slidebar .tt-shadowbox:hover
-   { background: &lt;&lt;leftbarhover&gt;&gt;; transition: background 0s 0s; 
-     box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5); }
-.tt-left-slidebar .tt-shadowbox.inset
-   { background:rgba(255,255,255,0.5); }
-.tt-left-slidebar .tt-shadowbox.inset:hover
-   { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; }
-.tt-left-slidebar       .tt-fadein
-   { opacity:0; margin-left:-100%; margin-right:100%; transition: margin 3s 1s,   opacity 4s; }
-.tt-left-slidebar:hover .tt-fadein
-   { opacity:1; margin-left:0%;    margin-right:0%;   transition: margin 0.5s 0s, opacity 2s; }
-&lt;/style&gt;
-&lt;div class=&quot;tt-left-slidebar&quot;&gt;
+<div created="20160126054052706" creator="EricShulman" modified="20160126092338016" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/SlideBars/Left">
+<pre>&lt;div class=&quot;tt-left-slidebar&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible tt-left-slidebar-button&quot;&gt;
       {{$:/core/images/chevron-right}}
    &lt;/$button&gt;
@@ -10539,33 +10492,87 @@ Toolbar buttons:&lt;br&gt;  &lt;&lt;pick_fontsize &quot;FontSize/ToolBar&quot;&g
    &lt;/$list&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20160124035409515" creator="EricShulman" modified="20160126050822970" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/SlideBars/Top">
-<pre>&lt;style&gt;
+<div created="20160126092153051" creator="EricShulman" modified="20160126102016082" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/SlideBars/Stylesheet">
+<pre>\define config()       $:/config/TiddlyTools
+\define toolbarsize()  &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
+\define Vmargin()      42px
+\define Hmargin()      42px
+\define storywidth()   {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}}
+\define bartop()       (&lt;&lt;Vmargin&gt;&gt; * (&lt;&lt;toolbarsize&gt;&gt; / 100))
+\define barleft()      42px
+\define barheight()    (100% - &lt;&lt;bartop&gt;&gt; - &lt;&lt;Vmargin&gt;&gt;)
+\define barwidth()     (50% - (&lt;&lt;storywidth&gt;&gt; / 2) - (&lt;&lt;barleft&gt;&gt; * 2) + &lt;&lt;Hmargin&gt;&gt;)
+\define barfontsize()  (1em * ({{$(config)$##FontSize/LeftBar}} / 100))
+\define buttonwidth()  &lt;&lt;Hmargin&gt;&gt;
+\define leftbarbg()    &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/LeftBar&quot;&gt;#eee&lt;/$transclude&gt;
+\define leftbarhover() &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/LeftBarHover&quot;&gt;#eee&lt;/$transclude&gt;
+
+&lt;pre&gt;
+/***** LEFT SLIDEBAR *****/
+.tt-left-slidebar
+   { position:fixed; z-index:0; 
+     top:calc(&lt;&lt;bartop&gt;&gt;); left:0; width:calc(&lt;&lt;buttonwidth&gt;&gt;); height:calc(&lt;&lt;barheight&gt;&gt;); }
+.tt-left-slidebar:hover
+   { z-index:1200; width:calc(&lt;&lt;buttonwidth&gt;&gt; + &lt;&lt;barwidth&gt;&gt;); }
+.tt-left-slidebar-button
+   { z-index:-1; position:absolute; height:100%; width:&lt;&lt;buttonwidth&gt;&gt;; opacity:0.15; }
+.tt-left-slidebar-button:hover
+   { opacity:0.0; }
+.tt-left-slidebar .tt-shadowbox
+   { background: &lt;&lt;leftbarbg&gt;&gt;; z-index:999; font-size:calc(&lt;&lt;barfontsize&gt;&gt;); }
+.tt-left-slidebar .tt-shadowbox:hover
+   { background: &lt;&lt;leftbarhover&gt;&gt;; box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5); }
+.tt-left-slidebar .tt-shadowbox.inset
+   { background:#eee; }
+.tt-left-slidebar .tt-shadowbox.inset:hover
+   { background:#f8f8ff; box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; }
+.tt-left-slidebar       .tt-fadein
+   { opacity:0; margin-left:-100%;       margin-right:100%; }
+.tt-left-slidebar:hover .tt-fadein
+   { opacity:1; margin-left:&lt;&lt;barleft&gt;&gt;; margin-right:0%;   }
+
+.tt-left-slidebar                     { transition: z-index 0s 3s, width 3s 0s; }
+.tt-left-slidebar:hover               { transition: z-index 0s 0s, width 0s 0s; }
+.tt-left-slidebar       .tt-fadein    { transition: margin 3.5s 0s, opacity 2s; }
+.tt-left-slidebar:hover .tt-fadein    { transition: margin 0.5s 0s, opacity 0s; }
+.tt-left-slidebar-button              { transition: opacity 1s; }
+.tt-left-slidebar-button:hover        { transition: opacity 1s; }
+&lt;/pre&gt;
+
+&lt;pre&gt;
+/***** TOP SLIDEBAR *****/
 .tt-top-slidebar
    { position:fixed; z-index:1200; top:0.25em; left:35%; width:30vw; height:3em;}
 .tt-top-slidebar-button
-   { z-index:-1; opacity:0.15; transition: opacity 1s; }
+   { z-index:-1; opacity:0.15; }
 .tt-top-slidebar-button:hover
-   { opacity:0.0; transition: opacity 1s; }
+   { z-index:0;  opacity:0.0; }
 .tt-top-slidebar .tt-shadowbox
-   { background: #eee; transition: background 0s 0s; }
+   { background: &lt;&lt;leftbarbg&gt;&gt;; }
 .tt-top-slidebar .tt-shadowbox:hover
-   { background: #eef; transition: background 0s 0s; 
-     box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5); }
+   { background: &lt;&lt;leftbarhover&gt;&gt;; box-shadow: 0.3em 0.3em 1.6em rgba(102,102,204,0.5); }
 .tt-top-slidebar .tt-shadowbox.inset
-   { background:rgba(255,255,255,0.5); }
+   { background:#eee; }
 .tt-top-slidebar .tt-shadowbox.inset:hover
-   { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; }
+   { background:#f8f8ff; box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; }
 .tt-top-slidebar       .tt-fadein
-   { opacity:0; margin-top:-100%; transition: margin 3s 1s,   opacity 4s; }
+   { opacity:0; margin-top:-100%; }
 .tt-top-slidebar:hover .tt-fadein
-   { opacity:1; margin-top:0%;    transition: margin 0.5s 0s, opacity 2s; }
+   { opacity:1; margin-top:0%; }
 .tt-top-slidebar .tt-toc          /* see TiddlyTools/TOC */
    { max-height:60vh; }
 .tt-top-slidebar .tt-goto-stretch /* see TiddlyTools/Goto/Panel */
    { width:calc(30vw - 1em); }
-&lt;/style&gt;
-&lt;div class=&quot;tt-top-slidebar&quot;&gt;
+
+.tt-top-slidebar       .tt-fadein { transition: margin 3.5s 0s, opacity 4s; }
+.tt-top-slidebar:hover .tt-fadein { transition: margin 0.5s 0s, opacity 2s; }
+.tt-top-slidebar-button           { transition: opacity 1s; }
+.tt-top-slidebar-button:hover     { transition: opacity 1s; }
+
+&lt;/pre&gt;</pre>
+</div>
+<div created="20160124035409515" creator="EricShulman" modified="20160126101317412" modifier="EricShulman" tags="$:/tags/PageTemplate" title="TiddlyTools/SlideBars/Top">
+<pre>&lt;div class=&quot;tt-top-slidebar&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible tt-top-slidebar-button&quot; style=&quot;width:100%;height:100%;position:absolute;&quot;&gt;
       {{$:/core/images/chevron-down}}
    &lt;/$button&gt;
@@ -11333,7 +11340,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160126070628593" modifier="EricShulman" tags="Appendix" timestamp="16.01.25.230627" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160126103430981" modifier="EricShulman" tags="Appendix" timestamp="16.01.26.023430" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -11734,7 +11741,9 @@ exports.scrollhere = ScrollHereWidget;
 * 16.01.25.210912 refactor LeftBar and SlideBars
 * 16.01.25.223706 SlideBar/Left
 * 16.01.25.230020 TiddlyBook/SlideBars/Left - height:100%, TiddlyTools/SlideBars/Left - backgrounds from settings
-* 16.01.25.230627 use DefaultSettings</pre>
+* 16.01.25.230627 use DefaultSettings
+* 16.01.26.022243 Slidebars/Stylesheet
+* 16.01.26.023430 updated default settings</pre>
 </div>
 
 </div>
