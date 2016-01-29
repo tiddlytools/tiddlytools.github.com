@@ -123,13 +123,13 @@ Error message and password prompt
 
 <li>$:/config/TiddlyTools</li>
 
+<li>$:/config/TiddlyTools/Favorites</li>
+
 <li>$:/config/TiddlyTools/goto</li>
 
 <li>$:/config/TiddlyTools/ReadOnly</li>
 
 <li>$:/config/TiddlyTools/TOC</li>
-
-<li>$:/config/TiddlyTools/TOC/favorites</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/delete</li>
 
@@ -495,6 +495,12 @@ Error message and password prompt
 
 <li>TiddlyTools/Cookies/getcookie.js</li>
 
+<li>TiddlyTools/Favorites</li>
+
+<li>TiddlyTools/Favorites.svg</li>
+
+<li>TiddlyTools/Favorites/Macros</li>
+
 <li>TiddlyTools/Filters/TagExp.js</li>
 
 <li>TiddlyTools/Goto</li>
@@ -623,10 +629,6 @@ Error message and password prompt
 
 <li>TiddlyTools/Textures/wood.jpg</li>
 
-<li>TiddlyTools/TOC/Favorites</li>
-
-<li>TiddlyTools/TOC/Favorites.svg</li>
-
 <li>TiddlyTools/TOC/Macros</li>
 
 <li>TiddlyTools/TOC/scrollhere.js</li>
@@ -671,7 +673,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20160120121927721" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[VersionInfo]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;ToolBar&quot;: &quot;yes&quot;,
@@ -704,6 +706,14 @@ Error message and password prompt
     &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Textures/notepaper.jpg&gt;&gt;)&quot;
 }</pre>
 </div>
+<div created="20151224115632632" creator="EricShulman" modified="20160129084841838" modifier="EricShulman" title="$:/config/TiddlyTools/Favorites" type="application/json">
+<pre>{
+    &quot;PartsList&quot;: &quot;12:34, 30th December 2015&quot;,
+    &quot;Legal&quot;: &quot;13:19, 30th December 2015&quot;,
+    &quot;VersionInfo&quot;: &quot;09:25, 28th January 2016&quot;,
+    &quot;CoverPage&quot;: &quot;00:42, 29th January 2016&quot;
+}</pre>
+</div>
 <div created="20160123062407850" creator="EricShulman" modified="20160128234826032" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
 <pre>{
     &quot;matchinput&quot;: &quot;yes&quot;,
@@ -720,21 +730,12 @@ Error message and password prompt
     &quot;sortfilter&quot;: &quot;[sort[title]]&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160129073548334" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
-}</pre>
-</div>
-<div created="20151224115632632" creator="EricShulman" modified="20160129003822690" modifier="EricShulman" title="$:/config/TiddlyTools/TOC/favorites" type="application/json">
-<pre>{
-    &quot;AboutTheAuthor&quot;: &quot;17:08, 27th December 2015&quot;,
-    &quot;PartsList&quot;: &quot;12:34, 30th December 2015&quot;,
-    &quot;Legal&quot;: &quot;13:19, 30th December 2015&quot;,
-    &quot;VersionInfo&quot;: &quot;09:25, 28th January 2016&quot;,
-    &quot;WhatsInAName&quot;: &quot;09:25, 28th January 2016&quot;
 }</pre>
 </div>
 <div modified="20151227223552590" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/delete">
@@ -7461,15 +7462,9 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/SlideBars/Bottom]]
-# [[TiddlyTools/Goto/TopSlideBar]]
-# [[TiddlyBook/SlideBars/Top]]
-# [[TiddlyTools/SlideBars/Right/Stylesheet]]
-# [[TiddlyTools/Settings/Macros]]
-# [[TiddlyTools/Settings/Panel]]
-# [[TiddlyTools/SlideBars/Top/Stylesheet]]
-# [[TiddlyTools/SlideBars/Bottom/Stylesheet]]
-# [[TiddlyTools/Settings/Defaults]]</pre>
+# [[TiddlyTools/TOC/StyleSheet]]
+# [[TiddlyTools/Favorites/Macros]]
+# [[TiddlyTools/NavBar/StyleSheet]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7480,7 +7475,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160108004912332" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160116185548006" creator="EricShulman" modified="20160126192050175" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -7525,10 +7520,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160108004912332" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
-<div created="20160123075024023" creator="EricShulman" modified="20160129073548334" modifier="EricShulman" title="$:/temp/goto/input">
+<div created="20160123075024023" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/temp/goto/input">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7551,10 +7546,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160116191511289" creator="EricShulman" modified="20160129072841287" modifier="EricShulman" title="$:/temp/notify">
 <pre>settings loaded from 'TiddlyTools/Settings/Defaults'</pre>
 </div>
-<div created="20160108004853108" creator="EricShulman" modified="20160129073547337" modifier="EricShulman" title="$:/temp/revnote">
-<pre>Bottom/Stylesheet - fix hover toggle handling, Transitions - moved wrapper transitions</pre>
+<div created="20160108004853108" creator="EricShulman" modified="20160129085822626" modifier="EricShulman" title="$:/temp/revnote">
+<pre>refactor Favorites from TOC</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/temp/search">
+<div created="20160108004912332" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.10">
@@ -7680,7 +7675,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108004912332" creator="EricShulman" modified="20160129073548333" modifier="EricShulman" title="$:/view">
+<div created="20160108004912332" creator="EricShulman" modified="20160129085827032" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20150510093207974" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -10085,7 +10080,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150427050900338" creator="EricShulman" modified="20160129033215767" modifier="EricShulman" title="TiddlyBook/SlideBars/TOCPanel">
+<div created="20150427050900338" creator="EricShulman" modified="20160129083912499" modifier="EricShulman" title="TiddlyBook/SlideBars/TOCPanel">
 <pre>&lt;style&gt;
 /* FONT SIZES */
 .tt-tiddlybook-toc-titlebox    { font-size:100%; line-height:110%; }
@@ -10136,7 +10131,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
          &lt;/td&gt;&lt;td&gt;
             @@.center.smaller.smallimg you are here:&lt;br&gt;''&lt;&lt;toc-caption&gt;&gt;''@@
          &lt;/td&gt;&lt;td style=&quot;text-align:right;&quot;&gt;
-            @@.larger &lt;&lt;toc-toggle-favorite class:&quot;tt-button&quot;&gt;&gt;@@
+            @@.larger &lt;&lt;toggle-favorite class:&quot;tt-button&quot;&gt;&gt;@@
          &lt;/td&gt;
       &lt;/tr&gt;&lt;/table&gt;
    &lt;/$tiddler&gt;
@@ -10156,7 +10151,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20160126113836173" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TiddlyBook/TopLeftBar">
+<div created="20150428010947376" creator="EricShulman" modified="20160129082641502" modifier="EricShulman" tags="$:/tags/TopLeftBar" title="TiddlyBook/TopLeftBar">
 <pre>\define config()  $:/config/TiddlyTools
 \define toolbar() $(config)$##ToolBar
 
@@ -10166,7 +10161,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &amp;nbsp;
    {{||TiddlyTools/Buttons/Home}}
    &amp;nbsp;
-   {{||TiddlyTools/TOC/Favorites}}
+   {{||TiddlyTools/Favorites}}
    &amp;nbsp;
    {{||TiddlyTools/TOC/Search}}
    &amp;nbsp;
@@ -10196,7 +10191,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 {{||TiddlyTools/Settings}}
 </pre>
 </div>
-<div created="20160105181947736" creator="EricShulman" modified="20160109104223833" modifier="EricShulman" tags="$:/tags/ViewTemplateMacros" title="TiddlyBook/ViewTemplateMacros">
+<div created="20160105181947736" creator="EricShulman" modified="20160129083847068" modifier="EricShulman" tags="$:/tags/ViewTemplateMacros" title="TiddlyBook/ViewTemplateMacros">
 <pre>\define tc-tiddler-controls()
 &lt;span class=&quot;tc-tiddler-controls&quot;&gt;{{||TiddlyTools/ReadOnly/Toolbar}}&lt;/span&gt;&lt;!-- ADDED --&gt;
 &lt;span class=&quot;tc-tiddler-controls authortools&quot;&gt;&lt;!-- ADDED 'authortools' class --&gt;
@@ -10215,7 +10210,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 \define tc-title()
 &lt;h2 class=&quot;tc-title&quot;&gt;
 {{||TiddlyTools/NavBar/TitlePopup}}&lt;!-- REPLACES &lt;$view field=&quot;title&quot;/&gt; --&gt;
-&lt;&lt;toc-toggle-favorite&gt;&gt;&lt;!-- ADDED --&gt;
+&lt;&lt;toggle-favorite&gt;&gt;&lt;!-- ADDED (see TiddlyTools/Favorites/Macros) --&gt;
 &lt;/h2&gt;
 \end</pre>
 </div>
@@ -10623,6 +10618,84 @@ exports.run = function(name) {
 	return &quot;&quot;;
 };
 })();</pre>
+</div>
+<div created="20151218220936286" creator="EricShulman" modified="20160129083359284" modifier="EricShulman" tags="" title="TiddlyTools/Favorites">
+<pre>\define _btnclass() tt-button $(popup-buttonclass)$
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/favorites&quot;&gt;&gt; tooltip=&quot;favorite topics&quot; class=&lt;&lt;_btnclass&gt;&gt;&gt;
+   {{TiddlyTools/Favorites.svg}}
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/favorites&quot;&gt;&gt; position=&lt;&lt;popup-position&gt;&gt;&gt;
+&lt;div class=&quot;tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
+   ''Favorite Topics''
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
+   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
+   &lt;&lt;show-favorites&gt;&gt;
+   &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20150501030059678" creator="EricShulman" modified="20160129082331942" modifier="EricShulman" tags="image" title="TiddlyTools/Favorites.svg">
+<pre>&lt;svg class=&quot;tc-image-button&quot; version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
+	 viewBox=&quot;0 0 27.759 27.759&quot; style=&quot;enable-background:new 0 0 27.759 27.759;&quot; xml:space=&quot;preserve&quot;&gt;
+&lt;g&gt;
+	&lt;g&gt;
+		&lt;path d=&quot;M13.695,20.648l-3.037-2.96c-0.478-0.466-0.653-1.175-0.446-1.811
+			c0.206-0.632,0.764-1.103,1.425-1.197l4.194-0.611l1.878-3.804c0.092-0.185,0.215-0.346,0.357-0.484V4.637
+			c0-0.226-0.09-0.442-0.25-0.602c-0.159-0.161-0.377-0.25-0.603-0.25L1.778,3.794c0-0.905,0.933-0.935,0.933-0.935h15.438
+			c0.47,0,0.852,0.382,0.852,0.852v5.601c0.095-0.016,0.188-0.027,0.287-0.027c0.426,0,0.823,0.15,1.134,0.413v-5.91
+			c0-1.314-1.065-2.379-2.378-2.379H2.379C1.064,1.409,0,2.474,0,3.788V23.97c0,1.314,1.064,2.38,2.379,2.38h11.07
+			c-0.388-0.4-0.567-0.958-0.472-1.521L13.695,20.648z M4.44,7.157h9.326v1.764H4.44V7.157z&quot;/&gt;
+		&lt;path d=&quot;M27.733,16.407c-0.062-0.191-0.228-0.332-0.429-0.362l-5.02-0.728L20.04,10.77
+			c-0.091-0.184-0.274-0.297-0.478-0.297s-0.388,0.113-0.478,0.297l-2.244,4.547l-5.018,0.728c-0.201,0.03-0.368,0.171-0.43,0.362
+			c-0.063,0.193-0.011,0.405,0.135,0.549l3.63,3.536L14.3,25.493c-0.034,0.197,0.048,0.4,0.212,0.519
+			c0.163,0.119,0.382,0.137,0.56,0.04l4.489-2.358l4.489,2.358c0.078,0.041,0.163,0.062,0.247,0.062c0.11,0,0.221-0.035,0.313-0.103
+			c0.165-0.118,0.247-0.321,0.213-0.519l-0.858-5.001l3.632-3.537C27.745,16.813,27.795,16.601,27.733,16.407z M23.024,19.927
+			c-0.126,0.122-0.185,0.299-0.154,0.471l0.722,4.211l-3.78-1.987c-0.079-0.04-0.164-0.062-0.248-0.062
+			c-0.085,0-0.171,0.021-0.247,0.062l-3.782,1.987l0.724-4.211c0.027-0.174-0.028-0.349-0.154-0.471l-3.06-2.982l4.229-0.615
+			c0.173-0.022,0.322-0.132,0.398-0.291l1.893-3.831l1.891,3.831c0.078,0.159,0.229,0.267,0.4,0.291l4.229,0.615L23.024,19.927z&quot;/&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+</pre>
+</div>
+<div created="20160129081954377" creator="EricShulman" modified="20160129085256538" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Favorites/Macros">
+<pre>\define fav-config()           $:/config/TiddlyTools/Favorites
+\define fav-item-is-favorite() $(fav-config)$##$(item)$
+\define fav-emptystar()        &amp;#x2606;
+\define fav-filledstar()       &amp;#x2605;
+
+\define show-favorites()
+&lt;!-- LIST ALL FAVORITES --&gt;
+&lt;$list filter=&quot;[title&lt;fav-config&gt;indexes[]]&quot;
+   emptyMessage=&quot;&quot;&quot;use &lt;&lt;fav-emptystar&gt;&gt; to add a topic&quot;&quot;&quot;&gt;
+   &lt;nobr&gt;&lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;/nobr&gt;&lt;br&gt;
+&lt;/$list&gt;
+\end
+
+\define toggle-favorite(class:&quot;tc-btn-invisible&quot;)
+&lt;!-- ADD/REMOVE ITEM FROM FAVORITES --&gt;
+&lt;$vars item=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=&quot;tiptext&quot; filter=&quot;[&lt;item&gt;has[caption]]&quot; value={{!!caption}} emptyValue={{!!title}}&gt;
+&lt;$reveal state=&lt;&lt;fav-item-is-favorite&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;fav-tip-addfav&gt;&gt;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;fav-config&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&lt;&lt;now&gt;&gt;/&gt;
+      @@.tt-favorite &lt;&lt;fav-emptystar&gt;&gt;@@
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&lt;&lt;fav-item-is-favorite&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;fav-tip-remfav&gt;&gt;&gt;
+      &lt;$action-setfield    $tiddler=&lt;&lt;fav-config&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&quot;&quot;/&gt;
+      &lt;$action-deletefield $tiddler=&lt;&lt;fav-config&gt;&gt; $index=&lt;&lt;item&gt;&gt;/&gt;
+      @@.tt-favorite.show &lt;&lt;fav-filledstar&gt;&gt;@@
+   &lt;/$button&gt;&lt;/$reveal&gt;
+&lt;/$set&gt;
+&lt;/$vars&gt;
+\end
+\define fav-tip-addfav() add '$(tiptext)$' to Favorites
+\define fav-tip-remfav() remove '$(tiptext)$' from Favorites
+
+@@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
 <div created="20150331195446988" creator="EricShulman" modified="20151220073247377" modifier="EricShulman" module-type="filteroperator" tags="" title="TiddlyTools/Filters/TagExp.js" type="application/javascript">
 <pre>/*\
@@ -11511,7 +11584,7 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
-<div created="20160108132743339" creator="EricShulman" modified="20160108145419624" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/NavBar/StyleSheet" type="">
+<div created="20160108132743339" creator="EricShulman" modified="20160129085417417" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/NavBar/StyleSheet" type="">
 <pre>\define titleboxbg() {{$:/config/TiddlyTools##Background/TitleBox}}
 
 &lt;pre&gt;
@@ -11560,6 +11633,12 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 /* ADJUST ICONS TO FIT WITH TEXT */
 .tt-navbar-icon img,      .tt-navbar-icon svg
    { height:1em; width:1em; }
+
+/* FAVORITE BUTTON FADE-IN (see TiddlyTools/Favorites/Macros) */
+.tc-title       .tt-favorite        { opacity:0.0; }
+.tc-title:hover .tt-favorite        { opacity:0.5; }
+.tc-title:hover .tt-favorite:hover  { opacity:1.0; }
+.tc-title       .tt-favorite.show   { opacity:1.0 !important; }
 
 &lt;/pre&gt;</pre>
 </div>
@@ -12922,61 +13001,16 @@ html .tc-story-river, .tc-sidebar-scrollable
 <div created="20150508004522270" creator="EricShulman" modified="20151110105014896" modifier="EricShulman" tags="image" title="TiddlyTools/Textures/wood.jpg" type="image/jpeg">
 <pre>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</pre>
 </div>
-<div created="20151218220936286" creator="EricShulman" modified="20160105120709585" modifier="EricShulman" tags="" title="TiddlyTools/TOC/Favorites">
-<pre>\define _btnclass() tt-button $(popup-buttonclass)$
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/TOC/favorites&quot;&gt;&gt; tooltip=&quot;favorite topics&quot; class=&lt;&lt;_btnclass&gt;&gt;&gt;
-   {{TiddlyTools/TOC/Favorites.svg}}
-&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/TOC/favorites&quot;&gt;&gt; position=&lt;&lt;popup-position&gt;&gt;&gt;
-&lt;div class=&quot;tt-drop-down&quot; style=&quot;text-align:left;&quot;&gt;
-   ''Favorite Topics''
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
-   &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:60vh;padding-right:1.5em;&quot;&gt;
-   &lt;&lt;toc-show-favorites&gt;&gt;
-   &lt;/div&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20150501030059678" creator="EricShulman" modified="20160118194659395" modifier="EricShulman" tags="image" title="TiddlyTools/TOC/Favorites.svg">
-<pre>&lt;svg class=&quot;tc-image-button&quot; version=&quot;1.1&quot; id=&quot;Capa_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;
-	 viewBox=&quot;0 0 27.759 27.759&quot; style=&quot;enable-background:new 0 0 27.759 27.759;&quot; xml:space=&quot;preserve&quot;&gt;
-&lt;g&gt;
-	&lt;g&gt;
-		&lt;path d=&quot;M13.695,20.648l-3.037-2.96c-0.478-0.466-0.653-1.175-0.446-1.811
-			c0.206-0.632,0.764-1.103,1.425-1.197l4.194-0.611l1.878-3.804c0.092-0.185,0.215-0.346,0.357-0.484V4.637
-			c0-0.226-0.09-0.442-0.25-0.602c-0.159-0.161-0.377-0.25-0.603-0.25L1.778,3.794c0-0.905,0.933-0.935,0.933-0.935h15.438
-			c0.47,0,0.852,0.382,0.852,0.852v5.601c0.095-0.016,0.188-0.027,0.287-0.027c0.426,0,0.823,0.15,1.134,0.413v-5.91
-			c0-1.314-1.065-2.379-2.378-2.379H2.379C1.064,1.409,0,2.474,0,3.788V23.97c0,1.314,1.064,2.38,2.379,2.38h11.07
-			c-0.388-0.4-0.567-0.958-0.472-1.521L13.695,20.648z M4.44,7.157h9.326v1.764H4.44V7.157z&quot;/&gt;
-		&lt;path d=&quot;M27.733,16.407c-0.062-0.191-0.228-0.332-0.429-0.362l-5.02-0.728L20.04,10.77
-			c-0.091-0.184-0.274-0.297-0.478-0.297s-0.388,0.113-0.478,0.297l-2.244,4.547l-5.018,0.728c-0.201,0.03-0.368,0.171-0.43,0.362
-			c-0.063,0.193-0.011,0.405,0.135,0.549l3.63,3.536L14.3,25.493c-0.034,0.197,0.048,0.4,0.212,0.519
-			c0.163,0.119,0.382,0.137,0.56,0.04l4.489-2.358l4.489,2.358c0.078,0.041,0.163,0.062,0.247,0.062c0.11,0,0.221-0.035,0.313-0.103
-			c0.165-0.118,0.247-0.321,0.213-0.519l-0.858-5.001l3.632-3.537C27.745,16.813,27.795,16.601,27.733,16.407z M23.024,19.927
-			c-0.126,0.122-0.185,0.299-0.154,0.471l0.722,4.211l-3.78-1.987c-0.079-0.04-0.164-0.062-0.248-0.062
-			c-0.085,0-0.171,0.021-0.247,0.062l-3.782,1.987l0.724-4.211c0.027-0.174-0.028-0.349-0.154-0.471l-3.06-2.982l4.229-0.615
-			c0.173-0.022,0.322-0.132,0.398-0.291l1.893-3.831l1.891,3.831c0.078,0.159,0.229,0.267,0.4,0.291l4.229,0.615L23.024,19.927z&quot;/&gt;
-	&lt;/g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-</pre>
-</div>
-<div created="20150426232927130" creator="EricShulman" modified="20160124201410566" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20160129082502054" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()           $:/config/TiddlyTools/TOC
-\define toc-favorites()        $:/config/TiddlyTools/TOC/favorites
 \define toc-template()         TiddlyTools/TOC/Template
 
 \define toc-open-all()         $(toc-config)$##OpenAll
 \define toc-branch-is-open()   $(toc-config)$##$(path)$/$(item)$
-\define toc-item-is-favorite() $(toc-favorites)$##$(item)$
 \define toc-item-is-branch()   [tag[$(item)$]] $(excluded)$ -[[$(item)$]] +[limit[1]]
 
 \define toc-show-item()        &lt;div class=&quot;tt-toc-item&quot;&gt;{{$(item)$||$(toc-template)$}}&lt;/div&gt;
 \define toc-show-branch()      &lt;$macrocall $name=&quot;toc-tree&quot; here=&lt;&lt;item&gt;&gt; exclude=&lt;&lt;excluded&gt;&gt; path=&lt;&lt;path&gt;&gt;/&gt;
-
-\define toc-emptystar()        &amp;#x2606;
-\define toc-filledstar()       &amp;#x2605;
 
 \define toc-all(here,exclude,path)
 &lt;!-- SHOW ENTIRE TREE FULLY EXPANDED (SIMPLE RECURSION) --&gt;
@@ -13067,36 +13101,6 @@ html .tc-story-river, .tc-sidebar-scrollable
 &lt;/span&gt;
 \end
 
-\define toc-show-favorites()
-&lt;!-- LIST ALL FAVORITES --&gt;
-&lt;$list filter=&quot;[title&lt;toc-favorites&gt;indexes[]]&quot;
-   emptyMessage=&quot;&quot;&quot;use &lt;&lt;toc-emptystar&gt;&gt; to add a topic&quot;&quot;&quot;&gt;
-   &lt;nobr&gt;&lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;&lt;/nobr&gt;&lt;br&gt;
-&lt;/$list&gt;
-\end
-
-\define toc-toggle-favorite(class:&quot;tc-btn-invisible&quot;)
-&lt;!-- ADD/REMOVE ITEM FROM FAVORITES --&gt;
-&lt;$vars item=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$set name=&quot;tiptext&quot; filter=&quot;[&lt;item&gt;has[caption]]&quot; value={{!!caption}} emptyValue={{!!title}}&gt;
-&lt;$reveal state=&lt;&lt;toc-item-is-favorite&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;toc-tip-addfav&gt;&gt;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&lt;&lt;now&gt;&gt;/&gt;
-      @@.tt-toc-favorite &lt;&lt;toc-emptystar&gt;&gt;@@
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;toc-item-is-favorite&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;&quot;&quot;$class$&quot;&quot;&quot; tooltip=&lt;&lt;toc-tip-remfav&gt;&gt;&gt;
-      &lt;$action-setfield    $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt; $value=&quot;&quot;/&gt;
-      &lt;$action-deletefield $tiddler=&lt;&lt;toc-favorites&gt;&gt; $index=&lt;&lt;item&gt;&gt;/&gt;
-      @@.tt-toc-favorite.show &lt;&lt;toc-filledstar&gt;&gt;@@
-   &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;/$set&gt;
-&lt;/$vars&gt;
-\end
-\define toc-tip-addfav() add '$(tiptext)$' to Favorites
-\define toc-tip-remfav() remove '$(tiptext)$' from Favorites
-
 @@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
 </div>
 <div created="20150502090132984" creator="EricShulman" modified="20151221070219449" modifier="EricShulman" module-type="widget" tags="" title="TiddlyTools/TOC/scrollhere.js" type="application/javascript">
@@ -13168,7 +13172,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150427123424930" creator="EricShulman" modified="20160126134553554" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/TOC/StyleSheet" type="">
+<div created="20150427123424930" creator="EricShulman" modified="20160129085201402" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/TOC/StyleSheet" type="">
 <pre>\define titleboxbg() {{$:/config/TiddlyTools##Background/TitleBox}}
 
 &lt;pre&gt;
@@ -13198,17 +13202,11 @@ exports.scrollhere = ScrollHereWidget;
 .tt-toc-link a       { color:black;   }
 .tt-toc-link a:hover { color:#5778d8; }
 
-/* FAVORITE BUTTON FADE-IN */
-.tt-toc-item       .tt-toc-favorite        { opacity:0.0; }
-.tt-toc-item:hover .tt-toc-favorite        { opacity:0.5; }
-.tt-toc-item:hover .tt-toc-favorite:hover  { opacity:1.0; }
-.tt-toc-item       .tt-toc-favorite.show   { opacity:1.0 !important; }
-
-/* FAVORITE BUTTON FADE-IN (FOR NAVBAR / TIDDLER TITLE)*/
-.tc-title       .tt-toc-favorite        { opacity:0.0; }
-.tc-title:hover .tt-toc-favorite        { opacity:0.5; }
-.tc-title:hover .tt-toc-favorite:hover  { opacity:1.0; }
-.tc-title       .tt-toc-favorite.show   { opacity:1.0 !important; }
+/* FAVORITE BUTTON FADE-IN (see TiddlyTools/Favorites/Macros) */
+.tt-toc-item       .tt-favorite        { opacity:0.0; }
+.tt-toc-item:hover .tt-favorite        { opacity:0.5; }
+.tt-toc-item:hover .tt-favorite:hover  { opacity:1.0; }
+.tt-toc-item       .tt-favorite.show   { opacity:1.0 !important; }
 
 /* TOGGLE BUTTON FADE-IN */
 .tt-toc-item       .tt-toc-toggle { opacity:0.3; }
@@ -13224,14 +13222,14 @@ exports.scrollhere = ScrollHereWidget;
 
 &lt;/pre&gt;</pre>
 </div>
-<div created="20151110042433614" creator="EricShulman" modified="20151227224125643" modifier="EricShulman" title="TiddlyTools/TOC/Template">
+<div created="20151110042433614" creator="EricShulman" modified="20160129084235972" modifier="EricShulman" title="TiddlyTools/TOC/Template">
 <pre>\define toc-maketooltip() view $(path)$/$(currentTiddler)$
 
-&lt;!-- SHOW AUTHOR TOOLS AND FAVORITE STAR --&gt;
+&lt;!-- SHOW AUTHOR TOOLS AND FAVORITE STAR (see TiddlyTools/Favorites/Macros) --&gt;
 @@display:block;float:right; 
 &amp;emsp;&lt;span class=&quot;tt-toc-tools authortools&quot;&gt;
    {{||$:/core/ui/Buttons/more-tiddler-actions}}
-&lt;/span&gt;&lt;&lt;toc-toggle-favorite&gt;&gt;@@
+&lt;/span&gt;&lt;&lt;toggle-favorite&gt;&gt;@@
 &lt;!-- SHOW BRANCH TOGGLE (UNLESS OPEN ALL) --&gt;
 &lt;$reveal state=&lt;&lt;toc-open-all&gt;&gt; type=&quot;nomatch&quot; text=&quot;yes&quot;&gt;
    &lt;&lt;toc-toggle-branch&gt;&gt;
@@ -13363,7 +13361,7 @@ The left side of the page is called the [[Story River|TheStoryRiver]], and is us
 
 The right side of the page is called the [[Sidebar|TheSidebar]], and provides access to all the controls and functions for managing the content and configuration of your ~TiddlyWiki.</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160129073548335" modifier="EricShulman" tags="Appendix" timestamp="16.01.28.233547" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160129085827034" modifier="EricShulman" tags="Appendix" timestamp="16.01.29.005822" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13821,7 +13819,8 @@ The right side of the page is called the [[Sidebar|TheSidebar]], and provides ac
 * 16.01.28.201956 TiddlyBook/Slidebars/Right - overflow-y=&quot;scroll&quot; instead of &quot;auto&quot; to avoid excess wordwrapping
 * 16.01.28.202511 fix startup sidebar tab
 * 16.01.28.232251 Slidebars/Bottom, Settings/Panel, Settings/Macros - added bottom bar, settings, font sizes for all bars
-* 16.01.28.233547 Bottom/Stylesheet - fix hover toggle handling, Transitions - moved wrapper transitions</pre>
+* 16.01.28.233547 Bottom/Stylesheet - fix hover toggle handling, Transitions - moved wrapper transitions
+* 16.01.29.005822 refactor Favorites from TOC</pre>
 </div>
 <div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20150514225032843" modifier="EricShulman" status="draft" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
