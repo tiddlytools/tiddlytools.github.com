@@ -269,6 +269,8 @@ Error message and password prompt
 
 <li>MyBook</li>
 
+<li>New Tiddler</li>
+
 <li>PartsList</li>
 
 <li>PartsList/Contents</li>
@@ -425,21 +427,29 @@ Error message and password prompt
 
 <li>TiddlyTools/Settings/Saver</li>
 
-<li>TiddlyTools/SlideBars/AuthorTools</li>
+<li>TiddlyTools/SlideBars/Bars/AuthorTools</li>
 
-<li>TiddlyTools/SlideBars/Bottom</li>
+<li>TiddlyTools/SlideBars/Bars/Bottom</li>
 
-<li>TiddlyTools/SlideBars/BottomLeft</li>
+<li>TiddlyTools/SlideBars/Bars/BottomLeft</li>
 
-<li>TiddlyTools/SlideBars/BottomRight</li>
+<li>TiddlyTools/SlideBars/Bars/BottomRight</li>
 
-<li>TiddlyTools/SlideBars/CloseOthers</li>
+<li>TiddlyTools/SlideBars/Bars/Left</li>
 
-<li>TiddlyTools/SlideBars/Left</li>
+<li>TiddlyTools/SlideBars/Bars/Right</li>
 
-<li>TiddlyTools/SlideBars/Left/Pin</li>
+<li>TiddlyTools/SlideBars/Bars/Top</li>
 
-<li>TiddlyTools/SlideBars/Left/Toggle</li>
+<li>TiddlyTools/SlideBars/Bars/TopLeft</li>
+
+<li>TiddlyTools/SlideBars/Bars/TopRight</li>
+
+<li>TiddlyTools/SlideBars/Buttons/CloseOthers</li>
+
+<li>TiddlyTools/SlideBars/Buttons/Pin</li>
+
+<li>TiddlyTools/SlideBars/Buttons/Toggle</li>
 
 <li>TiddlyTools/SlideBars/Panels/AuthorTools</li>
 
@@ -449,21 +459,9 @@ Error message and password prompt
 
 <li>TiddlyTools/SlideBars/Panels/TableOfContents</li>
 
-<li>TiddlyTools/SlideBars/Right</li>
-
 <li>TiddlyTools/SlideBars/Styles</li>
 
 <li>TiddlyTools/SlideBars/Stylesheet</li>
-
-<li>TiddlyTools/SlideBars/Top</li>
-
-<li>TiddlyTools/SlideBars/TopLeft</li>
-
-<li>TiddlyTools/SlideBars/TopRight</li>
-
-<li>TiddlyTools/SlideBars/Transitions</li>
-
-<li>TiddlyTools/SlideBars/Transitions/Debug</li>
 
 <li>TiddlyTools/SlideBars/Tray</li>
 
@@ -531,7 +529,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20160120121927721" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[VersionInfo]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -601,7 +599,7 @@ Error message and password prompt
     &quot;Legal/TermsOfUse&quot;: &quot;08:52, 4th February 2016&quot;
 }</pre>
 </div>
-<div created="20160123062407850" creator="EricShulman" modified="20160204210752636" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
+<div created="20160123062407850" creator="EricShulman" modified="20160218232320531" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
 <pre>{
     &quot;matchinput&quot;: &quot;yes&quot;,
     &quot;matchtitles&quot;: &quot;yes&quot;,
@@ -610,19 +608,19 @@ Error message and password prompt
     &quot;matchtext&quot;: &quot;no&quot;,
     &quot;matchcustom&quot;: &quot;no&quot;,
     &quot;customfilter&quot;: &quot;-[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[images/]] -[prefix[TiddlyTools]] -[prefix[TiddlyBook]]&quot;,
-    &quot;showhidden&quot;: &quot;no&quot;,
-    &quot;showsystem&quot;: &quot;no&quot;,
-    &quot;showshadows&quot;: &quot;no&quot;,
+    &quot;showhidden&quot;: &quot;yes&quot;,
+    &quot;showsystem&quot;: &quot;yes&quot;,
+    &quot;showshadows&quot;: &quot;yes&quot;,
     &quot;sortlist&quot;: &quot;no&quot;,
     &quot;sortfilter&quot;: &quot;[!sort[modified]]&quot;,
     &quot;usetemplate&quot;: &quot;yes&quot;,
     &quot;itemtemplate&quot;: &quot;&lt;&lt;t&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20160218000346009" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre>{
     &quot;OpenAll&quot;: &quot;no&quot;
 }</pre>
@@ -7363,12 +7361,33 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/SlideBars/Panels/TableOfContents]]</pre>
+# [[Dashboard/Macros]]
+# [[TiddlyBook/SlideBars/Panels/TableOfContents]]
+# [[TiddlyBook/SlideBars/TopLeft]]
+# [[TiddlyTools/SlideBars/Bars/AuthorTools]]
+# [[TiddlyTools/SlideBars/Bars/Bottom]]
+# [[TiddlyTools/SlideBars/Bars/BottomLeft]]
+# [[TiddlyTools/SlideBars/Bars/BottomRight]]
+# [[TiddlyTools/SlideBars/Bars/Left]]
+# [[TiddlyTools/SlideBars/Bars/Right]]
+# [[TiddlyTools/SlideBars/Bars/Top]]
+# [[TiddlyTools/SlideBars/Bars/TopLeft]]
+# [[TiddlyTools/SlideBars/Bars/TopRight]]
+# [[TiddlyTools/SlideBars/Buttons/CloseOthers]]
+# [[TiddlyTools/SlideBars/Buttons/Pin]]
+# [[TiddlyTools/SlideBars/Buttons/Toggle]]
+# [[TiddlyTools/SlideBars/Panels/AuthorTools]]
+# [[TiddlyTools/SlideBars/Panels/Goto]]
+# [[TiddlyTools/SlideBars/Panels/Settings]]
+# [[TiddlyTools/SlideBars/Panels/TableOfContents]]
+# [[TiddlyTools/SlideBars/Styles]]
+# [[TiddlyTools/SlideBars/Stylesheet]]
+# [[TiddlyTools/SlideBars/Tray]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20160130200023003" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20160130200023003" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20160217104029478" creator="EricShulman" modified="20160217104029478" modifier="EricShulman" title="$:/state/tab--106941589">
@@ -7428,10 +7447,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20160130200215411" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/temp/advancedsearch">
+<div created="20160130200215411" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
-<div created="20160130195918643" creator="EricShulman" index="" modified="20160218000346009" modifier="EricShulman" title="$:/temp/goto/input">
+<div created="20160130195918643" creator="EricShulman" index="" modified="20160218233149834" modifier="EricShulman" title="$:/temp/goto/input">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -7451,10 +7470,10 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20160130215902773" creator="EricShulman" modified="20160217233203503" modifier="EricShulman" title="$:/temp/notify">
 <pre>settings loaded from 'TiddlyTools/Settings/Defaults'</pre>
 </div>
-<div created="20160130200213114" creator="EricShulman" modified="20160218000345232" modifier="EricShulman" title="$:/temp/revnote">
-<pre>simplify SlideBars/Panels/TableOfContents to avoid CSS dependencies</pre>
+<div created="20160130200213114" creator="EricShulman" modified="20160218233147249" modifier="EricShulman" title="$:/temp/revnote">
+<pre>refactor SlideBars names. pin/toggle buttons</pre>
 </div>
-<div created="20160130200215411" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/temp/search">
+<div created="20160130200215411" creator="EricShulman" modified="20160218233149833" modifier="EricShulman" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20160216070555974" creator="EricShulman" modified="20160217194938781" modifier="EricShulman" title="$:/temp/slidebars/debug/showzones">
@@ -7583,7 +7602,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div modified="20151207213712141" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20160218000346008" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20160218233149834" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="Appendix" created="20150530232329990" creator="EricShulman" icon="$:/core/images/info-button" list-after=" " modified="20151230212459875" modifier="EricShulman" tags="MyBook" title="Appendix">
@@ -7638,7 +7657,7 @@ This section contains technical and legal information about this book.
 &lt;/div&gt;
 </pre>
 </div>
-<div created="20151021203705648" modified="20160212233256645" tags="$:/tags/Macro" title="Dashboard/Macros">
+<div created="20151021203705648" creator="EricShulman" modified="20160218230229985" modifier="EricShulman" tags="$:/tags/Macro" title="Dashboard/Macros">
 <pre>\define config()   $:/config/TiddlyTools
 \define pinned()   $(config)$##$(barname)$
 \define pintip()   pin $(barname)$ (keep visible)
@@ -7660,7 +7679,7 @@ This section contains technical and legal information about this book.
         &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;barname&gt;&gt; $value=&quot;yes&quot;/&gt;
       &lt;/$button&gt;
    &lt;/$reveal&gt;
-   {{TiddlyTools/SlideBars/CloseOthers}}
+   {{TiddlyTools/SlideBars/Buttons/CloseOthers}}
 &lt;/$reveal&gt;
 &lt;$reveal text=&quot;x$(barname)$x&quot; type=&quot;match&quot; default=&quot;xx&quot;&gt;
    &lt;$reveal state=&quot;&quot;&quot;$:/state/$tid$&quot;&quot;&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
@@ -8418,6 +8437,12 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 <pre>* Tag topics with &quot;&lt;&lt;currentTiddler&gt;&gt;&quot; to add them to the top-level of the book.
 * Edit the ``list`` field in //this// tiddler to define the order of the top-level topics.</pre>
 </div>
+<div created="20160218232336309" creator="EricShulman" modified="20160218232340435" modifier="EricShulman" tags="" title="New Tiddler">
+<pre>&lt;$button&gt; go
+&lt;$action-deletetiddler $filter=&quot;[prefix[TiddlyTools/SlideBars]]&quot;/&gt;
+&lt;/$button&gt;
+</pre>
+</div>
 <div caption="Parts List" created="20151218064105590" creator="EricShulman" icon="$:/core/images/import-button" list-after="" modified="20151231053941804" modifier="EricShulman" tags="Appendix" title="PartsList">
 <pre>&lt;$macrocall $name=&quot;tt-viewall&quot; here=&lt;&lt;currentTiddler&gt;&gt;/&gt;</pre>
 </div>
@@ -8547,7 +8572,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150427050900338" creator="EricShulman" modified="20160130090048980" modifier="EricShulman" title="TiddlyBook/SlideBars/Panels/TableOfContents">
+<div created="20150427050900338" creator="EricShulman" modified="20160218225447714" modifier="EricShulman" title="TiddlyBook/SlideBars/Panels/TableOfContents">
 <pre>&lt;style&gt;
 /* FONT SIZES */
 .tt-tiddlybook-toc-titlebox    { font-size:100%; line-height:110%; }
@@ -8577,7 +8602,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;!-- TITLEBOX --&gt;
 &lt;div class=&quot;tt-tiddlybook-toc-titlebox OFF-tt-shadowbox inset&quot;&gt;
    &lt;nobr&gt;
-   @@float:right; {{TiddlyTools/SlideBars/Left/Pin}}@@
+   @@float:right; {{TiddlyTools/SlideBars/Buttons/Pin}}@@
    @@float:left;  &lt;&lt;toc-toggle-all class:&quot;tt-button&quot;&gt;&gt;@@
    @@.larger.center ''{{$:/SiteTitle}}''&lt;br&gt;@@
    @@.smallest.center {{$:/SiteSubtitle}}@@
@@ -8676,9 +8701,10 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/div&gt;
 @@</pre>
 </div>
-<div created="20150428010947376" creator="EricShulman" modified="20160204063547174" modifier="EricShulman" tags="$:/tags/TopLeftSlideBar" title="TiddlyBook/SlideBars/TopLeft">
-<pre>&lt;nobr&gt;
-{{||TiddlyTools/SlideBars/Left/Toggle}}
+<div created="20150428010947376" creator="EricShulman" modified="20160218230020881" modifier="EricShulman" tags="$:/tags/TopLeftSlideBar" title="TiddlyBook/SlideBars/TopLeft">
+<pre>\define barname() LeftBar
+&lt;nobr&gt;
+{{||TiddlyTools/SlideBars/Buttons/Toggle}}
 &amp;nbsp;
 {{||TiddlyTools/Buttons/Home}}
 &amp;nbsp;
@@ -11096,7 +11122,7 @@ YellowGreen
 &lt;&lt;clear &quot;{{$:/core/images/close-all-button}}&quot;&gt;&gt;
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20160206045629259" creator="EricShulman" modified="20160217092016485" modifier="EricShulman" title="TiddlyTools/SlideBars/AuthorTools">
+<div created="20160206045629259" creator="EricShulman" modified="20160218231750205" modifier="EricShulman" title="TiddlyTools/SlideBars/Bars/AuthorTools">
 <pre>\define config()       $:/config/TiddlyTools
 \define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;&gt;#eee&lt;/$transclude&gt;
 \define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
@@ -11158,7 +11184,7 @@ YellowGreen
 
 {{TiddlyTools/SlideBars/Tray}}</pre>
 </div>
-<div created="20160202073342303" creator="EricShulman" modified="20160217195624811" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Bottom">
+<div created="20160202073342303" creator="EricShulman" modified="20160218231721149" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Bars/Bottom">
 <pre>\define config()       $:/config/TiddlyTools
 \define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
 \define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
@@ -11210,7 +11236,7 @@ YellowGreen
 
 {{TiddlyTools/SlideBars/Tray}}</pre>
 </div>
-<div created="20160203200159738" creator="EricShulman" modified="20160217162614561" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/BottomLeft">
+<div created="20160203200159738" creator="EricShulman" modified="20160218231731229" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/Bars/BottomLeft">
 <pre>\define config()       $:/config/TiddlyTools
 \define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
 \define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
@@ -11264,7 +11290,7 @@ YellowGreen
 
 {{TiddlyTools/SlideBars/Tray}}</pre>
 </div>
-<div created="20160203195712156" creator="EricShulman" modified="20160217162627241" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/BottomRight">
+<div created="20160203195712156" creator="EricShulman" modified="20160218231740757" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/Bars/BottomRight">
 <pre>\define config()       $:/config/TiddlyTools
 \define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
 \define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
@@ -11316,17 +11342,7 @@ YellowGreen
 
 {{TiddlyTools/SlideBars/Tray}}</pre>
 </div>
-<div created="20160207095128200" modified="20160208055604056" title="TiddlyTools/SlideBars/CloseOthers">
-<pre>&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;close other slidebars&quot;&gt;
-   {{$:/core/images/close-others-button}}
-   &lt;$list filter=&quot;TopLeftBar TopBar TopRightBar LeftBar RightBar BottomLeftBar BottomBar BottomRightBar AuthorToolBar&quot;&gt;
-      &lt;$reveal text=&lt;&lt;currentTiddler&gt;&gt; type=&quot;nomatch&quot; default=&lt;&lt;barname&gt;&gt;&gt;
-         &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&lt;&lt;currentTiddler&gt;&gt;  $value=&quot;no&quot;/&gt;
-      &lt;/$reveal&gt;
-   &lt;/$list&gt;
-&lt;/$button&gt;</pre>
-</div>
-<div created="20160202082823082" creator="EricShulman" modified="20160217232602752" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Left">
+<div created="20160202082823082" creator="EricShulman" modified="20160218231705469" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Bars/Left">
 <pre>\define config()       $:/config/TiddlyTools
 \define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
 \define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
@@ -11379,36 +11395,262 @@ YellowGreen
 
 {{TiddlyTools/SlideBars/Tray}}</pre>
 </div>
-<div created="20160109060109859" creator="EricShulman" modified="20160126113719800" modifier="EricShulman" title="TiddlyTools/SlideBars/Left/Pin">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
+<div created="20160202084149670" creator="EricShulman" modified="20160218231713078" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Bars/Right">
+<pre>\define config()       $:/config/TiddlyTools
+\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
+\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+\define toolbarsize()  &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
 
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;pin Table of Contents (keep visible)&quot;&gt;
-      {{$:/core/images/chevron-right}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state=&lt;&lt;leftbar&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;unpin Table of Contents (auto-hide)&quot;&gt;
-      {{$:/core/images/chevron-left}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   &lt;/$button&gt;
+\define barID()        right
+\define barname()      RightBar
+\define barclass()     tt-right-slidebar
+\define bartag()       $:/tags/RightSlideBar
+\define barlabel()     {{$(config)$##$(barname)$/Label}}
+\define barpin()       &lt;div class=&quot;rotate-right-90&quot;&gt;&lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;&lt;/div&gt;
+\define barunpin()     &lt;div class=&quot;rotate-right-90&quot;&gt;&lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;&lt;/div&gt;
+
+\define barstay()      $(config)$##$(barname)$
+\define barhover()     $(config)$##$(barname)$/Hover
+\define barsize()      {{$(config)$##$(barname)$/Size}}
+\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
+
+\define bartop()       calc($(Vmargin)$ * ($(toolbarsize)$ / 100))
+\define barleft()      auto
+\define barbottom()    $(Vmargin)$
+\define barright()     0em
+\define barwidth()     $(Hmargin)$
+\define barheight()    auto
+\define barmin()       1em
+\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
+\define barz()         2
+\define barzhover()    1002
+
+\define traytop()      0em
+\define trayleft()     auto
+\define traybottom()   0em
+\define trayright()    $(Hmargin)$
+\define traywidth()    $(barsize)$
+\define trayheight()   100%
+\define traymin()      1em
+\define traymax()      80vw
+\define traymargin()   0em
+
+\define trayhide()     opacity:0; margin-right:-100vw;
+\define trayshow()     opacity:1; margin-right:0vw;
+
+\define panelstyle()   position:absolute;right:0;top:50%;transform:translateY(-50%);-webkit-transform:translateY(-50%); width:max-content; max-width:80vw; height:100%;
+
+\define outerclass()   tt-shadowbox left
+\define outerstyle()   height:100%;
+\define innerclass()   tt-shadowbox inset
+\define innerstyle()   height:100%; max-height:80vh; overflow-x:auto; overflow-y:scroll;
+
+{{TiddlyTools/SlideBars/Tray}}</pre>
+</div>
+<div created="20160124035409515" creator="EricShulman" modified="20160218231625733" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Bars/Top">
+<pre>\define config()       $:/config/TiddlyTools
+\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
+\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+
+\define barID()        top
+\define barname()      TopBar
+\define barclass()     tt-top-slidebar
+\define bartag()       $:/tags/TopSlideBar
+\define barlabel()     {{$(config)$##$(barname)$/Label}}
+\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+
+\define barstay()      $(config)$##$(barname)$
+\define barhover()     $(config)$##$(barname)$/Hover
+\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
+\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
+
+\define bartop()       0em
+\define barleft()      calc(50% - ($(barwidth)$ / 2))
+\define barbottom()    auto
+\define barright()     auto
+\define barwidth()     $(barsize)$
+\define barheight()    $(Vmargin)$
+\define barmin()       1em
+\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
+\define barz()         5
+\define barzhover()    1005
+
+\define traytop()      calc($(bartop)$ + $(barheight)$)
+\define trayleft()     50%; transform:translateX(-50%); -webkit-transform:translateX(-50%)
+\define traybottom()   auto
+\define trayright()    auto
+\define traywidth()    {{$(config)$##$(barname)$/Size}}
+\define trayheight()   auto
+\define traymin()      15em
+\define traymax()      50vw
+\define traymargin()   0em
+
+\define trayhide()     opacity:0; margin-top:-100vh;
+\define trayshow()     opacity:1; margin-top:0vh;
+
+\define panelstyle()   position:absolute;top:0;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);width:max-content;
+
+\define outerclass()   tt-shadowbox left
+\define outerstyle()   max-height:80vh;max-width:80vw;
+\define innerclass()   tt-shadowbox inset
+\define innerstyle()   max-height:70vh;overflow-y:scroll;
+
+{{TiddlyTools/SlideBars/Tray}}</pre>
+</div>
+<div created="20160203193000882" creator="EricShulman" modified="20160218231643669" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/Bars/TopLeft">
+<pre>\define config()       $:/config/TiddlyTools
+\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
+\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+
+\define barID()        topleft
+\define barname()      TopLeftBar
+\define barclass()     tt-topleft-slidebar
+\define bartag()       $:/tags/TopLeftSlideBar
+\define barlabel()     {{$(config)$##$(barname)$/Label}}
+\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&lt;!--&amp;#x21d8;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&lt;!--  &amp;#x21d6;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+
+\define barstay()      $(config)$##$(barname)$
+\define barhover()     $(config)$##$(barname)$/Hover
+\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
+\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
+
+\define bartop()       0em
+\define barleft()      0em
+\define barbottom()    auto
+\define barright()     auto
+\define barwidth()     $(barsize)$
+\define barheight()    $(Vmargin)$
+\define barmin()       1em
+\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
+\define barz()         999
+\define barzhover()    999
+
+\define traytop()      0em
+\define trayleft()     $(Hmargin)$
+\define traybottom()   auto
+\define trayright()    auto
+\define traywidth()    auto
+\define trayheight()   auto
+\define traymin()      fit-content
+\define traymax()      auto
+\define traymargin()   0em
+
+\define trayhide()     opacity:1; margin-top:calc(-1 * $(Vmargin)$ * ({{$(config)$##FontSize/ToolBar}} / 100)); margin-left:-$(Hmargin)$;
+\define trayshow()     opacity:1; margin-top:0vh;   margin-left:0vw;
+
+\define panelstyle()   position:relative;top:0;left:0;
+
+\define outerclass()   tt-shadowbox left nowrap
+\define outerstyle()   min-width:$(traymin)$; max-width:$(traymax)$;
+\define innerclass()   tt-shadowbox inset center smaller
+\define innerstyle()   min-width:calc($(traymin)$ - 1em); max-width:calc($(traymax)$ - 1em);
+ 
+{{TiddlyTools/SlideBars/Tray}}</pre>
+</div>
+<div created="20160203195151085" creator="EricShulman" modified="20160218231656477" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/Bars/TopRight">
+<pre>\define config()       $:/config/TiddlyTools
+\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
+\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
+
+\define barID()        topright
+\define barname()      TopRightBar
+\define barclass()     tt-topright-slidebar
+\define bartag()       $:/tags/TopRightSlideBar
+\define barlabel()     {{$(config)$##$(barname)$/Label}}
+\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&lt;!--&amp;#x21d9;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&lt;!--  &amp;#x21d7;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
+
+\define barstay()      $(config)$##$(barname)$
+\define barhover()     $(config)$##$(barname)$/Hover
+\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
+\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
+
+\define bartop()       0em
+\define barleft()      auto
+\define barbottom()    auto
+\define barright()     0em
+\define barwidth()     $(barsize)$
+\define barheight()    $(Vmargin)$
+\define barmin()       1em
+\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
+\define barz()         999
+\define barzhover()    999
+
+\define traytop()      0em
+\define trayleft()     auto
+\define traybottom()   auto
+\define trayright()    $(Hmargin)$
+\define traywidth()    auto
+\define trayheight()   auto
+\define traymin()      fit-content
+\define traymax()      80vw
+\define traymargin()   0em; text-align:right;
+
+\define trayhide()     opacity:1; margin-top:calc(-1 * $(Vmargin)$ * ({{$(config)$##FontSize/ToolBar}} / 100)); margin-right:-$(Hmargin)$;
+\define trayshow()     opacity:1; margin-top:0vh;   margin-right:0vw;
+
+\define panelstyle()   position:relative;top:0;right:0;
+
+\define outerclass()   tt-shadowbox left
+\define outerstyle()   min-width:$(traymin)$;max-width:calc($(traymax)$);margin:0 auto;
+\define innerclass()   tt-shadowbox inset
+\define innerstyle()   min-width:calc($(traymin)$ - 1em);max-width:calc($(traymax)$ - 1em);
+
+{{TiddlyTools/SlideBars/Tray}}</pre>
+</div>
+<div created="20160207095128200" creator="EricShulman" modified="20160218230257977" modifier="EricShulman" title="TiddlyTools/SlideBars/Buttons/CloseOthers">
+<pre>&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;close other slidebars&quot;&gt;
+   {{$:/core/images/close-others-button}}
+   &lt;$list filter=&quot;TopLeftBar TopBar TopRightBar LeftBar RightBar BottomLeftBar BottomBar BottomRightBar AuthorToolBar&quot;&gt;
+      &lt;$reveal text=&lt;&lt;currentTiddler&gt;&gt; type=&quot;nomatch&quot; default=&lt;&lt;barname&gt;&gt;&gt;
+         &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot; $index=&lt;&lt;currentTiddler&gt;&gt;  $value=&quot;no&quot;/&gt;
+      &lt;/$reveal&gt;
+   &lt;/$list&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div created="20160109060109859" creator="EricShulman" modified="20160218225751627" modifier="EricShulman" title="TiddlyTools/SlideBars/Buttons/Pin">
+<pre>\define config()   $:/config/TiddlyTools
+\define pinned()   $(config)$##$(barname)$
+\define pintip()   pin $(barname)$ (keep visible)
+\define unpintip() unpin $(barname)$
+
+&lt;$reveal text=&quot;x$(barname)$x&quot; type=&quot;nomatch&quot; default=&quot;xx&quot;&gt;
+   &lt;$reveal state=&lt;&lt;pinned&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+      &lt;$button tooltip=&lt;&lt;unpintip&gt;&gt; class=&quot;tt-button&quot;&gt;&lt;div style=&quot;display:inline-block;width:1em;&quot;&gt;📌&lt;/div&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;barname&gt;&gt; $value=&quot;no&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;pinned&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
+      &lt;$button tooltip=&lt;&lt;pintip&gt;&gt; class=&quot;tt-button&quot;&gt;&lt;div style=&quot;display:inline-block;width:1em;&quot;&gt;&amp;#x21b9;&lt;/div&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;barname&gt;&gt; $value=&quot;yes&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20150419203816208" creator="EricShulman" modified="20160126113803416" modifier="EricShulman" title="TiddlyTools/SlideBars/Left/Toggle">
-<pre>\define config()  $:/config/TiddlyTools
-\define leftbar() $(config)$##LeftBar
+<div created="20160218225855044" creator="EricShulman" modified="20160218225947666" modifier="EricShulman" tags="" title="TiddlyTools/SlideBars/Buttons/Toggle">
+<pre>\define config()   $:/config/TiddlyTools
+\define pinned()   $(config)$##$(barname)$
+\define pintip()   pin $(barname)$ (keep visible)
+\define unpintip() unpin $(barname)$
 
-&lt;$reveal type=&quot;nomatch&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;hide Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;no&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;&lt;$reveal type=&quot;match&quot; text=&quot;no&quot; state=&lt;&lt;leftbar&gt;&gt;&gt;
-&lt;$button class=&quot;tt-button&quot; tooltip=&quot;show Table of Contents&quot;&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;LeftBar&quot; $value=&quot;yes&quot;/&gt;
-   {{$:/core/images/menu-button}}
-&lt;/$button&gt;&lt;/$reveal&gt;</pre>
+&lt;$reveal text=&quot;x$(barname)$x&quot; type=&quot;nomatch&quot; default=&quot;xx&quot;&gt;
+   &lt;$reveal state=&lt;&lt;pinned&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+      &lt;$button tooltip=&lt;&lt;unpintip&gt;&gt; class=&quot;tt-button&quot;&gt;{{$:/core/images/menu-button}}
+         &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;barname&gt;&gt; $value=&quot;no&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;pinned&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
+      &lt;$button tooltip=&lt;&lt;pintip&gt;&gt; class=&quot;tt-button&quot;&gt;{{$:/core/images/menu-button}}
+        &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;barname&gt;&gt; $value=&quot;yes&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;</pre>
 </div>
 <div caption="Author Tools" created="20160130075612572" creator="EricShulman" modified="20160217101712529" modifier="EricShulman" tags="$:/tags/BottomSlideBar" title="TiddlyTools/SlideBars/Panels/AuthorTools">
 <pre>\define config() $:/config/TiddlyTools
@@ -11608,61 +11850,12 @@ YellowGreen
 <div created="20160217230214074" creator="EricShulman" modified="20160218000047250" modifier="EricShulman" tags="$:/tags/LeftSlideBar_OFF" title="TiddlyTools/SlideBars/Panels/TableOfContents">
 <pre>@@display:block;border:1px solid;border-radius:0.5em;background:#eee;padding:1em;width:max-content;max-width:80vw;height:100%;{{TableOfContents}}@@</pre>
 </div>
-<div created="20160202084149670" creator="EricShulman" modified="20160217233126822" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Right">
-<pre>\define config()       $:/config/TiddlyTools
-\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
-\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-\define toolbarsize()  &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;FontSize/ToolBar&quot;&gt;100&lt;/$transclude&gt;
+<div created="20160202222243119" creator="EricShulman" modified="20160218231246495" modifier="EricShulman" tags="" title="TiddlyTools/SlideBars/Styles">
+<pre>\define slidebar-in()   cubic-bezier(0.165, 0.84, 0.44, 1)
+\define slidebar-out()  ease-out
 
-\define barID()        right
-\define barname()      RightBar
-\define barclass()     tt-right-slidebar
-\define bartag()       $:/tags/RightSlideBar
-\define barlabel()     {{$(config)$##$(barname)$/Label}}
-\define barpin()       &lt;div class=&quot;rotate-right-90&quot;&gt;&lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;&lt;/div&gt;
-\define barunpin()     &lt;div class=&quot;rotate-right-90&quot;&gt;&lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;&lt;/div&gt;
-
-\define barstay()      $(config)$##$(barname)$
-\define barhover()     $(config)$##$(barname)$/Hover
-\define barsize()      {{$(config)$##$(barname)$/Size}}
-\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
-
-\define bartop()       calc($(Vmargin)$ * ($(toolbarsize)$ / 100))
-\define barleft()      auto
-\define barbottom()    $(Vmargin)$
-\define barright()     0em
-\define barwidth()     $(Hmargin)$
-\define barheight()    auto
-\define barmin()       1em
-\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
-\define barz()         2
-\define barzhover()    1002
-
-\define traytop()      0em
-\define trayleft()     auto
-\define traybottom()   0em
-\define trayright()    $(Hmargin)$
-\define traywidth()    $(barsize)$
-\define trayheight()   100%
-\define traymin()      1em
-\define traymax()      80vw
-\define traymargin()   0em
-
-\define trayhide()     opacity:0; margin-right:-100vw;
-\define trayshow()     opacity:1; margin-right:0vw;
-
-\define panelstyle()   position:absolute;right:0;top:50%;transform:translateY(-50%);-webkit-transform:translateY(-50%); width:max-content; max-width:80vw; height:100%;
-
-\define outerclass()   tt-shadowbox left
-\define outerstyle()   height:100%;
-\define innerclass()   tt-shadowbox inset
-\define innerstyle()   height:100%; max-height:80vh; overflow-x:auto; overflow-y:scroll;
-
-{{TiddlyTools/SlideBars/Tray}}</pre>
-</div>
-<div created="20160202222243119" creator="EricShulman" modified="20160217195415276" modifier="EricShulman" tags="" title="TiddlyTools/SlideBars/Styles">
-<pre>&lt;pre&gt;/* SLIDEBAR */
+&lt;pre&gt;
+/* SLIDEBAR */
 .&lt;&lt;barclass&gt;&gt;
    { position:fixed; z-index:999;
      top:&lt;&lt;bartop&gt;&gt;; left:&lt;&lt;barleft&gt;&gt;; bottom:&lt;&lt;barbottom&gt;&gt;; right:&lt;&lt;barright&gt;&gt;;
@@ -11689,6 +11882,14 @@ YellowGreen
 .&lt;&lt;barclass&gt;&gt; .tt-shadowbox:not(.inset)
    { font-size:calc(&lt;&lt;barfontsize&gt;&gt;); background:&lt;&lt;barbg&gt;&gt;; width:&lt;&lt;traywidth&gt;&gt;; }
 
+/* DEBUG: SHOW HOVER ZONES */
+/* &lt;$checkbox tiddler=&quot;$:/temp/slidebars/debug/showzones&quot; field=&quot;text&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; default=&quot;no&quot;&gt;show hover zones&lt;/$checkbox&gt; */
+&lt;$reveal state=&quot;$:/temp/slidebars/debug/showzones&quot; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+   .&lt;&lt;barclass&gt;&gt;                         { background:rgba(127,127,255,0.2); }
+   .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { background:rgba(127,255,127,0.2); }
+   .&lt;&lt;barclass&gt;&gt;:hover                   { background:rgba(255,127,127,0.2); }
+&lt;/$reveal&gt;
+
 &lt;$reveal state=&lt;&lt;barstay&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
    /* STICKY (STAY) PANEL STYLES - ALWAYS SHOW, BRING TO FRONT ON HOVER */
    .&lt;&lt;barclass&gt;&gt;                     { z-index:&lt;&lt;barz&gt;&gt;; } /* -1=BEHIND TIDDLERS, 999=ON TOP */
@@ -11705,8 +11906,23 @@ YellowGreen
    &lt;$reveal state=&lt;&lt;barhover&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
       /* HOVER - SHOW ON MOUSEOVER */
       .&lt;&lt;barclass&gt;&gt;:hover .tt-slidebar-tray { &lt;&lt;trayshow&gt;&gt; }
-
-      {{TiddlyTools/SlideBars/Transitions}}
+      /* DEBUG: ENABLE/DISABLE TRANSITIONS */
+      /* &lt;$checkbox tiddler=&quot;$:/temp/slidebars/debug/transitions&quot; field=&quot;text&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot; default=&quot;yes&quot;&gt;disable transitions&lt;/$checkbox&gt; */
+      &lt;$reveal state=&quot;$:/temp/slidebars/debug/transitions&quot; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
+         /* TRANSITIONS */
+         /* slidebar-in  = ease-in */
+         /* slidebar-out = cubic-bezier(0.165, 0.84, 0.44, 1) http://easings.net/#easeOutQuart */
+         .&lt;&lt;barclass&gt;&gt;                         { transition: z-index 0s 1s, width 0s 1s; }
+         .&lt;&lt;barclass&gt;&gt;:hover                   { transition: z-index 0s 0s, width 0s 0s; }
+         @media (pointer:coarse) { /* &quot;FAT FINGER&quot; TOUCH SCREENS (SLIDE-IN, POP-OUT) */
+            .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { transition: margin 0s 0s   &lt;&lt;slidebar-out&gt;&gt;, opacity 0s 0s;   }
+            .&lt;&lt;barclass&gt;&gt;:hover .tt-slidebar-tray { transition: margin 1s 0.5s &lt;&lt;slidebar-in&gt;&gt;,  opacity 1s 0.5s; }
+         }
+         @media (pointer:fine) { /* DESKTOP/MOUSE (SLIDE-IN, SLIDE-OUT) */
+            .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { transition: margin 1s 0s   &lt;&lt;slidebar-out&gt;&gt;, opacity 2s 0s;   }
+            .&lt;&lt;barclass&gt;&gt;:hover .tt-slidebar-tray { transition: margin 1s 0.5s &lt;&lt;slidebar-in&gt;&gt;,  opacity 1s 0.5s; }
+         }
+      &lt;/$reveal&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 &lt;/pre&gt;</pre>
@@ -11730,209 +11946,6 @@ YellowGreen
    .tt-bottomright-slidebar       .tt-slidebar-button { text-align:right; padding-right:1em; }
 
 &lt;/pre&gt;</pre>
-</div>
-<div created="20160124035409515" creator="EricShulman" modified="20160217225050036" modifier="EricShulman" tags="$:/tags/PageTemplate $:/tags/SlideBar" title="TiddlyTools/SlideBars/Top">
-<pre>\define config()       $:/config/TiddlyTools
-\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
-\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-
-\define barID()        top
-\define barname()      TopBar
-\define barclass()     tt-top-slidebar
-\define bartag()       $:/tags/TopSlideBar
-\define barlabel()     {{$(config)$##$(barname)$/Label}}
-\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-
-\define barstay()      $(config)$##$(barname)$
-\define barhover()     $(config)$##$(barname)$/Hover
-\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
-\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
-
-\define bartop()       0em
-\define barleft()      calc(50% - ($(barwidth)$ / 2))
-\define barbottom()    auto
-\define barright()     auto
-\define barwidth()     $(barsize)$
-\define barheight()    $(Vmargin)$
-\define barmin()       1em
-\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
-\define barz()         5
-\define barzhover()    1005
-
-\define traytop()      calc($(bartop)$ + $(barheight)$)
-\define trayleft()     50%; transform:translateX(-50%); -webkit-transform:translateX(-50%)
-\define traybottom()   auto
-\define trayright()    auto
-\define traywidth()    {{$(config)$##$(barname)$/Size}}
-\define trayheight()   auto
-\define traymin()      15em
-\define traymax()      50vw
-\define traymargin()   0em
-
-\define trayhide()     opacity:0; margin-top:-100vh;
-\define trayshow()     opacity:1; margin-top:0vh;
-
-\define panelstyle()   position:absolute;top:0;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);width:max-content;
-
-\define outerclass()   tt-shadowbox left
-\define outerstyle()   max-height:80vh;max-width:80vw;
-\define innerclass()   tt-shadowbox inset
-\define innerstyle()   max-height:70vh;overflow-y:scroll;
-
-{{TiddlyTools/SlideBars/Tray}}</pre>
-</div>
-<div created="20160203193000882" creator="EricShulman" modified="20160217162636633" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/TopLeft">
-<pre>\define config()       $:/config/TiddlyTools
-\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
-\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-
-\define barID()        topleft
-\define barname()      TopLeftBar
-\define barclass()     tt-topleft-slidebar
-\define bartag()       $:/tags/TopLeftSlideBar
-\define barlabel()     {{$(config)$##$(barname)$/Label}}
-\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&lt;!--&amp;#x21d8;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&lt;!--  &amp;#x21d6;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-
-\define barstay()      $(config)$##$(barname)$
-\define barhover()     $(config)$##$(barname)$/Hover
-\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
-\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
-
-\define bartop()       0em
-\define barleft()      0em
-\define barbottom()    auto
-\define barright()     auto
-\define barwidth()     $(barsize)$
-\define barheight()    $(Vmargin)$
-\define barmin()       1em
-\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
-\define barz()         999
-\define barzhover()    999
-
-\define traytop()      0em
-\define trayleft()     $(Hmargin)$
-\define traybottom()   auto
-\define trayright()    auto
-\define traywidth()    auto
-\define trayheight()   auto
-\define traymin()      fit-content
-\define traymax()      auto
-\define traymargin()   0em
-
-\define trayhide()     opacity:1; margin-top:calc(-1 * $(Vmargin)$ * ({{$(config)$##FontSize/ToolBar}} / 100)); margin-left:-$(Hmargin)$;
-\define trayshow()     opacity:1; margin-top:0vh;   margin-left:0vw;
-
-\define panelstyle()   position:relative;top:0;left:0;
-
-\define outerclass()   tt-shadowbox left nowrap
-\define outerstyle()   min-width:$(traymin)$; max-width:$(traymax)$;
-\define innerclass()   tt-shadowbox inset center smaller
-\define innerstyle()   min-width:calc($(traymin)$ - 1em); max-width:calc($(traymax)$ - 1em);
- 
-{{TiddlyTools/SlideBars/Tray}}</pre>
-</div>
-<div created="20160203195151085" creator="EricShulman" modified="20160217162648764" modifier="EricShulman" tags="$:/tags/SlideBar $:/tags/PageTemplate" title="TiddlyTools/SlideBars/TopRight">
-<pre>\define config()       $:/config/TiddlyTools
-\define barbg()        &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Background/SlideBars&quot;/&gt;
-\define Hmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Hmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-\define Vmargin()      &lt;$transclude tiddler=&lt;&lt;config&gt;&gt; index=&quot;Vmargin&quot;&gt;2.5em&lt;/$transclude&gt;
-
-\define barID()        topright
-\define barname()      TopRightBar
-\define barclass()     tt-topright-slidebar
-\define bartag()       $:/tags/TopRightSlideBar
-\define barlabel()     {{$(config)$##$(barname)$/Label}}
-\define barpin()       &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-down}}&lt;!--&amp;#x21d9;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-\define barunpin()     &lt;$set name=&quot;label&quot; filter=$(barlabel)$ emptyValue=&quot;{{$:/core/images/chevron-up}}&lt;!--  &amp;#x21d7;--&gt;&quot;&gt;&lt;&lt;label&gt;&gt;&lt;/$set&gt;
-
-\define barstay()      $(config)$##$(barname)$
-\define barhover()     $(config)$##$(barname)$/Hover
-\define barsize()      &lt;$set name=&quot;size&quot; filter=&quot;[&lt;config&gt;getindex[$(barname)$/Size]] -[[auto]]&quot; emptyValue=&quot;30%&quot;&gt;&lt;&lt;size&gt;&gt;&lt;/$set&gt;
-\define barfontsize()  (1em * ({{$(config)$##FontSize/$(barname)$}} / 100))
-
-\define bartop()       0em
-\define barleft()      auto
-\define barbottom()    auto
-\define barright()     0em
-\define barwidth()     $(barsize)$
-\define barheight()    $(Vmargin)$
-\define barmin()       1em
-\define barmax()       calc(100vw - $(Hmargin)$ - $(Hmargin)$)
-\define barz()         999
-\define barzhover()    999
-
-\define traytop()      0em
-\define trayleft()     auto
-\define traybottom()   auto
-\define trayright()    $(Hmargin)$
-\define traywidth()    auto
-\define trayheight()   auto
-\define traymin()      fit-content
-\define traymax()      80vw
-\define traymargin()   0em; text-align:right;
-
-\define trayhide()     opacity:1; margin-top:calc(-1 * $(Vmargin)$ * ({{$(config)$##FontSize/ToolBar}} / 100)); margin-right:-$(Hmargin)$;
-\define trayshow()     opacity:1; margin-top:0vh;   margin-right:0vw;
-
-\define panelstyle()   position:relative;top:0;right:0;
-
-\define outerclass()   tt-shadowbox left
-\define outerstyle()   min-width:$(traymin)$;max-width:calc($(traymax)$);margin:0 auto;
-\define innerclass()   tt-shadowbox inset
-\define innerstyle()   min-width:calc($(traymin)$ - 1em);max-width:calc($(traymax)$ - 1em);
-
-{{TiddlyTools/SlideBars/Tray}}</pre>
-</div>
-<div created="20160202090753488" creator="EricShulman" modified="20160210231844271" modifier="EricShulman" title="TiddlyTools/SlideBars/Transitions">
-<pre>\define slidebar-in()   cubic-bezier(0.165, 0.84, 0.44, 1)
-\define slidebar-out()  ease-out
-/*
-** &lt;br&gt;SLIDEBAR DEBUGGING:
-** &lt;br&gt;&lt;$checkbox tiddler=&quot;$:/temp/slidebars/debug/showzones&quot; field=&quot;text&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; default=&quot;no&quot;&gt;show hover zones&lt;/$checkbox&gt;
-** &lt;br&gt;&lt;$checkbox tiddler=&quot;$:/temp/slidebars/debug/transitions&quot; field=&quot;text&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot; default=&quot;yes&quot;&gt;disable transitions&lt;/$checkbox&gt;
-*/
-
-&lt;$reveal state=&quot;$:/temp/slidebars/debug/showzones&quot; type=&quot;match&quot; text=&quot;yes&quot;&gt;
-&lt;pre&gt;
-/* SHOW HOVER ZONES */
-      .&lt;&lt;barclass&gt;&gt;                         { background:rgba(127,127,255,0.2); }
-      .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { background:rgba(127,255,127,0.2); }
-      .&lt;&lt;barclass&gt;&gt;:hover                   { background:rgba(255,127,127,0.2); }
-&lt;/pre&gt;
-&lt;/$reveal&gt;
-&lt;$reveal state=&quot;$:/temp/slidebars/debug/transitions&quot; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-&lt;pre&gt;
-/* TRANSITIONS */
-      /* slidebar-in  = ease-in */
-      /* slidebar-out = cubic-bezier(0.165, 0.84, 0.44, 1) http://easings.net/#easeOutQuart */
-      .&lt;&lt;barclass&gt;&gt;                         { transition: z-index 0s 1s, width 0s 1s; }
-      .&lt;&lt;barclass&gt;&gt;:hover                   { transition: z-index 0s 0s, width 0s 0s; }
-      @media (pointer:coarse) { /* &quot;FAT FINGER&quot; TOUCH SCREENS (SLIDE-IN, POP-OUT) */
-      .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { transition: margin 0s 0s   &lt;&lt;slidebar-out&gt;&gt;, opacity 0s 0s;   }
-      .&lt;&lt;barclass&gt;&gt;:hover .tt-slidebar-tray { transition: margin 1s 0.5s &lt;&lt;slidebar-in&gt;&gt;,  opacity 1s 0.5s; }
-      }
-      @media (pointer:fine) { /* DESKTOP/MOUSE (SLIDE-IN, SLIDE-OUT) */
-      .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { transition: margin 1s 0s   &lt;&lt;slidebar-out&gt;&gt;, opacity 2s 0s;   }
-      .&lt;&lt;barclass&gt;&gt;:hover .tt-slidebar-tray { transition: margin 1s 0.5s &lt;&lt;slidebar-in&gt;&gt;,  opacity 1s 0.5s; }
-      }
-&lt;/pre&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20160205081835967" creator="EricShulman" modified="20160205231130478" modifier="EricShulman" tags="" title="TiddlyTools/SlideBars/Transitions/Debug">
-<pre>/*
-** &lt;br&gt;SLIDEBAR DEBUGGING - ENABLE TO VIEW BAR AND TRAY TRANSITIONS
-** &lt;br&gt;&lt;$checkbox tiddler=&quot;$:/temp/slidebars/debug&quot; field=&quot;text&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; default=&quot;no&quot;&gt;debug slidebars&lt;/$checkbox&gt;
-*/
-
-&lt;$reveal state=&quot;$:/temp/slidebars/debug&quot; type=&quot;match&quot; text=&quot;yes&quot;&gt;
-      .&lt;&lt;barclass&gt;&gt;                         { background:rgba(127,127,255,0.2); }
-      .&lt;&lt;barclass&gt;&gt;       .tt-slidebar-tray { background:rgba(127,255,127,0.2); }
-      .&lt;&lt;barclass&gt;&gt;:hover { border:1px dotted; }
-&lt;/$reveal&gt;</pre>
 </div>
 <div created="20160202063613357" creator="EricShulman" modified="20160217100531592" modifier="EricShulman" tags="" title="TiddlyTools/SlideBars/Tray">
 <pre>&lt;!-- SHOW THE SLIDEBAR TRAY CONTAINING TAGGED CONTENT WITH PIN/UNPIN BUTTON --&gt;
@@ -12694,7 +12707,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160218000346009" modifier="EricShulman" tags="Appendix" timestamp="16.02.17.160345" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Version Info" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" list-after="" modified="20160218233149835" modifier="EricShulman" tags="Appendix" timestamp="16.02.18.153147" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>&lt;div class=&quot;tt-shadowbox&quot;&gt;
 &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
 ''{{!!version}} {{!!timestamp}}'' (TW&lt;&lt;version&gt;&gt;)
@@ -13208,7 +13221,8 @@ exports.scrollhere = ScrollHereWidget;
 * 16.02.17.115759 remove old autosize logic (obsolete)
 * 16.02.17.145338 top slidebar panel max-content
 * 16.02.17.153721 slidebars left/right panel/outer/inner styles cleanup. added Panels/TableOfContents
-* 16.02.17.160345 simplify SlideBars/Panels/TableOfContents to avoid CSS dependencies</pre>
+* 16.02.17.160345 simplify SlideBars/Panels/TableOfContents to avoid CSS dependencies
+* 16.02.18.153147 refactor SlideBars names. pin/toggle buttons</pre>
 </div>
 
 </div>
