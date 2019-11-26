@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/scraps</li>
@@ -739,7 +741,7 @@ Error message and password prompt
 <div created="20150525051351569" creator="EricShulman" modified="20191107161206830" modifier="EricShulman" title="$:/config/SaverFilter">
 <pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[[$:/view]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[ChangeLog]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191126142722980" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191126210016510" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -826,10 +828,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191126142722979" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191126210016509" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191126142722979" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191126210016509" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191126050601326" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10181,6 +10183,11 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <pre>CoverPage
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Buttons/SaveChanges]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10330,7 +10337,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191126142722979" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191126210016508" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191107160847533" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -10366,7 +10373,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191126141525591" creator="EricShulman" list="CoverPage" modified="20191126142722981" modifier="EricShulman" title="$:/StoryList">
+<div created="20191126205825951" creator="EricShulman" list="CoverPage" modified="20191126210016512" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -10505,7 +10512,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191115212043062" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191126142722979" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191126210016508" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191126141649702" modifier="EricShulman" next="Credits" tags="Preface" title="AboutTheAuthor">
@@ -10577,8 +10584,9 @@ When you do decide to share your information, there are a number of options.  Yo
 * Archives
 * etc.</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191107055315632" modifier="EricShulman" title="ChangeLog" type="" when="19.11.26.062702">
-<pre>* 19.11.26.062702 CoverPage - added byline
+<div created="20191105045421013" creator="EricShulman" modified="20191107055315632" modifier="EricShulman" title="ChangeLog" type="" when="19.11.26.130012">
+<pre>* 19.11.26.130012 SaveChanges: handle newlines in changelog
+* 19.11.26.062702 CoverPage - added byline
 * 19.11.26.003709 refactor ShowVersion and DraftNotice
 * 19.11.25.205918 NextTopic - added to NavBarBottom
 * 19.11.25.205918 TiddlyBook/Reset - save Stretch setting
@@ -14328,53 +14336,64 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/svg&gt;
 </pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20191107153055175" modifier="EricShulman" title="TiddlyTools/Buttons/SaveChanges">
+<div created="20150316090221888" creator="EricShulman" modified="20191126205405357" modifier="EricShulman" title="TiddlyTools/Buttons/SaveChanges">
 <pre>\define show_popup()
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt;
-   tooltip=&quot;enter revision notes and save changes&quot;
-   class=&quot;authortools tt-button&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; text=&quot;&quot;/&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; when=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;/&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt; class=&quot;authortools tc-button tt-button&quot;
+   tooltip=&quot;enter revision notes and save changes&quot;&gt;
    &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
+   &lt;&lt;init_popup&gt;&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;position:absolute;right:0;width:25em;&quot;&gt;
-   @@float:right;&lt;&lt;ok_button&gt;&gt; &lt;&lt;cancel_button&gt;&gt;@@
-   ''Save changes''
-   ^^&lt;br&gt;rev: ''{{$:/temp/savechanges!!when}}''^^
-   &lt;div class=&quot;tt-shadowbox inset clear&quot; style=&quot;background:#f0f0f0&quot;&gt;
-   &lt;$edit-text tiddler=&quot;$:/temp/savechanges&quot; field=&quot;text&quot;
-      tag=&quot;textarea&quot; class=&quot;borderless transparent width100&quot; minHeight=&quot;10em&quot;
-      focus=&quot;true&quot; placeholder=&quot;enter notes (optional):&quot; /&gt;
+   &lt;div style=&quot;float:right;&quot;&gt; &lt;&lt;ok&gt;&gt; &lt;&lt;cancel&gt;&gt; &lt;/div&gt;
+   ''Save changes&lt;br&gt;^^rev: {{$:/temp/savechanges!!when}}^^''
+   &lt;div class=&quot;tt-shadowbox inset clear&quot;&gt;
+      &lt;$edit-text tiddler=&quot;$:/temp/savechanges&quot;
+         class=&quot;borderless transparent width100&quot; minHeight=&quot;10em&quot;
+         focus=&quot;true&quot; placeholder=&quot;enter notes (optional):&quot; /&gt;
    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
 
-\define ok_button()
-&lt;$button class=&quot;tt-button&quot; style=&quot;font-size:1em;&quot; tooltip=&quot;save changes&quot;&gt; {{$:/core/images/done-button}}
-   &lt;$action-setfield $tiddler=&quot;ChangeLog&quot; $timestamp=&quot;no&quot; when={{$:/temp/savechanges!!when}}/&gt;
-   &lt;$reveal state=&quot;$:/temp/savechanges&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;$vars old={{ChangeLog!!text}} note={{$:/temp/savechanges}} when={{$:/temp/savechanges!!when}}&gt;
-      &lt;$action-setfield $tiddler=&quot;ChangeLog&quot; $timestamp=&quot;no&quot; text=&lt;&lt;add_note&gt;&gt;/&gt;
-      &lt;/$vars&gt;
-   &lt;/$reveal&gt;
-   &lt;&lt;reset_config&gt;&gt;&lt;!-- OPTIONAL... ONLY IF DEFINED ELSEWHERE --&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$:/temp/savechanges&quot;/&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt;/&gt;
-   &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; $param={{$:/config/SaveWikiButton/Template}}/&gt;
-&lt;/$button&gt;
-\end
-\define add_note()
-* $(when)$ $(note)$
-$(old)$
+\define init_popup()
+&lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; when=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;/&gt;
 \end
 
-\define cancel_button()
-&lt;$button class=&quot;tt-button&quot; style=&quot;font-size:1em;&quot; tooltip=&quot;cancel save&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-deletetiddler $tiddler=&quot;$:/temp/savechanges&quot;/&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt;/&gt;
+\define ok()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save changes&quot;&gt; {{$:/core/images/done-button}}
+   &lt;!-- NOTE: RESET IS OPTIONAL... ONLY IF DEFINED ELSEWHERE --&gt;
+   &lt;&lt;reset_config&gt;&gt; &lt;&lt;update_log&gt;&gt; &lt;&lt;close_popup&gt;&gt; &lt;&lt;save_file&gt;&gt;
 &lt;/$button&gt;
+\end
+
+\define cancel()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel save&quot;&gt; {{$:/core/images/close-button}}
+   &lt;&lt;close_popup&gt;&gt;
+&lt;/$button&gt;
+\end
+
+\define update_log()
+&lt;$vars old={{ChangeLog!!text}} notes={{$:/temp/savechanges}} when={{$:/temp/savechanges!!when}}&gt;
+&lt;$reveal default=&lt;&lt;notes&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$set name=&quot;new&quot; filter=&quot;[&lt;notes&gt;splitregexp[\n]addprefix[ ]addprefix&lt;when&gt;addprefix[* ]join[
+]addsuffix[
+]addsuffix&lt;old&gt;]&quot; select=0&gt;
+   &lt;$action-setfield $tiddler=&quot;ChangeLog&quot; $timestamp=&quot;no&quot; text=&lt;&lt;new&gt;&gt;/&gt;
+   &lt;/$set&gt;
+&lt;/$reveal&gt;
+&lt;$action-setfield $tiddler=&quot;ChangeLog&quot; $timestamp=&quot;no&quot; when=&lt;&lt;when&gt;&gt;/&gt;
+&lt;/$vars&gt;
+\end
+
+\define close_popup()
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/savechanges&quot;/&gt;
+&lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt;/&gt;
+\end
+
+\define save_file()
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; $param={{$:/config/SaveWikiButton/Template}}/&gt;
 \end
 
 &lt;&lt;show_popup&gt;&gt;</pre>
