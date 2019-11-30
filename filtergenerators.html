@@ -9392,8 +9392,8 @@ FilterGenerator/TagCloud
 <div created="20191118104835757" modified="20191118104909579" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20191120235143213" modified="20191120235143213" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+<div created="20191120235143213" modified="20191129162444249" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div created="20191118105052201" modified="20191118105052201" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -9404,11 +9404,11 @@ FilterGenerator/TagCloud
 <div created="20191119154445973" modified="20191119154445973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191129052640641" list="$:/ControlPanel FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191129052640641" title="$:/StoryList">
+<div created="20191129184125113" list="FilterGenerator/Tags FilterGenerator/Titles FilterGenerator/TagCloud" modified="20191129184125113" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20191120235145426" modified="20191120235401750" title="$:/temp/advancedsearch">
-<pre>[all[tiddlers]is[]]</pre>
+<div created="20191120235145426" modified="20191129162457344" title="$:/temp/advancedsearch">
+<pre>macros/t</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9583,7 +9583,7 @@ FilterGenerator/TagCloud
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191128174135234" list-after="" modified="20191129052558774" tags="" title="FilterGenerator/TagCloud">
+<div created="20191128174135234" modified="20191129184137218" sortorder="name" tags="" title="FilterGenerator/TagCloud">
 <pre>\define tag-pill-styles()
    background-color:$(backgroundColor)$;
    fill:$(foregroundColor)$;
@@ -9591,13 +9591,56 @@ FilterGenerator/TagCloud
    font-size:calc(0.5em + (0.2em * ($(count)$ / 5) ) );
 \end
 
-__Tag Cloud__:
+\define tag-pill-inner(tag,icon,colour,fallbackTarget,colourA,colourB,element-tag,element-attributes,actions)
+&lt;$vars foregroundColor=&lt;&lt;contrastcolour target:&quot;&quot;&quot;$colour$&quot;&quot;&quot; fallbackTarget:&quot;&quot;&quot;$fallbackTarget$&quot;&quot;&quot; colourA:&quot;&quot;&quot;$colourA$&quot;&quot;&quot; colourB:&quot;&quot;&quot;$colourB$&quot;&quot;&quot;&gt;&gt; backgroundColor=&quot;&quot;&quot;$colour$&quot;&quot;&quot;&gt;
+&lt;$element-tag$ $element-attributes$ class=&quot;tc-tag-label tc-btn-invisible&quot; style=&lt;&lt;tag-pill-styles&gt;&gt;&gt;
+$actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt; &lt;$view tiddler=&lt;&lt;__tag__&gt;&gt; field=&quot;title&quot; format=&quot;text&quot; /&gt; ($(count)$)
+&lt;/$element-tag$&gt;
+&lt;/$vars&gt;
+\end
 
+\define getcounts()
 &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]]&quot; variable=&quot;thistag&quot;&gt;
-   &lt;$vars count={{{ [&lt;thistag&gt;tagging[]count[]] }}}&gt;
-      &lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;thistag&gt;&gt; /&gt;
-   &lt;/$vars&gt;
-&lt;/$list&gt;</pre>
+   &lt;$vars count={{{ [&lt;thistag&gt;tagging[]count[]divide[1000]fixed[3]removeprefix[0.]] }}}&gt; &lt;&lt;count&gt;&gt;;&lt;&lt;thistag&gt;&gt; &lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+
+\define getsorted()
+&lt;$list filter=&quot;[enlist&lt;counts&gt;!nsort[]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;split[;]last[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define showcloud()
+&lt;$vars count={{{ [&lt;thistag&gt;tagging[]count[]] }}}&gt;
+   &lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;thistag&gt;&gt; /&gt;
+&lt;/$vars&gt;
+\end
+
+__Tag Cloud__:&lt;br&gt;
+There are
+''&lt;$text text={{{ [all[tiddlers+shadows]tags[]count[]]&quot; }}}/&gt; tags''
+and a total of
+''&lt;$text text={{{ [all[tiddlers+shadows]tags[]tagging[]count[]]&quot; }}}/&gt;
+tagged tiddlers'', sorted by:
+&lt;$radio field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
+&lt;$radio field=&quot;sortorder&quot; value=&quot;count&quot;&gt; tagging count &lt;/$radio&gt;
+&lt;blockquote&gt;
+&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;
+   &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; variable=&quot;thistag&quot;&gt;
+      &lt;&lt;showcloud&gt;&gt;
+   &lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt;
+   &lt;$wikify name=&quot;counts&quot; text=&lt;&lt;getcounts&gt;&gt;&gt;
+      &lt;$wikify name=&quot;sorted&quot; text=&lt;&lt;getsorted&gt;&gt;&gt;
+         &lt;$list filter=&lt;&lt;sorted&gt;&gt; variable=&quot;thistag&quot;&gt;
+            &lt;&lt;showcloud&gt;&gt;
+         &lt;/$list&gt;
+      &lt;/$wikify&gt;
+   &lt;/$wikify&gt;
+&lt;/$reveal&gt;
+&lt;/blockquote&gt;</pre>
 </div>
 <div created="20191118104819715" modified="20191128185008498" tags="" title="FilterGenerator/Tags">
 <pre>&lt;style&gt;
