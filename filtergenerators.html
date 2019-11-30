@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/selectedTags</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9380,10 +9382,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191118105110098" modified="20191129052652020" title="$:/DefaultTiddlers">
-<pre>FilterGenerator/Tags
+<div created="20191118105110098" modified="20191130130518008" title="$:/DefaultTiddlers">
+<pre>FilterGenerator/TagCloud
+FilterGenerator/Tags
 FilterGenerator/Titles
-FilterGenerator/TagCloud
 </pre>
 </div>
 <div title="$:/isEncrypted">
@@ -9404,7 +9406,7 @@ FilterGenerator/TagCloud
 <div created="20191119154445973" modified="20191119154445973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191129184125113" list="FilterGenerator/Tags FilterGenerator/Titles FilterGenerator/TagCloud" modified="20191129184125113" title="$:/StoryList">
+<div created="20191130131225996" list="" modified="20191130131225996" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191120235145426" modified="20191129162457344" title="$:/temp/advancedsearch">
@@ -9467,6 +9469,9 @@ FilterGenerator/TagCloud
         }
     }
 }</pre>
+</div>
+<div created="20191130131450227" modified="20191130131456497" title="$:/temp/selectedTags" type="application/json">
+<pre>{}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9583,14 +9588,16 @@ FilterGenerator/TagCloud
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191128174135234" modified="20191129184137218" sortorder="name" tags="" title="FilterGenerator/TagCloud">
-<pre>\define tag-pill-styles()
+<div created="20191128174135234" modified="20191130132300941" sortorder="count" tags="" title="FilterGenerator/TagCloud">
+<pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
+\define tag-pill-styles()
    background-color:$(backgroundColor)$;
    fill:$(foregroundColor)$;
    color:$(foregroundColor)$;
    font-size:calc(0.5em + (0.2em * ($(count)$ / 5) ) );
 \end
 
+\define tag-pill-inner() ---------- copied from $:/core/macros/tag - added $(count)$ display in pill
 \define tag-pill-inner(tag,icon,colour,fallbackTarget,colourA,colourB,element-tag,element-attributes,actions)
 &lt;$vars foregroundColor=&lt;&lt;contrastcolour target:&quot;&quot;&quot;$colour$&quot;&quot;&quot; fallbackTarget:&quot;&quot;&quot;$fallbackTarget$&quot;&quot;&quot; colourA:&quot;&quot;&quot;$colourA$&quot;&quot;&quot; colourB:&quot;&quot;&quot;$colourB$&quot;&quot;&quot;&gt;&gt; backgroundColor=&quot;&quot;&quot;$colour$&quot;&quot;&quot;&gt;
 &lt;$element-tag$ $element-attributes$ class=&quot;tc-tag-label tc-btn-invisible&quot; style=&lt;&lt;tag-pill-styles&gt;&gt;&gt;
@@ -9599,50 +9606,53 @@ $actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt;
 &lt;/$vars&gt;
 \end
 
-\define getcounts()
-&lt;$list filter=&quot;[all[tiddlers+shadows]tags[]]&quot; variable=&quot;thistag&quot;&gt;
-   &lt;$vars count={{{ [&lt;thistag&gt;tagging[]count[]divide[1000]fixed[3]removeprefix[0.]] }}}&gt; &lt;&lt;count&gt;&gt;;&lt;&lt;thistag&gt;&gt; &lt;/$vars&gt;
+\define tagcloud_get()
+&lt;$list filter=&quot;[all[tiddlers+shadows]tags[]]&quot;&gt;
+   &lt;$text text=&quot;[[&quot;/&gt;{{{ [&lt;currentTiddler&gt;tagging[]count[]divide[1000]fixed[3]removeprefix[0.]] }}};&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;
 &lt;/$list&gt;
 \end
 
-\define getsorted()
-&lt;$list filter=&quot;[enlist&lt;counts&gt;!nsort[]]&quot;&gt;
+\define tagcloud_sort()
+&lt;$list filter=&quot;[enlist&lt;items&gt;!nsort[]]&quot;&gt;
    &lt;$list filter=&quot;[&lt;currentTiddler&gt;split[;]last[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
-\define showcloud()
-&lt;$vars count={{{ [&lt;thistag&gt;tagging[]count[]] }}}&gt;
+\define tagcloud_showitem()
+&lt;$vars count={{{ [&lt;currentTiddler&gt;tagging[]count[]] }}}&gt;
    &lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;thistag&gt;&gt; /&gt;
 &lt;/$vars&gt;
 \end
 
+\define tagcloud_showbyname()
+&lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
+   &lt;&lt;tagcloud_showitem&gt;&gt;
+&lt;/$list&gt;
+\end
+
+\define tagcloud_showbycount()
+&lt;$wikify    name=&quot;items&quot;  text=&lt;&lt;tagcloud_get&gt;&gt;  &gt;
+   &lt;$wikify name=&quot;sorted&quot; text=&lt;&lt;tagcloud_sort&gt;&gt; &gt;
+      &lt;$list filter=&lt;&lt;sorted&gt;&gt;&gt;
+         &lt;&lt;tagcloud_showitem&gt;&gt;
+      &lt;/$list&gt;
+   &lt;/$wikify&gt;
+&lt;/$wikify&gt;
+\end
+
 __Tag Cloud__:&lt;br&gt;
-There are
-''&lt;$text text={{{ [all[tiddlers+shadows]tags[]count[]]&quot; }}}/&gt; tags''
-and a total of
-''&lt;$text text={{{ [all[tiddlers+shadows]tags[]tagging[]count[]]&quot; }}}/&gt;
-tagged tiddlers'', sorted by:
+There are      ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]count[]]&quot; }}}/&gt; tags''
+and a total of ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]tagging[]count[]]&quot; }}}/&gt;
+tagged tiddlers''&lt;br&gt;
+sort by:
 &lt;$radio field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
 &lt;$radio field=&quot;sortorder&quot; value=&quot;count&quot;&gt; tagging count &lt;/$radio&gt;
 &lt;blockquote&gt;
-&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;
-   &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; variable=&quot;thistag&quot;&gt;
-      &lt;&lt;showcloud&gt;&gt;
-   &lt;/$list&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt;
-   &lt;$wikify name=&quot;counts&quot; text=&lt;&lt;getcounts&gt;&gt;&gt;
-      &lt;$wikify name=&quot;sorted&quot; text=&lt;&lt;getsorted&gt;&gt;&gt;
-         &lt;$list filter=&lt;&lt;sorted&gt;&gt; variable=&quot;thistag&quot;&gt;
-            &lt;&lt;showcloud&gt;&gt;
-         &lt;/$list&gt;
-      &lt;/$wikify&gt;
-   &lt;/$wikify&gt;
-&lt;/$reveal&gt;
+&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;  &lt;&lt;tagcloud_showbyname&gt;&gt;  &lt;/$reveal&gt;
+&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt; &lt;&lt;tagcloud_showbycount&gt;&gt; &lt;/$reveal&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div created="20191118104819715" modified="20191128185008498" tags="" title="FilterGenerator/Tags">
+<div created="20191118104819715" modified="20191130131446524" tags="" title="FilterGenerator/Tags">
 <pre>&lt;style&gt;
 .columns4 { display:block; -moz-column-count:4; -moz-column-gap:1em; -webkit-column-count:4; -webkit-column-gap:1em; }
 .columns3 { display:block; -moz-column-count:3; -moz-column-gap:1em; -webkit-column-count:3; -webkit-column-gap:1em; }
@@ -9653,18 +9663,18 @@ tagged tiddlers'', sorted by:
 __find tiddlers tagged with__:
 @@.columns4.small.nowrap
 &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
-   &lt;$checkbox tiddler=&quot;selectedTags&quot; index=&lt;&lt;currentTiddler&gt;&gt; checked=&quot; &quot;
-        checkactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; $value=&quot; &quot; /&gt;&quot;&quot;&quot;
-      uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+   &lt;$checkbox tiddler=&quot;$:/temp/selectedTags&quot; index=&lt;&lt;currentTiddler&gt;&gt; checked=&quot; &quot;
+        checkactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/temp/selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; $value=&quot; &quot; /&gt;&quot;&quot;&quot;
+      uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/temp/selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
          &lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;
    &lt;/$checkbox&gt;&lt;br&gt;
 &lt;/$list&gt;
 @@
 
 &lt;blockquote&gt;
-&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;[all[tiddlers+shadows]&lt;$list filter=&quot;[title[selectedTags]indexes[]]&quot;&gt;tag[&lt;&lt;currentTiddler&gt;&gt;]&lt;/$list&gt;] +[sort[]]&quot;&quot;&quot;&gt; 
-   &lt;$list filter=&quot;[title[selectedTags]indexes[]count[]] -[[0]]&quot;&gt;
-      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[selectedTags]indexes[]join[ AND ]]&quot;&gt;
+&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;[all[tiddlers+shadows]&lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]]&quot;&gt;tag[&lt;&lt;currentTiddler&gt;&gt;]&lt;/$list&gt;] +[sort[]]&quot;&quot;&quot;&gt; 
+   &lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]count[]] -[[0]]&quot;&gt;
+      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[$:/temp/selectedTags]indexes[]join[ AND ]]&quot;&gt;
          &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
             @@.small __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;__&lt;br&gt;@@
          &lt;/$wikify&gt;
@@ -9672,9 +9682,9 @@ __find tiddlers tagged with__:
       @@.columns4.small &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;@@
    &lt;/$list&gt;
 &lt;/$wikify&gt;
-&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[title[selectedTags]indexes[]]&quot;&gt;[all[tiddlers+shadows]tag[&lt;&lt;currentTiddler&gt;&gt;]] &lt;/$list&gt; +[sort[]]&quot;&quot;&quot;&gt; 
-   &lt;$list filter=&quot;[title[selectedTags]indexes[]count[]] -[[0]] -[[1]]&quot;&gt;
-      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[selectedTags]indexes[]join[ OR ]]&quot;&gt;
+&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]]&quot;&gt;[all[tiddlers+shadows]tag[&lt;&lt;currentTiddler&gt;&gt;]] &lt;/$list&gt; +[sort[]]&quot;&quot;&quot;&gt; 
+   &lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]count[]] -[[0]] -[[1]]&quot;&gt;
+      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[$:/temp/selectedTags]indexes[]join[ OR ]]&quot;&gt;
          &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
             @@.small __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;__&lt;br&gt;@@
          &lt;/$wikify&gt;
@@ -9684,7 +9694,7 @@ __find tiddlers tagged with__:
 &lt;/$wikify&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div created="20191126184117322" modified="20191128185020847" tags="" title="FilterGenerator/Titles">
+<div created="20191126184117322" modified="20191130131623501" tags="" title="FilterGenerator/Titles">
 <pre>&lt;style&gt;
 .columns4 { display:block; -moz-column-count:4; -moz-column-gap:1em; -webkit-column-count:4; -webkit-column-gap:1em; }
 .columns3 { display:block; -moz-column-count:3; -moz-column-gap:1em; -webkit-column-count:3; -webkit-column-gap:1em; }
