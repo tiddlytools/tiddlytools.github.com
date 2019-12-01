@@ -9406,7 +9406,7 @@ FilterGenerator/Titles
 <div created="20191119154445973" modified="20191119154445973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191130131225996" list="" modified="20191130131225996" title="$:/StoryList">
+<div list="FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191120235145426" modified="20191129162457344" title="$:/temp/advancedsearch">
@@ -9588,7 +9588,7 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191128174135234" modified="20191130132300941" sortorder="count" tags="" title="FilterGenerator/TagCloud">
+<div created="20191128174135234" modified="20191201130002789" sortorder="count" tags="" title="FilterGenerator/TagCloud">
 <pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
 \define tag-pill-styles()
    background-color:$(backgroundColor)$;
@@ -9608,7 +9608,7 @@ $actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt;
 
 \define tagcloud_get()
 &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]]&quot;&gt;
-   &lt;$text text=&quot;[[&quot;/&gt;{{{ [&lt;currentTiddler&gt;tagging[]count[]divide[1000]fixed[3]removeprefix[0.]] }}};&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;
+   &lt;$text text=&quot;[[&quot;/&gt;{{{ [&lt;currentTiddler&gt;tagging[]count[]divide[10000]] }}};&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;
 &lt;/$list&gt;
 \end
 
