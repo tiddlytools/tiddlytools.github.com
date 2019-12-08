@@ -10363,8 +10363,10 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.07.152758">
-<pre>* 19.12.07.152758 TiddlyTools/Stylesheet/Stretch - tc-tiddler-body for $:/Import uses height=auto
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.07.165100">
+<pre>* 19.12.07.165100 TiddlyTools/Stylesheet/Stretch - fix framewidth and bodyheight for printing
+* 19.12.07.162527 TiddlyTools/Stylesheet/Stretch - when printing, use auto width/height/margin for river/frame/body
+* 19.12.07.152758 TiddlyTools/Stylesheet/Stretch - tc-tiddler-body for $:/Import uses height=auto
 * 19.12.07.150201 TiddlyTools/Stylesheet/Stretch - reduce bodyheight by 1em = more room for bottom navbar
 * 19.12.07.145956 TiddlyTools/Stylesheet/Stretch - complete re-write
 * 19.12.07.145956 TiddlyTools/Settings/Defaults - left/right barwidth=22vw
@@ -18820,8 +18822,7 @@ body.tc-body              { background:&lt;&lt;windowbg&gt;&gt;;   }
 .tc-tiddler-edit-frame { height:calc(&lt;&lt;tiddlerheight&gt;&gt;); padding-bottom:1em; overflow-y:auto; }
 .tc-tiddler-body       { height:calc(&lt;&lt;bodyheight&gt;&gt;);    padding-bottom:1em; overflow-y:auto; }
 
-/* TIDDLER BODY IS ANY LENGTH WHEN PRINTING OR IF VIEWING A BOOKCOVER PAGE OR IMPORTING */
-@media print {                   .tc-tiddler-body { height:auto !important; } }
+/* TIDDLER BODY IS ANY LENGTH IF VIEWING A BOOKCOVER PAGE OR IMPORTING */
 [data-tags*=&quot;bookcover&quot;]         .tc-tiddler-body { height:auto !important; }
 [data-tiddler-title=&quot;$:/Import&quot;] .tc-tiddler-body { height:auto !important; }
 
@@ -18870,6 +18871,12 @@ body.tc-body              { background:&lt;&lt;windowbg&gt;&gt;;   }
       &lt;/$reveal&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
+
+/* FRAME WIDTH AND BODY HEIGHT FOR PRINTING */
+@media print {
+.tc-tiddler-frame {  width:100% !important; }
+.tc-tiddler-body  { height:auto !important; }
+}
 &lt;/pre&gt;</pre>
 </div>
 <div created="20150511052932487" creator="EricShulman" modified="20151110105157065" modifier="EricShulman" tags="image" title="TiddlyTools/Textures/gridpaper.jpg" type="image/jpeg">
