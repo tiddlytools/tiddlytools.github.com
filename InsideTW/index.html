@@ -493,6 +493,10 @@ Error message and password prompt
 
 <li>TiddlyBook/Macros/showLinks</li>
 
+<li>TiddlyBook/Popups/Appendix</li>
+
+<li>TiddlyBook/Popups/Volumes</li>
+
 <li>TiddlyBook/Print/All</li>
 
 <li>TiddlyBook/Print/All/Button</li>
@@ -796,7 +800,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191211111827123" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191211141653850" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -874,14 +878,14 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191211111827123" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191211142242025" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191211111827123" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191211141653850" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
-<div created="20191107120434939" creator="EricShulman" modified="20191210161300384" modifier="EricShulman" title="$:/config/TimestampDisable">
-<pre>no</pre>
+<div created="20191107120434939" creator="EricShulman" modified="20191211142256089" modifier="EricShulman" title="$:/config/TimestampDisable">
+<pre>yes</pre>
 </div>
 <div created="20191203081340840" creator="EricShulman" modified="20191203081340840" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info">
 <pre>show</pre>
@@ -10391,8 +10395,13 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.11.031824">
-<pre>* 19.12.11.025810 InsideTW - added &quot;bookcover&quot; tag and transclude CoverPage contents
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.11.062454">
+<pre>* 19.12.11.062454 removed &quot;next&quot; and &quot;prev&quot; fields from all topics (no longer used)
+* 19.12.11.061450 TiddlyTools/NavBar/Bottom - next/prev navigation uses toc-list macro
+* 19.12.11.061450 TiddlyTools/TOC/Macros -  added toc-list macro for flat list of all topics
+* 19.12.11.061450 TiddlyBook/Popups/Volumes - moved from NavBar/Bottom
+* 19.12.11.061450 TiddlyBook/Popups/Appendix - moved from NavBar/Bottom
+* 19.12.11.025810 InsideTW - added &quot;bookcover&quot; tag and transclude CoverPage contents
 * 19.12.11.022922 CoverPage - remove &quot;navbar&quot; flag field, remove scale variable
 * 19.12.11.022922 TiddlyTools/NavBar/Top - replace use of &quot;!!navbar&quot; flag with &quot;tag[bookcover]&quot; filter
 * 19.12.11.013245 CoverPage - remove startHere button, line-height:100%, no navroot variable
@@ -11210,7 +11219,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191211111827122" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191211142244519" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191207083214733" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11252,7 +11261,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191211111827124" creator="EricShulman" list="CoverPage" modified="20191211111827124" modifier="EricShulman" title="$:/StoryList">
+<div list="CoverPage" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -11391,10 +11400,10 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191209070232017" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191211111827122" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191211141653849" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
-<div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" next="Credits" prev="Preface" tags="Preface" title="AboutTheAuthor">
+<div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
 <pre>@@float:right;[img width=&quot;130px&quot; [images/eric3.png]]@@
 
 ''My name is Eric Shulman''.
@@ -11414,20 +11423,20 @@ During my early post-graduate years, I worked for several notable software devel
 
 Professionally, I have been an ''independent software design consultant'' since 1998, living and working in Silicon Valley, where I apply more than 40 years of experience to provide analysis and design services for software development companies, with emphasis on ''information architecture'' and ''interaction/visual design standards'' to improve ease-of-use for new and existing software and online web products.</pre>
 </div>
-<div caption="Adding Images" created="20150215044749132" creator="EricShulman" description="shows you how to add internal and external images into your content" icon="$:/core/images/picture" modified="20191211044353458" modifier="EricShulman" next="TiddlerLinks" prev="EditorToolbar" tags="TiddlerEditor" title="AddingImages">
+<div caption="Adding Images" created="20150215044749132" creator="EricShulman" description="shows you how to add internal and external images into your content" icon="$:/core/images/picture" modified="20191211044353458" modifier="EricShulman" tags="TiddlerEditor" title="AddingImages">
 <pre>* Drag-and-Drop image files (encoded as base64)
 * `[img[...]]` syntax
 * using external image references
 </pre>
 </div>
-<div created="20150312213030456" creator="EricShulman" modified="20191208094328884" modifier="EricShulman" next="TabbedLists" prev="FindingContent" tags="FindingContent" title="AdvancedSearch">
+<div created="20150312213030456" creator="EricShulman" modified="20191208094328884" modifier="EricShulman" tags="FindingContent" title="AdvancedSearch">
 <pre>* standard - same as sidebar
 * system - search the TWCore
 * shadow - default setup created by the TWCore
 * filtered - use filter mechanism to find tiddlers
 ** export matching tiddlers</pre>
 </div>
-<div caption="Appendix" created="20150530232329990" creator="EricShulman" description="The appendix includes links to &lt;&lt;showCaption OnlineGroups&gt;&gt; plus a &lt;&lt;showCaption Glossary&gt;&gt; and a brief &lt;&lt;showCaption History&gt;&gt; as well as &lt;&lt;showCaption Legal&gt;&gt; and other information about this book, such as a detailed &lt;&lt;showCaption VersionInfo&gt;&gt; and a &lt;$link to=&quot;PartsList/System&quot;&gt;&lt;$text text=&quot;PartsList&quot;/&gt;&lt;/$link&gt;." icon="$:/core/images/info-button" list="History OnlineGroups Glossary Bibliography PartsList/Contents PartsList/System VersionInfo Legal" list-after=" " modified="20191210110824882" modifier="EricShulman" next="History" prev="CoverPage" tags="InsideTW" title="Appendix">
+<div caption="Appendix" created="20150530232329990" creator="EricShulman" description="The appendix includes links to &lt;&lt;showCaption OnlineGroups&gt;&gt; plus a &lt;&lt;showCaption Glossary&gt;&gt; and a brief &lt;&lt;showCaption History&gt;&gt; as well as &lt;&lt;showCaption Legal&gt;&gt; and other information about this book, such as a detailed &lt;&lt;showCaption VersionInfo&gt;&gt; and a &lt;$link to=&quot;PartsList/System&quot;&gt;&lt;$text text=&quot;PartsList&quot;/&gt;&lt;/$link&gt;." icon="$:/core/images/info-button" list="History OnlineGroups Glossary Bibliography PartsList/Contents PartsList/System VersionInfo Legal" list-after=" " modified="20191210110824882" modifier="EricShulman" tags="InsideTW" title="Appendix">
 <pre>This section contains ''additional information'' that may be helpful.
 
 !!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; topics in this section:
@@ -11435,7 +11444,7 @@ Professionally, I have been an ''independent software design consultant'' since 
 &lt;&lt;showItems &quot;Appendix&quot; &quot;.largest&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Basic Formatting" created="20150215044608850" creator="EricShulman" description="explains the process for entering text content and adding syntax for simple formats (bold, italic, bullets, superscript/subscript, etc.)" icon="$:/core/images/bold" modified="20191211044102123" modifier="EricShulman" next="EditorToolbar" prev="TiddlerEditor" tags="TiddlerEditor" title="BasicFormatting">
+<div caption="Basic Formatting" created="20150215044608850" creator="EricShulman" description="explains the process for entering text content and adding syntax for simple formats (bold, italic, bullets, superscript/subscript, etc.)" icon="$:/core/images/bold" modified="20191211044102123" modifier="EricShulman" tags="TiddlerEditor" title="BasicFormatting">
 <pre>* body text: number of lines expands to fit full source content, show preview for live side-by-side rendering of formatted content
 
 * bold, italic, underline
@@ -11443,7 +11452,7 @@ Professionally, I have been an ''independent software design consultant'' since 
 * inline CSS
 * etc.</pre>
 </div>
-<div caption="Benefits of TiddlyWiki" created="20150212021535694" creator="EricShulman" list="MicroContent" modified="20191127031808499" modifier="EricShulman" next="Roles" prev="MicroContent" tags="Introduction" title="Benefits">
+<div caption="Benefits of TiddlyWiki" created="20150212021535694" creator="EricShulman" list="MicroContent" modified="20191127031808499" modifier="EricShulman" tags="Introduction" title="Benefits">
 <pre>~TiddlyWiki's combination of unique features and functions provides several major benefits.
 
 !!Overcoming the technical challenges
@@ -11478,13 +11487,13 @@ Because ~TiddlyWiki documents are just simple files stored locally on your own c
 When you do decide to share your information, there are a number of options.  You can share a ~TiddlyWiki file by sending it as an ''email attachment'', or transfer it to a ''USB stick'' or upload it to a ''cloud file service'' (e.g., DropBox).  You can post your file to a third-party web hosting server to ''publish online'' (read-only), or use a local web server under your direct control for live viewing //and// editing.  You can also manage the distribution of your ~TiddlyWiki files through use of a ''source control service'' like GitHub.
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Bibliography" created="20150212082643144" creator="EricShulman" icon="images/bibliography.svg" modified="20191209032511588" modifier="EricShulman" next="PartsList/Contents" prev="Glossary" tags="Appendix" title="Bibliography">
+<div caption="Bibliography" created="20150212082643144" creator="EricShulman" icon="images/bibliography.svg" modified="20191209032511588" modifier="EricShulman" tags="Appendix" title="Bibliography">
 <pre>* [[TiddlyWiki Distribution|http://www.TiddlyWiki.com]]
 * [[TiddlyWiki github project|https://github.com/Jermolene/TiddlyWiki5]]
 * Archives
 * etc.</pre>
 </div>
-<div caption="The Power of Community" created="20150224232735024" creator="EricShulman" icon="images/community.svg" modified="20191127032035222" modifier="EricShulman" next="Tour" prev="Scenarios" tags="Introduction" title="Community">
+<div caption="The Power of Community" created="20150224232735024" creator="EricShulman" icon="images/community.svg" modified="20191127032035222" modifier="EricShulman" tags="Introduction" title="Community">
 <pre>* open source means YOU can change anything you want
 * contributions from others makes your stuff better
 * you can mix and match features as needed
@@ -11493,7 +11502,7 @@ When you do decide to share your information, there are a number of options.  Yo
 
 See [[OnlineGroups]] for links to available resources and direct help from other users of ~TiddlyWiki.</pre>
 </div>
-<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="$:/core/images/menu-button" modified="20191204102202796" modifier="EricShulman" next="Preface" prev="CoverPage" tags="InsideTW" title="Contents">
+<div caption="Table of Contents" created="20150212045038327" creator="EricShulman" icon="$:/core/images/menu-button" modified="20191204102202796" modifier="EricShulman" tags="InsideTW" title="Contents">
 <pre>@@display:block;width:50%;margin:0 auto; 
 &lt;div class=&quot;hideForPreview hideForPrint&quot;&gt;''//Please select a topic://''&lt;hr&gt;&lt;/div&gt;
 &lt;$macrocall $name=&quot;toc-all&quot; here={{TiddlyBook/RootTag}}/&gt;
@@ -11545,7 +11554,7 @@ See [[OnlineGroups]] for links to available resources and direct help from other
 &lt;/$button&gt;
 &lt;&lt;showFooter&gt;&gt;</pre>
 </div>
-<div caption="Creating New Tiddlers" created="20191209090102589" creator="EricShulman" description="Every tiddler must have a title.  The tiddler title is the tiddler's unique ID in the wiki system." icon="$:/core/images/new-button" modified="20191210104506950" modifier="EricShulman" next="TiddlerEditor" prev="InsideTW_V2" tags="InsideTW_V2" title="CreatingTiddlers">
+<div caption="Creating New Tiddlers" created="20191209090102589" creator="EricShulman" description="Every tiddler must have a title.  The tiddler title is the tiddler's unique ID in the wiki system." icon="$:/core/images/new-button" modified="20191210104506950" modifier="EricShulman" tags="InsideTW_V2" title="CreatingTiddlers">
 <pre>There are several ways to start creating or editing tiddlers in your ~TiddlyWiki document:
 
 &lt;&lt;&lt;
@@ -11577,7 +11586,7 @@ The first activity in the Tiddler Editor is to choose a title for the new tiddle
 * You can use a custom &quot;caption&quot; field (see Custom Fields) to provide alternative text that can be used for display purposes.  The caption text does //not// have to be unique to each tiddler.
 * standard TiddlyWiki name spaces (e.g. $:/system, $:/tags)</pre>
 </div>
-<div caption="Acknowledgements" created="20150212072900375" creator="EricShulman" icon="images/gold-star.png" modified="20191211073928205" modifier="EricShulman" next="Preface" prev="AboutTheAuthor" tags="Preface" title="Credits">
+<div caption="Acknowledgements" created="20150212072900375" creator="EricShulman" icon="images/gold-star.png" modified="20191211073928205" modifier="EricShulman" tags="Preface" title="Credits">
 <pre>\define star() [img[images/gold-star.png]]
 
 //''Thanks and recognition for the many people in the ~TiddlyWiki community, whose generous contributions, support and participation have made the writing of this book possible:''//
@@ -11647,14 +11656,14 @@ John Kerr,
 Hans Wobbe,
 Olivier Caleff</pre>
 </div>
-<div caption="Custom Fields" created="20150328225518554" creator="EricShulman" description="lets you add extra fields in addition to the default text, tags, and type fields.  This includes defining and adding special &quot;caption&quot; fields to provide alternative display text to be used in place of the tiddler's title." icon="$:/core/images/storyview-pop" modified="20191211045801751" modifier="EricShulman" next="Tagging" prev="Transclusions" tags="TiddlerEditor" title="CustomFields">
+<div caption="Custom Fields" created="20150328225518554" creator="EricShulman" description="lets you add extra fields in addition to the default text, tags, and type fields.  This includes defining and adding special &quot;caption&quot; fields to provide alternative display text to be used in place of the tiddler's title." icon="$:/core/images/storyview-pop" modified="20191211045801751" modifier="EricShulman" tags="TiddlerEditor" title="CustomFields">
 <pre>* add new fields: extend tiddler container to add your own custom-named inputs
 * common fields recognized by the TWCore: caption, list, list-before, list-after
 * other types for advanced usage (e.g. module-type)
 * For a complete list of fields currently used in a document, see [[$:/ControlPanel]] in the ''Info/Advanced/Tiddler Fields'' tab.
 </pre>
 </div>
-<div created="20150215034648492" creator="EricShulman" icon="images/download.svg" modified="20191208094709948" modifier="EricShulman" next="StartingTiddlyWiki" prev="Installation" tags="Installation" title="Downloading">
+<div created="20150215034648492" creator="EricShulman" icon="images/download.svg" modified="20191208094709948" modifier="EricShulman" tags="Installation" title="Downloading">
 <pre>* The fastest way to get started with TiddlyWiki is to visit http://tiddlywiki.com/#GettingStarted, and then download an &quot;empty&quot; TiddlyWiki document to your local device.
 
 Optionally, you can also:
@@ -11664,7 +11673,7 @@ Optionally, you can also:
 
 You can also download and install ''nodeJS'' to run your own local TiddlyWiki server.</pre>
 </div>
-<div caption="Download Saver" created="20150303092037164" creator="EricShulman" icon="$:/core/images/download-button" modified="20191209094022856" modifier="EricShulman" next="OtherSavers" prev="Saving" tags="Saving" title="DownloadSaver">
+<div caption="Download Saver" created="20150303092037164" creator="EricShulman" icon="$:/core/images/download-button" modified="20191209094022856" modifier="EricShulman" tags="Saving" title="DownloadSaver">
 <pre>The ''built-in'' &quot;HTML5-compatible fallback saver module&quot; uses the browser's native &quot;download a file&quot; handler to do the work of saving your changes to the local disk.  It works in the usual manner: there is a default &quot;current directory&quot; into which things will be saved and, when filenames &quot;collide&quot;, the system adds a numeric suffix in parentheses.  Depending upon your browser, you can configure the download handling to &quot;always ask&quot;.  In that case, instead of automatically saving a file with the number suffix, you can select the *existing* filename (i.e., without any number suffix) and then confirm when asked if you want to overwrite it.
 
 It is important to note that, because of browser security restrictions, the &quot;download saver&quot; is the ONLY method that works regardless of your browser or system setup.
@@ -11680,10 +11689,10 @@ Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from 
 &lt;/$link&gt;
 </pre>
 </div>
-<div caption="The Editor Toolbar" created="20191211041810456" creator="EricShulman" description="provides a set of buttons in the tiddler editor that can assist you in entering the correct syntax into the text input area of the editor." icon="images/toolbar.svg" modified="20191211042802195" modifier="EricShulman" next="AddingImages" prev="BasicFormatting" tags="TiddlerEditor" title="EditorToolbar">
+<div caption="The Editor Toolbar" created="20191211041810456" creator="EricShulman" description="provides a set of buttons in the tiddler editor that can assist you in entering the correct syntax into the text input area of the editor." icon="images/toolbar.svg" modified="20191211042802195" modifier="EricShulman" tags="TiddlerEditor" title="EditorToolbar">
 <pre></pre>
 </div>
-<div caption="External Links" created="20191209054150782" creator="EricShulman" description="shows you how to create links that let open other websites directly from your document content.  External links automatically open in a separate tab/window, so you don't lose your place in the your ~TiddlyWiki content." icon="$:/core/images/link" modified="20191210101703068" modifier="EricShulman" next="Transclusions" prev="TiddlerLinks" tags="TiddlerEditor" title="ExternalLinks">
+<div caption="External Links" created="20191209054150782" creator="EricShulman" description="shows you how to create links that let open other websites directly from your document content.  External links automatically open in a separate tab/window, so you don't lose your place in the your ~TiddlyWiki content." icon="$:/core/images/link" modified="20191210101703068" modifier="EricShulman" tags="TiddlerEditor" title="ExternalLinks">
 <pre>* External links
 ** Wiki and HTML syntax
 *** recognize standard protocols in bracketed links: `[[http://...]]`
@@ -11696,10 +11705,10 @@ Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from 
 *** hard link to specific location
 *** files can be &quot;outside&quot; the working directory for the document</pre>
 </div>
-<div caption="Filters" created="20191211043742534" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211044813399" modifier="EricShulman" next="Saving" prev="Widgets" tags="InsideTW_V2" title="Filters">
+<div caption="Filters" created="20191211043742534" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211044813399" modifier="EricShulman" tags="InsideTW_V2" title="Filters">
 <pre></pre>
 </div>
-<div created="20150215044001115" creator="EricShulman" icon="images/discovery.svg" modified="20191208094240492" modifier="EricShulman" next="AdvancedSearch" prev="ThePageControls" tags="TheSidebar" title="FindingContent">
+<div created="20150215044001115" creator="EricShulman" icon="images/discovery.svg" modified="20191208094240492" modifier="EricShulman" tags="TheSidebar" title="FindingContent">
 <pre>* enter text into input field in sidebar.
 * search is &quot;live&quot;... as you type, the results are displayed below (replacing the tabbed lists)
 * performs a simple text matching search
@@ -11707,7 +11716,7 @@ Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from 
 * press the (magnifier) button to go to [[AdvancedSearch]]
 * pattern (regexp) search</pre>
 </div>
-<div caption="Glossary of terms" created="20150511042858649" creator="EricShulman" icon="images/glossary.svg" modified="20191204053225574" modifier="EricShulman" next="Bibliography" prev="OnlineGroups" tags="Appendix" title="Glossary">
+<div caption="Glossary of terms" created="20150511042858649" creator="EricShulman" icon="images/glossary.svg" modified="20191204053225574" modifier="EricShulman" tags="Appendix" title="Glossary">
 <pre>&lt;$list filter=&quot;[prefix&lt;currentTiddler&gt;] -[&lt;currentTiddler&gt;] +[sort[]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox&quot;&gt;
       ''&lt;$text text={{!!caption}}/&gt;''
@@ -11726,7 +11735,7 @@ Also note that, if you intend to use your ~TiddlyWiki file remotely (i.e., from 
 
 Note: &quot;TiddlyWiki&quot; by itself is used when referring to //all// versions of TiddlyWiki, inluding both v2.x and below, and v5.x and above.  However, when referring exclusively to TiddlyWiki v2.x and below, the &quot;Classic&quot; or &quot;TWC&quot; designation is used to avoid confusion.</pre>
 </div>
-<div caption="History of TiddlyWiki" created="20191128095554420" creator="EricShulman" icon="images/history.svg" list-before="" modified="20191129233135782" modifier="EricShulman" next="OnlineGroups" prev="Appendix" tags="Appendix" title="History">
+<div caption="History of TiddlyWiki" created="20191128095554420" creator="EricShulman" icon="images/history.svg" list-before="" modified="20191129233135782" modifier="EricShulman" tags="Appendix" title="History">
 <pre>@@float:right;margin:0 1em; &lt;a href=&quot;https://jermolene.com/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;200px&quot; [images/jeremy.jpg]]&lt;/a&gt;@@
 ''These are personal reflections on the history and development of ~TiddlyWiki from [ext[JeremyRuston|https://jermolene.com/]].'' There is also a [[podcast|https://changelog.com/196/]] discussing ~TiddlyWiki's backstory.
 
@@ -13754,7 +13763,7 @@ own your data 100% - open source and free&lt;/dc:description&gt;
 <div created="20191111025145528" creator="EricShulman" modified="20191111025203953" modifier="EricShulman" tags="image" title="images/wiki-bus.jpg" type="image/jpeg">
 <pre>/9j/4AAQSkZJRgABAQEAZABkAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCADeASwDAREAAhEBAxEB/8QAHQAAAQMFAQAAAAAAAAAAAAAABQQGBwACAwgJAf/EAFoQAAEDAgQDAgcJCQwGCgMAAAECAwQFEQAGEiEHEzFBUQgUImFxgZEWGCMyVZOhsdEJFSQ3QnWUs8EXM0NGUlZigqLC4fBTY3Jzg5I0NkRUdISjstLxJWTD/8QAGwEAAgMBAQEAAAAAAAAAAAAAAQIAAwQFBgf/xAA9EQACAQIDBAYIBQQDAQADAAAAAQIDEQQSIQUTMUEzUVJxkbEVIjJTYYGh0QYUFiPBQnLh8CQ08UOSorL/2gAMAwEAAhEDEQA/AH9n2fmHiLxn4gsyc1ViDHpNUciRmIcpSG0NpWtIASDYbIHpJOPoGEo0oYam8qbau9DwWNr1fzE1mejtxB/uBqY3OdsxW/8AGK+3GrLT7C8DDv6vafiUch1O3/XbMX6ar7cTJS7C8A76r2n4nnuCqn89cxeuYr7cTJS7C8Cb6p2n4lHIdUH8dcwn/wA4r7cFRpdheBN9V7T8SvcHVP565i/TFfbgZafYXgTfVe0/Er3CVT+euYv01f24mWl2F4E31XtPxZ4ch1Tr7tcw7/8A7q/twLU+wvAO+q9p+J4Mi1T+emYf01f24lqfYXgTfVe0/E8OR6r/AD0zDb/xq/txMtPsLwBvqvafiWnI9UH8dMw/pq/txLU+wvAm+q9p+J57iaqN/dpmD9NX9uJlp9heBN9V7T8SvcXVenuzzD+mr+3Ey0+wvAm+q9p+Jb7iqt/PTMP6av7cS1PsLwDvqvafieHJlVH8c8w/pq/txLU+wvAm+q9p+JXuNqv888w/pq/txLU+wvAG+q9p+J6cl1YfxzzB+mr+3EtT7C8Cb6r2n4nnuMqv89Mw/pq/txLU+wvAm+q9p+J77i6t/PPMP6av7cS1PsLwG3tXtPxLfcbVf56Zh/TV/bg5aS/oXgTfVe0/Eu9xdWH8c8w/pq/twLU+wvAm+q9p+JRyVVgf+umYf01f24lqfYXgHe1e0/E89xdW/npmH9NX9uJan2F4A31XtPxK9xlW/nnmH9NV9uJan2F4B3tXtPxFbXDXMb6Wi3mrMznNNkaZTh1ezFLqYeN7qOheliWk03r3lknh3mGEbSM1ZlYNyLOSnE7j0nDRnQnrGMWJL8xD2m0HUcBs7uQTKTmPMakj+DE1RWR32vjH+ewankaV+42LCY1xz6+IFj8N8wvuJT7r8wtBSijU7NUlII6i5PXGmVXDxV8q8DLGOIk7Zmu9suq/DPMNHWkP5xr6kKF0uInLKT5r3wKVWhWXqwV+4erTxFHjJ27wccoVYfxzzBf/AMYv7cactLsLwMm+qr+p+Jb7k6t/PLMH6av7cTLT7C8Ab6r2n4lqsq1cdM5V/wDTV/biZafYXgTfVO0/Et9y9X/njX/01f24mWn2F4E31TtPxK9y9X/njX/01f24mSl2F4E31TtPxPDlmsD+OFf/AE1f24mWn2F4B3tXtPxLfc1WL/8AXGvj/wA6v7cDLS7C8Cb6r2n4gmvZizbw1EeoUnOleRIU4EnVNWUm2+4vYjzHbDLD0K3qzpq3cNDE1oO8Zs6b5Jqb1aydQ6jJIMiXBYkOlIsCpTaVH6ScfOasVCpKK5N+Z9CpSc4Rk+aRoTGTq418WrfLr3657H0ChphqXcvJHgMXriKnexx6L9mLEzNYt0dtjgksVpsDggseFBJ6bYUnwLuSopuUkW82FuNlfEK5cordXqCWXUucv+h6e/GLF13QheL1Ohg8PHETyy4DhrXDhSELegLKglNyyo3PqP7McuhtX+mqvmdbE7JS9akxkPRVx1qQ6ClYNik478ZxksyZ5uVOUXZqxhU339cNcXIVp6n68S42Ux8vbfvxLi2KLd9+mCGx5o2sBhbkseFAJ364KJYrl36DfuxGyZSigA74lw5Twt4lwZT0IPswLhsUGiT0xLhy3HZk/h9UcxVGIFQnxBWry3raRp9J+vHNxWNpUItKXrHTwuAqV2m4+qTJJ4I5fRGCjCKHLWuHV/bjzEdqYhO2Y9T6Lw1vY+pAFfpf3qrE2IEKbDLqkBK+oAO1/Vj2VCrvKal1njcRSVOo4cCQODmQolfTJnVCMJDaFhtoLOwPVRt29gxxdqYydFqEHY7Wy8JConVqRv1E4+5tplDZZaSNAvbvHdjybquTvI9WqaS9URS6BTq46kORm1LQCFBwXNsNGrKC0ZW6UZ6NBxiixoEQJQgDSNh19WKnVbepaoJLQZtVylHkOrC2BocJUQBYXNt/oxthiJRWjM06EXo0M/MOQlORFRIqQ4nlqI5pudXUDfz43UcWoyUpmGthM0XCPAhatUGVQ5hiS2tDwF7A3B9GPY0cRCvDPB6Hja2GnQlkmtRA9BeaaStbS0IV8VSkkA+vFynFuyZnlTlFXa0MSI7jytKEFau5IviOaSu2BQb0SM0mkzITYW/FdaQropaCBhI1YTdovUslQqRV5RshGUjtOLCnKWBroAd72xL9YbGeTSpEZppxaPJc6W3t6cUxqxk2kXzoThFSaI24wo00aLf/AE37MbaPEz2OlPCZRVwwyoT1+9cb9UnHzfEdNPvfmfRqHRR7l5GneUaQ3VOL/GjULrbryim3+9f2x6eriJUKOGtwcf4R5qGHjXq17rVP7jvhZLekp1Pr5I7Ejrhau04xtlVxaWzZS9rQJR8hxmyC88pZG9hsDjFPalR3yo3Q2XTVszB8/J6ESVKbf0tE7JCemNFLaby2lHUz1dlxz+rKyPYNGiRLFyziu84or4qrV4KxooYSjSfrasKeIx5SFNFlJQe0C2MCrTg82bU3ujCpHLlCeXqW1SGSNIUbkgX78VYnFSxD1LcNho4eNkGzJ1pJSkJHfjEbBkZtpLEl5DiiUOAbqvt1x39n1pwjlWpwcfQhOWZ6DKfiLQb6ClBOyiMejjOMtOZ5uVNx5aGEtd2GK7Fmi5O2CLa57yiTt0xNBraF64Dwb5hZWlsb6ik29uK1Ui3a+ozpTtdow8rzb4sbFSRlYjpXq1XG3W/TFcpNWsWQgmncsUyLkerDXEse+LFXZfEuFRvyDNGyXVa7GcfhRVPNoUEk9Lnzd+MdXF0qLyylqbqWDrVVeER/8PeFq49ScdrkO4bAU2k+Um+++OJj9oxnDLQZ2sFs503mrol3L8VYnKCWgmOBYEY83OV+J6OKSHY/FDrBSNjbGZEUtSMJnDmD9/p86SymS7MV8ZY+ILAWA9XXHVWNqKnGnF2SMjwlNzlOSu2OGh5fjUSOGYbCWWRvoT0xjq1p1Xmk7s106UKStBWDjcGwKgTrPaTjPcsvYp6mIWnVulwixKdsTMS4LZR4k4tRKyk3Ck33Pnw7aehLFr7iFKuFcxu3UDcHBWhAPJlJLwUAdAGLEVtXG7U6VSX6mKguPql2ADi/yca416qhkT0KJUKbnna1MFYy7BqjOh9lKml76T0PnwKdedOWaL1FqUITjlktBt07I8OgVJT8VKypQIso3FjjfVx1WvDJMxUsDSoTc6aD06nRZ8fxd5hKwU9LYw05ypyzRZtnTjNZZK5Eeb8irpDjkiOLxdQsjqU3/Zj1mD2hGosk+J5LG7PdNudPgNpNJkB9CSypV+wf52x0nWhlepzVh6ikk0P2isActK0lCUosQoY83iJ2d0z09ClokQ94T0eMmiwXGGkhXjFlOgW1G3THU2RVlKo4t6HP2pShGCklqb7cJPxYZU/Ncb9UnHlsR00+9+Z6Oh0Ue5eRqdw1WpPGrjTpG5ryvV8K/jtY9J4bDX7P8I4+CbWIr26/uSZ44oqLaW79l744yUIq9zq5p3skevAhkDcm/UdmK89mWuDygmSsthVlXv341w11sZp+qrXArVOW4tagrSom4I6DHRlioxtC2hzVhZt576jtp8VmLDQp9ZLhFwOmOHVnmk7HbpQyxSbM6ZDK3NA284xSlIsbSdhFUJTkN1CGkLdN72SL434enGSbm7GOvVlBpRVwStcybKIdas4d9CtkpH7TjopU6cU4vQwN1akvWWoMl0Sa/wDBqjnrcKBunGqGJowWZSMk8LVm8riU1lRRbIWBqIPlKOwwJbRV9ArZrtZ8RXl/h5KqLoXISUMXIt0Ue71YFfaUaatT4kw+zJVG3U0Q76fwsgokqW6gu73CFXsBjk1Np1pKy0OtDZdGMszVwtW6GjxFcZtpOkp0gab2vjDSqtTzyZuqUk6eREeOZEXDRr0LcVfpYC2PQLaObTgef9HZFdal8Dh85POlT3JYB1E6bknuwj2mo62ux47Nc+Lsh40ThNSVrCnw48Ej4pX185tjn1Nq1+CdjoQ2XQ5q4+afw9o8CIptmC0hK/jXTcq9JOOZPG1qjzSkzpQwtGmrRih0U+ix4zCEhoJAGwSLYyym5O7ZfZR0QrVCQWVIIO/mxUS9yoEJERGkDtucG7YHoK3HNCcEVK7GxW5qidLSCpYN74aKTLGYKTUFOGz1tQJuB2Yko24EC7tRS2myTufPioJkYlOFHlWItiMllxG9X5YDbikm2kXKhiyHHUDGHGzAmahzQXAtC7LSR08+NLVipMILr0dKHytYbYQkaXFm1z3YXixrjYezpDcccQpesJF9fQH0YtUGVuV2KcvVhytuIUpKuWDpF+g82BKOUkXm0HVIjJZKQAm1uovhbjtNcjGpDDbClLskDfVgXZGlYA1dcWQylC1NLJN06iMXQbWqKpKLWo0pVTgJBShKX9R3UgWt2Y2JykZmoxLZFUZYZuU7W2CRscWKlmfER1VFcCB/COneP5YhLDXLQJVgD6Mej2VSVOq1e+h53aNR1KadrK5v3wk/FhlT81xv1SceVxHTT735npaHRR7l5Gp/DJsucbeNCRcXrqt/+K/jrbSdsNhv7f4RysAr4iv/AHfckypIEZ5HLN9XXHnlK53GrC2GgFsFyxCvNgNsdA6fSWAtSwgrt0v2Y0RxE0rGaVGDd2BlSksq0gBJG9sRybGUVHQX02M7V3brc5bQ21K2GF4aj8RQunojzktJcKlgeUScaN6spRu3mug82mLFSkKQCe0g7+nGJzbNUYxQnfLMtfM0JTbphlUktLh3cXqKqe/HfWW5CEBI6G3XFcpMZRSYueo8PU0tBUskXCUDe/n7sVOoxsiLH6iulq1ctKU9l9z6MNfNoHhojx3NrUsaLljvUjb/AO8KlYNxJNzEQdm3FNAWJWqxV34dIF7geo1xypLUUNKQlI2SMWLQrd2ZafOVCbOoqShdvIN7X78RkV0PGhVBKFBKSFAkHVfFE1dFy0HjGqTL6gFKCQPYMZGmOE2qnGIKUuJJTtucNmK3FsyOVOOgDUsXJ6DfBzIGRmUuo23G+DdEsxHNnJbGkWN8AdLmA5DwWVk2xLjDcfmop7qiFdT2HFurQp5Hr7Tjl1r1bYRpkFE7NLcaMVBQUq1rA4GW7JexG9VzNVo8eSS5rLqiRosdP+GNkYxKG2NOkV6czKUpzWQpVyE7XOLpRViuLdxbmCZMqzIQBpbSfid+FSURm2wdTKZImPpaLKiCehFsO5WFWpIeXIjtKBihr4P4xcv0Pd58Z5O+palYcbshttF1Kurzb4rV2XMa9WXPkyNTCFBJOyeo2+jGiK5Mok22NmoZdqM+ap927fk9ALX82LotRKWmwe5RlwQvmJKABY3OxxdGaRXKm2gc2nWsNk3HUA4vnVSXq8SiNOV/WIo8ItCm8sQwR5PjNxv5sdnY0s1Zv4HI2tHLRVus384Sfiwyp+a436pOPO4jpp978zu0Oij3LyNSuHNQTA408Zyq1lV1fX/ev46m01/xsN/b/COZs7p8R3/ckOfVmpCDptq7+7Hnoqx3WzPFqqENIF97duJxAjHPqXNbJCwCOwduIo6hbENKoK60+CHAhBO/oxc7RRXxHs9T4VEphCjobQfKBFyRipScmWtJDViS/GZLkhHk6zdI83ZhpOysIgg2pWr4U3v34obsWJGN5R1lWq+/TBTJqXRHgXQpZCQDtb67YDeg61Y7BOix4RWh0F5ZBuD1xnbbH05DPzNV3pytkHSn+TsMXQVkVSbuAWamCsdqU4tYEVLqxcWkJBV5gMQLYqYmPMsqBaSsKHb2YlgaiVVWmKSptGwGwFrYKsLqOLL6qjy2xyAhA6rKj9WEk0uZYrjlcqbzaUpAsR23xRcsuIpFeeZcClu6E+Y4ZJMl2eM55bYd1K+EUOhJwcgMyvYKRc/vvNjywL9itzhHTGv1ChWanXrDYnt264S1iXMzlcQEBW6L7WViEuNDMNXSJBAULnqO7F8EVyAD9WW2glu4I7cWWEzaAlyuOPbOLvbY92GUQN3MaagVD417Ytshb8jImelvawvhbEuWSayWbaACq98BIDB0bMU7x67dwo7FI6YsyqwL2HJHzPJZuZDiU3tt1OK8qGUmH6XP8cUVOPBpv+WvCN2Wg6TYfdLZZSUqBQQCFg9fPitSZZZWAlRqiGbrC7kdt98WJ3F4DHrWYX1LJsFI6kdb4vi0tCmQ3/HjJlIUSG036YaTEXEi7wiXr5egtgG3jF7n0Y9HsLppdxwdsdFHvOgnCT8WGVPzXG/VJxwcR00+9+Z2aHRR7l5Gjkea5E418WwhWnVXXb36fvz2O3j45sNh/wC3+EcfBStXr9/3HTHq7hWCp4H144Dh1I7KkLH61rKQl8bDswFB24DZviLqZIdlr5Y1rQQVEhJt6MS1gJtmSoVCrwWdMRDrbB3Kki98MlGXEjclwA8jNs1RSiZIecT0su+GyL+lAU+sWxc7xoiU7kqHTFUqUmOqiQoGf0Ounyr3/wA92E3TH3iLzm1IN+Zsd7HCZGHMZGszx1JUsk3TgZGTMXRc9NNAm5SfPvhZU2Mp2L3s4syQAt5AHcBiKDRHO4Ocq9PWr4Nw37TfDZZAbRajMEdlSbG9sGzBmRevNxdACU2wMjHzGaHmHy9WkX78RxdgKQcZzgtLZSFEE9oOKXT5sdTYnfr7ilFXPJJ7+mHyoOYSKqjjyhqeSbnoFYKVgXYmcWdZVzO3vwwthU1UlN6QHPV24Ww4XiVYsI1Kd9pwmnAbTiY6lnZuKwpOrUpXQX6YCg2wOdgG3WzOlFxRFzYADFtspXe/EJuLQI+pS7G3txOYzWgxKlUnoctaVXSgnbfrjTFKxncrMsYrRc8rUbXthnFAvczKrVlC6rg9+BlDcyirJ1C6r4TK0FO4ThPMugbJ1n8q++FbaGSuEUS2mXAdlAdb2xW7jBVFUZ5fxrDuvhR7oxzK+plsFuSobWtq2PqwUgN6aAaVmRK0eVcHuB64dIS9+I2KlXHX16QkpbuezfFqSK27g5cjQ+DrIAF7jDcgWtqR3xyqQm0mGkXOl22o+jHo9hr96XccHbD/AGo950c4Sfiwyp+a436pOOBiOmn3vzO1Q6KPcvI0fiONNcauLhcbS4fv67bV2fDPY7mPv+Ww9uz9ji4O35ivfr+47Is+OVAchv2Y4DjLrO0pR6g/CMN8XVHbse0pGEbktC1KLDTdYYithA0ISkbADbFTTlqOmlwPFZh57RCLFAO/TpgZRs1wfVKxHejlkBsDtGkYMcyK20MusVKFFKQt1hpSzpQFkC57hfGhN8xHYatUzDFhnUuUy0L23Wkb4vir6meUkmYmqyt5CVsnnJIuFo8oEerDbu4N4jEjOKfKbS824QNwlQNhhd0w71ItXmJR2IIwdzIXfIxKrij1Tv7MK6bGVS563XXAPJT7MHdMm9SFjNecUBqbUfQMDc3GdZIUKqcsi4ac83knE3DBv4spFYnI3LDht26SMK6I6rGQZpkpTuytJ77YG4bJv0YnMxzZAshtarHsBwVQbA60UYk1KqIupKFi3fhvy4FX6jGKzWFG6tTab2uTbCbmIVVfNGZmqVN5KtK+naTiOjFDqq3yM6q9VEI5adSzbqD0wFRi3xC6r4WEK6zICgXwtSvOcTc9TF3nWi+Pmp6Mq6fJ9WBuXzJvAg/nwrjBBJUR+UMD8u7j73kAptfdmLN3NQHS/UYt3eXQqlO4mbrS21WPQ4bLcGYr77LCydVx1tiZeomZmZFZdJ+McLYbMKmq282LBZHfhclxszC0DMZ1AOO7DsOKnBrgMmwiK60pQCnrJ62GFsPcxqrjC1FPOUQOhxLEuNyq8UsrUiU/Fl5ipMKWyAXGZM5ptwXAIulSgbkKBt1thM0U7Nh1A8zixlnlrdOYqQUITzFKE5o2TvvsrzH2YdSj1i2fIEUjjDlXMVVTT4GYIMuYpWlDLboJWbA2T39ezDqUesRX5oH8Vi6qkxitBCeb1I82PS7Ea3srdRwtr9Eu86Z8JPxYZU/Ncb9UnHnsR00+9+Z26HRR7l5GlNFjNyONfF4LSFWrrtr/AO+ex6msk8NQv2fseVUnHEVrdf3HgmmsJ3DQ9mMWWPUX55dZmRFSnoLYR0oPkPvprmWPww8m1yg7b38+F3MOoaNea5ieQlmBHUt2RyGUjyluOBKR6ScI6EFqyxV6jRFPEDiVBaYXBospTr6rhyUg+SgdyT2nz9MUyjDhFF0ZT5kULq6lP61KW84o3Utaio+s4plTbHUinXGpCUq2SQbG2K1mirDe0KW4qHASw+EKI0+SuxO2Kt84vVD7tMDSYi4y1pNjbu7MbI1Yy0KnGSHZkjiM5l59DFTipqMFahdahd1kf0T2+g93ZgzvxTHg7aNEmP5hynW1WaqrSHCOriS3b2gYrhWyq0kNOnm9lhuiUemT0J8ScZmgDylNOBYJ9RxoVaNjM6NRuyDzWXdKbtsAhJttuRib+Afy9W5e5FajpCrgn+SR24olWc9LF0aGV3YncCnLaV6Aetu3BpQi+LGqTcV6qEjsGO0hTiwAEgkqV0A7TjbZJHPztu4Gl5ooNNnogP1RhqSo2DRWBv3E9B68U/tp6suzVGtEEHWGw4AF6ARe9tjhaseaLqM3b1mIatSnlEclQkXG/YBiiGvIvk0uYibos9pshFk6uupdhh3x4AT+JeiBPKENJ5Q1qCSpToSLk2AubDrYYzznTgry0LlGpJ2iWVbJ9fpst6PIhLS+yopcRcEpI64aNSnbRgcJdQAnUmdCYW9IbDDaBdSnFAWHfhnOC4sihOTSS4jSybkfOWaqrNzFSabUqwyzIUmNTUhaEvtlJ8oakabWt1I7Nr4+N7Rq7QxuLlHDKSTb9bklfhq0fbMJT2dg8HThiVFStr7N7/HS4GlZCz7TX1Rp2XK5HmxxdxPi7i9AO6fKTcHr39mPc7Axc8PT/KYvM530b1XieF/EOChiJfnsG45bK6TV7/BCmFTs8RnU3odWfH+jdgum/wDZvj1WKxNDD03Vm9Pgr/RHj8LhsRiaqpQ0b63ZeLF0zME6mIcRNos6I+klOhxsgX85IFvZhqMoV4RqQej+QlaM6FSVOa1XU7r5MByeIUsK0sMIa235h1H9mNO6S9oz7yXJAl/MlUknmOTnknoAhWkAegWwyhBPRCZpMJ0/PdUgFsP6ZaO0L2X7R+2+K504S4aDqc0OpniNTOUla1OIWRcpKCT6MZ3RktC9VkXJ4m0dDWolzV/oy2b/AGfThNzIbfRAScp5Az9WJlUk0VmdVJWkvB5xwLGlISDpCgOiRuO7GephXJpttGyji1C6ST70NRrhPlFri5GoreXY5pP3jL6oy9Z1Pc9QDhN76gLi98LktNIG8eW5JGXeCWT8uVNip0zLjUWdHWHGnS+6SlQ7bFVsRxjwEzNrUri+ZKqRELzegc79mPS7DS30u44O1+ij3nSzhJ+LDKn5rjfqk44GI6afe/M7dDoo9y8jSWn1JilcZOLz0hSktqzAtAKUkm5df7B6DjvY/FUsJg6E6nV9jz+Hw1TFYurCmuZJVbTCywmEZ9VhJ8djpkNaFqVZtfxVKsnyR169xx5yW28LFX18DrR2TiHorAiZmfLsaryKSnMlKfqzCW1uQW5ILwDgBTZPVVwfybkdtsW0ds4atrG9uu2gtTZVeHFLxEma80wcmllFR5nPebQ63HaRqUttStIVfp1Hab46P5mm/ZdzB+XnpeNiCeIGcp2cZ6UafFoLYCmmNXekHUo9qrH0Ds7znnXT4mmNJxGjJob9lOqWnlotsOu4v+w4rWJi9EO4MRJguJ1OFxICRc9vqxHXS0IqTEYeDqbouUA9LWB82Ec0+A+RpFzTqgoK1BN+ibdT6MVSeli1JihL/LZ+LdCuoIIxTo+DGsUkpdUqxSEpHb8Y4jk42RMty1jS8lwoJCEDUSlJI9A7zgSqZLIFrHlGzDVstVATqVPDLyrpWG+0A/FUNwfQcWqpGd01aw9qkHwJuyxxAr7EKI7W5tOp65uooRyXXFqQOiiWgvTfruNrjt2HJntGlGTSi3Y7EMDVqRTuhxZXzGzWc2PUqruyqdELCnWKlHhuSWlrHxm1/F0nuVeyumxw1Lasm77p2+AlXZijDNn1/wB+I1s/Udmr052RSM0V1M9HwjNPlQERGR5QGgrDxOu24JBG3UXvjowq4ytNZcPK3Xp9zDUo4WjF5q0b9VyNK1R885gsiXVkhrSEht6YdJA6XCLgnz9d8dlYTES9pM4rxGHjwkgYzwtqSbqXVoKD18lTh/uDFi2dVfID2hQXBkscNeBPEapsoNBnzG4q7EOCOOR6RzVBP/KMYqihhXaVVL4LU0wvXWaNN26+BOlN8H/N+WoLlUzTmWAIaUhJaajDUkk9fJsPN8a2Ms9oxpxursvhgd68r0D6uG2Xqc1CXUazIUZbYdbCGFJSUlSUj4qFm5KkgDa9xY3xie0KtS+SJqWBpxdmyNvCBzpl3gjS6I3l2nGvZnq84Q4zEptcRtg2SS46XwfJu4gCyQDfqLYyVKlasss39DXThGm7xQxzxK8IqVJfkyuF9HekmrJpLjzlQWhZfVpAJ5bqbo8pPl9MV5Fa2fz+5ap24IEQeO3HCpNU5yNknKrrM6vry2wt6qTHEmYjUSDeR8TyTZXTAyR5u/8AveF1G+X++BfmHjnxxy7mnLmWKpkLhyxXK9KVGhwpCHHHLB0tpdXdw6W1EHST1G4GI6VPj/AueS4EcZj8NjiblnMlQodRyNw8jzIMpyG8o0orQlaFlCjfXcgEHfC/loPX+EHeyX/rJndzD4SKBNU3kHhksRZ8enlTVPKg4XuVpdQQfKbHPRdXZ5Xdgbmlwv8ARE3kn/6xpxuMfHuoclUWhcNUodzQcoodYgLH4aL3Nwq/L2+N9GLFTpri/oibyXD+QbnPiPx5y5nvLeSqvByazmHMTxbjQmkvkIQXC2hxz4XSlKyklI3NgbgYsSil6smu7Qrb60hd4L3EqbxK8IOfwz4lZPy5JWXJcVE2DAQFtSGAoqF1awpBDa+43CfPhpSqRV4zfiK1F8Yo25zb4F/D6vQnxEhrpMwpOiTEWU6TbY6b6D6NPrGFjja8NXK6K5YenLlY0M4ncK8z8KKyuBmKmuxk61CPLAuzISD8dC+hv1t1HaBj0tGrGrFNHKqU5U27oYbjt1k/XjQZyxuUth1LiFlt1JuhaCQUnvB7MTiT4oGScwVWXn4uuTpLj4piGwsuK1aeY4bXve1+zGOWWNaPczVeW6bfWh9QeIGaYiW20VA2SLDnISon0ki/twZOiLGVRrRmKrZwrVebEaqLS4lCtaSEgWPqx3djRhvW49RyNpznKmlI64cJPxYZU/Ncb9UnHmsR00+9+Z6Oh0Ue5eRqtwoyxT8x8aeNYnaLtV48vWe92Re3swfxC0sPhLr+l+USnY19/ibda/klqTwnoMsp5zaHykWTcjYenHifV7KPV5pdZYjhFRkOFxplLS1bFSVm5+nDJxXIN5S4sSTODNIkAFxovKGw1WNh7MWKrbgJl6wXI4CUl/pBZ/rJB29FsNv2uYN3HmhBI8HuAQQmIypJ7OSk/Xib6Qu7g+KXgIPesw6mdKaayR1uWUge3FsatSXstiOFGPFIVRvAopby9bzcWMD10pN/oOL4yrdplEnQX9IHrvgr8NqG6pM2ovSZKdlNRHEo0nuKidsNvqsdM9wKnTnwgNhfArh8HVCKDHI2JkT1On1hISPpOK5Vpvi/oOsPT5oxOcDuHkfeRUOeR/Bh8gDzbHEjWqLSNwbij1CqPknhhSkgFqKpHbq8v674jqTerH3dOPCwZjjhhSxdlmEkE3PkDc+jFXrt3sWuUbJXGzn/AI/cPcgxkswIUeoVJwXQ1pshA71W+rHc2fs6piXmkrR8zj4/aMcMssXeRBGY/CRVXnCXpTqGj8ViOjltpHcEgWPpNzj29DC0sKkoQS8zxdfEVcS7zm/4Gq/xoiDVpDyj2XGNu8txsYVSj1MEy+M+onlR1G/8pdsLvo9pFm5fYZKHB7OrTMdeY6vT0VBaATChLIUgkflEdFG4IF9h6xbyO19ozs6NCdut/wAHq9kbOpv96tHu+5vx4MPEh3itw6arkqJ4jMLq2nI+/kFJt2gWx4vCudR3qKzPV7QpU6M93SlmXWPfilDcm5FqiGkBakpS4U96UqClfQDjZXV6TOfRdppkX5zkolxsvKgPCRCTT2daoNQjsLCkKStHlLO1lJQem9jv2GqlXpxjrJa/GxbKDbehCfhHcPJvFynRKo/Mpr8+KlcR6MapDYkOJUhkiQ1qdDYUFsi6FKTcLVboAbZV6T0UlfvAoSWlhNC4ncRYtUhTlO0doxqV97lNSapSkpdduk+NKH3x/fPIHm3O2K3OF9JLxDlfUR3k+mVfJOV8t0NNTy+8zQ8xjMrL8nMFJDrjwQUctdqhYoOok2AN+3DbymuMl4gySfJhOu1KRmWv0Cu1Oq5Wk1yg1dyqQJ68w04uIbU6XREUUSla2UqNkg+UkCwV1xN7BK2ZfX7BdOXUyPc18P380S64t7O1LRDrM52oSqdHzRGajc1a9ZshKXL2IFrk9Bg7+C0v5/YbcyfIlSh8Qs00L3MljOeVx94aW5SGkO11tYfaXyvLds15SxyG7EW7djc4VVYcf4l9hHTktBqZRy/IypQabSYmaKFJYgZhbzM267V1OOLlpAA1FMM3QQNx1364jqw/1S+wd3L/AGw4qsZlaqtCqk+s0KVUqJVnKvTpbs+QXGFrWXFMhQp27Oo3CDe1hYi2DvoW4vwf2Bu5f619w9wOy7kvJvFt3P1drESPP8YlzvF6XHnTVPSpCSlS1LMVsIQlK3QEJTuV3J8ncSrJaWfgyOm7Wt9UbQSfCY4fRWVuOVKohtIJKhRJxAHn+BxndVPh5B3cuoddey7lri9kpVPqcRmr0ia0lWhwFKk3FwR0UhY9RGOrRnaKafIzTWupym4y8NpfDLiXXMtvpATFfPIUno4yoam1C/ekj13x2MJOcaKVWeaXXa3kYsaqU616EMsXyvfvGwzGajeUpA19lze2HnUcvZZlUEgAqSWuIgULA/e1AT845jFK8po0p/tMMrlJU8HFKBF9rnYnGlaIosXNTRIfUhPxQL9b49BsRJVpdxx9qP1EdjOEn4sMqfmuN+qTjz2I6afe/M9FQ6KPcvI5fcc+NM/hDxvz+YMaQ+mbXJalqYe5ejQ8oC/km/xzi/btLe4fCa29V+UTJsmooV8Tdc/uC8t+GRXKzNchNmoRZKWVvpDz6SlehJUU3sLGwJ9WPGyw048LHqI1oSdhXRPDirVUjR5LAqrjbytCFpZbIUQCT1WOwHCPDuD1aLI1E1pccEHw7JzbbqlrqHwJs4XIWyOl7kKNuuA6MvgRVEx3PeGq/R4sR+pVVmAJiStpElhxKlDtOkAntGEVGT0UbjSnFcWLKf4c8NTBWqv0t028lF3EE+1ODu5rjFkzR6zafwTuJ1U4k8NzLrjsGTU472lcmmqBYdSoa0KTYm2xAtc9MX4d2unxMmJSupR4MFeFRxkodI4UZoh0fP8AGoeZ4iEupRTZjSpiAhaS4nQVXtpCtXQgA4unUvG0XqV0VlmpSjdfE5+yPCWpj6yUSpc038pQbKjfz74MY1lpYscoMsr/AB4jULxIuB59cyMiW0lq1+Ur4pNyOvd5sGO9fALyxG1J8JZouJKoMlLTignmKUnyR3nre2GyVeN0Lmh1GbNnHM5frUqkGOp+TH087lrFkki9ul+3uwsY1JxzN2GcoJ2sN2f4Q8qO2hf3rIQSASpdz7CB9eGVCTftAdVRV0iOs/cUls5okMqLc1xSQoOoY20np1Vttv6xju051KMVCH8nGnTp1W5y/gQs5pq81ttxqMwhDlyklKBfTqvtcn8n6RgvE1b6g/L00tDLRqxUp9VSxLUhpvluO6m1IOoIG4Hk+cHDqtVcrX+gkqVLLe31Ki1ebXFvuQHvwZt1TYKwLkAkA9O22M9XFVIaNl0aFJ2lYVVDi/mrL34I47KRHjqDQWw0kNXtcDuvbsxz9xGp6z8zYqjjaKOn33NTP7+duHtUkSS2HHFIeUG0BCdXlIJCRsL6AbDa5OMkYbqrY0VJOpTzEe+Eb4a+cI2aqjSsvSmqPSWCWkoVHDq5CSkG6rkWBBHQ9pFtrnTGjKsm27IrvGm1pqaxfu+V2NblQMuMgdNFGQLf28P+UiM8RJidfhLZiSSFS6Kx38qlj9ijix4RPTUrddoQyPCVzG6o2q8Zq4sNELQMH8nFcmD8xJmWP4QOc3kfg2Znkj/UBIt9eC8MkTfSZerjfnxyyzmmpJv2pUgf3cRYWHUHfTM6eL2e1IRfOVZAWTuHgLWHmTbe4wkqMFJaBU24vrANT4r52dWQ5myrui9iVupP93Dfl6fUJvpgWZxPzAwkKkZiqAF9tTxufZizcRelgbxviJE8QarOaJVV6o9/SVIUP24n5aC/pJvHyYppFclVh7liTPLl/wAuSvyr+hWBuUuQVUvzHK5RagxcPLmJVYHaU4bf2sHcpcUNm6iQuEXFvNPBvMkSp0uqShF1gSI0h1TjTiO24UewXNri/TrYimpRUVmhoxlLNo0TZ4fUpLVd4f5xZjrdiZho/wAI6hsrWlTZCxfTtuHgP6uHpztFIzzhfXqNUaNm6NXao3CaYmNlxehDrkdWkqvaxsNrHb1HGneWVzNuX1g6cFt5/WlKS6pEFAKEfGT5b3xh2evAclvEHI920kEpT62kFx1ICOhtuAe6/S++L79RkcWuKM1EkoffUEK1+SDsRYDHodiJ76TfUcXafRrvOz3CT8WGVPzXG/VJx5/EdNPvfmekodFHuXkcevDXZcVxbz0tCiEorE8kDtvIFsdPaiTw2G/t/hHKwDtiMQvj9yHmY78SqOFZKVCnVE3v3Qn8eYnwsegpPVgzID0pVOjx48lxC22G9ISVDlhS0glNu06zuN98ZsQlduxqo3yqwe8fkpnxoq3ytqU8eagovzlfBJOo27Rfu6nFeVOKdg3eqYhzYqXmnMuV1rdClt5bEolXmW4T9GNVCMYqVusprSeYBRMt1aU6U8tfkEBRUrYEgH6iMM6sI8QxpyaOj/gK1eowfBr4lQ4rxaqUCHJUypJ3QpKHDcefpjm1GnUbXM0SXqR+BoZVaLKaynmavPPpWluM42bklRU4UouT/wAQ46nq5IxSMd22xp8JVSosCQ7Ejl5x5xQOloLsE6bdenU4TE2k1qGg2kHZzMyo5/hNpa1utUVIDZUBoSlah3YqTiqd2y13dSxmzHlWTEyh488Wki7FkoBKvKUkbk+nC05pzsgzg1G5hmUd2ucRs+vcwIUwUuG/ldUKNgfVhpTUYRfxFUM0mKs0ZLTRctvTOeVFCmhbTbq4gYWnVzVMth6lNxiyLs4uqYzbzAEhYgw1AJ6C8Zr7cdmL1zHLlFONmPOhuu+5dc4qADReQlnSAL8kq1H1qxmnVe+UUXRgt05fIU5eS8vOdOjENSeYlQIeQAk+So2286Ri2niJVIuUiqdLLJRQ4OB2TGK/k2XKW4W3Ey3Gwrstsf2nHNxNS0rI0Rp5kCOI1Bl06HWmkx3FsJkRlqdQkqSAVKBNxt2JHrHfi+jO8SuUHGSN8/uRlR5mW6xCJ/g1behQ/wDnjFV0rRNkdaJF/EfI8Ou8Xk0WXIVEdnVNmn861w2khlBWR221E+rG6i7QaXWV1X6yIWzBkVqk16XTJa3FvRXFMuJvYBSVFJ29IxshJ8TNN2QFl5TjNSg3pITYHdWLrvjcqUr8hNNytESyhaU6lFNyOZhXKXWBSV9S9rLcDxUuctKXALghZCvVh9WhczT0HDlZVPZZCJxZW2AoanVWV1FvT1OKpLT1WOptsXrTAehRpMdLZaEtCVFJ2KTcn6vpxkqXSVzTB3ujBW2okMMlmEhbilBKiRsL9uNMIZmUzllQznY0V99Lq2GyvTYWTex9Jxao2FTuZNUdLqNbLSRbewvfAcVYikyavB2oyJ9Tk8phsN2TqUUC4Fze2EklYZOSejJxrbEWHUHSzDabCkIF+UADY27revGO2pa2yLeI1Tbm3jxYjbbChy1FCQCSQQT08+HcPVEhN3sTTnKkK43eB7wudQ84idTqyKY663uWwpDqQCL7i/I/ZjMqqpQztXsalHPLL1mp3ETh7O4XxkxnnHkT0yFoXHfaGsEqJN/QcChWhWnla4hq0HThnTIscqEyJXXn23uUsx22yWSfikvXGOjkippGS73bYUYzkXvFmZqBKgtILa2o60p17dSSFAqFxvbs9eL7Xd4szNu3rB3JjtPXMdERUjmabqS8lNgPSD/9+bHodiKW9lfqOHtS26Vus7bcJPxYZU/Ncb9UnHnsR00+9+Z6Ch0Ue5eRx68NioR4vFnPDDjgS6/W5uhJBOq0kE/Rjp7U/wCthv7fscrAr/kV/wC77kVvVOLVnZTsVfNbapVSJVpIA/A3e/048tN6o9DSi022AuGlQahvArJAajRyqwv1LWKcRFuLS5mihJR4jlhJafWJCkkrBC2j0tdYP1Jxmd7RsXqzUmNPPaW6ZmjKzMwAJby2hCknca+W7pBt/T0430dYyfxMdZWmkHxmmLBQ8oqWvmOXSEjrZKU/3cY3SzvQ1qairG8n3NmqIzBTs+Uz+CmxnhoV50pH7Tiqccs0mRvPTb6mabZ/Jp/CTOEc7KTKaZ/9dv8A+OOlDWMDn8HIBeD2Ex6fKLykoStGpOpXXyiP2Yz416qxsw0bxYRjSWY/FnWtQShVEcCSO8vqthGr0vmhtFWCOd6qxK4foYbCir8GuSLDZaMV0bqrflqWVbZLAiDKEfiDxGGgq5jTYHm+DVvi2ovUh3lVO2aSC/Emep3IUwGO42CtiylJ2/fkduKaC/dLKztDQgrPKVpzQ4lwgkQIe6ez8GZt9GO9F6M5DHzGbabyG+5vzSXUk32t4uBjHL/sruNEV+w+8V5LbWc7U1IN1G+5PQctzEw/rUn3iz6RB7hNNconDNmptvpZQ1U3wsFVhpKWyb9nTGPE9Ika6Okbs2Lcm5RzJ4MOe3os5mr5mqQYjM09hwuPsISS8FhseVZSkIGq1tsZ4zmppWfE0yinFtPkPL7lXT6tlbMUiBV4L1PVNiPyWEPp0qWjmJRcp6jymlixAO3oxfXa3sWZYJ7pjf8AC+popPFGqKZkeLPLbfWHUq0lDplSm0kHsNm2/oxsoNZXcoraOLIbzfXG69madUYd+ROcXJQo3JIWsq694uQfODjXSaaRmqqwBmRlCanmLKSBvf040vqKIvkWvwGgykhQBUk327d8LYkT2FTyuDdsBRIPcd8OmkK+Isyi1plrDiQqwcCgoX6b/swjfqkbszFRmObBrUZsjSrlupB/JOoAn2E4zVleBrov1g5nOqMVHLNBmxWUtBLDjcgBITqdQ+pQJt1PKcY3w1BvMyVVoRwpZdICPJSN7d+NZTbQUT4YRpKblKQLkDpgJ2F4mxfgpx0LVUnegCRcdlv8nGare+hbFaDy4mZkWiqiIy4kIDYAt273xVGOt2SbtF2GG8UJgByQAqziVXHfcdcGouoFN3WpL/g81R2q+Dfxlyy009ImUZxNZiMx/wB8JSdZ0bHf4EDp24wThnUoG+nLJKMkapcZeNWYOLFdfrFbjJp7YfTHQ2hhSFBae0qve4HXbqezoKsFh40ppqV/ncvxdfNSy205EfZcYp9arslmbNlsMJjJWVtMIdKVjnaR5TiPJPabi1+hx1a0nTqxaRz4RzwauDJaAxqbUlIeKgouJWSCLdLf56Y2QldmaUbLUdXDZQ++T6QLfB9/nx6TY3Sy7jz+1ejXedyuEn4sMqfmuN+qTjzWI6afe/M9DQ6KPcvI42eG7FQ/x7zCt7VyEV2o8zQLmxfH2Y6O19MLhrdn+Ec/ZlvzNdvtfcYgqVPqdIq7dLZUhuFQqgtQ06dALOgfSrHi4KUaicus9XKUZQaiNTI7OqFJBFtSIgue7lNHF9dtMopK6CrU1bEunspA5ao7i1E/0Q4R9WK1qgt20G9xpTz8/UJJWAPvZEAI7fJJt9ONGH6JlVZXqIcbGTmXtnHlKS0opsBa/b+3GR4i3A17m/E3J+5sPt0TinVqY2Dyn2bAE96Cf7hxmq1HeMmNktCSRq34SNIkZdZ4gR1sLaj+6LxNKlJISSl15ZAPQkBKb+kY6tF3UPmc+XstkfZIekRKZT2orJddWx0AN9yD+3ArJN6llJu1kH6dRZVb4lR2EOiKtNELi1KTewDyri3pxTKShRv3F0abnVs+odme6FT6Pw0S42CuSvxU8xZurdaL4y0JN1svLU01YKNMFUKahnP/ABOugErjtBPm+CXi2qm4R7yuk7TkEOK+ZWpWRpsMPN8xa2LNjc2DzZ/ZivDQe9zMlefqNGv2bX1ScySHFWumLGQLdwZaA+rHoVpdHGerHyhopyitVvJIeAPedCRjFOX/ACLfA1RvufmEW33YOdKeIzOl5wclCf6SkuJB9pxZhUt01Lhcqr3VTQWcLagpzIjtOejRpMMSFyVpfaCwCE9d+4DGOuo5swynPSKLuIeTXYuRIGbIUiIaeuYI7jLT6EvfCBS0EtACyAElIPm364roV4TqOm+JsrUpQgpJmxP3K6rrZ4toYceUtKkOMoQo3CQUOrsPWL+3AxaWZMFLWm0Pzw8cvRJXFOoplNhTZe8kLFwk6Ur+nnn241UFq0Z6reSNjWVqNLp33siAshp2G0prSSEawhOsKUd9ZIUSehN9tttEHzK5rkLamhLzjRabcU4oEOJIsUKHYe47g7bEG4uDjXmRkUGtRRNpK/EWHCgIBCtuZve5H7B7cHMiWaBbiJMOnMK5bjQUVXWLHptguVwWYvpc8RYd2ltFwhStX5RuCO3/ADvhWxWrsR05LhfcQUqbceaW0fObdntGKqmsbF8G00Bl5jeqFL8SXBdZitP8xtLq035rjYQUixIIKYoO9uhAve+KKbcXc1Ss0YIMV2oSxFjNLXKRdRYKbLAte2nqfRjcmuJld1xDb+WaxSawYshDbL7agXG12X1ANj2bgjY+vAc4laTWhOXDGpDh1lyWktpfmylXS6QEBKNrJKPb24xzlnlc0RQCzzXk1+Sw40zpcCVJcQnvv1vgpgGuucUU96MCoJsVFCr3OA1cCRPHgI11pXGGqUN0gRsxUaRELSzsVAar+xBH9bGaft95oT0v1GrPERmpsyak1JoU6GEVBSpEqSkuNqcQpbJ0nQkAakqBuTcpO4scWYWgqXrXHxFZ1FlsNzLgSiRmYLWEJVS2RqU1YD8I7hjRPWrEogv2pAUONIfWdlt33W22O7sBGNaVmZW9EPnItMlQpSZDqCmNKZ1sLOka0gi5sDftt7e7Hotiu9aXccPay/aT+J284Sfiwyp+a436pOPO4jpp978zvUOij3LyOUPhL55jZM4650EpKSiRXJ3xibbPHzHvx2NpYN4vC4aztaP2OJhcV+WxFe8b3f3IpzPxKo9QyVmKPCS0w9KgPNK5YRdd0HYkb48rLZdWnJSclZHehtKnP1FFq4u4aVnKruUaDTahCZcedh6ZUhbP8gI0JUoC53Jt3WxmrYTEylnirpm6ni8Mllk7NBaj0jKsuK7MmpZDqahIiMaHCn4NbxbA0g9LLNrja98ZGq60SZoUqMl7Qiz5wmovECs0ww6x4pUIEVDCQ4jUlYR8W5BG9uu2+Ep4iVFOLjxHnSjVkpJ8BC5wpzhBSoMTaZPF72Q4pKifWm304Vzoy1aaLEpo2B8B+jVfJXFeFNrrSGHp0pEdKW3ErASG3ACbd5Xb1YorShaKhyGSclLMKPul3BRqEHfc0+9INUnCuSKXfUhhxSVNuuNgbnWQhRHZp7um6jWUaiUnpY5+SUqb7zU3hTUzkiKpNXhvrlBPLC0NE2SCNNrgdgw2Ki6usWaMPJU07hWridkzPVPrsqOUMVPLyeWlfklPMWV2I7x2918I1GpBwvqmixtxq5nzQBzjmpyq5ZbhRzqUC0FdD8QpJ9VknD0qeWbbEqSco2QIzAzUoOfs3JCVxxIU2Fb6dQCelz6cXWTgvgZ1mUmD63B5VBeeckoU6VtgMpuVE8xN9+nf7Dh4P1rJEmvVbYxc3MmPmKcg3BDLB8rru22R9eOone7Ofaw+hU0Kyg7GBJWgOrPrCcYHBrEZn1GtSW4S+IT4av8A32z/AExxw6+VzXLrN90suEH24msaD+IParId3g/v0VnJzjc+O04+tTiVrcTfyCANPrucc3FOWZW4Gmmo24ajH4zt0ylQafEo4ejREvOamw8XEnYaCLkWsNXtxfhLyk5SFry9WyJ0+5qVVMPjFCc1qP4U0i6hb4yXE95/lDBxfBBw+qaNxfCo4XSuI3HNFEhOxY0qXDXNSudrCCCiOgEaUqJPwLm1vyVYspScXf4FDWanZdZrfxZ4ZjKNcplOm1Smrm0+IG0OQFOuI0cxak38nZYKlb+bz4q2fjI4unKcYta21VhK0JQaRFstlqG+2lM5Mt1saI55akB8A7sq1AaVC503OxFuisdIoHflV2gzozT1QU+/HIOlLd9jc3BF9j2Ed4w2Z8hZKT4GGsUqmvsNpgrcbVY6kLIsk7dAPXg5usiTAL2XWTGW34w6hSjqsglKNVvjEX3PZ0xMwbCKktSn63BjGNyy0QNTY8lzyiSr0729AGGtdAloh95c4MHPeQZDTby06akpl1tDYXoVHI0q3I2/DFezGOMssk2aJNpP5A+XwbTkOAkVGsuOFJVySIhEhojqW1FabDzahe/bi+U1LgZ1KXCxNvCDhtw7rGVYFWzIKippLi2pVSgPG7am+pW3ZWpOmyiUgLTckt6BzMS6SGsx08fOEkTINOp2ZMlTotay/PZCFOyOTNCVWKkLQSkgpUnoQNiOu4xWrchlfmaqOvSDKB0qKzeyR34Og1mzE5ObkNctakJUNgSq1vXg3S5gs+omnwQ8r1Gd4QGVpcBJeRAcccefRcp0WAVc9LadW/QEpHVQBz1Gm0kWxTUW2bte4pnLMzNNO8Qdfgyp0aTbkam3A7MlyHE77KAL2/p364VVIxbTeoyV9TXHjB4OuUM7+GdCyZDpzeV6RWspIkSF0aO2x8Ol2SsL0gaSbtovtuPbixz9eLuTL+20a0Zn8DyuUriJmXLcGuwXfvQ+EKkzWH2gtKgrQQEoX1Ce8jfzG1jxKi9UD8u5LQFtcM6pklmA/UI7iSplbPOW0UayHl/yrH2jpj1WwKqqV5W6jzm2qbhSjfrOxfCT8WGVPzXG/VJxxsR00+9+Z1qHRR7l5HHrwzqQip8cc1KMhplbddngJeTdCgXtybb7Wx6DGVJRwuHUb8OXyODhYxeJrOavrwZrXmDLEqiU9b7q23WHEqQlxrUBfQTbcA4wyrxq05RXG3M0qlKnUjJ8AFAmyWUERpBS+VBOm5GkWHb59/ZjnLFVKcZWfCx0dxCpKOmruHF5rqcV5SWnVcq6lG5uNZUo9uJSxGRZWr8WCrh1N36hwQM5yYcNqSHU+Nh25F7HdNj0IxVCkqmKu46MtqSyYVwjLh4jmgcXqoxbWVq9Dl/oIOOhPZ9GXGJy4YuvFaTDzXHmdTmXZLa3mXkp/fUpsUns3SQQcYp7HoS4eZrjtHELW9/kJMl8cH6omWuqPJeUHdCFvOkKKdIJ637ScZZbKi9IaWNEdoTgryV2PmlZnNeaLkB1LXIWlayhwK1doG3oPtxzsRhPyzSk73N9DFb/AFStYeFN4i0959LUhKJaQnSWpTQcAsfPe2KZbPq2uvMvW0KV8rCzcrI9SZbeepFNZlNrSbpipB2UCDe3mxleFxMNLM0rFYeeraG7xFp2R8xNJqE6MgVN0hsyGlm6gBYX0mx2t1HZjThaFVNp8CnEV6TSysjOocPcryEltqpPMqUSU3XdABPQ7d3nvjpxpta2MbmmrZiCuIlPtxKrcVTyHhqbAcQLJI5aCLDuGwxuoRVR24GKtJ01fiHl0TxcTYgfG7a0eUD5NrA39mDUofuRfWCFW9OSfJh/grQpSs+QVtp5xaS6tek38ksrT7bqGMmLpbjDvM9S7DVVWreqG2OEuZMv89mmsIfjJWopUl5KSRfYkK6bbY5UqsJ2cjoqDXAbOZ+FOZ6wUBymyUJbJWooAdKie3b1+3F9OrTgVzi58ETl4HWU5XDrNsGfNYfjrcqkRAD6dKrJWCTbsHlfRjNiaimtC+jFw4nU/jZwGpnGmlQX/GVUquwk/gtQQjWLddC03GpNySN9rnqFKCrKcvVi+ZmbytrkQDP8CTNtScKXXMsAf94bcdQtXnKQza/oGLlUnwuLam9bMA1v7nXXqtAkNmsUZp1SLC+taVEfFueUkjzKBuPoJzy43Jan1GrGa+H9U8H/AIzQcvZmrcIUiuvNJeeXHb5sJROguuNG2wO5WmyXB5QJOoCZ21xGUF1G6MLwCHpbDbyM9RVtOJCgtikgpUCLggh3pgKUubF9RcIhBr7nxBUAZWdJK1dvKgBA/WHBu+sl49RmT4BmV4DgQ7mqvOOHf8ES2gj2g2xRKqouzbGST1sDaJ4K3CqR4y1TM91ySpEpbTyINXhptIBAWlQA+PfSCOvTFbqRWtmWajpj+Ahw+nvLVMmZleX2+NTWVFYPnDZOGhOMnZCOTQkzP9zn4X1emutQRVIUsi6XfHVadQ6EhOkg+cEee42xfewmZ8zUbMPgl8ReCXEeDyOH0/iJkoL1So0F9Z1tqXuUqacQtLgHSyUpPUo2JIfC6L8y5s3qpPgYcHFwo7zuRyy842la2ZFTlLU2SLlJ+GIuOmxIwU0U5mFo/gicH4hBRkiEf9488v61nEckC7H9lLh/lnIcdxrL9FhUlLltZjNBKl26Aq6m3nOEzJAd5cTULw2uI2ceFvFKjSst5knUyHPpqXDGbcCmeahxSSdCgU7go7OzGapCE5XNVL2LWIwyl4cedqO82rMEam5kYGy3Ho4ZfCO0BTdk+1JxmlQ5Js1WXEmXKHhVcJM3yHfv3SncrVCQEpdeW2dDgF9N3WbK2ufjAAXOKXTqw0TuC6Gl4XdHynIyJQq5lioioMrklkOMVJctmxBV+UtVj68e2/Ck5vEzjLqPLfiDoItdZujwk/FhlT81xv1ScDEdNPvfmaqHRR7l5HGDw8GVL445kWEkpTW6lcgXt8MMenrTUcNh0+z9jzdOLlXrW5P7mtalfAugq20K+rHPqv8AbkzbTXroFLccjuyC0rSoLAB9Rxwmk4SOytGmKqhJWmY4kGwDZO3f5WFgufwC3oEIKHZTaHEpLp0gqNwB7TjtLEQo0o5uJynQnVqu3Ac8OuwIjJS/TCt8IACi7sTa1+nfhKdR1/ZlYecFQXrRuYMy1imVHL7KW2XI01jbQg+Qq4AJPf0vibicamdu6JvoOnlS1G3l5SvFnCHgNLou3p3UCk7381vpxYs+a64CtxUNeJMXCaoBlmoIFisKQo99t8cHbHGLR0tmuydxuKqQZz2+vxlxmKqerUttRFkFe59mO1SVsOtNbHOm1vn1XHDGzU7TojyxPdeHjzzLaVEK8lNik7998U5M3K2hZpa6fMctZfDjUVH3xblK0rU4lIHkKQ2VnceYHsxjhJu91Y1unGNsruNZzN9PJSA6rUqwA0nb041KnKSujO5xTysi7MbqX+Ik1aBqClN2HS/kIwlDSo7hrP8Ab0H8qn86FCQSEyVRylb4BuqxR179jittwqQT6y1pTpya0uPfh7T5WT49Vq3KSqN4ml5layApS0ly+4FwDb6cczaNXfVFC/A34CluoZnzJSydVlSpE2ObKQhLbgVe/wAYEEejyPpxwbaanVerHTrRrFylO3WwwNWO2JYMu9ebDZvodC0kfyhY3+gYZx0FzK9jpHX+L+XOGeU6XUs1VZumNykpQ3qQpanFaQTpSkEmw692JTrSjG3EyTpZpvKMdfhvcJ0myK/Le/3VJlK//nixVp39n6f5E3R4vw2eGpCOW9XXys6UhqhSjqPcPIwzq1Oy/p9ybr4obuaPCN4U5xWn78cPsw5jcCQlKpOUVvKAB1AAuJ6X39ODvKnZ/wB8Sbm3Nf78hwe+5p9gI3DfiI8D8W1B0A/8zgwFUqN2SCqK7R474U9SUjVH4Q58WnqFPxY7I9qntsR1Kj/9GVFPn9BsVfwpc5IqDcmFwiqgjpbU26KhVobBvcFJBDh897+bFWaTd2OqSasn9DWtVCplJlffCmcMqTSKkme1MamT88xlOR9DgXy2067BJtbygrY9uL3VlJZUkRU9eZODXhpZmih1Uyk8Po7hN0h/PbDehNhsQG1X3vvft6YqcJ3vfzA6S4JMHzvDtqscHXV+EkA9zubnXz/YYwctR8PJh3UefmhyM8eOMFUabehwsnqYeSFtuRabV5aVpIuCFIbAIItuMNkq/wCoXLTX/q+wZiZw49VSltTfvlk+ktOzmoITKy/PacKlkAKCXXUkp3627DgOMlxlb5C/t30V/mQtxq8KriPwszfPyxKz9Bk1mClKpDNLyogIRqSFgBT0m58kg7JItffbD7pv+oZZOyecOuO3E3irk/OtXpvEmpwKvlER35lLn5dhNsPtrUdg4halC6Ur7NiBfY4SpDJBu7IlFySygr7oZnWLBqvDg1hp5cmXR1POOR2kkAlSdXVQI3PZiqMJ1IpwZdTlGmmpcDVxqdQazHUIGYYDDmk2RMc5JHds7oBP+yo4Zb+n7SuM5RfBi2VSZ0JlD7sZxcZYuJTKCtk9P4QXT2ja+Lo1U+OhUouTeVXMcCSVlSEuEtncgHY49r+GkvzEn8Dyu3m3RividkeEn4sMqfmuN+qTjFiOmn3vzN9Doo9y8jkn4V8FE7jVnls2StdZnNhZJFkl+5G24vYbjGnbd1hsLbsvyiY9lzccRiLda/kgnMOVSaPVJTzDDloSzzEG+goSogpBHU2Fz23x5iGIlFqMWehkozi24oiSpRWhGrDoBC2pjTaN+gIdv/7RjqKcvZMOVcSpcPnzHilenREU8b+a+2FU8ujXwA4X4DamSnnXAkuKKUbISDsn0DFrba1IklwD7EuayxCEnVy1A6FKHxk9OvbhqE8k7oprQzwaF026opWDcKG2O5KvGTcI8bHHVGUYqcubLMupWh5wKSQCAd9sFPJC89Llji6jtHVj7y7WV5dUXVH4OU0dx3j/AOzjl42g8RZLimbcJVjSbz6JobrklTz7jq7qUtWo6fOcdCU1Rpq/IyqDq1Gk+Jc3M5oU2FKGlVyD9eFo1VVT0s0JVoypuzd0SHTqdRqmxCIkctx1v4coeIIUU2O1z3q7OzGGc6kW1JXN0YQaTT1EB4dIdC3Ic4qeKipTLjKzpO+2tNx2DrbriU6yp+rl0YKtJ1Gp5tURRmOQp2uy3k3SVJQR3j4owlXSTsWU2nFXHNBrbyk1JTXMS+0ypWoKJsNSeg7LC+MlRuNRO+hfCzp6If8AQM+VSuUOJTA4X0SFOwhrSApSEsEoT3fGUN8c2dNZ87OhGfq5CS8jLmRZEwutPR7ttJGtJTcgrv169R7RjJlRdnuOsuqcuokn04NkhMzMuX65E91UakpeT4+paFck3vpJAv084xXOzVy2CejOn+an3qVwrq1SjK5U6FRZD0d4AEtrSzqBF/OkezGairsrq+0cvK7Mqk2gyJlbzpX61mdcooEVRkFstWPwgkEk3uobWFrHzY6V9NPIbvN8fBQU9WfBvyJKr9feck06fJCpcuVzC9ypD7aEFa1G4CQLWPROM1Vaopvq7IJ5lZpT0+W8+cnOsreWpKqlmyUbgqJvy+WUov8AyUmw7MWcOaLoKVtEzWrwqqDSa/7lIkSflukx9UhUiRlvOCYSALN2D+trU5ffTbp5V+owc8UvWSfyLIxnLTVGq+e+HNBos1hqJJpGYGXGg4uRI4iMoSlVyCkpKkKOwBuNt8WxqKX9KXyFlTa5vx/wM+RlPK7SdbtDyGFD8p/N8qR7eU/jSpPk/BFNv9uD5ELJrCT+D8Moyu7n118/QpQOCqkuFn4CuEfh4/YSok5ZQvyZ/DpsWIs3R6q8R3W5jCgfXg55vRX+gijBdX1HLMiUuDSw+y9Q0bJOtvILMgG+23MZSe0WviiFSU5tN/VIvlTgo30XybOnOQYs+TkbLzrkHNbjS6dHUlbmZIkBlQLabaWW3QWk9yLeSNuzGFJXbaXi2Pfkn4RH/lfNUmg8qmNUqIUPyUqBqmakS3dZIG1ys9myQevpwXla4pFbg+OvgageEO9mP3xPE4Zap8lUqOyhcqVHSzZbC40UKaUpaTYeQDfsue84ucnwTJTSy6iLwD5fuoyvxzbVTTAWujMoWypQVqUDKF7gJHsH24TEL9t68gJ/uJmP7pa0JOf8jxLC0egA27ruqH93C4aVoWQ0l5mlsqkC+yQMbU7FdusGKZmU55JgSX4b6juuO6ptRT27j0/Vhkk9WhPWjrF2HLwhivwajKZVIfWxouGnHCpKTfsB6erHr/w+08RLuPNbbb3Mb9Z3a4Sfiwyp+a436pOOTiOmn3vzOpQ6KPcvI4seHxmedlnjvmBcJ3l8yt1PWCLg2eFvrOOntSnGphsNfs/Y5mz5NV8Rbr+5BEfjLJm06TT5jCB4yytnmpNkgqSU3N+nXHl3hrNSR6FVG1YWoqVPqiS3UKEp6OtpJedpTge1up2SslJuNioW8+A7rhIll1CWLFoM1iLzap4lUpLCob7L40JZuFKDm/X4qQQD24a81yuCy6xgzIKY1eXFU4h5CX9PMbN0rF9iD58ak80blT42H3n+TJq1ByvUUFpENDXi6WWUaeW7e6jcC24At/snFMbJtDy5BPO+T4GTXI5V4zL8aWohDafipSE7bAb3UcV0sTV1UHYapRp6ZlcD0KEMw5mYpkJl6JzkqCVS7pFwCd+p6DGueLrbv9yV7FEMPTU/UVhy1HJNfgtpZVHccbtpSE2V1N9gdJ6jz4op7RtzGng09LEZZokzo1WXCUXYqm9IKLFBvYG5HXGuVZ10m+BTCiqWi4iykTHVzUlZKipNlWFyfUMNQqKnO7ErU88bIcSJLK7WcB83bjqKpCXBnNdOceQqaeeZJcYKeZ3rTcf58+FqRclZMsg1B3aGhXWlIqT4O6uWjf1jGGt7TNlLgrB/LzRD1csNRMN0WPadtsYMR7Rrop5WOjKnNjyaAdAjKNUXsnoPgkC+/pxmazaI026iZv3SMuRGWluVAOqWCDyUFdrGxJt0FwcYt3K+iLbx5hx+oU+uZYflw5LUqPYHVpKhcKBspIsR081r3wjUk9SxWaCPDmkMSsxU+rPxlIqglKbW46BrF3j5O3YLWHmAxVU4WLYckdVcxUl+vcNqtTIjYdkzaW/GaSpQAKltFIuT0FzimizPW1kc+Kp4Gea65kSNSGchVaPXUvc9dVemslsEpFxyy4Cdwd7kb42RcuLJKUeFzbPhNw3rXCLwe6JlusuQUzIUx950u0pdVSUuvOLQA02oHUOYNxcCx7Nwjmk9SuKTl/qFJrTscbVCYwO+BkCS0PasKw1+psuyJ8l4/wCTXXwms80k5x4eifmBt1PjEmOlVdoDrDoWtKE6I9mS2FEgauZ2AWtucJeUoys35lsFGNpNIiXjE7RpdSpLhq0FAbjrQgzKHGnOWCxsLNJCQL/ldb3xKMvVunf5fcvlFXvZEbyQ26wkMVVT4Jt/+P4eU9R/u4u+OpXePWgQvL+ZHnNUONnGSjsVDyGwwr2oUcI5W1kl85FbS5PwRYYOckEoLHExIBtpW34iPYQcFyTV/V8bkyPir/8A4h3MxqLmWGWlLzE3IK0BbYzazT3xtc6nHkW7Nx58VUrRm22rfJr6FtZy3aST+SZu5w4j5dOR6CXH8iKkeIMa0v0Y1WRq5ab8x5Kglxd+qwLE3IwHLVxXkUtNavzHvQ2W2qjEFNFHYcLyEtvU3h28AhRUAFczXZNuuo9OuHzNK2vghGtP8ibjnTOBFMzvLdzkxMkZmlMIkyYtOVMWVptoSpxLJ0pJCABexIQO7GfEYvD4SzrzUb9ZswWzsfjot4Wm5JdSDvBtrhNWMl5t/cyp/ia+TyJ4fYfbk+Ug6NXO8opNiRba4V23wI4mjiKTqUZKS+BXisFisDXVLFwcXx1NSfui7oc4z0ZvqGqAwB5rvPnF9DgVdRqY+ylW1uzGm5SxGuAhSguwKgLA9v8AnYYsixOLDeSIoYqD6gN9H7cew/Dj/fl3HmdudDHvO3XCT8WGVPzXG/VJxzcR00+9+Z06HRR7l5HFH7oLQpFY435hVHCSWq3U7pKrE3eHT2Y6u05KOGw1+z9jl7PV6+I7/uamSqJMh/vjC0gdtrj244CaZ2xEC6wsKSVIUO0Gxw3HiQKM5vqzKeWqWqQ1/o5KQ6n2KBxW6cHrYbMxEKkVTBILaEqDmspQNKevQAdBhrW0FHVmSuSE0imsMlKIjZS80CbqCgNvVucVxim9R22L5/FtyvR2kVWMtTzVyh9hdjc2vcH0DFCwyi7xLN5daizhdmBqZxDp7sqUpLaQs6nlW/JIsPPvg1U402Sm7y1NhkBDKwth9DjNwpKUJ0282xAt6RjiNXRvu1wNbeKTSpHE+ohQ/fFNkW7uWkY7lB/so51S+ZgqlstivUxpQJS4+0lab2FlEbew4d8GytcScRwkbqLbxEh2IUgFOuzyDsbgXv3d+Ob+YlF2epuVFNXQHkcIKywguRVMSQCQUsOlpXsVcfVjVHHOOl2imWFT5EZ5oo1UptZfYqLJYkttoOhRTfQVgJJttfG6NVVVmvxMsqW7dkh0U6EqCailxstvFl5C0nqCHEjGarJObsaKatELImxKUinTpqSuJFlPPuNgXK0htq6fXe3rxTbMrIt4O5GkvPTj0+Q4xCjw4rril+Ls3GgE9Af8MbIwyIzOV3exLHAnPBpeaWYDjp8SqYLe52S51QfSdx68ZcRBON0XUpWZs1wudkSa3CZmq1yRUm0Xta4KwR08xxx5uyOhDU6uUlOiFESOvL2HqGK6D1Mtb2jUSpZz8JaqVNYTRKnTXEurSW4MKP4u2L9EqcCtY6WUT59r449ee2HUkqNOOW+jv5ntcLR/DCoxeIrzzW1ST+mn8k0VGRmccLcqPZzkM0/MAkfhzrakBI8h0I1fkhRTo1AbBRNtrY7uWe7jntm59VzyLdJYiX5e7hyvxt8SP5MilT4kJESdBQ+wysNutK5esFlQbBQoXSAsg27NPqwVSiva1GlOberII440XM8KhQn6MvN0h9+pc7xfKLannWgA4XUulYQA2pZBCgSVAAnFkLewrfNtf+kcm1eflf6DVzTSc6VRyIWYGcnElKtbcOqpp+m+k+Xz0K84Fr2378Uqa1U/rL7I0N2SyvwQ15XCjNlZbKHMq5rkG+3jeeYX7GsMp0+CyiynJLiwE74KOdalIU43k55sE7JmZlS/9LbeHVSmua8GUtzfX4oUM+Bbnx+6hlWiMhXbIm1NV/WhFsTfxXP/APUVxfP/APpDgl+BTxAqtNiR1UXKyktkENTlVKU2DY20ocCQO3rfAhXjFt3fySQZK8UuPe3/AAbs5FyvXqBk2h0h6VnNbsKEzHU3TnYbMVJQhKbNAoKkoFtgSTa1zitzTeZxb+YqWXml8g81QKsifEddpub320OoWpUiso0bKBuUNjcebtwLviovxFbT0bV+4zZ94LcPuKua11Wp06e7WSwGXDElPRy6lHTUlKk3KdVu+xAPZijE4TD4vLvaak11o24PaeP2dB08NWcE+NmOXIHC/L/DelTqTlyhSYLUsjnPvOcxa+oSVLWsqUE3Nh2X8+LKeGVKm4Uo5V8EZcTjK2LqqriKjlLrbucwfuoVSmxvCbQ3CnmM6zQoiOUTYHy3Vdf62Onh4JQtJCZXUV4PU1Ib4gVqmLCJzaHkk2BUNz6xbGl04v2TPJyg7TQ4qZxCp84pS6FR1Hqrqn/DFW7aIpokLJL6JEhxbag4gouFJNwd+zHrfw5/2Jdx5vbnQx7ztrwk/FhlT81xv1Scc7EdNPvfmdKh0Ue5eRx58M9pDnHHNZWq1q3UNr2/hsdDa7thsL/a/wCDnbNV8RiO/wC5r5JbZaSrQzzVdg1Wv68eZV3wO8wBIpsqs7NZbW4nUUB4GySq1yNYsCbEG18XXS4yKnfqMczIvOhp5keLTZSfJCEy0L1nfqNRIOGzojGc7SjClKakNkKSbEE9PP58Pe4D2bTphjoWlKno4BCFJBIT5sRNIggRAkPkhtpaiOthhrkLS24yvcKQpPqIxNCDjo2cMxU4DxeTIcb/AJKtSh7cUyowlyHU2gwmuyszVWEZ0LRJAKeeQQVDSbC5wI08ismHO5cUI5SRT81wOcrkNJejqU4egTZNz6hvgr2GLa0tTZ+kTIrLK0xJAdQ6dZs4FdRjjPV6nSi9BfTpjrTSg6hKSVk2vfsAwslfVBzEF8Y3eZnmW4AAkxY58n/ef4Y6NDojFVd5mWrOj771gA73kbf8dOANxQJzg8BlNwX3K3rW9EfDU07hnwIqQLudNsb2ZB2UzxrL82lSiFJVrS80T5IulQNrnbuxU/WTCtNTbLgxxUjVziZSELbXT2muS4pt1SCla+enykkbHYm5xxK2HnG8uR1aVSMllXE7GU6bAqsGny2KklCUIuClabKBG4N8VUN21a+pnqqak9DPNq9PYQdVdjMKt8ZbrQH02xqdOPWVLM3bKMlrOGU67GcazJXaOUx3tSUSZzASFWI6au49e5VuoOKnCMvb4d6LvXg7wWvceO5h4SIbuZ2X3h01NKbcP9m+IqNFa5Q58Q+sGv534TUt5J50VLKwb8mHIXc7W+Igi3X6MFQpcvJh/fl/qMn7vfCejKShuelsgbAU2QB7S2BhounwVvAV0qr1YikeFTw5aUUtc98dhSy2gH/nWnBduoG7muYhHhW5PKVOs0SquITtrbbjKv6Al0n6MI3bkPuZP+oFzfDZynFQSxRqgVnoHkhu/sCsRTb4RF3PXIFe/lpr6tLGXVOqPQKmFIHpJasMHNUvw/3wDuYdp+AgHhouQVyVs5YWsuL1kLmqcSna3kggWG3QbdTiuF4NyS4/EsdGLXH6CST4bdbU2FR8uxEpJsA6Vm3sUMXZ5crA3EPiAJvhZ5gcqTc9NPpkV5AK7gKtcjTvdzu+odwtTaSdx93C1gJmPw5840+CpceRRW3thZeknt7L4sTk3YV0qaXA5zeFBxWzBxT4rS8xZhkx5U59hpsLipSGwhFwEgJ+nt3xvoRtGzKKk8svVI7hVVmWzyJaOY0dtSt1JOLnFx4FsKkZrLMsk0NUZXMYUFMncKO98TNyZRVouOsdUShwTlqVUJTBToHLCiEghJN+tu/Hp/w9G2Il3HmdtO9CK+J3m4Sfiwyp+a436pOOViOmn3vzOpQ6KPcvI5O+FDkip5x42Z2+90VuTyK3O18x5tu2p42+Oodx6Y17aqKGGwubsvyiYNmQlLEYjKuf3ISVwEzaF6i1RmEnr4xXoLdvSFPDHmViIcv5PQ7qfUODLvDrN2VUvssV7JzUOVpEiLNzBTXmXLdNSC4qxG/lCxHfgSqQnxuNGnOP+oR1LghP0uPsZl4XRjusMrrEVW/ckpufafXgqsuGvgI6UuOniRLmHLsmXK8Un1bLzK2yfhWXvJHmBANwfNcY1xkraFDTuJYmWG6ebsZxpjF9yGlvH6kYfNfkLb4mWUwktqbXnSO4n/Vsvb/2BgX+AbfEBu5epK1FS6+hxZ+MRFdJ+nBu+oFjC5S6SyNKKy6R3JikD/3YN31A0MUN+FSqpBktynH9L6daVt6Rp3v2nBfAiMnEl5g1KOhpxK1JZCXNPS42G/nSAfXgU+AW7sBUvNVUpCk+LTHEJHRJNx9OJKnGfFDKckPei8c6xBUgPgPIHXScZnhovgOqr5haBnOkZ0zbIkVVDbUZ6ByNMhWhJcSvUN79T2YV05U4KKCpKUrsdMvLEatzoj8d1UZ+tQnnVpUdTbbtm1bbXtqO+KVUaumuBY43enMb2ZshVNGWn4rbrEuXDU49JbaX8RC0oKT5Vr7NE7d+LIVI3v1iSg0iJ6NDEqsMx3FBpJWlK1rvpQL7k23sPNje3ZGfiObNWZ3q/T6cHuTaG4601y0aFaDpNtvyQdknr1vhLDt3JSlU2k5dyZTa0iEfGJLMfmLQCSNSFKJ9oGOf605OLZpTUUpFmXeLDcSWhQq9SZbQQQyhatI6dmrCyw2ZcCyOIadrs2vr/hZZXrFHy4KdS6+JMWnNx3/FWC2HnU3uvUPjX23tjK8PUvyL1WjHXMWteFTIcptWhxck5mqCpzKW21hlyzFgLkWbuSSCdz241ShFpRUUrc9dSuM05t3buMSRxOzDMJ5eS6+rV/p21Nj2m2K8iXFoLnySZjjZnzxIX+D5Fub9ZMxpJ9d1jEyRX9RM76gk7L4rSUXGU4DZvbW5OQu3TbZZ6bbdmI1DnIjb7JZHpHFqWdX3vo0XuLjwsPrwXu+sF5vkLGMm8XXWZAbrdAitr8t5LLS3Lmw6gNHUbW6XwL0udxv3OpGJ3h5xKlNlubnKM3uV2RDUvfa/anfs6YmelyQMs+LMDXDPMTarTOID0e3UohBPsJcGDvIrgiZZ9Zc7kODDBcqPFZZBTqUHJDDZFz03Wd8BTT9mIzjJcwDOoXD2KtKpfE15xd72TWIgHsCCcOnLhkK2uuQiXK4WsyCzIz5IkM36meHAOv8AIR6MNadvZJ6na+qEstXCWpL5dLnS61NWbIZjCe6pZ7rAb4H7iWungB7vmyHuLXDWbRK+hp2mSqC45HS+1BqLDjLpbUTpWUueWm9jbUOlj240056a6medNN3iRfJhTKU7dxtTW/xvyT68atGZ1dBWn15LCLNBKVFFlIXuDbqR58Vyjc0U6mUlLgvIak1uWtDK2VckXH5J37Mem/D6ary7jgbelGVGLiuZ3o4Sfiwyp+a436pOOTiOmn3vzN9Doo9y8jj34ZlRcgccc2BCUq11uofGv/pvMRjo7WgpYbC37P8AETn7NlaviO/7kCKqyl/GZbJ7wVX+k48yqaR3XJsoVA22QpN/5KyMNlIXeOkptZzzjmj7MDIS9jDJRFmp0vxVvJHQKeTsf+TESaBZcwa9l2mPXAYfaPUFt4H6CnD5pAyoFy8sFq5ZdKhfo4BcDDKbYuUCyYC45POS4gdh0bfXhriiJ1pBtuf+UfbhiCZ2Kk7hViN904hBBKZfUskpKz3jDEEym3ALFBGCQqygOntxCGZqVy2nGyAdVrHtHowGiDjouZ00V1D9OkPU+UkHy9nAfQDsL4zypuWktUXRmlZx0Y5DxKrCY1QcckQpfjzIYddCChwAJKQQOmwJ6YqVON0strFkpXV73GdlqZ4tmKLIK0tq5iSXCnUE77qI7e+2Nb4GZOw98tZXYqzFXZmlqyn0ct1v98QdyhSdraSnXcHtA6WxVKTVrDxVyRWc10eRRYdG8dbYehJaZUVi+6LAkjr0vjBKMk3J8zRGS4XHhReD9Zqzyaxl+o5XrzC7LLTNW8WdT5lB5CQD6CcZXWhH1Zt+BoVKTeZK/wAyfMzcXs9vUGi057LeTKMKXDRDS7LzOy8VpTfchJFupxmzU275n4M0KMl/T9SMapxJzChPMk5p4bQArqlVQdcPsTfF0WnwjJ/IVykuLS+ZGmbPCGrlFKkRM2ZUmrSOtOhvuD2rAvjXCk5cYyKJVMq9pEdyvCq4g6F8muMtqJ/g4LQFvWk9uNyw1O2qfiZd/PkD3vCj4oPI0DN0ppHWzLbTfnPRAwVhqK/pB+YqdYGmcfOIk0ku50rO/XRLWgf2SMOqFNf0oXfVOsFP8Vc5Sjd3NlaWbW3qDv8A8sNuqfZQN7PtMESc01iaSZFWnPk9eZJWq/tOGUIrghXOT4sHuSXHDda1qJ7SrDi3bLos4w3wsNod2tocFwcBq6sBDvj8VZsdKEtUWgoCBsTTkKPrv1xk/LJu+Z+JdvEv6UF6LxjzA9VmEMMUiOVkJJapbAsO2104DwsLat+IyrPkl4Et5a8IziFk+CqJRMyvUthRKlJjR2Wzc+cIBxnlhKUuKv8AMdV5f6hj5jzRVM3ViTVqzPfqVRkqCnpMhRU4sgWFz6AB6saY04wVkrCSm5u7YPKUuIIUAtJ6hQvhtQaMGycpxZoJYQqOvvT8X2HBzNcRci5D+4MZem0euSlSJDb7JZCU6VEkb9ox6j8PyTryt1HnNtX3Ue870cJPxYZU/Ncb9UnHIxHTT735nXodFHuXkcfPDLbbc45ZsDguRW6hb57HR2t/1sL/AGv+Dm7O6fEd/wByCjDbO4ITjzKbR3jzxFu2y9sHMyHviAHxUkn23wMzIXqgKAsEhI7ztiZg2LVQC2LqG3cOmJmQDCuMQB5PtwL6hLBCLnk6b+a2GugWuD52UmHxq5JSv/VWT/hgqbFcUA5eVXB+9NvD/bCD9Sr/AEYfODKDHctzUk2iuKsL3Sk7+0YfMgWYNkQVMqs62ps9yxbDJitczEmmNvi5eS2POk3OBKTXBXHik+InkwGGxZtS1n+UbAfbhU58yO3IQrjqSTi0UxgKQdrj0YJDJGWUOA33v1wGQkeRnB5NPiSYZjpQAeewoAWWfjHbe5NzffqemM+RN3Y+bqGBOmKlSXX1W1uLUsn0m+NC4Ct3MKZryBs84kdwURgZU+QczMan1K3Kio+c4NrAvcs5hG9+3BAXNAurCEC5PZiEMyYTijY6E9l1OJH7cC5C1UYNqKVPt3HcSoe0DEuQ9EdrteHqScC5DzxVu/kuKP8AVH24JBTApLdQfbaS8ppxWxLqQlCfSb4F2QzZiy07QkMrLzchty4C2twCOw4idwgMGxv24YBek33xCD14Z0kyaouWpsLbZSfji4JOw/z5sVTfIaKuySnYaFkAsIuOlgUgfTii5ZYwKprYuRGb27NSvtwUyWLTHaSP+jAHrZKyP2YD7waGZDcdSNwts2+LrFvbbCtMZWHpw6YZanPltSioo3BWlVt/Mceq/Dt/zEu487tt/sxt1ncXhJ+LDKn5rjfqk45eI6afe/M6lDoo9y8jkD4YiCrjhm4j5cqA/wDWx0NrP/jYX+1/wc3Z3/YxHf8Acg8JKeug/wCfTjzPE7xcHQi1lJR/WwLDIUNT+SRqCXUjfSe3Acb8CXMiqtqWChtDR8zYP/uJwuR9Y6muovTLW6fKKQlVr2bB/bbAy2C38DOlxBSLtIBG5PT24UF78i1YDhsnlAdb6tiPZid4LCqLEpak/hFTQ0R+SywVk+sqAxnnOuvYhf5/4LowpP2pW+X+T2T7nGG7N+NyFfyy4hA9gSr68JFYpv1nFeL/AJXkM1QS0u38v8gd1cK6tDRKSO8Hb2Y2JS6zPdCSQIrlrRG1Dt12ucMlLrA9QdJoNOklfMhNjf8AgzpP0YsUnHmCyBUnI0J8nkl5o2vYuBX1jDKo+Yrir6AyTw7dAOiQgg/yxa/sJw6qi5QW/kSenoylwW6pWP22xZvItWYMrBMnKk5i58UfGnfZFx7RhlKPWLa3EQOsSWvJU2sDuKTg6EEa0OE/vahb+icG6Iech5Q2aWf6pxLoh6mG+ejDp/qHEuiF6adLXfTFeNu5s4l0QvFKnEbQ5B/4SvsxLoheiiVFfxYEg+hpX2YGaPWGxejLtVVsKfI9aCMDNHrAZPcxVdIPiLoHebDEzx6xsr6iz3O1Uqt4o567YmePWCzMqMsVhQNo6gB/SH24G8j1ksZlZXrKm9KmRpJ6FY64m8iSzMQyZUR8ZLY/rYm8iHKxREyVLccHNWhtq/lFNybezAdREykgUJlqkwkR4ws2NzceUo95xU3m4llrBVqW9fZJIPZhbIKM7U1xSfKVYdxGBZEvYVIfC91AK8/fhbcwmTS0pP72nuGBclkOnIDAbqD6kpsNHUenHq/w9/2Jdx5vbfRR7zuBwk/FhlT81xv1ScczEdNPvfmdWh0Ue5eRy78L/hfPY46ZoMluQww/PenMu8o6XEPELuD22JI27sejeDjtPC0bTs4q3l9jzv5mWAxFW8bqT/3zIhayXT2hvDD6j1Lrjn90jHPf4bm3piLfJGuO3IrjRv8ANlKylHAPLgQmye0turP9pZwP0xfjiX9F5DPby5UF9Svc3ISkpbMJlJFvg4Dd/ba+IvwtS4uq382B/iCo9N0l8kInMjOur1GWAf6LIT9WNEfw5CKsqpU9tylq6ZYcgudfG1epGG/T0fe/QX01L3f1PPcA5qJ8bN+/Tifp6K/+n0G9NS92WHh2tX/bFf8ALg/p+PvPoL6al7v6lquHClAfhRuO3Rgfp6PvSempe7LP3NV2/wCmkf1MN+n4+8+hPTUvdlfuar7JpHoRgfp+PvPoH01L3Z4OGixb8MVt/Q/xxP0/H3n0J6al7s9HDNYv+Gm/+xifp+PvPoH02/dnqeGqk2tMP/JgL8Px959Aempe7Lv3OnP++X2tu30wf09H3n0D6bfuy8cPnf8AvfZbZu37cD9Ow96T03LlTLXOHJcvqkari26Dtgfp6PvfoD01L3ZjVwxSo3Mkg2tYJ2wf09H3v0J6afuy1XC1Ch/0i39TE/T6979Cempe7MK+EraukpV/9jE/T6979Cemn7ss/chaufwtVu0aMH9Pr3v0J6afuy4cImbWMlR/q/44H6ej70PpuXuy5HCGPqBVNdHoRf8AaMB/h9cqpPTb92U7wiZJ8iesj+k10/tYC/D651CPbT5UzGeEhPSouJt3It+3Dfp+PvPoD03L3ZR4R9bVF0X62Tifp+PvPoT03L3f1K/cjFh+HKNu9Hbifp6PvPoH03K3Rnv7ktv+2k/8L/HE/T0fe/QHpuXuy4cKNIt44T59H+OJ+no+9+g3puS/+Zma4XJSq65alDuKNsB/h2PvfoD03L3Zf+5ez/pjbs8jA/Ty979Aemn7s9HDBgDd0Ktvu3hv09H3ofTT92ZEcN2Wz8cKHbdBv9eA/wAPL3v0J6bfuy/9zpkqB1gWHTSftwP06ve/QD21L3Z4rhy2Ts+UjsGn/HDfp9e9D6al7ssHDhKDtINr9NJ+3E/T0fe/QHpqXuxwZYyg9HqKGYoXIefIbQ0L7kmwx0sBs6GzZOrKpcwYvGTx8VTjDU7P8NoDtLyBl2G+AHo8BhlYHTUlsA/VjxtWWepKS5t+Z66nHJCMXySC1Wo0StwXYkxoPMOiykK6HFfAsGKfB6yKokmgxbn/AFYwbsh573nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshXvecifIMX5sYl2Qr3vORPkGL82MS7IV73nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshXvecifIMX5sYl2Qr3vORPkGL82MS7IV73nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshXvecifIMX5sYl2Qr3vORPkGL82MS7IV73nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshXvecifIMX5sYl2Qr3vORPkGL82MS7IV73nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshXvecifIMX5sYl2Qr3vORPkGL82MS7IV73nInyDF+bGJdkK97zkT5Bi/NjEuyFe95yJ8gxfmxiXZCve85E+QYvzYxLshnhcBslU6U3IYokZt1BulQQNjgPXiQf7LSWG0toFkpFgMQh//Z</pre>
 </div>
-<div caption="Importing and Exporting" created="20150220005458796" creator="EricShulman" icon="$:/core/images/export-button" modified="20191211050452412" modifier="EricShulman" next="InsideTW_V3" prev="Sharing" tags="Sharing" title="ImportExport">
+<div caption="Importing and Exporting" created="20150220005458796" creator="EricShulman" icon="$:/core/images/export-button" modified="20191211050452412" modifier="EricShulman" tags="Sharing" title="ImportExport">
 <pre>how to share individual tiddlers and groups of tiddlers between documents
 
 * using drag and drop
@@ -13764,7 +13773,7 @@ own your data 100% - open source and free&lt;/dc:description&gt;
 <div caption="Inside TiddlyWiki" created="20191207065629498" creator="EricShulman" list="CoverPage Contents Preface InsideTW_V1 InsideTW_V2 InsideTW_V3 InsideTW_V4 Appendix" modified="20191211105723086" modifier="EricShulman" tags="bookcover" title="InsideTW">
 <pre>{{||CoverPage}}</pre>
 </div>
-<div caption="Welcome to TiddlyWiki" created="20150212052411402" creator="EricShulman" description=" is for ''Users'' who are just getting started with ~TiddlyWiki.  It includes an &lt;&lt;showCaption Introduction&gt;&gt; that explains the rationale and philosophy behind ~TiddlyWiki, as well as &lt;&lt;showCaption Tour&gt;&gt; of ~TiddlyWiki's features and functions, and instructions for &lt;&lt;showCaption Installation&gt;&gt; of ~TiddlyWiki on your system." icon="images/getstarted.svg" list="Introduction Tour Installation" modified="20191210211106832" modifier="EricShulman" next="Introduction" prev="Preface" tags="InsideTW Volume" title="InsideTW_V1">
+<div caption="Welcome to TiddlyWiki" created="20150212052411402" creator="EricShulman" description=" is for ''Users'' who are just getting started with ~TiddlyWiki.  It includes an &lt;&lt;showCaption Introduction&gt;&gt; that explains the rationale and philosophy behind ~TiddlyWiki, as well as &lt;&lt;showCaption Tour&gt;&gt; of ~TiddlyWiki's features and functions, and instructions for &lt;&lt;showCaption Installation&gt;&gt; of ~TiddlyWiki on your system." icon="images/getstarted.svg" list="Introduction Tour Installation" modified="20191210211106832" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V1">
 <pre>This volume is ''a guide for users'' who are just getting started with ~TiddlyWiki. No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
 
 &lt;&lt;&lt;
@@ -13780,7 +13789,7 @@ General knowledge of web development tools and languages -- such as HTML, CSS an
 &lt;&lt;showItems &quot;InsideTW_V1&quot; &quot;.larger&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Writing with TiddlyWiki" created="20191207064703116" creator="EricShulman" description=" is for ''Authors'' and other content creators that want to build their own ~TiddlyWiki documents.  It describes how to use &lt;&lt;showCaption TiddlerEditor&gt;&gt; to create and format content, and the steps for &lt;&lt;showCaption Saving&gt;&gt; and &lt;&lt;showCaption Sharing&gt;&gt; with others. It also explains how to use the power of ~TiddlyWiki [[Macros]], [[Widgets]], and [[Filters]] to create complex presentations and sophisticated interactive content." icon="$:/core/images/edit-button" list="CreatingTiddlers TiddlerEditor Tagging Macros Widgets Filters Saving Sharing" modified="20191211045558674" modifier="EricShulman" next="CreatingTiddlers" prev="Preface" tags="InsideTW Volume" title="InsideTW_V2">
+<div caption="Writing with TiddlyWiki" created="20191207064703116" creator="EricShulman" description=" is for ''Authors'' and other content creators that want to build their own ~TiddlyWiki documents.  It describes how to use &lt;&lt;showCaption TiddlerEditor&gt;&gt; to create and format content, and the steps for &lt;&lt;showCaption Saving&gt;&gt; and &lt;&lt;showCaption Sharing&gt;&gt; with others. It also explains how to use the power of ~TiddlyWiki [[Macros]], [[Widgets]], and [[Filters]] to create complex presentations and sophisticated interactive content." icon="$:/core/images/edit-button" list="CreatingTiddlers TiddlerEditor Tagging Macros Widgets Filters Saving Sharing" modified="20191211045558674" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V2">
 <pre>This volume is ''a guide for authors and other content creators'' who want to build interactive presentations with ~TiddlyWiki.  No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
 
 &lt;&lt;&lt;
@@ -13796,7 +13805,7 @@ In addition, although familiarity with web development tools and languages -- su
 &lt;&lt;showItems &quot;InsideTW_V2&quot; &quot;.larger&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Customizing your TiddlyWiki" created="20191207070155987" creator="EricShulman" description="is for ''Designers'' and information specialists that want to modify ~TiddlyWiki's standard layout and features.  Using [[Templates]], [[Styles]], and [[Plugins]], you can enhance and extend the default interface to provide unique and purpose-built experiences for yourself and others." icon="$:/core/images/theme-button" list="" modified="20191210211148039" modifier="EricShulman" next="Preface" prev="Preface" tags="InsideTW Volume" title="InsideTW_V3">
+<div caption="Customizing your TiddlyWiki" created="20191207070155987" creator="EricShulman" description="is for ''Designers'' and information specialists that want to modify ~TiddlyWiki's standard layout and features.  Using [[Templates]], [[Styles]], and [[Plugins]], you can enhance and extend the default interface to provide unique and purpose-built experiences for yourself and others." icon="$:/core/images/theme-button" list="" modified="20191210211148039" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V3">
 <pre>!!''The contents of this volume are pending.''
 
 !!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chapters in this volume:
@@ -13805,7 +13814,7 @@ In addition, although familiarity with web development tools and languages -- su
 @@.clear @@
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Programming for TiddlyWiki" created="20191207070400091" creator="EricShulman" description="is for ''Developers'' that want to provide new features and capabilities for ~TiddlyWiki.  It outlines the techniques and procedures for creating and programming custom-coded plugins and integrating third-party function libraries that can then be packaged, distributed and installed for use in other ~TiddlyWiki documents." icon="images/developer.svg" list="" modified="20191210211256962" modifier="EricShulman" next="Preface" prev="Preface" tags="InsideTW Volume" title="InsideTW_V4">
+<div caption="Programming for TiddlyWiki" created="20191207070400091" creator="EricShulman" description="is for ''Developers'' that want to provide new features and capabilities for ~TiddlyWiki.  It outlines the techniques and procedures for creating and programming custom-coded plugins and integrating third-party function libraries that can then be packaged, distributed and installed for use in other ~TiddlyWiki documents." icon="images/developer.svg" list="" modified="20191210211256962" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V4">
 <pre>!!''The contents of this volume are pending.''
 
 !!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chaptesr in this volume:
@@ -13814,14 +13823,14 @@ In addition, although familiarity with web development tools and languages -- su
 @@.clear @@
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Installation and Setup" created="20150212024610407" creator="EricShulman" description="gets you started with using ~TiddlyWiki on your own system.  The process and options for downloading, installing and configuring ~TiddlyWiki are explained.  After completing this section, you will be ready to ''create ~TiddlyWiki documents for yourself and others''." icon="$:/core/images/options-button" list="Downloading StartingTiddlyWiki Setup" modified="20191210092907370" modifier="EricShulman" next="Downloading" prev="TheControlPanel" tags="InsideTW_V1" title="Installation">
+<div caption="Installation and Setup" created="20150212024610407" creator="EricShulman" description="gets you started with using ~TiddlyWiki on your own system.  The process and options for downloading, installing and configuring ~TiddlyWiki are explained.  After completing this section, you will be ready to ''create ~TiddlyWiki documents for yourself and others''." icon="$:/core/images/options-button" list="Downloading StartingTiddlyWiki Setup" modified="20191210092907370" modifier="EricShulman" tags="InsideTW_V1" title="Installation">
 <pre>In this section, we will discuss how to get started using TiddlyWiki, including how to get either the empty stand-alone file, or the installation package for the nodejs version, as well as recommended choices for where to put the downloaded file(s), and how to set up the working directories.  Then, steps for startup (e.g., loading the file into your browser, or starting nodejs from the CLI) and configuring standard items (e.g., title) and options (control panel settings).
 
 At the end of this section, the user should be ready to start exploring TiddlyWiki on their own system.
 
 &lt;&lt;showLinks&gt;&gt;</pre>
 </div>
-<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" description="describes key concepts in ~TiddlyWiki, as well as a summary of benefits, typical users, and common scenarios in which ~TiddlyWiki can be used so you can ''learn how ~TiddlyWiki fits your needs''." icon="images/concepts.svg" list="WhatsInAName TheWikiWay WhatIsTiddlyWiki MicroContent Benefits Roles Scenarios Community" modified="20191210111657761" modifier="EricShulman" next="WhatsInAName" prev="Preface" tags="InsideTW_V1" title="Introduction">
+<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" description="describes key concepts in ~TiddlyWiki, as well as a summary of benefits, typical users, and common scenarios in which ~TiddlyWiki can be used so you can ''learn how ~TiddlyWiki fits your needs''." icon="images/concepts.svg" list="WhatsInAName TheWikiWay WhatIsTiddlyWiki MicroContent Benefits Roles Scenarios Community" modified="20191210111657761" modifier="EricShulman" tags="InsideTW_V1" title="Introduction">
 <pre>@@.center ''//&quot;Unless you've already seen ~TiddlyWiki, we guarantee you've never seen anything like ~TiddlyWiki.&quot;//''@@
 @@.center.smaller - //&quot;[[Discover TiddlyWiki|http://tiddlywiki.com/#Discover%20TiddlyWiki]]&quot; on [ext[http://tiddlywiki.com]]//@@
 
@@ -13837,7 +13846,7 @@ These topics also suggest ''who might benefit from using ~TiddlyWiki'' as well a
 
 </pre>
 </div>
-<div caption="Legal Statements" created="20150510064307939" creator="EricShulman" icon="images/legal.svg" modified="20191209220059885" modifier="EricShulman" next="Legal/Copyrights" prev="VersionInfo" tags="Appendix" title="Legal">
+<div caption="Legal Statements" created="20150510064307939" creator="EricShulman" icon="images/legal.svg" modified="20191209220059885" modifier="EricShulman" tags="Appendix" title="Legal">
 <pre>''//Please read the following legal statements carefully, and be sure to review them periodically, as they are subject to change without notice.//''
 
 &lt;&lt;showLinks&gt;&gt;
@@ -13852,7 +13861,7 @@ These topics also suggest ''who might benefit from using ~TiddlyWiki'' as well a
 
 All Rights Reserved.</pre>
 </div>
-<div caption="Copyrights" created="20150510065836154" creator="EricShulman" modified="20191127154133964" modifier="EricShulman" next="Legal/Liability" prev="Legal" tags="Legal" title="Legal/Copyrights">
+<div caption="Copyrights" created="20150510065836154" creator="EricShulman" modified="20191127154133964" modifier="EricShulman" tags="Legal" title="Legal/Copyrights">
 <pre>This work is based upon ~TiddlyWiki version &lt;&lt;version&gt;&gt;, created by Jeremy Ruston.
 
 Modifications and additions to this work, including (but not limited to) original programmatic components (&quot;plugins&quot;, &quot;macros&quot;, &quot;widgets&quot;, &quot;filters&quot;, &quot;stylesheets&quot;, etc.) have been created by Eric L. Shulman.  These components are distributed using an ''open source'' model; however, they are ''not in the public domain, and all applicable rights are retained''.  You //are// ''permitted to use, copy, and/or modify'' individual components of this work, subject to the licensing terms and conditions specifically included within or referenced by those individual components, as well as other terms, conditions, instructions, and guidelines included herein.
@@ -13861,13 +13870,13 @@ This work may also contain portions of copyrighted materials from other sources.
 
 ''All other original content, including (but not limited to) writings, images, and audio/video recordings, are the property of the author of this work, or are used under license or agreement with third parties'' and, except as required for normal viewing of this work, may not be stored, displayed or re-transmitted in any form, nor used for any commercial purposes, without prior permission from the respective rights holders.</pre>
 </div>
-<div caption="Limits on Liability" created="20150510070041822" creator="EricShulman" modified="20191127154253836" modifier="EricShulman" next="Legal/Licenses" prev="Legal/Copyrights" tags="Legal" title="Legal/Liability">
+<div caption="Limits on Liability" created="20150510070041822" creator="EricShulman" modified="20191127154253836" modifier="EricShulman" tags="Legal" title="Legal/Liability">
 <pre>All materials are presented on an &quot;as-is&quot; basis and are subject to change without notice.
 
 The author of this document makes no claims regarding the suitability or reliability of the information presented,&lt;br&gt;
 and assumes no liability for any damages that may occur as a result of its use.</pre>
 </div>
-<div caption="Licensed Content" created="20150510070212489" creator="EricShulman" modified="20191208134401023" modifier="EricShulman" next="Legal/Privacy" prev="Legal/Liability" tags="Legal" title="Legal/Licenses">
+<div caption="Licensed Content" created="20150510070212489" creator="EricShulman" modified="20191208134401023" modifier="EricShulman" tags="Legal" title="Legal/Licenses">
 <pre>Some content in this work has been provided under license or agreement from third-party sources.  The following statements are included at their request:
 
 !! ~FreePik (https://www.freepikcompany.com/)
@@ -13887,12 +13896,12 @@ are licensed by
 &lt;&lt;&lt;
 </pre>
 </div>
-<div caption="Privacy Notice" created="20150510070124882" creator="EricShulman" modified="20191127154504567" modifier="EricShulman" next="Legal/TermsOfUse" prev="Legal/Licenses" tags="Legal" title="Legal/Privacy">
+<div caption="Privacy Notice" created="20150510070124882" creator="EricShulman" modified="20191127154504567" modifier="EricShulman" tags="Legal" title="Legal/Privacy">
 <pre>This site limits the collection and use of non-public, personal customer information to that which is needed to offer products and services, and to file reports or financial statements as required by law.
 
 This site has physical, electronic and procedural safeguards to maintain the protections of private information, and does not provide, sell or otherwise disclose such information to non-affiliated third parties.</pre>
 </div>
-<div caption="Terms of Use" created="20150510065930218" creator="EricShulman" modified="20191127154554267" modifier="EricShulman" next="Legal/Trademarks" prev="Legal/Privacy" tags="Legal" title="Legal/TermsOfUse">
+<div caption="Terms of Use" created="20150510065930218" creator="EricShulman" modified="20191127154554267" modifier="EricShulman" tags="Legal" title="Legal/TermsOfUse">
 <pre>You are permitted to selectively copy and install individual components of this work into your own ~TiddlyWiki files in order to enhance and customize those documents.
 
 However, ''you may not re-distribute this work in it's entirety, nor re-use it's overall design without prior written permission.''
@@ -13903,17 +13912,17 @@ If you //do// modify and/or share components of this work, ''you must retain all
 
 In addition, ''all modified components must be clearly identifiable as derivative works'' that have been differentiated from the original versions by renaming those components, as well as adding inline comments and a &quot;revision history&quot; to document specific changes.</pre>
 </div>
-<div caption="Trademarks" created="20150510065956905" creator="EricShulman" modified="20191204051641972" modifier="EricShulman" next="CoverPage" prev="Legal/TermsOfUse" tags="Legal" title="Legal/Trademarks">
+<div caption="Trademarks" created="20150510065956905" creator="EricShulman" modified="20191204051641972" modifier="EricShulman" tags="Legal" title="Legal/Trademarks">
 <pre>''&quot;ELS Design Studios&quot;'', ''&quot;~TiddlyTools&quot;'', ''&quot;Inside ~TiddlyWiki&quot;'', ''&quot;Small Tools for Big Ideas!&quot;'', and ''&quot;Intuitive Interfaces for Intelligent Interactions&quot;'' are trademarks or servicemarks of ELS Design Studios and may not be used without permission.
 
 Limited use of &quot;ELS Design Studios&quot;, &quot;~TiddlyTools&quot; and &quot;Inside ~TiddlyWiki&quot; marks in other works is granted for attribution purposes only.
 
 Such use does not create or imply any endorsement, agency or partner relationship with Eric L. Shulman and/or ELS Design Studios, nor with any designated representatives, agents, or heirs thereof.</pre>
 </div>
-<div caption="Macros" created="20191211043626369" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211045720409" modifier="EricShulman" next="Widgets" prev="Tagging" tags="InsideTW_V2" title="Macros">
+<div caption="Macros" created="20191211043626369" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211045720409" modifier="EricShulman" tags="InsideTW_V2" title="Macros">
 <pre></pre>
 </div>
-<div caption="MicroContent: Smaller is Better" created="20191110054533657" creator="EricShulman" modified="20191127094008452" modifier="EricShulman" next="Benefits" prev="WhatIsTiddlyWiki" tags="Introduction" title="MicroContent">
+<div caption="MicroContent: Smaller is Better" created="20191110054533657" creator="EricShulman" modified="20191127094008452" modifier="EricShulman" tags="Introduction" title="MicroContent">
 <pre>Most wiki systems consist of a ''set of pages'', sometimes sub-divided into &quot;sections&quot; that can be edited individually.  Each page usually encompasses an entire topic of interest, with embedded images, and links to other related topics.  While all pages start out &quot;empty&quot;, a typical wiki page can ''grow to be quite large'' over time, as more information is added.
 
 Unlike most wiki pages, which can contain huge amounts of information, ~TiddlyWiki introduces the concept of ''~MicroContent'' which encourages people to ''break information into smaller pieces'' that can then be combined in a variety of meaningful ways, depending on the particular use-case needs.  This allows for greater flexibility.
@@ -13975,7 +13984,7 @@ New information can be easily added to existing references without affecting pre
 <pre>* Tag topics with &quot;&lt;&lt;currentTiddler&gt;&gt;&quot; to add them to the top-level of the book.
 * Edit the ``list`` field in //this// tiddler to define the order of the top-level topics.</pre>
 </div>
-<div caption="Online Groups" created="20191110052610533" creator="EricShulman" icon="images/community.svg" modified="20191204035354307" modifier="EricShulman" next="Glossary" prev="History" tags="Appendix" title="OnlineGroups">
+<div caption="Online Groups" created="20191110052610533" creator="EricShulman" icon="images/community.svg" modified="20191204035354307" modifier="EricShulman" tags="Appendix" title="OnlineGroups">
 <pre>There are several online communities that actively discuss topics related to ~TiddlyWiki, and can be very helpful in answering your questions and finding solutions:
 
 !!~GoogleGroups Discussion forums
@@ -13994,10 +14003,10 @@ Stack Overflow is an open community for anyone that codes. We help you get answe
 *[[Questions and Answers for TiddlyWiki|https://stackoverflow.com/questions/tagged/tiddlywiki]]
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Other Savers" created="20191208101109238" creator="EricShulman" modified="20191208101342562" modifier="EricShulman" next="TiddlyDesktop" prev="DownloadSaver" tags="Saving" title="OtherSavers">
+<div caption="Other Savers" created="20191208101109238" creator="EricShulman" modified="20191208101342562" modifier="EricShulman" tags="Saving" title="OtherSavers">
 <pre></pre>
 </div>
-<div caption="Parts: Contents" created="20151230200108965" creator="EricShulman" icon="$:/core/images/import-button" modified="20191209032141699" modifier="EricShulman" next="PartsList/System" prev="Bibliography" tags="Appendix" title="PartsList/Contents">
+<div caption="Parts: Contents" created="20151230200108965" creator="EricShulman" icon="$:/core/images/import-button" modified="20191209032141699" modifier="EricShulman" tags="Appendix" title="PartsList/Contents">
 <pre>\define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
 \define ShowLink()    &lt;$link&gt;&lt;&lt;ShowTitle&gt;&gt;&lt;/$link&gt;
 
@@ -14025,7 +14034,7 @@ Stack Overflow is an open community for anyone that codes. We help you get answe
 &lt;&lt;showImages&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="Parts: System" created="20151230200901548" creator="EricShulman" icon="$:/core/images/import-button" modified="20191209032156283" modifier="EricShulman" next="VersionInfo" prev="PartsList/Contents" tags="Appendix" title="PartsList/System">
+<div caption="Parts: System" created="20151230200901548" creator="EricShulman" icon="$:/core/images/import-button" modified="20191209032156283" modifier="EricShulman" tags="Appendix" title="PartsList/System">
 <pre>\define ShowTitle()   &lt;$set name=&quot;tv-wikilinks&quot; value=&quot;no&quot;&gt;{{!!title}}&lt;/$set&gt;
 \define ShowLink()    &lt;$link&gt;&lt;&lt;ShowTitle&gt;&gt;&lt;/$link&gt;
 
@@ -14069,7 +14078,7 @@ __''~$:/config''__&lt;br&gt;
 &lt;&lt;ShowModifiedShadows&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20150212061302888" creator="EricShulman" icon="images/preface.svg" list="Skills AboutTheAuthor Credits Legal" modified="20191211073559768" modifier="EricShulman" next="InsideTW_V1" prev="CoverPage" tags="InsideTW" title="Preface">
+<div created="20150212061302888" creator="EricShulman" icon="images/preface.svg" list="Skills AboutTheAuthor Credits Legal" modified="20191211073559768" modifier="EricShulman" tags="InsideTW" title="Preface">
 <pre>This book is about ''~TiddlyWiki (version 5+), an open-source, self-contained, portable wiki system created by [[Jeremy Ruston|History]].''
 
 &lt;&lt;showLinks &quot;@@.smaller ''//More information about this book://''&lt;br&gt;@@&quot;
@@ -14092,7 +14101,7 @@ Please note: this book is ''not intended to be a comprehensive reference manual'
 __Refer to the [[Appendix]] for links to more ~TiddlyWiki documentation and technical references.__
 @@</pre>
 </div>
-<div caption="Who Should Use TiddlyWiki?" created="20150212044019039" creator="EricShulman" icon="images/questions.svg" modified="20191202161622323" modifier="EricShulman" next="Scenarios" prev="Benefits" tags="Introduction" title="Roles">
+<div caption="Who Should Use TiddlyWiki?" created="20150212044019039" creator="EricShulman" icon="images/questions.svg" modified="20191202161622323" modifier="EricShulman" tags="Introduction" title="Roles">
 <pre>~TiddlyWiki can be used by people with a wide range of skills for a vast variety of purposes.  In general, they fall into at least one of four different categories: ''Readers'', ''Authors'', ''Designers'', and ''Developers''.
 
 !!Readers
@@ -14115,10 +14124,10 @@ __Refer to the [[Appendix]] for links to more ~TiddlyWiki documentation and tech
 ''Developers create new general purpose or use-case specific features and functions''.  They can use all the power of ~TiddlyWiki to implement custom-coded plugins that add new syntax, incorporate external function libraries, or make modifications to the programming of the ~TiddlyWiki core system itself to provide new capabilities for entering, viewing and manipulating specialized kinds of information.
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Saving Your Work" created="20150212024939070" creator="EricShulman" description="explains the options for saving your work to local filesystems, networked servers, and Internet cloud services." icon="images/saving.svg" list="DownloadSaver OtherSavers TiddlyDesktop" modified="20191211044902594" modifier="EricShulman" next="DownloadSaver" prev="Filters" tags="InsideTW_V2" title="Saving">
+<div caption="Saving Your Work" created="20150212024939070" creator="EricShulman" description="explains the options for saving your work to local filesystems, networked servers, and Internet cloud services." icon="images/saving.svg" list="DownloadSaver OtherSavers TiddlyDesktop" modified="20191211044902594" modifier="EricShulman" tags="InsideTW_V2" title="Saving">
 <pre>&lt;&lt;list-links [tag[Saving]]&gt;&gt;</pre>
 </div>
-<div caption="What Can TiddlyWiki Do?" created="20150212044158855" creator="EricShulman" icon="images/questions.svg" modified="20191127032008876" modifier="EricShulman" next="Community" prev="Roles" tags="Introduction" title="Scenarios">
+<div caption="What Can TiddlyWiki Do?" created="20150212044158855" creator="EricShulman" icon="images/questions.svg" modified="20191127032008876" modifier="EricShulman" tags="Introduction" title="Scenarios">
 <pre>This section discusses some of the common real-world scenarios for using TiddlyWiki to enhance everyday life.
 
 !!Business
@@ -14160,7 +14169,7 @@ __Refer to the [[Appendix]] for links to more ~TiddlyWiki documentation and tech
 * Events / Party Planning
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Configuring TiddlyWiki" created="20150424220909651" creator="EricShulman" icon="images/gears.svg" list="Setup/Info Setup/Appearance Setup/Settings Setup/Saving Setup/Plugins" modified="20191208094857120" modifier="EricShulman" next="Setup/Info" prev="StartingTiddlyWiki" tags="Installation" title="Setup">
+<div caption="Configuring TiddlyWiki" created="20150424220909651" creator="EricShulman" icon="images/gears.svg" list="Setup/Info Setup/Appearance Setup/Settings Setup/Saving Setup/Plugins" modified="20191208094857120" modifier="EricShulman" tags="Installation" title="Setup">
 <pre>The Control Panel lets you set a variety of standard configuration options for each TiddlyWiki document.
 
 In general, when you change a setting, you will see the effects immediately, even while you are still typing your input!  However, some settings (e.g, changes to plugins) will require you to save-and-reload your document before they will be applied.
@@ -14171,7 +14180,7 @@ There are several tabs in the control panel:
 
 &lt;&lt;list-links [tag[Setup]]&gt;&gt;</pre>
 </div>
-<div caption="Control Panel: Appearance" created="20150320080449994" creator="EricShulman" modified="20191208095017733" modifier="EricShulman" next="Setup/Settings" prev="Setup/Info" tags="Setup" title="Setup/Appearance">
+<div caption="Control Panel: Appearance" created="20150320080449994" creator="EricShulman" modified="20191208095017733" modifier="EricShulman" tags="Setup" title="Setup/Appearance">
 <pre>* Palette
 * Story View
 * Theme
@@ -14179,23 +14188,23 @@ There are several tabs in the control panel:
 * Theme Tweaks
 </pre>
 </div>
-<div caption="Control Panel: Info" created="20150320080258505" creator="EricShulman" modified="20191208094933069" modifier="EricShulman" next="Setup/Appearance" prev="Setup" tags="Setup" title="Setup/Info">
+<div caption="Control Panel: Info" created="20150320080258505" creator="EricShulman" modified="20191208094933069" modifier="EricShulman" tags="Setup" title="Setup/Info">
 <pre>* Basics
 * Advanced
 ** Editor Types
 ** Loaded Modules
 ** Tiddler Fields</pre>
 </div>
-<div caption="Control Panel: Plugins" created="20150320080556108" creator="EricShulman" modified="20191208095346878" modifier="EricShulman" next="InsideTW_V2" prev="Setup/Saving" tags="Setup" title="Setup/Plugins">
+<div caption="Control Panel: Plugins" created="20150320080556108" creator="EricShulman" modified="20191208095346878" modifier="EricShulman" tags="Setup" title="Setup/Plugins">
 <pre></pre>
 </div>
-<div caption="Control Panel: Saving" created="20150320080545504" creator="EricShulman" modified="20191208095143315" modifier="EricShulman" next="Setup/Plugins" prev="Setup/Settings" tags="Setup" title="Setup/Saving">
+<div caption="Control Panel: Saving" created="20150320080545504" creator="EricShulman" modified="20191208095143315" modifier="EricShulman" tags="Setup" title="Setup/Saving">
 <pre></pre>
 </div>
-<div caption="Control Panel: Settings" created="20150320080528003" creator="EricShulman" modified="20191208095056637" modifier="EricShulman" next="Setup/Saving" prev="Setup/Appearance" tags="Setup" title="Setup/Settings">
+<div caption="Control Panel: Settings" created="20150320080528003" creator="EricShulman" modified="20191208095056637" modifier="EricShulman" tags="Setup" title="Setup/Settings">
 <pre></pre>
 </div>
-<div caption="Sharing Your Work" created="20191209165613100" creator="EricShulman" description="Methods for importing/exporting content between ~TiddlyWiki documents are described, as well as general strategies to help you ''__manage, share, and publish your documents for use by other people__''." icon="$:/core/images/export-button" list="ImportExport" modified="20191211050519699" modifier="EricShulman" next="ImportExport" prev="TiddlyDesktop" tags="InsideTW_V2" title="Sharing">
+<div caption="Sharing Your Work" created="20191209165613100" creator="EricShulman" description="Methods for importing/exporting content between ~TiddlyWiki documents are described, as well as general strategies to help you ''__manage, share, and publish your documents for use by other people__''." icon="$:/core/images/export-button" list="ImportExport" modified="20191211050519699" modifier="EricShulman" tags="InsideTW_V2" title="Sharing">
 <pre>&lt;&lt;list-links [tag[Sharing]]&gt;&gt;
 * sharing via email, usb stick, etc.
 * posting on network drive
@@ -14221,11 +14230,11 @@ There are several tabs in the control panel:
 
 &lt;&lt;showVersion&gt;&gt;</pre>
 </div>
-<div caption="Starting TiddlyWiki" created="20150215034742956" creator="EricShulman" modified="20191208094806956" modifier="EricShulman" next="Setup" prev="Downloading" tags="Installation" title="StartingTiddlyWiki">
+<div caption="Starting TiddlyWiki" created="20150215034742956" creator="EricShulman" modified="20191208094806956" modifier="EricShulman" tags="Installation" title="StartingTiddlyWiki">
 <pre>* stand alone: just open it in the browser
 * nodejs: start the nodejs 'server'</pre>
 </div>
-<div created="20150312214644927" creator="EricShulman" modified="20191208094429924" modifier="EricShulman" next="TheControlPanel" prev="AdvancedSearch" tags="TheSidebar" title="TabbedLists">
+<div created="20150312214644927" creator="EricShulman" modified="20191208094429924" modifier="EricShulman" tags="TheSidebar" title="TabbedLists">
 <pre>You can use the &quot;tabbed lists&quot; section of the sidebar to browse and open tiddlers into the StoryRiver
 
 * Open
@@ -14242,7 +14251,7 @@ There are several tabs in the control panel:
 ** System
 ** Shadows</pre>
 </div>
-<div caption="Tagging Tiddlers" created="20150215044807386" creator="EricShulman" description="shows you how to associate keywords with a tiddler so that you can quickly search and locate the tiddler later on.  Tags can also be used with transclusion and filters in order to combine and present information without needing to explicitly list each tiddler's title." icon="$:/core/images/tag-button" modified="20191211045545716" modifier="EricShulman" next="Macros" prev="CustomFields" tags="InsideTW_V2" title="Tagging">
+<div caption="Tagging Tiddlers" created="20150215044807386" creator="EricShulman" description="shows you how to associate keywords with a tiddler so that you can quickly search and locate the tiddler later on.  Tags can also be used with transclusion and filters in order to combine and present information without needing to explicitly list each tiddler's title." icon="$:/core/images/tag-button" modified="20191211045545716" modifier="EricShulman" tags="InsideTW_V2" title="Tagging">
 <pre>Although tagging is optional, its a good idea to assign at least one tag keyword to a tiddler, so that you can find it easier later on, using the [[Navigation]] features of TiddlyWiki.
 
 * tags: keywords for grouping, searching and controlling use of individual tiddlers (e.g., $:/tags/ViewTemplate).  Droplist shows tags already used. Input field to enter new tag values. Add button accepts new entry.
@@ -14252,7 +14261,7 @@ There are several tabs in the control panel:
 * special &quot;system&quot; tags
 * evolving an ad-hoc &quot;tagsonomy&quot;</pre>
 </div>
-<div caption="The Control Panel" created="20150312215303549" creator="EricShulman" modified="20191208094510507" modifier="EricShulman" next="Installation" prev="TabbedLists" tags="Tour" title="TheControlPanel">
+<div caption="The Control Panel" created="20150312215303549" creator="EricShulman" modified="20191208094510507" modifier="EricShulman" tags="Tour" title="TheControlPanel">
 <pre>The Control Panel lets you set a variety of standard configuration options for each TiddlyWiki document.
 
 There are several tabs in the control panel:
@@ -14265,7 +14274,7 @@ There are several tabs in the control panel:
 
 Other tabs may also be added by customizations.  For a more detailed review of the settings in each panel, please see the [[Configuring TiddlyWiki|Setup]] section of this book.</pre>
 </div>
-<div created="20150316125513699" creator="EricShulman" modified="20191208094147992" modifier="EricShulman" next="FindingContent" prev="TheSidebar" tags="TheSidebar" title="ThePageControls">
+<div created="20150316125513699" creator="EricShulman" modified="20191208094147992" modifier="EricShulman" tags="TheSidebar" title="ThePageControls">
 <pre>!!Default controls
 *New Tiddler
 *ControlPanel
@@ -14287,7 +14296,7 @@ Other tabs may also be added by customizations.  For a more detailed review of t
 *Refresh
 *More</pre>
 </div>
-<div caption="The Sidebar" created="20150310114705745" creator="EricShulman" list="ThePageControls FindingContent TabbedLists" modified="20191208094057153" modifier="EricShulman" next="ThePageControls" prev="TheTiddlerViewer" tags="Tour" title="TheSidebar">
+<div caption="The Sidebar" created="20150310114705745" creator="EricShulman" list="ThePageControls FindingContent TabbedLists" modified="20191208094057153" modifier="EricShulman" tags="Tour" title="TheSidebar">
 <pre>&lt;div style=&quot;float:right&quot;&gt;[img width=200 [images/sidebar.png]]&lt;/div&gt;
 
 The Sidebar provides access to all the controls and functions for managing your ~TiddlyWiki document.  You can use the Sidebar to create new tiddlers, browse existing tiddlers, search for text in tiddlers, change system settings, and save your changes.
@@ -14307,7 +14316,7 @@ Following the toolbar, the Sidebar shows an input field, with a small &quot;magn
 !!!Tabbed Lists
 Below the search input field, the remainder of the Sidebar is used to display a set of [[Tabbed Lists]] that provide instant access to all the tiddlers in your document.  By default, the &quot;Open&quot; tab lists the titles of tiddlers currently displayed in the StoryRiver, while the &quot;Recent&quot; tab lists all tiddlers in reverse date order, with the most recently changed tiddlers shown first.  The &quot;More&quot; tab provides additional ways in which to organize and group the lists of tiddlers.</pre>
 </div>
-<div caption="The Story River" created="20150312231829039" creator="EricShulman" modified="20191208093710457" modifier="EricShulman" next="TheTiddlerViewer" prev="Tour" tags="Tour" title="TheStoryRiver">
+<div caption="The Story River" created="20150312231829039" creator="EricShulman" modified="20191208093710457" modifier="EricShulman" tags="Tour" title="TheStoryRiver">
 <pre>&lt;div style=&quot;float:right&quot;&gt;[img width=200 [images/storyriver.png]]&lt;/div&gt;
 
 Whenever you click on a tiddler link, it is opened and displayed in the Story River.  As you open more tiddlers they are added to the Story River.  There are various options for how to display the tiddlers in the Story River:
@@ -14319,7 +14328,7 @@ Whenever you click on a tiddler link, it is opened and displayed in the Story Ri
 
 &quot;Zoomin&quot; view shows one tiddler at a time (the most recently opened tiddler).  Although only one tiddler is shown, all tiddlers that have been opened are actually still rendered into the Story River, and closing the currently displayed tiddler will re-display the previously opened tiddler (if any).</pre>
 </div>
-<div caption="The Tiddler Viewer" created="20150215043723077" creator="EricShulman" modified="20191208093841330" modifier="EricShulman" next="TheSidebar" prev="TheStoryRiver" tags="Tour" title="TheTiddlerViewer">
+<div caption="The Tiddler Viewer" created="20150215043723077" creator="EricShulman" modified="20191208093841330" modifier="EricShulman" tags="Tour" title="TheTiddlerViewer">
 <pre>&lt;div style=&quot;float:right&quot;&gt;[img width=400 [images/tiddlerviewer.png]]&lt;/div&gt;
 
 * Title
@@ -14345,7 +14354,7 @@ Whenever you click on a tiddler link, it is opened and displayed in the Story Ri
 ** text content with formatting, links, images, etc.
 ** can use mix of Wiki syntax and HTML to get desired output</pre>
 </div>
-<div caption="The Wiki Way" created="20150215033418685" creator="EricShulman" modified="20191209193028935" modifier="EricShulman" next="WhatIsTiddlyWiki" prev="WhatsInAName" tags="Introduction" title="TheWikiWay">
+<div caption="The Wiki Way" created="20150215033418685" creator="EricShulman" modified="20191209193028935" modifier="EricShulman" tags="Introduction" title="TheWikiWay">
 <pre>\define showIcon(src)
 @@font-size:200%;padding-right:0.5em; ''@@.resize {{$src$}}@@''@@
 \end
@@ -14383,7 +14392,7 @@ Many people, after having experienced the way that wiki systems allow them to ea
 
 ~TiddlyWiki can also be used for ''group collaboration''; however, this typically requires the installation and setup of a small utility application ([[NodeJS]]) that allows ~TiddlyWiki ''operate as its own webserver'' that permits users to remotely edit and share content directly from their web browser.</pre>
 </div>
-<div caption="The Tiddler Editor" created="20150215044413268" creator="EricShulman" description="describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content, tagging, and creating custom fields." icon="images/editing2.svg" list="BasicFormatting EditorToolbar AddingImages TiddlerLinks ExternalLinks Transclusions TaggingTiddlers CustomFields" modified="20191211042735953" modifier="EricShulman" next="BasicFormatting" prev="CreatingTiddlers" tags="InsideTW_V2" title="TiddlerEditor">
+<div caption="The Tiddler Editor" created="20150215044413268" creator="EricShulman" description="describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content, tagging, and creating custom fields." icon="images/editing2.svg" list="BasicFormatting EditorToolbar AddingImages TiddlerLinks ExternalLinks Transclusions TaggingTiddlers CustomFields" modified="20191211042735953" modifier="EricShulman" tags="InsideTW_V2" title="TiddlerEditor">
 <pre>@@float:right;border:1px solid;[img width=300 float=right [images/tiddlereditor.png]]@@
 This chapter describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content, tagging, and creating custom fields.
 
@@ -14392,7 +14401,7 @@ This chapter describes the parts of the Tiddler Editor, and the procedures for c
 &lt;&lt;showItems &quot;TiddlerEditor&quot; &quot;.larger&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Links to Tiddlers" created="20150215044703031" creator="EricShulman" description="shows you how to create links that let you quickly navigate between tiddlers in your document" icon="$:/core/images/linkify" modified="20191210101640840" modifier="EricShulman" next="ExternalLinks" prev="AddingImages" tags="TiddlerEditor" title="TiddlerLinks">
+<div caption="Links to Tiddlers" created="20150215044703031" creator="EricShulman" description="shows you how to create links that let you quickly navigate between tiddlers in your document" icon="$:/core/images/linkify" modified="20191210101640840" modifier="EricShulman" tags="TiddlerEditor" title="TiddlerLinks">
 <pre>* CamelCase
 ** automatic links by recognizing upper/lower/number patterns
 ** //supposed// to make it less disruptive of the &quot;flow&quot; of writing
@@ -14613,6 +14622,38 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;/$list&gt;
    &lt;/nobr&gt;
 \end</pre>
+</div>
+<div created="20191211132821025" creator="EricShulman" modified="20191211140618471" modifier="EricShulman" title="TiddlyBook/Popups/Appendix">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/appendix&quot;&gt;&gt; class=&quot;tc-btn-invisible hideForPrint&quot; tooltip=&quot;Appendix&quot;&gt;
+   &lt;span style=&quot;font-size:250%;&quot; class=&quot;resize&quot;&gt;{{$:/core/images/info-button}}&lt;/span&gt;
+&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/appendix&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
+   position=&quot;above&quot; style=&quot;position:absolute;right:1em;bottom:1em;&quot;&gt;
+   ''Appendix''
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;width:max-content;text-align:left;white-space:nowrap;&quot;&gt;
+      &lt;$list filter=&quot;[tag[Appendix]]&quot; variable=&quot;here&quot;&gt;
+         &lt;$macrocall $name=&quot;showIcon&quot; tid=&lt;&lt;here&gt;&gt; style=&quot; &quot;/&gt;
+         @@.large &lt;$macrocall $name=&quot;showCaption&quot; tid=&lt;&lt;here&gt;&gt; /&gt;@@
+         @@.clear @@
+      &lt;/$list&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20191211132714310" creator="EricShulman" modified="20191211140657891" modifier="EricShulman" title="TiddlyBook/Popups/Volumes">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; class=&quot;tc-btn-invisible hideForPrint&quot; tooltip=&quot;Volumes&quot;&gt;
+   &lt;span style=&quot;font-size:250%;&quot; class=&quot;resize&quot;&gt;{{images/bibliography.svg}}&lt;/span&gt;
+&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
+   position=&quot;above&quot; style=&quot;position:absolute;left:1em;bottom:1em;&quot;&gt;
+   ''Volumes''
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;width:max-content;text-align:left;white-space:nowrap;&quot;&gt;
+      &lt;$list filter=&quot;[tag[Volume]]&quot; variable=&quot;here&quot;&gt;
+         &lt;$macrocall $name=&quot;showIcon&quot; tid=&lt;&lt;here&gt;&gt; style=&quot; &quot;/&gt;
+         @@.large &lt;$macrocall $name=&quot;showCaption&quot; tid=&lt;&lt;here&gt;&gt; /&gt;@@
+         @@.clear @@
+      &lt;/$list&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;</pre>
 </div>
 <div created="20191203235809412" creator="EricShulman" list-after="" modified="20191204145351838" modifier="EricShulman" tags="" title="TiddlyBook/Print/All">
 <pre>\define printAll_styles()
@@ -15039,7 +15080,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &lt;/$reveal&gt;
 \end</pre>
 </div>
-<div created="20150320063922100" creator="EricShulman" modified="20191211050143177" modifier="EricShulman" next="Sharing" prev="OtherSavers" tags="Saving" title="TiddlyDesktop">
+<div created="20150320063922100" creator="EricShulman" modified="20191211050143177" modifier="EricShulman" tags="Saving" title="TiddlyDesktop">
 <pre></pre>
 </div>
 <div created="20150511052932487" creator="EricShulman" modified="20151110105157065" modifier="EricShulman" tags="image" title="TiddlyTools/Backgrounds/gridpaper.jpg" type="image/jpeg">
@@ -16330,68 +16371,38 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 <div created="20180101214003316" creator="EricShulman" modified="20180101214759607" modifier="EricShulman" tags="$:/tags/RawMarkup" title="TiddlyTools/Markup/MobileViewport">
 <pre>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=8.0, minimum-scale=-8.0, user-scalable=1&quot; /&gt;</pre>
 </div>
-<div created="20151218040735076" creator="EricShulman" modified="20191210110401361" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TiddlyTools/NavBar/Bottom">
-<pre>\define showLeft()
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; tooltip=&quot;Volumes&quot;
-   class=&quot;tc-btn-invisible hideForPrint&quot; style=&quot;float:left;text-align:left;&quot;&gt;
-   &lt;span style=&quot;font-size:250%;&quot; class=&quot;resize&quot;&gt;{{images/bibliography.svg}}&lt;/span&gt;
-&lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
-   position=&quot;above&quot; style=&quot;position:absolute;left:1em;bottom:3.5em;&quot;&gt;
-   ''Volumes''
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;width:max-content;text-align:left;white-space:nowrap;&quot;&gt;
-      &lt;$list filter=&quot;[tag[Volume]]&quot; variable=&quot;here&quot;&gt;
-         &lt;$macrocall $name=&quot;showIcon&quot; tid=&lt;&lt;here&gt;&gt; style=&quot; &quot;/&gt;
-         @@.large &lt;$macrocall $name=&quot;showCaption&quot; tid=&lt;&lt;here&gt;&gt; /&gt;@@
-         @@.clear @@
-      &lt;/$list&gt;
+<div created="20151218040735076" creator="EricShulman" modified="20191211140950032" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TiddlyTools/NavBar/Bottom">
+<pre>&lt;$list filter=&quot;[&lt;currentTiddler&gt;!tag[bookcover]]&quot;&gt;
+   &lt;div class=&quot;hideForPrint&quot;&gt;
+      @@.floatleft  {{TiddlyBook/Popups/Volumes}}  @@
+      @@.floatright {{TiddlyBook/Popups/Appendix}} @@
+      &lt;div style=&quot;text-align:center;white-space:nowrap&quot;&gt;
+         &lt;$wikify name=&quot;all&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;toc-list&quot; here={{TiddlyBook/RootTag}} /&gt;&quot;&quot;&quot;&gt;
+         &lt;$vars first={{{ [enlist&lt;all&gt;first[]] }}}&gt;
+         &lt;$vars  prev={{{ [enlist&lt;all&gt;before&lt;currentTiddler&gt;] ~[&lt;first&gt;] }}}&gt;
+         &lt;$vars  next={{{ [enlist&lt;all&gt;after&lt;currentTiddler&gt;]  ~[&lt;first&gt;] }}}&gt;
+         &lt;$tiddler tiddler=&lt;&lt;prev&gt;&gt;&gt;
+            &lt;span class=&quot;tt-navbar-button&quot;&gt;
+               &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;{{$:/core/images/chevron-left}}&lt;/$link&gt;
+            &lt;/span&gt;
+         &lt;/$tiddler&gt;
+         &lt;$tiddler tiddler=&lt;&lt;next&gt;&gt;&gt;
+            &lt;div style=&quot;display:inline-block;&quot;&gt;
+               @@.smaller ''//next topic://''&lt;br&gt;@@
+               @@.largest &lt;$link&gt;''&lt;&lt;toc-caption&gt;&gt;''&lt;/$link&gt;@@
+            &lt;/div&gt;
+            &lt;span class=&quot;tt-navbar-button&quot;&gt;
+               &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;{{$:/core/images/chevron-right}}&lt;/$link&gt;
+            &lt;/span&gt;
+         &lt;/$tiddler&gt;
+         &lt;/$vars&gt;
+         &lt;/$vars&gt;
+         &lt;/$vars&gt;
+         &lt;/$wikify&gt;
+      &lt;/div&gt;
+      @@.clear @@
    &lt;/div&gt;
-&lt;/$reveal&gt;
-\end
-
-\define showRight()
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/appendix&quot;&gt;&gt; tooltip=&quot;Appendix&quot;
-   class=&quot;tc-btn-invisible hideForPrint&quot; style=&quot;float:right;text-align:right;&quot;&gt;
-   &lt;span style=&quot;font-size:250%;&quot; class=&quot;resize&quot;&gt;{{$:/core/images/info-button}}&lt;/span&gt;
-&lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/appendix&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
-   position=&quot;above&quot; style=&quot;position:absolute;right:1em;bottom:3.5em;&quot;&gt;
-   ''Appendix''
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;width:max-content;text-align:left;white-space:nowrap;&quot;&gt;
-      &lt;$list filter=&quot;[tag[Appendix]]&quot; variable=&quot;here&quot;&gt;
-         &lt;$macrocall $name=&quot;showIcon&quot; tid=&lt;&lt;here&gt;&gt; style=&quot; &quot;/&gt;
-         @@.large &lt;$macrocall $name=&quot;showCaption&quot; tid=&lt;&lt;here&gt;&gt; /&gt;@@
-         @@.clear @@
-      &lt;/$list&gt;
-   &lt;/div&gt;
-\end
-
-\define showCenter()
-&lt;div style=&quot;text-align:center;white-space:nowrap&quot;&gt;
-   &lt;$reveal default={{!!prev}} type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;hideForPrint&quot;&gt;
-      &lt;$tiddler tiddler={{!!prev}}&gt;
-         &lt;span class=&quot;tt-navbar-button&quot;&gt; &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;{{$:/core/images/chevron-left}}&lt;/$link&gt; &lt;/span&gt;
-      &lt;/$tiddler&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default={{!!next}} type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;hideForPrint&quot;&gt;
-      &lt;$tiddler tiddler={{!!next}}&gt;
-         &lt;div style=&quot;display:inline-block;&quot;&gt;
-            @@.smaller ''//next topic://''&lt;br&gt;@@
-            @@.largest &lt;$link&gt;''&lt;&lt;toc-caption&gt;&gt;''&lt;/$link&gt;@@
-         &lt;/div&gt;
-         &lt;span class=&quot;tt-navbar-button&quot;&gt; &lt;$link tooltip=&lt;&lt;toc-caption&gt;&gt;&gt;{{$:/core/images/chevron-right}}&lt;/$link&gt; &lt;/span&gt;
-      &lt;/$tiddler&gt;
-   &lt;/$reveal&gt;
-   &lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/NavBarBottom]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
-      &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;
-   &lt;/$list&gt;
-&lt;/div&gt;
-\end
-
-&lt;!-- NEW NAVBAR (based on !!next and !!prev) --&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;!tag[bookcover]]&quot;&gt;&lt;&lt;showLeft&gt;&gt; &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;!tag[bookcover]]&quot;&gt;&lt;&lt;showRight&gt;&gt;&lt;/$list&gt;
-&lt;&lt;showCenter&gt;&gt; @@.clear @@</pre>
+&lt;/$list&gt;</pre>
 </div>
 <div created="20160108131618887" creator="EricShulman" modified="20191211083735696" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/NavBar/Macros">
 <pre>\define tt-navbar-link(pos)
@@ -19108,7 +19119,7 @@ body.tc-body              { background:&lt;&lt;windowbg&gt;&gt;;   }
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20191201080218114" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20191211141132840" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()           $:/config/TiddlyTools/TOC
 \define toc-template()         TiddlyTools/TOC/Template
 
@@ -19118,6 +19129,16 @@ body.tc-body              { background:&lt;&lt;windowbg&gt;&gt;;   }
 
 \define toc-show-item()        &lt;div class=&quot;tt-toc-item&quot;&gt;{{$(item)$||$(toc-template)$}}&lt;/div&gt;
 \define toc-show-branch()      &lt;$macrocall $name=&quot;toc-tree&quot; here=&lt;&lt;item&gt;&gt; exclude=&lt;&lt;excluded&gt;&gt; path=&lt;&lt;path&gt;&gt;/&gt;
+
+\define toc-list(here,exclude,path)
+&lt;!-- SHOW ALL TOC TIDDLER TITLES AS A FLAT LIST (SIMPLE RECURSION) --&gt;
+&lt;$list filter=&quot;&quot;&quot;[title[$here$]tagging[]] $exclude$ -[[$here$]]&quot;&quot;&quot;&gt;
+   &lt;$vars item=&lt;&lt;currentTiddler&gt;&gt; path=&quot;&quot;&quot;$path$/$here$&quot;&quot;&quot; excluded=&quot;&quot;&quot;$exclude$ -[[$here$]]&quot;&quot;&quot;&gt;
+   {{{ [&lt;item&gt;] }}}&lt;br&gt;
+   &lt;$macrocall $name=&quot;toc-list&quot; here=&lt;&lt;item&gt;&gt; exclude=&lt;&lt;excluded&gt;&gt; path=&lt;&lt;path&gt;&gt;/&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
+\end
 
 \define toc-all(here,exclude,path)
 &lt;!-- SHOW ENTIRE TREE FULLY EXPANDED (SIMPLE RECURSION) --&gt;
@@ -19354,7 +19375,7 @@ exports.scrollhere = ScrollHereWidget;
 &lt;!-- END FLOAT FOR FAVORITE STAR --&gt;
 @@display:block;clear:both;@@</pre>
 </div>
-<div caption="A Quick Tour" created="20150212024752895" creator="EricShulman" description="presents an overview of the standard features and layout of ~TiddlyWiki so you can familiarize yourself with the basic operation and workflow.  After reading this section, you should ''feel comfortable using ~TiddlyWiki documents created by others''." icon="images/tour.svg" list="TheStoryRiver TheTiddlerViewer TheSidebar TheControlPanel" modified="20191210092839246" modifier="EricShulman" next="TheStoryRiver" prev="Community" tags="InsideTW_V1" title="Tour">
+<div caption="A Quick Tour" created="20150212024752895" creator="EricShulman" description="presents an overview of the standard features and layout of ~TiddlyWiki so you can familiarize yourself with the basic operation and workflow.  After reading this section, you should ''feel comfortable using ~TiddlyWiki documents created by others''." icon="images/tour.svg" list="TheStoryRiver TheTiddlerViewer TheSidebar TheControlPanel" modified="20191210092839246" modifier="EricShulman" tags="InsideTW_V1" title="Tour">
 <pre>@@float:right;text-align:right;[img width=300 [images/twcomsnap.png]]@@The standard ~TiddlyWiki page layout is divided into two parts.
 &lt;&lt;showLinks &quot;&quot; &quot;floatleft tt-shadowbox&quot; style:&quot;margin:0.5em&quot;&gt;&gt;
 
@@ -19366,7 +19387,7 @@ It also provides a [[Search|TheSearchTool]] mechanism for quickly finding tiddle
 
 In addition, the [[Sidebar Lists|TheSidebarLists]] show a set of tabs that organize your tiddlers based on different categories, such as &quot;Open Tiddlers&quot;, &quot;Recent Changes&quot; (sorted by modification date), &quot;All Tiddlers&quot; (sorted by name), etc.  These tabs make it easy to manually navigate directly to the tiddlers you want.</pre>
 </div>
-<div caption="Transclusions" created="20191208100052216" creator="EricShulman" description="shows you how to embed content from other tiddlers into the current tiddler.  This allows you to easily combine and present information that is stored in several tiddlers." icon="$:/core/images/transcludify" modified="20191211045402989" modifier="EricShulman" next="CustomFields" prev="ExternalLinks" tags="TiddlerEditor" title="Transclusions">
+<div caption="Transclusions" created="20191208100052216" creator="EricShulman" description="shows you how to embed content from other tiddlers into the current tiddler.  This allows you to easily combine and present information that is stored in several tiddlers." icon="$:/core/images/transcludify" modified="20191211045402989" modifier="EricShulman" tags="TiddlerEditor" title="Transclusions">
 <pre>* Simple Transclusion
 ** &quot;translation&quot; + &quot;inclusion&quot;
 ** allows embedding of information and formatting stored in different tiddlers
@@ -19376,7 +19397,7 @@ In addition, the [[Sidebar Lists|TheSidebarLists]] show a set of tabs that organ
 * Transclusion as a &quot;template&quot;
 ** enables display of information stored in the current tiddler, using formatting provided in a separate &quot;template&quot; tiddler</pre>
 </div>
-<div caption="Revision History" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" modified="20191207084059445" modifier="EricShulman" next="Legal" prev="PartsList" tags="Appendix" title="VersionInfo" version="TiddlyBook v0.9 beta">
+<div caption="Revision History" created="20151218064201833" creator="EricShulman" icon="$:/core/images/permalink-button" modified="20191207084059445" modifier="EricShulman" tags="Appendix" title="VersionInfo" version="TiddlyBook v0.9 beta">
 <pre>\define changeLog() $:/state/ChangeLog
 
 \define showVersionInfo()
@@ -19399,7 +19420,7 @@ In addition, the [[Sidebar Lists|TheSidebarLists]] show a set of tabs that organ
 
 &lt;&lt;showVersionInfo&gt;&gt;</pre>
 </div>
-<div caption="What Is TiddlyWiki?" created="20150212022036079" creator="EricShulman" modified="20191201190036122" modifier="EricShulman" next="MicroContent" prev="TheWikiWay" tags="Introduction" title="WhatIsTiddlyWiki">
+<div caption="What Is TiddlyWiki?" created="20150212022036079" creator="EricShulman" modified="20191201190036122" modifier="EricShulman" tags="Introduction" title="WhatIsTiddlyWiki">
 <pre>''So, is ~TiddlyWiki a document, a website, or an application?''  All three, depending on who you are and what you use it for.
 
 !!Own it like a document...
@@ -19430,7 +19451,7 @@ There is also a sophisticated &quot;plugin&quot; system that permits you to ''ex
 
 Combined, these abilities allow ~TiddlyWiki to be used to construct and deliver ''highly interactive custom applications'' that can be used to gather, analyze, present and summarize information to more effectively achieve your goals.</pre>
 </div>
-<div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20191127031511305" modifier="EricShulman" next="TheWikiWay" prev="Introduction" tags="Introduction" title="WhatsInAName">
+<div caption="What's in a Name?" created="20150212020808213" creator="EricShulman" modified="20191127031511305" modifier="EricShulman" tags="Introduction" title="WhatsInAName">
 <pre>@@float:right;&lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;[img width=&quot;150px&quot; [images/tiddlywinks.png]]&lt;/a&gt;@@
 @@font-size:150%;''&quot;~TiddlyWiki&quot;''@@... Let's be honest, when you first hear the name, you might laugh a little, and then perhaps think of the children's game, &lt;a href=&quot;http://www.tiddlywinks.org/&quot; target=&quot;_blank&quot;&gt;~TiddlyWinks&lt;/a&gt;.  You might also wonder if an application with such a whimsical name could really be used for serious work.
 
@@ -19452,7 +19473,7 @@ In the Hawaiian language, ''//&quot;Wiki&quot;// means quick, and //&quot;wiki w
 @@font-size:150%;''~TiddlyWiki is quick.''@@
 It allows you to enter your information without a lot of planning and setup, it's relatively easy to learn and easy to use, and there is almost no installation required, so you can get started right away!</pre>
 </div>
-<div caption="Widgets" created="20191211043655880" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211044718534" modifier="EricShulman" next="Filters" prev="Macros" tags="InsideTW_V2" title="Widgets">
+<div caption="Widgets" created="20191211043655880" creator="EricShulman" icon="$:/core/images/spiral" modified="20191211044718534" modifier="EricShulman" tags="InsideTW_V2" title="Widgets">
 <pre></pre>
 </div>
 
