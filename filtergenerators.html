@@ -163,8 +163,6 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/delete</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9415,27 +9413,8 @@ FilterGenerator/Titles
 <div created="20191119154445973" modified="20191119154445973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191212145449123" list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191212145449123" title="$:/StoryList">
+<div list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
 <pre></pre>
-</div>
-<div created="20191212145403249" footer="
-         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; cancel &lt;/$button&gt;
-         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; delete
-            &lt;$action-deletetiddler $filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot; /&gt;
-         &lt;/$button&gt;
-      " modified="20191212145403250" subtitle="Confirm Deletion" title="$:/temp/delete">
-<pre>
-         Are you sure you want to delete these &lt;$count filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot;/&gt; tiddlers?
-         &lt;$button popup=&quot;$:/temp/delete/showlist&quot; class=&quot;tc-button&quot;&gt;
-            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
-            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
-         &lt;/$button&gt;
-         &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-            &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
-               &lt;$list filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot;&gt; &lt;div&gt;&lt;$link /&gt;&lt;/div&gt; &lt;/$list&gt;
-            &lt;/blockquote&gt;
-         &lt;/$reveal&gt;
-      </pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9552,7 +9531,7 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191212145226612" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191212154812422" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/search/tid
 \define preinput()   $:/temp/search/pre
 \define taginput()   $:/temp/search/tag
@@ -9562,36 +9541,43 @@ FilterGenerator/Titles
 
 \define doSearch()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]prefix[$(pre)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]]&quot;&quot;&quot;&gt;
-There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doDelete&gt;&gt;
+There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;
 &lt;blockquote class=&quot;columns3 small nowrap&quot;&gt;
    &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
 &lt;/blockquote&gt;
 &lt;/$vars&gt;
 \end
 
+\define doExport()
+&lt;$vars tv-config-toolbar-class=&quot;tc-button&quot;&gt;
+&lt;$macrocall $name=&quot;exportButton&quot; exportFilter=&quot;$(filter)$&quot; lingoBase=&quot;$:/language/Buttons/ExportTiddlers/&quot;/&gt;
+&lt;/$vars&gt;
+\end
+
 \define doDelete()
 &lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;delete matching item(s)&quot;&gt; {{$:/core/images/delete-button}}
-   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot;
-      subtitle=&quot;Confirm Deletion&quot;
-      footer=&quot;&quot;&quot;
-         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; cancel &lt;/$button&gt;
-         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; delete
-            &lt;$action-deletetiddler $filter=&quot;$(filter)$&quot; /&gt;
-         &lt;/$button&gt;
-      &quot;&quot;&quot;
-      text=&quot;&quot;&quot;
-         Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$&quot;/&gt; tiddlers?
-         &lt;$button popup=&quot;$:/temp/delete/showlist&quot; class=&quot;tc-button&quot;&gt;
-            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
-            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
-         &lt;/$button&gt;
-         &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-            &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
-               &lt;$list filter=&quot;$(filter)$&quot;&gt; &lt;div&gt;&lt;$link /&gt;&lt;/div&gt; &lt;/$list&gt;
-            &lt;/blockquote&gt;
-         &lt;/$reveal&gt;
-      &quot;&quot;&quot;/&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot; subtitle=&quot;Confirm Deletion&quot; footer=&lt;&lt;doDelete_footer&gt;&gt; text=&lt;&lt;doDelete_text&gt;&gt; /&gt;
 &lt;/$button&gt;
+\end
+
+\define doDelete_footer()
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel &lt;/$button&gt;
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; delete
+   &lt;$action-deletetiddler $filter=&quot;$(filter)$&quot; /&gt;
+&lt;/$button&gt;
+\end
+
+\define doDelete_text()
+Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$&quot;/&gt; tiddlers?
+&lt;$button popup=&quot;$:/temp/delete/showlist&quot;&gt;
+   &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
+   &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
+      &lt;$list filter=&quot;$(filter)$&quot;&gt; &lt;div&gt;&lt;$link /&gt;&lt;/div&gt; &lt;/$list&gt;
+   &lt;/blockquote&gt;
+&lt;/$reveal&gt;
 \end
 
 &lt;style&gt;
@@ -9599,7 +9585,6 @@ There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;
 .small      { font-size:80%; line-height:1.3em; }
 .nowrap     { white-space:nowrap; }
 .borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
-
 &lt;/style&gt;
 
 |borderless|k
