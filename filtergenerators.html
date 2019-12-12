@@ -163,7 +163,7 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/info-plugin</li>
+<li>$:/temp/delete</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -173,7 +173,7 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
-<li>FilterGenerator/Search</li>
+<li>FilterGenerator/SearchAndDestroy</li>
 
 <li>FilterGenerator/TagCloud</li>
 
@@ -9384,8 +9384,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191118105110098" modified="20191212072714132" title="$:/DefaultTiddlers">
-<pre>FilterGenerator/Search
+<div created="20191118105110098" modified="20191212142244462" title="$:/DefaultTiddlers">
+<pre>FilterGenerator/SearchAndDestroy
 FilterGenerator/TagCloud
 FilterGenerator/Tags
 FilterGenerator/Titles
@@ -9409,72 +9409,33 @@ FilterGenerator/Titles
 <div created="20191118105052201" modified="20191118105052201" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20191118105050813" modified="20191121085426772" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20191118105050813" modified="20191212145454047" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20191119154445973" modified="20191119154445973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191212092045150" list="FilterGenerator/Search FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191212092045150" title="$:/StoryList">
+<div created="20191212145449123" list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191212145449123" title="$:/StoryList">
 <pre></pre>
 </div>
-<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/info/browser&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
-        },
-        &quot;$:/info/node&quot;: {
-            &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
-        },
-        &quot;$:/info/url/full&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
-        },
-        &quot;$:/info/url/host&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/hostname&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/protocol&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
-        },
-        &quot;$:/info/url/port&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/port&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/pathname&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
-        },
-        &quot;$:/info/url/search&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/search&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/origin&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
-        },
-        &quot;$:/info/browser/screen/width&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
-        },
-        &quot;$:/info/browser/screen/height&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
-        },
-        &quot;$:/info/browser/language&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/language&quot;,
-            &quot;text&quot;: &quot;en-US&quot;
-        }
-    }
-}</pre>
+<div created="20191212145403249" footer="
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; cancel &lt;/$button&gt;
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; delete
+            &lt;$action-deletetiddler $filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot; /&gt;
+         &lt;/$button&gt;
+      " modified="20191212145403250" subtitle="Confirm Deletion" title="$:/temp/delete">
+<pre>
+         Are you sure you want to delete these &lt;$count filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot;/&gt; tiddlers?
+         &lt;$button popup=&quot;$:/temp/delete/showlist&quot; class=&quot;tc-button&quot;&gt;
+            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
+            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
+         &lt;/$button&gt;
+         &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+            &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
+               &lt;$list filter=&quot;[all[tiddlers]prefix[]tag:strict[]search:title,text,tags:words[]]&quot;&gt; &lt;div&gt;&lt;$link /&gt;&lt;/div&gt; &lt;/$list&gt;
+            &lt;/blockquote&gt;
+         &lt;/$reveal&gt;
+      </pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9591,34 +9552,67 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191212073713316" title="FilterGenerator/Search">
+<div created="20191212065707527" modified="20191212145226612" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/search/tid
+\define preinput()   $:/temp/search/pre
 \define taginput()   $:/temp/search/tag
 \define fieldinput() $:/temp/search/field
 \define terminput()  $:/temp/search/term
 \define flaginput()  $:/temp/search/flag
 
 \define doSearch()
-&lt;style&gt;
-.columns4 { display:block; -moz-column-count:4; -moz-column-gap:1em; -webkit-column-count:4; -webkit-column-gap:1em; }
-.small    { font-size:80%; line-height:1.3em; }
-.nowrap   { white-space:nowrap; }
-&lt;/style&gt;
-&lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]]&quot;&quot;&quot;&gt;
-There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''
-&lt;blockquote&gt;
-   @@.columns4.small &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;@@
+&lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]prefix[$(pre)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]]&quot;&quot;&quot;&gt;
+There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doDelete&gt;&gt;
+&lt;blockquote class=&quot;columns3 small nowrap&quot;&gt;
+   &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
 &lt;/blockquote&gt;
 &lt;/$vars&gt;
 \end
 
-|                                tiddlers to search:|&lt;$edit-text tiddler=&lt;&lt;tidinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;          /&gt;|
-|                                    tag for search:|&lt;$edit-text tiddler=&lt;&lt;taginput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;enter a tag&quot;       /&gt;|
-| field(s) for search (comma-separated field names):|&lt;$edit-text tiddler=&lt;&lt;fieldinput&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;title,text,tags&quot;   /&gt;|
-|     flag(s) for search (comma-separated keywords):|&lt;$edit-text tiddler=&lt;&lt;flaginput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;words&quot;             /&gt;|
-|                                text to search for:|&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;enter search text&quot; /&gt;|
+\define doDelete()
+&lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;delete matching item(s)&quot;&gt; {{$:/core/images/delete-button}}
+   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot;
+      subtitle=&quot;Confirm Deletion&quot;
+      footer=&quot;&quot;&quot;
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; cancel &lt;/$button&gt;
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button&quot;&gt; delete
+            &lt;$action-deletetiddler $filter=&quot;$(filter)$&quot; /&gt;
+         &lt;/$button&gt;
+      &quot;&quot;&quot;
+      text=&quot;&quot;&quot;
+         Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$&quot;/&gt; tiddlers?
+         &lt;$button popup=&quot;$:/temp/delete/showlist&quot; class=&quot;tc-button&quot;&gt;
+            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
+            &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
+         &lt;/$button&gt;
+         &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+            &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
+               &lt;$list filter=&quot;$(filter)$&quot;&gt; &lt;div&gt;&lt;$link /&gt;&lt;/div&gt; &lt;/$list&gt;
+            &lt;/blockquote&gt;
+         &lt;/$reveal&gt;
+      &quot;&quot;&quot;/&gt;
+&lt;/$button&gt;
+\end
+
+&lt;style&gt;
+.columns3   { display:block; -moz-column-count:3; -moz-column-gap:1em; -webkit-column-count:2; -webkit-column-gap:1em; }
+.small      { font-size:80%; line-height:1.3em; }
+.nowrap     { white-space:nowrap; }
+.borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
+
+&lt;/style&gt;
+
+|borderless|k
+|    search all|&lt;$edit-text tiddler=&lt;&lt;tidinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;          /&gt;|
+|  match prefix|&lt;$edit-text tiddler=&lt;&lt;preinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
+|     match tag|&lt;$edit-text tiddler=&lt;&lt;taginput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
+| search fields|&lt;$edit-text tiddler=&lt;&lt;fieldinput&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;title,text,tags&quot;   /&gt;|
+|   using flags|&lt;$edit-text tiddler=&lt;&lt;flaginput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;words&quot;             /&gt;|
+|    match term|&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
+
 &lt;$vars
   tids={{{ [&lt;tidinput&gt;get[text]]   ~[[tiddlers]]        }}}
+   pre={{{ [&lt;preinput&gt;get[text]]                        }}}
    tag={{{ [&lt;taginput&gt;get[text]]                        }}}
  field={{{ [&lt;fieldinput&gt;get[text]] ~[[title,text,tags]] }}}
   flag={{{ [&lt;flaginput&gt;get[text]]  ~[[words]]           }}}
