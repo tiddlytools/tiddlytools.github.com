@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -152,6 +154,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/StoryList</li>
 
@@ -9383,6 +9387,11 @@ FilterGenerator/Tags
 FilterGenerator/Titles
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Macros/edit-list]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9395,7 +9404,10 @@ FilterGenerator/Titles
 <div created="20191118104835757" modified="20191118104909579" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
+<div created="20191214104034903" modified="20191214104034903" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
+<div created="20191214104216452" list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191214104322891" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9571,7 +9583,7 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191214055806859" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191214104316091" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/search/tid
 \define preinput()   $:/temp/search/pre
 \define taginput()   $:/temp/search/tag
@@ -9623,19 +9635,30 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 &lt;/$reveal&gt;
 \end
 
-\define edit-list(tiddler,width,list,placeholder)
+\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,filter,placeholder,tooltip)
+&lt;!-- copied from TiddlyTools/Macros/edit-list --&gt;
 &lt;style&gt;
-.selectCombo { position:absolute; bottom:-0.3em; width:$width$; height:1.75em; }
-.editCombo   { position:absolute; bottom:-0.3em; width:calc($width$ - 1.25em); }
+.selectCombo_$id$ { position:absolute; bottom:-0.3em; width:100%;                height:1.5em; border:1px solid lightgray; }
+.editCombo_$id$   { position:absolute; bottom:-0.3em; width:calc(100% - 1.25em); height:1.5em; border:1px solid lightgray; }
 &lt;/style&gt;
-&lt;div style=&quot;position:relative;display:inline-block;&quot;&gt;
-&lt;$select tiddler=&lt;&lt;$tiddler$&gt;&gt; default=&quot;$placeholder$&quot; class=&quot;selectCombo&quot;&gt;
-   &lt;$list filter=&quot;&quot;&quot;$list$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
+&lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
+&lt;$select class=&quot;selectCombo_$id$&quot;
+   tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
+   default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+   &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
       &lt;option value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
-&lt;$edit-text tiddler=&lt;&lt;$tiddler$&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;$placeholder$&quot; class=&quot;editCombo&quot;/&gt;
+&lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+&lt;$edit-text class=&quot;editCombo_$id$&quot; tag=&quot;input&quot;
+   tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
+   default=&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;/&gt;
+&lt;/span&gt;
 &lt;/div&gt;
+\end
+
+\define getTid()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;tidinput&gt;&gt; width=&quot;11.75em&quot; filter=&quot;tiddlers shadows system orphans tiddlers+shadows system+shadows&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 &lt;style&gt;
@@ -9646,7 +9669,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 &lt;/style&gt;
 
 |borderless|k
-|    search all|&lt;&lt;edit-list tidinput 11.75em &quot;tiddlers shadows system orphans tiddlers+shadows system+shadows&quot; &quot;tiddlers&quot;&gt;&gt;|
+|    search all|&lt;&lt;getTid&gt;&gt;|
 |  match prefix|&lt;$edit-text tiddler=&lt;&lt;preinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
 |     match tag|&lt;$edit-text tiddler=&lt;&lt;taginput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
 | search fields|&lt;$edit-text tiddler=&lt;&lt;fieldinput&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;title,text,tags&quot;   /&gt;|
