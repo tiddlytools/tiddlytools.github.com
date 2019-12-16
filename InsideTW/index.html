@@ -179,8 +179,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/scraps</li>
@@ -627,7 +625,9 @@ Error message and password prompt
 
 <li>TiddlyTools/Settings/Advanced/Panel</li>
 
-<li>TiddlyTools/Settings/Defaults</li>
+<li>TiddlyTools/Settings/Colors</li>
+
+<li>TiddlyTools/Settings/Colors/X11Names</li>
 
 <li>TiddlyTools/Settings/Macros</li>
 
@@ -640,8 +640,6 @@ Error message and password prompt
 <li>TiddlyTools/Settings/Palettes/Panel</li>
 
 <li>TiddlyTools/Settings/Palettes/Shades</li>
-
-<li>TiddlyTools/Settings/Palettes/X11Names</li>
 
 <li>TiddlyTools/Settings/Panel</li>
 
@@ -657,15 +655,17 @@ Error message and password prompt
 
 <li>TiddlyTools/Settings/Panel/StoryWidth</li>
 
-<li>TiddlyTools/Settings/Paper</li>
+<li>TiddlyTools/Settings/Themes</li>
 
-<li>TiddlyTools/Settings/SelectTheme</li>
+<li>TiddlyTools/Settings/Themes/Default</li>
 
-<li>TiddlyTools/Settings/Sunset</li>
+<li>TiddlyTools/Settings/Themes/Paper</li>
+
+<li>TiddlyTools/Settings/Themes/Sunset</li>
+
+<li>TiddlyTools/Settings/Themes/Woodshop</li>
 
 <li>TiddlyTools/Settings/ToggleStretch</li>
-
-<li>TiddlyTools/Settings/Woodshop</li>
 
 <li>TiddlyTools/SlideBars/Bars/AuthorTools</li>
 
@@ -800,7 +800,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191215162249610" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191216010410580" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -878,10 +878,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191215162249609" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191216010410580" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191215162249610" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191216010410580" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191211143242614" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10241,11 +10241,6 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <pre>CoverPage
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Macros/edit-list]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10410,8 +10405,9 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.15.082248">
-<pre>* 19.12.15.082101 TiddlyTools/Settings/Palettes/Panel - fix use of popup_palette_id
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.15.170230">
+<pre>* 19.12.15.170230 TiddlyTools/Settings - refactor Colors and Themes
+* 19.12.15.082101 TiddlyTools/Settings/Palettes/Panel - fix use of popup_palette_id
 * 19.12.15.054212 TiddlyTools/Settings/Palettes/Panel - minor layout adjustments for better alignment
 * 19.12.15.044705 TiddlyTools/Settings/Palettes/Panel - added color swatch
 * 19.12.15.044705 TiddlyTools/Settings/Panel/Saver - fix message text
@@ -11283,7 +11279,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191215162249609" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191216010410580" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11295,14 +11291,14 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191208062044146" creator="EricShulman" modified="20191208062044146" modifier="EricShulman" title="$:/state/tab--486472640">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20191105015231053" creator="EricShulman" modified="20191210103940486" modifier="EricShulman" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
+<div created="20191105015231053" creator="EricShulman" modified="20191216003404079" modifier="EricShulman" title="$:/state/tab-1749438307">
+<pre>TiddlyTools/SlideBars/Settings</pre>
 </div>
 <div created="20191105015232846" creator="EricShulman" modified="20191125234327225" modifier="EricShulman" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20191105204343116" creator="EricShulman" modified="20191214232425072" modifier="EricShulman" title="$:/state/tab-513410736">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20191105204343116" creator="EricShulman" modified="20191216005652622" modifier="EricShulman" title="$:/state/tab-513410736">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div created="20191106145214106" creator="EricShulman" modified="20191204041048661" modifier="EricShulman" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
@@ -11325,7 +11321,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191215162208616" creator="EricShulman" list="CoverPage" modified="20191215162249611" modifier="EricShulman" title="$:/StoryList">
+<div created="20191215233014319" creator="EricShulman" list="CoverPage" modified="20191216010410582" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -11464,7 +11460,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191212000321963" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191215162249609" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191216010410580" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -14809,7 +14805,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    {{$:/core/images/print-button}}
 &lt;/$button&gt;</pre>
 </div>
-<div created="20151230031204587" creator="EricShulman" modified="20191208222401168" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyBook/Reset">
+<div created="20151230031204587" creator="EricShulman" modified="20191216010151118" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyBook/Reset">
 <pre>\define reset_config()
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot;               text=&quot;no&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/view&quot;                        text=&quot;zoomin&quot;/&gt;
@@ -14823,7 +14819,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 
 &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools/TOC&quot;      text=&lt;&lt;getcookie &quot;TiddlyTools/TOC&quot;&gt;&gt;/&gt;
 
-&lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot;          text={{TiddlyTools/Settings/Defaults}} /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot;          text={{TiddlyTools/Settings/Themes/Default}} /&gt;
 &lt;$reveal default=&lt;&lt;getcookie &quot;TiddlyTools&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/config/TiddlyTools&quot;       text=&lt;&lt;getcookie &quot;TiddlyTools&quot;&gt;&gt; /&gt;
 &lt;/$reveal&gt;
@@ -15047,7 +15043,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 {{||TiddlyBook/Print/All/Button}}
 &lt;/nobr&gt;</pre>
 </div>
-<div created="20150426192418411" creator="EricShulman" modified="20191129134517146" modifier="EricShulman" tags="$:/tags/TopRightSlideBar" title="TiddlyBook/SlideBars/TopRight">
+<div created="20150426192418411" creator="EricShulman" modified="20191216010128661" modifier="EricShulman" tags="$:/tags/TopRightSlideBar" title="TiddlyBook/SlideBars/TopRight">
 <pre>&lt;nobr&gt;
 &lt;span class=&quot;authortools&quot;&gt;
    @@opacity:0.15;{{$:/core/ui/TopBar/menu}}@@
@@ -15063,7 +15059,7 @@ From then on, changes to the tiddler values update the corresponding cookie valu
 &amp;nbsp;
 {{||TiddlyTools/Settings/ToggleStretch}}
 &amp;nbsp;
-{{||TiddlyTools/Settings/SelectTheme}}
+{{||TiddlyTools/Settings/Themes}}
 &amp;nbsp;
 {{||TiddlyTools/Settings}}
 &lt;/nobr&gt;</pre>
@@ -16613,66 +16609,245 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="Default Settings" created="20160126102714111" creator="EricShulman" modified="20191105222714451" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Defaults" type="application/json">
-<pre>{
-    &quot;Stretch&quot;: &quot;yes&quot;,
-    &quot;Path&quot;: &quot;yes&quot;,
-    &quot;FontSize/BodyText&quot;: &quot;100&quot;,
-    &quot;FontSize/ToolBar&quot;: &quot;150&quot;,
-    &quot;FontSize/LeftBar&quot;: &quot;100&quot;,
-    &quot;FontSize/RightBar&quot;: &quot;100&quot;,
-    &quot;FontSize/TopBar&quot;: &quot;100&quot;,
-    &quot;FontSize/BottomBar&quot;: &quot;100&quot;,
-    &quot;FontColor/BodyText&quot;: &quot;#000&quot;,
-    &quot;Background/Cover&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/whitepaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/SlideBars&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/nicesnow.png&gt;&gt;)&quot;,
-    &quot;Background/SlideBars/Panel&quot;: &quot;&quot;,
-    &quot;Background/SlideBars/Text&quot;: &quot;&quot;,
-    &quot;Background/SlideBars/Title&quot;: &quot;&quot;,
-    &quot;Background/Window&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/nicesnow.png&gt;&gt;)&quot;,
-    &quot;Background/DropDowns&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/gridpaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/Page&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/whitepaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/TitleBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/gridpaper.jpg&gt;&gt;)&quot;,
-    &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/notepaper.jpg&gt;&gt;)&quot;,
-    &quot;Hmargin&quot;: &quot;42px&quot;,
-    &quot;Vmargin&quot;: &quot;42px&quot;,
-    &quot;TopLeftBar&quot;: &quot;yes&quot;,
-    &quot;TopLeftBar/Hover&quot;: &quot;yes&quot;,
-    &quot;TopLeftBar/Size&quot;: &quot;&quot;,
-    &quot;TopLeftBar/Label&quot;: &quot;&quot;,
-    &quot;TopBar&quot;: &quot;yes&quot;,
-    &quot;TopBar/Hover&quot;: &quot;yes&quot;,
-    &quot;TopBar/Size&quot;: &quot;&quot;,
-    &quot;TopBar/Label&quot;: &quot;&quot;,
-    &quot;TopRightBar&quot;: &quot;yes&quot;,
-    &quot;TopRightBar/Hover&quot;: &quot;yes&quot;,
-    &quot;TopRightBar/Size&quot;: &quot;&quot;,
-    &quot;TopRightBar/Label&quot;: &quot;&quot;,
-    &quot;LeftBar&quot;: &quot;no&quot;,
-    &quot;LeftBar/Hover&quot;: &quot;yes&quot;,
-    &quot;LeftBar/Size&quot;: &quot;22vw&quot;,
-    &quot;LeftBar/Label&quot;: &quot;&quot;,
-    &quot;RightBar&quot;: &quot;no&quot;,
-    &quot;RightBar/Hover&quot;: &quot;yes&quot;,
-    &quot;RightBar/Size&quot;: &quot;22vw&quot;,
-    &quot;RightBar/Label&quot;: &quot;&quot;,
-    &quot;BottomLeftBar&quot;: &quot;no&quot;,
-    &quot;BottomLeftBar/Hover&quot;: &quot;yes&quot;,
-    &quot;BottomLeftBar/Size&quot;: &quot;&quot;,
-    &quot;BottomLeftBar/Label&quot;: &quot;&quot;,
-    &quot;BottomBar&quot;: &quot;no&quot;,
-    &quot;BottomBar/Hover&quot;: &quot;yes&quot;,
-    &quot;BottomBar/Size&quot;: &quot;&quot;,
-    &quot;BottomBar/Label&quot;: &quot;&quot;,
-    &quot;BottomRightBar&quot;: &quot;no&quot;,
-    &quot;BottomRightBar/Hover&quot;: &quot;yes&quot;,
-    &quot;BottomRightBar/Size&quot;: &quot;&quot;,
-    &quot;BottomRightBar/Label&quot;: &quot;&quot;,
-    &quot;AuthorToolBar&quot;: &quot;no&quot;,
-    &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
-    &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;👷@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
-}</pre>
+<div created="20191215233026136" creator="EricShulman" modified="20191216010053917" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Colors">
+<pre>\define config()           $:/config/TiddlyTools
+\define target()           $(config)$##$(tid)$
+\define color_popup_id()   $:/state/popup/color
+
+\define all()              [enlist{TiddlyTools/Settings/Colors/X11Names}]
+\define all_count()        $(all)$ +[count[]]
+\define found()            $(all)$ +[search:title{$(target)$}]
+\define found_count()      $(found)$ +[count[]]
+
+\define color_header()
+&lt;div style=&quot;float:left;&quot;&gt; ''&lt;$text text=&lt;&lt;tid&gt;&gt;/&gt;:'' &lt;/div&gt;
+&lt;div style=&quot;float:right;&quot;&gt;
+   &lt;$list filter=&quot;$(found_count)$ +[match[0]]&quot;&gt; &lt;!-- NO MATCHES --&gt;
+      &lt;$text text={{{ $(all_count)$ }}}/&gt; colors available
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;$(found_count)$ +[match[1]]&quot;&gt; &lt;!-- ONE MATCH --&gt;
+      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
+         emptyMessage=&quot;&quot;&quot;1 color available&quot;&quot;&quot;&gt;
+         1 color selected, &lt;$text text={{{ $(all_count)$ }}}/&gt; colors available
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;$(found_count)$ -[[0]] -[[1]]&quot;&gt; &lt;!-- MULTIPLE MATCHES --&gt;
+      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
+         emptyMessage=&quot;&quot;&quot;&lt;$text text={{{ $(found_count)$ }}}/&gt; colors available&quot;&quot;&quot;&gt;
+         1 color selected, &lt;$text text={{{ $(found_count)$ }}}/&gt; colors available
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+&lt;/div&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+\end
+
+\define color_edit()
+&lt;style&gt;.tt-color-edit { width:calc(100% - 3.5em); }&lt;/style&gt;
+&lt;span style=&quot;display:inline-block;line-height:1.4em;&quot;&gt;
+   &lt;$macrocall $name=&quot;color_box&quot; color={{$(target)$}} /&gt;
+&lt;/span&gt;
+&lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; index=&lt;&lt;tid&gt;&gt; default=&quot;&quot;
+   focusPopup=&lt;&lt;qualify $(color_popup_id)$&gt;&gt; tag=&quot;input&quot; class=&quot;tt-color-edit tc-popup-handle&quot; /&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;clear&quot;&gt;
+   {{$:/core/images/delete-button}}
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;tid&gt;&gt; $value=&quot;&quot; /&gt;
+&lt;/$button&gt;
+\end
+
+\define color_box(color:&quot;white&quot;,w:&quot;1.5em&quot;,h:&quot;1.5em&quot;,inset:&quot;&quot;)
+&lt;style&gt;.tt-color_box { vertical-align:top; }&lt;/style&gt;
+&lt;div style='background:$color$; width:$w$; height:$h$;
+   display:inline-block; border:1px solid gray;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.5) $inset$;'&gt;
+   &lt;$list filter=&quot;[title[$color$]removeprefix[url(&lt;&lt;datauri ]removesuffix[&gt;&gt;)]]&quot;
+      emptyMessage=&quot;&amp;emsp;&quot;&gt;
+      &lt;$image source=&lt;&lt;currentTiddler&gt;&gt; width=&quot;100%&quot; height=&quot;100%&quot; class=&quot;tt-color_box&quot;/&gt;
+   &lt;/$list&gt;
+&lt;/div&gt;
+\end
+
+\define color_popup()
+&lt;$vars    max=10&gt;
+&lt;$vars length={{{ $(found_count)$ +[min&lt;max&gt;] -[[0]] -[[1]] }}}&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(color_popup_id)$&gt;&gt; style=&quot;width:100%;&quot;&gt;
+   &lt;$list filter=&quot;$(found_count)$ +[match[0]]&quot;&gt; &lt;!-- NO MATCHES = SHOW ALL COLORS, MAX ROWS --&gt;
+      &lt;&lt;color_popup_select max&gt;&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;$(found_count)$ +[match[1]]&quot;&gt; &lt;!-- ONE MATCH --&gt;
+      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
+         emptyMessage=&quot;&quot;&quot;&lt;&lt;color_popup_button&gt;&gt;&quot;&quot;&quot;&gt; &lt;!-- PARTIAL MATCH = SHOW 1 COLOR AS BUTTON --&gt;
+         &lt;&lt;color_popup_select max&gt;&gt;                 &lt;!-- EXACT MATCH   = SHOW ENTIRE LIST --&gt;
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;$(found_count)$ -[[0]] -[[1]]&quot;&gt; &lt;!-- MULTIPLE MATCHES = SHOW MATCHING COLORS, BETWEEN 2 AND MAX ROWS  --&gt;
+      &lt;&lt;color_popup_select length &quot;+[search:title{$(target)$}]&quot;&gt;&gt;
+   &lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+\end
+
+\define color_popup_button()
+&lt;$vars buttonStyle={{{ $(found)$ +[addprefix[width:calc(100% - 5em);text-align:left;border:1px solid gray;background-color:]] +[addsuffix[ !important;]] }}}&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;buttonStyle&gt;&gt;&gt;
+   &lt;$text text={{{ $(found)$ }}}/&gt;
+   &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;tid&gt;&gt; $value={{{ $(found)$ }}} /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify $(color_popup_id)$&gt;&gt; /&gt;
+&lt;/$button&gt;
+&lt;/$vars&gt;
+\end
+
+\define color_popup_select(length,filter)
+&lt;style&gt; .tt-color-popup-select{ width:calc(100% - 5em); } &lt;/style&gt;
+&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&lt;&lt;tid&gt;&gt; class=&quot;tt-color-popup-select&quot; size=&lt;&lt;$length$&gt;&gt; default=&quot;&quot;&gt; 
+   &lt;$list filter=&quot;$(all)$ $filter$&quot; variable=&quot;value&quot;&gt;
+      &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
+   &lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+&lt;&lt;color_header&gt;&gt;
+&lt;&lt;color_edit&gt;&gt;
+&lt;&lt;color_popup&gt;&gt;</pre>
+</div>
+<div created="20160129222605332" creator="EricShulman" modified="20191216010047403" modifier="EricShulman" title="TiddlyTools/Settings/Colors/X11Names" type="text/plain">
+<pre>AliceBlue
+AntiqueWhite
+Aquamarine
+Azure
+Beige
+Bisque
+Black
+BlanchedAlmond
+Blue
+BlueViolet
+Brown
+Burlywood
+CadetBlue
+Chartreuse
+Chocolate
+Coral
+CornflowerBlue
+Cornsilk
+Cyan
+DarkBlue
+DarkCyan
+DarkGoldenrod
+DarkGray
+DarkGreen
+DarkKhaki
+DarkMagenta
+DarkOliveGreen
+DarkOrange
+DarkOrchid
+DarkRed
+DarkSalmon
+DarkSeaGreen
+DarkSlateBlue
+DarkSlateGray
+DarkTurquoise
+DarkViolet
+DeepPink
+DeepSkyBlue
+DimGray
+DodgerBlue
+Firebrick
+FloralWhite
+ForestGreen
+Gainsboro
+GhostWhite
+Gold
+Goldenrod
+Gray
+Green
+GreenYellow
+Honeydew
+HotPink
+IndianRed
+Ivory
+Khaki
+Lavender
+LavenderBlush
+LawnGreen
+LemonChiffon
+LightBlue
+LightCoral
+LightCyan
+LightGoldenrod
+LightGoldenrodYellow
+LightGray
+LightGreen
+LightPink
+LightSalmon
+LightSeaGreen
+LightSkyBlue
+LightSlateBlue
+LightSlateGray
+LightSteelBlue
+LightYellow
+LimeGreen
+Linen
+Magenta
+Maroon
+MediumAquamarine
+MediumBlue
+MediumOrchid
+MediumPurple
+MediumSeaGreen
+MediumSlateBlue
+MediumSpringGreen
+MediumTurquoise
+MediumVioletRed
+MidnightBlue
+MintCream
+MistyRose
+Moccasin
+NavajoWhite
+Navy
+NavyBlue
+OldLace
+OliveDrab
+Orange
+OrangeRed
+Orchid
+PaleGoldenrod
+PaleGreen
+PaleTurquoise
+PaleVioletRed
+PapayaWhip
+PeachPuff
+Peru
+Pink
+Plum
+PowderBlue
+Purple
+Red
+RosyBrown
+RoyalBlue
+SaddleBrown
+Salmon
+SandyBrown
+SeaGreen
+Seashell
+Sienna
+SkyBlue
+SlateBlue
+SlateGray
+Snow
+SpringGreen
+SteelBlue
+Tan
+Thistle
+Tomato
+Turquoise
+Violet
+VioletRed
+Wheat
+White
+WhiteSmoke
+Yellow
+YellowGreen
+</pre>
 </div>
 <div created="20150429051729816" creator="EricShulman" modified="20191107175854469" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Settings/Macros">
 <pre>\define config()      $:/config/TiddlyTools
@@ -16858,90 +17033,13 @@ rgba(255,255,255,0.8)
 rgba(255,255,255,0.9)
 rgba(255,255,255,1.0)</pre>
 </div>
-<div created="20150509223438003" creator="EricShulman" modified="20191215162246120" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
+<div created="20150509223438003" creator="EricShulman" modified="20191216010024329" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Panel">
 <pre>\define config()           $:/config/TiddlyTools
 \define target()           $(config)$##$(tid)$
 
-\define all()              [enlist{TiddlyTools/Settings/Palettes/X11Names}]
-\define all_count()        $(all)$ +[count[]]
-\define found()            $(all)$ +[search:title{$(target)$}]
-\define found_count()      $(found)$ +[count[]]
-
-\define palette_popup_id() $:/state/popup/palette
-
-\define palette_list_header()
-&lt;div style=&quot;float:left;&quot;&gt; ''&lt;$text text=&lt;&lt;tid&gt;&gt;/&gt;:'' &lt;/div&gt;
-&lt;div style=&quot;float:right;&quot;&gt;
-   &lt;$list filter=&quot;$(found_count)$ +[match[0]]&quot;&gt; &lt;!-- NO MATCHES --&gt;
-      &lt;$text text={{{ $(all_count)$ }}}/&gt; colors available
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;$(found_count)$ +[match[1]]&quot;&gt; &lt;!-- ONE MATCH --&gt;
-      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
-         emptyMessage=&quot;&quot;&quot;1 color available&quot;&quot;&quot;&gt;
-         1 color selected, &lt;$text text={{{ $(all_count)$ }}}/&gt; colors available
-      &lt;/$list&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;$(found_count)$ -[[0]] -[[1]]&quot;&gt; &lt;!-- MULTIPLE MATCHES --&gt;
-      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
-         emptyMessage=&quot;&quot;&quot;&lt;$text text={{{ $(found_count)$ }}}/&gt; colors available&quot;&quot;&quot;&gt;
-         1 color selected, &lt;$text text={{{ $(found_count)$ }}}/&gt; colors available
-      &lt;/$list&gt;
-   &lt;/$list&gt;
-&lt;/div&gt;
-&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-\end
-
-\define palette_list_edit()
-&lt;style&gt;.paletteEdit { width:calc(100% - 3.5em); }&lt;/style&gt;
-&lt;span style=&quot;display:inline-block;line-height:1.4em;&quot;&gt;
-   &lt;$macrocall $name=&quot;color_box&quot; color={{$(target)$}} /&gt;
-&lt;/span&gt;
-&lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; index=&lt;&lt;tid&gt;&gt; default=&quot;&quot;
-   focusPopup=&lt;&lt;qualify $(palette_popup_id)$&gt;&gt; tag=&quot;input&quot; class=&quot;paletteEdit tc-popup-handle&quot; /&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;clear&quot;&gt;
-   {{$:/core/images/delete-button}}
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;tid&gt;&gt; $value=&quot;&quot; /&gt;
-&lt;/$button&gt;
-\end
-
-\define palette_list_show()
-&lt;$vars    max=10&gt;
-&lt;$vars length={{{ $(found_count)$ +[min&lt;max&gt;] -[[0]] -[[1]] }}}&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(palette_popup_id)$&gt;&gt; style=&quot;width:100%;&quot;&gt;
-   &lt;$list filter=&quot;$(found_count)$ +[match[0]]&quot;&gt; &lt;!-- NO MATCHES = SHOW ALL COLORS, MAX ROWS --&gt;
-      &lt;&lt;palette_list_select max&gt;&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;$(found_count)$ +[match[1]]&quot;&gt; &lt;!-- ONE MATCH --&gt;
-      &lt;$list filter=&quot;$(found)$ +[match:caseinsensitive{$(target)$}]&quot;
-         emptyMessage=&quot;&quot;&quot;&lt;&lt;palette_list_button&gt;&gt;&quot;&quot;&quot;&gt; &lt;!-- PARTIAL MATCH = SHOW 1 COLOR AS BUTTON --&gt;
-         &lt;&lt;palette_list_select max&gt;&gt;                 &lt;!-- EXACT MATCH   = SHOW ENTIRE LIST --&gt;
-      &lt;/$list&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;$(found_count)$ -[[0]] -[[1]]&quot;&gt; &lt;!-- MULTIPLE MATCHES = SHOW MATCHING COLORS, BETWEEN 2 AND MAX ROWS  --&gt;
-      &lt;&lt;palette_list_select length &quot;+[search:title{$(target)$}]&quot;&gt;&gt;
-   &lt;/$list&gt;
-&lt;/$reveal&gt;
-&lt;/$vars&gt;
-&lt;/$vars&gt;
-\end
-
-\define palette_list_button()
-&lt;$vars buttonStyle={{{ $(found)$ +[addprefix[width:calc(100% - 5em);text-align:left;border:1px solid gray;background-color:]] +[addsuffix[ !important;]] }}}&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;buttonStyle&gt;&gt;&gt;
-   &lt;$text text={{{ $(found)$ }}}/&gt;
-   &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;tid&gt;&gt; $value={{{ $(found)$ }}} /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify $(palette_popup_id)$&gt;&gt; /&gt;
-&lt;/$button&gt;
-&lt;/$vars&gt;
-\end
-
-\define palette_list_select(length,filter)
-&lt;style&gt; .paletteList { width:calc(100% - 5em); } &lt;/style&gt;
-&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&lt;&lt;tid&gt;&gt; class=&quot;paletteList&quot; size=&lt;&lt;$length$&gt;&gt; default=&quot;&quot;&gt; 
-   &lt;$list filter=&quot;$(all)$ $filter$&quot; variable=&quot;value&quot;&gt;
-      &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
-   &lt;/$list&gt;
-&lt;/$select&gt;
+\define palette_buttons(pal:&quot;Colors&quot;)
+&lt;td style=&quot;text-align:right&quot;&gt;[[$pal$|TiddlyTools/Settings/Palettes/$pal$]]:&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&lt;nobr&gt;&lt;&lt;pick_color &quot;$(config)$##$(tid)$&quot; &quot;TiddlyTools/Settings/Palettes/$pal$&quot;&gt;&gt;&lt;/nobr&gt;&lt;/td&gt;
 \end
 
 \define palette_table()
@@ -16955,11 +17053,6 @@ rgba(255,255,255,1.0)</pre>
 &lt;/table&gt;
 \end
 
-\define palette_buttons(pal:&quot;Colors&quot;)
-&lt;td style=&quot;text-align:right&quot;&gt;[[$pal$|TiddlyTools/Settings/Palettes/$pal$]]:&amp;nbsp;&lt;/td&gt;
-&lt;td&gt;&lt;nobr&gt;&lt;&lt;pick_color &quot;$(config)$##$(tid)$&quot; &quot;TiddlyTools/Settings/Palettes/$pal$&quot;&gt;&gt;&lt;/nobr&gt;&lt;/td&gt;
-\end
-
 ''Select a color, background, or shading:''
 &lt;div style=&quot;float:right;&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible&quot;&gt;
@@ -16971,9 +17064,7 @@ rgba(255,255,255,1.0)</pre>
    &lt;&lt;palette_table&gt;&gt;
 &lt;/div&gt;
 &lt;div style=&quot;margin-top:0.25em;font-size:80%;line-height:100%;&quot;&gt;
-   &lt;&lt;palette_list_header&gt;&gt;
-   &lt;&lt;palette_list_edit&gt;&gt;
-   &lt;&lt;palette_list_show&gt;&gt;
+   {{TiddlyTools/Settings/Colors}}
 &lt;/div&gt;</pre>
 </div>
 <div created="20150508225353465" creator="EricShulman" modified="20150510053613068" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Palettes/Shades" type="text/plain">
@@ -16988,145 +17079,6 @@ rgba(0,0,0,0.7)
 rgba(0,0,0,0.8)
 rgba(0,0,0,0.9)
 rgba(0,0,0,1.0)</pre>
-</div>
-<div created="20160129222605332" creator="EricShulman" modified="20160129231049539" modifier="EricShulman" title="TiddlyTools/Settings/Palettes/X11Names" type="text/plain">
-<pre>AliceBlue
-AntiqueWhite
-Aquamarine
-Azure
-Beige
-Bisque
-Black
-BlanchedAlmond
-Blue
-BlueViolet
-Brown
-Burlywood
-CadetBlue
-Chartreuse
-Chocolate
-Coral
-CornflowerBlue
-Cornsilk
-Cyan
-DarkBlue
-DarkCyan
-DarkGoldenrod
-DarkGray
-DarkGreen
-DarkKhaki
-DarkMagenta
-DarkOliveGreen
-DarkOrange
-DarkOrchid
-DarkRed
-DarkSalmon
-DarkSeaGreen
-DarkSlateBlue
-DarkSlateGray
-DarkTurquoise
-DarkViolet
-DeepPink
-DeepSkyBlue
-DimGray
-DodgerBlue
-Firebrick
-FloralWhite
-ForestGreen
-Gainsboro
-GhostWhite
-Gold
-Goldenrod
-Gray
-Green
-GreenYellow
-Honeydew
-HotPink
-IndianRed
-Ivory
-Khaki
-Lavender
-LavenderBlush
-LawnGreen
-LemonChiffon
-LightBlue
-LightCoral
-LightCyan
-LightGoldenrod
-LightGoldenrodYellow
-LightGray
-LightGreen
-LightPink
-LightSalmon
-LightSeaGreen
-LightSkyBlue
-LightSlateBlue
-LightSlateGray
-LightSteelBlue
-LightYellow
-LimeGreen
-Linen
-Magenta
-Maroon
-MediumAquamarine
-MediumBlue
-MediumOrchid
-MediumPurple
-MediumSeaGreen
-MediumSlateBlue
-MediumSpringGreen
-MediumTurquoise
-MediumVioletRed
-MidnightBlue
-MintCream
-MistyRose
-Moccasin
-NavajoWhite
-Navy
-NavyBlue
-OldLace
-OliveDrab
-Orange
-OrangeRed
-Orchid
-PaleGoldenrod
-PaleGreen
-PaleTurquoise
-PaleVioletRed
-PapayaWhip
-PeachPuff
-Peru
-Pink
-Plum
-PowderBlue
-Purple
-Red
-RosyBrown
-RoyalBlue
-SaddleBrown
-Salmon
-SandyBrown
-SeaGreen
-Seashell
-Sienna
-SkyBlue
-SlateBlue
-SlateGray
-Snow
-SpringGreen
-SteelBlue
-Tan
-Thistle
-Tomato
-Turquoise
-Violet
-VioletRed
-Wheat
-White
-WhiteSmoke
-Yellow
-YellowGreen
-</pre>
 </div>
 <div created="20150426205104959" creator="EricShulman" modified="20191107180641856" modifier="EricShulman" title="TiddlyTools/Settings/Panel">
 <pre>@@float:right; 
@@ -17184,9 +17136,9 @@ YellowGreen
 &lt;&lt;pick_fontsize &quot;FontSize/TopBar&quot;    &quot;Top ~SlideBar&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;pick_fontsize &quot;FontSize/BottomBar&quot; &quot;Bottom ~SlideBar&quot;&gt;&gt;&lt;br&gt;</pre>
 </div>
-<div created="20160120031550401" creator="EricShulman" modified="20191215124608215" modifier="EricShulman" title="TiddlyTools/Settings/Panel/Saver">
+<div created="20160120031550401" creator="EricShulman" modified="20191216010035939" modifier="EricShulman" title="TiddlyTools/Settings/Panel/Saver">
 <pre>\define config()        $:/config/TiddlyTools
-\define defaults()      TiddlyTools/Settings/Defaults
+\define defaults()      TiddlyTools/Settings/Themes/Default
 \define input()         $:/temp/settings/save/input
 \define savedsettings() $:/tags/SavedSettings
 \define defaultName()   MySettings
@@ -17304,7 +17256,52 @@ YellowGreen
 &lt;/span&gt;
 &lt;&lt;toggle_option tid:&quot;Stretch&quot; label:&quot;stretch to fit&quot;&gt;&gt;&lt;br&gt;</pre>
 </div>
-<div caption="Paper" created="20180103100901735" creator="EricShulman" modified="20191105222525228" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Paper" type="application/json">
+<div created="20191129131838785" creator="EricShulman" modified="20191216005920144" modifier="EricShulman" tags="" title="TiddlyTools/Settings/Themes">
+<pre>\define config()        $:/config/TiddlyTools
+\define defaults()      TiddlyTools/Settings/Themes/Default
+\define savedsettings() $:/tags/SavedSettings
+\define loadTip()       load settings from '$(thisname)$'
+\define loadedMsg()     settings loaded from '&lt;$text text=&quot;$(thisname)$&quot;/&gt;'
+
+\define msg(id)
+&lt;$action-setfield      $tiddler=&quot;$:/temp/notify&quot; text=&lt;&lt;$id$&gt;&gt;/&gt;
+&lt;$action-sendmessage   $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
+\end
+
+\define list(label:&quot;saved&quot;)
+&lt;$button class=&quot;tt-button&quot; style=&quot;transition:0s&quot;
+   popup=&lt;&lt;qualify &quot;$:/state/popup/settings/load&quot;&gt;&gt;
+   tooltip=&quot;select a theme&quot;&gt;
+   $label$
+&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/settings/load&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
+   &lt;div class=&quot;tc-drop-down tt-drop-down tc-popup-keep smaller&quot;
+      style=&quot;padding:0.25em;text-align:left;position:absolute;right:0;&quot;&gt;
+      ''Select a theme''
+      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:#f0f0f0;&quot;&gt;
+      &lt;$list filter=&quot;[tag&lt;savedsettings&gt;sort[caption]] -[&lt;config&gt;] -[&lt;defaults&gt;] [&lt;defaults&gt;]&quot;
+         emptyMessage=&quot;&quot;&quot;//no saved settings//&quot;&quot;&quot;&gt;
+         &lt;$vars thisname={{!!title}} stretch={{$(config)$##Stretch}}&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;loadTip&gt;&gt;
+            style=&quot;visibility:visible;display:inline;margin-right:1em;&quot;&gt;
+            &lt;&lt;toc-caption&gt;&gt;
+            &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $value={{!!text}}/&gt;
+            &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&lt;&lt;stretch&gt;&gt; /&gt;
+            &lt;&lt;msg loadedMsg&gt;&gt;
+         &lt;/$button&gt;
+         &lt;br&gt;
+         &lt;/$vars&gt;
+      &lt;/$list&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+&lt;nobr&gt;
+&lt;&lt;list  &quot;{{$:/core/images/picture}}&quot;&gt;&gt;
+&lt;/nobr&gt;</pre>
+</div>
+<div caption="Default Settings" created="20160126102714111" creator="EricShulman" modified="20191216005855004" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/Default" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -17365,52 +17362,68 @@ YellowGreen
     &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;👷@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
 }</pre>
 </div>
-<div created="20191129131838785" creator="EricShulman" modified="20191215124507460" modifier="EricShulman" tags="" title="TiddlyTools/Settings/SelectTheme">
-<pre>\define config()        $:/config/TiddlyTools
-\define defaults()      TiddlyTools/Settings/Defaults
-\define savedsettings() $:/tags/SavedSettings
-\define loadTip()       load settings from '$(thisname)$'
-\define loadedMsg()     settings loaded from '&lt;$text text=&quot;$(thisname)$&quot;/&gt;'
-
-\define msg(id)
-&lt;$action-setfield      $tiddler=&quot;$:/temp/notify&quot; text=&lt;&lt;$id$&gt;&gt;/&gt;
-&lt;$action-sendmessage   $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
-\end
-
-\define list(label:&quot;saved&quot;)
-&lt;$button class=&quot;tt-button&quot; style=&quot;transition:0s&quot;
-   popup=&lt;&lt;qualify &quot;$:/state/popup/settings/load&quot;&gt;&gt;
-   tooltip=&quot;select a theme&quot;&gt;
-   $label$
-&lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/settings/load&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot;&gt;
-   &lt;div class=&quot;tc-drop-down tc-popup-keep smaller&quot;
-      style=&quot;padding:0.25em;text-align:left;position:absolute;right:0;&quot;&gt;
-      ''Select a theme''
-      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:rgba(0,0,0,0.05)&quot;&gt;
-      &lt;$list filter=&quot;[tag&lt;savedsettings&gt;sort[caption]] -[&lt;config&gt;] -[&lt;defaults&gt;] [&lt;defaults&gt;]&quot;
-         emptyMessage=&quot;&quot;&quot;//no saved settings//&quot;&quot;&quot;&gt;
-         &lt;$vars thisname={{!!title}} stretch={{$(config)$##Stretch}}&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;loadTip&gt;&gt;
-            style=&quot;visibility:visible;display:inline;margin-right:1em;&quot;&gt;
-            &lt;&lt;toc-caption&gt;&gt;
-            &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $value={{!!text}}/&gt;
-            &lt;$action-setfield      $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&lt;&lt;stretch&gt;&gt; /&gt;
-            &lt;&lt;msg loadedMsg&gt;&gt;
-         &lt;/$button&gt;
-         &lt;br&gt;
-         &lt;/$vars&gt;
-      &lt;/$list&gt;
-      &lt;/div&gt;
-   &lt;/div&gt;
-&lt;/$reveal&gt;
-\end
-
-&lt;nobr&gt;
-&lt;&lt;list  &quot;{{$:/core/images/picture}}&quot;&gt;&gt;
-&lt;/nobr&gt;</pre>
+<div caption="Paper" created="20180103100901735" creator="EricShulman" modified="20191216005912764" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/Paper" type="application/json">
+<pre>{
+    &quot;Stretch&quot;: &quot;yes&quot;,
+    &quot;Path&quot;: &quot;yes&quot;,
+    &quot;FontSize/BodyText&quot;: &quot;100&quot;,
+    &quot;FontSize/ToolBar&quot;: &quot;150&quot;,
+    &quot;FontSize/LeftBar&quot;: &quot;100&quot;,
+    &quot;FontSize/RightBar&quot;: &quot;100&quot;,
+    &quot;FontSize/TopBar&quot;: &quot;100&quot;,
+    &quot;FontSize/BottomBar&quot;: &quot;100&quot;,
+    &quot;FontColor/BodyText&quot;: &quot;#000&quot;,
+    &quot;Background/Cover&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/whitepaper.jpg&gt;&gt;)&quot;,
+    &quot;Background/SlideBars&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/nicesnow.png&gt;&gt;)&quot;,
+    &quot;Background/SlideBars/Panel&quot;: &quot;&quot;,
+    &quot;Background/SlideBars/Text&quot;: &quot;&quot;,
+    &quot;Background/SlideBars/Title&quot;: &quot;&quot;,
+    &quot;Background/Window&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/nicesnow.png&gt;&gt;)&quot;,
+    &quot;Background/DropDowns&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/gridpaper.jpg&gt;&gt;)&quot;,
+    &quot;Background/Page&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/whitepaper.jpg&gt;&gt;)&quot;,
+    &quot;Background/TitleBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/gridpaper.jpg&gt;&gt;)&quot;,
+    &quot;Background/LinkBox&quot;: &quot;url(&lt;&lt;datauri TiddlyTools/Backgrounds/notepaper.jpg&gt;&gt;)&quot;,
+    &quot;Hmargin&quot;: &quot;42px&quot;,
+    &quot;Vmargin&quot;: &quot;42px&quot;,
+    &quot;TopLeftBar&quot;: &quot;yes&quot;,
+    &quot;TopLeftBar/Hover&quot;: &quot;yes&quot;,
+    &quot;TopLeftBar/Size&quot;: &quot;&quot;,
+    &quot;TopLeftBar/Label&quot;: &quot;&quot;,
+    &quot;TopBar&quot;: &quot;yes&quot;,
+    &quot;TopBar/Hover&quot;: &quot;yes&quot;,
+    &quot;TopBar/Size&quot;: &quot;&quot;,
+    &quot;TopBar/Label&quot;: &quot;&quot;,
+    &quot;TopRightBar&quot;: &quot;yes&quot;,
+    &quot;TopRightBar/Hover&quot;: &quot;yes&quot;,
+    &quot;TopRightBar/Size&quot;: &quot;&quot;,
+    &quot;TopRightBar/Label&quot;: &quot;&quot;,
+    &quot;LeftBar&quot;: &quot;no&quot;,
+    &quot;LeftBar/Hover&quot;: &quot;yes&quot;,
+    &quot;LeftBar/Size&quot;: &quot;22vw&quot;,
+    &quot;LeftBar/Label&quot;: &quot;&quot;,
+    &quot;RightBar&quot;: &quot;no&quot;,
+    &quot;RightBar/Hover&quot;: &quot;yes&quot;,
+    &quot;RightBar/Size&quot;: &quot;22vw&quot;,
+    &quot;RightBar/Label&quot;: &quot;&quot;,
+    &quot;BottomLeftBar&quot;: &quot;no&quot;,
+    &quot;BottomLeftBar/Hover&quot;: &quot;yes&quot;,
+    &quot;BottomLeftBar/Size&quot;: &quot;&quot;,
+    &quot;BottomLeftBar/Label&quot;: &quot;&quot;,
+    &quot;BottomBar&quot;: &quot;no&quot;,
+    &quot;BottomBar/Hover&quot;: &quot;yes&quot;,
+    &quot;BottomBar/Size&quot;: &quot;&quot;,
+    &quot;BottomBar/Label&quot;: &quot;&quot;,
+    &quot;BottomRightBar&quot;: &quot;no&quot;,
+    &quot;BottomRightBar/Hover&quot;: &quot;yes&quot;,
+    &quot;BottomRightBar/Size&quot;: &quot;&quot;,
+    &quot;BottomRightBar/Label&quot;: &quot;&quot;,
+    &quot;AuthorToolBar&quot;: &quot;no&quot;,
+    &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
+    &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;👷@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
+}</pre>
 </div>
-<div caption="Sunset" created="20191203190320409" creator="EricShulman" modified="20191203190550616" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Sunset" type="application/json">
+<div caption="Sunset" created="20191203190320409" creator="EricShulman" modified="20191216005903996" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/Sunset" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -17471,25 +17484,7 @@ YellowGreen
     &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;👷@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
 }</pre>
 </div>
-<div created="20191127062100435" creator="EricShulman" modified="20191203184940004" modifier="EricShulman" tags="" title="TiddlyTools/Settings/ToggleStretch">
-<pre>\define config()   $:/config/TiddlyTools
-
-\define toggleStretch()
-&lt;$reveal default={{$(config)$##Stretch}} type=&quot;match&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;enable stretch-to-fit layout&quot;&gt;  {{images/expand.svg}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&quot;yes&quot;/&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{$(config)$##Stretch}} type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;disable stretch-to-fit layout&quot;&gt; {{images/shrink.svg}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&quot;no&quot;/&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-\end
-
-&lt;&lt;toggleStretch&gt;&gt;</pre>
-</div>
-<div caption="Woodshop" created="20180101202821099" creator="EricShulman" modified="20191105222504710" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Woodshop" type="application/json">
+<div caption="Woodshop" created="20180101202821099" creator="EricShulman" modified="20191216005847803" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/Woodshop" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -17549,6 +17544,24 @@ YellowGreen
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
     &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;👷@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
 }</pre>
+</div>
+<div created="20191127062100435" creator="EricShulman" modified="20191203184940004" modifier="EricShulman" tags="" title="TiddlyTools/Settings/ToggleStretch">
+<pre>\define config()   $:/config/TiddlyTools
+
+\define toggleStretch()
+&lt;$reveal default={{$(config)$##Stretch}} type=&quot;match&quot; text=&quot;no&quot;&gt;
+   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;enable stretch-to-fit layout&quot;&gt;  {{images/expand.svg}}
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&quot;yes&quot;/&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{$(config)$##Stretch}} type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
+   &lt;$button class=&quot;tt-button&quot; tooltip=&quot;disable stretch-to-fit layout&quot;&gt; {{images/shrink.svg}}
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;Stretch&quot; $value=&quot;no&quot;/&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+\end
+
+&lt;&lt;toggleStretch&gt;&gt;</pre>
 </div>
 <div created="20160206045629259" creator="EricShulman" modified="20180102102534137" modifier="EricShulman" title="TiddlyTools/SlideBars/Bars/AuthorTools">
 <pre>\define config()       $:/config/TiddlyTools
@@ -18336,7 +18349,7 @@ YellowGreen
    ''Table of Contents:''&lt;br&gt;{{TableOfContents}}
 &lt;/div&gt;</pre>
 </div>
-<div caption="Slidebars" created="20191214071907866" creator="EricShulman" modified="20191214111244104" modifier="EricShulman" tags="$:/tags/ControlPanel" title="TiddlyTools/SlideBars/Settings">
+<div caption="Slidebars" created="20191214071907866" creator="EricShulman" modified="20191216010138562" modifier="EricShulman" tags="$:/tags/ControlPanel" title="TiddlyTools/SlideBars/Settings">
 <pre>\define config() $:/config/TiddlyTools
 
 \define toggle(id,opt)
@@ -18390,7 +18403,7 @@ YellowGreen
 \define slidebar_colorcombo(id:&quot;1&quot;,index:&quot;Background/SlideBars&quot;,tip:&quot;color for Slidebar frames&quot;,editsize:&quot;8&quot;)
 &lt;$set name=&quot;trimmed&quot; filter=&quot;[title[$id$]removeprefix[Background/]]&quot;&gt;
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;$index$&quot; id=&quot;$id$&quot; width=&quot;&quot;&quot;$editsize$em&quot;&quot;&quot;
-   filter=&quot;[tag[background]] [enlist{TiddlyTools/Settings/Palettes/X11Names}]&quot; placeholder=&quot; &quot; tooltip=&quot;&quot;&quot;$tip$&quot;&quot;&quot; /&gt;
+   filter=&quot;[tag[background]] [enlist{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder=&quot; &quot; tooltip=&quot;&quot;&quot;$tip$&quot;&quot;&quot; /&gt;
 &lt;/$set&gt;
 \end
 \define  slidebar_colorcombo_item() &lt;div style='background:$(currentTiddler)$; width:1em; height:1em; display:inline-block; border:1px solid gray;'&gt;&lt;/div&gt;&lt;&lt;toc-caption&gt;&gt;
