@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/modules/filters/regexps.js</li>
+
 <li>$:/core/save/all</li>
 
 <li>$:/core/ui/TopBar/menu</li>
@@ -178,6 +180,8 @@ Error message and password prompt
 <li>$:/core/ui/ViewTemplate/title</li>
 
 <li>$:/DefaultTiddlers</li>
+
+<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
@@ -804,7 +808,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191217080033477" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191217095924917" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -882,10 +886,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191217080033476" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191217095924916" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191217080033477" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191217095924916" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191211143242614" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10163,6 +10167,93 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div module-type="filteroperator" title="$:/core/modules/filters/regexps.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/filters/regexps.js
+type: application/javascript
+module-type: filteroperator
+
+Filter operator for regexp matching and returning result. All results are returned if global flag used. All sub-groups are returned if not global and sub-group hits are found.
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+Export our filter function
+*/
+exports.regexps = function(source,operator,options) {
+	var results = [],
+		fieldname = (operator.suffix || &quot;title&quot;).toLowerCase(),
+		regexpString, regexp, flags = &quot;&quot;, match, global,
+		getFieldString = function(tiddler,title) {
+			if(tiddler) {
+				return tiddler.getFieldString(fieldname);
+			} else if(fieldname === &quot;title&quot;) {
+				return title;
+			} else {
+				return null;
+			}
+		};
+	// Process flags and construct regexp
+	regexpString = operator.operand;
+	match = /^\(\?([gim]+)\)/.exec(regexpString);
+	if(match) {
+		flags = match[1];
+		regexpString = regexpString.substr(match[0].length);
+	} else {
+		match = /\(\?([gim]+)\)$/.exec(regexpString);
+		if(match) {
+			flags = match[1];
+			regexpString = regexpString.substr(0,regexpString.length - match[0].length);
+		}
+	}
+	try {
+		regexp = new RegExp(regexpString,flags);
+	} catch(e) {
+		return [&quot;&quot; + e];
+	}
+
+	global = /g/.test(flags) ;
+
+	// Process the incoming tiddlers
+	if(operator.prefix === &quot;!&quot;) {
+		source(function(tiddler,title) {
+			var text = getFieldString(tiddler,title);
+			if(text !== null) {
+				if(!regexp.exec(text)) {
+					results.push(title);
+				}
+			}
+		});
+	} else {
+		source(function(tiddler,title) {
+			var text = getFieldString(tiddler,title), ret=&quot;&quot;;
+			if(text !== null) {
+				ret = text.match(regexp) ;
+				if(ret !==null) {
+					if(global) {
+						results.push.apply(results,ret)  ; //DEBUG
+					} else {
+						// if there are  sub groups return sub groups START
+						if(ret.length &gt; 1)  {     // return sub groups
+							results = results.concat(ret.slice(1)) ;
+						} else { // if no sub-groups
+							results.push(ret[0]);
+						} 
+					}
+				}
+			}
+		});
+	}
+	return results;
+};
+
+})();</pre>
+</div>
 <div created="20191107053923943" creator="EricShulman" modified="20191107053950649" modifier="EricShulman" title="$:/core/save/all">
 <pre>\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
 \define saveTiddlerFilter()
@@ -10244,6 +10335,11 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20151208012428584" creator="EricShulman" modified="20151226062810511" modifier="EricShulman" title="$:/DefaultTiddlers">
 <pre>CoverPage
 </pre>
+</div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[$:/core/modules/filters/regexps.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10409,8 +10505,11 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.17.000030">
-<pre>* 19.12.16.235518 TiddlyTools/Settings/Themes/TouchOfGray - new theme
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.17.015805">
+<pre>* 19.12.17.015805 TiddlyTools/Settings/Panel/Saver - set type=application/json and caption=(trim pathname)
+* 19.12.17.014555 TiddlyTools/Settings/Panel/Saver - 
+* 19.12.17.014555 TiddlyTools/Settings/Themes/Mr Blue Sky -
+* 19.12.16.235518 TiddlyTools/Settings/Themes/TouchOfGray - new theme
 * 19.12.16.235518 TiddlyTools/Settings/Themes/StrawberryFields - new theme
 * 19.12.16.235518 TiddlyTools/Settings/Themes/PaperBackWriter - renamed &quot;Paper&quot; theme
 * 19.12.16.235518 TiddlyTools/Settings/Themes/PacificSunset - renamed &quot;Sunset&quot; theme
@@ -11307,7 +11406,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191217080033476" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191217095924916" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11344,12 +11443,12 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191217075739795" creator="EricShulman" list="CoverPage" modified="20191217080033478" modifier="EricShulman" title="$:/StoryList">
+<div created="20191217092503674" creator="EricShulman" list="CoverPage" modified="20191217095924918" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -11488,7 +11587,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191212000321963" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191217080033476" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191217095924916" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -17181,7 +17280,7 @@ rgba(0,0,0,1.0)</pre>
 &lt;&lt;pick_fontsize &quot;FontSize/TopBar&quot;    &quot;Top ~SlideBar&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;pick_fontsize &quot;FontSize/BottomBar&quot; &quot;Bottom ~SlideBar&quot;&gt;&gt;&lt;br&gt;</pre>
 </div>
-<div created="20160120031550401" creator="EricShulman" modified="20191216010035939" modifier="EricShulman" title="TiddlyTools/Settings/Panel/Saver">
+<div created="20160120031550401" creator="EricShulman" modified="20191217095311167" modifier="EricShulman" title="TiddlyTools/Settings/Panel/Saver">
 <pre>\define config()        $:/config/TiddlyTools
 \define defaults()      TiddlyTools/Settings/Themes/Default
 \define input()         $:/temp/settings/save/input
@@ -17232,10 +17331,12 @@ rgba(0,0,0,1.0)</pre>
    tooltip=&quot;save current settings&quot;&gt; $label$
    &lt;$vars thisname={{$(input)$}}&gt;
    &lt;$set name=&quot;thisname&quot; filter=&lt;&lt;thisname&gt;&gt; value=&lt;&lt;thisname&gt;&gt; emptyValue=&lt;&lt;defaultName&gt;&gt;&gt;
-   &lt;$action-setfield      $tiddler=&lt;&lt;thisname&gt;&gt; text={{$(config)$}}/&gt;
-   &lt;$action-setfield      $tiddler=&lt;&lt;thisname&gt;&gt; tags=&lt;&lt;savedsettings&gt;&gt;/&gt;
+   &lt;$set name=&quot;caption&quot;  filter=&quot;[title&lt;thisname&gt;regexps[.*/(.+)]]&quot; emptyValue=&lt;&lt;thisname&gt;&gt;&gt; &lt;!-- REMOVES PATH PREFIX --&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;thisname&gt;&gt;
+      text={{$(config)$}} type=&quot;application/json&quot; tags=&lt;&lt;savedsettings&gt;&gt; caption=&lt;&lt;caption&gt;&gt;/&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;input&gt;&gt;/&gt;
    &lt;$macrocall $name=&quot;msg&quot; id=&quot;savedMsg&quot;/&gt;
+   &lt;/$set&gt;
    &lt;/$set&gt;
    &lt;/$vars&gt;
 &lt;/$button&gt;
