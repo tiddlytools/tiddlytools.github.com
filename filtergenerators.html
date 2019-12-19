@@ -9812,7 +9812,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191219070140564" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20191219103828449" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,filter,placeholder,tooltip,focus,focusPopup)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
@@ -9836,16 +9836,17 @@ __find titles containing__:&lt;br&gt;
    focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list&quot;&gt;&gt; /&gt;
 &lt;/span&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;style&gt; .editCombo_$id$   { width:100%; } &lt;/style&gt;
+   &lt;style&gt; .editCombo_$id$ { width:100%; } &lt;/style&gt;
    &lt;$reveal type=&quot;popup&quot; class=&quot;tc-popup-keep&quot; state=&lt;&lt;qualify &quot;$:/state/popup/edit-list&quot;&gt;&gt;&gt;
       &lt;$tiddler tiddler={{$tiddler$!!$field$}}&gt; &lt;!-- REFRESH LIST WHEN INPUT CHANGES --&gt;
-         &lt;$list filter=&quot;&quot;&quot;$filter$ +[search:title{$tiddler$!!$field$}count[]] -[[0]]&quot;&quot;&quot;&gt; &lt;!-- NO MATCHES  = HIDE LIST --&gt;
-         &lt;$list filter=&quot;&quot;&quot;$filter$ +[match{$tiddler$!!$field$}count[]] -[[1]]&quot;&quot;&quot;&gt;        &lt;!-- EXACT MATCH = HIDE LIST --&gt;
+         &lt;!-- NO MATCHES or ONE EXACT MATCH = HIDE LIST --&gt;
+         &lt;$list filter=&quot;&quot;&quot;$filter$ +[search{$tiddler$!!$field$}count[]!match[0]]&quot;&quot;&quot;&gt;
+         &lt;$list filter=&quot;&quot;&quot;$filter$ +[search{$tiddler$!!$field$}count[]!match[1]] [match{$tiddler$!!$field$}count[]!match[1]] +[limit[1]]&quot;&quot;&quot;&gt;
             &lt;$select class=&quot;selectPopup_$id$&quot;
                tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
                default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
-               size={{{ $filter$ +[search:title{$tiddler$!!$field$}count[]min[10]max[2]] }}}&gt;
-               &lt;$list filter=&quot;&quot;&quot;$filter$ +[search:title{$tiddler$!!$field$}]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
+               size={{{ $filter$ +[count[]min[10]max[2]] }}}&gt;
+               &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
                   &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
                &lt;/$list&gt;
             &lt;/$select&gt;
