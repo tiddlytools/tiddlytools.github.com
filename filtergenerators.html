@@ -161,8 +161,6 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/search/tid</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9472,9 +9470,6 @@ FilterGenerator/Titles
     }
 }</pre>
 </div>
-<div created="20191219052251599" modified="20191219070304779" title="$:/temp/search/tid">
-<pre></pre>
-</div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -9590,7 +9585,7 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191219064837036" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191219075842633" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/search/tid
 \define preinput()   $:/temp/search/pre
 \define taginput()   $:/temp/search/tag
@@ -9600,11 +9595,22 @@ FilterGenerator/Titles
 
 \define doSearch()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]prefix[$(pre)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]]&quot;&quot;&quot;&gt;
-There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;
+There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doReset&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;
 &lt;blockquote class=&quot;columns3 small nowrap&quot;&gt;
    &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
 &lt;/blockquote&gt;
 &lt;/$vars&gt;
+\end
+
+\define doReset()
+&lt;$button tooltip=&quot;Clear inputs&quot;&gt; {{$:/core/images/close-button}}
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;tidinput&gt;&gt;   /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;preinput&gt;&gt;   /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;taginput&gt;&gt;   /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;fieldinput&gt;&gt; /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;flaginput&gt;&gt;  /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;terminput&gt;&gt;  /&gt;
+&lt;/$button&gt;
 \end
 
 \define doExport()
@@ -9614,7 +9620,7 @@ There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;
 \end
 
 \define doDelete()
-&lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;delete matching item(s)&quot;&gt; {{$:/core/images/delete-button}}
+&lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;Delete matching item(s)&quot;&gt; {{$:/core/images/delete-button}}
    &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot; subtitle=&quot;Confirm Deletion&quot; footer=&lt;&lt;doDelete_footer&gt;&gt; text=&lt;&lt;doDelete_text&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
