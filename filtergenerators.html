@@ -9404,7 +9404,7 @@ FilterGenerator/Titles
 <div created="20191220110244445" modified="20191220110244445" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191220112014753" list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191220112014753" title="$:/StoryList">
+<div created="20191220135122327" list="TiddlyTools/Macros/edit-list FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191220135122327" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9580,7 +9580,7 @@ FilterGenerator/Titles
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191220111904501" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191220134557675" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9600,13 +9600,24 @@ FilterGenerator/Titles
 &lt;/style&gt;
 \end
 
-\define getTid()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
+\define getInputs()
+|borderless|k
+|    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
+|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |
+|     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
+| search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
+|   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
+|       sort by|&lt;&lt;getSort   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset sortinput&gt;&gt;  |
+|    match term|&lt;&lt;getTerm   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset terminput&gt;&gt;  |
+\end
+
+\define getTid(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist[tiddlers shadows system orphans tiddlers+shadows system+shadows]]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
+\define getPre(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist[
       $:/config
       $:/core
@@ -9678,18 +9689,18 @@ FilterGenerator/Titles
       ]sort[]]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getTag()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
+\define getTag(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getFields()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
+\define getFields(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist[* title title,text title,tags title,text,tags text text,tags tags]]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
-\define getFlags()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
+\define getFlags(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist[
       words
          words,casesensitive
@@ -9705,13 +9716,13 @@ FilterGenerator/Titles
       ]]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
-\define getTerm()
-&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;editwidth&quot; default=&quot;&quot; placeholder=&quot;&quot;/&gt;
+\define getSort(width:25em)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist[title created modified]]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
-\define getSort()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt; width=&lt;&lt;inputwidth&gt;&gt; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[title created modified]]&quot; placeholder=&quot;title&quot;/&gt;
+\define getTerm()
+&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;editwidth&quot; default=&quot;&quot; placeholder=&quot;&quot;/&gt;
 \end
 
 \define doSearch()
@@ -9780,15 +9791,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \end
 
 &lt;&lt;setStyles&gt;&gt;
-
-|borderless|k
-|    search all|&lt;&lt;getTid&gt;&gt;    |&lt;&lt;doReset tidinput&gt;&gt;   |
-|  match prefix|&lt;&lt;getPre&gt;&gt;    |&lt;&lt;doReset preinput&gt;&gt;   |
-|     match tag|&lt;&lt;getTag&gt;&gt;    |&lt;&lt;doReset taginput&gt;&gt;   |
-| search fields|&lt;&lt;getFields&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
-|   using flags|&lt;&lt;getFlags&gt;&gt;  |&lt;&lt;doReset flaginput&gt;&gt;  |
-|       sort by|&lt;&lt;getSort&gt;&gt;   |&lt;&lt;doReset sortinput&gt;&gt;  |
-|    match term|&lt;&lt;getTerm&gt;&gt;   |&lt;&lt;doReset terminput&gt;&gt;  |
+&lt;&lt;getInputs&gt;&gt;
 
 &lt;$vars
   tids={{{ [&lt;tidinput&gt;get[text]]   ~[[tiddlers]]        }}}
@@ -9797,7 +9800,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
  field={{{ [&lt;fieldinput&gt;get[text]] ~[[title,text,tags]] }}}
   flag={{{ [&lt;flaginput&gt;get[text]]  ~[[words]]           }}}
   term={{{ [&lt;terminput&gt;get[text]]                       }}}
-  sort={{{ [&lt;sortinput&gt;get[text]]                       }}}&gt;
+  sort={{{ [&lt;sortinput&gt;get[text]]  ~[[title]]           }}}&gt;
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
@@ -9935,13 +9938,13 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191220095144891" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
-<pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,filter,placeholder,tooltip,focus,focusPopup)
+<div created="20191214071309583" creator="EricShulman" modified="20191220135145255" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,listwidth:&quot;100%&quot;,listlength:&quot;10&quot;,filter,placeholder,tooltip,focus,focusPopup)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
    .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em); height:1.5em; margin-top:0.1em; }
    .selectCombo_$id$ { position:absolute; width:100%;                height:1.5em; margin-top:0.1em; }
-   .selectPopup_$id$ { position:absolute; width:100%; z-index:1;     margin-top:1.6em; }
+   .selectPopup_$id$ { position:absolute; width:$listwidth$;         z-index:1;    margin-top:1.6em; }
 &lt;/style&gt;
 &lt;$select class=&quot;selectCombo_$id$&quot;
    tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
@@ -9970,7 +9973,7 @@ __find titles containing__:&lt;br&gt;
             &lt;$select class=&quot;selectPopup_$id$&quot;
                tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
                default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
-               size={{{ [enlist&lt;results&gt;] +[count[]min[10]max[2]] }}}&gt;
+               size={{{ [enlist&lt;results&gt;] +[count[]min[$listlength$]max[2]] }}}&gt;
                &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
                   &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
                      &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
