@@ -9409,7 +9409,7 @@ FilterGenerator/Titles
 <div created="20191214104034903" modified="20191214104034903" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191219191311628" list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" modified="20191219191311628" title="$:/StoryList">
+<div list="$:/Import FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9585,7 +9585,7 @@ FilterGenerator/Titles
 <div created="20191121013533910" modified="20191121013535666" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191219190935576" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191220010448126" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/search/tid
 \define preinput()   $:/temp/search/pre
 \define taginput()   $:/temp/search/tag
@@ -9595,15 +9595,21 @@ FilterGenerator/Titles
 
 \define doSearch()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]prefix[$(pre)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]]&quot;&quot;&quot;&gt;
-There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doReset&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;
+There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' &lt;&lt;doResetAll&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;
 &lt;blockquote class=&quot;columns3 small nowrap&quot;&gt;
    &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
 &lt;/blockquote&gt;
 &lt;/$vars&gt;
 \end
 
-\define doReset()
-&lt;$button tooltip=&quot;Clear inputs&quot;&gt; {{$:/core/images/close-button}}
+\define doReset(id)
+&lt;$button tooltip=&quot;Reset $id$&quot;&gt; {{$:/core/images/close-button}}
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;$id$&gt;&gt;   /&gt;
+&lt;/$button&gt;
+\end
+
+\define doResetAll()
+&lt;$button tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;tidinput&gt;&gt;   /&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;preinput&gt;&gt;   /&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;taginput&gt;&gt;   /&gt;
@@ -9661,12 +9667,12 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 &lt;/style&gt;
 
 |borderless|k
-|    search all|&lt;&lt;getTid&gt;&gt;|
-|  match prefix|&lt;$edit-text tiddler=&lt;&lt;preinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
-|     match tag|&lt;$edit-text tiddler=&lt;&lt;taginput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
-| search fields|&lt;$edit-text tiddler=&lt;&lt;fieldinput&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;title,text,tags&quot;   /&gt;|
-|   using flags|&lt;$edit-text tiddler=&lt;&lt;flaginput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;words&quot;             /&gt;|
-|    match term|&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|
+|    search all|&lt;&lt;getTid&gt;&gt;|&lt;&lt;doReset tidinput&gt;&gt;|
+|  match prefix|&lt;$edit-text tiddler=&lt;&lt;preinput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|&lt;&lt;doReset preinput&gt;&gt;   |
+|     match tag|&lt;$edit-text tiddler=&lt;&lt;taginput&gt;&gt;   tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|&lt;&lt;doReset taginput&gt;&gt;   |
+| search fields|&lt;$edit-text tiddler=&lt;&lt;fieldinput&gt;&gt; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;title,text,tags&quot;   /&gt;|&lt;&lt;doReset fieldinput&gt;&gt; |
+|   using flags|&lt;$edit-text tiddler=&lt;&lt;flaginput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;words&quot;             /&gt;|&lt;&lt;doReset flaginput&gt;&gt;  |
+|    match term|&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;&quot;                  /&gt;|&lt;&lt;doReset terminput&gt;&gt;  |
 
 &lt;$vars
   tids={{{ [&lt;tidinput&gt;get[text]]   ~[[tiddlers]]        }}}
@@ -9812,23 +9818,23 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191219185210704" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20191220042958746" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,filter,placeholder,tooltip,focus,focusPopup)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
-   .editCombo_$id$   { position:absolute; bottom:-0.3em; width:calc(100% - 1.25em); height:1.5em; border:1px solid lightgray; }
-   .selectCombo_$id$ { position:absolute; bottom:-0.3em; width:100%;                height:1.5em; border:1px solid lightgray; }
-   .selectPopup_$id$ { width:auto; }
+   .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em); height:1.5em; margin-top:0.1em; }
+   .selectCombo_$id$ { position:absolute; width:100%;                height:1.5em; margin-top:0.1em; }
+   .selectPopup_$id$ { position:absolute; width:100%;                margin-top:1.6em; }
 &lt;/style&gt;
-&lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$select class=&quot;selectCombo_$id$&quot;
-      tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-      default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
-      &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
-         &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
-      &lt;/$list&gt;
-   &lt;/$select&gt;
-&lt;/$reveal&gt;
+&lt;$select class=&quot;selectCombo_$id$&quot;
+   tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
+   default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+   &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
+      &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
+         &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
+      &lt;/option&gt;
+   &lt;/$list&gt;
+&lt;/$select&gt;
 &lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
 &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot;
    tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
@@ -9836,19 +9842,22 @@ __find titles containing__:&lt;br&gt;
    focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list&quot;&gt;&gt; /&gt;
 &lt;/span&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;style&gt; .editCombo_$id$ { width:100%; } &lt;/style&gt;
-   &lt;$reveal type=&quot;popup&quot; class=&quot;tc-popup-keep&quot; state=&lt;&lt;qualify &quot;$:/state/popup/edit-list&quot;&gt;&gt;&gt;
+   &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/edit-list&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
       &lt;$tiddler tiddler={{$tiddler$!!$field$}}&gt; &lt;!-- REFRESH LIST WHEN INPUT CHANGES --&gt;
          &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
          &lt;$set name=&quot;results&quot; filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
          &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[0]]&quot;&quot;&quot;&gt;
-         &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[1]] [enlist&lt;results&gt;match{$tiddler$!!$field$}count[]!match[1]] +[limit[1]]&quot;&quot;&quot;&gt;
+         &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[1]]
+                          [enlist&lt;results&gt;match{$tiddler$!!$field$}count[]!match[1]]
+                         +[limit[1]]&quot;&quot;&quot;&gt;
             &lt;$select class=&quot;selectPopup_$id$&quot;
                tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
                default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
                size={{{ [enlist&lt;results&gt;] +[count[]min[10]max[2]] }}}&gt;
                &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
-                  &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;&lt;$text text=&lt;&lt;value&gt;&gt;/&gt;&lt;/option&gt;
+                  &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
+                     &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
+                  &lt;/option&gt;
                &lt;/$list&gt;
             &lt;/$select&gt;
          &lt;/$list&gt;
