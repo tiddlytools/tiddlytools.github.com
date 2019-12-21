@@ -9580,7 +9580,7 @@ FilterGenerator/Titles
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191221043802029" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191221103328957" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9604,64 +9604,52 @@ whitespace whitespace,anchored
 regexp
 \end
 
-\define preList()
-$:/config $:/info $:/Manager $:/palettes $:/snippets $:/state $:/tags $:/temp $:/themes
-$:/core
-   $:/core/Filters $:/core/images $:/core/macros $:/core/save $:/core/templates
-   $:/core/modules
-      $:/core/modules/commands $:/core/modules/editor  $:/core/modules/filters  $:/core/modules/macros
-      $:/core/modules/parsers  $:/core/modules/savers  $:/core/modules/server   $:/core/modules/startup
-      $:/core/modules/utils    $:/core/modules/widgets
-   $:/core/ui
-      $:/core/ui/Buttons       $:/core/ui/ControlPanel $:/core/ui/EditorToolbar $:/core/ui/EditTemplate
-      $:/core/ui/Keyboard      $:/core/ui/MoreSideBar  $:/core/ui/PageTemplate  $:/core/ui/SideBar
-      $:/core/ui/TiddlerInfo   $:/core/ui/ViewTemplate
-$:/language
-   $:/language/Buttons $:/language/Date       $:/language/EditTemplate $:/language/Encryption
-   $:/language/Error   $:/language/Exporters  $:/language/Filters      $:/language/Help
-   $:/language/Import  $:/language/Manager    $:/language/RelativeDate $:/language/Search
-   $:/language/SideBar $:/language/TagManager $:/language/ThemeTweaks  $:/language/TiddlerInfo
-   $:/language/ControlPanel
-      $:/language/ControlPanel/Basics $:/language/ControlPanel/KeyboardShortcuts $:/language/ControlPanel/Plugins
-      $:/language/ControlPanel/Saving $:/language/ControlPanel/Settings          $:/language/ControlPanel/Toolbars
-   $:/language/Docs
-      $:/language/Docs/Fields $:/language/Docs/ModulesTypes
-      $:/language/Docs/Types  $:/language/Docs/PaletteColours
+\define getPreList(prefix: &quot;$:/&quot;,maxdepth:&quot;4&quot;)
+&lt;$list filter=&quot;[all[shadows+tiddlers]removeprefix[$prefix$]splitbefore[/]sort[]suffix[/]]&quot; variable=&quot;chunk&quot;&gt;
+   &lt;$vars path={{{ [title[$prefix$]addsuffix&lt;chunk&gt;removesuffix[/]] }}}&gt;
+   &lt;$text text=&lt;&lt;path&gt;&gt;/&gt;
+   &lt;$list filter=&quot;[&lt;path&gt;split[/]count[]min[$maxdepth$]!match[$maxdepth$]]&quot;&gt;
+      &lt;$macrocall $name=&quot;getPreList&quot; prefix={{{ [title[$prefix$]addsuffix&lt;chunk&gt;] }}}/&gt;
+   &lt;/$list&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
 \end
 
-\define getTid(width:25em)
+\define getTid(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre(width:25em)
+\define getPre(width)
+&lt;$wikify name=&quot;preList&quot; text=&quot;&lt;&lt;getPreList&gt;&gt;&quot;&gt;
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;preList&gt;sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[title[$:/]] [enlist&lt;preList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+&lt;/$wikify&gt;
 \end
 
-\define getTag(width:25em)
+\define getTag(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[all[tiddlers+shadows]tags[]sort[]] +[search:title{$(taginput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getFields(width:25em)
+\define getFields(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
-\define getFlags(width:25em)
+\define getFlags(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
-\define getSort(width:25em)
+\define getSort(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
@@ -9707,7 +9695,8 @@ filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''
 
 \define doDelete()
 &lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;Delete matching item(s)&quot;&gt; {{$:/core/images/delete-button}}
-   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot; subtitle=&quot;Confirm Deletion&quot; footer=&lt;&lt;doDelete_footer&gt;&gt; text=&lt;&lt;doDelete_text&gt;&gt; /&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot;
+      subtitle=&quot;Confirm Deletion&quot; footer=&lt;&lt;doDelete_footer&gt;&gt; text=&lt;&lt;doDelete_text&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
@@ -9756,7 +9745,6 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \end
 
 &lt;!-- ******* MAIN ******* --&gt;
-
 &lt;&lt;setStyles&gt;&gt;
 &lt;&lt;getInputs&gt;&gt;
 &lt;$vars
