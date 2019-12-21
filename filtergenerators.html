@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/info-plugin</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9405,6 +9407,64 @@ FilterGenerator/Titles
 <div list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
 <pre></pre>
 </div>
+<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/info/browser&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser&quot;,
+            &quot;text&quot;: &quot;yes&quot;
+        },
+        &quot;$:/info/node&quot;: {
+            &quot;title&quot;: &quot;$:/info/node&quot;,
+            &quot;text&quot;: &quot;no&quot;
+        },
+        &quot;$:/info/url/full&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/full&quot;,
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
+        },
+        &quot;$:/info/url/host&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/host&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/hostname&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/protocol&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
+            &quot;text&quot;: &quot;file:&quot;
+        },
+        &quot;$:/info/url/port&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/port&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/pathname&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
+        },
+        &quot;$:/info/url/search&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/search&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/origin&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/origin&quot;,
+            &quot;text&quot;: &quot;file://&quot;
+        },
+        &quot;$:/info/browser/screen/width&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
+            &quot;text&quot;: &quot;1920&quot;
+        },
+        &quot;$:/info/browser/screen/height&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
+            &quot;text&quot;: &quot;1080&quot;
+        },
+        &quot;$:/info/browser/language&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/language&quot;,
+            &quot;text&quot;: &quot;en-US&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -9520,7 +9580,7 @@ FilterGenerator/Titles
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191220141147955" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191221043802029" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9528,137 +9588,81 @@ FilterGenerator/Titles
 \define terminput()  $:/temp/SearchAndDestroy/term
 \define flaginput()  $:/temp/SearchAndDestroy/flags
 \define sortinput()  $:/temp/SearchAndDestroy/sort
+
 \define inputwidth() 25em
 
-\define setStyles()
-&lt;style&gt;
-.columns3   { display:block; column-count:3; column-gap:1em; }
-.borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
-.small      { font-size:80%; line-height:1.3em; }
-.nowrap     { white-space:nowrap; }
-.editwidth  { width:$(inputwidth)$; }
-&lt;/style&gt;
+\define tidList()    tiddlers shadows system orphans tiddlers+shadows system+shadows
+
+\define fieldsList() title title,text title,tags title,text,tags text text,tags tags *
+
+\define sortList()   title created modified
+
+\define flagsList()
+words      words,casesensitive   words,casesensitive,anchored   words,anchored
+literal    literal,casesensitive literal,casesensitive,anchored literal,anchored
+whitespace whitespace,anchored
+regexp
 \end
 
-\define getInputs()
-|borderless|k
-|    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
-|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |
-|     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
-| search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
-|   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
-|       sort by|&lt;&lt;getSort   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset sortinput&gt;&gt;  |
-|    match term|&lt;&lt;getTerm   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset terminput&gt;&gt;  |
+\define preList()
+$:/config $:/info $:/Manager $:/palettes $:/snippets $:/state $:/tags $:/temp $:/themes
+$:/core
+   $:/core/Filters $:/core/images $:/core/macros $:/core/save $:/core/templates
+   $:/core/modules
+      $:/core/modules/commands $:/core/modules/editor  $:/core/modules/filters  $:/core/modules/macros
+      $:/core/modules/parsers  $:/core/modules/savers  $:/core/modules/server   $:/core/modules/startup
+      $:/core/modules/utils    $:/core/modules/widgets
+   $:/core/ui
+      $:/core/ui/Buttons       $:/core/ui/ControlPanel $:/core/ui/EditorToolbar $:/core/ui/EditTemplate
+      $:/core/ui/Keyboard      $:/core/ui/MoreSideBar  $:/core/ui/PageTemplate  $:/core/ui/SideBar
+      $:/core/ui/TiddlerInfo   $:/core/ui/ViewTemplate
+$:/language
+   $:/language/Buttons $:/language/Date       $:/language/EditTemplate $:/language/Encryption
+   $:/language/Error   $:/language/Exporters  $:/language/Filters      $:/language/Help
+   $:/language/Import  $:/language/Manager    $:/language/RelativeDate $:/language/Search
+   $:/language/SideBar $:/language/TagManager $:/language/ThemeTweaks  $:/language/TiddlerInfo
+   $:/language/ControlPanel
+      $:/language/ControlPanel/Basics $:/language/ControlPanel/KeyboardShortcuts $:/language/ControlPanel/Plugins
+      $:/language/ControlPanel/Saving $:/language/ControlPanel/Settings          $:/language/ControlPanel/Toolbars
+   $:/language/Docs
+      $:/language/Docs/Fields $:/language/Docs/ModulesTypes
+      $:/language/Docs/Types  $:/language/Docs/PaletteColours
 \end
 
 \define getTid(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[tiddlers shadows system orphans tiddlers+shadows system+shadows]]&quot; placeholder=&quot;tiddlers&quot;/&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 \define getPre(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[
-      $:/config
-      $:/core
-         $:/core/Filters
-         $:/core/images
-         $:/core/macros
-         $:/core/modules
-            $:/core/modules/commands
-            $:/core/modules/editor
-            $:/core/modules/filters
-            $:/core/modules/macros
-            $:/core/modules/parsers
-            $:/core/modules/savers
-            $:/core/modules/server
-            $:/core/modules/startup
-            $:/core/modules/utils
-            $:/core/modules/widgets
-         $:/core/macros
-         $:/core/save
-         $:/core/templates
-         $:/core/ui
-            $:/core/ui/Buttons
-            $:/core/ui/ControlPanel
-            $:/core/ui/EditorToolbar
-            $:/core/ui/EditTemplate
-            $:/core/ui/Keyboard
-            $:/core/ui/MoreSideBar
-            $:/core/ui/PageTemplate
-            $:/core/ui/SideBar
-            $:/core/ui/TiddlerInfo
-            $:/core/ui/ViewTemplate
-      $:/info
-      $:/language
-         $:/language/Buttons
-         $:/language/ControlPanel
-            $:/language/ControlPanel/Basics
-            $:/language/ControlPanel/KeyboardShortcuts
-            $:/language/ControlPanel/Plugins
-            $:/language/ControlPanel/Saving
-            $:/language/ControlPanel/Settings
-            $:/language/ControlPanel/Toolbars
-         $:/language/Date
-         $:/language/Docs
-            $:/language/Docs/Fields
-            $:/language/Docs/ModulesTypes
-            $:/language/Docs/PaletteColours
-            $:/language/Docs/Types
-         $:/language/EditTemplate
-         $:/language/Encryption
-         $:/language/Error
-         $:/language/Exporters
-         $:/language/Filters
-         $:/language/Help
-         $:/language/Import
-         $:/language/Manager
-         $:/language/RelativeDate
-         $:/language/Search
-         $:/language/SideBar
-         $:/language/TagManager
-         $:/language/ThemeTweaks
-         $:/language/TiddlerInfo
-      $:/Manager
-      $:/palettes
-      $:/snippets
-      $:/state
-      $:/tags
-      $:/temp
-      $:/themes
-      ]sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;preList&gt;sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
    filter=&quot;[all[tiddlers+shadows]tags[]sort[]] +[search:title{$(taginput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[* title title,text title,tags title,text,tags text text,tags tags]]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[
-      words
-         words,casesensitive
-         words,casesensitive,anchored
-         words,anchored
-      literal
-         literal,casesensitive
-         literal,casesensitive,anchored
-         literal,anchored
-      whitespace
-         whitespace,anchored
-      regexp
-      ]]&quot; placeholder=&quot;words&quot;/&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort(width:25em)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt; width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist[title created modified]]&quot; placeholder=&quot;title&quot;/&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;auto&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
 \define getTerm()
@@ -9730,9 +9734,31 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 &lt;/$reveal&gt;
 \end
 
+\define setStyles()
+&lt;style&gt;
+.columns3   { display:block; column-count:3; column-gap:1em; }
+.borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
+.small      { font-size:80%; line-height:1.3em; }
+.nowrap     { white-space:nowrap; }
+.editwidth  { width:$(inputwidth)$; }
+&lt;/style&gt;
+\end
+
+\define getInputs()
+|borderless|k
+|    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
+|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |
+|     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
+| search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
+|   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
+|       sort by|&lt;&lt;getSort   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset sortinput&gt;&gt;  |
+|    match term|&lt;&lt;getTerm   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset terminput&gt;&gt;  |
+\end
+
+&lt;!-- ******* MAIN ******* --&gt;
+
 &lt;&lt;setStyles&gt;&gt;
 &lt;&lt;getInputs&gt;&gt;
-
 &lt;$vars
   tids={{{ [&lt;tidinput&gt;get[text]]   ~[[tiddlers]]        }}}
    pre={{{ [&lt;preinput&gt;get[text]]                        }}}
