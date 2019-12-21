@@ -9580,7 +9580,7 @@ FilterGenerator/Titles
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191221103328957" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191221123654294" title="FilterGenerator/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9615,6 +9615,22 @@ regexp
 &lt;/$list&gt;
 \end
 
+\define cachePreList()
+&lt;$wikify name=&quot;preList&quot; text=&lt;&lt;getPreList&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;preListCache&gt;is[missing]]&quot;&gt;
+   &lt;$button tooltip=&quot;add system tiddlers to list&quot;&gt; {{$:/core/images/new-button}}
+      &lt;$action-setfield $tiddler=&lt;&lt;preListCache&gt;&gt; text={{{ [&lt;preList&gt;split[ ]join[]splitregexp[\n]join[ ]] }}} /&gt;
+   &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;preListCache&gt;is[tiddler]]&quot;&gt;
+   &lt;$button tooltip=&quot;reset list&quot;&gt; {{$:/core/images/delete-button}}
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;preListCache&gt;&gt;/&gt;
+   &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+\end
+\define preListCache() FilterGenerator/SearchAndDestroy/preListCache
+
 \define getTid(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
@@ -9622,11 +9638,18 @@ regexp
 \end
 
 \define getPre(width)
-&lt;$wikify name=&quot;preList&quot; text=&quot;&lt;&lt;getPreList&gt;&gt;&quot;&gt;
+&lt;!-- BYPASS FOR NOW - HAS REFRESH INIT PROBLEM - USE STATIC preListCache INSTEAD --&gt;
+&lt;$wikify name=&quot;preList&quot; text=&lt;&lt;getPreList&gt;&gt;&gt;
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
    filter=&quot;[title[$:/]] [enlist&lt;preList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 &lt;/$wikify&gt;
+\end
+
+\define getPre(width)
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[title[$:/]] [enlist{$(preListCache)$}] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag(width)
@@ -9736,7 +9759,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \define getInputs()
 |borderless|k
 |    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
-|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |
+|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |&lt;&lt;cachePreList&gt;&gt;|
 |     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
 | search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
 |   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
