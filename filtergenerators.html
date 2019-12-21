@@ -9404,7 +9404,7 @@ FilterGenerator/Titles
 <div created="20191220110244445" modified="20191220110244445" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
+<div list="$:/Import FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9915,7 +9915,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191220135145255" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20191221225636486" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,listwidth:&quot;100%&quot;,listlength:&quot;10&quot;,filter,placeholder,tooltip,focus,focusPopup)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
@@ -9940,27 +9940,25 @@ __find titles containing__:&lt;br&gt;
 &lt;/span&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
-      &lt;$tiddler tiddler={{$tiddler$!!$field$}}&gt; &lt;!-- REFRESH LIST WHEN INPUT CHANGES --&gt;
-         &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
-         &lt;$set name=&quot;results&quot; filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
-         &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[0]]&quot;&quot;&quot;&gt;
-         &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[1]]
-                          [enlist&lt;results&gt;match{$tiddler$!!$field$}count[]!match[1]]
-                         +[limit[1]]&quot;&quot;&quot;&gt;
-            &lt;$select class=&quot;selectPopup_$id$&quot;
-               tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-               default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
-               size={{{ [enlist&lt;results&gt;] +[count[]min[$listlength$]max[2]] }}}&gt;
-               &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
-                  &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
-                     &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
-                  &lt;/option&gt;
-               &lt;/$list&gt;
-            &lt;/$select&gt;
-         &lt;/$list&gt;
-         &lt;/$list&gt;
-         &lt;/$set&gt;
-      &lt;/$tiddler&gt;
+      &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
+      &lt;$set name=&quot;results&quot; filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
+      &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[0]]&quot;&quot;&quot;&gt;
+      &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[1]]
+                       [enlist&lt;results&gt;match{$tiddler$!!$field$}count[]!match[1]]
+                      +[limit[1]]&quot;&quot;&quot;&gt;
+         &lt;$select class=&quot;selectPopup_$id$&quot;
+            tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
+            default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
+            size={{{ [enlist&lt;results&gt;] +[count[]min[$listlength$]max[2]] }}}&gt;
+            &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
+               &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
+                  &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
+               &lt;/option&gt;
+            &lt;/$list&gt;
+         &lt;/$select&gt;
+      &lt;/$list&gt;
+      &lt;/$list&gt;
+      &lt;/$set&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 &lt;/div&gt;
