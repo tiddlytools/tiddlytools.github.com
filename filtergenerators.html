@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/info-plugin</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9399,11 +9401,69 @@ FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
-<div created="20191220110244445" modified="20191220110244445" title="$:/state/tab/sidebar--595412856">
+<div created="20191222111643125" modified="20191222111643125" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191222041828439" list="" modified="20191222044629379" title="$:/StoryList">
+<div created="20191222123156900" list="TiddlyTools/Macros/edit-list FilterGenerators/SearchAndDestroy FilterGenerators/TagCloud FilterGenerators/Titles FilterGenerators/Tags" modified="20191222123825036" title="$:/StoryList">
 <pre></pre>
+</div>
+<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/info/browser&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser&quot;,
+            &quot;text&quot;: &quot;yes&quot;
+        },
+        &quot;$:/info/node&quot;: {
+            &quot;title&quot;: &quot;$:/info/node&quot;,
+            &quot;text&quot;: &quot;no&quot;
+        },
+        &quot;$:/info/url/full&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/full&quot;,
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
+        },
+        &quot;$:/info/url/host&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/host&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/hostname&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/protocol&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
+            &quot;text&quot;: &quot;file:&quot;
+        },
+        &quot;$:/info/url/port&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/port&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/pathname&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
+        },
+        &quot;$:/info/url/search&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/search&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/info/url/origin&quot;: {
+            &quot;title&quot;: &quot;$:/info/url/origin&quot;,
+            &quot;text&quot;: &quot;file://&quot;
+        },
+        &quot;$:/info/browser/screen/width&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
+            &quot;text&quot;: &quot;1920&quot;
+        },
+        &quot;$:/info/browser/screen/height&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
+            &quot;text&quot;: &quot;1080&quot;
+        },
+        &quot;$:/info/browser/language&quot;: {
+            &quot;title&quot;: &quot;$:/info/browser/language&quot;,
+            &quot;text&quot;: &quot;en-US&quot;
+        }
+    }
+}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9520,7 +9580,7 @@ FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191222044527718" title="FilterGenerators/SearchAndDestroy">
+<div created="20191212065707527" modified="20191222123943345" title="FilterGenerators/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9541,85 +9601,72 @@ whitespace whitespace,anchored
 regexp
 \end
 
-\define getSysList(prefix: &quot;$:/&quot;,maxdepth:&quot;4&quot;)
+\define getShadowList(prefix: &quot;$:/&quot;,maxdepth:&quot;4&quot;)
 \whitespace trim
-&lt;$list filter=&quot;[all[tiddlers+shadows]removeprefix[$prefix$]splitbefore[/]sort[]suffix[/]]&quot; variable=&quot;chunk&quot;&gt;
+&lt;$list filter=&quot;[all[shadows]removeprefix[$prefix$]splitbefore[/]sort[]suffix[/]]&quot; variable=&quot;chunk&quot;&gt;
    &lt;$vars path={{{ [title[$prefix$]addsuffix&lt;chunk&gt;removesuffix[/]] }}}&gt;
    &lt;$text text=&lt;&lt;path&gt;&gt;/&gt;&amp;#10;
    &lt;$list filter=&quot;[&lt;path&gt;split[/]count[]min[$maxdepth$]!match[$maxdepth$]]&quot;&gt;
-      &lt;$macrocall $name=&quot;getSysList&quot; prefix={{{ [title[$prefix$]addsuffix&lt;chunk&gt;] }}}/&gt;
+      &lt;$macrocall $name=&quot;getShadowList&quot; prefix={{{ [title[$prefix$]addsuffix&lt;chunk&gt;] }}}/&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;
 \end
 
-\define cacheSysList()
-&lt;$wikify name=&quot;sysList&quot; text=&lt;&lt;getSysList&gt;&gt;&gt;
-&lt;$list filter=&quot;[&lt;sysListCache&gt;is[missing]]&quot;&gt;
-   &lt;$button tooltip=&quot;add system tiddlers to prefix list&quot;&gt; {{$:/core/images/new-button}}
-      &lt;$action-setfield $tiddler=&lt;&lt;sysListCache&gt;&gt; text={{{ [&lt;sysList&gt;] }}} type=&quot;text/plain&quot; /&gt;
-   &lt;/$button&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;sysListCache&gt;is[tiddler]]&quot;&gt;
-   &lt;$button tooltip=&quot;remove system tiddlers from prefix list&quot;&gt; {{$:/core/images/delete-button}}
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;sysListCache&gt;&gt;/&gt;
-   &lt;/$button&gt;
-&lt;/$list&gt;
-&lt;/$wikify&gt;
-\end
-\define sysListCache() FilterGenerator/SearchAndDestroy/SystemList
-
 \define getTid(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre_BYPASS(width)
-&lt;!-- DISABLED FOR NOW - HAS REFRESH INIT PROBLEM - USE STATIC sysListCache INSTEAD --&gt;
-&lt;$wikify name=&quot;sysList&quot; text=&lt;&lt;getSysList&gt;&gt;&gt;
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;sysList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
-&lt;/$wikify&gt;
-\end
-
 \define getPre(width)
+&lt;$wikify name=&quot;shadowList&quot; text=&lt;&lt;getShadowList&gt;&gt;&gt;
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist{$(sysListCache)$}] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+&lt;/$wikify&gt;
 \end
 
 \define getTag(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[all[tiddlers+shadows]tags[]sort[]] +[search:title{$(taginput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
+   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
 \define getTerm()
-&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;editwidth&quot; default=&quot;&quot; placeholder=&quot;&quot;/&gt;
+&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define doSearch()
-&lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]prefix[$(pre)$]tag:strict[$(tag)$]search:$(field)$:$(flag)$[$(term)$]sort[$(sort)$]]&quot;&quot;&quot;&gt;
+&lt;$set name=&quot;tagFilter&quot;    filter=&quot;[&lt;tag&gt;!is[blank]]&quot;  value=&quot;tag[$(tag)$]&quot;                        emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;preFilter&quot;    filter=&quot;[&lt;pre&gt;!is[blank]]&quot;  value=&quot;prefix[$(pre)$]&quot;                     emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;searchFilter&quot; filter=&quot;[&lt;term&gt;!is[blank]]&quot; value=&quot;search:$(field)$:$(flag)$[$(term)$]&quot; emptyValue=&quot;&quot;&gt;
+&lt;&lt;doSearch_inner&gt;&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+\end
+
+\define doSearch_inner()
+&lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]$(preFilter)$$(tagFilter)$$(searchFilter)$sort[$(sort)$]]&quot;&quot;&quot;&gt;
 There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; matching tiddlers &lt;&lt;doResetAll&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt;&lt;br&gt;
 filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''
 &lt;blockquote style=&quot;overflow-y:auto;max-width:100%;max-height:50vh;&quot;&gt;
@@ -9697,7 +9744,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \define getInputs()
 |borderless|k
 |    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
-|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |&lt;&lt;cacheSysList&gt;&gt;|
+|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |
 |     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
 | search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
 |   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
@@ -9705,7 +9752,6 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 |    match term|&lt;&lt;getTerm   $(inputwidth)$&gt;&gt; |&lt;&lt;doReset terminput&gt;&gt;  |
 \end
 
-&lt;!-- ******* MAIN ******* --&gt;
 &lt;&lt;setStyles&gt;&gt;
 &lt;&lt;getInputs&gt;&gt;
 &lt;$vars
