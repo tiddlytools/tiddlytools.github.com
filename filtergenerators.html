@@ -157,8 +157,6 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/info-plugin</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -167,13 +165,13 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
-<li>FilterGenerator/SearchAndDestroy</li>
+<li>FilterGenerators/SearchAndDestroy</li>
 
-<li>FilterGenerator/TagCloud</li>
+<li>FilterGenerators/TagCloud</li>
 
-<li>FilterGenerator/Tags</li>
+<li>FilterGenerators/Tags</li>
 
-<li>FilterGenerator/Titles</li>
+<li>FilterGenerators/Titles</li>
 
 <li>TiddlyTools/Macros/edit-list</li>
 
@@ -9380,11 +9378,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191118105110098" modified="20191212142244462" title="$:/DefaultTiddlers">
-<pre>FilterGenerator/SearchAndDestroy
-FilterGenerator/TagCloud
-FilterGenerator/Tags
-FilterGenerator/Titles
+<div created="20191118105110098" modified="20191222044653391" title="$:/DefaultTiddlers">
+<pre>FilterGenerators/SearchAndDestroy
+FilterGenerators/TagCloud
+FilterGenerators/Titles
+FilterGenerators/Tags
 </pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9404,66 +9402,8 @@ FilterGenerator/Titles
 <div created="20191220110244445" modified="20191220110244445" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="$:/Import FilterGenerator/SearchAndDestroy FilterGenerator/TagCloud FilterGenerator/Tags FilterGenerator/Titles" title="$:/StoryList">
+<div created="20191222041828439" list="" modified="20191222044629379" title="$:/StoryList">
 <pre></pre>
-</div>
-<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/info/browser&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
-        },
-        &quot;$:/info/node&quot;: {
-            &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
-        },
-        &quot;$:/info/url/full&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
-        },
-        &quot;$:/info/url/host&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/hostname&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/protocol&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
-        },
-        &quot;$:/info/url/port&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/port&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/pathname&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
-        },
-        &quot;$:/info/url/search&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/search&quot;,
-            &quot;text&quot;: &quot;&quot;
-        },
-        &quot;$:/info/url/origin&quot;: {
-            &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
-        },
-        &quot;$:/info/browser/screen/width&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
-        },
-        &quot;$:/info/browser/screen/height&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
-        },
-        &quot;$:/info/browser/language&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser/language&quot;,
-            &quot;text&quot;: &quot;en-US&quot;
-        }
-    }
-}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9580,7 +9520,7 @@ FilterGenerator/Titles
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" modified="20191221123654294" title="FilterGenerator/SearchAndDestroy">
+<div created="20191212065707527" modified="20191222044527718" title="FilterGenerators/SearchAndDestroy">
 <pre>\define tidinput()   $:/temp/SearchAndDestroy/tids
 \define preinput()   $:/temp/SearchAndDestroy/prefix
 \define taginput()   $:/temp/SearchAndDestroy/tag
@@ -9592,11 +9532,8 @@ FilterGenerator/Titles
 \define inputwidth() 25em
 
 \define tidList()    tiddlers shadows system orphans tiddlers+shadows system+shadows
-
 \define fieldsList() title title,text title,tags title,text,tags text text,tags tags *
-
 \define sortList()   title created modified
-
 \define flagsList()
 words      words,casesensitive   words,casesensitive,anchored   words,anchored
 literal    literal,casesensitive literal,casesensitive,anchored literal,anchored
@@ -9604,32 +9541,33 @@ whitespace whitespace,anchored
 regexp
 \end
 
-\define getPreList(prefix: &quot;$:/&quot;,maxdepth:&quot;4&quot;)
-&lt;$list filter=&quot;[all[shadows+tiddlers]removeprefix[$prefix$]splitbefore[/]sort[]suffix[/]]&quot; variable=&quot;chunk&quot;&gt;
+\define getSysList(prefix: &quot;$:/&quot;,maxdepth:&quot;4&quot;)
+\whitespace trim
+&lt;$list filter=&quot;[all[tiddlers+shadows]removeprefix[$prefix$]splitbefore[/]sort[]suffix[/]]&quot; variable=&quot;chunk&quot;&gt;
    &lt;$vars path={{{ [title[$prefix$]addsuffix&lt;chunk&gt;removesuffix[/]] }}}&gt;
-   &lt;$text text=&lt;&lt;path&gt;&gt;/&gt;
+   &lt;$text text=&lt;&lt;path&gt;&gt;/&gt;&amp;#10;
    &lt;$list filter=&quot;[&lt;path&gt;split[/]count[]min[$maxdepth$]!match[$maxdepth$]]&quot;&gt;
-      &lt;$macrocall $name=&quot;getPreList&quot; prefix={{{ [title[$prefix$]addsuffix&lt;chunk&gt;] }}}/&gt;
+      &lt;$macrocall $name=&quot;getSysList&quot; prefix={{{ [title[$prefix$]addsuffix&lt;chunk&gt;] }}}/&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;
 \end
 
-\define cachePreList()
-&lt;$wikify name=&quot;preList&quot; text=&lt;&lt;getPreList&gt;&gt;&gt;
-&lt;$list filter=&quot;[&lt;preListCache&gt;is[missing]]&quot;&gt;
-   &lt;$button tooltip=&quot;add system tiddlers to list&quot;&gt; {{$:/core/images/new-button}}
-      &lt;$action-setfield $tiddler=&lt;&lt;preListCache&gt;&gt; text={{{ [&lt;preList&gt;split[ ]join[]splitregexp[\n]join[ ]] }}} /&gt;
+\define cacheSysList()
+&lt;$wikify name=&quot;sysList&quot; text=&lt;&lt;getSysList&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;sysListCache&gt;is[missing]]&quot;&gt;
+   &lt;$button tooltip=&quot;add system tiddlers to prefix list&quot;&gt; {{$:/core/images/new-button}}
+      &lt;$action-setfield $tiddler=&lt;&lt;sysListCache&gt;&gt; text={{{ [&lt;sysList&gt;] }}} type=&quot;text/plain&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;preListCache&gt;is[tiddler]]&quot;&gt;
-   &lt;$button tooltip=&quot;reset list&quot;&gt; {{$:/core/images/delete-button}}
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;preListCache&gt;&gt;/&gt;
+&lt;$list filter=&quot;[&lt;sysListCache&gt;is[tiddler]]&quot;&gt;
+   &lt;$button tooltip=&quot;remove system tiddlers from prefix list&quot;&gt; {{$:/core/images/delete-button}}
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;sysListCache&gt;&gt;/&gt;
    &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;/$wikify&gt;
 \end
-\define preListCache() FilterGenerator/SearchAndDestroy/preListCache
+\define sysListCache() FilterGenerator/SearchAndDestroy/SystemList
 
 \define getTid(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
@@ -9637,19 +9575,19 @@ regexp
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre(width)
-&lt;!-- BYPASS FOR NOW - HAS REFRESH INIT PROBLEM - USE STATIC preListCache INSTEAD --&gt;
-&lt;$wikify name=&quot;preList&quot; text=&lt;&lt;getPreList&gt;&gt;&gt;
+\define getPre_BYPASS(width)
+&lt;!-- DISABLED FOR NOW - HAS REFRESH INIT PROBLEM - USE STATIC sysListCache INSTEAD --&gt;
+&lt;$wikify name=&quot;sysList&quot; text=&lt;&lt;getSysList&gt;&gt;&gt;
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[title[$:/]] [enlist&lt;preList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;sysList&gt;] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 &lt;/$wikify&gt;
 \end
 
 \define getPre(width)
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[title[$:/]] [enlist{$(preListCache)$}] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist{$(sysListCache)$}] +[sort[]] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag(width)
@@ -9693,7 +9631,7 @@ filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''
 \end
 
 \define doReset(id)
-&lt;$button tooltip=&quot;Reset $id$&quot;&gt; {{$:/core/images/close-button}}
+&lt;$button tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;$id$&gt;&gt;   /&gt;
 &lt;/$button&gt;
 \end
@@ -9759,7 +9697,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \define getInputs()
 |borderless|k
 |    search all|&lt;&lt;getTid    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset tidinput&gt;&gt;   |
-|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |&lt;&lt;cachePreList&gt;&gt;|
+|  match prefix|&lt;&lt;getPre    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset preinput&gt;&gt;   |&lt;&lt;cacheSysList&gt;&gt;|
 |     match tag|&lt;&lt;getTag    $(inputwidth)$&gt;&gt; |&lt;&lt;doReset taginput&gt;&gt;   |
 | search fields|&lt;&lt;getFields $(inputwidth)$&gt;&gt; |&lt;&lt;doReset fieldinput&gt;&gt; |
 |   using flags|&lt;&lt;getFlags  $(inputwidth)$&gt;&gt; |&lt;&lt;doReset flaginput&gt;&gt;  |
@@ -9781,7 +9719,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20191128174135234" modified="20191212073601926" sortorder="count" tags="" title="FilterGenerator/TagCloud">
+<div created="20191128174135234" modified="20191222044541019" sortorder="count" tags="" title="FilterGenerators/TagCloud">
 <pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
 \define tag-pill-styles()
    background-color:$(backgroundColor)$;
@@ -9845,7 +9783,7 @@ sort by:
 &lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt; &lt;&lt;tagcloud_showbycount&gt;&gt; &lt;/$reveal&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div created="20191118104819715" modified="20191212073549064" tags="" title="FilterGenerator/Tags">
+<div created="20191118104819715" modified="20191222044621189" tags="" title="FilterGenerators/Tags">
 <pre>&lt;style&gt;
 .columns4 { display:block; -moz-column-count:4; -moz-column-gap:1em; -webkit-column-count:4; -webkit-column-gap:1em; }
 .small    { font-size:80%; line-height:1.3em; }
@@ -9886,7 +9824,7 @@ __find tiddlers tagged with__:
 &lt;/$wikify&gt;
 &lt;/blockquote&gt;</pre>
 </div>
-<div created="20191126184117322" modified="20191212073524277" tags="" title="FilterGenerator/Titles">
+<div created="20191126184117322" modified="20191222044605319" tags="" title="FilterGenerators/Titles">
 <pre>&lt;style&gt;
 .columns3 { display:block; -moz-column-count:3; -moz-column-gap:1em; -webkit-column-count:3; -webkit-column-gap:1em; }
 .small    { font-size:80%; line-height:1.3em; }
