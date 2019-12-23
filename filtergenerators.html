@@ -9404,7 +9404,7 @@ FilterGenerators/Tags
 <div created="20191222111643125" modified="20191222111643125" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191222123156900" list="TiddlyTools/Macros/edit-list FilterGenerators/SearchAndDestroy FilterGenerators/TagCloud FilterGenerators/Titles FilterGenerators/Tags" modified="20191222123825036" title="$:/StoryList">
+<div list="$:/Import FilterGenerators/SearchAndDestroy FilterGenerators/TagCloud FilterGenerators/Titles FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9899,17 +9899,19 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191221225636486" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
-<pre>\define edit-list(tiddler,field:&quot;text&quot;,index,id,width,listwidth:&quot;100%&quot;,listlength:&quot;10&quot;,filter,placeholder,tooltip,focus,focusPopup)
+<div created="20191214071309583" creator="EricShulman" modified="20191223112033901" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<pre>\define edit-list(id,tiddler,field:&quot;text&quot;,index,
+   width,listwidth:&quot;100%&quot;,listlength:&quot;10&quot;,filter,placeholder,focus,focusPopup,tooltip,goto:&quot;no&quot;)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
    .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em); height:1.5em; margin-top:0.1em; }
    .selectCombo_$id$ { position:absolute; width:100%;                height:1.5em; margin-top:0.1em; }
    .selectPopup_$id$ { position:absolute; width:$listwidth$;         z-index:1;    margin-top:1.6em; }
 &lt;/style&gt;
+&lt;$set name=&quot;goto&quot; filter=&quot;[title[$goto$]!match[no]]&quot; value=&quot;&lt;$action-navigate $to={{$tiddler$!!$field$}}/&gt;&quot; emptyValue=&quot;&quot;&gt;
 &lt;$select class=&quot;selectCombo_$id$&quot;
    tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-   default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+   default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
    &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
       &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
          &lt;$text text=&lt;&lt;value&gt;&gt;/&gt;
@@ -9917,10 +9919,12 @@ __find titles containing__:&lt;br&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
 &lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+&lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
 &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot;
    tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
    default=&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
    focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; /&gt;
+&lt;/$keyboard&gt;
 &lt;/span&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
@@ -9932,7 +9936,7 @@ __find titles containing__:&lt;br&gt;
                       +[limit[1]]&quot;&quot;&quot;&gt;
          &lt;$select class=&quot;selectPopup_$id$&quot;
             tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-            default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
+            default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;
             size={{{ [enlist&lt;results&gt;] +[count[]min[$listlength$]max[2]] }}}&gt;
             &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
                &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;
@@ -9945,6 +9949,7 @@ __find titles containing__:&lt;br&gt;
       &lt;/$set&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
+&lt;/$set&gt;
 &lt;/div&gt;
 \end</pre>
 </div>
