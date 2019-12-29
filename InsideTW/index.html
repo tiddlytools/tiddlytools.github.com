@@ -173,6 +173,10 @@ Error message and password prompt
 
 <li>$:/core/modules/filters/regexps.js</li>
 
+<li>$:/core/modules/utils/dom/dragndrop.js</li>
+
+<li>$:/core/modules/widgets/draggable.js</li>
+
 <li>$:/core/save/all</li>
 
 <li>$:/core/ui/TopBar/menu</li>
@@ -816,7 +820,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191225213612171" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191229155031141" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -895,10 +899,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191225213612170" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191225213612171" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191229155031141" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10263,6 +10267,322 @@ exports.regexps = function(source,operator,options) {
 
 })();</pre>
 </div>
+<div created="20191228110234401" creator="EricShulman" modified="20191229154617024" modifier="EricShulman" module-type="utils" title="$:/core/modules/utils/dom/dragndrop.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/utils/dom/dragndrop.js
+type: application/javascript
+module-type: utils
+
+Browser data transfer utilities, used with the clipboard and drag and drop
+
+ELS: added dragImageType===&quot;blank&quot; (supresses drag image)
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+Options:
+
+domNode: dom node to make draggable
+dragImageType: &quot;pill&quot; or &quot;dom&quot; or &quot;blank&quot;
+dragTiddlerFn: optional function to retrieve the title of tiddler to drag
+dragFilterFn: optional function to retreive the filter defining a list of tiddlers to drag
+widget: widget to use as the contect for the filter
+*/
+exports.makeDraggable = function(options) {
+	var dragImageType = options.dragImageType || &quot;dom&quot;,
+		dragImage,
+		domNode = options.domNode;
+	// Make the dom node draggable (not necessary for anchor tags)
+	if((domNode.tagName || &quot;&quot;).toLowerCase() !== &quot;a&quot;) {
+		domNode.setAttribute(&quot;draggable&quot;,&quot;true&quot;);		
+	}
+	// Add event handlers
+	$tw.utils.addEventListeners(domNode,[
+		{name: &quot;dragstart&quot;, handlerFunction: function(event) {
+			if(event.dataTransfer === undefined) {
+				return false;
+			}
+			// Collect the tiddlers being dragged
+			var dragTiddler = options.dragTiddlerFn &amp;&amp; options.dragTiddlerFn(),
+				dragFilter = options.dragFilterFn &amp;&amp; options.dragFilterFn(),
+				titles = dragTiddler ? [dragTiddler] : [],
+			    	startActions = options.startActions;
+			if(dragFilter) {
+				titles.push.apply(titles,options.widget.wiki.filterTiddlers(dragFilter,options.widget));
+			}
+			var titleString = $tw.utils.stringifyList(titles);
+			// Check that we've something to drag
+			if(titles.length &gt; 0 &amp;&amp; event.target === domNode) {
+				// Mark the drag in progress
+				$tw.dragInProgress = domNode;
+				// Set the dragging class on the element being dragged
+				$tw.utils.addClass(event.target,&quot;tc-dragging&quot;);
+				// Invoke drag-start actions if given
+				if(startActions !== undefined) {
+					options.widget.invokeActionString(startActions,options.widget,event,{actionTiddler: titleString});
+				}
+				// Create the drag image elements
+				dragImage = options.widget.document.createElement(&quot;div&quot;);
+				dragImage.className = &quot;tc-tiddler-dragger&quot;;
+				var inner = options.widget.document.createElement(&quot;div&quot;);
+				inner.className = &quot;tc-tiddler-dragger-inner&quot;;
+				inner.appendChild(options.widget.document.createTextNode(
+					titles.length === 1 ? 
+						titles[0] :
+						titles.length + &quot; tiddlers&quot;
+				));
+				dragImage.appendChild(inner);
+				options.widget.document.body.appendChild(dragImage);
+				// Set the data transfer properties
+				var dataTransfer = event.dataTransfer;
+				// Set up the image
+				dataTransfer.effectAllowed = &quot;all&quot;;
+				if(dataTransfer.setDragImage) {
+					if(dragImageType === &quot;pill&quot;) {
+						dataTransfer.setDragImage(dragImage.firstChild,-16,-16);
+					} else if (dragImageType === &quot;blank&quot;) {					/* ELS */
+						dragImage = options.widget.document.createElement(&quot;div&quot;);	/* ELS */
+						options.widget.document.body.appendChild(dragImage);		/* ELS */
+						dataTransfer.setDragImage(dragImage,0,0);			/* ELS */
+					} else {
+						var r = domNode.getBoundingClientRect();
+						dataTransfer.setDragImage(domNode,event.clientX-r.left,event.clientY-r.top);
+					}
+				}
+				// Set up the data transfer
+				if(dataTransfer.clearData) {
+					dataTransfer.clearData();					
+				}
+				var jsonData = [];
+				if(titles.length &gt; 1) {
+					titles.forEach(function(title) {
+						jsonData.push(options.widget.wiki.getTiddlerAsJson(title));
+					});
+					jsonData = &quot;[&quot; + jsonData.join(&quot;,&quot;) + &quot;]&quot;;
+				} else {
+					jsonData = options.widget.wiki.getTiddlerAsJson(titles[0]);
+				}
+				// IE doesn't like these content types
+				if(!$tw.browser.isIE) {
+					dataTransfer.setData(&quot;text/vnd.tiddler&quot;,jsonData);
+					dataTransfer.setData(&quot;text/plain&quot;,titleString);
+					dataTransfer.setData(&quot;text/x-moz-url&quot;,&quot;data:text/vnd.tiddler,&quot; + encodeURIComponent(jsonData));
+				}
+				dataTransfer.setData(&quot;URL&quot;,&quot;data:text/vnd.tiddler,&quot; + encodeURIComponent(jsonData));
+				dataTransfer.setData(&quot;Text&quot;,titleString);
+				event.stopPropagation();
+			}
+			return false;
+		}},
+		{name: &quot;dragend&quot;, handlerFunction: function(event) {
+			if(event.target === domNode) {
+				// Collect the tiddlers being dragged
+				var dragTiddler = options.dragTiddlerFn &amp;&amp; options.dragTiddlerFn(),
+					dragFilter = options.dragFilterFn &amp;&amp; options.dragFilterFn(),
+					titles = dragTiddler ? [dragTiddler] : [],
+			    		endActions = options.endActions;
+				if(dragFilter) {
+					titles.push.apply(titles,options.widget.wiki.filterTiddlers(dragFilter,options.widget));
+				}
+				var titleString = $tw.utils.stringifyList(titles);
+				$tw.dragInProgress = null;
+				// Invoke drag-end actions if given
+				if(endActions !== undefined) {
+					options.widget.invokeActionString(endActions,options.widget,event,{actionTiddler: titleString});
+				}
+				// Remove the dragging class on the element being dragged
+				$tw.utils.removeClass(event.target,&quot;tc-dragging&quot;);
+				// Delete the drag image element
+				if(dragImage) {
+					dragImage.parentNode.removeChild(dragImage);
+					dragImage = null;
+				}
+			}
+			return false;
+		}}
+	]);
+};
+
+exports.importDataTransfer = function(dataTransfer,fallbackTitle,callback) {
+	// Try each provided data type in turn
+	if($tw.log.IMPORT) {
+		console.log(&quot;Available data types:&quot;);
+		for(var type=0; type&lt;dataTransfer.types.length; type++) {
+			console.log(&quot;type&quot;,dataTransfer.types[type],dataTransfer.getData(dataTransfer.types[type]))
+		}
+	}
+	for(var t=0; t&lt;importDataTypes.length; t++) {
+		if(!$tw.browser.isIE || importDataTypes[t].IECompatible) {
+			// Get the data
+			var dataType = importDataTypes[t];
+				var data = dataTransfer.getData(dataType.type);
+			// Import the tiddlers in the data
+			if(data !== &quot;&quot; &amp;&amp; data !== null) {
+				if($tw.log.IMPORT) {
+					console.log(&quot;Importing data type '&quot; + dataType.type + &quot;', data: '&quot; + data + &quot;'&quot;)
+				}
+				var tiddlerFields = dataType.toTiddlerFieldsArray(data,fallbackTitle);
+				callback(tiddlerFields);
+				return;
+			}
+		}
+	}
+};
+
+var importDataTypes = [
+	{type: &quot;text/vnd.tiddler&quot;, IECompatible: false, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		return parseJSONTiddlers(data,fallbackTitle);
+	}},
+	{type: &quot;URL&quot;, IECompatible: true, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		// Check for tiddler data URI
+		var match = decodeURIComponent(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
+		if(match) {
+			return parseJSONTiddlers(match[1],fallbackTitle);
+		} else {
+			return [{title: fallbackTitle, text: data}]; // As URL string
+		}
+	}},
+	{type: &quot;text/x-moz-url&quot;, IECompatible: false, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		// Check for tiddler data URI
+		var match = decodeURIComponent(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
+		if(match) {
+			return parseJSONTiddlers(match[1],fallbackTitle);
+		} else {
+			return [{title: fallbackTitle, text: data}]; // As URL string
+		}
+	}},
+	{type: &quot;text/html&quot;, IECompatible: false, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		return [{title: fallbackTitle, text: data}];
+	}},
+	{type: &quot;text/plain&quot;, IECompatible: false, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		return [{title: fallbackTitle, text: data}];
+	}},
+	{type: &quot;Text&quot;, IECompatible: true, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		return [{title: fallbackTitle, text: data}];
+	}},
+	{type: &quot;text/uri-list&quot;, IECompatible: false, toTiddlerFieldsArray: function(data,fallbackTitle) {
+		return [{title: fallbackTitle, text: data}];
+	}}
+];
+
+function parseJSONTiddlers(json,fallbackTitle) {
+	var data = JSON.parse(json);
+	if(!$tw.utils.isArray(data)) {
+		data = [data];
+	}
+	data.forEach(function(fields) {
+		fields.title = fields.title || fallbackTitle;
+	});
+	return data;
+};
+
+})();
+</pre>
+</div>
+<div created="20191228111854670" creator="EricShulman" modified="20191228112503855" modifier="EricShulman" module-type="widget" title="$:/core/modules/widgets/draggable.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/widgets/draggable.js
+type: application/javascript
+module-type: widget
+
+Draggable widget
+
+ELS: added dragImageType param (for &quot;blank&quot;)
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
+var DraggableWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+
+/*
+Inherit from the base widget class
+*/
+DraggableWidget.prototype = new Widget();
+
+/*
+Render this widget into the DOM
+*/
+DraggableWidget.prototype.render = function(parent,nextSibling) {
+	var self = this;
+	// Save the parent dom node
+	this.parentDomNode = parent;
+	// Compute our attributes
+	this.computeAttributes();
+	// Execute our logic
+	this.execute();
+	// Sanitise the specified tag
+	var tag = this.draggableTag;
+	if($tw.config.htmlUnsafeElements.indexOf(tag) !== -1) {
+		tag = &quot;div&quot;;
+	}
+	// Create our element
+	var domNode = this.document.createElement(tag);
+	// Assign classes
+	var classes = [&quot;tc-draggable&quot;];
+	if(this.draggableClasses) {
+		classes.push(this.draggableClasses);
+	}
+	domNode.setAttribute(&quot;class&quot;,classes.join(&quot; &quot;));
+	// Add event handlers
+	$tw.utils.makeDraggable({
+		domNode: domNode,
+		dragTiddlerFn: function() {return self.getAttribute(&quot;tiddler&quot;);},
+		dragFilterFn: function() {return self.getAttribute(&quot;filter&quot;);},
+		startActions: self.startActions,
+		endActions: self.endActions,
+		dragImageType: self.dragImageType, /* ELS */
+		widget: this
+	});
+	// Insert the link into the DOM and render any children
+	parent.insertBefore(domNode,nextSibling);
+	this.renderChildren(domNode,null);
+	this.domNodes.push(domNode);
+};
+
+/*
+Compute the internal state of the widget
+*/
+DraggableWidget.prototype.execute = function() {
+	// Pick up our attributes
+	this.draggableTag = this.getAttribute(&quot;tag&quot;,&quot;div&quot;);
+	this.draggableClasses = this.getAttribute(&quot;class&quot;);
+	this.startActions = this.getAttribute(&quot;startactions&quot;);
+	this.endActions = this.getAttribute(&quot;endactions&quot;);
+	this.dragImageType = this.getAttribute(&quot;dragimagetype&quot;); /* ELS */
+	// Make the child widgets
+	this.makeChildWidgets();
+};
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+DraggableWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedTiddlers.tag || changedTiddlers[&quot;class&quot;]) {
+		this.refreshSelf();
+		return true;
+	}
+	return this.refreshChildren(changedTiddlers);
+};
+
+exports.draggable = DraggableWidget;
+
+})();
+</pre>
+</div>
 <div created="20191107053923943" creator="EricShulman" modified="20191107053950649" modifier="EricShulman" title="$:/core/save/all">
 <pre>\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
 \define saveTiddlerFilter()
@@ -10509,8 +10829,13 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.25.133531">
-<pre>* 19.12.25.133531 TiddlyBook/Print/Page - eliminate .tc-tiddler-frame border/shadow (use !important)
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.29.074930">
+<pre>* 19.12.29.074930 $:/core/modules/widgets/draggable.js - added comments about dragImageType===&quot;blank&quot;
+* 19.12.29.074930 $:/core/modules/utils/dom/dragndrop.js - added comments about dragImageType===&quot;blank&quot;
+* 19.12.28.032843 TiddlyTools/TOC/Macros - use dragimagetype=&quot;blank&quot; in $draggable
+* 19.12.28.032843 $:/core/modules/widgets/draggable.js - added dragimagetype param
+* 19.12.28.032843 $:/core/modules/utils/dom/dragndrop.js - apply dragImageType===&quot;blank&quot;
+* 19.12.25.133531 TiddlyBook/Print/Page - eliminate .tc-tiddler-frame border/shadow (use !important)
 * 19.12.23.214250 TiddlyBook/Search - use simple edit-text field instead of edit-list
 * 19.12.23.204721 TiddlyBook/Search - re-write part 2 = show results in panel
 * 19.12.23.204721 TiddlyTools/Macros/edit-list - added &quot;listview&quot; param for showing caption text
@@ -11494,7 +11819,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191225213612170" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11512,8 +11837,8 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191105015232846" creator="EricShulman" modified="20191125234327225" modifier="EricShulman" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20191105204343116" creator="EricShulman" modified="20191219223532470" modifier="EricShulman" title="$:/state/tab-513410736">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20191105204343116" creator="EricShulman" modified="20191228112825197" modifier="EricShulman" title="$:/state/tab-513410736">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div created="20191219014907362" creator="EricShulman" modified="20191219014907362" modifier="EricShulman" title="$:/state/tab/moresidebar--1668485663">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
@@ -11539,7 +11864,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191225213006826" creator="EricShulman" list="CoverPage" modified="20191225213612172" modifier="EricShulman" title="$:/StoryList">
+<div created="20191229154206960" creator="EricShulman" list="CoverPage" modified="20191229155031142" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -11678,7 +12003,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191219104029433" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191225213612170" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -19927,7 +20252,7 @@ body.tc-body { background-size:100% 100%; }
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20191223071710513" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20191228112703589" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()         $:/config/TiddlyTools/TOC
 \define toc-template()       TiddlyTools/TOC/Template
 \define toc-ignore-tags()    Volume bookcover
@@ -19945,7 +20270,7 @@ body.tc-body { background-size:100% 100%; }
 &lt;span class=&quot;authortools&quot;&gt;
    &lt;$droppable actions=&lt;&lt;toc-item-drop&gt;&gt;&gt;
       &lt;div class=&quot;tc-droppable-placeholder tt-toc-placeholder&quot;&gt;&lt;/div&gt; 
-      &lt;$draggable tiddler=&lt;&lt;item&gt;&gt; startactions=&lt;&lt;toc-item-dragstart&gt;&gt; endactions=&lt;&lt;toc-item-dragend&gt;&gt;&gt;
+      &lt;$draggable tiddler=&lt;&lt;item&gt;&gt; startactions=&lt;&lt;toc-item-dragstart&gt;&gt; endactions=&lt;&lt;toc-item-dragend&gt;&gt; dragimagetype=&quot;blank&quot;&gt;
          &lt;div title=&quot;drag to rearrange items&quot;&gt;
             {{$(item)$||$(toc-template)$}}
          &lt;/div&gt;
