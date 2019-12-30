@@ -177,8 +177,6 @@ Error message and password prompt
 
 <li>$:/core/modules/widgets/draggable.js</li>
 
-<li>$:/core/save/all</li>
-
 <li>$:/core/ui/TopBar/menu</li>
 
 <li>$:/core/ui/ViewTemplate/title</li>
@@ -519,6 +517,8 @@ Error message and password prompt
 
 <li>TiddlyBook/Print/Page</li>
 
+<li>TiddlyBook/PublishFilter</li>
+
 <li>TiddlyBook/Reset</li>
 
 <li>TiddlyBook/RootTag</li>
@@ -820,7 +820,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191230033911210" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -899,10 +899,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191230033911210" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10582,14 +10582,6 @@ exports.draggable = DraggableWidget;
 })();
 </pre>
 </div>
-<div created="20191107053923943" creator="EricShulman" modified="20191107053950649" modifier="EricShulman" title="$:/core/save/all">
-<pre>\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
-\define saveTiddlerFilter()
-[is[tiddler]] -[prefix[$:/state/popup/]] -[prefix[$:/temp]] -[[$:/HistoryList]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] $(publishFilter)$
-\end
-{{$:/core/templates/tiddlywiki5.html}}
-</pre>
-</div>
 <div created="20160204064235709" creator="EricShulman" modified="20160204064235709" modifier="EricShulman" title="$:/core/ui/TopBar/menu">
 <pre>&lt;$reveal state=&quot;$:/state/sidebar&quot; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
 &lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/HideSideBar/Hint}} aria-label={{$:/language/Buttons/HideSideBar/Caption}} class=&quot;tc-btn-invisible&quot;&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt;
@@ -10828,8 +10820,9 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.29.193734">
-<pre>* 19.12.29.193734 $:/core/modules/utils/dom/dragndrop.js - removeChild() for dragImageType==&quot;blank&quot; (avoids leaving DOM junk)
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.30.031503">
+<pre>* 19.12.30.031503 TiddlyBook/PublishFilter - don't save $:/temp tiddlers (moved from $:/core/save/all)
+* 19.12.29.193734 $:/core/modules/utils/dom/dragndrop.js - removeChild() for dragImageType==&quot;blank&quot; (avoids leaving DOM junk)
 * 19.12.29.074930 $:/core/modules/widgets/draggable.js - added comments about dragImageType===&quot;blank&quot;
 * 19.12.29.074930 $:/core/modules/utils/dom/dragndrop.js - added comments about dragImageType===&quot;blank&quot;
 * 19.12.28.032843 TiddlyTools/TOC/Macros - use dragimagetype=&quot;blank&quot; in $draggable
@@ -11819,7 +11812,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11837,20 +11830,20 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191105015232846" creator="EricShulman" modified="20191125234327225" modifier="EricShulman" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20191105204343116" creator="EricShulman" modified="20191228112825197" modifier="EricShulman" title="$:/state/tab-513410736">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div created="20191105204343116" creator="EricShulman" modified="20191230111001102" modifier="EricShulman" title="$:/state/tab-513410736">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20191219014907362" creator="EricShulman" modified="20191219014907362" modifier="EricShulman" title="$:/state/tab/moresidebar--1668485663">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
 </div>
-<div created="20191106145214106" creator="EricShulman" modified="20191204041048661" modifier="EricShulman" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20191106145214106" creator="EricShulman" modified="20191230111243161" modifier="EricShulman" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
 <div created="20191205081250052" creator="EricShulman" modified="20191205081250052" modifier="EricShulman" title="$:/state/tab/sidebar--1991666261">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20191105013223838" creator="EricShulman" modified="20191209091616260" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20191105013223838" creator="EricShulman" modified="20191230111237221" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20191105215331434" creator="EricShulman" modified="20191219014932246" modifier="EricShulman" title="$:/state/tab/sidebar--857975437">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -11864,7 +11857,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191230032343605" creator="EricShulman" list="CoverPage" modified="20191230033911211" modifier="EricShulman" title="$:/StoryList">
+<div created="20191230110425890" creator="EricShulman" list="CoverPage" modified="20191230111613372" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -12003,7 +11996,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191219104029433" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -15493,6 +15486,9 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;$action-sendmessage $message=&quot;tm-print&quot;/&gt;
    {{$:/core/images/print-button}}
 &lt;/$button&gt;</pre>
+</div>
+<div created="20191230110639894" creator="EricShulman" modified="20191230110916951" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyBook/PublishFilter">
+<pre>\define publishFilter() -[prefix[$:/temp]]</pre>
 </div>
 <div created="20151230031204587" creator="EricShulman" modified="20191216010151118" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyBook/Reset">
 <pre>\define reset_config()
