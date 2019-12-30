@@ -820,7 +820,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191229155031141" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20191230033911210" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -899,10 +899,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191229155031141" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20191230033911210" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10267,7 +10267,7 @@ exports.regexps = function(source,operator,options) {
 
 })();</pre>
 </div>
-<div created="20191228110234401" creator="EricShulman" modified="20191229154617024" modifier="EricShulman" module-type="utils" title="$:/core/modules/utils/dom/dragndrop.js" type="application/javascript">
+<div created="20191228110234401" creator="EricShulman" modified="20191230033520450" modifier="EricShulman" module-type="utils" title="$:/core/modules/utils/dom/dragndrop.js" type="application/javascript">
 <pre>/*\
 title: $:/core/modules/utils/dom/dragndrop.js
 type: application/javascript
@@ -10345,10 +10345,9 @@ exports.makeDraggable = function(options) {
 				if(dataTransfer.setDragImage) {
 					if(dragImageType === &quot;pill&quot;) {
 						dataTransfer.setDragImage(dragImage.firstChild,-16,-16);
-					} else if (dragImageType === &quot;blank&quot;) {					/* ELS */
-						dragImage = options.widget.document.createElement(&quot;div&quot;);	/* ELS */
-						options.widget.document.body.appendChild(dragImage);		/* ELS */
-						dataTransfer.setDragImage(dragImage,0,0);			/* ELS */
+					} else if (dragImageType === &quot;blank&quot;) {			/* ELS */
+						dragImage.removeChild(dragImage.firstChild);	/* ELS */
+						dataTransfer.setDragImage(dragImage,0,0);	/* ELS */
 					} else {
 						var r = domNode.getBoundingClientRect();
 						dataTransfer.setDragImage(domNode,event.clientX-r.left,event.clientY-r.top);
@@ -10829,8 +10828,9 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.29.074930">
-<pre>* 19.12.29.074930 $:/core/modules/widgets/draggable.js - added comments about dragImageType===&quot;blank&quot;
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.29.193734">
+<pre>* 19.12.29.193734 $:/core/modules/utils/dom/dragndrop.js - removeChild() for dragImageType==&quot;blank&quot; (avoids leaving DOM junk)
+* 19.12.29.074930 $:/core/modules/widgets/draggable.js - added comments about dragImageType===&quot;blank&quot;
 * 19.12.29.074930 $:/core/modules/utils/dom/dragndrop.js - added comments about dragImageType===&quot;blank&quot;
 * 19.12.28.032843 TiddlyTools/TOC/Macros - use dragimagetype=&quot;blank&quot; in $draggable
 * 19.12.28.032843 $:/core/modules/widgets/draggable.js - added dragimagetype param
@@ -11819,7 +11819,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11864,7 +11864,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191229154206960" creator="EricShulman" list="CoverPage" modified="20191229155031142" modifier="EricShulman" title="$:/StoryList">
+<div created="20191230032343605" creator="EricShulman" list="CoverPage" modified="20191230033911211" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -12003,7 +12003,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191219104029433" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191229155031140" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20191230033911209" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
