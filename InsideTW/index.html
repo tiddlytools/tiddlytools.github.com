@@ -183,6 +183,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/scraps</li>
@@ -268,6 +270,14 @@ Error message and password prompt
 <li>Benefits</li>
 
 <li>Bibliography</li>
+
+<li>Chapter_1</li>
+
+<li>Chapter_2</li>
+
+<li>Chapter_3</li>
+
+<li>Chapter_4</li>
 
 <li>Community</li>
 
@@ -397,14 +407,6 @@ Error message and password prompt
 
 <li>InsideTW</li>
 
-<li>InsideTW_V1</li>
-
-<li>InsideTW_V2</li>
-
-<li>InsideTW_V3</li>
-
-<li>InsideTW_V4</li>
-
 <li>Installation</li>
 
 <li>Introduction</li>
@@ -509,7 +511,7 @@ Error message and password prompt
 
 <li>TiddlyBook/Popups/Appendix</li>
 
-<li>TiddlyBook/Popups/Volumes</li>
+<li>TiddlyBook/Popups/Chapters</li>
 
 <li>TiddlyBook/Print/All</li>
 
@@ -820,7 +822,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20200103141608398" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -899,10 +901,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20200103141608398" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20200103141608398" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10656,6 +10658,11 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <pre>CoverPage
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/SlideBars/Panels/AuthorTools]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10820,8 +10827,15 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="19.12.30.031503">
-<pre>* 19.12.30.031503 TiddlyBook/PublishFilter - don't save $:/temp tiddlers (moved from $:/core/save/all)
+<div created="20191105045421013" creator="EricShulman" modified="20191206051454664" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="20.01.03.061602">
+<pre>* 20.01.03.061602 InsideTW_Vn=Chapter_n, &quot;Volume&quot;=&quot;Chapter&quot;, &quot;Chapter&quot;=&quot;Section&quot;
+* 20.01.03.061602 TiddlyTools/TOC/Macros - exclude &quot;Chapter&quot; tag
+* 20.01.03.061602 TiddlyBook/Popups/Chapters - renamed from TiddlyBook/Popup/Volumes
+* 20.01.03.061602 TiddlyTools/NavBar/Bottom - transclude TiddlyBook/Popups/Chapters
+* 20.01.03.061602 InsideTW - changed list field InsideTW_Vn to Chapter_n
+* 20.01.03.061602 Chapter_1, Chapter_2, Chapter_3, Chapter_4 - renamed from InsideTW_Vn and retagged children
+* 20.01.03.061602 TiddlyTools/Buttons/AdvancedSearch - removed max-height limit on AdvancedSearchPanel
+* 19.12.30.031503 TiddlyBook/PublishFilter - don't save $:/temp tiddlers (moved from $:/core/save/all)
 * 19.12.29.193734 $:/core/modules/utils/dom/dragndrop.js - removeChild() for dragImageType==&quot;blank&quot; (avoids leaving DOM junk)
 * 19.12.29.074930 $:/core/modules/widgets/draggable.js - added comments about dragImageType===&quot;blank&quot;
 * 19.12.29.074930 $:/core/modules/utils/dom/dragndrop.js - added comments about dragImageType===&quot;blank&quot;
@@ -11812,11 +11826,11 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191204113902557" creator="EricShulman" modified="20191204113902557" modifier="EricShulman" title="$:/state/importpreviewtype">
 <pre>$:/core/ui/ImportPreviews/Diff</pre>
 </div>
-<div created="20191104192304699" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20191104192304699" creator="EricShulman" modified="20200103141608397" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div created="20191105050746073" creator="EricShulman" modified="20191215161856640" modifier="EricShulman" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
+<div created="20191105050746073" creator="EricShulman" modified="20200103135409127" modifier="EricShulman" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div created="20191107120351309" creator="EricShulman" modified="20191203081336813" modifier="EricShulman" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Toolbars</pre>
@@ -11830,8 +11844,8 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191105015232846" creator="EricShulman" modified="20191125234327225" modifier="EricShulman" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20191105204343116" creator="EricShulman" modified="20191230111001102" modifier="EricShulman" title="$:/state/tab-513410736">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
+<div created="20191105204343116" creator="EricShulman" modified="20200103135329438" modifier="EricShulman" title="$:/state/tab-513410736">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div created="20191219014907362" creator="EricShulman" modified="20191219014907362" modifier="EricShulman" title="$:/state/tab/moresidebar--1668485663">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
@@ -11845,8 +11859,8 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20191105013223838" creator="EricShulman" modified="20191230111237221" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20191105215331434" creator="EricShulman" modified="20191219014932246" modifier="EricShulman" title="$:/state/tab/sidebar--857975437">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20191105215331434" creator="EricShulman" modified="20200103134745059" modifier="EricShulman" title="$:/state/tab/sidebar--857975437">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20191107120358335" creator="EricShulman" modified="20191203081339328" modifier="EricShulman" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
@@ -11857,7 +11871,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20191230110425890" creator="EricShulman" list="CoverPage" modified="20191230111613372" modifier="EricShulman" title="$:/StoryList">
+<div created="20200103124246049" creator="EricShulman" list="CoverPage" modified="20200103141608400" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22-prerelease">
@@ -11996,7 +12010,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20191219104029433" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20191230111613370" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20200103141608398" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -12025,7 +12039,7 @@ Professionally, I have been an ''independent software design consultant'' since 
 * using external image references
 </pre>
 </div>
-<div caption="Adding SideBar Buttons" created="20191219195705360" creator="EricShulman" description="explains how to create and position a new Page Control button in the sidebar" icon="$:/core/images/theme-button" modified="20191222181738586" modifier="EricShulman" tags="InsideTW_V3" title="AddingSidebarButtons">
+<div caption="Adding SideBar Buttons" created="20191219195705360" creator="EricShulman" description="explains how to create and position a new Page Control button in the sidebar" icon="$:/core/images/theme-button" modified="20200103131755512" modifier="EricShulman" tags="Chapter_3" title="AddingSidebarButtons">
 <pre>The right hand panel is called &quot;the Sidebar&quot;.  The &quot;Page Controls&quot; buttons that appear at the top of the sidebar (e.g., &quot;new tiddler&quot;, &quot;control panel&quot;, &quot;save changes&quot;, etc.) are not stored in a single tiddler.  Rather, each button definition has it's own tiddler, and these tiddlers are all tagged with &quot;$:/tags/PageControls&quot; to indicate that they should appear in that part of the Sidebar.
 
 To define your own button:
@@ -12185,6 +12199,55 @@ When you do decide to share your information, there are a number of options.  Yo
 * [[TiddlyWiki github project|https://github.com/Jermolene/TiddlyWiki5]]
 * Archives
 * etc.</pre>
+</div>
+<div caption="Welcome to TiddlyWiki" created="20150212052411402" creator="EricShulman" description=" is for ''Users'' who are just getting started with ~TiddlyWiki.  It includes an &lt;&lt;showCaption Introduction&gt;&gt; that explains the rationale and philosophy behind ~TiddlyWiki, as well as &lt;&lt;showCaption Tour&gt;&gt; of ~TiddlyWiki's features and functions, and instructions for &lt;&lt;showCaption Installation&gt;&gt; of ~TiddlyWiki on your system." icon="images/getstarted.svg" list="Introduction Tour Installation" modified="20200103130605239" modifier="EricShulman" tags="InsideTW Chapter" title="Chapter_1">
+<pre>This chapter is ''a guide for users'' who are just getting started with ~TiddlyWiki. No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
+
+&lt;&lt;&lt;
+* use a web browser to enter web addresses (URLs), click buttons and follow links
+* use input forms to choose settings, edit text, and cut/copy/paste content
+* upload, download and manage local files stored on your own device
+&lt;&lt;&lt;
+
+General knowledge of web development tools and languages -- such as HTML, CSS and Javascript -- is not required for the topics covered in this chapter.
+
+!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; sections in this chapter:
+&lt;&lt;&lt;
+&lt;&lt;showItems &quot;Chapter_1&quot; &quot;.larger&quot;&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
+<div caption="Writing with TiddlyWiki" created="20191207064703116" creator="EricShulman" description="is for ''Authors'' and other content creators that want to build their own ~TiddlyWiki documents.  It describes how to use &lt;&lt;showCaption TiddlerEditor&gt;&gt; to create and format content, and the steps for &lt;&lt;showCaption Saving&gt;&gt; and &lt;&lt;showCaption Sharing&gt;&gt; with others. It also explains how to use the power of ~TiddlyWiki [[Macros]], [[Widgets]], and [[Filters]] to create complex presentations and sophisticated interactive content." icon="$:/core/images/edit-button" list="TiddlerEditor Tagging CustomFields Transclusions MacrosWidgetsFilters Saving Sharing" modified="20200103131213687" modifier="EricShulman" tags="InsideTW Chapter" title="Chapter_2">
+<pre>This chapter is ''a guide for authors and other content creators'' who want to build interactive presentations with ~TiddlyWiki.  No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
+
+&lt;&lt;&lt;
+* use a web browser to enter web addresses (URLs), click buttons and follow links
+* use input forms to choose settings, edit text, and cut/copy/paste content
+* upload, download and manage local files stored on your own device
+&lt;&lt;&lt;
+
+In addition, although familiarity with web development tools and languages -- such as HTML, CSS and Javascript -- is not required, it can be ''__helpful for the topics covered in this chapter__''.
+
+!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; sections in this chapter:
+&lt;&lt;&lt;
+&lt;&lt;showItems &quot;Chapter_2&quot; &quot;.larger&quot;&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
+<div caption="Customizing your TiddlyWiki" created="20191207070155987" creator="EricShulman" description="is for ''Designers'' and information specialists that want to modify ~TiddlyWiki's standard layout and features.  Using [[Templates]], [[Styles]], and [[Plugins]], you can enhance and extend the default interface to provide unique and purpose-built experiences for yourself and others." icon="$:/core/images/theme-button" list="InfoTiddlers" modified="20200103131834988" modifier="EricShulman" tags="InsideTW Chapter" title="Chapter_3">
+<pre>!!''The contents of this chapter are pending.''
+
+!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; sections in this chapter:
+&lt;&lt;&lt;
+&lt;&lt;showItems &quot;Chapter_3&quot; &quot;.larger&quot;&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
+<div caption="Programming for TiddlyWiki" created="20191207070400091" creator="EricShulman" description="is for ''Developers'' that want to provide new features and capabilities for ~TiddlyWiki.  It outlines the techniques and procedures for creating and programming custom-coded plugins and integrating third-party function libraries that can then be packaged, distributed and installed for use in other ~TiddlyWiki documents." icon="images/developer.svg" list="" modified="20200103131257647" modifier="EricShulman" tags="InsideTW Chapter" title="Chapter_4">
+<pre>!!''The contents of this chapter are pending.''
+
+!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; sections in this chapter:
+&lt;&lt;&lt;
+&lt;&lt;showIcon Preface&gt;&gt;return to&lt;br&gt;@@.largest &lt;&lt;showCaption Preface&gt;&gt;@@
+@@.clear @@
+&lt;&lt;&lt;</pre>
 </div>
 <div caption="The Power of Community" created="20150224232735024" creator="EricShulman" icon="images/community.svg" modified="20191127032035222" modifier="EricShulman" tags="Introduction" title="Community">
 <pre>* open source means YOU can change anything you want
@@ -12348,7 +12411,7 @@ John Kerr,
 Hans Wobbe,
 Olivier Caleff</pre>
 </div>
-<div caption="Custom Fields" created="20150328225518554" creator="EricShulman" description="lets you add extra fields in addition to the default text, tags, and type fields.  This includes defining and adding special &quot;caption&quot; fields to provide alternative display text to be used in place of the tiddler's title." icon="$:/core/images/storyview-pop" modified="20191218164523080" modifier="EricShulman" tags="InsideTW_V2" title="CustomFields">
+<div caption="Custom Fields" created="20150328225518554" creator="EricShulman" description="lets you add extra fields in addition to the default text, tags, and type fields.  This includes defining and adding special &quot;caption&quot; fields to provide alternative display text to be used in place of the tiddler's title." icon="$:/core/images/storyview-pop" modified="20200103131631639" modifier="EricShulman" tags="Chapter_2" title="CustomFields">
 <pre>* add new fields: extend tiddler container to add your own custom-named inputs
 * common fields recognized by the TWCore: caption, list, list-before, list-after
 * other types for advanced usage (e.g. module-type)
@@ -14462,7 +14525,7 @@ own your data 100% - open source and free&lt;/dc:description&gt;
 * exporting to stand-alone
 * exporting to .tid files (for nodejs)</pre>
 </div>
-<div caption="The Info Mechanism" created="20191221150723798" creator="EricShulman" description="describes special system tiddlers that contain various information about the browser and your working environment" icon="$:/core/images/theme-button" modified="20191221160258908" modifier="EricShulman" tags="InsideTW_V3" title="InfoTiddlers">
+<div caption="The Info Mechanism" created="20191221150723798" creator="EricShulman" description="describes special system tiddlers that contain various information about the browser and your working environment" icon="$:/core/images/theme-button" modified="20200103131739049" modifier="EricShulman" tags="Chapter_3" title="InfoTiddlers">
 <pre>When ~TiddlyWiki starts, it automatically creates a set of special system tiddlers, found in the ''$:/info'' section of the shadow tiddlers.
 
 These shadow tiddlers contains an assortment of values related to the browser and system in which the ~TiddlyWiki document is being used.  These values can be used to implement a more ''responsive layout using browser-specific custom CSS'', create links based on the current URL, etc.
@@ -14500,66 +14563,17 @@ Press the &quot;install&quot; button to add this plugin to your current TiddlyWi
 Once that is completed, you will find [[$:/info/browser/name]] and [[$:/info/browser/version]] now exist in your document.
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Inside TiddlyWiki" created="20191207065629498" creator="EricShulman" icon="images/cover.png" list="CoverPage Contents Preface InsideTW_V1 InsideTW_V2 InsideTW_V3 InsideTW_V4 Appendix" modified="20191211161037310" modifier="EricShulman" tags="bookcover" title="InsideTW">
+<div caption="Inside TiddlyWiki" created="20191207065629498" creator="EricShulman" icon="images/cover.png" list="CoverPage Contents Preface Chapter_1 Chapter_2 Chapter_3 Chapter_4 Appendix" modified="20200103131147858" modifier="EricShulman" tags="bookcover" title="InsideTW">
 <pre>{{||CoverPage}}</pre>
 </div>
-<div caption="Welcome to TiddlyWiki" created="20150212052411402" creator="EricShulman" description=" is for ''Users'' who are just getting started with ~TiddlyWiki.  It includes an &lt;&lt;showCaption Introduction&gt;&gt; that explains the rationale and philosophy behind ~TiddlyWiki, as well as &lt;&lt;showCaption Tour&gt;&gt; of ~TiddlyWiki's features and functions, and instructions for &lt;&lt;showCaption Installation&gt;&gt; of ~TiddlyWiki on your system." icon="images/getstarted.svg" list="Introduction Tour Installation" modified="20191210211106832" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V1">
-<pre>This volume is ''a guide for users'' who are just getting started with ~TiddlyWiki. No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
-
-&lt;&lt;&lt;
-* use a web browser to enter web addresses (URLs), click buttons and follow links
-* use input forms to choose settings, edit text, and cut/copy/paste content
-* upload, download and manage local files stored on your own device
-&lt;&lt;&lt;
-
-General knowledge of web development tools and languages -- such as HTML, CSS and Javascript -- is not required for the topics covered in this volume.
-
-!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chapters in this volume:
-&lt;&lt;&lt;
-&lt;&lt;showItems &quot;InsideTW_V1&quot; &quot;.larger&quot;&gt;&gt;
-&lt;&lt;&lt;</pre>
-</div>
-<div caption="Writing with TiddlyWiki" created="20191207064703116" creator="EricShulman" description="is for ''Authors'' and other content creators that want to build their own ~TiddlyWiki documents.  It describes how to use &lt;&lt;showCaption TiddlerEditor&gt;&gt; to create and format content, and the steps for &lt;&lt;showCaption Saving&gt;&gt; and &lt;&lt;showCaption Sharing&gt;&gt; with others. It also explains how to use the power of ~TiddlyWiki [[Macros]], [[Widgets]], and [[Filters]] to create complex presentations and sophisticated interactive content." icon="$:/core/images/edit-button" list="TiddlerEditor Tagging CustomFields Transclusions MacrosWidgetsFilters Saving Sharing" modified="20191218165743570" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V2">
-<pre>This volume is ''a guide for authors and other content creators'' who want to build interactive presentations with ~TiddlyWiki.  No prior experience with either [[TiddlyWiki5|http://www.TiddlyWiki.com]] or [[TiddlyWiki Classic|http://classic.TiddlyWiki.com]] is expected; however, some ''basic computer and Internet skills are assumed'', including the ability to:
-
-&lt;&lt;&lt;
-* use a web browser to enter web addresses (URLs), click buttons and follow links
-* use input forms to choose settings, edit text, and cut/copy/paste content
-* upload, download and manage local files stored on your own device
-&lt;&lt;&lt;
-
-In addition, although familiarity with web development tools and languages -- such as HTML, CSS and Javascript -- is not required, it can be ''__helpful for the topics covered in this volume__''.
-
-!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chapters in this volume:
-&lt;&lt;&lt;
-&lt;&lt;showItems &quot;InsideTW_V2&quot; &quot;.larger&quot;&gt;&gt;
-&lt;&lt;&lt;</pre>
-</div>
-<div caption="Customizing your TiddlyWiki" created="20191207070155987" creator="EricShulman" description="is for ''Designers'' and information specialists that want to modify ~TiddlyWiki's standard layout and features.  Using [[Templates]], [[Styles]], and [[Plugins]], you can enhance and extend the default interface to provide unique and purpose-built experiences for yourself and others." icon="$:/core/images/theme-button" list="InfoTiddlers" modified="20191221160258908" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V3">
-<pre>!!''The contents of this volume are pending.''
-
-!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chapters in this volume:
-&lt;&lt;&lt;
-&lt;&lt;showItems &quot;InsideTW_V3&quot; &quot;.larger&quot;&gt;&gt;
-&lt;&lt;&lt;</pre>
-</div>
-<div caption="Programming for TiddlyWiki" created="20191207070400091" creator="EricShulman" description="is for ''Developers'' that want to provide new features and capabilities for ~TiddlyWiki.  It outlines the techniques and procedures for creating and programming custom-coded plugins and integrating third-party function libraries that can then be packaged, distributed and installed for use in other ~TiddlyWiki documents." icon="images/developer.svg" list="" modified="20191221150651835" modifier="EricShulman" tags="InsideTW Volume" title="InsideTW_V4">
-<pre>!!''The contents of this volume are pending.''
-
-!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; chapters in this volume:
-&lt;&lt;&lt;
-&lt;&lt;showIcon Preface&gt;&gt;return to&lt;br&gt;@@.largest &lt;&lt;showCaption Preface&gt;&gt;@@
-@@.clear @@
-&lt;&lt;&lt;</pre>
-</div>
-<div caption="Installation and Setup" created="20150212024610407" creator="EricShulman" description="gets you started with using ~TiddlyWiki on your own system.  The process and options for downloading, installing and configuring ~TiddlyWiki are explained.  After completing this section, you will be ready to ''create ~TiddlyWiki documents for yourself and others''." icon="$:/core/images/options-button" list="Downloading StartingTiddlyWiki Setup" modified="20191210092907370" modifier="EricShulman" tags="InsideTW_V1" title="Installation">
+<div caption="Installation and Setup" created="20150212024610407" creator="EricShulman" description="gets you started with using ~TiddlyWiki on your own system.  The process and options for downloading, installing and configuring ~TiddlyWiki are explained.  After completing this section, you will be ready to ''create ~TiddlyWiki documents for yourself and others''." icon="$:/core/images/options-button" list="Downloading StartingTiddlyWiki Setup" modified="20200103130820839" modifier="EricShulman" tags="Chapter_1" title="Installation">
 <pre>In this section, we will discuss how to get started using TiddlyWiki, including how to get either the empty stand-alone file, or the installation package for the nodejs version, as well as recommended choices for where to put the downloaded file(s), and how to set up the working directories.  Then, steps for startup (e.g., loading the file into your browser, or starting nodejs from the CLI) and configuring standard items (e.g., title) and options (control panel settings).
 
 At the end of this section, the user should be ready to start exploring TiddlyWiki on their own system.
 
 &lt;&lt;showLinks&gt;&gt;</pre>
 </div>
-<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" description="describes key concepts in ~TiddlyWiki, as well as a summary of benefits, typical users, and common scenarios in which ~TiddlyWiki can be used so you can ''learn how ~TiddlyWiki fits your needs''." icon="images/concepts.svg" list="WhatsInAName TheWikiWay WhatIsTiddlyWiki MicroContent Benefits Roles Scenarios Community" modified="20191220000520313" modifier="EricShulman" tags="InsideTW_V1" title="Introduction">
+<div caption="Introduction to TiddlyWiki" created="20150212021144203" creator="EricShulman" description="describes key concepts in ~TiddlyWiki, as well as a summary of benefits, typical users, and common scenarios in which ~TiddlyWiki can be used so you can ''learn how ~TiddlyWiki fits your needs''." icon="images/concepts.svg" list="WhatsInAName TheWikiWay WhatIsTiddlyWiki MicroContent Benefits Roles Scenarios Community" modified="20200103130752654" modifier="EricShulman" tags="Chapter_1" title="Introduction">
 <pre>@@.center ''//&quot;Unless you've already seen ~TiddlyWiki, we guarantee you've never seen anything like ~TiddlyWiki.&quot;//''@@
 @@.center.smaller - //&quot;[[Discover TiddlyWiki|http://tiddlywiki.com/#Discover%20TiddlyWiki]]&quot; on [ext[http://tiddlywiki.com]]//@@
 
@@ -14568,11 +14582,11 @@ At the end of this section, the user should be ready to start exploring TiddlyWi
 
 @@.larger Although most applications claim to be unique, __''~TiddlyWiki really //is// very different''__ from nearly every other application you may be familiar with.@@
 
-This chapter will help you ''learn more about the overall concepts and general philosophy'' that helps ~TiddlyWiki deliver it's unique advantages.
+The topics in this section will help you ''learn more about the overall concepts and general philosophy'' that helps ~TiddlyWiki deliver it's unique advantages.
 
 These topics also suggest ''who might benefit from using ~TiddlyWiki'' as well as some of many ''ways that people use ~TiddlyWiki'' in their everyday lives to help manage their personal, social, commercial, and professional information.
 
-This chapter also includes a brief explanation of the ''open source software development'' process that enables a wide variety of individuals and organizations to contribute to an ongoing continuous improvement process for enhancing and extending ~TiddlyWiki and sharing its unique abilities with a ''world-wide community of users, authors, designers and developers.''
+This section also includes a brief explanation of the ''open source software development'' process that enables a wide variety of individuals and organizations to contribute to an ongoing continuous improvement process for enhancing and extending ~TiddlyWiki and sharing its unique abilities with a ''world-wide community of users, authors, designers and developers.''
 @@.clear @@</pre>
 </div>
 <div caption="Legal Statements" created="20150510064307939" creator="EricShulman" icon="images/legal.svg" modified="20191209220059885" modifier="EricShulman" tags="Appendix" title="Legal">
@@ -14651,7 +14665,7 @@ Such use does not create or imply any endorsement, agency or partner relationshi
 <div caption="Macros" created="20191211043626369" creator="EricShulman" icon="$:/core/images/spiral" modified="20191218165300867" modifier="EricShulman" tags="MacrosWidgetsFilters" title="Macros">
 <pre></pre>
 </div>
-<div caption="Macros, Widgets, and Filters (Oh My!)" created="20191218164849034" creator="EricShulman" description="describes advanced syntax for creating and embedding re-usable content pieces (macros), adding programmable content (widgets), and automatic combinations of content from other tiddlers (filters)" icon="$:/core/images/spiral" list="Macros Widgets Filters" modified="20191218165317185" modifier="EricShulman" tags="InsideTW_V2" title="MacrosWidgetsFilters">
+<div caption="Macros, Widgets, and Filters (Oh My!)" created="20191218164849034" creator="EricShulman" description="describes advanced syntax for creating and embedding re-usable content pieces (macros), adding programmable content (widgets), and automatic combinations of content from other tiddlers (filters)" icon="$:/core/images/spiral" list="Macros Widgets Filters" modified="20200103131604245" modifier="EricShulman" tags="Chapter_2" title="MacrosWidgetsFilters">
 <pre></pre>
 </div>
 <div caption="MicroContent: Smaller is Better" created="20191110054533657" creator="EricShulman" modified="20191127094008452" modifier="EricShulman" tags="Introduction" title="MicroContent">
@@ -14810,15 +14824,15 @@ __''~$:/config''__&lt;br&gt;
 &lt;&lt;ShowModifiedShadows&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="Preface" created="20150212061302888" creator="EricShulman" icon="images/preface.svg" list="Skills AboutTheAuthor Credits Legal" modified="20191211073559768" modifier="EricShulman" tags="InsideTW" title="Preface">
+<div caption="Preface" created="20150212061302888" creator="EricShulman" icon="images/preface.svg" list="Skills AboutTheAuthor Credits Legal" modified="20200103125841412" modifier="EricShulman" tags="InsideTW" title="Preface">
 <pre>This book is about ''~TiddlyWiki (version 5+), an open-source, self-contained, portable wiki system created by [[Jeremy Ruston|History]].''
 
 &lt;&lt;showLinks &quot;@@.smaller ''//More information about this book://''&lt;br&gt;@@&quot;
    &quot;floatright tt-shadowbox&quot; style:&quot;margin:0.5em&quot;&gt;&gt;
 
-!!There are &lt;$count filter=&quot;[tag[Volume]]&quot;/&gt; volumes in this book:
+!!There are &lt;$count filter=&quot;[tag[Chapter]]&quot;/&gt; chapters in this book:
 &lt;&lt;&lt;
-&lt;&lt;showItems &quot;Volume&quot; &quot;.largest&quot;&gt;&gt;
+&lt;&lt;showItems &quot;Chapter&quot; &quot;.largest&quot;&gt;&gt;
 &lt;&lt;&lt;
 
 The @@.larger &lt;&lt;showCaption Appendix&gt;&gt;@@ provides ''additional information'' that may be helpful.
@@ -14856,7 +14870,7 @@ __Refer to the [[Appendix]] for links to more ~TiddlyWiki documentation and tech
 ''Developers create new general purpose or use-case specific features and functions''.  They can use all the power of ~TiddlyWiki to implement custom-coded plugins that add new syntax, incorporate external function libraries, or make modifications to the programming of the ~TiddlyWiki core system itself to provide new capabilities for entering, viewing and manipulating specialized kinds of information.
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Saving Your Work" created="20150212024939070" creator="EricShulman" description="explains the options for saving your work to local filesystems, networked servers, and Internet cloud services." icon="images/saving.svg" list="DownloadSaver OtherSavers TiddlyDesktop" modified="20191211044902594" modifier="EricShulman" tags="InsideTW_V2" title="Saving">
+<div caption="Saving Your Work" created="20150212024939070" creator="EricShulman" description="explains the options for saving your work to local filesystems, networked servers, and Internet cloud services." icon="images/saving.svg" list="DownloadSaver OtherSavers TiddlyDesktop" modified="20200103131543603" modifier="EricShulman" tags="Chapter_2" title="Saving">
 <pre>&lt;&lt;list-links [tag[Saving]]&gt;&gt;</pre>
 </div>
 <div caption="What Can TiddlyWiki Do?" created="20150212044158855" creator="EricShulman" icon="images/questions.svg" modified="20191127032008876" modifier="EricShulman" tags="Introduction" title="Scenarios">
@@ -14936,7 +14950,7 @@ There are several tabs in the control panel:
 <div caption="Control Panel: Settings" created="20150320080528003" creator="EricShulman" modified="20191208095056637" modifier="EricShulman" tags="Setup" title="Setup/Settings">
 <pre></pre>
 </div>
-<div caption="Sharing Your Work" created="20191209165613100" creator="EricShulman" description="Methods for importing/exporting content between ~TiddlyWiki documents are described, as well as general strategies to help you ''__manage, share, and publish your documents for use by other people__''." icon="$:/core/images/export-button" list="ImportExport" modified="20191211050519699" modifier="EricShulman" tags="InsideTW_V2" title="Sharing">
+<div caption="Sharing Your Work" created="20191209165613100" creator="EricShulman" description="Methods for importing/exporting content between ~TiddlyWiki documents are described, as well as general strategies to help you ''__manage, share, and publish your documents for use by other people__''." icon="$:/core/images/export-button" list="ImportExport" modified="20200103131529521" modifier="EricShulman" tags="Chapter_2" title="Sharing">
 <pre>&lt;&lt;list-links [tag[Sharing]]&gt;&gt;
 * sharing via email, usb stick, etc.
 * posting on network drive
@@ -14983,7 +14997,7 @@ There are several tabs in the control panel:
 ** System
 ** Shadows</pre>
 </div>
-<div caption="Tagging Tiddlers" created="20150215044807386" creator="EricShulman" description="shows you how to associate keywords with a tiddler so that you can quickly search and locate the tiddler later on.  Tags can also be used with transclusion and filters in order to combine and present information without needing to explicitly list each tiddler's title." icon="$:/core/images/tag-button" modified="20191211045545716" modifier="EricShulman" tags="InsideTW_V2" title="Tagging">
+<div caption="Tagging Tiddlers" created="20150215044807386" creator="EricShulman" description="shows you how to associate keywords with a tiddler so that you can quickly search and locate the tiddler later on.  Tags can also be used with transclusion and filters in order to combine and present information without needing to explicitly list each tiddler's title." icon="$:/core/images/tag-button" modified="20200103131513475" modifier="EricShulman" tags="Chapter_2" title="Tagging">
 <pre>Although tagging is optional, its a good idea to assign at least one tag keyword to a tiddler, so that you can find it easier later on, using the [[Navigation]] features of TiddlyWiki.
 
 * tags: keywords for grouping, searching and controlling use of individual tiddlers (e.g., $:/tags/ViewTemplate).  Droplist shows tags already used. Input field to enter new tag values. Add button accepts new entry.
@@ -15124,16 +15138,16 @@ Many people, after having experienced the way that wiki systems allow them to ea
 
 ~TiddlyWiki can also be used for ''group collaboration''; however, this typically requires the installation and setup of a small utility application ([[NodeJS]]) that allows ~TiddlyWiki ''operate as its own webserver'' that permits users to remotely edit and share content directly from their web browser.</pre>
 </div>
-<div caption="The Tiddler Editor" created="20150215044413268" creator="EricShulman" description="describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content" icon="images/editing2.svg" list="CreatingTiddlers BasicFormatting AdvancedFormatting EditorToolbar AddingImages TiddlerLinks ExternalLinks" modified="20191218164515916" modifier="EricShulman" tags="InsideTW_V2" title="TiddlerEditor">
+<div caption="The Tiddler Editor" created="20150215044413268" creator="EricShulman" description="describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content" icon="images/editing2.svg" list="CreatingTiddlers BasicFormatting AdvancedFormatting EditorToolbar AddingImages TiddlerLinks ExternalLinks" modified="20200103131453151" modifier="EricShulman" tags="Chapter_2" title="TiddlerEditor">
 <pre>@@float:right;border:1px solid;[img width=300 float=right [images/tiddlereditor.png]]@@
-This chapter describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content, and adding images and links
+This section describes the parts of the Tiddler Editor, and the procedures for creating a tiddler, including entering and formatting content, and adding images and links.
 
-!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; topics in this chapter:
+!!There are &lt;$count filter=&quot;[tag&lt;currentTiddler&gt;]&quot;/&gt; topics in this section:
 &lt;&lt;&lt;
 &lt;&lt;showItems &quot;TiddlerEditor&quot; &quot;.larger&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="Setting the Tiddler Height" created="20191221154029742" creator="EricShulman" description="describes how to control the height of the tiddler viewer and the text input area of the tiddler editor" icon="$:/core/images/theme-button" modified="20191222181824216" modifier="EricShulman" tags="InsideTW_V3" title="TiddlerHeight">
+<div caption="Setting the Tiddler Height" created="20191221154029742" creator="EricShulman" description="describes how to control the height of the tiddler viewer and the text input area of the tiddler editor" icon="$:/core/images/theme-button" modified="20200103131722853" modifier="EricShulman" tags="Chapter_3" title="TiddlerHeight">
 <pre>By default, the tiddler editor's text input area automatically adjusts to fit the number of lines of content.  When __editing a tiddler__, there is a button in the editor toolbar that can be used to limit the height of the tiddler text area input.
 
 You can use CSS to limit the maximum height when __viewing a tiddler__.  To achieve this, create a tiddler tagged with &lt;&lt;tag $:/tags/Stylesheet&gt;&gt; and add the following line to that tiddler:
@@ -15380,15 +15394,15 @@ From then on, changes to the tiddler values update the corresponding cookie valu
    &lt;/div&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191211132714310" creator="EricShulman" modified="20191211140657891" modifier="EricShulman" title="TiddlyBook/Popups/Volumes">
-<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; class=&quot;tc-btn-invisible hideForPrint&quot; tooltip=&quot;Volumes&quot;&gt;
+<div created="20191211132714310" creator="EricShulman" modified="20200103130202463" modifier="EricShulman" title="TiddlyBook/Popups/Chapters">
+<pre>&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/chapters&quot;&gt;&gt; class=&quot;tc-btn-invisible hideForPrint&quot; tooltip=&quot;Chapters&quot;&gt;
    &lt;span style=&quot;font-size:250%;&quot; class=&quot;resize&quot;&gt;{{images/bibliography.svg}}&lt;/span&gt;
 &lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/volumes&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/chapters&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tt-drop-down hideForPrint&quot;
    position=&quot;above&quot; style=&quot;position:absolute;left:1em;bottom:3.5em;&quot;&gt;
-   ''Volumes''
+   ''Chapters''
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;width:max-content;text-align:left;white-space:nowrap;&quot;&gt;
-      &lt;$list filter=&quot;[tag[Volume]]&quot; variable=&quot;here&quot;&gt;
+      &lt;$list filter=&quot;[tag[Chapter]]&quot; variable=&quot;here&quot;&gt;
          &lt;$macrocall $name=&quot;showIcon&quot; tid=&lt;&lt;here&gt;&gt; style=&quot; &quot;/&gt;
          @@.large &lt;$macrocall $name=&quot;showCaption&quot; tid=&lt;&lt;here&gt;&gt; /&gt;@@
          @@.clear @@
@@ -15968,7 +15982,7 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 <div created="20150508004522270" creator="EricShulman" modified="20191212052552457" modifier="EricShulman" tags="$:/tags/Image" title="TiddlyTools/Backgrounds/wood.jpg" type="image/jpeg">
 <pre>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</pre>
 </div>
-<div created="20150426211642738" creator="EricShulman" modified="20191223120649821" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
+<div created="20150426211642738" creator="EricShulman" modified="20200103134026341" modifier="EricShulman" tags="" title="TiddlyTools/Buttons/AdvancedSearch">
 <pre>\define gotoPanel()
 &lt;div class=&quot;tc-popup-keep tt-drop-down&quot;&gt;
    ''Goto Tiddler''
@@ -15983,7 +15997,7 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
    &lt;div style=&quot;float:right;&quot;&gt;[[PowerSearch|TiddlyTools/FilterGenerators/PowerSearch]]&lt;/div&gt;
    [[$:/AdvancedSearch]]
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;background:#f0f0f0&quot;&gt;
-      &lt;div style=&quot;overflow-x:hidden;overflow-y:auto;max-height:30vh;padding-right:1.5em;white-space:nowrap&quot;&gt;
+      &lt;div style=&quot;overflow-x:hidden;Xoverflow-y:auto;Xmax-height:30vh;padding-right:1.5em;white-space:nowrap&quot;&gt;
          {{||$:/AdvancedSearch}}
       &lt;/div&gt;
    &lt;/div&gt;
@@ -17327,10 +17341,10 @@ The ``&lt;&lt;more&gt;&gt;`` macro applies a filter and then displays the first 
 <div created="20180101214003316" creator="EricShulman" modified="20180101214759607" modifier="EricShulman" tags="$:/tags/RawMarkup" title="TiddlyTools/Markup/MobileViewport">
 <pre>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=8.0, minimum-scale=-8.0, user-scalable=1&quot; /&gt;</pre>
 </div>
-<div created="20151218040735076" creator="EricShulman" modified="20191211232340764" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TiddlyTools/NavBar/Bottom">
+<div created="20151218040735076" creator="EricShulman" modified="20200103124539812" modifier="EricShulman" tags="$:/tags/ViewTemplate" title="TiddlyTools/NavBar/Bottom">
 <pre>&lt;$list filter=&quot;[&lt;currentTiddler&gt;!tag[bookcover]!is[system]]&quot;&gt;
    &lt;div class=&quot;hideForPrint&quot;&gt;
-      @@.floatleft  {{TiddlyBook/Popups/Volumes}}  @@
+      @@.floatleft  {{TiddlyBook/Popups/Chapters}}  @@
       @@.floatright {{TiddlyBook/Popups/Appendix}} @@
       &lt;div style=&quot;text-align:center;white-space:nowrap&quot;&gt;
          &lt;$wikify name=&quot;all&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;toc-list&quot; here={{TiddlyBook/RootTag}} /&gt;&quot;&quot;&quot;&gt;
@@ -20248,10 +20262,10 @@ body.tc-body { background-size:100% 100%; }
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20150426232927130" creator="EricShulman" modified="20191228112703589" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
+<div created="20150426232927130" creator="EricShulman" modified="20200103130059650" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/TOC/Macros">
 <pre>\define toc-config()         $:/config/TiddlyTools/TOC
 \define toc-template()       TiddlyTools/TOC/Template
-\define toc-ignore-tags()    Volume bookcover
+\define toc-ignore-tags()    bookcover Chapter
 
 \define toc-open-all()       $(toc-config)$##OpenAll
 \define toc-branch-is-open() $(toc-config)$##$(path)$/$(item)$
@@ -20525,7 +20539,7 @@ exports.scrollhere = ScrollHereWidget;
    &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="A Quick Tour" created="20150212024752895" creator="EricShulman" description="presents an overview of the standard features and layout of ~TiddlyWiki so you can familiarize yourself with the basic operation and workflow.  After reading this section, you should ''feel comfortable using ~TiddlyWiki documents created by others''." icon="images/tour.svg" list="TheStoryRiver TheTiddlerViewer TheSidebar TheControlPanel" modified="20191210092839246" modifier="EricShulman" tags="InsideTW_V1" title="Tour">
+<div caption="A Quick Tour" created="20150212024752895" creator="EricShulman" description="presents an overview of the standard features and layout of ~TiddlyWiki so you can familiarize yourself with the basic operation and workflow.  After reading this section, you should ''feel comfortable using ~TiddlyWiki documents created by others''." icon="images/tour.svg" list="TheStoryRiver TheTiddlerViewer TheSidebar TheControlPanel" modified="20200103130845875" modifier="EricShulman" tags="Chapter_1" title="Tour">
 <pre>@@float:right;text-align:right;[img width=300 [images/twcomsnap.png]]@@The standard ~TiddlyWiki page layout is divided into two parts.
 &lt;&lt;showLinks &quot;&quot; &quot;floatleft tt-shadowbox&quot; style:&quot;margin:0.5em&quot;&gt;&gt;
 
@@ -20537,7 +20551,7 @@ It also provides a [[Search|TheSearchTool]] mechanism for quickly finding tiddle
 
 In addition, the [[Sidebar Lists|TheSidebarLists]] show a set of tabs that organize your tiddlers based on different categories, such as &quot;Open Tiddlers&quot;, &quot;Recent Changes&quot; (sorted by modification date), &quot;All Tiddlers&quot; (sorted by name), etc.  These tabs make it easy to manually navigate directly to the tiddlers you want.</pre>
 </div>
-<div caption="Transclusions" created="20191208100052216" creator="EricShulman" description="shows you how to embed content from other tiddlers into the current tiddler.  This allows you to easily combine and present information that is stored in several tiddlers." icon="$:/core/images/transcludify" modified="20191218164515916" modifier="EricShulman" tags="InsideTW_V2" title="Transclusions">
+<div caption="Transclusions" created="20191208100052216" creator="EricShulman" description="shows you how to embed content from other tiddlers into the current tiddler.  This allows you to easily combine and present information that is stored in several tiddlers." icon="$:/core/images/transcludify" modified="20200103131418158" modifier="EricShulman" tags="Chapter_2" title="Transclusions">
 <pre>* Simple Transclusion
 ** &quot;translation&quot; + &quot;inclusion&quot;
 ** allows embedding of information and formatting stored in different tiddlers
