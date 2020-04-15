@@ -153,6 +153,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/StoryList</li>
@@ -9403,14 +9405,17 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
+<div created="20200415051553548" modified="20200415053540836" title="$:/state/tab--1498284803">
+<pre>TiddlyTools/FilterGenerators/PowerSearch</pre>
+</div>
 <div created="20191224045300395" modified="20191224045300395" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20200415051550593" list="" modified="20200415053618146" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20191224004228605" modified="20191224004249355" title="$:/temp/advancedsearch">
-<pre>shadow</pre>
+<div created="20191224004228605" modified="20200415051556566" title="$:/temp/advancedsearch">
+<pre>adv</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9585,7 +9590,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191212065707527" creator="EricShulman" modified="20191224004541923" modifier="EricShulman" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20200415053500056" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define tidinput()   $:/temp/TiddlyTools/PowerSearch/tids
 \define preinput()   $:/temp/TiddlyTools/PowerSearch/prefix
 \define taginput()   $:/temp/TiddlyTools/PowerSearch/tag
@@ -9662,7 +9667,7 @@ regexp
 \end
 
 \define getTerm()
-&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
+&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getOptions()
@@ -9673,8 +9678,8 @@ regexp
    class=&quot;tc-drop-down tt-drop-down tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;&quot;&gt;
    ~PowerSearch display options:
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:right;&quot;&gt;
-      max height:&lt;$edit-text tiddler=&lt;&lt;maxheight&gt;&gt; tag=&quot;input&quot; size=&quot;3&quot; default=&quot;&quot; placeholder=&lt;&lt;default_maxheight&gt;&gt; /&gt;
-         columns:&lt;$edit-text tiddler=&lt;&lt;columns&gt;&gt;   tag=&quot;input&quot; size=&quot;1&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt;   /&gt;
+      max height:&lt;$edit-text tiddler=&lt;&lt;maxheight&gt;&gt; tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_maxheight&gt;&gt; /&gt;
+         columns:&lt;$edit-text tiddler=&lt;&lt;columns&gt;&gt;   tag=&quot;input&quot; size=&quot;1&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt;   /&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -9764,15 +9769,16 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 
 \define setStyles()
 &lt;style&gt;
-.columns1   { display:block; column-count:1; column-gap:1em; }
-.columns2   { display:block; column-count:2; column-gap:1em; }
-.columns3   { display:block; column-count:3; column-gap:1em; }
-.columns4   { display:block; column-count:4; column-gap:1em; }
-.columns5   { display:block; column-count:5; column-gap:1em; }
+.columns1    { display:block; column-count:1; column-gap:1em; }
+.columns2    { display:block; column-count:2; column-gap:1em; }
+.columns3    { display:block; column-count:3; column-gap:1em; }
+.columns4    { display:block; column-count:4; column-gap:1em; }
+.columns5    { display:block; column-count:5; column-gap:1em; }
 .borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
-.small      { font-size:80%; line-height:1.3em; }
-.nowrap     { white-space:nowrap; }
-.editwidth  { width:$(inputwidth)$; }
+.small       { font-size:80%; line-height:1.3em; }
+.nowrap      { white-space:nowrap; }
+.powersearch_editwidth   { width:$(inputwidth)$ !important; }
+.powersearch_optionwidth { width:auto !important; }
 &lt;/style&gt;
 \end
 
@@ -9934,7 +9940,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20191224040045616" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20200415052955106" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -9952,9 +9958,9 @@ __find titles containing__:&lt;br&gt;
           goto:&quot;no&quot;)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
-   .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em); height:1.5em; margin-top:0.1em; }
-   .selectCombo_$id$ { position:absolute; width:100%;                height:1.5em; margin-top:0.1em; }
-   .selectPopup_$id$ { position:absolute; width:$listwidth$;         z-index:1;    margin-top:1.6em; }
+   .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em) !important; height:1.5em; margin-top:0.1em; }
+   .selectCombo_$id$ { position:absolute; width:100%                !important; height:1.5em; margin-top:0.1em; }
+   .selectPopup_$id$ { position:absolute; width:$listwidth$         !important; z-index:1;    margin-top:1.6em; }
 &lt;/style&gt;
 &lt;$set name=&quot;goto&quot; filter=&quot;[title[$goto$]!match[no]]&quot; value=&quot;&lt;$action-navigate $to={{$tiddler$!!$field$}}/&gt;&quot; emptyValue=&quot;&quot;&gt;
 &lt;$select class=&quot;selectCombo_$id$&quot;
