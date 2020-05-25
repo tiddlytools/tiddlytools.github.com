@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>TiddlyTools/Macros/edit-list</li>
 
+<li>TiddlyTools/Stylesheet/Adjustments</li>
+
 </ul>
 </p>
 
@@ -9394,7 +9396,7 @@ TiddlyTools/FilterGenerators/Tags
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Macros/edit-list]]</pre>
+# [[TiddlyTools/Stylesheet/Adjustments]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9411,7 +9413,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191224045300395" modified="20191224045300395" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20200415141515405" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20200415141624544" title="$:/StoryList">
+<div created="20200525205413303" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20200525205413303" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191224004228605" modified="20200415051556566" title="$:/temp/advancedsearch">
@@ -10006,6 +10008,57 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/div&gt;
 \end</pre>
+</div>
+<div created="20150314000609556" creator="EricShulman" modified="20200525201711370" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Adjustments" type="">
+<pre>&lt;pre&gt;
+
+/* INPUT FIELD BORDER WIDTH (REVERT TO PRE CHROME-83) */
+input { border-width:1px; }
+
+/* TIDDLER PADDING/BORDER/SHADOW */
+.tc-tiddler-frame { padding: 1em 2em 1em 2em; border-radius:0.5em; border-color:#999; }
+
+/* TITLEBAR FONT WEIGHT */
+.tc-titlebar { font-weight:inherit; }
+
+/* FLOAT SUBTITLE/TAGS */
+.tc-subtitle     { float:right; }
+.tc-tiddler-body { clear:both;  }
+
+/* TIDDLER INFO PANEL */
+.tc-tiddler-info { margin:0; margin-bottom:1em; padding: 0 1em; border-radius:0.5em; border-color:#999; }
+
+/* SMALLER FONT IN SIDEBAR LISTS TAB CONTENT */
+.tc-sidebar-lists .tc-tab-content { font-size:90%; line-height:120%; }
+
+/* SMALLER MONO FONT FOR EDITING */
+.tc-edit-texteditor { font-family:monospace; font-size:90%; }
+
+/* MIN WIDTH FOR DROP DOWNS */
+.tc-drop-down { min-width:100px; }
+
+/* REGULAR BUTTONS WITHIN STICKY DROPDOWNS */
+.tc-drop-down.tc-popup-keep button { display:inline; width:auto; padding:0; margin:0; }
+
+/* NOTIFICATIONS SMALLER BOLD FONT, WIDER BOX, ABOVE MODAL MESSAGES BACKDROP  */
+.tc-notification { font-size:80%; font-weight:bold; line-height:120%; max-width:30vw; z-index:21300; }
+
+/* MODAL BOXES ABOVE POPUPS + ROUNDED CORNERS AND SOME COLORS */
+.tc-modal-wrapper { z-index:2001; }
+.tc-modal         { border-radius:1em; }
+.tc-modal-header  { background-color:#bbc; border-top-left-radius:1em; border-top-right-radius:1em; }
+.tc-modal-body    { background-color:#fff; }
+.tc-modal-footer  { background-color:#bbc; border-bottom-left-radius:1em; border-bottom-right-radius:1em; }
+
+/* INCREASE MODAL BOX WIDTH BREAKPOINT FROM 55em to 80em FOR MORE ROOM IN SMALLER WINDOWS */
+@media (max-width: 80em) {
+   .tc-modal { position:fixed; top:1em; left:5%; width:90%; }
+}
+@media (min-width: 80em) {
+   .tc-modal { position:fixed; top:2em; left:25%; width:50%; }
+}
+
+&lt;/pre&gt;</pre>
 </div>
 
 </div>
