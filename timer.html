@@ -9598,19 +9598,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/pgbtw/timer.html&quot;
+            &quot;text&quot;: &quot;http://tiddlytools.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;tiddlytools.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;tiddlytools.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;http:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -9618,7 +9618,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/pgbtw/timer.html&quot;
+            &quot;text&quot;: &quot;/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9626,7 +9626,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
+            &quot;text&quot;: &quot;http://tiddlytools.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9755,7 +9755,7 @@ Error message and password prompt
 <div created="20200621202026848" modified="20200621202026848" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20200621202005299" modified="20200621232037183" tags="" title="Timer">
+<div created="20200621202005299" day_start="1900800" day_stop="1900800" hour_start="14400" hour_stop="14400" min_start="1980" min_stop="2040" modified="20200622113927283" msec_start="0.587" msec_stop="0.835" sec_start="29" sec_stop="01" start="1917209.587" stop="1917241.835" tags="" title="Timer">
 <pre>\define start_timer()
 &lt;$button actions=&quot;&quot;&quot;
    &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; &gt;
@@ -9772,17 +9772,20 @@ Error message and password prompt
    &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; &gt;
    &lt;$action-setfield stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;time&gt;trim[]] }}}/&gt;
    &lt;$vars 
-      msec={{{ [{!!started}split[]last[5]join[]] }}}
+      msec={{{ [{!!started}split[]last[3]join[]divide[1000]] }}}
+      sec={{{ [{!!started}split[]butlast[3]last[2]join[]] }}}
       min={{{ [{!!started}split[]butlast[5]last[2]join[]multiply[60]] }}}
       hour={{{ [{!!started}split[]butlast[7]last[2]join[]multiply[3600]] }}}
       day={{{ [{!!started}split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
-   &lt;$vars start={{{ [&lt;msec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+   &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+
    &lt;$vars
-      msec={{{ [&lt;time&gt;split[]last[5]join[]] }}}
+      msec={{{ [&lt;time&gt;split[]last[3]join[]divide[1000]] }}}
+      sec={{{ [&lt;time&gt;split[]butlast[3]last[2]join[]] }}}
       min={{{ [&lt;time&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
       hour={{{ [&lt;time&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
       day={{{ [&lt;time&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
-   &lt;$vars stop={{{ [&lt;msec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+   &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
 
    &lt;$action-setfield stopped=&lt;&lt;time&gt;&gt; elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;] }}}/&gt;
    &lt;$action-setfield total={{{ [{!!total}add{!!elapsed}] }}}/&gt;
@@ -9804,18 +9807,19 @@ Error message and password prompt
 
 \define showtable()
 &lt;$vars
-   elapsed_min={{{ [{!!elapsed}divide[60000]trunc[]] }}}
+   elapsed_min={{{ [{!!elapsed}divide[60]trunc[]] }}}
    elapsed_minsec={{{ [&lt;elapsed_min&gt;multiply[60]] }}}
-   elapsed_sec={{{ [{!!elapsed}divide[1000]subtract&lt;elapsed_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+   elapsed_sec={{{ [{!!elapsed}subtract&lt;elapsed_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
 &lt;$vars
-   total_min={{{ [{!!total}divide[60000]trunc[]] }}}
+   total_min={{{ [{!!total}divide[60]trunc[]] }}}
    total_minsec={{{ [&lt;total_min&gt;multiply[60]] }}}
-   total_sec={{{ [{!!total}divide[1000]subtract&lt;total_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+   total_sec={{{ [{!!total}subtract&lt;total_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
 
 | started:|&lt;$view field=&quot;started&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
 | stopped:|&lt;$view field=&quot;stopped&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
 | elapsed:|&lt;&lt;elapsed_min&gt;&gt; minutes &lt;&lt;elapsed_sec&gt;&gt; seconds|
 | total:|&lt;&lt;total_min&gt;&gt; minutes &lt;&lt;total_sec&gt;&gt; seconds|
+
 &lt;/$vars&gt;
 &lt;/$vars&gt;
 \end
