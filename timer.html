@@ -169,7 +169,7 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
-<li>Timer</li>
+<li>TaskTimer</li>
 
 </ul>
 </p>
@@ -9558,8 +9558,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200621230816515" modified="20200621230817000" title="$:/DefaultTiddlers">
-<pre>Timer</pre>
+<div created="20200621230816515" modified="20200623075826757" title="$:/DefaultTiddlers">
+<pre>TaskTimer</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9582,7 +9582,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Timer" title="$:/StoryList">
+<div created="20200623075822490" list="" modified="20200623075822490" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9598,19 +9598,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;http://tiddlytools.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;tiddlytools.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;tiddlytools.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;http:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -9618,7 +9618,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9626,7 +9626,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;http://tiddlytools.com&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9755,7 +9755,7 @@ Error message and password prompt
 <div created="20200621202026848" modified="20200621202026848" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20200621202005299" day_start="1900800" day_stop="1900800" hour_start="14400" hour_stop="14400" min_start="1980" min_stop="2040" modified="20200622113927283" msec_start="0.587" msec_stop="0.835" sec_start="29" sec_stop="01" start="1917209.587" stop="1917241.835" tags="" title="Timer">
+<div created="20200621202005299" modified="20200623075746355" tags="" title="TaskTimer">
 <pre>\define start_timer()
 &lt;$button actions=&quot;&quot;&quot;
    &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; &gt;
@@ -9806,20 +9806,22 @@ Error message and password prompt
 \end
 
 \define showtable()
-&lt;$vars
-   elapsed_min={{{ [{!!elapsed}divide[60]trunc[]] }}}
-   elapsed_minsec={{{ [&lt;elapsed_min&gt;multiply[60]] }}}
-   elapsed_sec={{{ [{!!elapsed}subtract&lt;elapsed_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
-&lt;$vars
-   total_min={{{ [{!!total}divide[60]trunc[]] }}}
-   total_minsec={{{ [&lt;total_min&gt;multiply[60]] }}}
-   total_sec={{{ [{!!total}subtract&lt;total_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+&lt;$vars elapsed_min={{{ [{!!elapsed}divide[60]trunc[]] }}}&gt;
+&lt;$vars elapsed_minsec={{{ [&lt;elapsed_min&gt;multiply[60]] }}}&gt;
+&lt;$vars elapsed_sec={{{ [{!!elapsed}subtract&lt;elapsed_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+&lt;$vars total_min={{{ [{!!total}divide[60]trunc[]] }}}&gt;
+&lt;$vars total_minsec={{{ [&lt;total_min&gt;multiply[60]] }}}&gt;
+&lt;$vars total_sec={{{ [{!!total}subtract&lt;total_minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
 
 | started:|&lt;$view field=&quot;started&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
 | stopped:|&lt;$view field=&quot;stopped&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
 | elapsed:|&lt;&lt;elapsed_min&gt;&gt; minutes &lt;&lt;elapsed_sec&gt;&gt; seconds|
 | total:|&lt;&lt;total_min&gt;&gt; minutes &lt;&lt;total_sec&gt;&gt; seconds|
 
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
 &lt;/$vars&gt;
 &lt;/$vars&gt;
 \end
