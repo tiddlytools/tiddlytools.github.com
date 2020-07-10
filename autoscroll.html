@@ -9633,7 +9633,7 @@ AutoScroll/Template
 <div list="AutoScroll/Viewer AutoScroll/Toolbar AutoScroll/Template [[The Tragedy of Hamlet, Prince of Denmark]]" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200710025347943" modified="20200710044728470" title="$:/temp/autoscroll/viewer/duration">
+<div created="20200710025347943" modified="20200710074142073" title="$:/temp/autoscroll/viewer/duration">
 <pre>600</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9812,7 +9812,7 @@ AutoScroll/Template
 <div created="20200709100303670" modified="20200709100304989" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200710042552947" modified="20200710044154750" tags="$:/tags/ViewTemplate" title="AutoScroll/Template">
+<div created="20200710042552947" modified="20200710074423573" tags="$:/tags/ViewTemplate" title="AutoScroll/Template">
 <pre>\define hidebody() &lt;style&gt; [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .tc-tiddler-body { display:none; } &lt;/style&gt;
 
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;tag[autoscroll]]&quot;&gt;
@@ -9824,7 +9824,7 @@ AutoScroll/Template
    &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200710005546195" list-before="" modified="20200710044303761" tags="$:/tags/ViewToolbar" title="AutoScroll/Toolbar">
+<div created="20200710005546195" list-before="" modified="20200710074434068" tags="$:/tags/ViewToolbar" title="AutoScroll/Toolbar">
 <pre>\whitespace trim
 
 \define start()
@@ -9846,6 +9846,12 @@ AutoScroll/Template
 \end
 
 \define stop()
+&lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/button/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; text=&quot;&quot;&quot;
+   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame
+      { border:0;padding:0;background:transparent;height:0vh;overflow:visible; }
+   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent
+      { transform:translateY(0px); transition:transform 0s; }
+&quot;&quot;&quot;/&gt;
 &lt;$action-deletetiddler $tiddler=&quot;$:/temp/autoscroll/button/stylesheet&quot; /&gt;
 \end
 
@@ -9865,7 +9871,7 @@ AutoScroll/Template
 &lt;/$reveal&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200709093535214" modified="20200710044313017" tags="" title="AutoScroll/Viewer">
+<div created="20200709093535214" modified="20200710074450896" tags="" title="AutoScroll/Viewer">
 <pre>&lt;$select tiddler=&quot;$:/temp/autoscroll/viewer/content&quot; default=&quot;&quot;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
    &lt;$list filter=&quot;[tag[autoscroll]]&quot;&gt;
@@ -9887,10 +9893,15 @@ AutoScroll/Template
 &lt;/$button&gt;
 &lt;$button&gt; stop
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/viewer/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; text=&quot;
-      .scrollContent { transform:translateY(0px); }
+      .scrollFrame   { border:0;padding:0;background:transparent;height:0vh;overflow:visible; }
+      .scrollContent { transform:translateY(0px); transition:transform 0s; }
    &quot;/&gt;
 &lt;/$button&gt;
 &lt;$button&gt; close
+   &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/viewer/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; text=&quot;
+      .scrollFrame   { border:0;padding:0;background:transparent;height:0vh;overflow:visible; }
+      .scrollContent { transform:translateY(0px); transition:transform 0s; }
+   &quot;/&gt;
    &lt;$action-deletetiddler $tiddler=&quot;$:/temp/autoscroll/viewer/stylesheet&quot;          /&gt;
    &lt;$action-deletetiddler $tiddler=&quot;$:/temp/autoscroll/viewer/content&quot;             /&gt;
    &lt;$action-setfield      $tiddler=&quot;$:/temp/autoscroll/viewer/duration&quot; text=&quot;600&quot; /&gt;
