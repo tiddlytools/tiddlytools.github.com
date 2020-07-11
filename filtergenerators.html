@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>FilterGenerators — A TiddlyTools production"Small Tools for Big Ideas!" (tm)</title>
+<title>FilterGenerators — TiddlyTools: "Small Tools for Big Ideas!" (tm)</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -143,6 +143,10 @@ Error message and password prompt
 
 <li>$:/build</li>
 
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
+
+<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -181,8 +185,6 @@ Error message and password prompt
 
 <li>TiddlyTools/Macros/edit-list</li>
 
-<li>TiddlyTools/Stylesheet/Adjustments</li>
-
 </ul>
 </p>
 
@@ -200,6 +202,12 @@ Error message and password prompt
 <div commit="75589d78d8d381cc52db4637606cf19f4fb3459d" title="$:/build">
 <pre>Built from branch 'tiddlywiki-com' at commit 75589d78d8d381cc52db4637606cf19f4fb3459d of https://github.com/Jermolene/TiddlyWiki5.git at 2020-05-16 18:55:25 UTC
 </pre>
+</div>
+<div created="20200711140037404" modified="20200711140037404" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home">
+<pre>show</pre>
+</div>
+<div created="20200711140042574" modified="20200711140042574" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
+<pre>show</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -9589,19 +9597,19 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20191212092056439" modified="20191212092253473" title="$:/SiteSubtitle">
-<pre>A TiddlyTools production&lt;br&gt;&quot;Small Tools for Big Ideas!&quot; (tm)</pre>
+<div created="20191212092056439" modified="20200711135953219" title="$:/SiteSubtitle">
+<pre>~TiddlyTools: &quot;Small Tools for Big Ideas!&quot; (tm)</pre>
 </div>
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
-<div created="20200526055243825" modified="20200526055243825" title="$:/state/tab/sidebar--595412856">
+<div created="20200526055243825" modified="20200711140049844" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20200711140728490" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20200711140728490" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9649,11 +9657,11 @@ TiddlyTools/FilterGenerators/Tags
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10193,60 +10201,6 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/div&gt;
 \end</pre>
-</div>
-<div created="20150314000609556" creator="EricShulman" modified="20200526043245416" modifier="EricShulman" tags="$:/tags/Stylesheet" title="TiddlyTools/Stylesheet/Adjustments" type="">
-<pre>&lt;pre&gt;
-
-/* INPUT FIELD BORDER WIDTH (REVERT TO PRE CHROME-83) */
-input { border-width:1px; }
-
-/* REMOVE TOP/BOTTOM MARGINS ON DIVS INSIDE BLOCKQUOTES */
-blockquote &gt; div { margin-top:0em; margin-bottom:0em; }
-
-/* TIDDLER PADDING/BORDER/SHADOW */
-.tc-tiddler-frame { padding:1em 2em 1em 2em; border-radius:0.5em; border-color:#999; }
-
-/* TITLEBAR FONT WEIGHT */
-.tc-titlebar { font-weight:inherit; }
-
-/* FLOAT SUBTITLE/TAGS */
-.tc-subtitle     { float:right; }
-.tc-tiddler-body { clear:both;  }
-
-/* TIDDLER INFO PANEL */
-.tc-tiddler-info { margin:0; margin-bottom:1em; padding: 0 1em; border-radius:0.5em; border-color:#999; }
-
-/* SMALLER FONT IN SIDEBAR LISTS TAB CONTENT */
-.tc-sidebar-lists .tc-tab-content { font-size:90%; line-height:120%; }
-
-/* SMALLER MONO FONT FOR EDITING */
-.tc-edit-texteditor { font-family:monospace; font-size:90%; }
-
-/* MIN WIDTH FOR DROP DOWNS */
-.tc-drop-down { min-width:100px; }
-
-/* REGULAR BUTTONS WITHIN STICKY DROPDOWNS */
-.tc-drop-down.tc-popup-keep button { display:inline; width:auto; padding:0; margin:0; }
-
-/* NOTIFICATIONS SMALLER BOLD FONT, WIDER BOX, ABOVE MODAL MESSAGES BACKDROP  */
-.tc-notification { font-size:80%; font-weight:bold; line-height:120%; max-width:30vw; z-index:21300; }
-
-/* MODAL BOXES ABOVE POPUPS + ROUNDED CORNERS AND SOME COLORS */
-.tc-modal-wrapper { z-index:2001; }
-.tc-modal         { border-radius:1em; }
-.tc-modal-header  { background-color:#bbc; border-top-left-radius:1em; border-top-right-radius:1em; }
-.tc-modal-body    { background-color:#fff; }
-.tc-modal-footer  { background-color:#bbc; border-bottom-left-radius:1em; border-bottom-right-radius:1em; }
-
-/* INCREASE MODAL BOX WIDTH BREAKPOINT FROM 55em to 80em FOR MORE ROOM IN SMALLER WINDOWS */
-@media (max-width: 80em) {
-   .tc-modal { position:fixed; top:1em; left:5%; width:90%; }
-}
-@media (min-width: 80em) {
-   .tc-modal { position:fixed; top:2em; left:25%; width:50%; }
-}
-
-&lt;/pre&gt;</pre>
 </div>
 
 
