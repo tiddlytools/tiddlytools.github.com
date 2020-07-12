@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TaskTimer — TiddlyTools: "Small Tools for Big Ideas!" (tm)</title>
+<title>Timer — TiddlyTools: "Small Tools for Big Ideas!" (tm)</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp</li>
 
+<li>$:/config/TimestampDisable</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -177,15 +179,15 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
-<li>TiddlyTools/TaskTimer</li>
+<li>TiddlyTools/Timer</li>
 
-<li>TiddlyTools/TaskTimer/Buttons</li>
+<li>TiddlyTools/Timer/Info</li>
 
-<li>TiddlyTools/TaskTimer/History</li>
+<li>TiddlyTools/Timer/ShowHistory</li>
 
-<li>TiddlyTools/TaskTimer/Info</li>
+<li>TiddlyTools/Timer/ShowSummary</li>
 
-<li>TiddlyTools/TaskTimer/Summary</li>
+<li>TiddlyTools/Timer/ShowTotal</li>
 
 </ul>
 </p>
@@ -206,6 +208,9 @@ Error message and password prompt
 </div>
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
+</div>
+<div created="20200712230254670" modified="20200712232508959" title="$:/config/TimestampDisable">
+<pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -9580,9 +9585,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200621230816515" modified="20200712185134107" title="$:/DefaultTiddlers">
-<pre>TiddlyTools/TaskTimer/Info
-TiddlyTools/TaskTimer</pre>
+<div created="20200621230816515" modified="20200712225931907" title="$:/DefaultTiddlers">
+<pre>TiddlyTools/Timer/Info</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
@@ -9595,8 +9599,8 @@ TiddlyTools/TaskTimer</pre>
 <div created="20200621230957019" modified="20200711141009305" title="$:/SiteSubtitle">
 <pre>~TiddlyTools: &quot;Small Tools for Big Ideas!&quot; (tm)</pre>
 </div>
-<div created="20200621230950964" modified="20200621231006320" title="$:/SiteTitle">
-<pre>TaskTimer</pre>
+<div created="20200621230950964" modified="20200712231811146" title="$:/SiteTitle">
+<pre>Timer</pre>
 </div>
 <div created="20200621202024163" modified="20200621202024163" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -9610,7 +9614,7 @@ TiddlyTools/TaskTimer</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/TaskTimer/Info TiddlyTools/TaskTimer" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9626,7 +9630,7 @@ TiddlyTools/TaskTimer</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9646,7 +9650,7 @@ TiddlyTools/TaskTimer</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9786,46 +9790,43 @@ TiddlyTools/TaskTimer</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200621202005299" modified="20200712184949465" tags="" title="TiddlyTools/TaskTimer">
-<pre>{{||TiddlyTools/TaskTimer/Buttons}}
-{{||TiddlyTools/TaskTimer/Summary}}
-{{||TiddlyTools/TaskTimer/History}}</pre>
-</div>
-<div created="20200712174503125" modified="20200712184504771" tags="" title="TiddlyTools/TaskTimer/Buttons">
-<pre>\define start_timer()
+<div created="20200712174503125" modified="20200712233822206" tags="" title="TiddlyTools/Timer">
+<pre>\define timer_start()
 &lt;$button actions=&quot;&quot;&quot;
-   &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; &gt;
-   &lt;$action-setfield startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;time&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield started=&lt;&lt;time&gt;&gt; stopped=&quot;&quot; elapsed=&quot;&quot;/&gt;
-   &lt;$action-setfield button=&quot;stop&quot;/&gt;
+   &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
    &lt;/$vars&gt;
 &quot;&quot;&quot;&gt; start
 &lt;/$button&gt;
 \end
 
-\define stop_timer()
+\define timer_stop()
 &lt;$button actions=&quot;&quot;&quot;
-   &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; &gt;
-   &lt;$action-setfield stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;time&gt;trim[]] }}}/&gt;
+   &lt;$vars started={{{ [enlist{!!startlist}last[]] }}}&gt;
+   &lt;$vars stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;stopped&gt;trim[]] }}}/&gt;
    &lt;$vars 
-      msec={{{ [{!!started}split[]last[3]join[]divide[1000]] }}}
-       sec={{{ [{!!started}split[]butlast[3]last[2]join[]] }}}
-       min={{{ [{!!started}split[]butlast[5]last[2]join[]multiply[60]] }}}
-      hour={{{ [{!!started}split[]butlast[7]last[2]join[]multiply[3600]] }}}
-       day={{{ [{!!started}split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+      msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
+       sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
+       min={{{ [&lt;started&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
+      hour={{{ [&lt;started&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
+       day={{{ [&lt;started&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
    &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
    &lt;$vars
-      msec={{{ [&lt;time&gt;split[]last[3]join[]divide[1000]] }}}
-       sec={{{ [&lt;time&gt;split[]butlast[3]last[2]join[]] }}}
-       min={{{ [&lt;time&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-      hour={{{ [&lt;time&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-       day={{{ [&lt;time&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+      msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]] }}}
+       sec={{{ [&lt;stopped&gt;split[]butlast[3]last[2]join[]] }}}
+       min={{{ [&lt;stopped&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
+      hour={{{ [&lt;stopped&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
+       day={{{ [&lt;stopped&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
    &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
-   &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;] }}} total={{{ [{!!total}add&lt;stop&gt;subtract&lt;start&gt;] }}}&gt;
-   &lt;$action-setfield stopped=&lt;&lt;time&gt;&gt; elapsed=&lt;&lt;elapsed&gt;&gt; total=&lt;&lt;total&gt;&gt;/&gt;
-   &lt;$action-setfield elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield button=&quot;start&quot;/&gt;
+   &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+   &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
+   &lt;/$vars&gt;
+   &lt;/$vars&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
@@ -9836,21 +9837,17 @@ TiddlyTools/TaskTimer</pre>
 &lt;/$button&gt;
 \end
 
-\define reset_timer()
+\define timer_reset()
 &lt;$button&gt; reset
-   &lt;$action-deletefield startlist stoplist elapsedlist totallist started stopped elapsed total button /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
 &lt;/$button&gt;
 \end
 
-&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
-   &lt;&lt;start_timer&gt;&gt; &lt;&lt;reset_timer&gt;&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
-   &lt;&lt;stop_timer&gt;&gt; &lt;&lt;reset_timer&gt;&gt;
-&lt;/$reveal&gt;</pre>
-</div>
-<div created="20200712174805383" modified="20200712184829022" tags="" title="TiddlyTools/TaskTimer/History">
-<pre>\define tasktimer_showdate(time)
+\define timer_showdate(time)
 &lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
 &lt;$vars
    msec={{{ [&lt;$time$&gt;split[]last[3]join[]] }}}
@@ -9868,7 +9865,7 @@ TiddlyTools/TaskTimer</pre>
 &lt;/$reveal&gt;
 \end
 
-\define tasktimer_showtime(time)
+\define timer_showtime(time)
 &lt;$vars    min={{{ [&lt;$time$&gt;divide[60]trunc[]] }}}&gt;
 &lt;$vars minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
 &lt;$vars    sec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
@@ -9878,17 +9875,68 @@ TiddlyTools/TaskTimer</pre>
 &lt;/$vars&gt;
 \end
 
-\define tasktimer_showitem()
+&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
+   &lt;&lt;timer_start&gt;&gt; &lt;&lt;timer_reset&gt;&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
+   &lt;&lt;timer_stop&gt;&gt; &lt;&lt;timer_reset&gt;&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20200711063502632" modified="20200712231220961" tags="" title="TiddlyTools/Timer/Info">
+<pre>\import TiddlyTools/Timer 
+
+|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
+|  source|''http://TiddlyTools.com/timer.html''|
+| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at hh:0mm:0ssam&quot;/&gt;''|
+
+''This package contains &lt;$text text={{{ [prefix[TiddlyTools/Timer]!suffix[/Info]count[]] }}}/&gt; tiddlers'' (excluding this documentation and sample content).
+
+!! [[TiddlyTools/Timer]]
+&lt;&lt;&lt;
+Shows start/stop and reset buttons to control a task timer:&lt;br&gt;
+
+{{||TiddlyTools/Timer}}
+
+* To track activities, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer}}``.
+* The recorded times will be stored in the tiddler in which the transclusion occurs.
+* The ''start'' button stores the __starting time__ for the current task &quot;session&quot; and changes the button to ''stop''.
+* The ''stop'' button stores the __ending time__ for the current task session, and calculates the __elapsed time__ (in minutes and seconds).  The button changes back to ''start'' so you can start another task session.
+* Each time you stop the timer, it will also calculate and store the __total accumulated time__ for all task sessions.
+* The ''reset'' button clears all stored time data, including starting/ending times, elapsed time, and total accumulated time.
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/ShowTotal]]
+&lt;&lt;&lt;
+Shows the total accumulated time:&lt;br&gt;
+
+{{||TiddlyTools/Timer/ShowTotal}}
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/ShowSummary]]
+&lt;&lt;&lt;
+Shows a table with the starting, ending, and elapsed times for the current task session, as well as the total accumulated time:&lt;br&gt;
+
+{{||TiddlyTools/Timer/ShowSummary}}
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/ShowHistory]]
+&lt;&lt;&lt;
+Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time for each session:&lt;br&gt;
+
+{{||TiddlyTools/Timer/ShowHistory}}
+&lt;&lt;&lt;</pre>
+</div>
+<div created="20200712174805383" modified="20200712225427113" tags="" title="TiddlyTools/Timer/ShowHistory">
+<pre>\import TiddlyTools/Timer
+
+\define timer_showitem()
 &lt;$vars
    started={{{ [enlist{!!startlist}nth&lt;item&gt;]   }}}
    stopped={{{ [enlist{!!stoplist}nth&lt;item&gt;]    }}}
    elapsed={{{ [enlist{!!elapsedlist}nth&lt;item&gt;] }}}
      total={{{ [enlist{!!totallist}nth&lt;item&gt;]   }}}&gt;
 &lt;td&gt;&lt;&lt;item&gt;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;&lt;tasktimer_showdate started&gt;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;&lt;tasktimer_showdate stopped&gt;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;&lt;tasktimer_showtime elapsed&gt;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;&lt;tasktimer_showtime total&gt;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;&lt;timer_showdate started&gt;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;&lt;timer_showdate stopped&gt;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;&lt;timer_showtime elapsed&gt;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;&lt;timer_showtime total&gt;&gt;&lt;/td&gt;
 &lt;/$vars&gt;
 \end
 
@@ -9896,60 +9944,32 @@ TiddlyTools/TaskTimer</pre>
    &lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;started&lt;/th&gt;&lt;th&gt;stopped&lt;/th&gt;&lt;th&gt;elapsed&lt;/th&gt;&lt;th&gt;total&lt;/th&gt;&lt;/tr&gt;
    &lt;$vars count={{{ [enlist{!!startlist}count[]] }}}&gt;
    &lt;$list filter=&quot;[range&lt;count&gt;]&quot; variable=&quot;item&quot;&gt;
-      &lt;tr&gt;&lt;&lt;tasktimer_showitem&gt;&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;&lt;timer_showitem&gt;&gt;&lt;/tr&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
 &lt;/table&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200712190850055" tags="" title="TiddlyTools/TaskTimer/Info">
-<pre>\import TiddlyTools/TaskTimer 
+<div created="20200712174623743" modified="20200712225416690" tags="" title="TiddlyTools/Timer/ShowSummary">
+<pre>\import TiddlyTools/Timer
 
-|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
-|  source|''http://TiddlyTools.com/timer.html''|
-| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at hh:0mm:0ssam&quot;/&gt;''|
+&lt;$vars
+   started={{{ [enlist{!!startlist}last[]]   }}}
+   stopped={{{ [enlist{!!stoplist}last[]]    }}}
+   elapsed={{{ [enlist{!!elapsedlist}last[]] }}}
+     total={{{ [enlist{!!totallist}last[]]   }}}&gt;
 
-''This package contains &lt;$text text={{{ [prefix[TiddlyTools/TaskTimer]!suffix[/Info]count[]] }}}/&gt; tiddlers'' (excluding this documentation and sample content).
-
-!! [[TiddlyTools/TaskTimer]]
-&lt;&lt;&lt;
-Combines task timer [[buttons|TiddlyTools/TaskTimer/Buttons]], [[summary table|TiddlyTools/TaskTimer/Summary]], and [[history table|TiddlyTools/TaskTimer/History]] in a single presentation.
-
-* To track task activities, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/TaskTimer}}``.
-* The recorded task times will be stored in the tiddler in which the transclusion occurs.
-&lt;&lt;&lt;
-!! [[TiddlyTools/TaskTimer/Buttons]]
-&lt;&lt;&lt;
-Shows start/stop and reset buttons to control a task timer.
-
-* The ''start'' button stores the __starting time__ for current task &quot;session&quot; and changes the button to ''stop''.
-* The ''stop'' button stores the __ending time__ for the task session, and calculates the __elapsed time__ (in minutes and seconds).  The button changes back to ''start'' so you can start another task session.
-* Each time you stop the task timer, it will also calculate and store the __total accumulated time__ for all task sessions.
-* The ''reset'' button clears all stored time data, including starting/ending times, elapsed time, and total accumulated time.
-&lt;&lt;&lt;
-!! [[TiddlyTools/TaskTimer/Summary]]
-&lt;&lt;&lt;
-Shows a table with the starting, ending, and elapsed times for the current task session, as well as the total accumulated time.
-&lt;&lt;&lt;
-!! [[TiddlyTools/TaskTimer/History]]
-&lt;&lt;&lt;
-Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time for each session.
-&lt;&lt;&lt;</pre>
+| !started|&lt;&lt;timer_showdate started&gt;&gt;|
+| !stopped|&lt;&lt;timer_showdate stopped&gt;&gt;|
+| !elapsed|&lt;&lt;timer_showtime elapsed&gt;&gt;|
+|   !total|&lt;&lt;timer_showtime total&gt;&gt;  |
+&lt;/$vars&gt;</pre>
 </div>
-<div created="20200712174623743" modified="20200712184425707" tags="" title="TiddlyTools/TaskTimer/Summary">
-<pre>\define tasktimer_showtime(time)
-&lt;$vars    min={{{ [{!!$time$}divide[60]trunc[]] }}}&gt;
-&lt;$vars minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
-&lt;$vars    sec={{{ [{!!$time$}subtract&lt;minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
-&lt;&lt;min&gt;&gt; minutes &lt;&lt;sec&gt;&gt; seconds
-&lt;/$vars&gt;
-&lt;/$vars&gt;
-&lt;/$vars&gt;
-\end
+<div created="20200712224203174" modified="20200712225433389" tags="" title="TiddlyTools/Timer/ShowTotal">
+<pre>\import TiddlyTools/Timer
 
-| !started|&lt;$view field=&quot;started&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
-| !stopped|&lt;$view field=&quot;stopped&quot; format=&quot;date&quot; template=&quot;[UTC]MMM DD YYYY 0hh:0mm:0ss.0XXX&quot; /&gt;|
-| !elapsed|&lt;&lt;tasktimer_showtime elapsed&gt;&gt;|
-|   !total|&lt;&lt;tasktimer_showtime total&gt;&gt;|</pre>
+&lt;$vars total={{{ [enlist{!!totallist}last[]] }}}&gt;
+''total time'': &lt;&lt;timer_showtime total&gt;&gt;
+&lt;/$vars&gt;</pre>
 </div>
 
 
