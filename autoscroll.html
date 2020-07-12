@@ -9631,7 +9631,7 @@ TiddlyTools/AutoScroll/Template</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/AutoScroll/Info TiddlyTools/AutoScroll/Viewer TiddlyTools/AutoScroll/Toolbar TiddlyTools/AutoScroll/Template" title="$:/StoryList">
+<div created="20200712161631344" list="TiddlyTools/AutoScroll/Info TiddlyTools/AutoScroll/Viewer [[United States Constitution]] TiddlyTools/AutoScroll/Toolbar TiddlyTools/AutoScroll/Template" modified="20200712161631344" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -18669,10 +18669,11 @@ TiddlyTools/AutoScroll/Template</pre>
 &lt;A NAME=5.2.424&gt;Go, bid the soldiers shoot.&lt;/A&gt;&lt;br&gt;
 &lt;p&gt;&lt;i&gt;A dead march. Exeunt, bearing off the dead bodies; after which a peal of ordnance is shot off&lt;/i&gt;&lt;/p&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200712132125359" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
-<pre>&lt;style&gt; .resize svg { height:1em; width:1em; } &lt;/style&gt;
-
-@@.resize
+<div created="20200711063502632" modified="20200712163339734" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
+<pre>&lt;style&gt;
+   .resize svg { height:1em; width:1em; }
+   .nobullets  { list-style-type:none;  }
+&lt;/style&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/autoscroll.html''|
@@ -18682,6 +18683,7 @@ TiddlyTools/AutoScroll/Template</pre>
 
 !! [[TiddlyTools/AutoScroll/Viewer]]
 &lt;&lt;&lt;
+@@.resize.nobullets
 Provides a form that lets you select a tiddler and then control how that tiddler is viewed:
 
 * &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&quot;&lt;&lt;stop&gt;&gt;&quot;&gt;
@@ -18689,24 +18691,27 @@ Provides a form that lets you select a tiddler and then control how that tiddler
    &lt;$list filter=&quot;[tag[autoscroll]]&quot;&gt;
       &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/option&gt;
    &lt;/$list&gt;
-&lt;/$select&gt;'' lists tiddlers tagged with &lt;&lt;tag autoscroll&gt;&gt;''&lt;br&gt;&amp;emsp; The contents of the selected tiddler appears in a box below the Viewer controls.
-* &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the selected tiddler.''&lt;br&gt;&amp;emsp; Each tiddler remembers its own scrolltime so the duration of scrolling can be set to suit the amount content being displayed.&lt;br&gt;&amp;emsp; //Note: changing the scrolltime value modifies the tiddler being displayed.//  
-* {{$:/core/images/chevron-down}} ''starts auto-scrolling the tiddler content.''
-* {{$:/core/images/timestamp-on}} ''pauses/resumes the auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; //Note: clicking within the tiddler content box will also pause/resume the auto-scrolling.//
-* {{$:/core/images/chevron-up}} ''stops auto-scrolling and returns to the top of the tiddler content.''
-* {{$:/core/images/preview-open}} ''opens the selected tiddler in the Story River (i.e., the normal tiddler view).''&lt;br&gt;&amp;emsp; //Note: this button also closes the tiddler content and resets the selected tiddler list.//
-* {{$:/core/images/open-window}} ''opens the selected tiddler in a separate browser tab.''&lt;br&gt;&amp;emsp; //Note: this button also closes the tiddler content and resets the selected tiddler list.//
+&lt;/$select&gt;'' lists tiddlers tagged with &lt;&lt;tag autoscroll&gt;&gt;''&lt;br&gt;&amp;emsp; ^^The contents of the selected tiddler appears in a box below the Viewer controls.^^
+* &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the selected tiddler.''&lt;br&gt;&amp;emsp; ^^Each tiddler stores its own scrolltime so the duration can be set to match the length of content being displayed.^^
+* {{$:/core/images/chevron-down}} ''starts auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also click on the tiddler content to start auto-scrolling.^^
+* {{$:/core/images/timestamp-on}} ''pauses/resumes the auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also click on the tiddler content (or press &lt;kbd&gt;space&lt;/kbd&gt; or &lt;kbd&gt;enter&lt;/kbd&gt;) to pause/resume auto-scrolling.^^
+* {{$:/core/images/chevron-up}} ''stops auto-scrolling and returns to the top of the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also press &lt;kbd&gt;escape&lt;/kbd&gt; to stop auto-scrolling.^^
+* {{$:/core/images/preview-open}} ''opens the selected tiddler in the Story River (i.e., the normal tiddler view).''&lt;br&gt;&amp;emsp; ^^This button also closes the tiddler content and resets the selected tiddler list.^^
+* {{$:/core/images/open-window}} ''opens the selected tiddler in a separate browser tab.''&lt;br&gt;&amp;emsp; ^^This button also closes the tiddler content and resets the selected tiddler list.^^
 * {{$:/core/images/close-button}} ''closes the tiddler content and resets the selected tiddler list.''
+@@
 &lt;&lt;&lt;
 !! [[TiddlyTools/AutoScroll/Toolbar]]
 &lt;&lt;&lt;
+@@.resize.nobullets
 Adds a toolbar button: {{$:/core/images/spiral}} to any tiddlers that are tagged with {{!!showtag}}&lt;br&gt;
 When you click this button, a popup panel appears that lets you control the auto-scrolling behavior of the current tiddler.
 
-* &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the current tiddler.''&lt;br&gt;&amp;emsp; Each tiddler remembers its own scrolltime so the duration of scrolling can be set to suit the amount content being displayed.&lt;br&gt;&amp;emsp; //Note: changing the scrolltime value modifies the tiddler being displayed.//  
-* {{$:/core/images/chevron-down}} ''starts auto-scrolling the tiddler content within a box that fits on the screen.''
-* {{$:/core/images/timestamp-on}} ''pauses/resumes the auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; //Note: clicking within the tiddler content box will also pause/resume the auto-scrolling.//
-* {{$:/core/images/chevron-up}} ''stops auto-scrolling and returns to the top of the tiddler content and removes the scrolling box.''
+* &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the current tiddler.''&lt;br&gt;&amp;emsp; ^^Each tiddler stores its own scrolltime so the duration can be set to match the length of content being displayed.^^
+* {{$:/core/images/chevron-down}} ''starts auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also click on the tiddler content to start auto-scrolling.^^
+* {{$:/core/images/timestamp-on}} ''pauses/resumes the auto-scrolling the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also click on the tiddler content (or press &lt;kbd&gt;space&lt;/kbd&gt; or &lt;kbd&gt;enter&lt;/kbd&gt;) to pause/resume auto-scrolling.^^
+* {{$:/core/images/chevron-up}} ''stops auto-scrolling and returns to the top of the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also press &lt;kbd&gt;escape&lt;/kbd&gt; to stop auto-scrolling.^^
+@@
 &lt;&lt;&lt;
 !! [[TiddlyTools/AutoScroll/Template]]
 &lt;&lt;&lt;
@@ -18714,22 +18719,22 @@ Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can r
 &lt;&lt;&lt;
 @@</pre>
 </div>
-<div created="20200710042552947" modified="20200712124729398" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
+<div created="20200710042552947" modified="20200712155212488" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
 <pre>\import TiddlyTools/AutoScroll/Toolbar
 \define hidebody() &lt;style&gt; [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .tc-tiddler-body { display:none; } &lt;/style&gt;
 
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;tag[autoscroll]]&quot;&gt;
    &lt;&lt;hidebody&gt;&gt;
    &lt;$vars scrolltime={{!!scrolltime}}&gt;
-   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
-      &lt;div class=&quot;scrollContent&quot;&gt;
-         &lt;$transclude mode=&quot;block&quot; /&gt;
-      &lt;/div&gt;
+   &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+      &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude mode=&quot;block&quot; /&gt; &lt;/div&gt;
    &lt;/$button&gt;
+   &lt;/$keyboard&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200710005546195" list-before="" modified="20200712124734103" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
+<div created="20200710005546195" list-before="" modified="20200712155422911" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
 <pre>\whitespace trim
 
 \define settime()
@@ -18753,8 +18758,8 @@ Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can r
 \end
 
 \define pause()
-&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot; default=&quot;true&quot; &gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
-&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot; default=&quot;false&quot;&gt;
+&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;nomatch&quot; default=&quot;false&quot;&gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
+&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot;   default=&quot;false&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;true&quot; text=&quot;&quot;&quot;
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { border:1px solid;padding:1em;height:50vh;background:#ccc;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transition:transform 1000000000s linear; }
@@ -18777,7 +18782,7 @@ Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can r
 &lt;/$reveal&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200709093535214" modified="20200712124738162" tags="" title="TiddlyTools/AutoScroll/Viewer">
+<div created="20200709093535214" modified="20200712155429061" tags="" title="TiddlyTools/AutoScroll/Viewer">
 <pre>\define select()
 &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&lt;&lt;show&gt;&gt;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
@@ -18821,8 +18826,8 @@ Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can r
 \end
 
 \define pause()
-&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot; default=&quot;true&quot; &gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
-&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot; default=&quot;false&quot;&gt;
+&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;nomatch&quot; default=&quot;false&quot;&gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
+&lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot;   default=&quot;false&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;true&quot; text=&quot;&quot;&quot;
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { border:1px solid;padding:1em;height:50vh;background:#ccc;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transition:transform 1000000000s linear; }
@@ -18858,9 +18863,11 @@ Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can r
 
 &lt;$reveal state=&quot;$:/temp/autoscroll/selection&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$vars scrolltime={{{ [{$:/temp/autoscroll/selection}get[scrolltime]] }}}&gt;
-   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+   &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
       &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude tiddler={{$:/temp/autoscroll/selection}} mode=&quot;block&quot; /&gt; &lt;/div&gt;
    &lt;/$button&gt;
+   &lt;/$keyboard&gt;
    &lt;/$vars&gt;
 &lt;/$reveal&gt;</pre>
 </div>
