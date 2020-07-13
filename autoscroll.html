@@ -9650,7 +9650,7 @@ TiddlyTools/AutoScroll/Setup</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/autoscroll%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/autoscroll.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9670,7 +9670,7 @@ TiddlyTools/AutoScroll/Setup</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/autoscroll%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/autoscroll.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -18672,7 +18672,7 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;A NAME=5.2.424&gt;Go, bid the soldiers shoot.&lt;/A&gt;&lt;br&gt;
 &lt;p&gt;&lt;i&gt;A dead march. Exeunt, bearing off the dead bodies; after which a peal of ordnance is shot off&lt;/i&gt;&lt;/p&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200713151811890" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
+<div created="20200711063502632" modified="20200713160444902" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
 <pre>&lt;style&gt;
    .resize svg { height:1em; width:1em; }
    .nobullets  { list-style-type:none;  }
@@ -18731,10 +18731,10 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 @@
 &lt;&lt;&lt;</pre>
 </div>
-<div autotag="autoscroll" button="$:/core/images/spiral" created="20200712194150003" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200713151314766" tags="" title="TiddlyTools/AutoScroll/Setup">
+<div autotag="autoscroll" button="$:/core/images/spiral" created="20200712194150003" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200713160440195" tags="" title="TiddlyTools/AutoScroll/Setup">
 <pre></pre>
 </div>
-<div created="20200710042552947" modified="20200713145835234" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
+<div created="20200710042552947" modified="20200713160119398" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
 <pre>\import TiddlyTools/AutoScroll/Toolbar
 \define hidebody() &lt;style&gt; [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .tc-tiddler-body { display:none; } &lt;/style&gt;
 
@@ -18744,7 +18744,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;tag&lt;autotag&gt;]&quot;&gt;
    &lt;&lt;hidebody&gt;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
       &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude mode=&quot;block&quot; /&gt; &lt;/div&gt;
    &lt;/$button&gt;
    &lt;/$keyboard&gt;
@@ -18753,7 +18753,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200710005546195" list-before="" modified="20200713150127590" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
+<div created="20200710005546195" list-before="" modified="20200713160426227" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
 <pre>\whitespace trim
 
 \define settime()
@@ -18805,7 +18805,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200709093535214" modified="20200713150137290" tags="" title="TiddlyTools/AutoScroll/Viewer">
+<div created="20200709093535214" modified="20200713160432964" tags="" title="TiddlyTools/AutoScroll/Viewer">
 <pre>\define select()
 &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&lt;&lt;show&gt;&gt;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
@@ -18886,7 +18886,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;$button actions=&lt;&lt;hide&gt;&gt;  tooltip=&quot;close&quot;&gt; {{$:/core/images/close-button}} &lt;/$button&gt;
 &lt;$reveal state=&quot;$:/temp/autoscroll/selection&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;text-align:left;outline:none;cursor:default;margin-top:0.25em;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;margin-top:0.25em;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
       &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude tiddler={{$:/temp/autoscroll/selection}} mode=&quot;block&quot; /&gt; &lt;/div&gt;
    &lt;/$button&gt;
    &lt;/$keyboard&gt;
