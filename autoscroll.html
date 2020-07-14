@@ -18672,7 +18672,7 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;A NAME=5.2.424&gt;Go, bid the soldiers shoot.&lt;/A&gt;&lt;br&gt;
 &lt;p&gt;&lt;i&gt;A dead march. Exeunt, bearing off the dead bodies; after which a peal of ordnance is shot off&lt;/i&gt;&lt;/p&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200714060057060" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
+<div created="20200711063502632" modified="20200714125407139" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
 <pre>&lt;style&gt;
    .resize svg { height:1em; width:1em; }
    .nobullets  { list-style-type:none;  }
@@ -18725,33 +18725,38 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 
 * autotag - ''the tag used to recognize tiddlers that can be auto-scrolled''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;autotag&quot; default=&quot;autoscroll&quot; placeholder=&quot;autoscroll&quot;/&gt;
 * button - ''the image used to show the toolbar button''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;button&quot; default=&quot;$:/core/images/spiral&quot; placeholder=&quot;$:/core/images/spiral&quot;/&gt;
-* framestyles - ''the CSS styles that are used to display a box around the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;framestyles&quot; size=&quot;55&quot; default=&quot;border:1px solid; padding:1em; background:#ffe;&quot; placeholder=&quot;border:1px solid; padding:1em; background:#ffe;&quot; /&gt;
+* clickaction - ''the function used to handle clicks within the tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;clickaction&quot; default=&quot;&quot; placeholder=&quot;none&quot; /&gt;
+* frameheight - ''the CSS &quot;height&quot; value used to control the height of the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;frameheight&quot; default=&quot;50vh&quot; placeholder=&quot;50vh&quot; /&gt;
+* framestyles - ''the CSS styles used to display a box around the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;framestyles&quot; size=&quot;55&quot; default=&quot;&quot; placeholder=&quot;none&quot; /&gt;
 @@
 &lt;&lt;&lt;</pre>
 </div>
-<div autotag="autoscroll" button="$:/core/images/spiral" created="20200712194150003" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200714052437052" tags="" title="TiddlyTools/AutoScroll/Setup">
+<div autotag="autoscroll" button="$:/core/images/spiral" clickaction="&lt;&lt;pause&gt;&gt;" created="20200712194150003" frameheight="50vh" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200714124814573" tags="" title="TiddlyTools/AutoScroll/Setup">
 <pre></pre>
 </div>
-<div created="20200710042552947" modified="20200713160119398" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
+<div created="20200710042552947" modified="20200714124130093" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
 <pre>\import TiddlyTools/AutoScroll/Toolbar
 \define hidebody() &lt;style&gt; [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .tc-tiddler-body { display:none; } &lt;/style&gt;
 
-&lt;$vars autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]] ~[[autoscroll]] }}}&gt;
-&lt;$vars framestyles={{TiddlyTools/AutoScroll/Setup!!framestyles}}&gt;
+&lt;$vars     autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]]     ~[[autoscroll]] }}}&gt;
+&lt;$vars frameheight={{{ [[TiddlyTools/AutoScroll/Setup]get[frameheight]] ~[[50vh]]       }}}&gt;
+&lt;$vars framestyles={{{ [[TiddlyTools/AutoScroll/Setup]get[framestyles]]                 }}}&gt;
+&lt;$vars clickaction={{{ [[TiddlyTools/AutoScroll/Setup]get[clickaction]]                 }}}&gt;
 &lt;$vars scrolltime={{!!scrolltime}}&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;tag&lt;autotag&gt;]&quot;&gt;
    &lt;&lt;hidebody&gt;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
-   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+   &lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;&quot; actions=&lt;&lt;clickaction&gt;&gt;&gt;
       &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude mode=&quot;block&quot; /&gt; &lt;/div&gt;
    &lt;/$button&gt;
    &lt;/$keyboard&gt;
 &lt;/$list&gt;
 &lt;/$vars&gt;
 &lt;/$vars&gt;
+&lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200710005546195" list-before="" modified="20200714052252573" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
+<div created="20200710005546195" list-before="" modified="20200714124140604" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
 <pre>\whitespace trim
 
 \define settime()
@@ -18761,7 +18766,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 
 \define stop()
 &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; text=&quot;&quot;&quot;
-   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { height:50vh;overflow:visible; }
+   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { height:$(frameheight)$;overflow:visible; }
    [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transform:translateY(0px); transition:transform 0s linear; }
 &quot;&quot;&quot;/&gt;
 &lt;$action-deletetiddler $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; /&gt;
@@ -18769,7 +18774,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 
 \define start()
 &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;false&quot; text=&quot;&quot;&quot;
-   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:50vh;overflow:hidden; }
+   [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:$(frameheight)$;overflow:hidden; }
    [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transform:translateY(-100%); transition:transform $(scrolltime)$s linear; }
 &quot;&quot;&quot;/&gt;
 \end
@@ -18778,7 +18783,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;nomatch&quot; default=&quot;false&quot;&gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
 &lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot;   default=&quot;false&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;true&quot; text=&quot;&quot;&quot;
-      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:50vh;overflow:hidden; }
+      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:$(frameheight)$;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transition:transform 1000000000s linear; }
    &quot;&quot;&quot;/&gt;
 &lt;/$reveal&gt;
@@ -18800,8 +18805,10 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$vars&gt;
 \end
 
-&lt;$vars autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]] ~[[autoscroll]] }}}&gt;
-&lt;$vars framestyles={{TiddlyTools/AutoScroll/Setup!!framestyles}}&gt;
+&lt;$vars     autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]]     ~[[autoscroll]] }}}&gt;
+&lt;$vars frameheight={{{ [[TiddlyTools/AutoScroll/Setup]get[frameheight]] ~[[50vh]]       }}}&gt;
+&lt;$vars framestyles={{{ [[TiddlyTools/AutoScroll/Setup]get[framestyles]]                 }}}&gt;
+&lt;$vars clickaction={{{ [[TiddlyTools/AutoScroll/Setup]get[clickaction]]                 }}}&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;tag&lt;autotag&gt;]&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;z-index:1;&quot; popup=&lt;&lt;qualify &quot;$:/temp/popup/autoscroll&quot;&gt;&gt; tooltip=&quot;Autoscroll&quot;&gt;
    &lt;$transclude tiddler={{{ [[TiddlyTools/AutoScroll/Setup]get[button]] ~[[$:/core/images/spiral]] }}} /&gt;
@@ -18812,18 +18819,18 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$reveal&gt;
 &lt;/$list&gt;
 &lt;/$vars&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200709093535214" modified="20200714052432739" tags="" title="TiddlyTools/AutoScroll/Viewer">
+<div created="20200709093535214" modified="20200714124210666" tags="" title="TiddlyTools/AutoScroll/Viewer">
 <pre>\define select()
-&lt;$vars autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]] ~[[autoscroll]] }}}&gt;
 &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&lt;&lt;show&gt;&gt;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
    &lt;$list filter=&quot;[tag&lt;autotag&gt;]&quot;&gt;
       &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/option&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
-&lt;/$vars&gt;
 \end
 
 \define settime()
@@ -18844,7 +18851,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 \define stop()
 &lt;$reveal state=&quot;$:/temp/autoscroll/selection&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;&quot; text=&quot;&quot;&quot;
-      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:50vh;overflow:hidden; }
+      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:$(frameheight)$;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transform:translateY(0px); transition:transform 0s linear; }
    &quot;&quot;&quot;/&gt;
 &lt;/$reveal&gt;
@@ -18853,7 +18860,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 \define start()
 &lt;$reveal state=&quot;$:/temp/autoscroll/selection&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;false&quot; text=&quot;&quot;&quot;
-      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:50vh;overflow:hidden; }
+      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:$(frameheight)$;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transform:translateY(-100%); transition:transform $(scrolltime)$s linear; }
    &quot;&quot;&quot;/&gt;
 &lt;/$reveal&gt;
@@ -18863,7 +18870,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;nomatch&quot; default=&quot;false&quot;&gt; &lt;&lt;start&gt;&gt; &lt;/$reveal&gt;
 &lt;$reveal text={{$:/temp/autoscroll/stylesheet!!pause}} type=&quot;match&quot;   default=&quot;false&quot;&gt;
    &lt;$action-setfield $tiddler=&quot;$:/temp/autoscroll/stylesheet&quot; tags=&quot;$:/tags/Stylesheet&quot; pause=&quot;true&quot; text=&quot;&quot;&quot;
-      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:50vh;overflow:hidden; }
+      [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollFrame   { $(framestyles)$;height:$(frameheight)$;overflow:hidden; }
       [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .scrollContent { transition:transform 1000000000s linear; }
    &quot;&quot;&quot;/&gt;
 &lt;/$reveal&gt;
@@ -18911,18 +18918,23 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 \define viewer()
 &lt;$vars scrolltime={{{ [{$:/temp/autoscroll/selection}get[scrolltime]] }}}&gt;
 &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;stop&gt;&gt;&gt;
-&lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;margin-top:0.25em;&quot; actions=&lt;&lt;pause&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible scrollFrame&quot; style=&quot;width:100%;text-align:left;outline:none;cursor:default;margin-top:0.25em;&quot; actions=&lt;&lt;clickaction&gt;&gt;&gt;
    &lt;div class=&quot;scrollContent&quot;&gt; &lt;$transclude tiddler={{$:/temp/autoscroll/selection}} mode=&quot;block&quot; /&gt; &lt;/div&gt;
 &lt;/$button&gt;
 &lt;/$keyboard&gt;
 &lt;/$vars&gt;
 \end
 
-&lt;$vars framestyles={{TiddlyTools/AutoScroll/Setup!!framestyles}}&gt;
+&lt;$vars     autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]]     ~[[autoscroll]] }}}&gt;
+&lt;$vars frameheight={{{ [[TiddlyTools/AutoScroll/Setup]get[frameheight]] ~[[50vh]]       }}}&gt;
+&lt;$vars framestyles={{{ [[TiddlyTools/AutoScroll/Setup]get[framestyles]]                 }}}&gt;
+&lt;$vars clickaction={{{ [[TiddlyTools/AutoScroll/Setup]get[clickaction]]                 }}}&gt;
 &lt;&lt;controls&gt;&gt;
 &lt;$reveal state=&quot;$:/temp/autoscroll/selection&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;&lt;viewer&gt;&gt;
 &lt;/$reveal&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
 <div created="20200710092022593" modified="20200711015049068" scrolltime="60" tags="autoscroll" title="United States Constitution">
