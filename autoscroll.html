@@ -9609,7 +9609,7 @@ TiddlyTools/AutoScroll/Setup</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[United States Constitution]]</pre>
+# [[TiddlyTools/AutoScroll/Setup]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9641,11 +9641,11 @@ TiddlyTools/AutoScroll/Setup</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/AutoScroll/Info TiddlyTools/AutoScroll/Viewer TiddlyTools/AutoScroll/Toolbar TiddlyTools/AutoScroll/Template TiddlyTools/AutoScroll/Setup" title="$:/StoryList">
+<div created="20200715153413911" list="TiddlyTools/AutoScroll/Info TiddlyTools/AutoScroll/Viewer TiddlyTools/AutoScroll/Toolbar TiddlyTools/AutoScroll/Template TiddlyTools/AutoScroll/Setup" modified="20200715153413911" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200714130938935" modified="20200714133548440" title="$:/temp/advancedsearch">
-<pre>$:/core/ui/ViewTemplate/body</pre>
+<div created="20200714130938935" modified="20200715153423142" title="$:/temp/advancedsearch">
+<pre>$:/core/images</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -18682,11 +18682,17 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;A NAME=5.2.424&gt;Go, bid the soldiers shoot.&lt;/A&gt;&lt;br&gt;
 &lt;p&gt;&lt;i&gt;A dead march. Exeunt, bearing off the dead bodies; after which a peal of ordnance is shot off&lt;/i&gt;&lt;/p&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200714133048184" showtag="&lt;&lt;tag autoscroll&gt;&gt;" showtag1="&lt;&lt;tag autoscroll&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
-<pre>&lt;style&gt;
+<div created="20200711063502632" modified="20200715153821070" showtag="&lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;autotag&gt;&gt; /&gt;" showtag1="&lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;autotag&gt;&gt; /&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
+<pre>\define editsetup(field,default,size:20)
+&lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\end
+
+&lt;style&gt;
    .resize svg { height:1em; width:1em; }
    .nobullets  { list-style-type:none;  }
 &lt;/style&gt;
+&lt;$vars autotag={{{ [[TiddlyTools/AutoScroll/Setup]get[autotag]] ~[[autoscroll]] }}}&gt;
+&lt;$vars  button={{{ [[TiddlyTools/AutoScroll/Setup]get[button]]  ~[[$:/core/images/spiral]] }}}&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/autoscroll.html''|
@@ -18701,10 +18707,10 @@ Provides a form that lets you select a tiddler and then control how that tiddler
 
 * &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&quot;&lt;&lt;stop&gt;&gt;&quot;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
-   &lt;$list filter=&quot;[tag[autoscroll]]&quot;&gt;
+   &lt;$list filter=&quot;[tag&lt;autotag&gt;]&quot;&gt;
       &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/option&gt;
    &lt;/$list&gt;
-&lt;/$select&gt;'' lists tiddlers tagged with &lt;&lt;tag autoscroll&gt;&gt;''&lt;br&gt;&amp;emsp; ^^The contents of the selected tiddler appears in a box below the Viewer controls.^^
+&lt;/$select&gt;'' lists tiddlers tagged with &lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;autotag&gt;&gt; /&gt;''&lt;br&gt;&amp;emsp; ^^The contents of the selected tiddler appears in a box below the Viewer controls.^^
 * &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the selected tiddler.''&lt;br&gt;&amp;emsp; ^^Each tiddler stores its own scrolltime so the duration can be set to match the length of content being displayed.^^
 * {{$:/core/images/chevron-down}} ''starts auto-scrolling. While scrolling, {{$:/core/images/timestamp-on}}pauses and {{$:/core/images/timestamp-off}}resumes auto-scrolling.''&lt;br&gt;&amp;emsp; ^^You can also click on the tiddler content (or press &lt;kbd&gt;space&lt;/kbd&gt; or &lt;kbd&gt;enter&lt;/kbd&gt;) to start/pause/resume auto-scrolling.^^
 * {{$:/core/images/chevron-up}} ''stops auto-scrolling and returns to the top of the tiddler content.''&lt;br&gt;&amp;emsp; ^^You can also press &lt;kbd&gt;escape&lt;/kbd&gt; to stop auto-scrolling.^^
@@ -18716,7 +18722,7 @@ Provides a form that lets you select a tiddler and then control how that tiddler
 !! [[TiddlyTools/AutoScroll/Toolbar]]
 &lt;&lt;&lt;
 @@.resize.nobullets
-Adds a toolbar button: {{$:/core/images/spiral}} to any tiddlers that are tagged with {{!!showtag}}&lt;br&gt;
+Adds a toolbar button: &lt;span style=&quot;font-size:200%;&quot;&gt;&lt;$transclude tiddler=&lt;&lt;button&gt;&gt;/&gt;&lt;/span&gt; to any tiddlers that are tagged with {{!!showtag}}&lt;br&gt;
 When you click this button, a popup panel appears that lets you control the auto-scrolling behavior of the current tiddler.
 
 * &lt;$edit-text tiddler={{$:/temp/autoscroll/selection}} field=&quot;scrolltime&quot; tag=&quot;input&quot; size=&quot;5&quot; default=&quot;&quot; placeholder=&quot;&quot; /&gt; ''lets you input the &quot;scrolltime&quot; (in seconds) for the current tiddler.''&lt;br&gt;&amp;emsp; ^^Each tiddler stores its own scrolltime so the duration can be set to match the length of content being displayed.^^
@@ -18728,23 +18734,26 @@ When you click this button, a popup panel appears that lets you control the auto
 &lt;&lt;&lt;
 Adjusts the display of tiddlers that are tagged with {{!!showtag1}}so they can respond to the controls shown by the Toolbar button.
 &lt;&lt;&lt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+
 !! [[TiddlyTools/AutoScroll/Setup]]
 &lt;&lt;&lt;
 @@.resize.nobullets
-This tiddler defines settings that are used by ~AutoScroll.  To change these settings, you can &lt;$tiddler tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, or enter values here.  If you delete this tiddler, default values will be used.
+This tiddler defines settings that are used by ~AutoScroll.&lt;br&gt;To change these settings, you can &lt;$tiddler tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, or enter values below.&lt;br&gt;If you delete this tiddler, default values will be used.
 
-* autotag - ''the tag used to recognize tiddlers that can be auto-scrolled''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;autotag&quot; default=&quot;autoscroll&quot; placeholder=&quot;autoscroll&quot;/&gt;
-* button - ''the image used to show the toolbar button''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;button&quot; default=&quot;$:/core/images/spiral&quot; placeholder=&quot;$:/core/images/spiral&quot;/&gt;
-* clickaction - ''the function used to handle clicks within the tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;clickaction&quot; default=&quot;&quot; placeholder=&quot;none&quot; /&gt;
-* frameheight - ''the CSS &quot;height&quot; value used to control the height of the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;frameheight&quot; default=&quot;50vh&quot; placeholder=&quot;50vh&quot; /&gt;
-* framestyles - ''the CSS styles used to display a box around the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; field=&quot;framestyles&quot; size=&quot;55&quot; default=&quot;&quot; placeholder=&quot;none&quot; /&gt;
+* autotag - ''the tag used to recognize tiddlers that can be auto-scrolled''&lt;br&gt;&amp;emsp; &lt;&lt;editsetup &quot;autotag&quot; &quot;autoscroll&quot;&gt;&gt;
+* button - ''the image used to show the toolbar button''&lt;br&gt;&amp;emsp; &lt;&lt;editsetup &quot;button&quot; &quot;$:/core/images/spiral&quot;&gt;&gt;
+* clickaction - ''the function used to handle clicks within the tiddler content.''&lt;br&gt;&amp;emsp; &lt;&lt;editsetup &quot;clickaction&quot; &quot;none&quot;&gt;&gt;
+* frameheight - ''the CSS &quot;height&quot; value used to control the height of the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;&lt;editsetup &quot;frameheight&quot; &quot;50vh&quot;&gt;&gt;
+* framestyles - ''the CSS styles used to display a box around the auto-scrolling tiddler content.''&lt;br&gt;&amp;emsp; &lt;&lt;editsetup &quot;framestyles&quot; &quot;none&quot; &quot;55&quot;&gt;&gt;
 @@
 &lt;&lt;&lt;</pre>
 </div>
-<div autotag="autoscroll" button="$:/core/images/spiral" clickaction="&lt;&lt;pause&gt;&gt;" created="20200712194150003" frameheight="50vh" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200714133043154" tags="" title="TiddlyTools/AutoScroll/Setup">
+<div autotag="autoscroll" button="$:/core/images/spiral" clickaction="&lt;&lt;pause&gt;&gt;" created="20200712194150003" frameheight="50vh" framestyles="border:1px solid; padding:1em; background:#ffe;" modified="20200715153814162" tags="" title="TiddlyTools/AutoScroll/Setup">
 <pre></pre>
 </div>
-<div created="20200710042552947" list-before="$:/core/ui/ViewTemplate/body" modified="20200714131019489" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
+<div created="20200710042552947" list-before="$:/core/ui/ViewTemplate/body" modified="20200715153757984" tags="$:/tags/ViewTemplate" title="TiddlyTools/AutoScroll/Template">
 <pre>\import TiddlyTools/AutoScroll/Toolbar
 \define hidebody() &lt;style&gt; [data-tiddler-title=&quot;$(currentTiddler)$&quot;] .tc-tiddler-body { display:none; } &lt;/style&gt;
 
@@ -18768,7 +18777,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200710005546195" list-before="" modified="20200714133031280" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
+<div created="20200710005546195" list-before="" modified="20200715153802098" tags="$:/tags/ViewToolbar" title="TiddlyTools/AutoScroll/Toolbar">
 <pre>\whitespace trim
 
 \define settime()
@@ -18835,7 +18844,7 @@ This tiddler defines settings that are used by ~AutoScroll.  To change these set
 &lt;/$vars&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200709093535214" modified="20200714133038254" tags="" title="TiddlyTools/AutoScroll/Viewer">
+<div created="20200709093535214" modified="20200715153806450" tags="" title="TiddlyTools/AutoScroll/Viewer">
 <pre>\define select()
 &lt;$select tiddler=&quot;$:/temp/autoscroll/selection&quot; default=&quot;&quot; actions=&lt;&lt;show&gt;&gt;&gt;
    &lt;option value=&quot;&quot;&gt;select a tiddler...&lt;/option&gt;
