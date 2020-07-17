@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
+<li>SampleReport</li>
+
 <li>SampleTask</li>
 
 <li>TiddlyTools/Timer</li>
@@ -213,7 +215,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200717115445950" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200717150643530" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9592,12 +9594,13 @@ Error message and password prompt
 <div created="20200621230816515" modified="20200717115641991" title="$:/DefaultTiddlers">
 <pre>TiddlyTools/Timer/Info
 SampleTask
-</pre>
+SampleReport</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/AutoScroll/Info]]</pre>
+# [[TiddlyTools/Timer/Elapsed]]
+# [[TiddlyTools/Timer/Total]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9620,7 +9623,7 @@ SampleTask
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTask" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTask SampleReport" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9796,15 +9799,16 @@ SampleTask
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
+<div created="20200717110550625" modified="20200717115204070" tags="" title="SampleReport">
+<pre>Report for SampleTask:&lt;br&gt;
+{{SampleTask||TiddlyTools/Timer/Summary}}
+{{SampleTask||TiddlyTools/Timer/History}}</pre>
+</div>
 <div created="20200717110550625" modified="20200717115204070" tags="" title="SampleTask">
-<pre>{{||TiddlyTools/Timer}}
-{{||TiddlyTools/Timer/Elapsed}}
-{{||TiddlyTools/Timer/Total}}
-{{||TiddlyTools/Timer/Summary}}
-{{||TiddlyTools/Timer/History}}
+<pre>{{||TiddlyTools/Timer}} {{||TiddlyTools/Timer/Elapsed}} {{||TiddlyTools/Timer/Total}}
 </pre>
 </div>
-<div created="20200712174503125" modified="20200717115749519" tags="" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200717150640527" tags="" title="TiddlyTools/Timer">
 <pre>\define timer_start()
 &lt;$button actions=&quot;&quot;&quot;
    &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
@@ -9903,7 +9907,9 @@ SampleTask
 
 &lt;$vars elapsed={{{ [enlist{!!elapsedlist}last[]] }}}&gt;
 &lt;$vars elapsed={{{ [enlist{!!startlist}count[]] [enlist{!!stoplist}count[]] +[count[]match[1]then&lt;elapsed&gt;else[]] }}}&gt;
-''elapsed'': &lt;&lt;timer_showtime elapsed&gt;&gt;</pre>
+&lt;$reveal text=&lt;&lt;elapsed&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+''elapsed'': &lt;&lt;timer_showtime elapsed&gt;&gt;
+&lt;/$reveal&gt;</pre>
 </div>
 <div created="20200712174805383" modified="20200717115732065" tags="" title="TiddlyTools/Timer/History">
 <pre>\import TiddlyTools/Timer
@@ -9931,7 +9937,7 @@ SampleTask
    &lt;/$vars&gt;
 &lt;/table&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200717115743469" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200717150020361" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
@@ -9942,9 +9948,7 @@ SampleTask
 
 !! [[TiddlyTools/Timer]]
 &lt;&lt;&lt;
-Shows start/stop and reset buttons to control a task timer:&lt;br&gt;
-
-{{||TiddlyTools/Timer}}
+Shows start/stop and reset buttons to control a task timer.
 
 * To track activities, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer}}``.
 * The recorded times will be stored in the tiddler in which the transclusion occurs.
@@ -9955,27 +9959,33 @@ Shows start/stop and reset buttons to control a task timer:&lt;br&gt;
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Elapsed]]
 &lt;&lt;&lt;
-Shows the elapsed time for the most recent task session:&lt;br&gt;{{||TiddlyTools/Timer/Elapsed}}
+Shows the elapsed time for the most recently ended task session.
 
-* To show the elapsed time, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer/Elapsed}}``.
+* To show the elapsed time, //transclude// this tiddler into the same tiddler as above, using ``{{||TiddlyTools/Timer/Elapsed}}``.
+* To show the elapsed time stored in a specific tiddler (e.g., [[SampleTask]]), use ``{{SampleTask||TiddlyTools/Timer/Elapsed}}``.
+* When a task session is active (i.e., no current stop time recorded), this tiddler produces no output.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Total]]
 &lt;&lt;&lt;
-Shows the total accumulated time for all task sessions:&lt;br&gt;{{||TiddlyTools/Timer/Total}}
+Shows the total accumulated time for all task sessions:
 
-* To show the total time, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer/Total}}``.
+* To show the total time, //transclude// this tiddler into the same tiddler as above, using ``{{||TiddlyTools/Timer/Total}}``.
+* To show the total time stored in a specific tiddler (e.g., [[SampleTask]]), use ``{{SampleTask||TiddlyTools/Timer/Total}}``.
+* When no accumulated total exists (i.e., no task sessions have occurred), this tiddler produces no output.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Summary]]
 &lt;&lt;&lt;
-Shows a table with the starting, ending, and elapsed times for the most recent task session, as well as the total accumulated time:&lt;br&gt;{{||TiddlyTools/Timer/Summary}}
+Shows a table with the starting, ending, and elapsed times for the most recent task session, as well as the total accumulated time.
 
-* To show the summary table, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer/Summary}}``.
+* To show the summary table, //transclude// this tiddler into the same tiddler as above, using ``{{||TiddlyTools/Timer/Summary}}``.
+* To show the summary table for a specific tiddler (e.g., [[SampleTask]]), use ``{{SampleTask||TiddlyTools/Timer/Summary}}``.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/History]]
 &lt;&lt;&lt;
-Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time:&lt;br&gt;{{||TiddlyTools/Timer/History}}
+Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time.
 
-* To show the history table, //transclude// this tiddler into any other tiddler using ``{{||TiddlyTools/Timer/History}}``.
+* To show the history table, //transclude// this tiddler into the same tiddler as above, using ``{{||TiddlyTools/Timer/History}}``.
+* To show the history table for a specific tiddler (e.g., [[SampleTask]]), use ``{{SampleTask||TiddlyTools/Timer/History}}``.
 &lt;&lt;&lt;</pre>
 </div>
 <div created="20200712174623743" modified="20200717115721302" tags="" title="TiddlyTools/Timer/Summary">
@@ -9999,7 +10009,9 @@ Shows a table with the history of all individual task sessions, including the st
 <pre>\import TiddlyTools/Timer
 
 &lt;$vars total={{{ [enlist{!!totallist}last[]] }}}&gt;
-''total'': &lt;&lt;timer_showtime total&gt;&gt;</pre>
+&lt;$reveal text=&lt;&lt;total&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+''total'': &lt;&lt;timer_showtime total&gt;&gt;
+&lt;/$reveal&gt;</pre>
 </div>
 
 
