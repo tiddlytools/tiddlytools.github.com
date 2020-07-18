@@ -9613,7 +9613,7 @@ SampleTask</pre>
 <div created="20200718011630155" modified="20200718011630155" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20200621214946432" modified="20200718020156355" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200718032832630" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9798,13 +9798,18 @@ SampleTask</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200717110550625" modified="20200718014624059" tags="" title="SampleTask">
-<pre>&lt;&lt;timer&gt;&gt;</pre>
+<div created="20200717110550625" modified="20200718032550372" tags="" title="SampleTask">
+<pre>&lt;&lt;timer&gt;&gt;
+----
+!!Another Task
+&lt;&lt;timer_buttons AnotherTask&gt;&gt;
+&lt;&lt;timer_history AnotherTask&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200718015741420" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200718032818525" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define timer_start()
 &lt;$button actions=&quot;&quot;&quot;
    &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;is[missing]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; button=&quot;stop&quot; /&gt; &lt;/$list&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
 &quot;&quot;&quot;&gt; start
@@ -9937,7 +9942,7 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20200711063502632" modified="20200718020954472" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200718033025503" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
@@ -9953,16 +9958,17 @@ Defines macros to control a task timer and display the results.
 ``&lt;&lt;timer&gt;&gt;`` or ``&lt;&lt;timer taskname&gt;&gt;``&lt;br&gt;
 ''Shows timer buttons, elapsed time, total accumulated time, summary table, and history table''
 
-* To track activities, create a tiddler containing the above macro. The recorded times will be stored in that tiddler.
-* If you specify a __taskname__, the recorded times will be stored in a separate tiddler with that taskname.
+* To track activities, create a tiddler containing the above macro.
+* If you omit the taskname, the recorded times are stored in the current tiddler.
+* If you specify a taskname, the recorded times are stored in a separate tiddler with that taskname.
 * You can also use the following macros to create custom output showing only specific interface elements.
 
 ``&lt;&lt;timer_buttons&gt;&gt;`` or ``&lt;&lt;timer_buttons taskname&gt;&gt;``&lt;br&gt;
 ''Shows start/stop and reset buttons.''
 
-* The ''start'' button begins a &quot;task session&quot; and stores the __starting time__.  The button changes to ''stop''.
-* The ''stop'' button ends the current task session and stores the __ending time__ and the __elapsed time__ in minutes and seconds.  The button changes back to ''start'' so you can start another task session.
-* Each time you stop the timer, it will also add the elapsed time to the __total accumulated time__.
+* The ''start'' button begins a &quot;task session&quot; and stores the starting time.  The button changes to ''stop''.
+* The ''stop'' button ends the current task session and stores the ending time and the elapsed time.  The button changes back to ''start'' so you can begin another task session.
+* Each time you stop the timer, it will also add the elapsed time to the total accumulated time.
 * The ''reset'' button clears all stored task session data, including starting/ending times, elapsed time, and total accumulated time.
 
 ``&lt;&lt;timer_elapsed&gt;&gt;`` or ``&lt;&lt;timer_elapsed taskname&gt;&gt;``&lt;br&gt;
