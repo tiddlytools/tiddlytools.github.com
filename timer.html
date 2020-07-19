@@ -159,6 +159,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -173,8 +175,6 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/NewTagName</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -186,6 +186,8 @@ Error message and password prompt
 <li>SampleTask</li>
 
 <li>TiddlyTools/Timer</li>
+
+<li>TiddlyTools/Timer/action-timeout.js</li>
 
 <li>TiddlyTools/Timer/Info</li>
 
@@ -209,7 +211,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200717170042127" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200719051323159" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9592,8 +9594,8 @@ SampleTask</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/Elapsed]]
-# [[TiddlyTools/Timer/Total]]</pre>
+# [[TiddlyTools/Widgets/action-timeout.js]]
+# [[Ticker]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9604,22 +9606,25 @@ SampleTask</pre>
 <div created="20200621230950964" modified="20200712231811146" title="$:/SiteTitle">
 <pre>Timer</pre>
 </div>
+<div created="20200719040452535" modified="20200719040452535" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
 <div created="20200621202024163" modified="20200621202024163" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
 <div created="20200621202021685" modified="20200712185014447" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20200718011630155" modified="20200718011630155" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200718032832630" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200719052314344" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTask" title="$:/StoryList">
+<div created="20200719052321490" list="TiddlyTools/Timer/Info SampleTask" modified="20200719052321490" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9679,9 +9684,6 @@ SampleTask</pre>
         }
     }
 }</pre>
-</div>
-<div created="20200718000932249" modified="20200718000932249" title="$:/temp/NewTagName">
-<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9798,20 +9800,70 @@ SampleTask</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200717110550625" modified="20200718032550372" tags="" title="SampleTask">
+<div created="20200717110550625" modified="20200719044732383" tags="" title="SampleTask">
 <pre>&lt;&lt;timer&gt;&gt;
 ----
 !!Another Task
-&lt;&lt;timer_buttons AnotherTask&gt;&gt;
+&lt;&lt;timer_buttons AnotherTask&gt;&gt; &lt;&lt;timer_elapsed AnotherTask&gt;&gt; &lt;&lt;timer_total AnotherTask&gt;&gt;
 &lt;&lt;timer_history AnotherTask&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200718032818525" tags="$:/tags/Macro" title="TiddlyTools/Timer">
-<pre>\define timer_start()
+<div created="20200712174503125" modified="20200719044718081" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<pre>\define ticker_start()
+&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; now=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; stop=&quot;&quot; /&gt;
+&lt;&lt;ticker_actions&gt;&gt;
+\end
+
+\define ticker_stop()
+&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; stop=&quot;true&quot; /&gt;
+\end
+
+\define ticker_reset()
+&lt;$action-deletetiddler $tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}} /&gt;
+\end
+
+\define ticker_actions()
+&lt;$action-timeout delay=&quot;1000&quot; id=&quot;$(currentTiddler)$&quot; actions=&quot;&quot;&quot;
+   &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; now=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+   &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;$importvariables filter=&quot;TiddlyTools/Timer&quot;&gt; &lt;&lt;ticker_actions&gt;&gt; &lt;/$importvariables&gt;
+   &lt;/$reveal&gt;
+&quot;&quot;&quot; /&gt;
+\end
+
+\define ticker_show()
+&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
+&lt;$vars started={{!!started}} stopped={{!!now}}&gt;
+&lt;$vars 
+   msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
+    sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
+    min={{{ [&lt;started&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
+   hour={{{ [&lt;started&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
+    day={{{ [&lt;started&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+&lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+&lt;$vars
+   msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]] }}}
+    sec={{{ [&lt;stopped&gt;split[]butlast[3]last[2]join[]] }}}
+    min={{{ [&lt;stopped&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
+   hour={{{ [&lt;stopped&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
+    day={{{ [&lt;stopped&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+&lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+&lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+&lt;$vars     min={{{ [&lt;elapsed&gt;divide[60]trunc[]] }}}&gt;
+&lt;$vars  minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
+&lt;$vars     sec={{{ [&lt;elapsed&gt;subtract&lt;minsec&gt;trunc[]] }}}&gt;
+&lt;&lt;min&gt;&gt; minutes &lt;&lt;sec&gt;&gt; seconds
+\end
+
+\define timer_start()
 &lt;$button actions=&quot;&quot;&quot;
    &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
    &lt;$list filter=&quot;[&lt;currentTiddler&gt;is[missing]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; button=&quot;stop&quot; /&gt; &lt;/$list&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
+   &lt;&lt;ticker_start&gt;&gt;
 &quot;&quot;&quot;&gt; start
 &lt;/$button&gt;
 \end
@@ -9840,6 +9892,7 @@ SampleTask</pre>
    &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
+   &lt;&lt;ticker_stop&gt;&gt;
 &quot;&quot;&quot;&gt; stop
 &lt;/$button&gt;
 \end
@@ -9851,6 +9904,7 @@ SampleTask</pre>
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
+   &lt;&lt;ticker_reset&gt;&gt;
 &lt;/$button&gt;
 \end
 
@@ -9885,8 +9939,9 @@ SampleTask</pre>
 &lt;$tiddler tiddler={{{ [[$taskname$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars elapsed={{{ [enlist{!!elapsedlist}last[]] }}}&gt;
 &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$list filter=&quot;[{!!button}match[stop]] &quot;&gt; ''elapsed:'' //task in progress//       &lt;/$list&gt;
-   &lt;$list filter=&quot;[{!!button}!match[stop]]&quot;&gt; ''elapsed:'' &lt;&lt;timer_showtime elapsed&gt;&gt; &lt;/$list&gt;
+   ''elapsed:'' 
+   &lt;$reveal default={{!!button}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;ticker_show&gt;&gt;            &lt;/$reveal&gt;
+   &lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;timer_showtime elapsed&gt;&gt; &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 \end
 
@@ -9942,7 +9997,62 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20200711063502632" modified="20200718033025503" tags="" title="TiddlyTools/Timer/Info">
+<div created="20150728060155235" modified="20200719044704280" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<pre>/*\
+title: action-timeout.js
+type: application/javascript
+module-type: widget
+author: Eric Shulman elsdesign@gmail.com
+revision: 1.0
+
+widget to trigger actions after a delay
+
+params (default):
+ID          = unique timeout ID (if multiple timeouts are in use)
+delay       = delay time (msec)
+actions     = wikitext/actions to invoke after delay
+autostart   = if defined, timeout is started when widget is rendered
+\*/
+
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+var TimeoutWidget= function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+TimeoutWidget.prototype = new Widget();
+TimeoutWidget.prototype.render = function(parent,nextSibling) {
+	this.computeAttributes();
+	if (this.getAttribute(&quot;autostart&quot;)) this.invokeAction();
+};
+
+TimeoutWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(   changedAttributes[&quot;delay&quot;]) {
+		this.refreshSelf();
+		return true;
+	}
+	return this.refreshChildren(changedTiddlers);
+};
+
+
+TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
+	var self=this;
+	var delay=this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
+	var id=this.getAttribute(&quot;id&quot;,&quot;ID&quot;);
+	window[&quot;timeoutActions_&quot;+id]=this.getAttribute(&quot;actions&quot;);
+	setTimeout(&quot;$tw.rootWidget.invokeActionString(window['timeoutActions_&quot;+id+&quot;'],$tw.rootWidget)&quot;,delay);
+	return true; // Action was invoked
+};
+
+exports[&quot;action-timeout&quot;] = TimeoutWidget;
+
+})();</pre>
+</div>
+<div created="20200711063502632" modified="20200719044712251" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
@@ -9972,10 +10082,11 @@ Defines macros to control a task timer and display the results.
 * The ''reset'' button clears all stored task session data, including starting/ending times, elapsed time, and total accumulated time.
 
 ``&lt;&lt;timer_elapsed&gt;&gt;`` or ``&lt;&lt;timer_elapsed taskname&gt;&gt;``&lt;br&gt;
-''Shows the elapsed time for the most recently ended task session.''&lt;br&gt;
+''Shows the elapsed time for the current task session.''&lt;br&gt;
 
 * When no task sessions have occurred, there is no output.
-* When a task session has been started, &quot;//task in progress//&quot; is displayed.
+* When a task session has been started, the elapsed time is automatically updated in real-time.
+* When a task session has ended, the final elapsed time is displayed.
 
 ``&lt;&lt;timer_total&gt;&gt;`` or ``&lt;&lt;timer_total taskname&gt;&gt;``&lt;br&gt;
 ''Shows the total accumulated time for all task sessions.''&lt;br&gt;
@@ -9987,6 +10098,10 @@ Defines macros to control a task timer and display the results.
 
 ``&lt;&lt;timer_summary&gt;&gt;`` or ``&lt;&lt;timer_summary taskname&gt;&gt;``&lt;br&gt;
 ''Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time.''
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/action-timeout.js]]
+&lt;&lt;&lt;
+Defines a custom widget, ``&lt;$action-timeout&gt;``, used to provide real-time updates for the ``&lt;&lt;timer_elapsed&gt;&gt;`` display.
 &lt;&lt;&lt;</pre>
 </div>
 
