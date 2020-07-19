@@ -9622,7 +9622,7 @@ SampleTask</pre>
 <div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200719110847442" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200719141257252" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9644,7 +9644,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9664,7 +9664,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9804,10 +9804,10 @@ SampleTask</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200719072134516" modified="20200719104913034" title="AnotherTask">
+<div created="20200719072134516" modified="20200719141150328" title="AnotherTask">
 <pre></pre>
 </div>
-<div created="20200717110550625" modified="20200719110612622" tags="" title="SampleTask">
+<div created="20200717110550625" modified="20200719141155382" tags="" title="SampleTask">
 <pre>@@font-size:200%;{{TiddlyTools/Timer/Clock}}@@
 
 &lt;&lt;timer&gt;&gt;
@@ -9816,7 +9816,7 @@ SampleTask</pre>
 &lt;&lt;timer_buttons AnotherTask&gt;&gt; &lt;&lt;timer_elapsed AnotherTask&gt;&gt;
 &lt;&lt;timer_history AnotherTask&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200719104905292" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200719141142950" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
 
 \define ticker_start()
@@ -9827,7 +9827,7 @@ SampleTask</pre>
 \end
 
 \define ticker_actions()
-&lt;$action-timeout delay=&quot;1000&quot; id=&quot;$(currentTiddler)$&quot; actions=&quot;&quot;&quot;
+&lt;$action-timeout delay=&quot;1000&quot; actions=&quot;&quot;&quot;
    &lt;$list filter=&quot;[[$(currentTiddler)$]is[tiddler]]&quot;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; now=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
       &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;&quot;&gt;
@@ -10005,18 +10005,17 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200719075241217" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200719140723445" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
 module-type: widget
 author: Eric Shulman elsdesign@gmail.com
-revision: 1.0
+revision: 1.1
 
 widget to trigger actions after a delay
 
 params (default):
-ID          = unique timeout ID (if multiple timeouts are in use)
 delay       = delay time (msec)
 actions     = wikitext/actions to invoke after delay
 autostart   = if not blank, timeout is started when widget is rendered
@@ -10028,32 +10027,45 @@ autostart   = if not blank, timeout is started when widget is rendered
 /*global $tw: false */
 &quot;use strict&quot;;
 var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
+
 var TimeoutWidget= function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
+
 TimeoutWidget.prototype = new Widget();
+
 TimeoutWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
-	var autostart=this.getAttribute(&quot;autostart&quot;);
-	if (autostart &amp;&amp; (autostart!=&quot;&quot;)) this.invokeAction();
+	this.execute();
+	if (this.autostart!=&quot;&quot;) this.invokeAction();
+};
+
+TimeoutWidget.prototype.execute = function() {
+	this.delay     = this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
+	this.actions   = this.getAttribute(&quot;actions&quot;, '');
+	this.autostart = this.getAttribute(&quot;autostart&quot;,&quot;&quot;);
 };
 
 TimeoutWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	if(   changedAttributes[&quot;delay&quot;]) {
+	if(Object.keys(changedAttributes).length &gt; 0) {
 		this.refreshSelf();
 		return true;
 	}
 	return this.refreshChildren(changedTiddlers);
 };
 
+TimeoutWidget.prototype.allowActionPropagation = function() {
+	return false;
+};
 
 TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 	var self=this;
-	var delay=this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
-	var id=this.getAttribute(&quot;id&quot;,&quot;ID&quot;);
-	window[&quot;timeoutActions_&quot;+id]=this.getAttribute(&quot;actions&quot;);
-	setTimeout(&quot;$tw.rootWidget.invokeActionString(window['timeoutActions_&quot;+id+&quot;'],$tw.rootWidget)&quot;,delay);
+	this.makeChildWidgets();
+	setTimeout(function() {
+		self.invokeActions(self,event);
+		self.invokeActionString(self.actions,self,event);
+	}, self.delay);
 	return true; // Action was invoked
 };
 
@@ -10061,9 +10073,9 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200719094540255" modified="20200719104808609" stop="true" tags="" tick="20200719043222228" title="TiddlyTools/Timer/Clock">
+<div created="20200719094540255" modified="20200719141104085" stop="true" tags="" tick="20200719071243492" title="TiddlyTools/Timer/Clock">
 <pre>\define tickerActions()
-&lt;$action-timeout delay=&quot;1000&quot; id=&quot;TiddlyTools/Timer/Clock&quot; actions=&quot;&quot;&quot;
+&lt;$action-timeout delay=&quot;1000&quot; actions=&quot;&quot;&quot;
    &lt;$list filter=&quot;[[TiddlyTools/Timer/Clock]is[tiddler]]&quot;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; tick=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
       &lt;$reveal default={{!!stop}} type=&quot;nomatch&quot; text=&quot;true&quot;&gt;
@@ -10085,7 +10097,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
    &lt;/$reveal&gt;
 &lt;/$button&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200719104853639" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200719141124595" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
