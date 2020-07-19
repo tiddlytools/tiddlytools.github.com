@@ -183,6 +183,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
+<li>AnotherTask</li>
+
 <li>SampleTask</li>
 
 <li>TiddlyTools/Timer</li>
@@ -9618,13 +9620,13 @@ SampleTask</pre>
 <div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200719052314344" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200719075216740" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200719052321490" list="TiddlyTools/Timer/Info SampleTask" modified="20200719052321490" title="$:/StoryList">
+<div created="20200719075335393" list="TiddlyTools/Timer TiddlyTools/Timer/Info SampleTask" modified="20200719075335393" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9800,41 +9802,39 @@ SampleTask</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200717110550625" modified="20200719044732383" tags="" title="SampleTask">
+<div created="20200719072134516" modified="20200719075307320" title="AnotherTask">
+<pre></pre>
+</div>
+<div created="20200717110550625" modified="20200719075319550" tags="" title="SampleTask">
 <pre>&lt;&lt;timer&gt;&gt;
 ----
 !!Another Task
 &lt;&lt;timer_buttons AnotherTask&gt;&gt; &lt;&lt;timer_elapsed AnotherTask&gt;&gt; &lt;&lt;timer_total AnotherTask&gt;&gt;
 &lt;&lt;timer_history AnotherTask&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200719044718081" tags="$:/tags/Macro" title="TiddlyTools/Timer">
-<pre>\define ticker_start()
-&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
-&lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; now=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; stop=&quot;&quot; /&gt;
+<div created="20200712174503125" modified="20200719075256418" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
+
+\define ticker_start()
+&lt;$tiddler tiddler=&lt;&lt;ticker&gt;&gt;&gt;
+&lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;time&gt;&gt; now=&lt;&lt;time&gt;&gt; stop=&quot;&quot; /&gt;
 &lt;&lt;ticker_actions&gt;&gt;
-\end
-
-\define ticker_stop()
-&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
-&lt;$action-setfield $timestamp=&quot;no&quot; stop=&quot;true&quot; /&gt;
-\end
-
-\define ticker_reset()
-&lt;$action-deletetiddler $tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}} /&gt;
 \end
 
 \define ticker_actions()
 &lt;$action-timeout delay=&quot;1000&quot; id=&quot;$(currentTiddler)$&quot; actions=&quot;&quot;&quot;
-   &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; now=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
-   &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$importvariables filter=&quot;TiddlyTools/Timer&quot;&gt; &lt;&lt;ticker_actions&gt;&gt; &lt;/$importvariables&gt;
-   &lt;/$reveal&gt;
+   &lt;$list filter=&quot;[[$(currentTiddler)$]is[tiddler]]&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; now=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+      &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;&quot;&gt;
+         &lt;$importvariables filter=&quot;TiddlyTools/Timer&quot;&gt; &lt;&lt;ticker_actions&gt;&gt; &lt;/$importvariables&gt;
+      &lt;/$reveal&gt;
+   &lt;/$list&gt;
 &quot;&quot;&quot; /&gt;
 \end
 
 \define ticker_show()
-&lt;$tiddler tiddler={{{ [&lt;currentTiddler&gt;addprefix[$:/temp/]addsuffix[/Ticker]] }}}&gt;
+&lt;$tiddler tiddler=&lt;&lt;ticker&gt;&gt;&gt;
 &lt;$vars started={{!!started}} stopped={{!!now}}&gt;
 &lt;$vars 
    msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
@@ -9855,6 +9855,10 @@ SampleTask</pre>
 &lt;$vars  minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
 &lt;$vars     sec={{{ [&lt;elapsed&gt;subtract&lt;minsec&gt;trunc[]] }}}&gt;
 &lt;&lt;min&gt;&gt; minutes &lt;&lt;sec&gt;&gt; seconds
+\end
+
+\define ticker_stop()
+&lt;$action-deletetiddler $tiddler=&lt;&lt;ticker&gt;&gt; /&gt;
 \end
 
 \define timer_start()
@@ -9904,7 +9908,7 @@ SampleTask</pre>
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
-   &lt;&lt;ticker_reset&gt;&gt;
+   &lt;&lt;ticker_stop&gt;&gt;
 &lt;/$button&gt;
 \end
 
@@ -9997,7 +10001,7 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200719044704280" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200719075241217" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10052,7 +10056,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200711063502632" modified="20200719044712251" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200719075250326" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
