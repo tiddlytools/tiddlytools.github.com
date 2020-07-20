@@ -175,6 +175,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/timer/clock</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -9622,7 +9624,7 @@ SampleTask</pre>
 <div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200719141257252" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200720131907724" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9644,7 +9646,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9664,7 +9666,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9688,6 +9690,9 @@ SampleTask</pre>
         }
     }
 }</pre>
+</div>
+<div created="20200720131841098" modified="20200720131924895" title="$:/temp/timer/clock">
+<pre>20200720131924895</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9816,30 +9821,28 @@ SampleTask</pre>
 &lt;&lt;timer_buttons AnotherTask&gt;&gt; &lt;&lt;timer_elapsed AnotherTask&gt;&gt;
 &lt;&lt;timer_history AnotherTask&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200719141142950" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200720131721147" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
 
 \define ticker_start()
 &lt;$tiddler tiddler=&lt;&lt;ticker&gt;&gt;&gt;
 &lt;$vars time=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
-&lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;time&gt;&gt; now=&lt;&lt;time&gt;&gt; stop=&quot;&quot; /&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;time&gt;&gt; text=&lt;&lt;time&gt;&gt; go=&quot;go&quot; /&gt;
 &lt;&lt;ticker_actions&gt;&gt;
 \end
 
 \define ticker_actions()
 &lt;$action-timeout delay=&quot;1000&quot; actions=&quot;&quot;&quot;
    &lt;$list filter=&quot;[[$(currentTiddler)$]is[tiddler]]&quot;&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; now=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
-      &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;&quot;&gt;
-         &lt;$importvariables filter=&quot;TiddlyTools/Timer&quot;&gt; &lt;&lt;ticker_actions&gt;&gt; &lt;/$importvariables&gt;
-      &lt;/$reveal&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; text=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+      &lt;$reveal default={{!!go}} type=&quot;match&quot; text=&quot;go&quot;&gt; &lt;&lt;ticker_actions&gt;&gt; &lt;/$reveal&gt;
    &lt;/$list&gt;
 &quot;&quot;&quot; /&gt;
 \end
 
 \define ticker_show()
 &lt;$tiddler tiddler=&lt;&lt;ticker&gt;&gt;&gt;
-&lt;$vars started={{!!started}} stopped={{!!now}}&gt;
+&lt;$vars started={{!!started}} stopped={{!!text}}&gt;
 &lt;$vars 
    msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
     sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
@@ -9940,7 +9943,7 @@ SampleTask</pre>
 \define timer_buttons(taskname)
 &lt;$tiddler tiddler={{{ [[$taskname$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;timer_start&gt;&gt; &lt;&lt;timer_reset&gt;&gt; &lt;/$reveal&gt;
-&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;   &lt;&lt;timer_stop&gt;&gt;  &lt;&lt;timer_reset&gt;&gt; &lt;/$reveal&gt;
+&lt;$reveal default={{!!button}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;timer_stop&gt;&gt;  &lt;&lt;timer_reset&gt;&gt; &lt;/$reveal&gt;
 \end
 
 \define timer_elapsed(taskname)
@@ -10005,7 +10008,7 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200719140723445" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200720130314055" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10042,7 +10045,7 @@ TimeoutWidget.prototype.render = function(parent,nextSibling) {
 
 TimeoutWidget.prototype.execute = function() {
 	this.delay     = this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
-	this.actions   = this.getAttribute(&quot;actions&quot;, '');
+	this.actions   = this.getAttribute(&quot;actions&quot;,  &quot;&quot;);
 	this.autostart = this.getAttribute(&quot;autostart&quot;,&quot;&quot;);
 };
 
@@ -10073,31 +10076,27 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200719094540255" modified="20200719141104085" stop="true" tags="" tick="20200719071243492" title="TiddlyTools/Timer/Clock">
-<pre>\define tickerActions()
-&lt;$action-timeout delay=&quot;1000&quot; actions=&quot;&quot;&quot;
-   &lt;$list filter=&quot;[[TiddlyTools/Timer/Clock]is[tiddler]]&quot;&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; tick=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
-      &lt;$reveal default={{!!stop}} type=&quot;nomatch&quot; text=&quot;true&quot;&gt;
-         &lt;$importvariables filter=&quot;TiddlyTools/Timer/Clock&quot;&gt; &lt;&lt;tickerActions&gt;&gt; &lt;/$importvariables&gt;
-      &lt;/$reveal&gt;
-   &lt;/$list&gt;
+<div created="20200719094540255" modified="20200720130321000" tags="" title="TiddlyTools/Timer/Clock">
+<pre>\define ticker(auto)
+&lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&quot;&quot;&quot;
+   &lt;$tiddler tiddler=&quot;$:/temp/timer/clock&quot;&gt;
+   &lt;$action-setfield text=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;ticker&gt;&gt; &lt;/$reveal&gt;
+   &lt;/$tiddler&gt;
 &quot;&quot;&quot; /&gt;
 \end
 
-&lt;$button class=&quot;tc-btn-invisible&quot;
-   tooltip={{{ [{!!stop}match[true]then[click to start clock]else[click to stop clock]] }}}&gt;
-   &lt;&lt;now &quot;DDD, MMM DDth, YYYY 0hh:0mm:0ssam&quot;&gt;&gt;
-   &lt;$reveal default={{!!stop}} type=&quot;nomatch&quot; text=&quot;true&quot;&gt; 
-      &lt;$action-setfield $timestamp=&quot;no&quot; stop=&quot;true&quot; /&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default={{!!stop}} type=&quot;match&quot; text=&quot;true&quot;&gt; 
-      &lt;$action-setfield $timestamp=&quot;no&quot; stop=&quot;&quot; /&gt;
-      &lt;&lt;tickerActions&gt;&gt;
-   &lt;/$reveal&gt;
-&lt;/$button&gt;</pre>
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;click to start/stop&quot;&gt;
+   &lt;$tiddler tiddler=&quot;$:/temp/timer/clock&quot;&gt;
+   &lt;$view field=&quot;text&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth, YYYY 0hh:0mm:0ssam&quot; /&gt;
+   &lt;$transclude tiddler={{{ [{!!go}match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
+   &lt;$reveal default={{!!go}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;$action-setfield go=&quot;go&quot;   /&gt; &lt;&lt;ticker&gt;&gt; &lt;/$reveal&gt;
+   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;$action-setfield go=&quot;stop&quot; /&gt;            &lt;/$reveal&gt;
+   &lt;/$tiddler&gt;
+&lt;/$button&gt;
+&lt;&lt;ticker go&gt;&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200719141124595" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200720130326002" tags="" title="TiddlyTools/Timer/Info">
 <pre>\import TiddlyTools/Timer 
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
