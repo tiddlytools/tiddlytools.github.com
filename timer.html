@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/HidePluginWarning</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/NewTagName</li>
@@ -205,6 +207,8 @@ Error message and password prompt
 
 <li>TiddlyTools/Timer/Info</li>
 
+<li>TiddlyTools/Timer/Setup</li>
+
 </ul>
 </p>
 
@@ -225,7 +229,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200723051700741" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200723080554817" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9608,8 +9612,12 @@ SampleTask</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[SampleTask]]
-# [[AnotherTask]]</pre>
+# [[TiddlyTools/Timer]]
+# [[TiddlyTools/Timer/Info]]
+# [[TiddlyTools/Timer/Setup]]
+# [[TiddlyTools/Timer/DigitalClock]]
+# [[TiddlyTools/Timer/AnalogClock]]
+# [[TiddlyTools/Timer/action-timeout.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9636,10 +9644,13 @@ SampleTask</pre>
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTask" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/Timer/Info SampleTask" title="$:/StoryList">
 <pre></pre>
+</div>
+<div created="20200723080934477" modified="20200723080934477" title="$:/temp/HidePluginWarning">
+<pre>yes</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9702,11 +9713,11 @@ SampleTask</pre>
 <div created="20200723042623414" modified="20200723043252763" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200723051036852" go="go" modified="20200723052518371" title="$:/temp/ticker/AnalogClock">
-<pre>102518</pre>
+<div created="20200723051036852" go="go" modified="20200723080937656" title="$:/temp/ticker/AnalogClock">
+<pre>010937</pre>
 </div>
-<div created="20200723050457490" modified="20200723052518374" title="$:/temp/ticker/DigitalClock">
-<pre>20200723052518374</pre>
+<div created="20200723050457490" modified="20200723080937732" title="$:/temp/ticker/DigitalClock">
+<pre>20200723080937732</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9840,7 +9851,7 @@ SampleTask</pre>
 @@font-size:50%; {{||TiddlyTools/Timer/AnalogClock}}@@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200723045805158" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200723080638852" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
 
 \define ticker_start()
@@ -10027,7 +10038,7 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200723045737629" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200723075845587" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10095,7 +10106,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200723000537744" modified="20200723045746217" title="TiddlyTools/Timer/AnalogClock">
+<div created="20200723000537744" modified="20200723075851190" title="TiddlyTools/Timer/AnalogClock">
 <pre>\define ticker(auto)
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/AnalogClock&quot;&gt;
 &lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
@@ -10108,24 +10119,24 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;/$tiddler&gt;
 \end
 
-\define showtime(size:&quot;20em&quot;)
+\define showtime()
 &lt;$vars 
    sec={{{ [{!!text}split[]last[2]join[]] }}}
    min={{{ [{!!text}split[]butlast[2]last[2]join[]] }}}
    hour={{{ [{!!text}split[]butlast[4]last[2]join[]] }}}&gt;
-&lt;div style=&quot;position:relative;height:$size$;width:$size$;background:#eee;border:5px solid #ccc;border-radius:calc($size$ / 2);&quot;&gt;
-   &lt;div style=&quot;position:absolute;height:$size$;width:$size$;transform:rotate(180deg);&quot;&gt;
-      &lt;&lt;showhands $size$&gt;&gt;
+&lt;div style=&quot;position:relative;height:$(size)$;width:$(size)$;background:$(background)$;border:5px solid $(border)$;border-radius:calc($(size)$ / 2);&quot;&gt;
+   &lt;div style=&quot;position:absolute;height:$(size)$;width:$(size)$;transform:rotate(180deg);&quot;&gt;
+      &lt;&lt;showhands&gt;&gt;
    &lt;/div&gt;
-   @@font-size:1.5em;''&lt;&lt;shownumbers $size$&gt;&gt;''@@
+   @@font-size:1.5em;color:$(numbers)$;''&lt;&lt;shownumbers $size$&gt;&gt;''@@
 &lt;/div&gt;
 \end
 
 \define showhands(size)
-&lt;style&gt; .analogClockHands { position:absolute; top:50%; left:50%; border:1px solid; border-radius:50%; background:black; transform-origin:top; }&lt;/style&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($size$ / 2 - 2em); width:5px; transform:rotate(calc(($(hour)$deg * 30) + ($(min)$deg * 0.5)));&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($size$ / 2 - 1em); width:3px; transform:rotate(calc( $(min)$deg * 6));&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($size$ / 2 - 1em); width:1px; transform:rotate(calc( $(sec)$deg * 6));&quot;&gt;&lt;/div&gt;
+&lt;style&gt; .analogClockHands { position:absolute; top:50%; left:50%; border:1px solid $(hands)$; border-radius:50%; background:$(hands)$; transform-origin:top; }&lt;/style&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($(size)$ / 2 - 3em); width:5px; transform:rotate(calc(($(hour)$deg * 30) + ($(min)$deg * 0.5)));&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($(size)$ / 2 - 1em); width:3px; transform:rotate(calc( $(min)$deg * 6));&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc($(size)$ / 2 - 1em); width:1px; transform:rotate(calc( $(sec)$deg * 6));&quot;&gt;&lt;/div&gt;
 \end
 
 \define shownumbers(size)
@@ -10147,16 +10158,26 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/AnalogClock&quot;&gt;
 &lt;$vars tip={{{ [{!!go}match[stop]then[click to start]else[click to stop]] }}} &gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   &lt;$vars background={{{ [[TiddlyTools/Timer/Setup]get[background]] ~[[lightgray]] }}}&gt;
+   &lt;$vars     border={{{ [[TiddlyTools/Timer/Setup]get[border]]     ~[[gray]]      }}}&gt;
+   &lt;$vars    numbers={{{ [[TiddlyTools/Timer/Setup]get[numbers]]    ~[[black]]     }}}&gt;
+   &lt;$vars      hands={{{ [[TiddlyTools/Timer/Setup]get[hands]]      ~[[black]]     }}}&gt;
+   &lt;$vars       size={{{ [[TiddlyTools/Timer/Setup]get[size]]       ~[[15em]]      }}}&gt;
    &lt;&lt;showtime&gt;&gt;
    &lt;$reveal default={{!!go}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;ticker go&gt;&gt;   &lt;/$reveal&gt;
    &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;ticker stop&gt;&gt; &lt;/$reveal&gt;
+   &lt;/$vars&gt;
+   &lt;/$vars&gt;
+   &lt;/$vars&gt;
+   &lt;/$vars&gt;
+   &lt;/$vars&gt;
 &lt;/$button&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200723045752439" title="TiddlyTools/Timer/DigitalClock">
+<div created="20200719094540255" modified="20200723075855023" title="TiddlyTools/Timer/DigitalClock">
 <pre>\define ticker(auto)
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/DigitalClock&quot;&gt;
 &lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
@@ -10173,19 +10194,27 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/DigitalClock&quot;&gt;
 &lt;$vars tip={{{ [{!!go}match[stop]then[click to start]else[click to stop]] }}} &gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
-   &lt;$view field=&quot;text&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot; /&gt;
+   &lt;$vars datetime={{{ [[TiddlyTools/Timer/Setup]get[datetime]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
+   &lt;$view field=&quot;text&quot; format=&quot;date&quot; template=&lt;&lt;datetime&gt;&gt; /&gt;
    &lt;$transclude tiddler={{{ [{!!go}match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
    &lt;$reveal default={{!!go}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;ticker go&gt;&gt;   &lt;/$reveal&gt;
    &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;ticker stop&gt;&gt; &lt;/$reveal&gt;
+   &lt;/$vars&gt;
 &lt;/$button&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200723045801245" tags="" title="TiddlyTools/Timer/Info">
-<pre>\import TiddlyTools/Timer 
-&lt;style&gt; .resize svg { height:1em; width:1em; } &lt;/style&gt;
+<div created="20200711063502632" modified="20200723080634400" tags="" title="TiddlyTools/Timer/Info">
+<pre>\define editsetup(field,default,size:60)
+&lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\end
+
+&lt;style&gt;
+   .resize svg { height:1em; width:1em; }
+   .nobullets  { list-style-type:none;  }
+&lt;/style&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/timer.html''|
@@ -10250,11 +10279,28 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 * You can click on the time to pause/resume the clock.
 
 &lt;&lt;&lt;
+!! [[TiddlyTools/Timer/Setup]]
+&lt;&lt;&lt;
+@@.resize.nobullets
+''Defines settings that are used by [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;''
+^^To change these settings, you can enter values below, or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;. If you clear a setting or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot;&gt;delete this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, default values will be used.^^
+
+* ''datetime'' - the date/time format used for the [[TiddlyTools/Timer/DigitalClock]].&lt;br&gt;&lt;&lt;editsetup &quot;datetime&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
+* ''size'' - the diameter of the clock face for the [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;&lt;&lt;editsetup &quot;size&quot; &quot;15em&quot;&gt;&gt;
+* ''background'' - the background color for the [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;&lt;&lt;editsetup &quot;background&quot; &quot;#eee&quot;&gt;&gt;
+* ''border'' - the border color for the [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;&lt;&lt;editsetup &quot;border&quot; &quot;#ccc&quot;&gt;&gt;
+* ''numbers'' - the color of the clock numbers for the [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;&lt;&lt;editsetup &quot;numbers&quot; &quot;#000&quot;&gt;&gt;
+* ''hands'' - the color of the clock hands for the [[TiddlyTools/Timer/AnalogClock]].&lt;br&gt;&lt;&lt;editsetup &quot;hands&quot; &quot;#000&quot;&gt;&gt;
+@@
+&lt;&lt;&lt;
 !! [[TiddlyTools/Timer/action-timeout.js]]
 &lt;&lt;&lt;
 ''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates''&lt;br&gt;
 of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].
 &lt;&lt;&lt;</pre>
+</div>
+<div background="lightgray" border="gray" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200723080529134" numbers="black" size="15em" title="TiddlyTools/Timer/Setup">
+<pre></pre>
 </div>
 
 
