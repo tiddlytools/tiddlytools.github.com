@@ -229,7 +229,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200724214752758" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200725081907805" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9665,7 +9665,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9685,7 +9685,7 @@ SampleTask</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9697,11 +9697,11 @@ SampleTask</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9713,11 +9713,11 @@ SampleTask</pre>
 <div created="20200723042623414" modified="20200723043252763" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200723051036852" go="go" modified="20200724214752426" title="$:/temp/ticker/AnalogClock">
-<pre>025004</pre>
+<div created="20200723051036852" go="go" modified="20200725082132045" title="$:/temp/ticker/AnalogClock">
+<pre>012132</pre>
 </div>
-<div created="20200723050457490" modified="20200724214752481" title="$:/temp/ticker/DigitalClock">
-<pre>20200724215004900</pre>
+<div created="20200723050457490" modified="20200725082131641" title="$:/temp/ticker/DigitalClock">
+<pre>20200725082131641</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9851,7 +9851,7 @@ SampleTask</pre>
 @@font-size:50%; {{||TiddlyTools/Timer/AnalogClock}}@@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200724214043701" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200725081857985" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
 
 \define ticker_start()
@@ -10038,7 +10038,7 @@ SampleTask</pre>
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200724214009816" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200725081720717" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10106,7 +10106,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200723000537744" modified="20200724214015796" title="TiddlyTools/Timer/AnalogClock">
+<div created="20200723000537744" modified="20200725081730158" title="TiddlyTools/Timer/AnalogClock">
 <pre>\define ticker(auto)
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/AnalogClock&quot;&gt;
 &lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
@@ -10125,16 +10125,9 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
    min={{{ [{!!text}split[]butlast[2]last[2]join[]] }}}
    hour={{{ [{!!text}split[]butlast[4]last[2]join[]] }}}&gt;
 &lt;div style=&quot;position:relative;height:$(size)$;width:$(size)$;background:$(background)$;border:$(border)$;border-radius:50%;&quot;&gt;
-   &lt;&lt;showticks&gt;&gt;
    &lt;&lt;showhands&gt;&gt;
    &lt;&lt;shownumbers&gt;&gt;
-&lt;/div&gt;
-\end
-
-\define showticks() &lt;$list filter=&quot;[range[0,360,6]]&quot; variable=&quot;tick&quot;&gt; &lt;&lt;showtick&gt;&gt; &lt;/$list&gt;
-\define showtick()
-&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;height:calc($(size)$ * 0.5);transform:rotate(calc($(tick)$deg));&quot;&gt;
-&lt;div style=&quot;height:2px;width:1px;background:$(ticks)$;transform:translateY(calc($(size)$ * -0.5 + 1px));&quot;&gt;&lt;/div&gt;
+   &lt;&lt;showticks&gt;&gt;
 &lt;/div&gt;
 \end
 
@@ -10145,21 +10138,22 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 1em); width:1px; transform:rotate(calc(180deg +  $(sec)$deg * 6));&quot;&gt;&lt;/div&gt;
 \end
 
-\define shownumbers()
-&lt;span style=&quot;$(numbers)$;&quot;&gt;
-&lt;div style=&quot;position:absolute;   top:00%;             left:calc(50% - 0.5em);&quot; &gt;12&lt;/div&gt;
-&lt;div style=&quot;position:absolute;   top:07%;            right:25%;&quot;               &gt;1&lt;/div&gt;
-&lt;div style=&quot;position:absolute;   top:22%;            right:08%;&quot;               &gt;2&lt;/div&gt;
-&lt;div style=&quot;position:absolute;top:calc(50% - 0.5em); right:00%;&quot;               &gt;3&lt;/div&gt;
-&lt;div style=&quot;position:absolute;bottom:22%;            right:08%;&quot;               &gt;4&lt;/div&gt;
-&lt;div style=&quot;position:absolute;bottom:05%;            right:25%;&quot;               &gt;5&lt;/div&gt;
-&lt;div style=&quot;position:absolute;bottom:00%;             left:calc(50% - 0.25em);&quot;&gt;6&lt;/div&gt;
-&lt;div style=&quot;position:absolute;bottom:05%;             left:25%;&quot;               &gt;7&lt;/div&gt;
-&lt;div style=&quot;position:absolute;bottom:22%;             left:08%;&quot;               &gt;8&lt;/div&gt;
-&lt;div style=&quot;position:absolute;top:calc(50% - 0.5em);  left:0;&quot;                 &gt;9&lt;/div&gt;
-&lt;div style=&quot;position:absolute;   top:22%;             left:calc(08% - 0.25em);&quot;&gt;10&lt;/div&gt;
-&lt;div style=&quot;position:absolute;   top:07%;             left:calc(25% - 0.25em);&quot;&gt;11&lt;/div&gt;
-&lt;/span&gt;
+\define shownumbers() &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;number&quot;&gt; &lt;&lt;shownumber&gt;&gt; &lt;/$list&gt;
+\define shownumber()
+&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;height:calc($(size)$ * 0.5);transform:rotate(calc($(number)$deg * 30)) translateY(calc($(size)$ * -0.5));&quot;&gt;
+   &lt;div style=&quot;transform-origin:center;transform:rotate(calc($(number)$deg * -30)) translateX(-0.5em);&quot;&gt;
+      &lt;div style=&quot;$(numbers)$;&quot;&gt;$(number)$&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+\end
+
+\define showticks() &lt;$list filter=&quot;[range[1,60]]&quot; variable=&quot;tick&quot;&gt; &lt;&lt;showtick&gt;&gt; &lt;/$list&gt;
+\define showtick()
+&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;height:calc($(size)$ * 0.5);transform:rotate(calc($(tick)$deg * 6));&quot;&gt;
+   &lt;div style=&quot;transform-origin:center;transform:translateY(calc($(size)$ * -0.5 + 1px));&quot;&gt;
+      &lt;div style=&quot;height:2px;width:1px;background:$(ticks)$;&quot;&gt;&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
 \end
 
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
@@ -10182,7 +10176,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200724214020970" title="TiddlyTools/Timer/DigitalClock">
+<div created="20200719094540255" modified="20200725081741122" title="TiddlyTools/Timer/DigitalClock">
 <pre>\define ticker(auto)
 &lt;$tiddler tiddler=&quot;$:/temp/ticker/DigitalClock&quot;&gt;
 &lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
@@ -10211,7 +10205,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200724214039168" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200725081853585" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editsetup(field,default,size:60)
 &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
 \end
@@ -10308,7 +10302,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].
 &lt;&lt;&lt;</pre>
 </div>
-<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200724214028105" numbers="color:black; font-size:1.5em;" size="15em" ticks="transparent" title="TiddlyTools/Timer/Setup">
+<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200725081829639" numbers="color:black; font-size:1.5em;" size="15em" ticks="transparent" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
 
