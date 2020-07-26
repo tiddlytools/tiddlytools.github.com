@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/temp/ticker/AnalogClock</li>
 
+<li>$:/temp/ticker/CountDown/TiddlyTools/Timer/CountDown</li>
+
 <li>$:/temp/ticker/DigitalClock</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -233,7 +235,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200726031013387" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200726043012782" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9609,8 +9611,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200621230816515" modified="20200718012539624" title="$:/DefaultTiddlers">
+<div created="20200621230816515" modified="20200726063303606" title="$:/DefaultTiddlers">
 <pre>TiddlyTools/Timer/Info
+SampleCountDown
 SampleTask</pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9644,13 +9647,13 @@ SampleTask</pre>
 <div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200726030752850" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200726042333336" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200726025542896" list="TiddlyTools/Timer/Info" modified="20200726030809934" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleCountDown SampleTask" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200723080934477" modified="20200723080934477" title="$:/temp/HidePluginWarning">
@@ -9717,11 +9720,14 @@ SampleTask</pre>
 <div created="20200723042623414" modified="20200723043252763" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200726024207986" modified="20200726032019262" title="$:/temp/ticker/AnalogClock">
-<pre>082019</pre>
+<div created="20200726024207986" modified="20200726063355257" title="$:/temp/ticker/AnalogClock">
+<pre>113355</pre>
 </div>
-<div created="20200726024218330" modified="20200726025748794" title="$:/temp/ticker/DigitalClock">
-<pre>20200726030932149</pre>
+<div created="20200726062202232" go="go" hours="00" mins="00" modified="20200726062208544" secs="00" title="$:/temp/ticker/CountDown/TiddlyTools/Timer/CountDown">
+<pre>0</pre>
+</div>
+<div created="20200726024218330" modified="20200726063355321" title="$:/temp/ticker/DigitalClock">
+<pre>20200726063355321</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9858,7 +9864,7 @@ SampleTask</pre>
 @@font-size:50%; {{||TiddlyTools/Timer/AnalogClock}}@@
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200726031005561" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200726062442506" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define ticker() $:/temp/ticker/$(currentTiddler)$
 
 \define ticker_start()
@@ -10183,21 +10189,21 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200725211229080" modified="20200726025725307" tags="" title="TiddlyTools/Timer/CountDown">
+<div created="20200725211229080" modified="20200726062358663" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define target() $:/temp/ticker/CountDown/$(here)$
 
 \define ticker(auto)
 &lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
 &lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[[$(currentTiddler)$]is[tiddler]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;target&gt;is[tiddler]]&quot;&gt;
 &lt;$reveal default={{!!go}} type=&quot;match&quot; text=&quot;go&quot;&gt;
-   &lt;$reveal state=&lt;&lt;currentTiddler&gt;&gt; type=&quot;nomatch&quot; text=&quot;0&quot;&gt;
-      &lt;$action-setfield text={{{ [{!!text}subtract[1]] }}} /&gt;
+   &lt;$reveal state=&lt;&lt;target&gt;&gt; type=&quot;nomatch&quot; text=&quot;0&quot;&gt;
       &lt;&lt;showRemaining&gt;&gt;
+      &lt;$reveal state=&lt;&lt;target&gt;&gt; type=&quot;match&quot; text=&quot;1&quot;&gt;
+         &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
+      &lt;/$reveal&gt;
+      &lt;$action-setfield text={{{ [{!!text}subtract[1]] }}} /&gt;
       &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;currentTiddler&gt;&gt; type=&quot;match&quot; text=&quot;0&quot;&gt;
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 &lt;/$list&gt;
@@ -10217,28 +10223,44 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$action-setfield  secs={{{ [&lt;S&gt;addprefix[00]split[]last[2]join[]] }}} /&gt;
 \end
 
-\define start()
+\define showMessage(msg:&quot;Countdown completed&quot;)
+&lt;$action-setfield $tiddler=&quot;$(target)$/msg&quot; subtitle=&quot;&quot;&quot;&lt;$text text=&quot;$(here)$&quot; /&gt;&quot;&quot;&quot; text=&quot;&quot;&quot;@@font-size:2em; $msg$@@&quot;&quot;&quot;
+     footer=&quot;&quot;&quot;&lt;$button message=&quot;tm-close-tiddler&quot;&gt;close&lt;$action-deletetiddler $tiddler=&quot;$(target)$/msg&quot; /&gt;&lt;/$button&gt;&quot;&quot;&quot; /&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(target)$/msg&quot; /&gt;
+\end
+
+\define doStart()
+&lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
+&lt;$action-setfield  text={{{ [{!!hours}multiply[60]add{!!mins}multiply[60]add{!!secs}] }}} /&gt;
 &lt;$action-setfield hours={{{ [{!!hours}addprefix[00]split[]last[2]join[]] }}} /&gt;
 &lt;$action-setfield  mins={{{ [{!!mins}addprefix[00]split[]last[2]join[]] }}} /&gt;
 &lt;$action-setfield  secs={{{ [{!!secs}addprefix[00]split[]last[2]join[]] }}} /&gt;
-&lt;$action-setfield  text={{{ [{!!hours}multiply[60]add{!!mins}multiply[60]add{!!secs}] }}} /&gt;
 &lt;&lt;ticker go&gt;&gt;
+&lt;/$tiddler&gt;
 \end
 
-\define stop()
-&lt;&lt;ticker stop&gt;&gt;
+\define doStop()
+&lt;$list filter=&quot;[&lt;target&gt;get[text]compare:integer:gt[0]]&quot;&gt; &lt;&lt;ticker stop&gt;&gt; &lt;/$list&gt;
 \end
 
+\define doReset()
+&lt;$action-deletetiddler $tiddler=&lt;&lt;target&gt;&gt; /&gt;
+\end
+
+\define getTime(field)
 &lt;style&gt; .timerCountdown { width:2.5em; text-align:center; } &lt;/style&gt;
+&lt;$edit-text tiddler=&lt;&lt;target&gt;&gt; field=&quot;$field$&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; size=&quot;3&quot; default=&quot;00&quot; placeholder=&quot;00&quot; /&gt;
+\end
+
+\define getMessage()
+&lt;$edit-text tiddler=&lt;&lt;target&gt;&gt; field=&quot;msg&quot; tag=&quot;input&quot; size=&quot;30&quot; default=&quot;&quot; placeholder=&quot;enter a message&quot; /&gt;
+\end
 
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
-&lt;$edit-text field=&quot;hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; size=&quot;3&quot; default=&quot;00&quot; placeholder=&quot;00&quot; /&gt;
-&lt;$edit-text field=&quot;mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; size=&quot;3&quot; default=&quot;00&quot; placeholder=&quot;00&quot;/&gt;
-&lt;$edit-text field=&quot;secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; size=&quot;3&quot; default=&quot;00&quot; placeholder=&quot;00&quot;/&gt;
-&lt;$button class=&quot;tc-button&quot;&gt; start &lt;&lt;start&gt;&gt; &lt;/$button&gt;
-&lt;$button class=&quot;tc-button&quot;&gt; stop  &lt;&lt;stop&gt;&gt;  &lt;/$button&gt;
-&lt;/$tiddler&gt;
+&lt;&lt;getTime hours&gt;&gt; &lt;&lt;getTime mins&gt;&gt; &lt;&lt;getTime secs&gt;&gt; &lt;&lt;getMessage&gt;&gt;
+&lt;$button class=&quot;tc-button&quot;&gt; start &lt;&lt;doStart&gt;&gt; &lt;/$button&gt;
+&lt;$button class=&quot;tc-button&quot;&gt; stop  &lt;&lt;doStop&gt;&gt;  &lt;/$button&gt;
+&lt;$button class=&quot;tc-button&quot;&gt; reset &lt;&lt;doReset&gt;&gt; &lt;/$button&gt;
 &lt;/$vars&gt;</pre>
 </div>
 <div created="20200719094540255" modified="20200726024238788" title="TiddlyTools/Timer/DigitalClock">
@@ -10270,7 +10292,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200726031001230" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200726062435636" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editsetup(field,default,size:60)
 &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
 \end
@@ -10329,10 +10351,11 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;&lt;
 ''Displays a countdown timer.''
 
-* To embed the countdown timer in another tiddler, use ``{{||TiddlyTools/Timer/CountDown}}``
-* Enter the desired hours, minutes, and seconds in the input fields.
+* To display the countdown timer in another tiddler, use ``{{||TiddlyTools/Timer/CountDown}}``
+* Enter hours, minutes, seconds, and a brief message to be displayed when the countdown is completed.
 * The ''start'' button begins the countdown.  The input fields automatically update to show the time remaining.
 * The ''stop'' button pauses the countdown.  You can adjust the time remaining.  Press ''start'' to resume the countdown.
+* The ''reset'' button clears the countdown time and message text.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/DigitalClock]]
 &lt;&lt;&lt;
@@ -10376,7 +10399,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].
 &lt;&lt;&lt;</pre>
 </div>
-<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200726030954281" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
+<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200726062405246" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
 
