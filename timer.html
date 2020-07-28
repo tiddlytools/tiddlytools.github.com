@@ -193,7 +193,11 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
+<li>0</li>
+
 <li>AnotherTimer</li>
+
+<li>go</li>
 
 <li>SampleCountdown</li>
 
@@ -237,7 +241,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200728130641894" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200728173513834" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9645,7 +9649,7 @@ SampleCountdownSequence</pre>
 <div created="20200718011630155" modified="20200719042435070" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200728142536104" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200728172218677" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9718,11 +9722,11 @@ SampleCountdownSequence</pre>
 <div created="20200723042623414" modified="20200723043252763" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200726125636533" go="go" modified="20200728142541065" title="$:/temp/timer/AnalogClock">
-<pre>072541</pre>
+<div created="20200726125636533" go="go" modified="20200728190734075" title="$:/temp/timer/AnalogClock">
+<pre>120734</pre>
 </div>
-<div created="20200726132949503" go="go" modified="20200728142541128" title="$:/temp/timer/DigitalClock">
-<pre>20200728142541128</pre>
+<div created="20200726132949503" go="go" modified="20200728190733914" title="$:/temp/timer/DigitalClock">
+<pre>20200728190733914</pre>
 </div>
 <div done="&lt;$vars session={{{ [&lt;temp&gt;get[session]] ~[[0]] +[add[1]] }}}&gt;
 &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;temp&gt;&gt; session=&lt;&lt;session&gt;&gt; /&gt;
@@ -9847,7 +9851,13 @@ SampleCountdownSequence</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
+<div go="go" title="0">
+<pre></pre>
+</div>
 <div created="20200719072134516" modified="20200723045644128" title="AnotherTimer">
+<pre></pre>
+</div>
+<div go="stop" title="go">
 <pre></pre>
 </div>
 <div created="20200726025847494" modified="20200722180000000" secs="abc" tags="" title="SampleCountdown">
@@ -9876,7 +9886,7 @@ This is an __experimental__ pre-programmed countdown sequence consisting of&lt;b
 \define controls()
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
 &lt;$vars done=&lt;&lt;workDone&gt;&gt;&gt;
-&lt;&lt;getCountdown $(worktime)$&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;&lt;status&gt;&gt;
+&lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown $(worktime)$&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;&lt;status&gt;&gt;
 \end
 
 \define reset()
@@ -9940,7 +9950,7 @@ This is an __experimental__ pre-programmed countdown sequence consisting of&lt;b
 {{||TiddlyTools/Timer/DigitalClock}}
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200728112955648" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200728173108051" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define temp() $:/temp/timer/$(currentTiddler)$
 
 \define ticker_start()
@@ -10267,7 +10277,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200725211229080" modified="20200728112927197" tags="" title="TiddlyTools/Timer/CountDown">
+<div created="20200725211229080" modified="20200728172110891" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define temp() $:/temp/timer/$(here)$
 \define done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
 
@@ -10317,10 +10327,9 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 \define getCountdown(H:&quot;&quot;,M:&quot;&quot;,S:&quot;&quot;)
 &lt;$action-timeout autostart=&quot;go&quot; delay=&quot;1&quot; actions=&quot;&quot;&quot;
-   &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-   &lt;$list filter=&quot;[[$H$]!match[]then&lt;temp&gt;]&quot;&gt;&lt;$action-setfield $timestamp=&quot;no&quot; hours={{{ [[$H$]addprefix[00]split[]last[2]join[]] }}} /&gt;&lt;/$list&gt;
-   &lt;$list filter=&quot;[[$M$]!match[]then&lt;temp&gt;]&quot;&gt;&lt;$action-setfield $timestamp=&quot;no&quot;  mins={{{ [[$M$]addprefix[00]split[]last[2]join[]] }}} /&gt;&lt;/$list&gt;
-   &lt;$list filter=&quot;[[$S$]!match[]then&lt;temp&gt;]&quot;&gt;&lt;$action-setfield $timestamp=&quot;no&quot;  secs={{{ [[$S$]addprefix[00]split[]last[2]join[]] }}} /&gt;&lt;/$list&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; $timestamp=&quot;no&quot; hours={{{ [[$H$]addprefix[00]split[]last[2]join[]] }}} /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; $timestamp=&quot;no&quot;  mins={{{ [[$M$]addprefix[00]split[]last[2]join[]] }}} /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; $timestamp=&quot;no&quot;  secs={{{ [[$S$]addprefix[00]split[]last[2]join[]] }}} /&gt;
 &quot;&quot;&quot;/&gt;
 &lt;style&gt; .timerCountdown { width:2.5em; text-align:center; } &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]then&lt;temp&gt;] -[&lt;temp&gt;get[text]match[0]then&lt;temp&gt;]&quot;
@@ -10329,9 +10338,9 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
    &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&quot;&quot; placeholder=&quot;mm&quot; /&gt;
    &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&quot;&quot; placeholder=&quot;ss&quot; /&gt;
    &quot;&quot;&quot;&gt;
-   &lt;input type=&quot;text&quot; class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot; value={{{ [&lt;temp&gt;get[hours]] }}}&gt;
-   &lt;input type=&quot;text&quot; class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot; value={{{ [&lt;temp&gt;get[mins]]  }}}&gt;
-   &lt;input type=&quot;text&quot; class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot; value={{{ [&lt;temp&gt;get[secs]]  }}}&gt;
+   &lt;input value={{{ [&lt;temp&gt;get[hours]] }}} class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot;&gt;
+   &lt;input value={{{ [&lt;temp&gt;get[mins]]  }}} class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot;&gt;
+   &lt;input value={{{ [&lt;temp&gt;get[secs]]  }}} class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot;&gt;
 &lt;/$list&gt;
 \end
 
@@ -10342,13 +10351,11 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \define start()
 &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]]&quot; emptyMessage=&quot;start&quot;&gt;
-      &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[0]]&quot; emptyMessage=&quot;@@color:gray; start@@&quot;&gt;
-         start
-      &lt;/$list&gt;
+   &lt;$list    filter=&quot;[&lt;temp&gt;get[go]match[go]]&quot;  emptyMessage=&quot;start&quot;&gt;
+      &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[0]]&quot; emptyMessage=&quot;@@color:gray; start@@&quot;&gt; start &lt;/$list&gt;
    &lt;/$list&gt;
    &lt;$macrocall $name=&quot;setCountdown&quot; H={{!!hours}} M={{!!mins}} S={{!!secs}} /&gt;
-   &lt;&lt;ticker go&gt;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; go=&quot;go&quot; /&gt;
 &lt;/$button&gt;
 \end
 
@@ -10370,7 +10377,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
+&lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
 <div created="20200719094540255" modified="20200728112917181" title="TiddlyTools/Timer/DigitalClock">
 <pre>\define temp() $:/temp/timer/DigitalClock
@@ -10403,7 +10410,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200728112949266" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200728173104492" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editsetup(field,default,size:60)
 &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
 \end
@@ -10511,7 +10518,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].
 &lt;&lt;&lt;</pre>
 </div>
-<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200728112937489" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
+<div background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200728173059869" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
 
