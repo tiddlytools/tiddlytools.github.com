@@ -237,7 +237,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200730164658474" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200730182232089" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9645,13 +9645,13 @@ SampleCountdownSequence</pre>
 <div created="20200718011630155" modified="20200730135518730" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200730141606839" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200730182359521" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200730164657030" list="" modified="20200730164657030" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div title="$:/temp/advancedsearch">
@@ -9718,8 +9718,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" modified="20200730165457784" title="$:/temp/timer/AnalogClock">
-<pre>095457</pre>
+<div created="20200730065404061" modified="20200730182401720" title="$:/temp/timer/AnalogClock">
+<pre>112401</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9745,11 +9745,11 @@ SampleCountdownSequence</pre>
       &quot;&quot;&quot; /&gt;
    &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/AutoSaver/ask&quot; /&gt;
 &lt;/$reveal&gt;
-&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
-<pre></pre>
+&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
+<pre>3600</pre>
 </div>
-<div created="20200730065404012" modified="20200730165457849" title="$:/temp/timer/DigitalClock">
-<pre>20200730165457849</pre>
+<div created="20200730065404012" modified="20200730182401789" title="$:/temp/timer/DigitalClock">
+<pre>20200730182401789</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10359,6 +10359,7 @@ set auto saver interval:&lt;br&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; autosave_secs=&lt;&lt;saveS&gt;&gt;  /&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;&quot; /&gt;
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/timer/AutoSaver/settings&quot;&gt;&gt; /&gt;
 &quot;&quot;&quot;&gt; reset &lt;/$button&gt;
 &lt;$button class=&quot;tc-button&quot; actions=&quot;&quot;&quot;
    &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -10366,6 +10367,7 @@ set auto saver interval:&lt;br&gt;
           saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;&quot; /&gt;
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/timer/AutoSaver/settings&quot;&gt;&gt; /&gt;
 &quot;&quot;&quot;&gt; apply
 &lt;/$button&gt;
 &lt;br&gt;
