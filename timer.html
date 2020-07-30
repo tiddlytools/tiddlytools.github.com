@@ -237,7 +237,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200730162339769" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200730164658474" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9651,7 +9651,7 @@ SampleCountdownSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
+<div created="20200730164657030" list="" modified="20200730164657030" title="$:/StoryList">
 <pre></pre>
 </div>
 <div title="$:/temp/advancedsearch">
@@ -9718,8 +9718,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" modified="20200730164102496" title="$:/temp/timer/AnalogClock">
-<pre>094102</pre>
+<div created="20200730065404061" modified="20200730165457784" title="$:/temp/timer/AnalogClock">
+<pre>095457</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9730,7 +9730,11 @@ SampleCountdownSequence</pre>
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/AutoSaver/ask&quot; subtitle=&quot;Confirm auto save&quot; text=&quot;@@font-size:2em;OK to auto save file?@@&quot;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/AutoSaver/ask&quot; subtitle=&quot;Confirm auto save&quot;
+      text=&quot;&quot;&quot;
+         &lt;p&gt;@@font-size:2em;OK to auto save file?@@&lt;/p&gt;
+         &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;no&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot;&gt; do not ask again &lt;/$checkbox&gt;
+      &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/AutoSaver/ask&quot; /&gt; &lt;/$button&gt;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
@@ -9744,8 +9748,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" modified="20200730164102553" title="$:/temp/timer/DigitalClock">
-<pre>20200730164102553</pre>
+<div created="20200730065404012" modified="20200730165457849" title="$:/temp/timer/DigitalClock">
+<pre>20200730165457849</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10365,7 +10369,7 @@ set auto saver interval:&lt;br&gt;
 &quot;&quot;&quot;&gt; apply
 &lt;/$button&gt;
 &lt;br&gt;
-&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; class=&quot;tc-popup-keep&quot;&gt; always ask before auto saving &lt;/$checkbox&gt;
+&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; class=&quot;tc-popup-keep&quot;&gt; ask before auto saving &lt;/$checkbox&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -10405,7 +10409,11 @@ set auto saver interval:&lt;br&gt;
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$/ask&quot; subtitle=&quot;Confirm auto save&quot; text=&quot;@@font-size:2em;OK to auto save file?@@&quot;
+   &lt;$action-setfield $tiddler=&quot;$(temp)$/ask&quot; subtitle=&quot;Confirm auto save&quot;
+      text=&quot;&quot;&quot;
+         &lt;p&gt;@@font-size:2em;OK to auto save file?@@&lt;/p&gt;
+         &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;no&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot;&gt; do not ask again &lt;/$checkbox&gt;
+      &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt; &lt;/$button&gt;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
@@ -10684,7 +10692,7 @@ set auto saver interval:&lt;br&gt;
 ** ''ticks'' - the color of the minute marks.&lt;br&gt;         &lt;&lt;editSetup &quot;ticks&quot;      &quot;black&quot;&gt;&gt;
 * [[TiddlyTools/Timer/AutoSaver]]:
 ** ''interval'' - hours &lt;&lt;editSetup &quot;autosave_hours&quot; &quot;01&quot; 2.5em center&gt;&gt; minutes &lt;&lt;editSetup &quot;autosave_mins&quot; &quot;00&quot; 2.5em center&gt;&gt; seconds &lt;&lt;editSetup &quot;autosave_secs&quot; &quot;00&quot; 2.5em center&gt;&gt;
-** ''confirm'' - &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; always ask before auto saving &lt;/$checkbox&gt;
+** ''confirm'' - &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; ask before auto saving &lt;/$checkbox&gt;
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/action-timeout.js]]
