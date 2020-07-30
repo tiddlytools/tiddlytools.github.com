@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/temp/NewTagName</li>
 
+<li>$:/temp/notify</li>
+
 <li>$:/temp/search</li>
 
 <li>$:/temp/timer/AnalogClock</li>
@@ -237,7 +239,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200729181424785" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200730003855355" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9642,16 +9644,16 @@ SampleCountdownSequence</pre>
 <div created="20200621202021685" modified="20200712185014447" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20200718011630155" modified="20200729213651228" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/System</pre>
+<div created="20200718011630155" modified="20200730003849301" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20200621214946432" modified="20200729213834552" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200730003851721" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
+<div created="20200730002818663" list="SampleCountdownSequence" modified="20200730002818663" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200723080934477" modified="20200723080934477" title="$:/temp/HidePluginWarning">
@@ -9718,14 +9720,17 @@ SampleCountdownSequence</pre>
 <div created="20200723042623414" modified="20200723043252763" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
+<div created="20200729231021858" modified="20200729231021858" title="$:/temp/notify">
+<pre>&lt;$text text=&quot;TiddlyTools/Timer/CountDown:&quot; /&gt;@@font-size:2em; Countdown completed@@</pre>
+</div>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200726125636533" go="go" modified="20200729213836772" title="$:/temp/timer/AnalogClock">
-<pre>023836</pre>
+<div created="20200726125636533" go="go" modified="20200730004120380" title="$:/temp/timer/AnalogClock">
+<pre>054120</pre>
 </div>
-<div created="20200726132949503" go="go" modified="20200729213836830" title="$:/temp/timer/DigitalClock">
-<pre>20200729213836830</pre>
+<div created="20200726132949503" go="go" modified="20200730004120285" title="$:/temp/timer/DigitalClock">
+<pre>20200730004120285</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9871,17 +9876,20 @@ SampleCountdownSequence</pre>
 \define alldonemsg()     ''All done. Good work!''
 
 \define settings()
-&lt;div style=&quot;display:inline-block;border:1px solid;padding:0.5em;margin-top:0.5em;&quot;&gt;
+&lt;div style=&quot;display:inline-block;text-align:right;border:1px solid;padding:0.5em;margin-top:0.5em;border-radius:0.5em;background:#ffe;&quot;&gt;
 worktime:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workH&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workH&gt;&gt;  placeholder=&lt;&lt;workH&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workM&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workM&gt;&gt;  placeholder=&lt;&lt;workM&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workS&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workS&gt;&gt;  placeholder=&lt;&lt;workS&gt;&gt; /&gt;
+&lt;br&gt;
 breaktime:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakH&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakH&gt;&gt; placeholder=&lt;&lt;breakH&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakM&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakM&gt;&gt; placeholder=&lt;&lt;breakM&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakS&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakS&gt;&gt; placeholder=&lt;&lt;breakS&gt;&gt; /&gt;
+&lt;br&gt;
 cycles:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;cycles&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;cycles&gt;&gt; placeholder=&lt;&lt;cycles&gt;&gt; /&gt;
+&lt;div style=&quot;height:0.5em;&quot;&gt;&lt;/div&gt;
 &lt;$button class=&quot;tc-button&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;temp&gt;&gt;/&gt;&quot;&gt; reset &lt;/$button&gt;
 &lt;$button class=&quot;tc-button&quot; actions=&quot;&quot;&quot;
    &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
@@ -9910,11 +9918,29 @@ cycles:
 &lt;/$vars&gt;
 \end
 
-\define reset() &lt;$button class=&quot;tc-button&quot;&gt; reset &lt;&lt;reset_actions&gt;&gt; &lt;/$button&gt;
+\define showMessage(msg) &lt;$action-setfield $tiddler=&quot;$(temp)$/msg&quot; text=&quot;$msg$&quot; /&gt;
+\define clearMessage()   &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/msg&quot; /&gt;
+\define displayMessage()
+&lt;$list filter=&quot;[[$(temp)$/msg]is[tiddler]]&quot;&gt;
+   &lt;div&gt;
+   &lt;div style=&quot;display:inline-block;margin-top:1em;padding:0.5em;border:1px solid;border-radius:0.5em;background:#ffe;&quot;&gt;
+      &lt;$transclude /&gt;
+      &lt;$button&gt;ok&lt;&lt;clearMessage&gt;&gt;&lt;/$button&gt;
+   &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define reset()
+&lt;$button class=&quot;tc-button&quot;&gt;
+   reset &lt;&lt;reset_actions&gt;&gt; &lt;&lt;clearMessage&gt;&gt;
+&lt;/$button&gt;
+\end
+
 \define reset_actions()
 &lt;&lt;setCountdown H:&quot;$(workH)$&quot; M:&quot;$(workM)$&quot; S:&quot;$(workS)$&quot;&gt;&gt;
 &lt;$action-setfield    $tiddler=&lt;&lt;temp&gt;&gt; done=&lt;&lt;workDone&gt;&gt;/&gt;
-&lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session text /&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session text  /&gt;
 \end
 
 \define workDone()
@@ -9952,7 +9978,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;$vars breakS={{{ [&lt;temp&gt;get[breakS]] ~[&lt;breakS&gt;] }}}&gt;
 
 &lt;$vars done=&lt;&lt;workDone&gt;&gt;&gt;
-&lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;&lt;status&gt;&gt;</pre>
+&lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;&lt;status&gt;&gt; &lt;&lt;displayMessage&gt;&gt;</pre>
 </div>
 <div created="20200717110550625" modified="20200723045648835" tags="" title="SampleTimer">
 <pre>&lt;&lt;timer&gt;&gt;
