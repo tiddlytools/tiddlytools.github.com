@@ -237,7 +237,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200730090322780" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200730135700268" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9622,7 +9622,7 @@ SampleCountdownSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/CountDown]]</pre>
+# [[TiddlyTools/Timer/Setup]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9642,10 +9642,10 @@ SampleCountdownSequence</pre>
 <div created="20200621202021685" modified="20200712185014447" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20200718011630155" modified="20200730003849301" title="$:/state/tab/moresidebar-1850697562">
+<div created="20200718011630155" modified="20200730135518730" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200730003851721" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200730141606839" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9718,16 +9718,19 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" modified="20200730091054483" title="$:/temp/timer/AnalogClock">
-<pre>021054</pre>
+<div created="20200730065404061" modified="20200730141612640" title="$:/temp/timer/AnalogClock">
+<pre>071612</pre>
 </div>
-<div done="&lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
+<div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
+       saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
+       saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}&gt;
+&lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
-&lt;&lt;setCountdown H:01 M:00 S:00&gt;&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/AutoSaver">
+&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" modified="20200730091054576" title="$:/temp/timer/DigitalClock">
-<pre>20200730091054576</pre>
+<div created="20200730065404012" modified="20200730141612643" title="$:/temp/timer/DigitalClock">
+<pre>20200730141612643</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9981,7 +9984,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;timer_buttons AnotherTimer&gt;&gt; &lt;&lt;timer_elapsed AnotherTimer&gt;&gt;
 &lt;&lt;timer_history AnotherTimer&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200730070913588" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200730135437151" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define temp() $:/temp/timer/$(currentTiddler)$
 
 \define ticker_start()
@@ -10308,7 +10311,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200730070859167" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
+<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200730135102613" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
 <pre>\import TiddlyTools/Timer/CountDown
 \define temp() $:/temp/timer/AutoSaver
 
@@ -10323,23 +10326,24 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; position=&quot;belowright&quot; state=&lt;&lt;qualify &quot;$:/temp/timer/countdownsaver/settings&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-block-dropdown&quot; style=&quot;border:1px solid;padding:0.5em;border-radius:0.5em;&quot;&gt;
-@@color:black; auto saver interval:@@&lt;br&gt;
-&lt;$edit-text tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveH&gt;&gt;  placeholder=&lt;&lt;saveH&gt;&gt; /&gt;
-&lt;$edit-text tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveM&gt;&gt;  placeholder=&lt;&lt;saveM&gt;&gt; /&gt;
-&lt;$edit-text tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveS&gt;&gt;  placeholder=&lt;&lt;saveS&gt;&gt; /&gt;
+@@color:black; set auto saver interval:@@&lt;br&gt;
+&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;
+&lt;$edit-text field=&quot;autosave_hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveH&gt;&gt;  placeholder=&lt;&lt;saveH&gt;&gt; /&gt;
+&lt;$edit-text field=&quot;autosave_mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveM&gt;&gt;  placeholder=&lt;&lt;saveM&gt;&gt; /&gt;
+&lt;$edit-text field=&quot;autosave_secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveS&gt;&gt;  placeholder=&lt;&lt;saveS&gt;&gt; /&gt;
 &lt;$button class=&quot;tc-button&quot; tooltip=&quot;reset to factory default (1 hour)&quot; actions=&quot;&quot;&quot;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;TiddlyTools/Timer/Setup&quot; autosave_hours=&lt;&lt;saveH&gt;&gt; /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;TiddlyTools/Timer/Setup&quot; autosave_mins=&lt;&lt;saveM&gt;&gt;  /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;TiddlyTools/Timer/Setup&quot; autosave_secs=&lt;&lt;saveS&gt;&gt;  /&gt;
-   &lt;$action-setfield go=&quot;&quot; /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; autosave_hours=&lt;&lt;saveH&gt;&gt; /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; autosave_mins=&lt;&lt;saveM&gt;&gt;  /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; autosave_secs=&lt;&lt;saveS&gt;&gt;  /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;&quot; /&gt;
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
 &quot;&quot;&quot;&gt; reset &lt;/$button&gt;
+&lt;/$tiddler&gt;
 &lt;$button class=&quot;tc-button&quot; actions=&quot;&quot;&quot;
-   &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
    &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
           saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
           saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}&gt;
-   &lt;$action-setfield go=&quot;&quot; /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;&quot; /&gt;
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
 &quot;&quot;&quot;&gt; apply
 &lt;/$button&gt;
@@ -10361,33 +10365,33 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define stop()
-&lt;$button class=&quot;tc-button&quot; tooltip=&quot;stop countdown and reset to default interval&quot;&gt;
+&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
+       saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
+       saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}&gt;
+&lt;$button class=&quot;tc-button&quot; tooltip=&quot;stop countdown and reset to current interval&quot;&gt;
    stop
-   &lt;&lt;setCountdown H:&quot;$(saveH)$&quot; M:&quot;$(saveM)$&quot; S:&quot;$(saveS)$&quot;&gt;&gt;
+   &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
    &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go text  /&gt;
    &lt;&lt;clearMessage&gt;&gt;
 &lt;/$button&gt;
 \end
 
 \define saveNow()
+&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
+       saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
+       saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}&gt;
 &lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
-&lt;&lt;setCountdown H:$(saveH)$ M:$(saveM)$ S:$(saveS)$&gt;&gt;
+&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
 \end
 
 &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/AutoSaver&quot;&gt;
-&lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$vars done=&lt;&lt;saveNow&gt;&gt;&gt;
+&lt;$vars here=&lt;&lt;currentTiddler&gt;&gt; done=&lt;&lt;saveNow&gt;&gt;&gt;
 &lt;&lt;settings&gt;&gt;&lt;br&gt;
-&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[01]] }}}
-       saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[00]] }}}
-       saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[00]] }}}&gt;
 &lt;!-- DON'T RUN IF OPENED IN STORY RIVER (SIDEBAR ONLY!) --&gt;
 &lt;$reveal default={{{ [[$:/StoryList]search:list&lt;here&gt;] }}} type=&quot;match&quot; text=&quot;&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$reveal&gt;
 &lt;&lt;getCountdown&gt;&gt;
 &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;&lt;displayMessage&gt;&gt;
-&lt;/$vars&gt;
-&lt;/$vars&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
@@ -10520,7 +10524,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200730070909576" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200730135432123" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -10594,11 +10598,15 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 * The ''start'' button begins the countdown.  The input fields automatically update to show the time remaining.
 * The ''pause'' button stops the countdown.  Press ''resume'' to continue the countdown.
-* While paused, you can change the time remaining in the current countdown.  Press ''start'' to apply the changes and continue the countdown.
+* While paused, you can change the time remaining in the __current__ countdown.  Press ''start'' to apply the changes and continue the countdown.
 * The ''stop'' button stops the countdown and resets the time to use the default autosave interval.
-* Click on {{$:/core/images/options-button}} to change the default autosave interval.
+* Click on {{$:/core/images/options-button}} to change the autosave interval.
 * Click ''apply'' to use the new interval setting.  Click on ''reset'' to restore &quot;factory settings&quot; (1 hour)
-* //Important: The ~AutoSaver is intended to run in the ~SideBar only.  If you view it in the Story River, be sure to ''pause'' or ''stop'' the timer first.//
+
+//Important note:// __''The ~AutoSaver is intended to run in the ~SideBar only.''__&lt;br&gt;
+
+* If you view [[TiddlyTools/Timer/AutoSaver]] in the Story River, be sure to ''pause'' or ''stop'' the timer first.
+* The ~AutoSaver in the ~SideBar cannot be restarted until it is no longer being viewed in the Story River.
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/DigitalClock]]
@@ -10649,13 +10657,15 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, [[TiddlyTools/Timer/DigitalClock]] and [[TiddlyTools/Timer/AnalogClock]].
 &lt;&lt;&lt;</pre>
 </div>
-<div autosave_hours="01" autosave_mins="00" autosave_secs="00" background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200730070905177" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
+<div autosave_hours="01" autosave_mins="00" autosave_secs="00" background="lightgray" border="2px solid gray;" created="20200723071051066" datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" hands="black" modified="20200730135427856" numbers="color:black; font-size:1.5em; font-weight:bold;" size="15em" ticks="black" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
 <div created="20200723044003911" list-after="" modified="20200730070834576" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClock">
 <pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClock&quot;&gt;
-@@font-size:50%; {{||TiddlyTools/Timer/AnalogClock}}@@&lt;br&gt;
-@@font-size:80%; {{||TiddlyTools/Timer/DigitalClock}}@@
+&lt;div style=&quot;font-size:80%;&quot;&gt;
+{{||TiddlyTools/Timer/AnalogClock}}&lt;br&gt;
+{{||TiddlyTools/Timer/DigitalClock}}
+&lt;/div&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
 
