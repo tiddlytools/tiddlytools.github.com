@@ -237,7 +237,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200730182232089" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200730220734812" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9718,8 +9718,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" modified="20200730182401720" title="$:/temp/timer/AnalogClock">
-<pre>112401</pre>
+<div created="20200730065404061" modified="20200730220902660" title="$:/temp/timer/AnalogClock">
+<pre>030902</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9748,8 +9748,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200730065404012" modified="20200730182401789" title="$:/temp/timer/DigitalClock">
-<pre>20200730182401789</pre>
+<div created="20200730065404012" modified="20200730220902663" title="$:/temp/timer/DigitalClock">
+<pre>20200730220902663</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10003,7 +10003,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;timer_buttons AnotherTimer&gt;&gt; &lt;&lt;timer_elapsed AnotherTimer&gt;&gt;
 &lt;&lt;timer_history AnotherTimer&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200730135437151" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200730220354488" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define temp() $:/temp/timer/$(currentTiddler)$
 
 \define ticker_start()
@@ -10489,6 +10489,7 @@ set auto saver interval:&lt;br&gt;
 
 \define getCountdown()
 &lt;style&gt; .timerCountdown { width:2.5em; text-align:center; } &lt;/style&gt;
+&lt;span title=&quot;enter hours, minutes and seconds&quot;&gt;
 &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]then&lt;temp&gt;] -[&lt;temp&gt;get[text]match[0]then&lt;temp&gt;]&quot;
    emptyMessage=&quot;&quot;&quot;
    &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&quot;&quot; placeholder=&quot;hh&quot; /&gt;
@@ -10499,6 +10500,7 @@ set auto saver interval:&lt;br&gt;
    &lt;input value={{{ [&lt;temp&gt;get[mins]]  }}} class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot;&gt;
    &lt;input value={{{ [&lt;temp&gt;get[secs]]  }}} class=&quot;timerCountdown&quot; style=&quot;background:#eee;&quot; disabled=&quot;disabled&quot;&gt;
 &lt;/$list&gt;
+&lt;/span&gt;
 \end
 
 \define getMessage()
@@ -10568,7 +10570,7 @@ set auto saver interval:&lt;br&gt;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200730135432123" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200730220246603" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -10644,7 +10646,8 @@ set auto saver interval:&lt;br&gt;
 * The ''pause'' button stops the countdown.  Press ''resume'' to continue the countdown.
 * While paused, you can change the time remaining in the __current__ countdown.  Press ''start'' to apply the changes and continue the countdown.
 * The ''stop'' button stops the countdown and resets the time to use the configured autosave interval.
-* By default, you will be asked to confirm before each auto save is processed.  You can change this option in the settings.
+* When the countdown reaches zero, a &quot;file save&quot; action is triggered.  The specific behavior depends upon which saver method you are using.
+* You will be asked to confirm before each auto save is processed.  You can change this option in the settings.
 * Click on {{$:/core/images/options-button}} to change the autosave interval or the &quot;ask before auto saving&quot; option.
 * Click ''apply'' to use the new interval setting.  Click on ''reset'' to restore &quot;factory settings&quot; (1 hour)
 
@@ -10684,14 +10687,16 @@ set auto saver interval:&lt;br&gt;
 ^^To change these settings, you can enter values below, or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;. If you clear a setting or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot;&gt;delete this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, default values will be used.^^
 
 * [[TiddlyTools/Timer/DigitalClock]]: @@font-size:80%;(use [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]])@@
-** ''datetime'' - the date/time text format.&lt;br&gt;    &lt;&lt;editSetup &quot;datetime&quot;   &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
+** ''datetime'' - format for displaying the time and/or date&lt;br&gt;&lt;&lt;editSetup &quot;datetime&quot;   &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
+
 * [[TiddlyTools/Timer/AnalogClock]]: @@font-size:80%;(use CSS attributes/values)@@
-** ''size'' - the diameter of the clock face.&lt;br&gt;         &lt;&lt;editSetup &quot;size&quot;       &quot;15em&quot;&gt;&gt;
-** ''background'' - the color of the clock face.&lt;br&gt;      &lt;&lt;editSetup &quot;background&quot; &quot;lightgray&quot;&gt;&gt;
-** ''border'' - the border styles of the clock face.&lt;br&gt;  &lt;&lt;editSetup &quot;border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
-** ''numbers'' - the font styles of the clock numbers.&lt;br&gt;&lt;&lt;editSetup &quot;numbers&quot;    &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt;
-** ''hands'' - the color of the clock hands.&lt;br&gt;          &lt;&lt;editSetup &quot;hands&quot;      &quot;black&quot;&gt;&gt;
-** ''ticks'' - the color of the minute marks.&lt;br&gt;         &lt;&lt;editSetup &quot;ticks&quot;      &quot;black&quot;&gt;&gt;
+** ''size'' - diameter of the clock face.&lt;br&gt;         &lt;&lt;editSetup &quot;size&quot;       &quot;15em&quot;&gt;&gt;
+** ''background'' - color of the clock face.&lt;br&gt;      &lt;&lt;editSetup &quot;background&quot; &quot;lightgray&quot;&gt;&gt;
+** ''border'' - edge styles of the clock face.&lt;br&gt;    &lt;&lt;editSetup &quot;border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
+** ''numbers'' - font styles of the clock numbers.&lt;br&gt;&lt;&lt;editSetup &quot;numbers&quot;    &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt;
+** ''hands'' - color of the clock hands.&lt;br&gt;          &lt;&lt;editSetup &quot;hands&quot;      &quot;black&quot;&gt;&gt;
+** ''ticks'' - color of the minute marks.&lt;br&gt;         &lt;&lt;editSetup &quot;ticks&quot;      &quot;black&quot;&gt;&gt;
+
 * [[TiddlyTools/Timer/AutoSaver]]:
 ** ''interval'' - hours &lt;&lt;editSetup &quot;autosave_hours&quot; &quot;01&quot; 2.5em center&gt;&gt; minutes &lt;&lt;editSetup &quot;autosave_mins&quot; &quot;00&quot; 2.5em center&gt;&gt; seconds &lt;&lt;editSetup &quot;autosave_secs&quot; &quot;00&quot; 2.5em center&gt;&gt;
 ** ''confirm'' - &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; ask before auto saving &lt;/$checkbox&gt;
