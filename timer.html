@@ -177,9 +177,9 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/search</li>
+<li>$:/temp/notify</li>
 
-<li>$:/temp/timer/</li>
+<li>$:/temp/search</li>
 
 <li>$:/temp/timer/AnalogClock</li>
 
@@ -196,6 +196,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
 <li>SampleCountdown</li>
+
+<li>SampleCountdownActions</li>
 
 <li>SampleCountdownSequence</li>
 
@@ -239,7 +241,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200731155642099" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200731230645974" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9653,7 +9655,7 @@ SampleCountdownSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200731142704891" list="SampleCountdownSequence" modified="20200731154828868" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div title="$:/temp/advancedsearch">
@@ -9717,14 +9719,14 @@ SampleCountdownSequence</pre>
     }
 }</pre>
 </div>
+<div title="$:/temp/notify">
+<pre>SampleCountdown completed&lt;br&gt;&lt;&lt;now &quot;on DDD, MMM DDth at 0hh12:0mm:0ssam&quot;&gt;&gt;</pre>
+</div>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200731144831531" done="&lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;" hours="00" mins="00" modified="20200731145430476" secs="05" title="$:/temp/timer/">
-<pre>5</pre>
-</div>
-<div created="20200730065404061" go="go" modified="20200731162326505" title="$:/temp/timer/AnalogClock">
-<pre>092326</pre>
+<div created="20200730065404061" go="go" modified="20200731230645539" title="$:/temp/timer/AnalogClock">
+<pre>052402</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9753,8 +9755,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200730065404012" modified="20200731162326477" title="$:/temp/timer/DigitalClock">
-<pre>20200731162326477</pre>
+<div created="20200730065404012" modified="20200731230645619" title="$:/temp/timer/DigitalClock">
+<pre>20200801002402464</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9871,8 +9873,16 @@ SampleCountdownSequence</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20200726025847494" modified="20200722180000000" secs="abc" tags="" title="SampleCountdown">
-<pre>{{||TiddlyTools/Timer/CountDown}}</pre>
+<div created="20200726025847494" modified="20200722180000000" tags="" title="SampleCountdown">
+<pre>{{||TiddlyTools/Timer/CountDown}}
+
+When the countdown is completed, [[SampleCountdownActions]] will be performed:&lt;br&gt;
+&lt;$tiddler tiddler=&quot;SampleCountdownActions&quot;&gt;&lt;pre&gt;&lt;$view field=&quot;text&quot; /&gt;&lt;/pre&gt;&lt;/$tiddler&gt;</pre>
+</div>
+<div created="20200726025847494" modified="20200722180000000" tags="" title="SampleCountdownActions">
+<pre>\define message() $(here)$ completed&lt;br&gt;&lt;&lt;now &quot;on DDD, MMM DDth at 0hh12:0mm:0ssam&quot;&gt;&gt;
+&lt;$action-setfield    $tiddler=&quot;$:/temp/notify&quot; text=&lt;&lt;message&gt;&gt;  /&gt;
+&lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;</pre>
 </div>
 <div created="20200727050133124" modified="20200722080000000" tags="" title="SampleCountdownSequence">
 <pre>\import TiddlyTools/Timer/CountDown
@@ -10462,7 +10472,6 @@ set auto saver interval:&lt;br&gt;
 </div>
 <div created="20200725211229080" modified="20200730070853005" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define temp() $:/temp/timer/$(here)$
-\define done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
 
 \define ticker(auto)
 &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
@@ -10471,7 +10480,7 @@ set auto saver interval:&lt;br&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]then&lt;temp&gt;]&quot;&gt;
       &lt;$list filter=&quot;[&lt;temp&gt;get[text]!match[0]then&lt;temp&gt;]&quot; emptyMessage=&quot;&lt;$action-setfield go='stop' /&gt;&quot;&gt;
          &lt;&lt;showRemaining&gt;&gt;
-         &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[1]then&lt;temp&gt;]&quot;&gt; {{!!done}} &lt;/$list&gt;
+         &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[1]then&lt;temp&gt;]&quot;&gt; @@display:none; {{!!done}}@@ &lt;/$list&gt;
          &lt;$action-setfield text={{{ [&lt;temp&gt;get[text]subtract[1]] }}} /&gt;
          &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt; /&gt;
       &lt;/$list&gt;
@@ -10491,6 +10500,13 @@ set auto saver interval:&lt;br&gt;
 &lt;$action-setfield hours={{{ [&lt;H&gt;addprefix[00]split[]last[2]join[]] }}} /&gt;
 &lt;$action-setfield  mins={{{ [&lt;M&gt;addprefix[00]split[]last[2]join[]] }}} /&gt;
 &lt;$action-setfield  secs={{{ [&lt;S&gt;addprefix[00]split[]last[2]join[]] }}} /&gt;
+\end
+
+\define done()
+&lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
+&lt;$list filter=&quot;[[$(here)$Actions]is[tiddler]]&quot;&gt;
+   {{||$(here)$Actions}}
+&lt;/$list&gt;
 \end
 
 \define showMessage(msg:&quot;Countdown completed&quot;)
@@ -10657,6 +10673,12 @@ set auto saver interval:&lt;br&gt;
 * The ''pause'' button stops the countdown.  Press ''resume'' to continue the countdown.
 * While paused, you can change the time remaining.  Press ''start'' to apply the changes and continue the countdown.
 * The ''reset'' button clears the countdown time and message text.
+
+''To invoke additional __custom actions__ when the countdown is completed:''
+
+* Create a tiddler with the same name as your countdown tiddler with an added suffix of &quot;Actions&quot;.
+* Enter the desired ``&lt;$action-... /&gt;`` widget syntax into the body of that tiddler.
+* See [[SampleCountdownActions]] for an example.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/AutoSaver]]
 &lt;&lt;&lt;
