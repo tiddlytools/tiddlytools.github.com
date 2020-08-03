@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200803103321778" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200803225402358" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200803111546111" title="$:/temp/timer/AnalogClock">
-<pre>20200803111546111</pre>
+<div created="20200730065404061" go="go" modified="20200803231003961" title="$:/temp/timer/AnalogClock">
+<pre>20200803231003961</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" go="go" modified="20200803111546094" title="$:/temp/timer/DigitalClock">
-<pre>20200803111546094</pre>
+<div created="20200730065404012" go="go" modified="20200803231003994" title="$:/temp/timer/DigitalClock">
+<pre>20200803231003994</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10047,11 +10047,11 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 <pre>\define showClock(place,offset) 
 &lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
 &lt;div class=&quot;worldClock&quot;&gt;
+   &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt;&gt;
+   &lt;$vars TZD={{{ [[$offset$]!match[]then[$offset$]else&lt;TZD&gt;] }}}&gt;
    $place$&lt;br&gt;
    &lt;$vars format=&quot;0DD-mmm-YYYY 0DD 0hh:0mm:0ss&quot;&gt;
    &lt;$vars offset=&quot;$offset$&quot;&gt;
-   &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt;&gt;
-   &lt;$vars TZD={{{ [[$offset$]!match[]then[$offset$]else&lt;TZD&gt;] }}}&gt;
    &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt; {{||TiddlyTools/Timer/AnalogClock}}  &lt;/div&gt;
    &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt; {{||TiddlyTools/Timer/DigitalClock}} (&lt;&lt;TZD&gt;&gt;)&lt;/div&gt;
 \end
@@ -10335,7 +10335,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define adjustForTimezone()
-&lt;$vars     time={{!!text}}&gt;
+&lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;$vars offsethh={{{ [&lt;TZD&gt;split[:]join[]split[]butlast[2]join[]] }}}&gt;
 &lt;$vars     yyyy={{{ [&lt;time&gt;split[]first[4]join[]]          }}}&gt;
 &lt;$vars       mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]   }}}&gt;
@@ -10405,30 +10405,25 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define toggleclock()
-&lt;$reveal default={{!!go}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;ticker go&gt;&gt;   &lt;/$reveal&gt;
-&lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;ticker stop&gt;&gt; &lt;/$reveal&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[stop]]&quot; emptyMessage=&quot;&lt;&lt;ticker stop&gt;&gt;&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
 \end
 
 \define ticker(auto)
-&lt;$importvariables filter=&quot;TiddlyTools/Timer/AnalogClock&quot;&gt;
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;{!!id}!match[]] [&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;global-or-story-or-sidebar&quot;&gt;
-   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
-      &lt;$action-setfield text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
+&lt;$list filter=&quot;[[$auto$]!match[]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;$auto$&quot; /&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]]&quot; variable=&quot;running-or-starting&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
       &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
-   &lt;/$reveal&gt;
+   &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$vars tip={{{ [{!!go}match[stop]then[click to start]else[click to stop]] }}} &gt;
+&lt;$vars tip={{{ [&lt;temp&gt;get[go]match[go]then[click to stop]else[click to start]] }}} &gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;toggleclock&gt;&gt;&gt;
-   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; /&gt;
+   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
 &lt;/$button&gt;
 &lt;/$vars&gt;
-&lt;/$tiddler&gt;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
@@ -10654,7 +10649,7 @@ set auto saver interval:&lt;br&gt;
 \end
 
 \define adjustForTimezone()
-&lt;$vars     time={{!!text}}&gt;
+&lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;$vars offsethh={{{ [&lt;TZD&gt;split[:]join[]split[]butlast[2]join[]] }}}&gt;
 &lt;$vars     yyyy={{{ [&lt;time&gt;split[]first[4]join[]]          }}}&gt;
 &lt;$vars       mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]   }}}&gt;
@@ -10682,34 +10677,29 @@ set auto saver interval:&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;time&gt;&gt;&gt;
 &lt;$vars UTC=&quot;[UTC]&quot;&gt;
 &lt;$view field=&quot;title&quot; format=&quot;date&quot; template={{{ [&lt;format&gt;addprefix&lt;UTC&gt;] }}} /&gt;
-&lt;$transclude tiddler={{{ [{!!go}match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
+&lt;$transclude tiddler={{{ [&lt;temp&gt;get[go]match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
 \end
 
 \define toggleclock()
-&lt;$reveal default={{!!go}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;ticker go&gt;&gt;   &lt;/$reveal&gt;
-&lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;ticker stop&gt;&gt; &lt;/$reveal&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[stop]]&quot; emptyMessage=&quot;&lt;&lt;ticker stop&gt;&gt;&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
 \end
 
 \define ticker(auto)
-&lt;$importvariables filter=&quot;TiddlyTools/Timer/DigitalClock&quot;&gt;
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;{!!id}!match[]] [&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;global-or-story-or-sidebar&quot;&gt;
-   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
-      &lt;$action-setfield text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
+&lt;$list filter=&quot;[[$auto$]!match[]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;$auto$&quot; /&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]]&quot; variable=&quot;running-or-starting&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
       &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
-   &lt;/$reveal&gt;
+   &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$vars tip={{{ [{!!go}match[stop]then[click to start]else[click to stop]] }}} &gt;
+&lt;$vars tip={{{ [&lt;temp&gt;get[go]match[go]then[click to stop]else[click to start]] }}} &gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;toggleclock&gt;&gt;&gt;
    &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
 &lt;/$button&gt;
 &lt;/$vars&gt;
-&lt;/$tiddler&gt;
 &lt;&lt;ticker go&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
