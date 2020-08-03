@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200803041442280" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200803103321778" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200803044431095" title="$:/temp/timer/AnalogClock">
-<pre>20200803044431095</pre>
+<div created="20200730065404061" go="go" modified="20200803111546111" title="$:/temp/timer/AnalogClock">
+<pre>20200803111546111</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" go="go" modified="20200803044431053" title="$:/temp/timer/DigitalClock">
-<pre>20200803044431053</pre>
+<div created="20200730065404012" go="go" modified="20200803111546094" title="$:/temp/timer/DigitalClock">
+<pre>20200803111546094</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10162,10 +10162,10 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 
 \define timer_showdate(time)
 &lt;$vars UTC=&quot;[UTC]&quot;&gt;
-&lt;$vars datetime={{{ [[TiddlyTools/Timer/Setup]get[timer_datetime]] ~[[MMM 0DD YYYY 0hh:0mm:0ss.0XXX]] +[addprefix&lt;UTC&gt;] }}}&gt;
+&lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[timer_format]] ~[[MMM 0DD YYYY 0hh:0mm:0ss.0XXX]] +[addprefix&lt;UTC&gt;] }}}&gt;
 &lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
    &lt;$tiddler tiddler=&lt;&lt;$time$&gt;&gt;&gt;
-      &lt;$view field=title format=&quot;date&quot; template=&lt;&lt;datetime&gt;&gt;/&gt;
+      &lt;$view field=title format=&quot;date&quot; template=&lt;&lt;format&gt;&gt;/&gt;
    &lt;/$tiddler&gt;
 &lt;/$reveal&gt;
 \end
@@ -10647,7 +10647,7 @@ set auto saver interval:&lt;br&gt;
 <pre>\define temp() $:/temp/timer/DigitalClock
 
 \define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
-&lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[clock_datetime]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
+&lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[clock_format]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
 &lt;$set  name=&quot;format&quot; value=&quot;&quot;&quot;$format$&quot;&quot;&quot; emptyValue=&lt;&lt;format&gt;&gt;&gt;
 &lt;$wikify name=&quot;TZD&quot; text=&quot;$offset$&quot;&gt;
 &lt;&lt;adjustForTimezone&gt;&gt;
@@ -10729,6 +10729,8 @@ set auto saver interval:&lt;br&gt;
    &lt;$action-setfield $tiddler=&quot;TiddlyTools/Timer/Setup&quot; $field$=&quot;$default$&quot; /&gt;
 &lt;/$button&gt;
 \end
+
+\define note(text) @@font-size:80%;$text$@@
 
 &lt;style&gt;
    .resize svg   { height:1em; width:1em; }
@@ -10856,19 +10858,19 @@ set auto saver interval:&lt;br&gt;
 ''Defines settings that are used by the Timer, ~DigitalClock, ~AnalogClock, ~SidebarClock and ~AutoSaver.&lt;br&gt;''
 ^^To change these settings, you can enter values below, or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;. If you clear a setting or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot;&gt;delete this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, default values will be used.^^
 
-* [[TiddlyTools/Timer]]: @@font-size:80%;(use [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]])@@
-** ''timer_datetime:'' format for displaying the date/time&lt;br&gt;&lt;&lt;editSetup &quot;timer_datetime&quot; &quot;MMM 0DD YYYY 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
+* [[TiddlyTools/Timer]]:
+** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;MMM 0DD YYYY 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
 
-* [[TiddlyTools/Timer/DigitalClock]]: @@font-size:80%;(use [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]])@@
-** ''clock_datetime:'' format for displaying the date/time&lt;br&gt;&lt;&lt;editSetup &quot;clock_datetime&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
+* [[TiddlyTools/Timer/DigitalClock]]:
+** ''clock_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;clock_format&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
 
-* [[TiddlyTools/Timer/AnalogClock]]: @@font-size:80%;(use CSS attributes/values)@@
-** ''clock_size:''       diameter of the clock face&lt;br&gt;      &lt;&lt;editSetup &quot;clock_size&quot;       &quot;15em&quot;&gt;&gt;
-** ''clock_background:'' color of the clock face&lt;br&gt;         &lt;&lt;editSetup &quot;clock_background&quot; &quot;lightgray&quot;&gt;&gt;
-** ''clock_border:''     edge styles of the clock face&lt;br&gt;   &lt;&lt;editSetup &quot;clock_border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
-** ''clock_numbers:''    font styles of the clock numbers&lt;br&gt;&lt;&lt;editSetup &quot;clock_numbers&quot;    &quot;color:black;font-size:1.5em;&quot;&gt;&gt;
-** ''clock_hands:''      color of the clock hands&lt;br&gt;        &lt;&lt;editSetup &quot;clock_hands&quot;      &quot;black&quot;&gt;&gt;
-** ''clock_ticks:''      color of the minute marks&lt;br&gt;       &lt;&lt;editSetup &quot;clock_ticks&quot;      &quot;black&quot;&gt;&gt;
+* [[TiddlyTools/Timer/AnalogClock]]:
+** ''clock_size:''       &lt;&lt;note &quot;[[CSS units|https://www.w3schools.com/cssref/css_units.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_size&quot;       &quot;15em&quot;&gt;&gt;
+** ''clock_background:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt;      &lt;&lt;editSetup &quot;clock_background&quot; &quot;lightgray&quot;&gt;&gt;
+** ''clock_border:''     &lt;&lt;note &quot;[[CSS borders|https://www.w3schools.com/css/css_border.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
+** ''clock_numbers:''    &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]] and [[CSS fontsize|https://developer.mozilla.org/en-US/docs/Web/CSS/font-size]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;clock_numbers&quot; &quot;color:black;font-size:1.5em;&quot;&gt;&gt;
+** ''clock_hands:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_hands&quot;      &quot;black&quot;&gt;&gt;
+** ''clock_ticks:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_ticks&quot;      &quot;black&quot;&gt;&gt;
 
 * [[TiddlyTools/Timer/SidebarClock]]:
 **&lt;div class=&quot;borderless&quot;&gt;
@@ -10876,6 +10878,7 @@ set auto saver interval:&lt;br&gt;
 |''sidebar_analog:'' &lt;br&gt;&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show ~AnalogClock&quot;&gt;&gt; |''sidebar_analog_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_analog_size  35 150 5 100&gt;&gt;|
 |''sidebar_digital:''&lt;br&gt;&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show ~DigitalClock&quot;&gt;&gt;|''sidebar_digital_size:''&lt;br&gt;&lt;&lt;rangeSetup sidebar_digital_size 35 150 5 100&gt;&gt;|
 &lt;/div&gt;
+** ''sidebar_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;sidebar_format&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
 * [[TiddlyTools/Timer/AutoSaver]]:
 **&lt;div class=&quot;borderless&quot;&gt;
 
@@ -10889,7 +10892,7 @@ set auto saver interval:&lt;br&gt;
 ''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates'' of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, ~AutoSaver, ~CountDown, ~DigitalClock, and ~AnalogClock.
 &lt;&lt;&lt;</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200802155130589" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" timer_datetime="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200802155130589" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" timer_format="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
 <div created="20200723044003911" modified="20200802155100069" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClock">
@@ -10897,7 +10900,8 @@ set auto saver interval:&lt;br&gt;
 &lt;$vars sidebar_analog={{{       [[TiddlyTools/Timer/Setup]get[sidebar_analog]]       ~[[yes]] }}}
        sidebar_analog_size={{{  [[TiddlyTools/Timer/Setup]get[sidebar_analog_size]]  ~[[100]] }}}
        sidebar_digital={{{      [[TiddlyTools/Timer/Setup]get[sidebar_digital]]      ~[[yes]] }}}
-       sidebar_digital_size={{{ [[TiddlyTools/Timer/Setup]get[sidebar_digital_size]] ~[[100]] }}}&gt;
+       sidebar_digital_size={{{ [[TiddlyTools/Timer/Setup]get[sidebar_digital_size]] ~[[100]] }}}
+       format={{{               [[TiddlyTools/Timer/Setup]get[sidebar_format]]       ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
 &lt;div style=&quot;display:inline-block;text-align:center;&quot;&gt;
 &lt;$reveal default=&lt;&lt;sidebar_analog&gt;&gt;  type=&quot;match&quot; text=&quot;yes&quot;&gt; 
    &lt;div style={{{ [[font-size:]addsuffix&lt;sidebar_analog_size&gt;addsuffix[%;]]  }}}&gt;{{||TiddlyTools/Timer/AnalogClock}}&lt;/div&gt;
