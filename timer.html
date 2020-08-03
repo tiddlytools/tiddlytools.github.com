@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200802154152178" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200803041442280" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9651,7 +9651,7 @@ SampleCountdownSequence</pre>
 <div created="20200718011630155" modified="20200801185241795" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200802002512053" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200803044426230" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" id="AnalogClock" modified="20200802155234570" title="$:/temp/timer/AnalogClock">
-<pre>20200802155234570</pre>
+<div created="20200730065404061" go="go" modified="20200803044431095" title="$:/temp/timer/AnalogClock">
+<pre>20200803044431095</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" go="go" modified="20200802155234377" title="$:/temp/timer/DigitalClock">
-<pre>20200802155234377</pre>
+<div created="20200730065404012" go="go" modified="20200803044431053" title="$:/temp/timer/DigitalClock">
+<pre>20200803044431053</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10048,6 +10048,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
 &lt;div class=&quot;worldClock&quot;&gt;
    $place$&lt;br&gt;
+   &lt;$vars format=&quot;0DD-mmm-YYYY 0DD 0hh:0mm:0ss&quot;&gt;
    &lt;$vars offset=&quot;$offset$&quot;&gt;
    &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt;&gt;
    &lt;$vars TZD={{{ [[$offset$]!match[]then[$offset$]else&lt;TZD&gt;] }}}&gt;
@@ -10645,8 +10646,9 @@ set auto saver interval:&lt;br&gt;
 <div created="20200719094540255" modified="20200802155112317" title="TiddlyTools/Timer/DigitalClock">
 <pre>\define temp() $:/temp/timer/DigitalClock
 
-\define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;)
+\define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
 &lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[clock_datetime]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
+&lt;$set  name=&quot;format&quot; value=&quot;&quot;&quot;$format$&quot;&quot;&quot; emptyValue=&lt;&lt;format&gt;&gt;&gt;
 &lt;$wikify name=&quot;TZD&quot; text=&quot;$offset$&quot;&gt;
 &lt;&lt;adjustForTimezone&gt;&gt;
 \end
@@ -10704,7 +10706,7 @@ set auto saver interval:&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
 &lt;$vars tip={{{ [{!!go}match[stop]then[click to start]else[click to stop]] }}} &gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;toggleclock&gt;&gt;&gt;
-   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; /&gt;
+   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
 &lt;/$button&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;
@@ -10732,7 +10734,7 @@ set auto saver interval:&lt;br&gt;
    .resize svg   { height:1em; width:1em; }
    .nobullets    { list-style-type:none;  }
    .nobullets li { list-style-type:none;  }
-   .borderless table, .borderless tr, .borderless td { border:0; margin:0; padding:0 0.25em 0 0; }
+   .borderless table, .borderless tr, .borderless td { border:0; margin:0; padding:0 1em 0 0; white-space:nowrap; line-height:100%; }
 &lt;/style&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
@@ -10827,7 +10829,8 @@ set auto saver interval:&lt;br&gt;
 * The clock shows the local time, updated each second.  You can click on the time to pause/resume the clock.
 * When the clock is paused, @@.resize {{$:/core/images/timestamp-off}}@@ appears next to the time.
 * You can adjust the time format used by the ~DigitalClock (see [[TiddlyTools/Timer/Setup]] below).
-* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;``&lt;br&gt;before the transclusion, where the number is the hours and minutes offset from GMT.
+* To specify a custom format for a specific clock instance, add ``&lt;$vars format=&quot;...&quot;&gt;`` before the transclusion, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]
+* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;`` before the transclusion, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
 * See &lt;$tiddler tiddler=&quot;SampleWorldClocks&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;~SampleWorldClocks&lt;/$button&gt;&lt;/$tiddler&gt; for examples.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/AnalogClock]]
@@ -10837,7 +10840,7 @@ set auto saver interval:&lt;br&gt;
 * To display the clock in another tiddler, use transclusion ``{{||TiddlyTools/Timer/AnalogClock}}``
 * The clock shows the local time, updated each second.  You can click on the time to pause/resume the clock.
 * You can adjust the colors and styles used by the ~AnalogClock (see [[TiddlyTools/Timer/Setup]] below).
-* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;``&lt;br&gt;before the transclusion, where the number is the hours and minutes offset from GMT.
+* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;`` before the transclusion, where the number is the hours and minutes offset from GMT.
 * See &lt;$tiddler tiddler=&quot;SampleWorldClocks&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;~SampleWorldClocks&lt;/$button&gt;&lt;/$tiddler&gt; for examples.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/SidebarClock]]
@@ -10870,21 +10873,20 @@ set auto saver interval:&lt;br&gt;
 * [[TiddlyTools/Timer/SidebarClock]]:
 **&lt;div class=&quot;borderless&quot;&gt;
 
-|''sidebar_analog:''  |&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show ~AnalogClock&quot;&gt;&gt;  |&amp;emsp;''sidebar_analog_size:'' | &lt;&lt;rangeSetup sidebar_analog_size  35 150 5 100&gt;&gt;|
-|''sidebar_digital:'' |&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show ~DigitalClock&quot;&gt;&gt; |&amp;emsp;''sidebar_digital_size:'' | &lt;&lt;rangeSetup sidebar_digital_size 35 150 5 100&gt;&gt;|
+|''sidebar_analog:'' &lt;br&gt;&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show ~AnalogClock&quot;&gt;&gt; |''sidebar_analog_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_analog_size  35 150 5 100&gt;&gt;|
+|''sidebar_digital:''&lt;br&gt;&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show ~DigitalClock&quot;&gt;&gt;|''sidebar_digital_size:''&lt;br&gt;&lt;&lt;rangeSetup sidebar_digital_size 35 150 5 100&gt;&gt;|
 &lt;/div&gt;
 * [[TiddlyTools/Timer/AutoSaver]]:
 **&lt;div class=&quot;borderless&quot;&gt;
 
-|''autosave_countdown'': |&lt;&lt;editSetup &quot;autosave_hours&quot; &quot;01&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_mins&quot;  &quot;00&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_secs&quot;  &quot;00&quot; 2.5em center&gt;&gt; hours, minutes, seconds|
+|''autosave_countdown'': |&lt;&lt;editSetup &quot;autosave_hours&quot; &quot;01&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_mins&quot;  &quot;00&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_secs&quot;  &quot;00&quot; 2.5em center&gt;&gt; @@font-size:80%;(hours, minutes, seconds)@@|
 |''autosave_ask'':       |&lt;&lt;checkboxSetup autosave_ask yes yes no &quot;confirm before auto saving&quot;&gt;&gt;|
 &lt;/div&gt;
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/action-timeout.js]]
 &lt;&lt;&lt;
-''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates''&lt;br&gt;
-of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, ~AutoSaver, ~CountDown, ~DigitalClock, and ~AnalogClock.
+''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates'' of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, ~AutoSaver, ~CountDown, ~DigitalClock, and ~AnalogClock.
 &lt;&lt;&lt;</pre>
 </div>
 <div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_datetime="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200802155130589" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" timer_datetime="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
