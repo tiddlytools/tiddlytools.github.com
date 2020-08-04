@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200803225402358" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200804042249421" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200803231003961" title="$:/temp/timer/AnalogClock">
-<pre>20200803231003961</pre>
+<div created="20200730065404061" go="go" modified="20200804042422648" title="$:/temp/timer/AnalogClock">
+<pre>20200804042422648</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200730065404012" go="go" modified="20200803231003994" title="$:/temp/timer/DigitalClock">
-<pre>20200803231003994</pre>
+<div created="20200730065404012" go="go" modified="20200804042422711" title="$:/temp/timer/DigitalClock">
+<pre>20200804042422711</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10411,7 +10411,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \define ticker(auto)
 &lt;$list filter=&quot;[[$auto$]!match[]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;$auto$&quot; /&gt; &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]]&quot; variable=&quot;running-or-starting&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]] +[limit[1]]&quot; variable=&quot;running-or-starting&quot;&gt;
       &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
       &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
    &lt;/$list&gt;
@@ -10542,16 +10542,13 @@ set auto saver interval:&lt;br&gt;
 \define default_done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
 
 \define ticker(auto)
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]then&lt;temp&gt;]&quot;&gt;
-      &lt;$list filter=&quot;[&lt;temp&gt;get[text]!match[0]then&lt;temp&gt;]&quot; emptyMessage=&quot;&lt;$action-setfield go='stop' /&gt;&quot;&gt;
-         &lt;&lt;showRemaining&gt;&gt;
-         &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[1]then&lt;temp&gt;]&quot;&gt; @@display:none; {{!!done}}@@ &lt;/$list&gt;
-         &lt;$action-setfield text={{{ [&lt;temp&gt;get[text]subtract[1]] }}} /&gt;
-         &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt; /&gt;
-      &lt;/$list&gt;
+&lt;$list filter=&quot;[[$auto$]!match[]then&lt;temp&gt;]&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]then&lt;temp&gt;]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;get[text]!match[0]then&lt;temp&gt;]&quot; emptyMessage=&quot;&lt;$action-setfield go='stop' /&gt;&quot;&gt;
+      &lt;&lt;showRemaining&gt;&gt;
+      &lt;$list filter=&quot;[&lt;temp&gt;get[text]match[1]then&lt;temp&gt;]&quot;&gt; @@display:none; {{!!done}}@@ &lt;/$list&gt;
+      &lt;$action-setfield text={{{ [&lt;temp&gt;get[text]subtract[1]] }}} /&gt;
+      &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt; /&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
 \end
@@ -10687,7 +10684,7 @@ set auto saver interval:&lt;br&gt;
 \define ticker(auto)
 &lt;$list filter=&quot;[[$auto$]!match[]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;$auto$&quot; /&gt; &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]]&quot; variable=&quot;running-or-starting&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;get[go]match[go]] [[$auto$]match[go]] +[limit[1]]&quot; variable=&quot;running-or-starting&quot;&gt;
       &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
       &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
    &lt;/$list&gt;
