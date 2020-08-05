@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200805025234938" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200805152902568" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200805030743591" title="$:/temp/timer/AnalogClock">
-<pre>20200805030743591</pre>
+<div created="20200730065404061" go="go" modified="20200805153108529" title="$:/temp/timer/AnalogClock">
+<pre>20200805153108529</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200805025127052" go="go" modified="20200805030743649" title="$:/temp/timer/DigitalClock">
-<pre>20200805030743649</pre>
+<div created="20200805025127052" go="go" modified="20200805153108360" title="$:/temp/timer/DigitalClock">
+<pre>20200805153108360</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10343,6 +10343,10 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
 &lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
 &lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
+&lt;!-- check for leap year --&gt;
+&lt;$vars   leap={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set    name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set    name=&quot;dpm&quot; filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
 &lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
 &lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
@@ -10358,8 +10362,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month     --&gt;
-&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt;        &lt;!-- days in this month --&gt;
+&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
@@ -10673,6 +10676,10 @@ set auto saver interval:&lt;br&gt;
 &lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
 &lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
 &lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
+&lt;!-- check for leap year --&gt;
+&lt;$vars   leap={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set    name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set    name=&quot;dpm&quot; filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
 &lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
 &lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
@@ -10688,8 +10695,7 @@ set auto saver interval:&lt;br&gt;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month     --&gt;
-&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt;        &lt;!-- days in this month --&gt;
+&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
