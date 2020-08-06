@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200806093602348" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200806220537556" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200806145112885" title="$:/temp/timer/AnalogClock">
-<pre>20200806145112885</pre>
+<div created="20200730065404061" go="go" modified="20200806222836707" title="$:/temp/timer/AnalogClock">
+<pre>20200806222836707</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200805025127052" go="go" modified="20200806145113025" title="$:/temp/timer/DigitalClock">
-<pre>20200806145113025</pre>
+<div created="20200805025127052" go="go" modified="20200806222835796" title="$:/temp/timer/DigitalClock">
+<pre>20200806222835796</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10085,18 +10085,18 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
 &lt;$vars started={{!!started}} stopped={{!!text}}&gt;
 &lt;$vars 
-   msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
-    sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
-    min={{{ [&lt;started&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-   hour={{{ [&lt;started&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-    day={{{ [&lt;started&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+   msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]]             }}}
+    sec={{{ [&lt;started&gt;split[]first[14]last[2]join[]]                }}}
+    min={{{ [&lt;started&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+   hour={{{ [&lt;started&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+    day={{{ [&lt;started&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
 &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
 &lt;$vars
-   msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]] }}}
-    sec={{{ [&lt;stopped&gt;split[]butlast[3]last[2]join[]] }}}
-    min={{{ [&lt;stopped&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-   hour={{{ [&lt;stopped&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-    day={{{ [&lt;stopped&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+   msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]]             }}}
+    sec={{{ [&lt;stopped&gt;split[]first[14]last[2]join[]]                }}}
+    min={{{ [&lt;stopped&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+   hour={{{ [&lt;stopped&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+    day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
 &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
 &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
 &lt;$vars     min={{{ [&lt;elapsed&gt;divide[60]trunc[]] }}}&gt;
@@ -10341,7 +10341,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;&lt;adjustForTimezone&gt;&gt;
 \end
 
-\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,pad:&quot;addprefix[00]split[]last[2]join[]&quot;)
+\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
 &lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;!-- split time into parts --&gt;
 &lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
@@ -10384,7 +10384,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
-&lt;$vars   mm={{{ [&lt;mm&gt;$pad$] }}} dd={{{ [&lt;dd&gt;$pad$] }}} hh={{{ [&lt;hh&gt;$pad$] }}} min={{{ [&lt;min&gt;$pad$] }}}&gt;
+&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
 &lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
 &lt;&lt;showtime&gt;&gt;
 \end
@@ -10680,7 +10680,7 @@ set auto saver interval:&lt;br&gt;
 &lt;&lt;adjustForTimezone&gt;&gt;
 \end
 
-\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,pad:&quot;addprefix[00]split[]last[2]join[]&quot;)
+\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
 &lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;!-- split time into parts --&gt;
 &lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
@@ -10723,7 +10723,7 @@ set auto saver interval:&lt;br&gt;
 &lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
-&lt;$vars   mm={{{ [&lt;mm&gt;$pad$] }}} dd={{{ [&lt;dd&gt;$pad$] }}} hh={{{ [&lt;hh&gt;$pad$] }}} min={{{ [&lt;min&gt;$pad$] }}}&gt;
+&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
 &lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
 &lt;&lt;showtime&gt;&gt;
 \end
