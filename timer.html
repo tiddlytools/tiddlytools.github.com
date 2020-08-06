@@ -9679,7 +9679,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9699,7 +9699,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9730,8 +9730,8 @@ SampleCountdownSequence</pre>
 <div title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20200730065404061" go="go" modified="20200806093938192" title="$:/temp/timer/AnalogClock">
-<pre>20200806093938192</pre>
+<div created="20200730065404061" go="go" modified="20200806145112885" title="$:/temp/timer/AnalogClock">
+<pre>20200806145112885</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200805025127052" go="go" modified="20200806093938263" title="$:/temp/timer/DigitalClock">
-<pre>20200806093938263</pre>
+<div created="20200805025127052" go="go" modified="20200806145113025" title="$:/temp/timer/DigitalClock">
+<pre>20200806145113025</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10062,7 +10062,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;showClock &quot;Tokyo&quot;  &quot;+09:00&quot;&gt;&gt; &lt;&lt;showClock &quot;Perth&quot;    &quot;+08:30&quot;&gt;&gt; &lt;&lt;showClock &quot;Adelaide&quot;    &quot;+09:30&quot;&gt;&gt; &lt;&lt;showClock &quot;Sydney&quot;    &quot;+10:00&quot;&gt;&gt;&lt;br&gt;
 @@    </pre>
 </div>
-<div created="20200712174503125" modified="20200804171540055" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200806144913392" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define temp() $:/temp/timer/$(currentTiddler)$
 
 \define ticker_start()
@@ -10245,7 +10245,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200804171450484" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200806144737830" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10327,7 +10327,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200723000537744" modified="20200804171503142" title="TiddlyTools/Timer/AnalogClock">
+<div created="20200723000537744" modified="20200806144812788" title="TiddlyTools/Timer/AnalogClock">
 <pre>\define temp() $:/temp/timer/AnalogClock
 
 \define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;)
@@ -10350,33 +10350,39 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
 &lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
 &lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
-&lt;!-- check for leap year --&gt;
-&lt;$vars   leap={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
-&lt;$set    name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
-&lt;$set    name=&quot;dpm&quot; filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
 &lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
 &lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
 &lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
 &lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
 &lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
+&lt;!-- adjust days per month for leap year --&gt;
+&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot; filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [[60]add&lt;min&gt;]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot; filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;!-- adjust date for hours wraparound --&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;!-- adjust date/hours for hours wraparound --&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
-&lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;!-- adjust hours for hours wraparound --&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;!-- adjust year/date/month for month wraparound --&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
 &lt;$vars   mm={{{ [&lt;mm&gt;$pad$] }}} dd={{{ [&lt;dd&gt;$pad$] }}} hh={{{ [&lt;hh&gt;$pad$] }}} min={{{ [&lt;min&gt;$pad$] }}}&gt;
 &lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
@@ -10456,7 +10462,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
    &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
 &lt;/$button&gt;</pre>
 </div>
-<div created="20200730035446808" modified="20200804171522365" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
+<div created="20200730035446808" modified="20200806144849324" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
 <pre>\import TiddlyTools/Timer/CountDown
 \define temp() $:/temp/timer/AutoSaver
 
@@ -10565,7 +10571,7 @@ set auto saver interval:&lt;br&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200725211229080" modified="20200804171517210" tags="" title="TiddlyTools/Timer/CountDown">
+<div created="20200725211229080" modified="20200806144841386" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define temp() $:/temp/timer/$(here)$
 
 \define default_done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
@@ -10664,7 +10670,7 @@ set auto saver interval:&lt;br&gt;
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200804171508040" title="TiddlyTools/Timer/DigitalClock">
+<div created="20200719094540255" modified="20200806144820862" title="TiddlyTools/Timer/DigitalClock">
 <pre>\define temp() $:/temp/timer/DigitalClock
 
 \define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
@@ -10683,33 +10689,39 @@ set auto saver interval:&lt;br&gt;
 &lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
 &lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
 &lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
-&lt;!-- check for leap year --&gt;
-&lt;$vars   leap={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
-&lt;$set    name=&quot;dpm&quot; value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
-&lt;$set    name=&quot;dpm&quot; filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
 &lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
 &lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
 &lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
 &lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
 &lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
+&lt;!-- adjust days per month for leap year --&gt;
+&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot; filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [[60]add&lt;min&gt;]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot; filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;!-- adjust date for hours wraparound --&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;!-- adjust date/hours for hours wraparound --&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dm&quot;  value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
-&lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;  filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;!-- adjust hours for hours wraparound --&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;  filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;!-- adjust year/date/month for month wraparound --&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
 &lt;$vars   mm={{{ [&lt;mm&gt;$pad$] }}} dd={{{ [&lt;dd&gt;$pad$] }}} hh={{{ [&lt;hh&gt;$pad$] }}} min={{{ [&lt;min&gt;$pad$] }}}&gt;
 &lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
@@ -10745,7 +10757,7 @@ set auto saver interval:&lt;br&gt;
    &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
 &lt;/$button&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200804171534389" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200806144906700" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -10924,10 +10936,10 @@ set auto saver interval:&lt;br&gt;
 ''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates'' of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, ~AutoSaver, ~CountDown, ~DigitalClock, and ~AnalogClock.
 &lt;&lt;&lt;</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200804171528807" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" timer_format="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200806144859921" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" timer_format="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
-<div created="20200723044003911" modified="20200804171456668" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClock">
+<div created="20200723044003911" modified="20200806144755924" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClock">
 <pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClock&quot;&gt;
 &lt;$vars sidebar_analog={{{       [[TiddlyTools/Timer/Setup]get[sidebar_analog]]       ~[[yes]] }}}
        sidebar_analog_size={{{  [[TiddlyTools/Timer/Setup]get[sidebar_analog_size]]  ~[[100]] }}}
