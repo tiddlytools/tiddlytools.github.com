@@ -169,13 +169,7 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/advancedsearch</li>
-
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/TiddlyTools/PowerSearch/suffix</li>
-
-<li>$:/temp/TiddlyTools/PowerSearch/term</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -9619,17 +9613,14 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20200726070046956" modified="20200726070046956" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200526055243825" modified="20200726071507281" title="$:/state/tab/sidebar--595412856">
+<div created="20200526055243825" modified="20200807160704071" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20200807160509855" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20200807160725791" title="$:/StoryList">
 <pre></pre>
-</div>
-<div created="20200726070146705" modified="20200726070208594" title="$:/temp/advancedsearch">
-<pre>$:/language/SystemTiddlers/Include</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9688,12 +9679,6 @@ TiddlyTools/FilterGenerators/Tags
         }
     }
 }</pre>
-</div>
-<div created="20200726071412997" modified="20200726071424427" title="$:/temp/TiddlyTools/PowerSearch/suffix">
-<pre></pre>
-</div>
-<div created="20200726070815124" modified="20200726070824119" title="$:/temp/TiddlyTools/PowerSearch/term">
-<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10042,7 +10027,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20191128174135234" modified="20200415141614907" sortorder="count" tags="" title="TiddlyTools/FilterGenerators/TagCloud">
+<div created="20191128174135234" modified="20200807155830004" sortorder="count" tags="" title="TiddlyTools/FilterGenerators/TagCloud">
 <pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
 \define tag-pill-styles()
    background-color:$(backgroundColor)$;
@@ -10072,26 +10057,24 @@ $actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt;
 &lt;/$list&gt;
 \end
 
-\define tagcloud_showitem()
-&lt;$vars count={{{ [&lt;currentTiddler&gt;tagging[]count[]] }}}&gt;
-   &lt;$macrocall $name=&quot;tag&quot; tag=&lt;&lt;thistag&gt;&gt; /&gt;
-&lt;/$vars&gt;
-\end
-
-\define tagcloud_showbyname()
-&lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
-   &lt;&lt;tagcloud_showitem&gt;&gt;
-&lt;/$list&gt;
-\end
-
 \define tagcloud_showbycount()
 &lt;$wikify    name=&quot;items&quot;  text=&lt;&lt;tagcloud_get&gt;&gt;  &gt;
    &lt;$wikify name=&quot;sorted&quot; text=&lt;&lt;tagcloud_sort&gt;&gt; &gt;
       &lt;$list filter=&lt;&lt;sorted&gt;&gt;&gt;
-         &lt;&lt;tagcloud_showitem&gt;&gt;
+         &lt;$vars count={{{ [&lt;currentTiddler&gt;tagging[]count[]] }}}&gt;
+            &lt;&lt;tag&gt;&gt;
+         &lt;/$vars&gt;
       &lt;/$list&gt;
    &lt;/$wikify&gt;
 &lt;/$wikify&gt;
+\end
+
+\define tagcloud_showbyname()
+&lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
+   &lt;$vars count={{{ [&lt;currentTiddler&gt;tagging[]count[]] }}}&gt;
+      &lt;&lt;tag&gt;&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
 \end
 
 __Tag Cloud__:&lt;br&gt;
@@ -10099,11 +10082,11 @@ There are      ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]count[]]&quot; }
 and a total of ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]tagging[]count[]]&quot; }}}/&gt;
 tagged tiddlers''&lt;br&gt;
 sort by:
-&lt;$radio field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
 &lt;$radio field=&quot;sortorder&quot; value=&quot;count&quot;&gt; tagging count &lt;/$radio&gt;
+&lt;$radio field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
 &lt;blockquote&gt;
-&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;  &lt;&lt;tagcloud_showbyname&gt;&gt;  &lt;/$reveal&gt;
 &lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt; &lt;&lt;tagcloud_showbycount&gt;&gt; &lt;/$reveal&gt;
+&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;  &lt;&lt;tagcloud_showbyname&gt;&gt;  &lt;/$reveal&gt;
 &lt;/blockquote&gt;</pre>
 </div>
 <div created="20191118104819715" modified="20200415141427334" tags="" title="TiddlyTools/FilterGenerators/Tags">
