@@ -169,6 +169,12 @@ Error message and password prompt
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info</li>
 
+<li>$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History/Next</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History/Previous</li>
+
 <li>$:/core</li>
 
 <li>$:/core/modules/filters/regexps.js</li>
@@ -197,7 +203,11 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1963855381</li>
+
 <li>$:/state/tab--486472640</li>
+
+<li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-513410736</li>
 
@@ -802,7 +812,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20200702025535427" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20200806235959080" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -864,27 +874,27 @@ Error message and password prompt
     &quot;FontColor/Links&quot;: &quot;RoyalBlue&quot;
 }</pre>
 </div>
-<div created="20160123062407850" creator="EricShulman" modified="20191220041522674" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
+<div created="20160123062407850" creator="EricShulman" modified="20200806231502050" modifier="EricShulman" title="$:/config/TiddlyTools/goto" type="application/json">
 <pre>{
     &quot;matchinput&quot;: &quot;yes&quot;,
     &quot;matchtitles&quot;: &quot;yes&quot;,
-    &quot;matchcaptions&quot;: &quot;yes&quot;,
-    &quot;matchtags&quot;: &quot;yes&quot;,
-    &quot;matchtext&quot;: &quot;no&quot;,
+    &quot;matchcaptions&quot;: &quot;no&quot;,
+    &quot;matchtags&quot;: &quot;no&quot;,
+    &quot;matchtext&quot;: &quot;yes&quot;,
     &quot;matchcustom&quot;: &quot;no&quot;,
     &quot;customfilter&quot;: &quot;-[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[images/]] -[prefix[TiddlyTools]] -[prefix[TiddlyBook]]&quot;,
     &quot;showhidden&quot;: &quot;no&quot;,
     &quot;showsystem&quot;: &quot;no&quot;,
     &quot;showshadows&quot;: &quot;no&quot;,
-    &quot;sortlist&quot;: &quot;no&quot;,
+    &quot;sortlist&quot;: &quot;yes&quot;,
     &quot;sortfilter&quot;: &quot;[sort[title]]&quot;,
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20200702025535426" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20200806235959080" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20200702025535427" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20200806235959080" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -892,6 +902,15 @@ Error message and password prompt
 </div>
 <div created="20191203081340840" creator="EricShulman" modified="20191203081340840" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info">
 <pre>show</pre>
+</div>
+<div created="20200806231617583" creator="EricShulman" modified="20200806232446237" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History">
+<pre>hide</pre>
+</div>
+<div created="20200806233250849" creator="EricShulman" modified="20200806233250849" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History/Next">
+<pre>hide</pre>
+</div>
+<div created="20200806233249745" creator="EricShulman" modified="20200806233249745" modifier="EricShulman" title="$:/config/ViewToolbarButtons/Visibility/TiddlyTools/History/Previous">
+<pre>hide</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -10745,7 +10764,9 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Stylesheet/Adjustments]]</pre>
+# [[TiddlyTools/History]]
+# [[TiddlyTools/History/Next]]
+# [[TiddlyTools/History/Previous]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10911,8 +10932,11 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20200526045252718" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="20.07.01.195444">
-<pre>* 20.07.01.195444 TiddlyTools/History - calculate history() using split[]/splitbefore[]
+<div created="20191105045421013" creator="EricShulman" modified="20200526045252718" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="20.08.06.165956">
+<pre>* 20.08.06.164843 TiddlyTools/History - added inline styles, caption and $:/tags/ViewToolbar
+* 20.08.06.164843 TiddlyTools/History/Next -  added caption and $:/tags/ViewToolbar
+* 20.08.06.164843 TiddlyTools/History/Previous - added caption and $:/tags/ViewToolbar
+* 20.07.01.195444 TiddlyTools/History - calculate history() using split[]/splitbefore[]
 * 20.07.01.195444 TiddlyTools/History/Next - calculate history() using split[]/splitbefore[]
 * 20.07.01.195444 TiddlyTools/History/Previous - calculate history() using split[]/splitbefore[]
 * 20.05.25.220815 DraftNotice - move text to &quot;notice&quot; field
@@ -11929,11 +11953,17 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 * 15.03.22 through 15.05.24 manual revision notes were spotty at best
 * 15.03.21 Initial release for feedback</pre>
 </div>
-<div created="20200526044517760" creator="EricShulman" modified="20200702025535426" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20200526044517760" creator="EricShulman" modified="20200806235959080" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
+</div>
+<div created="20200806231609087" creator="EricShulman" modified="20200806231609087" modifier="EricShulman" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
 <div created="20200526050926720" creator="EricShulman" modified="20200526050926720" modifier="EricShulman" title="$:/state/tab--486472640">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
+</div>
+<div created="20200806231605199" creator="EricShulman" modified="20200806231607437" modifier="EricShulman" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20200526045055330" creator="EricShulman" modified="20200526050407425" modifier="EricShulman" title="$:/state/tab-513410736">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
@@ -11947,7 +11977,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20200702024440418" creator="EricShulman" list="CoverPage" modified="20200702025535427" modifier="EricShulman" title="$:/StoryList">
+<div created="20200806235518751" creator="EricShulman" list="CoverPage" modified="20200806235959081" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -12086,7 +12116,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20200526050937436" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20200702025535426" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20200806235959080" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -16983,7 +17013,7 @@ exports.tagexp = function(source,operator,options) {
 
 &lt;&lt;panel&gt;&gt;</pre>
 </div>
-<div created="20160117202506612" creator="EricShulman" modified="20200702024620226" modifier="EricShulman" title="TiddlyTools/History">
+<div caption="{{$:/core/images/refresh-button}} history" created="20160117202506612" creator="EricShulman" modified="20200806235823123" modifier="EricShulman" tags="$:/tags/ViewToolbar" title="TiddlyTools/History">
 <pre>\whitespace trim
 
 \define history()    [{$:/HistoryList}split[&quot;title&quot;: &quot;]splitbefore[&quot;]removesuffix[&quot;]reverse[]is[tiddler]] [enlist{$:/StoryList!!list}] [enlist{$:/DefaultTiddlers}]
@@ -17066,9 +17096,25 @@ exports.tagexp = function(source,operator,options) {
 &lt;/div&gt;
 \end
 
+&lt;style&gt;
+.tt-shadowbox             { border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em; }
+.tt-shadowbox             { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);             transition: box-shadow 1s }
+.tt-shadowbox:hover       { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);       transition: box-shadow 1s }
+.tt-shadowbox.inset       { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;       transition: box-shadow 1s, background 1s; }
+.tt-shadowbox.inset:hover { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; transition: box-shadow 1s, background 1s; }
+.tt-drop-down             { font-size:initial; line-height:120%; margin-top:0.3em; border: 1px solid #999 !important; border-radius:0.5em; padding:0.5em; }
+.tt-drop-down a,      .tt-drop-down button      { display:inline; width:auto; padding:0; }
+.tc-block-dropdown a, .tc-block-dropdown button { display:block !important; }
+.tt-drop-down             { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.3);             transition: box-shadow 1s; }
+.tt-drop-down:hover       { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);       transition: box-shadow 1s; }
+.floatright               { float:right; }
+.smaller                  { font-size:80%; line-height:100%; }
+.largest                  { font-size:150%;line-height:100%; }
+&lt;/style&gt;
+
 &lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/history&quot;&gt;&gt; actions=&lt;&lt;showHistory_create&gt;&gt;
    class=&quot;tc-btn-invisible tt-btn-invisible&quot; style=&quot;position:relative;z-index:1;&quot; tooltip=&quot;recently viewed pages&quot;&gt;
-   {{TiddlyTools/History.svg}}
+   &lt;$list filter=&quot;[[TiddlyTools/History.svg]is[tiddler]]&quot; emptyMessage=&quot;{{$:/core/images/refresh-button}}&quot;&gt; {{TiddlyTools/History.svg}} &lt;/$list&gt;   
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/history&quot;&gt;&gt; position=&quot;belowleft&quot;&gt;
    &lt;div class=&quot;tc-drop-down tt-drop-down tc-popup-keep&quot; style=&quot;position:absolute;right:0;text-align:left;white-space:nowrap;font-size:initial;min-width:25em;&quot;&gt;
@@ -17105,7 +17151,7 @@ exports.tagexp = function(source,operator,options) {
     &lt;/g&gt;
 &lt;/svg&gt;</pre>
 </div>
-<div created="20191202101235403" creator="EricShulman" modified="20200702024543746" modifier="EricShulman" title="TiddlyTools/History/Next">
+<div caption="{{$:/core/images/chevron-right}} next" created="20191202101235403" creator="EricShulman" modified="20200806233036754" modifier="EricShulman" tags="$:/tags/ViewToolbar" title="TiddlyTools/History/Next">
 <pre>\whitespace trim
 
 \define history() [{$:/HistoryList}split[&quot;title&quot;: &quot;]splitbefore[&quot;]removesuffix[&quot;]reverse[]is[tiddler]] [enlist{$:/StoryList!!list}] [enlist{$:/DefaultTiddlers}]
@@ -17121,7 +17167,7 @@ exports.tagexp = function(source,operator,options) {
    &lt;/$wikify&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150429011446736" creator="EricShulman" modified="20200702024517380" modifier="EricShulman" title="TiddlyTools/History/Previous">
+<div caption="{{$:/core/images/chevron-left}} previous" created="20150429011446736" creator="EricShulman" modified="20200806233030936" modifier="EricShulman" tags="$:/tags/ViewToolbar" title="TiddlyTools/History/Previous">
 <pre>\whitespace trim
 
 \define history() [{$:/HistoryList}split[&quot;title&quot;: &quot;]splitbefore[&quot;]removesuffix[&quot;]reverse[]is[tiddler]] [enlist{$:/StoryList!!list}] [enlist{$:/DefaultTiddlers}]
