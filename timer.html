@@ -233,7 +233,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200809132952026" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200809143538317" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9663,7 +9663,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9683,7 +9683,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9695,11 +9695,11 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9713,7 +9713,7 @@ SampleCountdownSequence</pre>
        saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}
          ask={{{ [[TiddlyTools/Timer/Setup]get[autosave_ask]]   ~[[yes]]     }}}&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
-   &lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
+   &lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
@@ -9725,7 +9725,7 @@ SampleCountdownSequence</pre>
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/AutoSaver/ask&quot; /&gt; &lt;/$button&gt;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
-            &lt;$action-setfield $tiddler=&quot;$:/temp/timer/AutoSaver/msg&quot; text=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
+            &lt;$action-setfield $tiddler=&quot;$:/temp/timer/AutoSaver/msg&quot; text=&quot;Autosaved &lt;&lt;now 'on YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
             &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot; /&gt;
             &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/AutoSaver/ask&quot; /&gt;
          &lt;/$button&gt;
@@ -9735,8 +9735,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200809135611838" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200809134008916" go="go" modified="20200809141059505" title="$:/temp/timer/Clock">
-<pre>20200809141059505</pre>
+<div created="20200809134008916" go="go" modified="20200809143819365" title="$:/temp/timer/Clock">
+<pre>20200809143819365</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10360,7 +10360,7 @@ set auto saver interval:&lt;br&gt;
        saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}
          ask={{{ [[TiddlyTools/Timer/Setup]get[autosave_ask]]   ~[[yes]]     }}}&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
-   &lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
+   &lt;$macrocall $name=&quot;showMessage&quot; msg=&quot;Autosaved &lt;&lt;now 'on YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
@@ -10372,7 +10372,7 @@ set auto saver interval:&lt;br&gt;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt; &lt;/$button&gt;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
-            &lt;$action-setfield $tiddler=&quot;$(temp)$/msg&quot; text=&quot;Autosaved &lt;&lt;now 'on YYYY/0MM/0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
+            &lt;$action-setfield $tiddler=&quot;$(temp)$/msg&quot; text=&quot;Autosaved &lt;&lt;now 'on YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&quot; /&gt;
             &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot; /&gt;
             &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt;
          &lt;/$button&gt;
