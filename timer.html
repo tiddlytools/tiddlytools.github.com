@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Timer and Clock — TiddlyTools: "Small Tools for Big Ideas!" (tm)</title>
+<title>Timers and Clocks — TiddlyTools: "Small Tools for Big Ideas!" (tm)</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -179,15 +179,15 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/NewTagName</li>
+
 <li>$:/temp/notify</li>
 
 <li>$:/temp/search</li>
 
-<li>$:/temp/timer/AnalogClock</li>
-
 <li>$:/temp/timer/AutoSaver</li>
 
-<li>$:/temp/timer/DigitalClock</li>
+<li>$:/temp/timer/Clock</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -203,25 +203,25 @@ Error message and password prompt
 
 <li>SampleTimer</li>
 
-<li>SampleWorldClocks</li>
-
 <li>TiddlyTools/Timer</li>
 
 <li>TiddlyTools/Timer/action-timeout.js</li>
 
-<li>TiddlyTools/Timer/AnalogClock</li>
-
 <li>TiddlyTools/Timer/AutoSaver</li>
+
+<li>TiddlyTools/Timer/Clocks</li>
 
 <li>TiddlyTools/Timer/CountDown</li>
 
-<li>TiddlyTools/Timer/DigitalClock</li>
-
 <li>TiddlyTools/Timer/Info</li>
+
+<li>TiddlyTools/Timer/Places</li>
 
 <li>TiddlyTools/Timer/Setup</li>
 
-<li>TiddlyTools/Timer/SidebarClock</li>
+<li>TiddlyTools/Timer/SidebarClocks</li>
+
+<li>TiddlyTools/Timer/WorldClocks</li>
 
 </ul>
 </p>
@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200806220537556" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200808225808909" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9628,7 +9628,7 @@ SampleCountdownSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/Setup]]</pre>
+# [[TiddlyTools/Timer/SidebarClocks]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9636,8 +9636,8 @@ SampleCountdownSequence</pre>
 <div created="20200621230957019" modified="20200711141009305" title="$:/SiteSubtitle">
 <pre>~TiddlyTools: &quot;Small Tools for Big Ideas!&quot; (tm)</pre>
 </div>
-<div created="20200621230950964" modified="20200719110911026" title="$:/SiteTitle">
-<pre>Timer and Clock</pre>
+<div created="20200621230950964" modified="20200808063356392" title="$:/SiteTitle">
+<pre>Timers and Clocks</pre>
 </div>
 <div created="20200719040452535" modified="20200719040452535" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -9651,7 +9651,7 @@ SampleCountdownSequence</pre>
 <div created="20200718011630155" modified="20200801185241795" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200803044426230" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200808154334301" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9679,7 +9679,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer_experiments/timer_oneclock.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9699,7 +9699,7 @@ SampleCountdownSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer_experiments/timer_oneclock.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9724,14 +9724,14 @@ SampleCountdownSequence</pre>
     }
 }</pre>
 </div>
+<div title="$:/temp/NewTagName">
+<pre></pre>
+</div>
 <div title="$:/temp/notify">
 <pre>SampleCountdown completed&lt;br&gt;&lt;&lt;now &quot;on DDD, MMM DDth at 0hh12:0mm:0ssam&quot;&gt;&gt;</pre>
 </div>
 <div title="$:/temp/search">
 <pre></pre>
-</div>
-<div created="20200730065404061" go="go" modified="20200806222836707" title="$:/temp/timer/AnalogClock">
-<pre>20200806222836707</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9760,8 +9760,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200730135523787" secs="00" title="$:/temp/timer/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200805025127052" go="go" modified="20200806222835796" title="$:/temp/timer/DigitalClock">
-<pre>20200806222835796</pre>
+<div created="20200808050932667" go="go" modified="20200808220306734" title="$:/temp/timer/Clock">
+<pre>20200808230852481</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10043,26 +10043,7 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;timer_buttons AnotherTimer&gt;&gt; &lt;&lt;timer_elapsed AnotherTimer&gt;&gt;
 &lt;&lt;timer_history AnotherTimer&gt;&gt;</pre>
 </div>
-<div created="20200801102300603" modified="20200722080500000" tags="" title="SampleWorldClocks">
-<pre>\define showClock(place,offset) 
-&lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
-&lt;div class=&quot;worldClock&quot;&gt;
-   &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt;&gt;
-   &lt;$vars TZD={{{ [[$offset$]!match[]then[$offset$]else&lt;TZD&gt;] }}}&gt;
-   $place$&lt;br&gt;
-   &lt;$vars format=&quot;0DD-mmm-YYYY 0DD 0hh:0mm:0ss&quot;&gt;
-   &lt;$vars offset=&quot;$offset$&quot;&gt;
-   &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt; {{||TiddlyTools/Timer/AnalogClock}}  &lt;/div&gt;
-   &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt; {{||TiddlyTools/Timer/DigitalClock}} (&lt;&lt;TZD&gt;&gt;)&lt;/div&gt;
-\end
-
-@@text-align:center;
-&lt;&lt;showClock &quot;local time&quot;     &gt;&gt; &lt;&lt;showClock &quot;Honolulu&quot; &quot;-10:00&quot;&gt;&gt; &lt;&lt;showClock &quot;Los Angeles&quot; &quot;-07:00&quot;&gt;&gt; &lt;&lt;showClock &quot;New York&quot;  &quot;-04:00&quot;&gt;&gt;&lt;br&gt;
-&lt;&lt;showClock &quot;London&quot; &quot;+01:00&quot;&gt;&gt; &lt;&lt;showClock &quot;Rome&quot;     &quot;+02:00&quot;&gt;&gt; &lt;&lt;showClock &quot;Moscow&quot;      &quot;+03:00&quot;&gt;&gt; &lt;&lt;showClock &quot;New Delhi&quot; &quot;+05:30&quot;&gt;&gt;&lt;br&gt;
-&lt;&lt;showClock &quot;Tokyo&quot;  &quot;+09:00&quot;&gt;&gt; &lt;&lt;showClock &quot;Perth&quot;    &quot;+08:30&quot;&gt;&gt; &lt;&lt;showClock &quot;Adelaide&quot;    &quot;+09:30&quot;&gt;&gt; &lt;&lt;showClock &quot;Sydney&quot;    &quot;+10:00&quot;&gt;&gt;&lt;br&gt;
-@@    </pre>
-</div>
-<div created="20200712174503125" modified="20200806144913392" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200808211612817" tags="$:/tags/Macro/View" title="TiddlyTools/Timer">
 <pre>\define temp() $:/temp/timer/$(currentTiddler)$
 
 \define ticker_start()
@@ -10243,9 +10224,11 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;
 &lt;&lt;timer_summary&gt;&gt;
 &lt;&lt;timer_history&gt;&gt;
-\end</pre>
+\end
+
+&lt;&lt;timer&gt;&gt;</pre>
 </div>
-<div created="20150728060155235" modified="20200806144737830" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200808153813907" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10327,142 +10310,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200723000537744" modified="20200806144812788" title="TiddlyTools/Timer/AnalogClock">
-<pre>\define temp() $:/temp/timer/AnalogClock
-
-\define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;)
-&lt;$vars clock_size={{{ [[TiddlyTools/Timer/Setup]get[clock_size]]       ~[[15em]]                         }}}
- clock_background={{{ [[TiddlyTools/Timer/Setup]get[clock_background]] ~[[lightgray]]                    }}}
-     clock_border={{{ [[TiddlyTools/Timer/Setup]get[clock_border]]     ~[[2px solid gray;]]              }}}
-    clock_numbers={{{ [[TiddlyTools/Timer/Setup]get[clock_numbers]]    ~[[color:black;font-size:1.5em;]] }}}
-      clock_hands={{{ [[TiddlyTools/Timer/Setup]get[clock_hands]]      ~[[black]]                        }}}
-      clock_ticks={{{ [[TiddlyTools/Timer/Setup]get[clock_ticks]]      ~[[black]]                        }}}&gt;
-&lt;$wikify name=&quot;TZD&quot; text=&quot;$offset$&quot;&gt;
-&lt;&lt;adjustForTimezone&gt;&gt;
-\end
-
-\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
-&lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
-&lt;!-- split time into parts --&gt;
-&lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
-&lt;$vars     mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]  }}}&gt;
-&lt;$vars     dd={{{ [&lt;time&gt;split[]first[8]last[2]join[]]  }}}&gt;
-&lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
-&lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
-&lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
-&lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
-&lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
-&lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
-&lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
-&lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
-&lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
-&lt;!-- adjust days per month for leap year --&gt;
-&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
-&lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
-&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
-&lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;!-- adjust date/hours for hours wraparound --&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;!-- adjust year/date/month for month wraparound --&gt;
-&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
-&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;!-- zero-pad and assemble new time --&gt;
-&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
-&lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
-&lt;&lt;showtime&gt;&gt;
-\end
-
-\define showtime()
-&lt;$tiddler tiddler=&lt;&lt;time&gt;&gt;&gt;
-&lt;$vars sec={{{ [{!!title}split[]butlast[3]last[2]join[]] }}}
-       min={{{ [{!!title}split[]butlast[5]last[2]join[]] }}}
-      hour={{{ [{!!title}split[]butlast[7]last[2]join[]] }}}&gt;
-&lt;div style=&quot;position:relative;height:$(clock_size)$;width:$(clock_size)$;background:$(clock_background)$;border-radius:50%;border:$(clock_border)$;&quot;&gt;
-   &lt;&lt;showhands&gt;&gt; &lt;&lt;shownumbers&gt;&gt; &lt;&lt;showticks&gt;&gt; &lt;&lt;showAMPM&gt;&gt; &lt;&lt;showpause&gt;&gt;
-&lt;/div&gt;
-\end
-
-\define showhands()
-&lt;style&gt;
-   .analogClockHands { position:absolute;top:50%;left:50%;transform-origin:top;border-radius:50%;border:1px solid $(clock_hands)$;background:$(clock_hands)$; }
-&lt;/style&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 3em);width:5px;transform:rotate(calc(180deg + ($(hour)$deg * 30) + ($(min)$deg * 0.5)));&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 1em);width:3px;transform:rotate(calc(180deg +  $(min)$deg * 6));&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 0em);width:0px;transform:rotate(calc(180deg +  $(sec)$deg * 6));&quot;&gt;&lt;/div&gt;
-\end
-
-\define shownumbers() &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;number&quot;&gt; &lt;&lt;shownumber&gt;&gt; &lt;/$list&gt;
-\define shownumber()
-&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;transform:rotate(calc($(number)$deg * 30)) translateY(calc($(clock_size)$ * -0.5));&quot;&gt;
-   &lt;div style=&quot;transform:rotate(calc($(number)$deg * -30)) translateX(-0.5em);&quot;&gt;
-      &lt;div style=&quot;$(clock_numbers)$;&quot;&gt;$(number)$&lt;/div&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-\end
-
-\define showticks() &lt;$list filter=&quot;[range[1,60]]&quot; variable=&quot;tick&quot;&gt; &lt;&lt;showtick&gt;&gt; &lt;/$list&gt;
-\define showtick()
-&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;transform:rotate(calc($(tick)$deg * 6));&quot;&gt;
-   &lt;div style=&quot;transform:translateY(calc($(clock_size)$ * -0.5 + 1px));&quot;&gt;
-      &lt;div style=&quot;height:2px;width:1px;background:$(clock_ticks)$;&quot;&gt;&lt;/div&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-\end
-
-\define showAMPM()
-&lt;div style=&quot;position:absolute;top:70%;left:calc(50% - 1em);&quot;&gt;
-   &lt;$list filter=&quot;[&lt;hour&gt;compare:integer:lt[12]then[AM]else[PM]]&quot;&gt;
-      &lt;div style=&quot;$(clock_numbers)$;&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/div&gt;
-   &lt;/$list&gt;
-&lt;/div&gt;
-\end
-
-\define showpause()
-&lt;div style=&quot;position:absolute;top:60%;left:calc(50% - 0.5em);&quot;&gt;
-   &lt;$transclude tiddler={{{ [&lt;temp&gt;get[go]match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
-&lt;/div&gt;
-\end
-
-\define toggleclock()
-&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[stop]]&quot; emptyMessage=&quot;&lt;&lt;ticker stop&gt;&gt;&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
-\end
-
-\define ticker(auto)
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
-   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
-      &lt;$action-setfield text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
-      &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
-   &lt;/$reveal&gt;
-&lt;/$list&gt;
-\end
-
-&lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;{!!go}!match[go]]&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
-&lt;$vars tip={{{ [&lt;temp&gt;get[go]match[go]then[click to stop]else[click to start]] }}} &gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;toggleclock&gt;&gt;&gt;
-   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
-&lt;/$button&gt;</pre>
-</div>
-<div created="20200730035446808" modified="20200806144849324" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
+<div created="20200730035446808" modified="20200808205556669" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
 <pre>\import TiddlyTools/Timer/CountDown
 \define temp() $:/temp/timer/AutoSaver
 
@@ -10571,7 +10419,149 @@ set auto saver interval:&lt;br&gt;
 &lt;/$vars&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200725211229080" modified="20200806144841386" tags="" title="TiddlyTools/Timer/CountDown">
+<div created="20200719094540255" modified="20200808205622268" tags="$:/tags/Macro/View" title="TiddlyTools/Timer/Clocks">
+<pre>\define temp() $:/temp/timer/Clock
+
+\define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
+&lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[clock_format]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
+&lt;$set  name=&quot;format&quot; value=&quot;&quot;&quot;$format$&quot;&quot;&quot; emptyValue=&lt;&lt;format&gt;&gt;&gt;
+&lt;$vars clock_size={{{ [[TiddlyTools/Timer/Setup]get[clock_size]]       ~[[15em]]                         }}}
+ clock_background={{{ [[TiddlyTools/Timer/Setup]get[clock_background]] ~[[lightgray]]                    }}}
+     clock_border={{{ [[TiddlyTools/Timer/Setup]get[clock_border]]     ~[[2px solid gray;]]              }}}
+    clock_numbers={{{ [[TiddlyTools/Timer/Setup]get[clock_numbers]]    ~[[color:black;font-size:1.5em;]] }}}
+      clock_hands={{{ [[TiddlyTools/Timer/Setup]get[clock_hands]]      ~[[black]]                        }}}
+      clock_ticks={{{ [[TiddlyTools/Timer/Setup]get[clock_ticks]]      ~[[black]]                        }}}&gt;
+&lt;$wikify name=&quot;TZD&quot; text=&quot;$offset$&quot;&gt;
+&lt;&lt;clock_adjustForTimezone &quot;$type$&quot;&gt;&gt;
+\end
+
+\define clock_adjustForTimezone(type,-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
+&lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
+&lt;!-- split time into parts --&gt;
+&lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
+&lt;$vars     mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]  }}}&gt;
+&lt;$vars     dd={{{ [&lt;time&gt;split[]first[8]last[2]join[]]  }}}&gt;
+&lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
+&lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
+&lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
+&lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
+&lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
+&lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
+&lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
+&lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
+&lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
+&lt;!-- adjust days per month for leap year --&gt;
+&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
+&lt;!-- adjust hours/minutes for minutes wraparound --&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;!-- adjust date/hours for hours wraparound --&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lt[0]]&quot;     value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gteq[24]]&quot;  value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lt[0]]&quot;     value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gteq[24]]&quot;  value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;!-- adjust month/date for date wraparound --&gt;
+&lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;!-- adjust year/date/month for month wraparound --&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;!-- zero-pad and assemble new time --&gt;
+&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
+&lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
+&lt;$list filter=&quot;[[$type$]match[analog]]&quot;&gt;  &lt;&lt;clock_show_analog&gt;&gt;  &lt;/$list&gt;
+&lt;$list filter=&quot;[[$type$]match[digital]]&quot;&gt; &lt;&lt;clock_show_digital&gt;&gt; &lt;/$list&gt;
+\end
+
+\define clock_show_digital()
+&lt;$tiddler tiddler=&lt;&lt;time&gt;&gt;&gt;
+&lt;$vars UTC=&quot;[UTC]&quot;&gt;
+&lt;$view field=&quot;title&quot; format=&quot;date&quot; template={{{ [&lt;format&gt;addprefix&lt;UTC&gt;] }}} /&gt;
+\end
+
+\define clock_show_analog()
+&lt;$tiddler tiddler=&lt;&lt;time&gt;&gt;&gt;
+&lt;$vars sec={{{ [{!!title}split[]butlast[3]last[2]join[]] }}}
+       min={{{ [{!!title}split[]butlast[5]last[2]join[]] }}}
+      hour={{{ [{!!title}split[]butlast[7]last[2]join[]] }}}&gt;
+&lt;div style=&quot;position:relative;height:$(clock_size)$;width:$(clock_size)$;background:$(clock_background)$;border-radius:50%;border:$(clock_border)$;&quot;&gt;
+   &lt;&lt;clock_showhands&gt;&gt; &lt;&lt;clock_shownumbers&gt;&gt; &lt;&lt;clock_showticks&gt;&gt; &lt;&lt;clock_showAMPM&gt;&gt;
+&lt;/div&gt;
+\end
+
+\define clock_showhands()
+&lt;style&gt;
+   .analogClockHands { position:absolute;top:50%;left:50%;transform-origin:top;border-radius:50%;border:1px solid $(clock_hands)$;background:$(clock_hands)$; }
+&lt;/style&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 3em);width:5px;transform:rotate(calc(180deg + ($(hour)$deg * 30) + ($(min)$deg * 0.5)));&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 1em);width:3px;transform:rotate(calc(180deg +  $(min)$deg * 6));&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;analogClockHands&quot; style=&quot;height:calc(50% - 0em);width:0px;transform:rotate(calc(180deg +  $(sec)$deg * 6));&quot;&gt;&lt;/div&gt;
+\end
+
+\define clock_shownumbers() &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;number&quot;&gt; &lt;&lt;clock_shownumber&gt;&gt; &lt;/$list&gt;
+\define clock_shownumber()
+&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;transform:rotate(calc($(number)$deg * 30)) translateY(calc($(clock_size)$ * -0.5));&quot;&gt;
+   &lt;div style=&quot;transform:rotate(calc($(number)$deg * -30)) translateX(-0.5em);&quot;&gt;
+      &lt;div style=&quot;$(clock_numbers)$;&quot;&gt;$(number)$&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+\end
+
+\define clock_showticks() &lt;$list filter=&quot;[range[1,60]]&quot; variable=&quot;tick&quot;&gt; &lt;&lt;clock_showtick&gt;&gt; &lt;/$list&gt;
+\define clock_showtick()
+&lt;div style=&quot;position:absolute;top:50%;left:50%;transform-origin:top;transform:rotate(calc($(tick)$deg * 6));&quot;&gt;
+   &lt;div style=&quot;transform:translateY(calc($(clock_size)$ * -0.5 + 1px));&quot;&gt;
+      &lt;div style=&quot;height:2px;width:1px;background:$(clock_ticks)$;&quot;&gt;&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+\end
+
+\define clock_showAMPM()
+&lt;div style=&quot;position:absolute;top:70%;left:calc(50% - 1em);&quot;&gt;
+   &lt;$list filter=&quot;[&lt;hour&gt;compare:integer:lt[12]then[AM]else[PM]]&quot;&gt;
+      &lt;div style=&quot;$(clock_numbers)$;&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/div&gt;
+   &lt;/$list&gt;
+&lt;/div&gt;
+\end
+
+\define clock_toggle()
+&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[stop]]&quot; emptyMessage=&quot;&lt;&lt;clock_ticker stop&gt;&gt;&quot;&gt; &lt;&lt;clock_ticker go&gt;&gt; &lt;/$list&gt;
+\end
+
+\define clock_ticker(auto)
+&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
+&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
+&lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
+   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
+      &lt;$action-setfield text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
+      &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;clock_ticker&gt;&gt;/&gt;
+   &lt;/$reveal&gt;
+&lt;/$list&gt;
+\end
+
+\define clock(type:&quot;analog&quot;,offset,format)
+&lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;{!!go}!match[go]]&quot;&gt; &lt;&lt;clock_ticker go&gt;&gt; &lt;/$list&gt;
+&lt;$vars tip={{{ [&lt;temp&gt;get[go]match[go]then[click to stop]else[click to start]] }}} &gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;clock_toggle&gt;&gt;&gt;
+   &lt;$macrocall $name=&quot;clock_show&quot; type=&quot;$type$&quot; offset=&quot;$offset$&quot; format=&quot;$format$&quot; /&gt;
+&lt;/$button&gt;
+\end
+
+&lt;&lt;clock analog&gt;&gt;&lt;br&gt;&lt;&lt;clock digital&gt;&gt;</pre>
+</div>
+<div created="20200725211229080" modified="20200808205548766" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define temp() $:/temp/timer/$(here)$
 
 \define default_done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
@@ -10670,94 +10660,7 @@ set auto saver interval:&lt;br&gt;
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;ticker go&gt;&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200806144820862" title="TiddlyTools/Timer/DigitalClock">
-<pre>\define temp() $:/temp/timer/DigitalClock
-
-\define showclock(offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
-&lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[clock_format]] ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
-&lt;$set  name=&quot;format&quot; value=&quot;&quot;&quot;$format$&quot;&quot;&quot; emptyValue=&lt;&lt;format&gt;&gt;&gt;
-&lt;$wikify name=&quot;TZD&quot; text=&quot;$offset$&quot;&gt;
-&lt;&lt;adjustForTimezone&gt;&gt;
-\end
-
-\define adjustForTimezone(-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
-&lt;$set name=&quot;time&quot; value={{{ [&lt;temp&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
-&lt;!-- split time into parts --&gt;
-&lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
-&lt;$vars     mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]  }}}&gt;
-&lt;$vars     dd={{{ [&lt;time&gt;split[]first[8]last[2]join[]]  }}}&gt;
-&lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
-&lt;$vars    min={{{ [&lt;time&gt;split[]first[12]last[2]join[]] }}}&gt;
-&lt;$vars  ssxxx={{{ [&lt;time&gt;split[]last[5]join[]]          }}}&gt;
-&lt;!-- apply offset &quot;+hh:mm&quot; or &quot;-hh:mm&quot; --&gt;
-&lt;$vars   sign={{{ [&lt;TZD&gt;split[]first[]]                      }}}&gt;
-&lt;$vars  offhh={{{ [&lt;TZD&gt;split[]first[3]join[]]               }}}&gt;
-&lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
-&lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
-&lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
-&lt;!-- adjust days per month for leap year --&gt;
-&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
-&lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
-&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
-&lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
-&lt;!-- adjust date/hours for hours wraparound --&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gt[24]]&quot;    value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
-&lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;!-- adjust year/date/month for month wraparound --&gt;
-&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
-&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
-&lt;!-- zero-pad and assemble new time --&gt;
-&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
-&lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
-&lt;&lt;showtime&gt;&gt;
-\end
-
-\define showtime()
-&lt;$tiddler tiddler=&lt;&lt;time&gt;&gt;&gt;
-&lt;$vars UTC=&quot;[UTC]&quot;&gt;
-&lt;$view field=&quot;title&quot; format=&quot;date&quot; template={{{ [&lt;format&gt;addprefix&lt;UTC&gt;] }}} /&gt;
-&lt;$transclude tiddler={{{ [&lt;temp&gt;get[go]match[stop]then[$:/core/images/timestamp-off]] }}} /&gt;
-\end
-
-\define toggleclock()
-&lt;$list filter=&quot;[&lt;temp&gt;get[go]match[stop]]&quot; emptyMessage=&quot;&lt;&lt;ticker stop&gt;&gt;&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
-\end
-
-\define ticker(auto)
-&lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$reveal default=&quot;$auto$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield go=&quot;$auto$&quot; /&gt; &lt;/$reveal&gt;
-&lt;$list filter=&quot;[&lt;here&gt;listed[]match[$:/StoryList]] [&lt;here&gt;tag[$:/tags/SideBarSegment]] +[limit[1]]&quot; variable=&quot;in-story-or-sidebar&quot;&gt;
-   &lt;$reveal default={{!!go}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
-      &lt;$action-setfield text=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt; /&gt;
-      &lt;$action-timeout autostart=&quot;$auto$&quot; delay=&quot;1000&quot; actions=&lt;&lt;ticker&gt;&gt;/&gt;
-   &lt;/$reveal&gt;
-&lt;/$list&gt;
-\end
-
-&lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;{!!go}!match[go]]&quot;&gt; &lt;&lt;ticker go&gt;&gt; &lt;/$list&gt;
-&lt;$vars tip={{{ [&lt;temp&gt;get[go]match[go]then[click to stop]else[click to start]] }}} &gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tip&gt;&gt; actions=&lt;&lt;toggleclock&gt;&gt;&gt;
-   &lt;$macrocall $name=&quot;showclock&quot; offset=&lt;&lt;offset&gt;&gt; format=&lt;&lt;format&gt;&gt; /&gt;
-&lt;/$button&gt;</pre>
-</div>
-<div created="20200711063502632" modified="20200806144906700" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200808211357947" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -10804,10 +10707,10 @@ set auto saver interval:&lt;br&gt;
 ``&lt;&lt;timer_buttons&gt;&gt;`` or ``&lt;&lt;timer_buttons taskname&gt;&gt;``&lt;br&gt;
 ''Shows start/stop and reset buttons.''
 
-* The ''start'' button begins a &quot;task session&quot; and stores the starting time.  The button changes to ''stop''.
-* The ''stop'' button ends the current task session and stores the ending time and the elapsed time.  The button changes back to ''start'' so you can begin another task session.
+* The &lt;$button&gt;start&lt;/$button&gt; button begins a &quot;task session&quot; and stores the starting time.  The button changes to &lt;$button&gt;stop&lt;/$button&gt;.
+* The &lt;$button&gt;stop&lt;/$button&gt; button ends the current task session and stores the ending time and the elapsed time.  The button changes back to &lt;$button&gt;start&lt;/$button&gt; so you can begin another task session.
 * Each time you stop the timer, it will also add the elapsed time to the total accumulated time.
-* The ''reset'' button clears all stored task session data, including starting/ending times, elapsed time, and total accumulated time.
+* The &lt;$button&gt;reset&lt;/$button&gt; button clears all stored task session data, including starting/ending times, elapsed time, and total accumulated time.
 
 ``&lt;&lt;timer_elapsed&gt;&gt;`` or ``&lt;&lt;timer_elapsed taskname&gt;&gt;``&lt;br&gt;
 ''Shows the elapsed time for the current task session.''&lt;br&gt;
@@ -10833,10 +10736,10 @@ set auto saver interval:&lt;br&gt;
 
 * To display the countdown timer in another tiddler, use transclusion ``{{||TiddlyTools/Timer/CountDown}}``
 * Enter hours, minutes, seconds, and a brief message to be displayed when the countdown is completed.
-* The ''start'' button begins the countdown.  The input fields automatically update to show the time remaining.
-* The ''pause'' button stops the countdown.  Press ''resume'' to continue the countdown.
-* While paused, you can change the time remaining.  Press ''start'' to apply the changes and continue the countdown.
-* The ''reset'' button clears the countdown time and message text.
+* The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
+* The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
+* While paused, you can change the time remaining.  Press &lt;$button&gt;start&lt;/$button&gt; to apply the changes and continue the countdown.
+* The &lt;$button&gt;reset&lt;/$button&gt; button clears the countdown time and message text.
 
 ''To define __custom actions__ to be performed when the countdown is completed:''
 
@@ -10844,71 +10747,76 @@ set auto saver interval:&lt;br&gt;
 * Enter the desired ``&lt;$action-... /&gt;`` widget syntax inside the macro definition.
 * Use ``$(here)$`` to refer to the title of tiddler containing your countdown timer.
 * To display the standard message box, use ``&lt;&lt;showMessage msg:&quot;your message here&quot;&gt;&gt;``
-* See &lt;$tiddler tiddler=&quot;SampleCountdown&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;~SampleCountdown&lt;/$button&gt;&lt;/$tiddler&gt; for an example.
+* See &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;SampleCountdown&quot;&gt;~SampleCountdown&lt;/$button&gt; for an example.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/AutoSaver]]
 &lt;&lt;&lt;
 @@.resize
 ''Displays a countdown timer in the ~SideBar that triggers a periodic &quot;file save&quot; action.''
 
-* The ''start'' button begins the countdown.  The input fields automatically update to show the time remaining.
-* The ''pause'' button stops the countdown.  Press ''resume'' to continue the countdown.
-* While paused, you can change the time remaining in the __current__ countdown.  Press ''start'' to apply the changes and continue the countdown.
-* The ''stop'' button stops the countdown and resets the time to use the configured autosave interval.
+* The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
+* The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
+* While paused, you can change the time remaining in the __current__ countdown.  Press &lt;$button&gt;start&lt;/$button&gt; to apply the changes and continue the countdown.
+* The &lt;$button&gt;stop&lt;/$button&gt; button stops the countdown and resets the time to use the configured autosave interval.
 * When the countdown reaches zero, a &quot;file save&quot; action is triggered.  The specific behavior depends upon which saver method you are using.
 * You will be asked to confirm before each auto save is processed.  You can change this option in the settings.
-* Click on {{$:/core/images/options-button}} to change the autosave interval or the &quot;ask before auto saving&quot; option.
-* Click ''apply'' to use the new interval setting.  Click on ''reset'' to restore &quot;factory settings&quot; (1 hour)
-* You can re-arrange the placement of the ~AutoSaver by using drag-n-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;
+* Press {{$:/core/images/options-button}} to change the autosave interval or the &quot;ask before auto saving&quot; option.
+* Press &lt;$button&gt;apply&lt;/$button&gt; to use the new interval setting.  Press &lt;$button&gt;reset&lt;/$button&gt; to restore &quot;factory settings&quot; (1 hour)
+* You can re-arrange the placement of the ~AutoSaver by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;
 
 //Important note:// __''The ~AutoSaver is intended to run in the ~SideBar only.''__&lt;br&gt;
 
-* If you view [[TiddlyTools/Timer/AutoSaver]] in the Story River, __be sure to ''pause'' or ''stop'' the ~SideBar timer first__.
+* Before you view [[TiddlyTools/Timer/AutoSaver]] in the Story River, ''be sure to press'' &lt;$button&gt;pause&lt;/$button&gt; ''or'' &lt;$button&gt;stop&lt;/$button&gt; ''first''.
 * The ~SideBar ~AutoSaver will not restart as long as [[TiddlyTools/Timer/AutoSaver]] is being shown in the Story River.
 @@
 &lt;&lt;&lt;
-!! [[TiddlyTools/Timer/DigitalClock]]
+!! [[TiddlyTools/Timer/Clocks]]
 &lt;&lt;&lt;
-''Displays a digital clock with automatic update.''
+''Displays analog and digital clocks with automatic update.''
 
-* To display the clock in another tiddler, use transclusion ``{{||TiddlyTools/Timer/DigitalClock}}``
-* The clock shows the local time, updated each second.  You can click on the time to pause/resume the clock.
-* When the clock is paused, @@.resize {{$:/core/images/timestamp-off}}@@ appears next to the time.
-* You can adjust the time format used by the ~DigitalClock (see [[TiddlyTools/Timer/Setup]] below).
-* To specify a custom format for a specific clock instance, add ``&lt;$vars format=&quot;...&quot;&gt;`` before the transclusion, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]
-* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;`` before the transclusion, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-* See &lt;$tiddler tiddler=&quot;SampleWorldClocks&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;~SampleWorldClocks&lt;/$button&gt;&lt;/$tiddler&gt; for examples.
+* To display either clock in another tiddler, use ``&lt;&lt;clock type:&quot;analog&quot;&gt;&gt;`` or ``&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;``
+* The clocks show the local time. You can click on the time to pause/resume the clocks.
+* You can set the time format used by the digital clock and the styles used by the analog clock (see [[TiddlyTools/Timer/Setup]] below).
+* To specify a custom format for a specific digital clock instance, add ``format:&quot;...&quot;`` to the macro parameters, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
+* To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
 &lt;&lt;&lt;
-!! [[TiddlyTools/Timer/AnalogClock]]
+!! [[TiddlyTools/Timer/SidebarClocks]]
 &lt;&lt;&lt;
-''Displays an analog clock with automatic update.''
+''Displays analog and digital clocks in the ~SideBar.''
 
-* To display the clock in another tiddler, use transclusion ``{{||TiddlyTools/Timer/AnalogClock}}``
-* The clock shows the local time, updated each second.  You can click on the time to pause/resume the clock.
-* You can adjust the colors and styles used by the ~AnalogClock (see [[TiddlyTools/Timer/Setup]] below).
-* To specify a different timezone, add ``&lt;$vars offset=&quot;+0000&quot;&gt;`` or ``&lt;$vars offset=&quot;-0000&quot;&gt;`` before the transclusion, where the number is the hours and minutes offset from GMT.
-* See &lt;$tiddler tiddler=&quot;SampleWorldClocks&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;~SampleWorldClocks&lt;/$button&gt;&lt;/$tiddler&gt; for examples.
+* The clocks show the local time. You can click on the time to pause/resume the clocks.
+* You can show/hide the clocks, adjust their sizes and specify a custom format for the digital clock (see [[TiddlyTools/Timer/Setup]] below).
+* You can re-arrange the placement of the clocks by using drag-and-drop in this tag list: {{!!sidebarsegmenttag}}
 &lt;&lt;&lt;
-!! [[TiddlyTools/Timer/SidebarClock]]
+!! [[TiddlyTools/Timer/WorldClocks]]
 &lt;&lt;&lt;
-''Displays the ~AnalogClock and ~DigitalClock in the ~SideBar.''
+''Displays a set of analog and digital clocks for various places world-wide''
 
-* You can show/hide the clock display and adjust its size (see [[TiddlyTools/Timer/Setup]] below).
-* You can re-arrange the placement of the ~SideBarClock by using drag-n-drop in this tag list: {{!!sidebarsegmenttag}}
+* Press &lt;$button&gt;Select places...&lt;/$button&gt; to choose the clocks you want to view.  Use &quot;shift-click&quot; or &quot;ctrl-click&quot; to select multiple places.  Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to add new places to the list.
+* The clocks show the local time for each selected place. You can click on the time to pause/resume the clocks.
+* To specify a custom format for the digital clocks, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/WorldClocks&quot;&gt;edit this tiddler&lt;/$button&gt; and add ``format:&quot;...&quot;`` to the macro parameters, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/Places]]
+&lt;&lt;&lt;
+''Defines a set of places for use with [[TiddlyTools/Timer/WorldClocks]]''
+
+* To define new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Places&quot;&gt;edit this tiddler&lt;/$button&gt;.
+* Enter place names and timezone offsets, one place name and timezone offset per line.
+* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; is ignored.
+* Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
+* To use the current local timezone (from your computer's system settings), omit the timezone offset.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Setup]]
 &lt;&lt;&lt;
 @@.resize.nobullets
 ''Defines settings that are used by the Timer, ~DigitalClock, ~AnalogClock, ~SidebarClock and ~AutoSaver.&lt;br&gt;''
-^^To change these settings, you can enter values below, or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot;&gt;edit this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;. If you clear a setting or &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot;&gt;delete this tiddler&lt;/$button&gt;&lt;/$tiddler&gt;, default values will be used.^^
+^^To change these settings, you can enter values below, or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Setup&quot;&gt;edit this tiddler&lt;/$button&gt;. If you clear a setting or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot; param=&quot;TiddlyTools/Timer/Setup&quot;&gt;delete this tiddler&lt;/$button&gt;, default values will be used.^^
 
 * [[TiddlyTools/Timer]]:
 ** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;MMM 0DD YYYY 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
 
-* [[TiddlyTools/Timer/DigitalClock]]:
+* [[TiddlyTools/Timer/Clocks]]:
 ** ''clock_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;clock_format&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/AnalogClock]]:
 ** ''clock_size:''       &lt;&lt;note &quot;[[CSS units|https://www.w3schools.com/cssref/css_units.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_size&quot;       &quot;15em&quot;&gt;&gt;
 ** ''clock_background:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt;      &lt;&lt;editSetup &quot;clock_background&quot; &quot;lightgray&quot;&gt;&gt;
 ** ''clock_border:''     &lt;&lt;note &quot;[[CSS borders|https://www.w3schools.com/css/css_border.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
@@ -10916,11 +10824,11 @@ set auto saver interval:&lt;br&gt;
 ** ''clock_hands:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_hands&quot;      &quot;black&quot;&gt;&gt;
 ** ''clock_ticks:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_ticks&quot;      &quot;black&quot;&gt;&gt;
 
-* [[TiddlyTools/Timer/SidebarClock]]:
+* [[TiddlyTools/Timer/SidebarClocks]]:
 **&lt;div class=&quot;borderless&quot;&gt;
 
-|''sidebar_analog:'' &lt;br&gt;&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show ~AnalogClock&quot;&gt;&gt; |''sidebar_analog_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_analog_size  35 150 5 100&gt;&gt;|
-|''sidebar_digital:''&lt;br&gt;&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show ~DigitalClock&quot;&gt;&gt;|''sidebar_digital_size:''&lt;br&gt;&lt;&lt;rangeSetup sidebar_digital_size 35 150 5 100&gt;&gt;|
+|''sidebar_analog:'' &lt;br&gt;&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show analog clock&quot;&gt;&gt; |''sidebar_analog_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_analog_size  35 150 5 100&gt;&gt;|
+|''sidebar_digital:''&lt;br&gt;&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show digital clock&quot;&gt;&gt;|''sidebar_digital_size:''&lt;br&gt;&lt;&lt;rangeSetup sidebar_digital_size 35 150 5 100&gt;&gt;|
 &lt;/div&gt;
 ** ''sidebar_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;sidebar_format&quot; &quot;DDD, MMM DDth, YYYY 0hh12:0mm:0ssam&quot;&gt;&gt;
 * [[TiddlyTools/Timer/AutoSaver]]:
@@ -10936,11 +10844,25 @@ set auto saver interval:&lt;br&gt;
 ''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates'' of the ``&lt;&lt;timer_elapsed&gt;&gt;`` macro, ~AutoSaver, ~CountDown, ~DigitalClock, and ~AnalogClock.
 &lt;&lt;&lt;</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200806144859921" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" timer_format="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
+<div created="20200808204411274" modified="20200808205631841" tags="" title="TiddlyTools/Timer/Places" type="text/plain">
+<pre>local time;
+Honolulu;    -10:00
+Los Angeles; -07:00
+New York;    -04:00
+London;      +01:00
+Rome;        +02:00
+Moscow;      +03:00
+New Delhi;   +05:30
+Tokyo;       +09:00
+Perth;       +08:30
+Adelaide;    +09:30
+Sydney;      +10:00</pre>
+</div>
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200808205648182" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, MMM DDth, YYYY 0hh12:0mm:0ssam" timer_format="MMM 0DD YYYY 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup">
 <pre></pre>
 </div>
-<div created="20200723044003911" modified="20200806144755924" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClock">
-<pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClock&quot;&gt;
+<div created="20200723044003911" modified="20200808153819062" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClocks">
+<pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClocks&quot;&gt;
 &lt;$vars sidebar_analog={{{       [[TiddlyTools/Timer/Setup]get[sidebar_analog]]       ~[[yes]] }}}
        sidebar_analog_size={{{  [[TiddlyTools/Timer/Setup]get[sidebar_analog_size]]  ~[[100]] }}}
        sidebar_digital={{{      [[TiddlyTools/Timer/Setup]get[sidebar_digital]]      ~[[yes]] }}}
@@ -10948,12 +10870,46 @@ set auto saver interval:&lt;br&gt;
        format={{{               [[TiddlyTools/Timer/Setup]get[sidebar_format]]       ~[[DDD, MMM DDth, YYYY 0hh12:0mm:0ssam]] }}}&gt;
 &lt;div style=&quot;display:inline-block;text-align:center;&quot;&gt;
 &lt;$reveal default=&lt;&lt;sidebar_analog&gt;&gt;  type=&quot;match&quot; text=&quot;yes&quot;&gt; 
-   &lt;div style={{{ [[font-size:]addsuffix&lt;sidebar_analog_size&gt;addsuffix[%;]]  }}}&gt;{{||TiddlyTools/Timer/AnalogClock}}&lt;/div&gt;
+   &lt;div style={{{ [[font-size:]addsuffix&lt;sidebar_analog_size&gt;addsuffix[%;]]  }}}&gt;&lt;&lt;clock analog&gt;&gt;&lt;/div&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;sidebar_digital&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt; 
-   &lt;div style={{{ [[font-size:]addsuffix&lt;sidebar_digital_size&gt;addsuffix[%;]] }}}&gt;{{||TiddlyTools/Timer/DigitalClock}}&lt;/div&gt;
+   &lt;div style={{{ [[font-size:]addsuffix&lt;sidebar_digital_size&gt;addsuffix[%;]] }}}&gt;&lt;&lt;clock digital&gt;&gt;&lt;/div&gt;
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
+</div>
+<div created="20200808175138605" modified="20200808205506108" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -07:00]] [[New York;    -04:00]] [[London;      +01:00]] [[Rome;        +02:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:30]] [[Adelaide;    +09:30]] [[Sydney;      +10:00]]" tags="" title="TiddlyTools/Timer/WorldClocks">
+<pre>\define showClock(place,offset)
+''$place$''
+&lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt;
+   &lt;&lt;clock type:analog  offset:&quot;$offset$&quot;&gt;&gt; &lt;br&gt;
+   &lt;&lt;clock type:digital offset:&quot;$offset$&quot; format:&quot;0DD-mmm-YYYY 0DD 0hh:0mm:0ss&quot;&gt;&gt; ($offset$)
+&lt;/div&gt;
+\end
+
+&lt;$button popup=&lt;&lt;qualify $:/temp/timer/select/WorldClocks&gt;&gt;&gt;
+   select places...
+&lt;/$button&gt;
+&lt;$button message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Places&quot; tooltip=&quot;edit places&quot;&gt;
+   {{$:/core/images/edit-button}}
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/temp/timer/select/WorldClocks&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+   &lt;$vars places={{TiddlyTools/Timer/Places}}&gt;
+   &lt;$select field=&quot;places&quot; multiple size={{{ [&lt;places&gt;splitregexp[\n]count[]] }}}&gt;
+      &lt;$list filter=&quot;[&lt;places&gt;splitregexp[\n]]&quot; variable=&quot;place&quot;&gt;
+         &lt;option value=&lt;&lt;place&gt;&gt;&gt; &lt;$text text={{{ [&lt;place&gt;split[;]first[]] }}} /&gt; &lt;/option&gt;
+      &lt;/$list&gt;
+   &lt;/$select&gt;
+   &lt;/$vars&gt;
+&lt;/$reveal&gt;
+
+&lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
+&lt;$list filter={{!!places}} variable=&quot;place&quot;&gt;
+   &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt; place={{{ [&lt;place&gt;split[;]trim[]first[]] }}} offset={{{ [&lt;place&gt;split[;]trim[]last[]] }}}&gt;
+   &lt;div class=&quot;worldClock&quot;&gt;
+      &lt;$macrocall $name=&quot;showClock&quot; place=&lt;&lt;place&gt;&gt; offset={{{ [&lt;offset&gt;!match[]then&lt;offset&gt;else&lt;TZD&gt;] }}} /&gt;
+   &lt;/div&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;</pre>
 </div>
 
 
