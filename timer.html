@@ -233,7 +233,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200810142142094" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200810150317305" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9647,7 +9647,7 @@ SampleCountdownSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
+<div created="20200810150316312" list="TiddlyTools/Timer TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" modified="20200810150316312" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9735,8 +9735,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200809135611838" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200809134008916" go="go" modified="20200810142257541" title="$:/temp/timer/Clock">
-<pre>20200810142257541</pre>
+<div created="20200809134008916" go="go" modified="20200810150429021" title="$:/temp/timer/Clock">
+<pre>20200810150429021</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10159,8 +10159,9 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
    stopped={{{ [enlist{!!stoplist}last[]]    }}}
    elapsed={{{ [enlist{!!elapsedlist}last[]] }}}
      total={{{ [enlist{!!totallist}last[]]   }}}&gt;
-&lt;$vars stopped={{{ [enlist{!!startlist}count[]] [enlist{!!stoplist}count[]] +[count[]match[1]then&lt;stopped&gt;else[]] }}}&gt;
-&lt;$vars elapsed={{{ [enlist{!!startlist}count[]] [enlist{!!stoplist}count[]] +[count[]match[1]then&lt;elapsed&gt;else[]] }}}&gt;
+&lt;$vars startcount={{{ [enlist{!!startlist}count[]] }}} stopcount={{{ [enlist{!!stoplist}count[]] }}}&gt;
+&lt;$vars stopped={{{ [&lt;startcount&gt;match&lt;stopcount&gt;then&lt;stopped&gt;else[]] }}}&gt;
+&lt;$vars elapsed={{{ [&lt;startcount&gt;match&lt;stopcount&gt;then&lt;elapsed&gt;else[]] }}}&gt;
 
 | !started|&lt;&lt;timer_showdate started&gt;&gt;|
 | !stopped|&lt;&lt;timer_showdate stopped&gt;&gt;|
