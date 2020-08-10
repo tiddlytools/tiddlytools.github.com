@@ -233,7 +233,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200810022053607" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200810142142094" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9735,8 +9735,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200809135611838" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200809134008916" go="go" modified="20200810024638872" title="$:/temp/timer/Clock">
-<pre>20200810024638872</pre>
+<div created="20200809134008916" go="go" modified="20200810142257541" title="$:/temp/timer/Clock">
+<pre>20200810142257541</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10046,24 +10046,21 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;timer_temp&gt;&gt;&gt;
 &lt;$vars started={{!!started}} stopped={{!!text}}&gt;
 &lt;$vars 
-   msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
-    sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
-    min={{{ [&lt;started&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-   hour={{{ [&lt;started&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-    day={{{ [&lt;started&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+   msec={{{ [&lt;started&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
+    sec={{{ [&lt;started&gt;split[]first[14]last[2]join[]]                }}}
+    min={{{ [&lt;started&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+   hour={{{ [&lt;started&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+    day={{{ [&lt;started&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
 &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
 &lt;$vars
-   msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]] }}}
-    sec={{{ [&lt;stopped&gt;split[]butlast[3]last[2]join[]] }}}
-    min={{{ [&lt;stopped&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-   hour={{{ [&lt;stopped&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-    day={{{ [&lt;stopped&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+   msec={{{ [&lt;stopped&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
+    sec={{{ [&lt;stopped&gt;split[]first[14]last[2]join[]]                }}}
+    min={{{ [&lt;stopped&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+   hour={{{ [&lt;stopped&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+    day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
 &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
-&lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
-&lt;$vars     min={{{ [&lt;elapsed&gt;divide[60]trunc[]] }}}&gt;
-&lt;$vars  minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
-&lt;$vars     sec={{{ [&lt;elapsed&gt;subtract&lt;minsec&gt;trunc[]] }}}&gt;
-&lt;&lt;min&gt;&gt; minutes &lt;&lt;sec&gt;&gt; seconds
+&lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;trunc[]] }}}&gt;
+&lt;&lt;timer_showtime elapsed&gt;&gt;
 \end
 
 \define timer_start()
@@ -10079,21 +10076,21 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
 
 \define timer_stop()
 &lt;$button actions=&quot;&quot;&quot;
-   &lt;$vars started={{{ [enlist{!!startlist}last[]] }}}&gt;
-   &lt;$vars stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+   &lt;&lt;timer_ticker_stop&gt;&gt;
+   &lt;$vars started={{{ [enlist{!!startlist}last[]] }}} stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
    &lt;$vars 
-      msec={{{ [&lt;started&gt;split[]last[3]join[]divide[1000]] }}}
-       sec={{{ [&lt;started&gt;split[]butlast[3]last[2]join[]] }}}
-       min={{{ [&lt;started&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-      hour={{{ [&lt;started&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-       day={{{ [&lt;started&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+      msec={{{ [&lt;started&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
+       sec={{{ [&lt;started&gt;split[]first[14]last[2]join[]]                }}}
+       min={{{ [&lt;started&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+      hour={{{ [&lt;started&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+       day={{{ [&lt;started&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
    &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
    &lt;$vars
-      msec={{{ [&lt;stopped&gt;split[]last[3]join[]divide[1000]] }}}
-       sec={{{ [&lt;stopped&gt;split[]butlast[3]last[2]join[]] }}}
-       min={{{ [&lt;stopped&gt;split[]butlast[5]last[2]join[]multiply[60]] }}}
-      hour={{{ [&lt;stopped&gt;split[]butlast[7]last[2]join[]multiply[3600]] }}}
-       day={{{ [&lt;stopped&gt;split[]butlast[9]last[2]join[]multiply[86400]] }}}&gt;
+      msec={{{ [&lt;stopped&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
+       sec={{{ [&lt;stopped&gt;split[]first[14]last[2]join[]]                }}}
+       min={{{ [&lt;stopped&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
+      hour={{{ [&lt;stopped&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
+       day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
    &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
    &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
    &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
@@ -10101,19 +10098,18 @@ of alternating cycles of work sessions and break time.&lt;br&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
-   &lt;&lt;timer_ticker_stop&gt;&gt;
 &quot;&quot;&quot;&gt; stop
 &lt;/$button&gt;
 \end
 
 \define timer_reset()
 &lt;$button&gt; reset
+   &lt;&lt;timer_ticker_stop&gt;&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
-   &lt;&lt;timer_ticker_stop&gt;&gt;
 &lt;/$button&gt;
 \end
 
