@@ -159,6 +159,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab--1963855381</li>
@@ -178,8 +180,6 @@ Error message and password prompt
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/timer/AutoSaver</li>
-
-<li>$:/temp/timer/Clock/TiddlyTools/Timer/Alarms</li>
 
 <li>$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks</li>
 
@@ -239,7 +239,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200812062535373" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200812154943247" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9635,6 +9635,9 @@ SampleCountdownSequence</pre>
 <div created="20200621230950964" modified="20200808063356392" title="$:/SiteTitle">
 <pre>Timers and Clocks</pre>
 </div>
+<div title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
 <div created="20200719040452535" modified="20200811045319227" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
@@ -9653,7 +9656,7 @@ SampleCountdownSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Alarms TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleCountdown SampleCountdownSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200811045240460" modified="20200811045428450" title="$:/temp/advancedsearch">
@@ -9744,11 +9747,8 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200809135611838" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200812062609962" modified="20200812062612056" title="$:/temp/timer/Clock/TiddlyTools/Timer/Alarms">
-<pre>20200812062612056</pre>
-</div>
-<div created="20200812045726045" modified="20200812062612832" title="$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks">
-<pre>20200812062612832</pre>
+<div created="20200812045726045" modified="20200812170521977" title="$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks">
+<pre>20200812170521977</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10297,8 +10297,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 <pre>\define alarms_temp() $:/temp/timer/Alarms/$(here)$
 
 \define alarms_input()
-''Add an alarm''&lt;br&gt;
-&lt;div class=&quot;alarmBox&quot;&gt;
+&lt;style&gt; .alarmEdit { width:3em; text-align:center; } &lt;/style&gt;
 &lt;&lt;alarms_input_freq&gt;&gt;
 &lt;$list filter=&quot;[&lt;alarms_temp&gt;!has[freq]] [&lt;alarms_temp&gt;get[freq]match[once]] +[limit[1]]&quot;&gt;
    on
@@ -10318,7 +10317,6 @@ at
 &lt;&lt;alarms_input_msg&gt;&gt;
 &lt;&lt;alarms_add&gt;&gt;
 &lt;&lt;alarms_reset&gt;&gt;
-&lt;/div&gt;
 \end
 
 \define alarms_input_freq()
@@ -10404,6 +10402,7 @@ at
 \end
 
 \define alarms_deleteall()
+&lt;$list filter=&quot;[&lt;alarms_temp&gt;get[alarms]]&quot; variable=&quot;has_alarms&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;delete all alarms&quot;&gt; {{$:/core/images/delete-button}}
    &lt;$action-setfield $tiddler=&quot;$(alarms_temp)$/msg&quot;
       subtitle=&quot;&quot;&quot;Confirm: delete all alarms&quot;&quot;&quot;
@@ -10418,6 +10417,7 @@ at
       &quot;&quot;&quot; /&gt;
    &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(alarms_temp)$/msg&quot; /&gt;
 &lt;/$button&gt;
+&lt;/$list&gt;
 \end
 
 \define alarms_deleteone()
@@ -10425,15 +10425,13 @@ at
    &lt;$action-setfield $tiddler=&quot;$(alarms_temp)$/msg&quot;
       subtitle=&quot;&quot;&quot;Confirm: delete alarm&quot;&quot;&quot;
       text=&quot;&quot;&quot;
-         @@font-size:2em;
          &lt;$vars this_alarm=&quot;$(this_alarm)$&quot;&gt;
          &lt;$importvariables filter=&quot;TiddlyTools/Timer/Alarms&quot;&gt;
-         ''&lt;&lt;alarms_showalarm&gt;&gt;''
+         @@font-size:2em; ''&lt;&lt;alarms_showalarm&gt;&gt;'' @@
          &lt;/$importvariables&gt;
+         &lt;div&gt;''&lt;$text text={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}} /&gt;''&lt;/div&gt;
          &lt;/$vars&gt;
-         &lt;p/&gt;
-         Are you sure you want to delete this alarm?
-         @@
+         @@font-size:2em; &lt;p/&gt; Are you sure you want to delete this alarm? @@
       &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel
@@ -10463,12 +10461,13 @@ at
 \end
 
 \define alarms_showlist()
-&lt;div class=&quot;alarmTable alarmBox&quot;&gt;
+&lt;style&gt; .alarmTable table, .alarmTable tr, .alarmTable td { border:0;padding:0;margin:0; } &lt;/style&gt;
+&lt;div class=&quot;alarmTable&quot;&gt;
 &lt;table&gt;
 &lt;$list filter={{{ [&lt;alarms_temp&gt;get[alarms]] }}} variable=&quot;this_alarm&quot;&gt;
-   &lt;tr&gt;
-   &lt;td&gt; &lt;&lt;alarms_deleteone&gt;&gt; &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;padding:0 0.5em;font-weight:bold;&quot;&gt; &lt;&lt;alarms_showalarm&gt;&gt; &lt;/td&gt;
+   &lt;tr style=&quot;vertical-align:top;&quot;&gt;
+   &lt;td style=&quot;white-space:nowrap;&quot;&gt; &lt;&lt;alarms_deleteone&gt;&gt; &lt;/td&gt;
+   &lt;td style=&quot;white-space:nowrap;text-align:right;padding:0 0.5em;&quot;&gt; ''&lt;&lt;alarms_showalarm&gt;&gt;'' &lt;/td&gt;
    &lt;td&gt; &lt;$text text={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}} /&gt; &lt;/td&gt;
    &lt;/tr&gt;
 &lt;/$list&gt;
@@ -10489,22 +10488,14 @@ at
 
 \define alarms_showmessage()
 &lt;$action-setfield $tiddler=&quot;$(alarms_temp)$/msg&quot;
-   subtitle=&quot;&quot;&quot;
-      &lt;span style=&quot;font-size:1.5em;&quot;&gt;
-      It is now &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt;
-      &lt;/span&gt;
-   &quot;&quot;&quot;
+   subtitle=&quot;&quot;&quot;&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;&quot;&quot;&quot;
    text=&quot;&quot;&quot;
       @@font-size:2em;
       &lt;$reveal default=&quot;$(msg)$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;$(msg)$&lt;/$reveal&gt;
       &lt;$reveal default=&quot;$(msg)$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;BEEP! BEEP! BEEP!&lt;/$reveal&gt;
       @@
    &quot;&quot;&quot;
-   footer=&quot;&quot;&quot;
-      &lt;$button message=&quot;tm-close-tiddler&quot;&gt; close
-         &lt;$action-deletetiddler $tiddler=&quot;$(alarms_temp)$/msg&quot; /&gt;
-      &lt;/$button&gt;
-   &quot;&quot;&quot; /&gt;
+   footer=&quot;&quot;&quot;&lt;$button message=&quot;tm-close-tiddler&quot;&gt; close &lt;$action-deletetiddler $tiddler=&quot;$(alarms_temp)$/msg&quot; /&gt;&lt;/$button&gt;&quot;&quot;&quot; /&gt;
 &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(alarms_temp)$/msg&quot; /&gt;
 \end
 
@@ -10556,23 +10547,12 @@ at
 &lt;/$list&gt;
 \end
 
-&lt;style&gt;
-   .alarmEdit { width:3em; text-align:center; }
-   .alarmTable table, .alarmTable tr, .alarmTable td { border:0;padding:0;margin:0; }
-   .alarmBox  { display:inline-block;border:1px solid;border-radius:0.5em;padding:0.5em;background:#ffe; }
-&lt;/style&gt;
-
 &lt;$vars here=&lt;&lt;currentTiddler&gt;&gt;&gt;
-
-&lt;div style=&quot;display:inline-block;&quot;&gt;
+&lt;div style=&quot;display:inline-block;white-space:nowrap;margin-bottom:0.25em;&quot;&gt;
    &lt;span style=&quot;float:right;font-size:80%; !important;&quot;&gt;&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;&lt;/span&gt;
-   &lt;&lt;alarms_input&gt;&gt;
+   &lt;&lt;alarms_toggle&gt;&gt; &lt;&lt;alarms_deleteall&gt;&gt; &lt;br&gt; &lt;&lt;alarms_input&gt;&gt;
 &lt;/div&gt;
-
-&lt;$list filter=&quot;[&lt;alarms_temp&gt;get[alarms]]&quot; variable=&quot;has_alarms&quot;&gt;
-   &lt;&lt;alarms_toggle&gt;&gt; &lt;&lt;alarms_deleteall&gt;&gt; &lt;br&gt; &lt;&lt;alarms_showlist&gt;&gt;
-&lt;/$list&gt;
-
+&lt;&lt;alarms_showlist&gt;&gt;
 &lt;$list filter=&quot;[&lt;alarms_temp&gt;{!!go}!match[go]]&quot;&gt; &lt;&lt;alarms_ticker go&gt;&gt; &lt;/$list&gt;</pre>
 </div>
 <div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200811233122970" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
@@ -11039,19 +11019,21 @@ set auto saver interval:&lt;br&gt;
 !! [[TiddlyTools/Timer/Alarms]]
 &lt;&lt;&lt;
 @@.resize
-''Displays a digital alarm clock that allows multiple and/or repeating alarms to be set.''
+''Defines a list of time/date alarms that allows one-time or repeating alarms to be set.''
 
-* To embed the alarm clock in another tiddler, use transclusion ``{{||TiddlyTools/Timer/Alarms}}``
+* To embed a list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Timer/Alarms}}``.
+* Each transclusion instance defines a separate set of alarms.
 * To define an alarm, begin by selecting ''Once'', ''Daily'', or a specific ''Day of the week''.
 * If you select Once, select a ''month'', ''date'', and ''year''.  The inputs will default to the current date.
 * Enter the desired ''hours'', ''minutes'' and ''seconds'' using 24-hour notation.  Any inputs left blank will default to the current time.
 * Enter an (optional) message that will be displayed when the alarm is triggered.  If no message is provided a default message will be displayed.
 * Press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; to save the alarm. You can press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset the inputs.
 * When at least one alarm has been saved, a list of alarms will be displayed.
-* You can click on the list heading to ''pause/resume'' the saved alarms.  While paused, {{$:/core/images/timestamp-off}} is displayed, indicating that no alarm processing will occur.
-* To delete all saved alarms, press {{$:/core/images/delete-button}} in the alarm list heading. You will be asked to confirm before the alarms are deleted.
+* You can click on the &quot;Alarms&quot; heading to ''pause/resume'' the saved alarms.  While paused, {{$:/core/images/timestamp-off}} is displayed and no alarm processing will occur.
+* To delete all saved alarms, press {{$:/core/images/delete-button}} in the &quot;Alarms&quot; heading. You will be asked to confirm before the alarms are deleted.
 * To delete a specific saved alarm, press the &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; button next to that alarm.  You will be asked to confirm before the alarm is deleted.
-* When a one-time (non-repeating) alarm is triggered, it is automatically deleted from the list of saved alarms.
+* When a one-time, non-repeating alarm is triggered, it is automatically deleted from the list of saved alarms.
+* If a non-repeating alarm is added //after// the date/time for which it would be triggered, it remains in the list, and must be deleted manually.
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Clocks]]
