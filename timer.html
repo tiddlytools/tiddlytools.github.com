@@ -185,8 +185,6 @@ Error message and password prompt
 
 <li>$:/temp/timer/Clock/SampleAlarms</li>
 
-<li>$:/temp/timer/Clock/TiddlyTools/Timer/Alarms</li>
-
 <li>$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -247,7 +245,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200813024600428" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200813043941268" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9729,8 +9727,8 @@ SampleCountdownSequence</pre>
     }
 }</pre>
 </div>
-<div alarms="[[Monday;....-..-..;07:00:00;Time for another work week :(]] [[daily;....-..-..;12:00:00;Lunch break]] [[Friday;....-..-..;17:00:00;Weekend starts...  YAY!]]" created="20200812175204022" modified="20200813030713828" title="$:/temp/timer/Alarms/SampleAlarms">
-<pre>20200813030713828</pre>
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]]" created="20200812175204022" go="go" modified="20200813044416281" title="$:/temp/timer/Alarms/SampleAlarms">
+<pre>20200813044416281</pre>
 </div>
 <div created="20200730132128210" done="&lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9759,14 +9757,11 @@ SampleCountdownSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" modified="20200809135611838" secs="00" title="$:/temp/timer/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200812175203828" modified="20200813030713724" title="$:/temp/timer/Clock/SampleAlarms">
-<pre>20200813030713724</pre>
+<div created="20200812175203828" modified="20200813044416355" title="$:/temp/timer/Clock/SampleAlarms">
+<pre>20200813044416355</pre>
 </div>
-<div title="$:/temp/timer/Clock/TiddlyTools/Timer/Alarms">
-<pre>20200813030710553</pre>
-</div>
-<div created="20200812045726045" modified="20200813030713670" title="$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks">
-<pre>20200813030713670</pre>
+<div created="20200812045726045" modified="20200813044416391" title="$:/temp/timer/Clock/TiddlyTools/Timer/SidebarClocks">
+<pre>20200813044416391</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10401,7 +10396,7 @@ at
 &lt;$vars   msg={{{ [&lt;alarms_temp&gt;get[msg]]              }}}&gt;
 &lt;!-- ASSEMBLE NEW DATE --&gt;
 &lt;$vars  date={{{ [&lt;year&gt;addsuffix[-]addsuffix&lt;month&gt;addsuffix[-]addsuffix&lt;day&gt;] }}}&gt;
-&lt;$set   name=&quot;date&quot; filter=&quot;[&lt;freq&gt;match[once]]&quot; value=&lt;&lt;date&gt;&gt; emptyValue=&quot;....-..-..&quot;&gt;
+&lt;$set   name=&quot;date&quot; filter=&quot;[&lt;freq&gt;match[once]]&quot; value=&lt;&lt;date&gt;&gt; emptyValue=&quot;&quot;&gt;
 &lt;!-- ASSEMBLE NEW TIME (ZERO-PADDED) --&gt;
 &lt;$vars  hour={{{ [&lt;hour&gt;addprefix[00]split[]last[2]join[]] }}}&gt;
 &lt;$vars   min={{{ [&lt;min&gt;addprefix[00]split[]last[2]join[]]  }}}&gt;
