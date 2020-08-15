@@ -241,7 +241,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200815152750527" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200815161210537" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9753,8 +9753,8 @@ SampleCountdown</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/autosaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200815153813732" title="$:/temp/timer/ticker">
-<pre>20200815153813732</pre>
+<div created="20200814092733654" modified="20200815163125327" title="$:/temp/timer/ticker">
+<pre>20200815163125327</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10426,14 +10426,14 @@ at &lt;&lt;alarms_form_time&gt;&gt;&lt;br&gt;
 \define settings()
 &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/Setup&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;settings&quot; popup=&lt;&lt;qualify &quot;$:/temp/timer/autosaver/settings&quot;&gt;&gt;&gt;
-   Countdown auto saver {{$:/core/images/options-button}} 
+   Countdown ~AutoSaver {{$:/core/images/options-button}} 
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; position=&quot;belowright&quot; state=&lt;&lt;qualify &quot;$:/temp/timer/autosaver/settings&quot;&gt;&gt;&gt;
 &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot; style=&quot;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;close&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/timer/autosaver/settings&quot;&gt;&gt; /&gt;
 &lt;/$button&gt;
-set auto saver interval:&lt;br&gt;
+set ~AutoSaver interval:&lt;br&gt;
 &lt;$edit-text field=&quot;autosave_hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveH&gt;&gt;  placeholder=&lt;&lt;saveH&gt;&gt; /&gt;
 &lt;$edit-text field=&quot;autosave_mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveM&gt;&gt;  placeholder=&lt;&lt;saveM&gt;&gt; /&gt;
 &lt;$edit-text field=&quot;autosave_secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveS&gt;&gt;  placeholder=&lt;&lt;saveS&gt;&gt; /&gt;
@@ -10454,20 +10454,9 @@ set auto saver interval:&lt;br&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/timer/autosaver/settings&quot;&gt;&gt; /&gt;
 &quot;&quot;&quot;&gt; reset &lt;/$button&gt;
 &lt;br&gt;
-&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; class=&quot;tc-popup-keep&quot;&gt; confirm before auto saving &lt;/$checkbox&gt;
+&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; class=&quot;tc-popup-keep&quot;&gt; confirm before saving &lt;/$checkbox&gt;
 &lt;/div&gt;
 &lt;/$reveal&gt;
-\end
-
-\define message()
-&lt;$list filter=&quot;[[$(temp)$/msg]is[tiddler]]&quot;&gt;
-   &lt;div style=&quot;display:inline-block;margin-top:1em;padding:0.5em;border:1px solid;border-radius:0.5em;background:#ffe;&quot;&gt;
-      @@color:black !important;&lt;$transclude /&gt;@@
-      &lt;$button tooltip=&quot;close&quot;&gt; {{$:/core/images/close-button}}
-         &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/msg&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/div&gt;
-&lt;/$list&gt;
 \end
 
 \define stop()
@@ -10512,6 +10501,15 @@ set auto saver interval:&lt;br&gt;
    &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(temp)$/ask&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
+\end
+
+\define message()
+&lt;$list filter=&quot;[[$(temp)$/msg]is[tiddler]]&quot;&gt;
+   &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;click to clear message&quot;&gt;
+      ''&lt;$transclude /&gt;''
+      &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/msg&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$list&gt;
 \end
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;message&gt;&gt;</pre>
@@ -10864,11 +10862,12 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/CountDown]], [[TiddlyTool
 * The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
 * The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
 * While paused, you can change the time remaining in the __current__ countdown.  Press &lt;$button&gt;start&lt;/$button&gt; to apply the changes and continue the countdown.
-* The &lt;$button&gt;stop&lt;/$button&gt; button stops the countdown and resets the time to use the configured autosave interval.
-* When the countdown reaches zero, a &quot;file save&quot; action is triggered.  The specific behavior depends upon which saver method you are using.
-* You will be asked to confirm before each auto save is processed.  You can change this option in the settings.
-* Press {{$:/core/images/options-button}} to change the autosave interval or the &quot;ask before auto saving&quot; option.
-* Press &lt;$button&gt;apply&lt;/$button&gt; to use the new interval setting.  Press &lt;$button&gt;reset&lt;/$button&gt; to restore &quot;factory settings&quot; (1 hour)
+* The &lt;$button&gt;stop&lt;/$button&gt; button stops the countdown and resets the time to use the configured ~AutoSaver interval.
+* When the countdown reaches zero, a &quot;save file&quot; action is triggered.  The specific behavior depends upon which saver method you are using.
+* You will be asked to confirm before the file is saved.  You can change this option in the settings.
+* When the file has been saved, a message will appear below the ~AutoSaver.  You can clear this message by clicking on it.
+* Press {{$:/core/images/options-button}} to change the ~AutoSaver interval and/or the &quot;confirm before saving&quot; option.
+* Press &lt;$button&gt;apply&lt;/$button&gt; to use the new ~AutoSaver interval.  Press &lt;$button&gt;reset&lt;/$button&gt; to restore &quot;factory settings&quot; (1 hour)
 * You can re-arrange the placement of the ~AutoSaver by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;
 @@
 &lt;&lt;&lt;
