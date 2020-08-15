@@ -241,7 +241,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200815161210537" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200815211020765" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9753,8 +9753,8 @@ SampleCountdown</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/autosaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200815163125327" title="$:/temp/timer/ticker">
-<pre>20200815163125327</pre>
+<div created="20200814092733654" modified="20200815211700549" title="$:/temp/timer/ticker">
+<pre>20200815211700549</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11022,12 +11022,12 @@ Sydney;      +10:00</pre>
 &lt;/div&gt;</pre>
 </div>
 <div created="20200814085053745" modified="20200815053728329" tags="$:/tags/StartupAction" title="TiddlyTools/Timer/Ticker">
-<pre>\define ticker(tid:&quot;$:/temp/timer/ticker&quot;)
+<pre>\define ticker()
 &lt;$action-timeout delay=&quot;1000&quot; actions=&quot;&quot;&quot;
-   &lt;$action-setfield $tiddler=&quot;$tid$&quot; text=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/ticker&quot; text=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
    &lt;$importvariables filter=&quot;TiddlyTools/Timer/Alarms&quot;&gt;    &lt;&lt;alarms_check&gt;&gt;   &lt;/$importvariables&gt;
    &lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown&quot;&gt; &lt;&lt;countdown_tick&gt;&gt; &lt;/$importvariables&gt;
-   &lt;&lt;ticker &quot;$tid$&quot;&gt;&gt;
+   &lt;&lt;ticker&gt;&gt;
 &quot;&quot;&quot;/&gt;
 \end
 &lt;&lt;ticker&gt;&gt;</pre>
