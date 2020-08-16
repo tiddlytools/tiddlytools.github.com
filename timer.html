@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200816045257568" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200816090603922" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9756,8 +9756,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/autosaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200816084156902" title="$:/temp/timer/ticker">
-<pre>20200816084156902</pre>
+<div created="20200814092733654" modified="20200816090724430" title="$:/temp/timer/ticker">
+<pre>20200816090724429</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9874,7 +9874,7 @@ SampleSequence</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200816084023071" tags="" title="SampleAlarms">
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200816090539559" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Timer/Alarms}}</pre>
 </div>
 <div created="20200726025847494" modified="20200816084012942" tags="" title="SampleCountdown">
@@ -9888,8 +9888,10 @@ SampleSequence</pre>
 
 {{||TiddlyTools/Timer/CountDown}}</pre>
 </div>
-<div created="20200816001146767" modified="20200816084018064" title="SampleSequence">
+<div created="20200816001146767" modified="20200816090443066" title="SampleSequence">
 <pre>\import TiddlyTools/Timer/CountDown
+\define here() SampleSequence
+\define temp() $:/temp/timer/countdown/$(here)$
 
 \define --------------() DEFAULTS
 \define workH()   00
@@ -9952,7 +9954,7 @@ cycles:
 
 \define done()
 &lt;!-- PAUSE and ASK TO CONTINUE --&gt;
-&lt;$importvariables filter=&quot;SampleSequence&quot;&gt;
+&lt;$importvariables filter=&quot;$(here)$&quot;&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;stop&quot; /&gt;
 &lt;$action-setfield $tiddler=&quot;$(temp)$/ask&quot;
    subtitle=&quot;&quot;&quot;&lt;$text text=&quot;$(here)$&quot; /&gt;&quot;&quot;&quot;
@@ -9964,7 +9966,7 @@ cycles:
 \end
 
 \define done_text()
-&lt;$importvariables filter=&quot;SampleSequence&quot;&gt;
+&lt;$importvariables filter=&quot;$(here)$&quot;&gt;
 &lt;$vars cycles={{{ [[$(temp)$]get[cycles]]                   }}}
       session={{{ [[$(temp)$]get[session]] ~[[0]] +[add[1]] }}}
     breaktime={{{ [[$(temp)$]get[breaktime]] ~[[no]]        }}}&gt;
@@ -9978,8 +9980,8 @@ cycles:
 \end
 
 \define done_footer()
-&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown SampleSequence&quot;&gt;
-&lt;$vars here=&quot;SampleSequence&quot;&gt;
+&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown $(here)$&quot;&gt;
+&lt;$vars here=&quot;$(here)$&quot;&gt;
 &lt;$vars cycles={{{ [[$(temp)$]get[cycles]]                   }}}
       session={{{ [[$(temp)$]get[session]] ~[[0]] +[add[1]] }}}
     breaktime={{{ [[$(temp)$]get[breaktime]] ~[[no]]        }}}&gt;
@@ -10004,11 +10006,7 @@ cycles:
 &lt;/$importvariables&gt;
 \end
 
-\define here() SampleSequence
-\define temp() $:/temp/timer/countdown/SampleSequence
-
-__''This is a programmed sequence of alternating sessions of work time and break time.''__
-&lt;br/&gt;
+__''This is a programmed sequence of alternating sessions of work time and break time.''__&lt;br/&gt;
 &lt;&lt;settings&gt;&gt;
 &lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]] ~[&lt;cycles&gt;] }}}&gt;
 &lt;$vars  workH={{{ [&lt;temp&gt;get[workH]]  ~[&lt;workH&gt;]  }}}&gt;
@@ -10022,7 +10020,7 @@ __''This is a programmed sequence of alternating sessions of work time and break
    &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;br&gt;''&lt;&lt;status&gt;&gt;''
 &lt;/div&gt;</pre>
 </div>
-<div created="20200717110550625" modified="20200816084027744" tags="" title="SampleTimer">
+<div created="20200717110550625" modified="20200816090557572" tags="" title="SampleTimer">
 <pre>&lt;&lt;timer&gt;&gt;
 ----
 !!Another Timer
