@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/temp/timer/countdown/autosaver</li>
 
+<li>$:/temp/timer/countdown/SampleSequence</li>
+
 <li>$:/temp/timer/ticker</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -9756,8 +9758,47 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/autosaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200816090724430" title="$:/temp/timer/ticker">
-<pre>20200816090724429</pre>
+<div created="20200816152657998" done="&lt;!-- PAUSE and ASK TO CONTINUE --&gt;
+&lt;$importvariables filter=&quot;SampleSequence&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;stop&quot; /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/SampleSequence/ask&quot;
+   subtitle=&quot;&quot;&quot;&lt;$text text=&quot;SampleSequence&quot; /&gt;&quot;&quot;&quot;
+       text=&quot;&quot;&quot;@@font-size:2em;&lt;$importvariables filter=&quot;SampleSequence&quot;&gt;
+&lt;$vars cycles={{{ [[$:/temp/timer/countdown/SampleSequence]get[cycles]]                   }}}
+      session={{{ [[$:/temp/timer/countdown/SampleSequence]get[session]] ~[[0]] +[add[1]] }}}
+    breaktime={{{ [[$:/temp/timer/countdown/SampleSequence]get[breaktime]] ~[[no]]        }}}&gt;
+&lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;          ''Work session #&lt;&lt;session&gt;&gt; has ended... Take a break!''  &lt;/$reveal&gt;
+&lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+   &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;nomatch&quot; text=&lt;&lt;cycles&gt;&gt;&gt; ''Break time #&lt;&lt;session&gt;&gt; has ended... Back to work!'' &lt;/$reveal&gt;
+   &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;match&quot;   text=&lt;&lt;cycles&gt;&gt;&gt; ''All done. Good work!''   &lt;/$reveal&gt;
+&lt;/$reveal&gt;@@&quot;&quot;&quot;
+     footer=&quot;&quot;&quot;&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown SampleSequence&quot;&gt;
+&lt;$vars here=&quot;SampleSequence&quot;&gt;
+&lt;$vars cycles={{{ [[$:/temp/timer/countdown/SampleSequence]get[cycles]]                   }}}
+      session={{{ [[$:/temp/timer/countdown/SampleSequence]get[session]] ~[[0]] +[add[1]] }}}
+    breaktime={{{ [[$:/temp/timer/countdown/SampleSequence]get[breaktime]] ~[[no]]        }}}&gt;
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; ok
+   &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;  &lt;!-- WORK TIME ENDED, START BREAK TIME --&gt;
+      &lt;&lt;setCountdown H:00 M:02 S:00&gt;&gt;
+      &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/SampleSequence&quot; breaktime=&quot;yes&quot; go=&quot;go&quot; /&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt; &lt;!-- BREAK TIME ENDED --&gt;
+      &lt;&lt;setCountdown H:00 M:10 S:00&gt;&gt;
+      &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;nomatch&quot; text=&lt;&lt;cycles&gt;&gt;&gt; &lt;!-- START NEXT WORK SESSION --&gt;
+         &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/SampleSequence&quot; session=&lt;&lt;session&gt;&gt; breaktime=&quot;no&quot; go=&quot;go&quot; /&gt; 
+      &lt;/$reveal&gt;
+      &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;match&quot; text=&lt;&lt;cycles&gt;&gt;&gt; &lt;!-- DONE! RESET FOR NEW CYCLE --&gt;
+         &lt;$action-deletefield $tiddler=&quot;$:/temp/timer/countdown/SampleSequence&quot; go session breaktime text  /&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/countdown/SampleSequence/ask&quot; /&gt;
+&lt;/$button&gt;&quot;&quot;&quot;
+/&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/countdown/SampleSequence/ask&quot; /&gt;" hours="00" mins="10" modified="20200816153415503" secs="00" title="$:/temp/timer/countdown/SampleSequence">
+<pre></pre>
+</div>
+<div created="20200814092733654" modified="20200816153434226" title="$:/temp/timer/ticker">
+<pre>20200816153434225</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9874,7 +9915,7 @@ SampleSequence</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200816090539559" tags="" title="SampleAlarms">
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200816152720870" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Timer/Alarms}}</pre>
 </div>
 <div created="20200726025847494" modified="20200816084012942" tags="" title="SampleCountdown">
@@ -9888,7 +9929,7 @@ SampleSequence</pre>
 
 {{||TiddlyTools/Timer/CountDown}}</pre>
 </div>
-<div created="20200816001146767" modified="20200816090443066" title="SampleSequence">
+<div created="20200816001146767" modified="20200816153402752" title="SampleSequence">
 <pre>\import TiddlyTools/Timer/CountDown
 \define here() SampleSequence
 \define temp() $:/temp/timer/countdown/$(here)$
@@ -9903,27 +9944,35 @@ SampleSequence</pre>
 \define cycles()  5
 
 \define --------------() MESSAGES
-\define startmsg()       Press start to begin...
+\define initmsg()        Press apply to load setup
+\define startmsg()       Press start to begin sequence
 \define workmsg()        Work session #&lt;&lt;session&gt;&gt;
 \define breakmsg()       Break time #&lt;&lt;session&gt;&gt;
-\define inprogressmsg()  in progress...
-\define pausedmsg()      paused...
+\define inprogressmsg()  in progress
+\define pausedmsg()      paused
 \define workdonemsg()    Work session #&lt;&lt;session&gt;&gt; has ended... Take a break!
 \define breakdonemsg()   Break time #&lt;&lt;session&gt;&gt; has ended... Back to work!
 \define alldonemsg()     All done. Good work!
 
 \define settings()
+&lt;div style=&quot;display:inline-block;float:left;text-align:right;padding:1em;border-right:1px solid;&quot;&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;''Setup''&lt;/div&gt;
 worktime:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workH&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workH&gt;&gt;  placeholder=&lt;&lt;workH&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workM&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workM&gt;&gt;  placeholder=&lt;&lt;workM&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;workS&quot;  tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;workS&gt;&gt;  placeholder=&lt;&lt;workS&gt;&gt; /&gt;
+&lt;br&gt;
 breaktime:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakH&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakH&gt;&gt; placeholder=&lt;&lt;breakH&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakM&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakM&gt;&gt; placeholder=&lt;&lt;breakM&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakS&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakS&gt;&gt; placeholder=&lt;&lt;breakS&gt;&gt; /&gt;
+&lt;br&gt;
 cycles:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;cycles&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;cycles&gt;&gt; placeholder=&lt;&lt;cycles&gt;&gt; /&gt;
-&lt;$button class=&quot;tc-button&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;temp&gt;&gt;/&gt;&quot;&gt; reset &lt;/$button&gt;
+&lt;div style=&quot;text-align:center;margin-top:0.25em;&quot;&gt;&lt;/div&gt;
+&lt;$button class=&quot;tc-button&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;temp&gt;&gt;/&gt;&quot;&gt;
+   reset
+&lt;/$button&gt;
 &lt;$button class=&quot;tc-button&quot; actions=&quot;&quot;&quot;
    &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
    &lt;$vars workH={{{ [&lt;temp&gt;get[workH]] ~[&lt;workH&gt;] }}}&gt;
@@ -9933,22 +9982,26 @@ cycles:
    &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session breaktime text  /&gt;
 &quot;&quot;&quot;&gt; apply
 &lt;/$button&gt;
+&lt;/div&gt;
 \end
 
-\define reset()
+\define stop()
 &lt;$button class=&quot;tc-button&quot; tooltip=&quot;stop/reset countdown&quot;&gt;
-   reset
+   stop
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;workH&gt;&gt; M=&lt;&lt;workM&gt;&gt; S=&lt;&lt;workS&gt;&gt; /&gt;
    &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session breaktime text  /&gt;
 &lt;/$button&gt;
 \end
 
 \define status()
-&lt;$vars session={{{ [[$(temp)$]get[session]] ~[[0]] +[add[1]] }}}&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;!has:field[session]] +[&lt;temp&gt;!has:field[go]]&quot;&gt; &lt;&lt;startmsg&gt;&gt; &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;temp&gt;has:field[go]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;get[breaktime]match[yes]]&quot; emptyMessage=&lt;&lt;workmsg&gt;&gt;&gt; &lt;&lt;breakmsg&gt;&gt; &lt;/$list&gt;
-   &lt;$text text={{{ [&lt;temp&gt;get[go]match[go]then&lt;inprogressmsg&gt;else&lt;pausedmsg&gt;] }}}/&gt;
+&lt;$vars session={{{ [&lt;temp&gt;get[session]] ~[[0]] +[add[1]] }}}&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;is[missing]]&quot;&gt; &lt;&lt;initmsg&gt;&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;!has:field[session]] +[&lt;temp&gt;!has:field[go]]&quot;&gt; &lt;&lt;startmsg&gt;&gt; &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;has:field[go]]&quot;&gt;
+      &lt;$list filter=&quot;[&lt;temp&gt;get[breaktime]match[yes]]&quot; emptyMessage=&lt;&lt;workmsg&gt;&gt;&gt; &lt;&lt;breakmsg&gt;&gt; &lt;/$list&gt;
+      &lt;$text text={{{ [&lt;temp&gt;get[go]match[go]then&lt;inprogressmsg&gt;else&lt;pausedmsg&gt;] }}}/&gt;
+   &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
@@ -9962,7 +10015,6 @@ cycles:
      footer=&quot;&quot;&quot;$(done_footer)$&quot;&quot;&quot;
 /&gt;
 &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(temp)$/ask&quot; /&gt;
-&lt;/$importvariables&gt;
 \end
 
 \define done_text()
@@ -9975,8 +10027,6 @@ cycles:
    &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;nomatch&quot; text=&lt;&lt;cycles&gt;&gt;&gt; ''$(breakdonemsg)$'' &lt;/$reveal&gt;
    &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;match&quot;   text=&lt;&lt;cycles&gt;&gt;&gt; ''$(alldonemsg)$''   &lt;/$reveal&gt;
 &lt;/$reveal&gt;
-&lt;/$vars&gt;
-&lt;/$importvariables&gt;
 \end
 
 \define done_footer()
@@ -10001,12 +10051,9 @@ cycles:
    &lt;/$reveal&gt;
    &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt;
 &lt;/$button&gt;
-&lt;/$vars&gt;
-&lt;/$vars&gt;
-&lt;/$importvariables&gt;
 \end
 
-__''This is a programmed sequence of alternating sessions of work time and break time.''__&lt;br/&gt;
+__''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sessions of work time and break time.''__&lt;br/&gt;
 &lt;&lt;settings&gt;&gt;
 &lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]] ~[&lt;cycles&gt;] }}}&gt;
 &lt;$vars  workH={{{ [&lt;temp&gt;get[workH]]  ~[&lt;workH&gt;]  }}}&gt;
@@ -10015,12 +10062,12 @@ __''This is a programmed sequence of alternating sessions of work time and break
 &lt;$vars breakH={{{ [&lt;temp&gt;get[breakH]] ~[&lt;breakH&gt;] }}}&gt;
 &lt;$vars breakM={{{ [&lt;temp&gt;get[breakM]] ~[&lt;breakM&gt;] }}}&gt;
 &lt;$vars breakS={{{ [&lt;temp&gt;get[breakS]] ~[&lt;breakS&gt;] }}}&gt;
-
-&lt;div style=&quot;display:inline-block;text-align:center;padding:0.5em;border:1px solid;border-radius:0.5em;background:#ffe;&quot;&gt;
-   &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt; &lt;br&gt;''&lt;&lt;status&gt;&gt;''
-&lt;/div&gt;</pre>
+&lt;div style=&quot;display:inline-block;text-align:center;margin:1em;&quot;&gt;
+   ''&lt;&lt;status&gt;&gt;'' &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt;
+&lt;/div&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20200717110550625" modified="20200816090557572" tags="" title="SampleTimer">
+<div created="20200717110550625" modified="20200816152727586" tags="" title="SampleTimer">
 <pre>&lt;&lt;timer&gt;&gt;
 ----
 !!Another Timer
