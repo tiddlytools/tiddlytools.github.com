@@ -243,7 +243,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200818121021523" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200818173541751" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9677,7 +9677,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9697,7 +9697,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9767,8 +9767,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200818124541045" title="$:/temp/timer/ticker">
-<pre>20200818124541045</pre>
+<div created="20200814092733654" modified="20200818173708007" title="$:/temp/timer/ticker">
+<pre>20200818173708007</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11006,8 +11006,8 @@ set ~AutoSaver interval:&lt;br&gt;
 !! [[TiddlyTools/Timer]]
 &lt;&lt;&lt;
 ''Defines macros to control a task timer and display the results.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Examples: [[SampleTimer]]
 
 ``&lt;&lt;timer&gt;&gt;`` or ``&lt;&lt;timer taskname&gt;&gt;``&lt;br&gt;
 ''Shows timer buttons, elapsed time, total accumulated time, summary table, and history table''
@@ -11046,8 +11046,8 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/T
 !! [[TiddlyTools/Timer/CountDown]]
 &lt;&lt;&lt;
 ''Displays a countdown timer.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Examples: [[SampleCountdown]], [[SampleSequence]]
 
 * To embed the countdown timer in another tiddler, use transclusion ``{{||TiddlyTools/Timer/CountDown}}``
 * Enter hours, minutes, seconds, and a brief message to be displayed when the countdown is completed.
@@ -11068,8 +11068,7 @@ Uses: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
 &lt;&lt;&lt;
 @@.resize
 ''Displays a countdown timer in the ~SideBar that triggers a periodic &quot;file save&quot; action.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/CountDown]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/CountDown]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
 
 * The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
 * The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
@@ -11087,8 +11086,8 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/CountDown]], [[TiddlyTool
 &lt;&lt;&lt;
 @@.resize
 ''Create and manage a list of one-time and/or repeating alarms.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Examples: [[SampleAlarms]]
 
 * To create a separate list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Timer/Alarms}}``.
 * To add an alarm, begin by selecting ''Once'', ''Daily'', or a specific ''Day of the week''.
@@ -11105,8 +11104,8 @@ Uses: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
 !! [[TiddlyTools/Timer/Clocks]]
 &lt;&lt;&lt;
 ''Displays analog and digital clocks with automatic update.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Examples: [[TiddlyTools/Timer/SidebarClocks]], [[TiddlyTools/Timer/WorldClocks]]
 
 * To display either clock in another tiddler, use ``&lt;&lt;clock type:&quot;analog&quot;&gt;&gt;`` or ``&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;``
 * You can set the time format used by the digital clock and the styles used by the analog clock (see [[TiddlyTools/Timer/Setup]] below).
@@ -11116,8 +11115,7 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/T
 !! [[TiddlyTools/Timer/SidebarClocks]]
 &lt;&lt;&lt;
 ''Displays analog and digital clocks in the ~SideBar.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
 
 * You can show/hide the clocks, adjust their sizes and specify a custom format for the digital clock (see [[TiddlyTools/Timer/Setup]] below).
 * By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
@@ -11126,8 +11124,7 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/T
 !! [[TiddlyTools/Timer/WorldClocks]]
 &lt;&lt;&lt;
 ''Displays a set of analog and digital clocks for various places world-wide''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Places]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Places]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
 
 * Press &lt;$button&gt;Select places...&lt;/$button&gt; to view a list of clocks to choose from. Use &lt;kbd&gt;shift+click&lt;/kbd&gt; or &lt;kbd&gt;ctrl+click&lt;/kbd&gt; to select multiple places.
 * Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to add new places to the list.
@@ -11136,7 +11133,7 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/T
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Places]]
 &lt;&lt;&lt;
-''Defines a set of places for use with [[TiddlyTools/Timer/WorldClocks]]''
+''Defines a set of places and timezone offsets used by: [[TiddlyTools/Timer/WorldClocks]]''
 
 * To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Timer/WorldClocks]].
 * Enter place names and timezone offsets, one place name and timezone offset per line.
@@ -11186,8 +11183,7 @@ Uses: [[TiddlyTools/Timer/Setup]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/T
 !! [[TiddlyTools/Timer/Ticker]]
 &lt;&lt;&lt;
 ''Defines a &lt;&lt;tag $:/tags/StartupAction&gt;&gt;that automatically updates a [[UTC|https://www.timeanddate.com/time/aboututc.html]] date/time value.''
-&lt;br&gt;
-Uses: [[TiddlyTools/Timer/action-timeout.js]]
+&lt;br&gt;Requires: [[TiddlyTools/Timer/action-timeout.js]]
 
 * The date/time value is stored in [[$:/temp/timer/ticker]] and is updated once per second.
 &lt;&lt;&lt;
