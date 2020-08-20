@@ -9652,10 +9652,10 @@ SampleSequence</pre>
 <div created="20200621202021685" modified="20200712185014447" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20200718011630155" modified="20200816083744470" title="$:/state/tab/moresidebar-1850697562">
+<div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200819121402074" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200820133208666" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9677,7 +9677,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1)%20(2).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9697,7 +9697,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1)%20(2).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9767,8 +9767,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200819121404083" title="$:/temp/timer/ticker">
-<pre>20200819121404083</pre>
+<div created="20200814092733654" modified="20200820133310095" title="$:/temp/timer/ticker">
+<pre>20200820133310095</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9885,10 +9885,10 @@ SampleSequence</pre>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200819114809619" tags="" title="SampleAlarms">
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200820133226543" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Timer/Alarms}}</pre>
 </div>
-<div created="20200726025847494" modified="20200819114757752" tags="" title="SampleCountdown">
+<div created="20200726025847494" modified="20200820133213899" tags="" title="SampleCountdown">
 <pre>\define done()
 &lt;$vars message=&quot;&quot;&quot;$(here)$ completed&lt;br&gt;&lt;&lt;now &quot;on DDD, MMM DDth at 0hh12:0mm:0ssam&quot;&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$action-setfield    $tiddler=&quot;$:/temp/notify&quot; text=&lt;&lt;message&gt;&gt;  /&gt;
@@ -9899,10 +9899,11 @@ SampleSequence</pre>
 
 {{||TiddlyTools/Timer/CountDown}}</pre>
 </div>
-<div created="20200816001146767" modified="20200819114804233" title="SampleSequence">
+<div created="20200816001146767" modified="20200820133218896" title="SampleSequence">
 <pre>\import TiddlyTools/Timer/CountDown
+
 \define here() SampleSequence
-\define temp() $:/temp/timer/countdown/$(here)$
+\define temp() $:/temp/timer/countdown/SampleSequence
 
 \define --------------() DEFAULTS
 \define workH()   00
@@ -9937,7 +9938,7 @@ breaktime:
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakM&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakM&gt;&gt; placeholder=&lt;&lt;breakM&gt;&gt; /&gt;
 &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; field=&quot;breakS&quot; tag=&quot;input&quot; class=&quot;timerCountdown&quot; default=&lt;&lt;breakS&gt;&gt; placeholder=&lt;&lt;breakS&gt;&gt; /&gt;
 &lt;br&gt;
-&lt;span style=&quot;float:left;xfont-size:80%;&quot; title=&quot;pause between sessions and ask to continue&quot;&gt;
+&lt;span style=&quot;float:left;&quot; title=&quot;pause between sessions and ask to continue&quot;&gt;
 &lt;$checkbox  tiddler=&lt;&lt;temp&gt;&gt; field=&quot;ask&quot;    default=&quot;yes&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot;&gt; continuous&amp;nbsp; &lt;/$checkbox&gt;
 &lt;/span&gt;
 cycles:
@@ -9961,7 +9962,7 @@ cycles:
 \define stop()
 &lt;$button class=&quot;tc-button&quot; tooltip=&quot;stop/reset countdown&quot;&gt;
    stop
-   &lt;&lt;setCountdown H:$(workH)$ M:$(workM)$ S:$(workS)$&gt;&gt;
+   &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;workH&gt;&gt; M=&lt;&lt;workM&gt;&gt; S=&lt;&lt;workS&gt;&gt; /&gt;
    &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session breaktime text /&gt;
 &lt;/$button&gt;
 \end
@@ -9970,11 +9971,11 @@ cycles:
 &lt;$vars H={{{ [&lt;temp&gt;get[hours]] }}} M={{{ [&lt;temp&gt;get[mins]] }}} S={{{ [&lt;temp&gt;get[secs]] }}}
  session={{{ [&lt;temp&gt;get[session]] ~[[0]] +[add[1]] }}}&gt;
 &lt;$list filter=&quot;[&lt;H&gt;add&lt;M&gt;add&lt;S&gt;match[0]]&quot;&gt;
-   &lt;$list filter=&quot;[[$(temp)$/ask]is[missing]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;temp&gt;addsuffix[/ask]is[missing]]&quot;&gt;
       &lt;&lt;initmsg&gt;&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;H&gt;add&lt;M&gt;add&lt;S&gt;!match[0]] [[$(temp)$/ask]is[tiddler]] +[limit[1]]&quot; &gt;
+&lt;$list filter=&quot;[&lt;H&gt;add&lt;M&gt;add&lt;S&gt;!match[0]] [&lt;temp&gt;addsuffix[/ask]is[tiddler]] +[limit[1]]&quot; &gt;
    &lt;$list filter=&quot;[&lt;temp&gt;!has:field[session]] +[&lt;temp&gt;!has:field[go]]&quot;&gt; &lt;&lt;startmsg&gt;&gt; &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;has:field[go]]&quot;&gt;
       &lt;$list filter=&quot;[&lt;temp&gt;get[breaktime]match[yes]]&quot; emptyMessage=&lt;&lt;workmsg&gt;&gt;&gt; &lt;&lt;breakmsg&gt;&gt; &lt;/$list&gt;
@@ -9984,7 +9985,7 @@ cycles:
 \end
 
 \define messages()
-&lt;$list filter=&quot;[{$(temp)$!!messages}!match[]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;get[messages]!match[]]&quot;&gt;
    &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;font-size:70%;&quot; tooltip=&quot;click to clear messages&quot;&gt;
       &lt;div style=&quot;text-align:left;border:1px solid;border-radius:0.5em;padding:0.5em;margin:0.5em 0;background:#eee&quot;&gt;
          ''&lt;$transclude tiddler=&lt;&lt;temp&gt;&gt; field=&quot;messages&quot;/&gt;''
@@ -9998,10 +9999,10 @@ cycles:
 \define done()
 &lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown $(here)$&quot;&gt;
 &lt;$vars here=&quot;$(here)$&quot;&gt;
-&lt;$vars cycles={{{ [[$(temp)$]get[cycles]]    ~[[$(cycles)$]]  }}}
-      session={{{ [[$(temp)$]get[session]]   ~[[0]] +[add[1]] }}}
-    breaktime={{{ [[$(temp)$]get[breaktime]] ~[[no]]          }}}
-          ask={{{ [[$(temp)$]get[ask]]       ~[[yes]]         }}}&gt;
+&lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]]    ~[[$(cycles)$]]  }}}
+      session={{{ [&lt;temp&gt;get[session]]   ~[[0]] +[add[1]] }}}
+    breaktime={{{ [&lt;temp&gt;get[breaktime]] ~[[no]]          }}}
+          ask={{{ [&lt;temp&gt;get[ask]]       ~[[yes]]         }}}&gt;
 $(done_msg)$
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;match&quot;   text=&quot;yes&quot;&gt; $(done_ask)$      &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;yes&quot;&gt; $(done_continue)$ &lt;/$reveal&gt;
@@ -10010,27 +10011,27 @@ $(done_msg)$
 \define done_msg()
 &lt;$wikify name=&quot;msg&quot; text=&quot;&quot;&quot;$(done_text)$&quot;&quot;&quot;&gt;
 &lt;$vars time=&lt;&lt;now &quot;0hh:0mm:0ss &quot;&gt;&gt; msg={{{ [&lt;msg&gt;trim[]] }}} br=&quot;&lt;br&gt;&quot;&gt;
-&lt;$action-setfield $tiddler=&quot;$(temp)$&quot; messages={{{ [{$(temp)$!!messages}addsuffix&lt;time&gt;addsuffix&lt;msg&gt;addsuffix&lt;br&gt;] }}}/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; messages={{{ [{!!messages}addsuffix&lt;time&gt;addsuffix&lt;msg&gt;addsuffix&lt;br&gt;] }}}/&gt;
 &lt;/$vars&gt;
 &lt;/$wikify&gt;
 \end
 
 \define done_ask()
-&lt;!-- ADD MESSAGE, PAUSE and ASK TO CONTINUE --&gt;
-&lt;$action-setfield $tiddler=&quot;$(temp)$&quot; go=&quot;stop&quot; /&gt;
-&lt;$action-setfield $tiddler=&quot;$(temp)$/ask&quot;
+&lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;stop&quot; /&gt;
+&lt;$action-setfield $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}}
    subtitle=&quot;&quot;&quot;&lt;$text text=&quot;$(here)$&quot; /&gt;: &lt;&lt;now &quot;0hh:0mm:0ss&quot;&gt;&gt;&quot;&quot;&quot;
        text=&quot;&quot;&quot;@@font-size:2em;$(done_text)$@@&quot;&quot;&quot;
      footer=&quot;&quot;&quot;$(done_footer)$&quot;&quot;&quot;
 /&gt;
-&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(temp)$/ask&quot; /&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 \end
 
 \define done_text()
-&lt;$importvariables filter=&quot;$(here)$&quot;&gt;
-&lt;$vars cycles={{{ [[$(temp)$]get[cycles]]    ~[[$(cycles)$]]  }}}
-      session={{{ [[$(temp)$]get[session]]   ~[[0]] +[add[1]] }}}
-    breaktime={{{ [[$(temp)$]get[breaktime]] ~[[no]]          }}}&gt;
+&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown $(here)$&quot;&gt;
+&lt;$vars here=&quot;$(here)$&quot;&gt;
+&lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]]    ~[[$(cycles)$]]  }}}
+      session={{{ [&lt;temp&gt;get[session]]   ~[[0]] +[add[1]] }}}
+    breaktime={{{ [&lt;temp&gt;get[breaktime]] ~[[no]]          }}}&gt;
 &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;          ''$(workdonemsg)$''  &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
    &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;nomatch&quot; text=&lt;&lt;cycles&gt;&gt;&gt; ''$(breakdonemsg)$'' &lt;/$reveal&gt;
@@ -10041,51 +10042,53 @@ $(done_msg)$
 \define done_footer()
 &lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown $(here)$&quot;&gt;
 &lt;$vars here=&quot;$(here)$&quot;&gt;
-&lt;$vars cycles={{{ [[$(temp)$]get[cycles]]    ~[[$(cycles)$]]  }}}
-      session={{{ [[$(temp)$]get[session]]   ~[[0]] +[add[1]] }}}
-    breaktime={{{ [[$(temp)$]get[breaktime]] ~[[no]]          }}}&gt;
+&lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]]    ~[[$(cycles)$]]  }}}
+      session={{{ [&lt;temp&gt;get[session]]   ~[[0]] +[add[1]] }}}
+    breaktime={{{ [&lt;temp&gt;get[breaktime]] ~[[no]]          }}}&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot; tooltip=&quot;stop/reset countdown&quot;&gt; stop     $(done_stop)$     &lt;/$button&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot; tooltip=&quot;resume countdown&quot;    &gt; continue $(done_continue)$ &lt;/$button&gt;
 \end
 
 \define done_stop()
 &lt;&lt;setCountdown H:$(workH)$ M:$(workM)$ S:$(workS)$&gt;&gt;
-&lt;$action-deletefield $tiddler=&quot;$(temp)$&quot; go session breaktime text /&gt;
-&lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session breaktime text /&gt;
+&lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 \end
 
 \define done_continue()
 &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;  &lt;!-- WORK TIME ENDED, START BREAK TIME --&gt;
    &lt;&lt;setCountdown H:$(breakH)$ M:$(breakM)$ S:$(breakS)$&gt;&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$&quot; breaktime=&quot;yes&quot; go=&quot;go&quot; /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; breaktime=&quot;yes&quot; go=&quot;go&quot; /&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;breaktime&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt; &lt;!-- BREAK TIME ENDED --&gt;
    &lt;&lt;setCountdown H:$(workH)$ M:$(workM)$ S:$(workS)$&gt;&gt;
    &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;nomatch&quot; text=&lt;&lt;cycles&gt;&gt;&gt; &lt;!-- START NEXT WORK SESSION --&gt;
-      &lt;$action-setfield $tiddler=&quot;$(temp)$&quot; session=&lt;&lt;session&gt;&gt; breaktime=&quot;no&quot; go=&quot;go&quot; /&gt; 
+      &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; session=&lt;&lt;session&gt;&gt; breaktime=&quot;no&quot; go=&quot;go&quot; /&gt; 
    &lt;/$reveal&gt;
    &lt;$reveal default=&lt;&lt;session&gt;&gt; type=&quot;match&quot; text=&lt;&lt;cycles&gt;&gt;&gt; &lt;!-- DONE! RESET FOR NEW CYCLE --&gt;
-      &lt;$action-deletefield $tiddler=&quot;$(temp)$&quot; go session breaktime text  /&gt;
+      &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go session breaktime text  /&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
-&lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot; /&gt;
+&lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 \end
 
 __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sessions of work time and break time.''__&lt;br/&gt;
 &lt;&lt;settings&gt;&gt;
-&lt;$vars cycles={{{ [&lt;temp&gt;get[cycles]] ~[&lt;cycles&gt;] }}}&gt;
-&lt;$vars  workH={{{ [&lt;temp&gt;get[workH]]  ~[&lt;workH&gt;]  }}}&gt;
-&lt;$vars  workM={{{ [&lt;temp&gt;get[workM]]  ~[&lt;workM&gt;]  }}}&gt;
-&lt;$vars  workS={{{ [&lt;temp&gt;get[workS]]  ~[&lt;workS&gt;]  }}}&gt;
-&lt;$vars breakH={{{ [&lt;temp&gt;get[breakH]] ~[&lt;breakH&gt;] }}}&gt;
-&lt;$vars breakM={{{ [&lt;temp&gt;get[breakM]] ~[&lt;breakM&gt;] }}}&gt;
-&lt;$vars breakS={{{ [&lt;temp&gt;get[breakS]] ~[&lt;breakS&gt;] }}}&gt;
+&lt;$vars workH={{{ [&lt;temp&gt;get[workH]]  ~[&lt;workH&gt;]  }}}
+       workM={{{ [&lt;temp&gt;get[workM]]  ~[&lt;workM&gt;]  }}}
+       workS={{{ [&lt;temp&gt;get[workS]]  ~[&lt;workS&gt;]  }}}
+      breakH={{{ [&lt;temp&gt;get[breakH]] ~[&lt;breakH&gt;] }}}
+      breakM={{{ [&lt;temp&gt;get[breakM]] ~[&lt;breakM&gt;] }}}
+      breakS={{{ [&lt;temp&gt;get[breakS]] ~[&lt;breakS&gt;] }}}
+      cycles={{{ [&lt;temp&gt;get[cycles]] ~[&lt;cycles&gt;] }}}&gt;
 &lt;div style=&quot;display:inline-block;text-align:center;margin:1em;&quot;&gt;
-   ''&lt;&lt;status&gt;&gt;'' &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;messages&gt;&gt;
+   ''&lt;&lt;status&gt;&gt;''&lt;br&gt;
+   &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt;&lt;br&gt;
+   &lt;&lt;messages&gt;&gt;
 &lt;/div&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20200717110550625" modified="20200819114815343" tags="" title="SampleTimer">
+<div created="20200717110550625" modified="20200820133232166" tags="" title="SampleTimer">
 <pre>&lt;&lt;timer&gt;&gt;
 ----
 !!Another Timer
