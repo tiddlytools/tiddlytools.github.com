@@ -241,7 +241,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200821072027586" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200821211826325" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9653,7 +9653,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200821074623803" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200821222026980" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9675,7 +9675,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9695,7 +9695,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9728,16 +9728,18 @@ SampleSequence</pre>
          ask={{{ [[TiddlyTools/Timer/Setup]get[autosave_ask]]   ~[[yes]]     }}}&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
    &lt;!-- SAVE AND CONTINUE --&gt;
-   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/AutoSaver/status&quot; text={{{ [[Autosaved on ]addsuffix&lt;time&gt;] }}} /&gt;
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/AutoSaver&quot; go=&quot;go&quot; /&gt;
-   &lt;/$vars&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt; br=&quot;&lt;br&gt;&quot;&gt;
+&lt;$tiddler tiddler={{{ [&lt;temp&gt;addsuffix[/status]] }}}&gt;
+&lt;$action-setfield text={{{ [{!!text}addsuffix[Autosaved on ]addsuffix&lt;time&gt;addsuffix&lt;br&gt;] }}}/&gt;
+&lt;/$tiddler&gt;
+&lt;/$vars&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
    &lt;!-- PAUSE and ASK TO SAVE, THEN CONTINUE --&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/AutoSaver&quot; go=&quot;stop&quot; /&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/AutoSaver/ask&quot;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;stop&quot; /&gt;
+   &lt;$action-setfield $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}}
       subtitle=&quot;&quot;&quot;&lt;$text text=&quot;AutoSaver&quot; /&gt;&quot;&quot;&quot;
           text=&quot;&quot;&quot;@@font-size:2em;@@font-size:2em;OK to auto save file?@@&lt;p/&gt;
 &lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;autosave_ask&quot; default=&quot;no&quot; checked=&quot;no&quot; unchecked=&quot;yes&quot;&gt;
@@ -9746,25 +9748,27 @@ SampleSequence</pre>
         footer=&quot;&quot;&quot;&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel
-   &lt;$action-setfield      $tiddler=&quot;$:/temp/timer/countdown/AutoSaver&quot; go=&quot;go&quot; /&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/countdown/AutoSaver/ask&quot;     /&gt;
+   &lt;$action-setfield      $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 &lt;/$button&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
-   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/timer/countdown/AutoSaver/status&quot; text={{{ [[Autosaved on ]addsuffix&lt;time&gt;] }}} /&gt;
-   &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot;     /&gt;
-   &lt;$action-setfield      $tiddler=&quot;$:/temp/timer/countdown/AutoSaver&quot; go=&quot;go&quot; /&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/countdown/AutoSaver/ask&quot;     /&gt;
-   &lt;/$vars&gt;
+   &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot;   /&gt;
+   &lt;$action-setfield      $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
+   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt; br=&quot;&lt;br&gt;&quot;&gt;
+&lt;$tiddler tiddler={{{ [&lt;temp&gt;addsuffix[/status]] }}}&gt;
+&lt;$action-setfield text={{{ [{!!text}addsuffix[Autosaved on ]addsuffix&lt;time&gt;addsuffix&lt;br&gt;] }}}/&gt;
+&lt;/$tiddler&gt;
+&lt;/$vars&gt;
 &lt;/$button&gt;&quot;&quot;&quot;
    /&gt;
-   &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/countdown/AutoSaver/ask&quot; /&gt;
+   &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 &lt;/$reveal&gt;
-&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
-<pre></pre>
+&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
+<pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200821074625095" title="$:/temp/timer/ticker">
-<pre>20200821074625095</pre>
+<div created="20200814092733654" modified="20200821222030073" title="$:/temp/timer/ticker">
+<pre>20200821222030073</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10091,7 +10095,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;&lt;timer_buttons AnotherTimer&gt;&gt; &lt;&lt;timer_elapsed AnotherTimer&gt;&gt;
 &lt;&lt;timer_history AnotherTimer&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200815053753931" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200821211800127" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define timer_ticker() $:/temp/timer/ticker
 
 \define timer_start()
@@ -10250,7 +10254,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;&lt;timer_history&gt;&gt;
 \end</pre>
 </div>
-<div created="20150728060155235" modified="20200814115812981" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20200821211650335" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
@@ -10332,7 +10336,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20200815053654883" tags="" title="TiddlyTools/Timer/Alarms">
+<div created="20200811043857487" modified="20200821211725729" tags="" title="TiddlyTools/Timer/Alarms">
 <pre>\define alarms_input() $:/temp/timer/alarms_input/$(currentTiddler)$
 \define alarms_msg()   $:/temp/timer/alarms_msg/$(currentTiddler)$
 
@@ -10613,10 +10617,10 @@ at &lt;&lt;alarms_form_time&gt;&gt;&lt;br&gt;
 &lt;/div&gt;
 &lt;&lt;alarms_list&gt;&gt;</pre>
 </div>
-<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200815053647377" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
+<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200821211714457" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
 <pre>\import TiddlyTools/Timer/CountDown
 \define here() AutoSaver
-\define temp() $:/temp/timer/countdown/$(here)$
+\define temp() $:/temp/timer/countdown/AutoSaver
 
 \define --------------() FACTORY DEFAULTS
 \define saveH()   01
@@ -10667,44 +10671,42 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;$button class=&quot;tc-button&quot; tooltip=&quot;stop countdown and reset to current interval&quot;&gt;
    stop
    &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/status&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/status]] }}} /&gt;
    &lt;$action-deletefield $tiddler=&lt;&lt;temp&gt;&gt; go text    /&gt;
 &lt;/$button&gt;
 \end
 
 \define status()
-&lt;$list filter=&quot;[[$(temp)$/status]is[tiddler]]&quot;&gt;
-   &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;click to clear message&quot;&gt;
+&lt;$list filter=&quot;[&lt;temp&gt;addsuffix[/status]is[tiddler]]&quot;&gt;
+   &lt;$button style=&quot;margin-top:0.5em;&quot; tooltip=&quot;click to clear messages&quot;&gt;
       ''&lt;$transclude /&gt;''
-      &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/status&quot; /&gt;
+      &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/status]] }}} /&gt;
    &lt;/$button&gt;
 &lt;/$list&gt;
 \end
 
 \define done()
 &lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
-&lt;$vars here=&quot;$(here)$&quot;&gt;
+&lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
        saveS={{{ [[TiddlyTools/Timer/Setup]get[autosave_secs]]  ~[[&lt;saveS&gt;]] }}}
          ask={{{ [[TiddlyTools/Timer/Setup]get[autosave_ask]]   ~[[yes]]     }}}&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;match&quot; text=&quot;no&quot;&gt;
    &lt;!-- SAVE AND CONTINUE --&gt;
-   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$/status&quot; text={{{ [[Autosaved on ]addsuffix&lt;time&gt;] }}} /&gt;
    &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$&quot; go=&quot;go&quot; /&gt;
-   &lt;/$vars&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   $(done_saved)$
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;ask&gt;&gt; type=&quot;nomatch&quot; text=&quot;no&quot;&gt;
    &lt;!-- PAUSE and ASK TO SAVE, THEN CONTINUE --&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$&quot; go=&quot;stop&quot; /&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$/ask&quot;
+   &lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;stop&quot; /&gt;
+   &lt;$action-setfield $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}}
       subtitle=&quot;&quot;&quot;&lt;$text text=&quot;$(here)$&quot; /&gt;&quot;&quot;&quot;
           text=&quot;&quot;&quot;@@font-size:2em;$(done_text)$@@&quot;&quot;&quot;
         footer=&quot;&quot;&quot;$(done_footer)$&quot;&quot;&quot;
    /&gt;
-   &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(temp)$/ask&quot; /&gt;
+   &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 &lt;/$reveal&gt;
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;
 \end
@@ -10718,24 +10720,30 @@ set ~AutoSaver interval:&lt;br&gt;
 
 \define done_footer()
 &lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
-&lt;$vars here=&quot;$(here)$&quot;&gt;
+&lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel
-   &lt;$action-setfield      $tiddler=&quot;$(temp)$&quot; go=&quot;go&quot; /&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot;     /&gt;
+   &lt;$action-setfield      $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 &lt;/$button&gt;
 &lt;$button message=&quot;tm-close-tiddler&quot;&gt; save
-   &lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt;&gt;
-   &lt;$action-setfield $tiddler=&quot;$(temp)$/status&quot; text={{{ [[Autosaved on ]addsuffix&lt;time&gt;] }}} /&gt;
-   &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot;     /&gt;
-   &lt;$action-setfield      $tiddler=&quot;$(temp)$&quot; go=&quot;go&quot; /&gt;
-   &lt;$action-deletetiddler $tiddler=&quot;$(temp)$/ask&quot;     /&gt;
-   &lt;/$vars&gt;
+   &lt;$action-sendmessage   $message=&quot;tm-save-wiki&quot;   /&gt;
+   &lt;$action-setfield      $tiddler=&lt;&lt;temp&gt;&gt; go=&quot;go&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
+   $(done_saved)$
 &lt;/$button&gt;
+\end
+
+\define done_saved()
+&lt;$vars time=&lt;&lt;now 'YYYY-0MM-0DD at 0hh:0mm:0ss'&gt;&gt; br=&quot;&lt;br&gt;&quot;&gt;
+&lt;$tiddler tiddler={{{ [&lt;temp&gt;addsuffix[/status]] }}}&gt;
+&lt;$action-setfield text={{{ [{!!text}addsuffix[Autosaved on ]addsuffix&lt;time&gt;addsuffix&lt;br&gt;] }}}/&gt;
+&lt;/$tiddler&gt;
+&lt;/$vars&gt;
 \end
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200815053707033" tags="$:/tags/Macro" title="TiddlyTools/Timer/Clocks">
+<div created="20200719094540255" modified="20200821211732403" tags="$:/tags/Macro" title="TiddlyTools/Timer/Clocks">
 <pre>\define clock_ticker() $:/temp/timer/ticker
 
 \define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
@@ -10868,7 +10876,7 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;&lt;clock analog&gt;&gt;&lt;br&gt;&lt;&lt;clock digital&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20200725211229080" modified="20200815053424258" tags="" title="TiddlyTools/Timer/CountDown">
+<div created="20200725211229080" modified="20200821211708463" tags="" title="TiddlyTools/Timer/CountDown">
 <pre>\define temp() $:/temp/timer/countdown/$(here)$
 
 \define default_done() &lt;$macrocall $name=&quot;showMessage&quot; msg={{!!msg}} /&gt;
@@ -10978,7 +10986,7 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200815053744273" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200821211755569" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11199,7 +11207,7 @@ set ~AutoSaver interval:&lt;br&gt;
 ''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates from [[TiddlyTools/Timer/Ticker]].''
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20200808204411274" modified="20200815053718457" tags="" title="TiddlyTools/Timer/Places" type="text/plain">
+<div created="20200808204411274" modified="20200821211737595" tags="" title="TiddlyTools/Timer/Places" type="text/plain">
 <pre>local time;
 Honolulu;    -10:00
 Los Angeles; -07:00
@@ -11213,10 +11221,10 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200815053736807" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200821211750439" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
-<div created="20200723044003911" modified="20200814115818884" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClocks">
+<div created="20200723044003911" modified="20200821211656607" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClocks">
 <pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClocks&quot;&gt;
 &lt;$vars sidebar_analog={{{       [[TiddlyTools/Timer/Setup]get[sidebar_analog]]       ~[[yes]] }}}
        sidebar_analog_size={{{  [[TiddlyTools/Timer/Setup]get[sidebar_analog_size]]  ~[[100]] }}}
@@ -11236,7 +11244,7 @@ Sydney;      +10:00</pre>
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20200814085053745" modified="20200815053728329" tags="$:/tags/StartupAction" title="TiddlyTools/Timer/Ticker">
+<div created="20200814085053745" modified="20200821211743203" tags="$:/tags/StartupAction" title="TiddlyTools/Timer/Ticker">
 <pre>\define ticker(delay:1000)
 &lt;$action-timeout delay=&quot;$delay$&quot; actions=&quot;&quot;&quot;
    &lt;$action-setfield $tiddler=&quot;$:/temp/timer/ticker&quot; text=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
@@ -11250,7 +11258,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;&lt;ticker&gt;&gt;</pre>
 </div>
-<div created="20200808175138605" modified="20200814115827119" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -07:00]] [[New York;    -04:00]] [[London;      +01:00]] [[Rome;        +02:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:30]] [[Adelaide;    +09:30]] [[Sydney;      +10:00]]" tags="" title="TiddlyTools/Timer/WorldClocks">
+<div created="20200808175138605" modified="20200821211702709" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -07:00]] [[New York;    -04:00]] [[London;      +01:00]] [[Rome;        +02:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:30]] [[Adelaide;    +09:30]] [[Sydney;      +10:00]]" tags="" title="TiddlyTools/Timer/WorldClocks">
 <pre>\define showClock(place,offset)
 ''$place$''
 &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt;
