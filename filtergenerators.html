@@ -9629,7 +9629,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20200823082003625" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20200823082729174" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9645,19 +9645,19 @@ TiddlyTools/FilterGenerators/Tags
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;http://tiddlytools.com/filtergenerators.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;tiddlytools.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;tiddlytools.com&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;http:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -9665,7 +9665,7 @@ TiddlyTools/FilterGenerators/Tags
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/filtergenerators.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/filtergenerators.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9673,7 +9673,7 @@ TiddlyTools/FilterGenerators/Tags
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;http://tiddlytools.com&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -10206,7 +10206,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20200415141635753" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20200823082959247" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10224,9 +10224,9 @@ __find titles containing__:&lt;br&gt;
           goto:&quot;no&quot;)
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$; &quot;&gt;
 &lt;style&gt;
-   .editCombo_$id$   { position:absolute; width:calc(100% - 1.25em) !important; height:1.5em; margin-top:0.1em; }
-   .selectCombo_$id$ { position:absolute; width:100%                !important; height:1.5em; margin-top:0.1em; }
-   .selectPopup_$id$ { position:absolute; width:$listwidth$         !important; z-index:1;    margin-top:1.6em; }
+   input.editCombo_$id$    { position:absolute; width:calc(100% - 1.25em) !important; height:1.5em; margin-top:0.1em; }
+   select.selectCombo_$id$ { position:absolute; width:100%                !important; height:1.5em; margin-top:0.1em; }
+   select.selectPopup_$id$ { position:absolute; width:$listwidth$         !important; z-index:1;    margin-top:1.6em; }
 &lt;/style&gt;
 &lt;$set name=&quot;goto&quot; filter=&quot;[title[$goto$]!match[no]]&quot; value=&quot;&lt;$action-navigate $to={{$tiddler$!!$field$}}/&gt;&quot; emptyValue=&quot;&quot;&gt;
 &lt;$select class=&quot;selectCombo_$id$&quot;
@@ -10271,7 +10271,37 @@ __find titles containing__:&lt;br&gt;
 &lt;/$reveal&gt;
 &lt;/$set&gt;
 &lt;/div&gt;
-\end</pre>
+\end
+
+|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
+|  source|''http://TiddlyTools.com/edit-list.html''|
+| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
+
+!Introduction
+
+The edit-list macro provides a user interface in the browser that combines the features of a text input (``&lt;$edit-text&gt;`` widget) and a &quot;drop-down&quot; selection list (``&lt;$select&gt;`` widget).  This allows you to enter custom text value or select from pre-defined values that are determined by a specified filter.  The list contents can be automatically &quot;pruned&quot; to only show the subset of items that contain the current text input.
+
+!Parameters
+
+|Parameter |Description|h
+|id          |Specifies a unique ID for the combined controls.  This is only needed when more than one ``&lt;&lt;edit-list&gt;&gt;`` macro is used in the same tiddler|
+|tiddler     |The tiddler in which to save the input (defaults to the current tiddler)|
+|field       |The field in which to save the input (defaults to ``text``).  Takes precedence over the ``index`` parameter|
+|index       |The index in which to save the input|
+|filter      |A filter used to determine the contents of the selection list|
+|width       ||
+|listwidth   ||
+|listlength  ||
+|listview    ||
+|tooltip     ||
+|placeholder |Placeholder text to display when the input is empty|
+|focus       |Set to &quot;yes&quot; or &quot;true&quot; to automatically focus the input after creation|
+|focusPopup  |Set to &quot;yes&quot; or &quot;true&quot; to automatically show the select list when the input gets focus|
+|goto        |If set to &quot;yes&quot; or &quot;true&quot;, then pressing &lt;kbd&gt;enter&lt;/kbd&gt; will view/navigate to a tiddler whose title matches the current input|
+
+!Examples
+
+!Notes</pre>
 </div>
 
 
