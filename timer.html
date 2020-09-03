@@ -247,7 +247,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200903194842371" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200903203543851" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9665,7 +9665,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200903194825476" list="TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200903194825476" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200902215942342" modified="20200903062723866" title="$:/temp/advancedsearch">
@@ -9779,8 +9779,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200903194842016" title="$:/temp/timer/ticker">
-<pre>20200903195959059</pre>
+<div created="20200814092733654" modified="20200903203543045" title="$:/temp/timer/ticker">
+<pre>20200903205322076</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10892,8 +10892,25 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
 &lt;style&gt; .calendarEdit { width:4em; text-align:center; } &lt;/style&gt;
 Year:
+&lt;$button tooltip=&quot;view previous year&quot;&gt;
+   {{$:/core/images/chevron-left}}
+   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+&lt;/$button&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
+&lt;$button tooltip=&quot;view next year&quot;&gt;
+   {{$:/core/images/chevron-right}}
+   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+&lt;/$button&gt;
 Month:
+&lt;$button tooltip=&quot;view previous month&quot;&gt;
+   {{$:/core/images/chevron-left}}
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;01&quot;&gt;
+      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;01&quot;&gt;
+      &lt;$action-setfield month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
 &lt;$select field=&quot;month&quot; default=&quot;&quot;&gt;
    &lt;$list filter=&quot;[range[1,12]]&quot;&gt;
       &lt;option value={{{ [&lt;currentTiddler&gt;addprefix[0]split[]last[2]join[]] }}}&gt;
@@ -10901,6 +10918,15 @@ Month:
       &lt;/option&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
+&lt;$button tooltip=&quot;view next month&quot;&gt;
+   {{$:/core/images/chevron-right}}
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
+      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;12&quot;&gt;
+      &lt;$action-setfield month=&quot;01&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
 &lt;/$tiddler&gt;
 &lt;$button tooltip=&quot;reset&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;calendar_input&gt;&gt; /&gt;
