@@ -249,7 +249,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200904080258206" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200904131609495" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9671,7 +9671,7 @@ SampleSequence</pre>
 <pre></pre>
 </div>
 <div created="20200902215942342" modified="20200903062723866" title="$:/temp/advancedsearch">
-<pre>timeline</pre>
+<pre>stylesheet</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9781,8 +9781,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200904080405023" title="$:/temp/timer/ticker">
-<pre>20200904080405023</pre>
+<div created="20200814092733654" modified="20200904132258024" title="$:/temp/timer/ticker">
+<pre>20200904132258024</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10866,19 +10866,26 @@ set ~AutoSaver interval:&lt;br&gt;
 \whitespace trim
 &lt;$vars journalTitleTemplate={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
 &lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;today&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitleTemplate&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
-&lt;$set name=&quot;bg&quot; filter=&quot;[!prefix[$:/]sameday&lt;today&gt;]&quot; value=&quot;#eef&quot; emptyValue=&quot;white&quot;&gt;
+&lt;$set name=&quot;bg&quot; filter=&quot;[!prefix[$:/]sameday&lt;today&gt;] [&lt;journalTitle&gt;is[tiddler]]&quot; value=&quot;#eef&quot; emptyValue=&quot;white&quot;&gt;
 &lt;$vars bstyle={{{ [[width:$size$;height:$size$;border:1px solid;background:]addsuffix&lt;bg&gt;addsuffix[;]] }}}&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;bstyle&gt;&gt; popup=&lt;&lt;qualify $(calendar_popup)$&gt;&gt;&gt; &lt;&lt;dd&gt;&gt; &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;min-width:auto;padding:1em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
-   &lt;&lt;editjournal&gt;&gt;
-   &lt;$list filter=&quot;[!prefix[$:/]sameday&lt;today&gt;!sort[modified]]&quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;min-width:auto;padding:0.5em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
+   &lt;&lt;viewjournal&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;nbsp;
+   &lt;$list filter=&quot;[!prefix[$:/]!title&lt;journalTitle&gt;sameday&lt;today&gt;!sort[modified]]&quot;&gt;
+      &lt;$link tooltip=&quot;view tiddler&quot;/&gt;
+   &lt;/$list&gt;
 &lt;/$reveal&gt;
 \end
 
+\define viewjournal()
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:left;padding:0;width:auto;&quot; to=&lt;&lt;journalTitle&gt;&gt; tooltip=&quot;view Journal&quot;&gt;
+   ''__&lt;&lt;journalTitle&gt;&gt;__''
+&lt;/$button&gt; 
+\end
+
 \define editjournal()
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;padding:0;&quot; tooltip=&quot;edit Journal&quot;&gt;
-   &lt;$button style=&quot;float:right;padding:0 0.5em;width:auto;&quot;&gt;{{$:/core/images/edit-button}}&lt;/$button&gt;
-   ''&lt;&lt;journalTitle&gt;&gt;'' &amp;nbsp; 
+&lt;$button style=&quot;float:right;padding:0 0.5em;width:auto;&quot; tooltip=&quot;edit Journal&quot;&gt;
+   {{$:/core/images/edit-button}}
    &lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
       &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text={{{ [&lt;journalTitle&gt;get[]] }}}/&gt;
    &lt;/$reveal&gt;
@@ -11322,9 +11329,9 @@ Month:
 * Enter a year number or select a month to change the view.  Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view.
 * Click on a month title to toggle between annual and single-month view.  
 * Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates on which tiddlers were modified are colored light blue.
+* Dates on which tiddlers were modified and dates which have a Journal tiddler are colored light blue.
 * Click a date to show a popup with links to tiddlers modified on that date.
-* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create/edit a &lt;&lt;tag Journal&gt;&gt;tiddler for that date.
+* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create or edit a &lt;&lt;tag Journal&gt;&gt;tiddler for that date.
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/SidebarCalendar]]
@@ -11334,7 +11341,7 @@ Month:
 
 @@.resize
 * Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates on which tiddlers were modified are colored light blue.
+* Dates on which tiddlers were modified and dates which have a Journal tiddler are colored light blue.
 * Click a date to show a popup with links to tiddlers modified on that date.
 * Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create/edit a &lt;&lt;tag Journal&gt;&gt;tiddler for that date.
 @@
