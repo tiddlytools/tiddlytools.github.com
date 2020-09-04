@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/temp/search</li>
 
+<li>$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar</li>
+
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
 <li>$:/temp/timer/ticker</li>
@@ -221,6 +223,8 @@ Error message and password prompt
 
 <li>TiddlyTools/Timer/Setup</li>
 
+<li>TiddlyTools/Timer/SidebarCalendar</li>
+
 <li>TiddlyTools/Timer/SidebarClocks</li>
 
 <li>TiddlyTools/Timer/Ticker</li>
@@ -247,7 +251,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200903203543851" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200904051730370" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9633,7 +9637,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/Calendar]]</pre>
+# [[TiddlyTools/Timer/SidebarCalendar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9659,7 +9663,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200621214946432" modified="20200903144906676" title="$:/state/tab/sidebar--595412856">
+<div created="20200621214946432" modified="20200904045205457" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9732,6 +9736,9 @@ SampleSequence</pre>
 <div created="20200902212958078" modified="20200902215942342" title="$:/temp/search">
 <pre></pre>
 </div>
+<div month="09" title="$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar" year="2020">
+<pre></pre>
+</div>
 <div done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9779,8 +9786,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre>3600</pre>
 </div>
-<div created="20200814092733654" modified="20200903203543045" title="$:/temp/timer/ticker">
-<pre>20200903205322076</pre>
+<div created="20200814092733654" modified="20200904051730030" title="$:/temp/timer/ticker">
+<pre>20200904051947040</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10756,8 +10763,8 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
 <div created="20200902213051882" modified="20200903131750586" tags="" title="TiddlyTools/Timer/Calendar">
-<pre>\define calendar_input() $:/temp/timer/calendar_input/$(currentTiddler)$
-\define calendar_popup() $:/temp/timer/calendar_day/$(today)$/$(currentTiddler)$
+<pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
+\define calendar_popup() $:/temp/timer/calendar/$(currentTiddler)$/$(today)$
 
 \define showyear(yyyy)
 &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;month&quot;&gt;
@@ -10861,12 +10868,12 @@ set ~AutoSaver interval:&lt;br&gt;
 
 \define showday(size)
 \whitespace trim
+&lt;$vars journalTitleTemplate={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
+&lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;today&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitleTemplate&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$set name=&quot;bg&quot; filter=&quot;[!prefix[$:/]sameday&lt;today&gt;]&quot; value=&quot;#eef&quot; emptyValue=&quot;white&quot;&gt;
 &lt;$vars bstyle={{{ [[width:$size$;height:$size$;border:1px solid;background:]addsuffix&lt;bg&gt;addsuffix[;]] }}}&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;bstyle&gt;&gt; popup=&lt;&lt;qualify $(calendar_popup)$&gt;&gt;&gt;
-   &lt;&lt;dd&gt;&gt;
-&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;min-width:auto;padding:1em;&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;bstyle&gt;&gt; popup=&lt;&lt;qualify $(calendar_popup)$&gt;&gt;&gt; &lt;&lt;dd&gt;&gt; &lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;min-width:auto;padding:1em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
    &lt;&lt;editjournal&gt;&gt;
    &lt;$list filter=&quot;[!prefix[$:/]sameday&lt;today&gt;!sort[modified]]&quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
 &lt;/$reveal&gt;
@@ -10874,8 +10881,6 @@ set ~AutoSaver interval:&lt;br&gt;
 
 \define editjournal()
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;padding:0;&quot; tooltip=&quot;edit Journal tiddler&quot;&gt;
-   &lt;$vars journalTitleTemplate={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
-   &lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;today&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitleTemplate&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
    ''&lt;&lt;journalTitle&gt;&gt;'' &amp;nbsp; {{$:/core/images/edit-button}}
    &lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
       &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text={{{ [&lt;journalTitle&gt;get[]] }}}/&gt;
@@ -10883,8 +10888,6 @@ set ~AutoSaver interval:&lt;br&gt;
    &lt;$reveal type=&quot;match&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
       &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text=&lt;&lt;journalText&gt;&gt;/&gt;
    &lt;/$reveal&gt;
-   &lt;/$wikify&gt;
-   &lt;/$vars&gt;
 &lt;/$button&gt;
 \end
 
@@ -10892,18 +10895,15 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
 &lt;style&gt; .calendarEdit { width:4em; text-align:center; } &lt;/style&gt;
 Year:
-&lt;$button tooltip=&quot;view previous year&quot;&gt;
-   {{$:/core/images/chevron-left}}
+&lt;$button tooltip=&quot;view previous year&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
 &lt;/$button&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
-&lt;$button tooltip=&quot;view next year&quot;&gt;
-   {{$:/core/images/chevron-right}}
+&lt;$button tooltip=&quot;view next year&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
 &lt;/$button&gt;
 Month:
-&lt;$button tooltip=&quot;view previous month&quot;&gt;
-   {{$:/core/images/chevron-left}}
+&lt;$button tooltip=&quot;view previous month&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;01&quot;&gt;
       &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
@@ -10918,8 +10918,7 @@ Month:
       &lt;/option&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
-&lt;$button tooltip=&quot;view next month&quot;&gt;
-   {{$:/core/images/chevron-right}}
+&lt;$button tooltip=&quot;view next month&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
       &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
@@ -11322,13 +11321,19 @@ Month:
 ''Displays a yearly or monthly calendar with popups that show links to tiddlers''
 
 @@.resize
-* The default calendar displays the current year.  Enter a year number or select a month to change the view.
+* By default, the calendar displays the current year.
+* Enter a year number or select a month to change the view.
+* Click on a month title to toggle between annual and single-month view.  
 * Dates on which tiddlers were modified are colored light blue.
-* Click a date to show a popup list of links to tiddlers modified on that date.
-* Click the popup date heading to create/edit a Journal tiddler for that date.
-* Click a month title to toggle between annual and single-month view.  
-* When viewing a single month, press {{$:/core/images/chevron-left}} to view the previous month.  Press {{$:/core/images/chevron-right}} to view the next month.
+* Click a date to show a popup with links to tiddlers modified on that date.
+* Press {{$:/core/images/edit-button}} next to the popup date heading to create/edit a Journal tiddler for that date.
+* Press {{$:/core/images/chevron-left}} to view the previous month.  Press {{$:/core/images/chevron-right}} to view the next month.
 @@
+&lt;&lt;&lt;
+!! [[TiddlyTools/Timer/SidebarCalendar]]
+&lt;&lt;&lt;
+''Displays a monthly calendar in the ~SideBar tabs.''
+&lt;br&gt;Requires: [[TiddlyTools/Timer/Calendar]]
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Clocks]]
 &lt;&lt;&lt;
@@ -11437,6 +11442,15 @@ Sydney;      +10:00</pre>
 </div>
 <div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200903131819845" sidebar_analog="yes" sidebar_analog_size="80" sidebar_digital="yes" sidebar_digital_size="80" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
+</div>
+<div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200903131719000" tags="$:/tags/SideBar" title="TiddlyTools/Timer/SidebarCalendar">
+<pre>\import TiddlyTools/Timer/Calendar
+&lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
+&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarCalendar&quot;&gt; &lt;!-- needed for SideBar --&gt;
+&lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+&lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;belowleft&quot;&gt;
+@@font-size:0.85em; &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;@@
+</pre>
 </div>
 <div created="20200723044003911" modified="20200903131719876" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClocks">
 <pre>&lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarClocks&quot;&gt;
