@@ -9637,7 +9637,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200904223127645" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200905020844304" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9704,7 +9704,7 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
-<div done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
+<div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
        saveM={{{ [[TiddlyTools/Timer/Setup]get[autosave_mins]]  ~[[&lt;saveM&gt;]] }}}
@@ -9748,11 +9748,11 @@ SampleSequence</pre>
    /&gt;
    &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param={{{ [&lt;temp&gt;addsuffix[/ask]] }}} /&gt;
 &lt;/$reveal&gt;
-&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" go="" hours="01" mins="00" secs="00" title="$:/temp/timer/countdown/AutoSaver">
-<pre>3600</pre>
+&lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
+<pre></pre>
 </div>
-<div created="20200814092733654" modified="20200904223248059" title="$:/temp/timer/ticker">
-<pre>20200904223248059</pre>
+<div created="20200814092733654" modified="20200905020851074" title="$:/temp/timer/ticker">
+<pre>20200905020851074</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10727,7 +10727,7 @@ set ~AutoSaver interval:&lt;br&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200904222606655" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200905020650254" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/temp/timer/calendar/$(currentTiddler)$/$(today)$
 
@@ -10786,13 +10786,10 @@ set ~AutoSaver interval:&lt;br&gt;
 \whitespace trim
 &lt;$button style=&quot;float:left;&quot; tooltip=&quot;view previous month&quot;&gt;
    {{$:/core/images/chevron-left}}
-   &lt;$reveal default=&quot;$mm$&quot; type=&quot;gt&quot; text=&quot;01&quot;&gt;
-      &lt;$action-setfield month={{{ [[$mm$]subtract[1]addprefix[0]split[]last[2]join[]] }}} year=&quot;$yyyy$&quot; /&gt;
+   &lt;$reveal default=&quot;$mm$&quot; type=&quot;gt&quot; text=&quot;1&quot;&gt;
+      &lt;$action-setfield month={{{ [[$mm$]subtract[1]] }}} year=&quot;$yyyy$&quot; /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month=&quot;12&quot; year={{{ [[$yyyy$]subtract[1]] }}}/&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;01&quot;&gt;
       &lt;$action-setfield month=&quot;12&quot; year={{{ [[$yyyy$]subtract[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
@@ -10803,10 +10800,10 @@ set ~AutoSaver interval:&lt;br&gt;
 &lt;$button style=&quot;float:right;&quot; tooltip=&quot;view next month&quot;&gt;
    {{$:/core/images/chevron-right}}
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;lt&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month={{{ [[$mm$]add[1]addprefix[0]split[]last[2]join[]] }}} year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-setfield month={{{ [[$mm$]add[1]] }}} year=&quot;$yyyy$&quot; /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month=&quot;01&quot; year={{{ [[$yyyy$]add[1]] }}}/&gt;
+      &lt;$action-setfield month=&quot;1&quot; year={{{ [[$yyyy$]add[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 \end
@@ -10815,13 +10812,13 @@ set ~AutoSaver interval:&lt;br&gt;
 \whitespace trim
 &lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view this month&quot;&gt;
-      ''&lt;$text text={{{ [[$mm$]removeprefix[0]else[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
-      &lt;$action-setfield month={{{ [[$mm$]addprefix[0]split[]last[2]join[]] }}} year=&quot;$yyyy$&quot; /&gt;
+      ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
+      &lt;$action-setfield month={{{ [[$mm$]] }}} year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
-      ''&lt;$text text={{{ [[$mm$]removeprefix[0]else[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
+      ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
       &lt;$action-setfield month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
@@ -10890,26 +10887,26 @@ Year:
 &lt;/$button&gt;
 Month:
 &lt;$button tooltip=&quot;view previous month&quot;&gt; {{$:/core/images/chevron-left}}
-   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;01&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;1&quot;&gt;
+      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
-   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;01&quot;&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;1&quot;&gt;
       &lt;$action-setfield month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$select field=&quot;month&quot; default=&quot;&quot;&gt;
    &lt;$list filter=&quot;[range[1,12]]&quot;&gt;
-      &lt;option value={{{ [&lt;currentTiddler&gt;addprefix[0]split[]last[2]join[]] }}}&gt;
+      &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;
          {{{ [&lt;currentTiddler&gt;addprefix[$:/language/Date/Long/Month/]get[text]] }}}
       &lt;/option&gt;
    &lt;/$list&gt;
 &lt;/$select&gt;
 &lt;$button tooltip=&quot;view next month&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]addprefix[0]split[]last[2]join[]] }}} year={{!!year}} /&gt;
+      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month=&quot;01&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+      &lt;$action-setfield month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;/$tiddler&gt;
@@ -11177,7 +11174,7 @@ Month:
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200904222459943" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200905020809577" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11454,7 +11451,7 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_foreground="white" calendar_highlight="lightblue" calendar_numbers="color:black;font-size:1.5em;" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200904210838237" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_foreground="white" calendar_highlight="lightblue" calendar_numbers="color:black;font-size:1.5em;" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200905020803534" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200904182650164" tags="$:/tags/SideBar" title="TiddlyTools/Timer/SidebarCalendar">
