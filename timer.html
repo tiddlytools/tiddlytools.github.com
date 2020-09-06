@@ -9696,11 +9696,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9756,8 +9756,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200905201112075" title="$:/temp/timer/ticker">
-<pre>20200905201112074</pre>
+<div created="20200814092733654" modified="20200906051354050" title="$:/temp/timer/ticker">
+<pre>20200906051354050</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10732,7 +10732,7 @@ set ~AutoSaver interval:&lt;br&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200905200828158" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200906051154687" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10750,8 +10750,10 @@ set ~AutoSaver interval:&lt;br&gt;
     background={{{ [[TiddlyTools/Timer/Setup]get[calendar_background]] ~[[lightgray]] }}}
     foreground={{{ [[TiddlyTools/Timer/Setup]get[calendar_foreground]] ~[[white]]     }}}
      highlight={{{ [[TiddlyTools/Timer/Setup]get[calendar_highlight]]  ~[[lightblue]] }}}&gt;
+@@white-space:nowrap;
 &lt;&lt;showheading &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;&gt;&gt;
 &lt;&lt;showgrid    &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+@@
 \end
 
 \define showheading(yyyy,mm,view)
@@ -10825,7 +10827,7 @@ set ~AutoSaver interval:&lt;br&gt;
    value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt;
 &lt;$vars dm={{{ [&lt;dpm&gt;split[ ]nth[$mm$]] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;!-- grid --&gt;
-&lt;div style={{{ [[display:inline-block;white-space:nowrap;border:1px solid;background:]addsuffix&lt;background&gt;addsuffix[;]] }}}&gt;
+&lt;div style={{{ [[display:inline-block;border:1px solid;background:]addsuffix&lt;background&gt;addsuffix[;]] }}}&gt;
 &lt;$list filter=&quot;[range&lt;first&gt;]&quot;&gt; &lt;!-- SPACER --&gt;
    &lt;div style=&quot;display:inline-block;width:3em;height:1px;&quot;&gt;&lt;/div&gt;
 &lt;/$list&gt;
@@ -11473,16 +11475,16 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_foreground="white" calendar_highlight="lightblue" calendar_numbers="color:black;font-size:1.5em;" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200905190923959" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_foreground="white" calendar_highlight="lightblue" calendar_numbers="color:black;font-size:1.5em;" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200906051313595" sidebar_analog="yes" sidebar_analog_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Timer/Setup" world_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
-<div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200904182650164" tags="$:/tags/SideBar" title="TiddlyTools/Timer/SidebarCalendar">
+<div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200906051046363" tags="$:/tags/SideBar" title="TiddlyTools/Timer/SidebarCalendar">
 <pre>\import TiddlyTools/Timer/Calendar
 &lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
 &lt;$tiddler tiddler=&quot;TiddlyTools/Timer/SidebarCalendar&quot;&gt; &lt;!-- needed for SideBar --&gt;
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
 &lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;belowleft&quot;&gt;
-@@font-size:1.00em; &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;@@
+@@font-size:0.95em; &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;@@
 </pre>
 </div>
 <div created="20200723044003911" modified="20200903131719876" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/SidebarClocks">
