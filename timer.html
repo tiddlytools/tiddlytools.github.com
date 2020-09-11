@@ -9670,7 +9670,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9690,7 +9690,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9718,7 +9718,7 @@ SampleSequence</pre>
 <div created="20200911051849618" modified="20200911051851958" month="" title="$:/temp/timer/calendar/TiddlyTools/Timer/Calendar" year="2020">
 <pre></pre>
 </div>
-<div created="20200911054712419" modified="20200911065331620" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar" year="2020">
+<div created="20200911054712419" modified="20200911130923517" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar" year="2020">
 <pre></pre>
 </div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
@@ -9768,8 +9768,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200911065457096" title="$:/temp/timer/ticker">
-<pre>20200911065457095</pre>
+<div created="20200814092733654" modified="20200911130938021" title="$:/temp/timer/ticker">
+<pre>20200911130938021</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11237,7 +11237,7 @@ Month:
 20211231;New Year's Eve
 20220101;New Year's Day</pre>
 </div>
-<div created="20200711063502632" modified="20200911065312518" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200911130840510" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11379,10 +11379,11 @@ Month:
 * Enter a year number or select a month to change the view.  Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view.
 * Click on a month title to toggle between annual and single-month view.  
 * Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates that have a scheduled event (see [[TiddlyTools/Timer/Events]]) are underlined.
-* Dates on which tiddlers were created/modified or have a Journal tiddler or a scheduled event are colored light blue.
-* Click a date to show a popup with links to tiddlers created or modified on that date.
+* Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
+* Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
+* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
 * Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create or edit a Journal tiddler for that date.
+* Click the popup's heading date to view a Journal tiddler for that date.
 * You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]] below).
 @@
 &lt;&lt;&lt;
@@ -11394,10 +11395,11 @@ Month:
 
 @@.resize
 * Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates that have a scheduled event (see [[TiddlyTools/Timer/Events]]) are underlined.
-* Dates on which tiddlers were created/modified or have a Journal tiddler or a scheduled event are colored light blue.
-* Click a date to show a popup with links to tiddlers created or modified on that date.
+* Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
+* Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
+* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
 * Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create or edit a Journal tiddler for that date.
+* Click the popup's heading date to view a Journal tiddler for that date.
 * You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]] below).
 * You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
 @@
@@ -11407,7 +11409,8 @@ Month:
 ''Defines a set of events used by: [[TiddlyTools/Timer/Calendar]] and [[TiddlyTools/Timer/SidebarCalendar]]''
 
 * To add new events, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
-* List event dates and descriptions, one date and description per line.  Separate the event date and the event description using a semi-colon (;).
+* List event dates and descriptions, one date and description per line.
+* Separate the event date and the event description using a semi-colon (;).
 * Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include a leading zero for single-digit months and days.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Clocks]]
@@ -11449,7 +11452,7 @@ Month:
 
 * To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Timer/WorldClocks]].
 * Enter place names and timezone offsets, one place name and timezone offset per line.
-* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; is ignored.
+* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; are ignored.
 * Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
 * To use the current local timezone (from your computer's system settings), omit the timezone offset.
 &lt;&lt;&lt;
