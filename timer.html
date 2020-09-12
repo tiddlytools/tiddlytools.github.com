@@ -171,12 +171,6 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/timer/alarms_msg/17:00:00</li>
-
-<li>$:/temp/timer/calendar/TiddlyTools/Timer/Calendar</li>
-
-<li>$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar</li>
-
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
 <li>$:/temp/timer/ticker</li>
@@ -188,8 +182,6 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
-
-<li>Draft of 'TiddlyTools/Timer/Info'</li>
 
 <li>SampleAlarms</li>
 
@@ -9652,13 +9644,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200911052358252" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200912023213757" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Draft of 'TiddlyTools/Timer/Info']] SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9719,23 +9711,6 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
-<div created="20200912000000284" footer="
-      &lt;$button message=&quot;tm-close-tiddler&quot;&gt; close
-         &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/alarms_msg/17:00:00&quot; /&gt;
-      &lt;/$button&gt;
-   " modified="20200912000000284" subtitle="&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;" title="$:/temp/timer/alarms_msg/17:00:00">
-<pre>      @@font-size:2em;
-      &lt;$reveal default=&quot;Weekend starts...  YAY!&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;Weekend starts...  YAY!&lt;/$reveal&gt;
-      &lt;$reveal default=&quot;Weekend starts...  YAY!&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;BEEP! BEEP! BEEP!&lt;/$reveal&gt;
-      @@
-   </pre>
-</div>
-<div created="20200911051849618" modified="20200912000354297" month="" title="$:/temp/timer/calendar/TiddlyTools/Timer/Calendar" year="2021">
-<pre></pre>
-</div>
-<div created="20200911054712419" modified="20200911235743267" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/SidebarCalendar" year="2020">
-<pre></pre>
-</div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9783,8 +9758,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200912021358033" title="$:/temp/timer/ticker">
-<pre>20200912021358033</pre>
+<div created="20200814092733654" modified="20200912023253025" title="$:/temp/timer/ticker">
+<pre>20200912023253025</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9900,286 +9875,6 @@ SampleSequence</pre>
 </div>
 <div created="20200712173637542" modified="20200712173638790" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
-</div>
-<div created="20200711063502632" draft.of="TiddlyTools/Timer/Info" draft.title="TiddlyTools/Timer/Info" modified="20200912021335903" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="Draft of 'TiddlyTools/Timer/Info'">
-<pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
-&lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
-&lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
-\end
-
-\define checkboxSetup(field,default,checked,unchecked,label)
-&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; checked=&quot;$checked$&quot; unchecked=&quot;$unchecked$&quot;&gt; $label$ &lt;/$checkbox&gt;
-\end
-
-\define rangeSetup(field,min,max,step,default)
-&lt;$range tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; min=&quot;$min$&quot; max=&quot;$max$&quot; increment=&quot;$step$&quot; default=&quot;$default$&quot; /&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;reset to $default$%&quot;&gt; {{TiddlyTools/Timer/Setup!!$field$}}%
-   &lt;$action-setfield $tiddler=&quot;TiddlyTools/Timer/Setup&quot; $field$=&quot;$default$&quot; /&gt;
-&lt;/$button&gt;
-\end
-
-\define note(text) @@font-size:80%;$text$@@
-
-&lt;style&gt;
-   .resize svg   { height:1em; width:1em; }
-   .nobullets    { list-style-type:none;  }
-   .nobullets li { list-style-type:none;  }
-   .borderless table, .borderless tr, .borderless td { border:0; margin:0; padding:0 1em 0 0; white-space:nowrap; line-height:100%; }
-&lt;/style&gt;
-
-|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
-|  source|''http://TiddlyTools.com/timer.html''|
-| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
-
-''This package contains &lt;$text text={{{ [prefix[TiddlyTools/Timer]!suffix[/Info]count[]] }}}/&gt; tiddlers'' (excluding this documentation and sample content).
-
-!! [[TiddlyTools/Timer]]
-&lt;&lt;&lt;
-''Defines macros to control a task timer and display the results.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-&lt;br&gt;Examples: [[SampleTimer]]
-
-``&lt;&lt;timer&gt;&gt;`` or ``&lt;&lt;timer taskname&gt;&gt;``&lt;br&gt;
-''Shows timer buttons, elapsed time, total accumulated time, summary table, and history table''
-
-* To track activities, create a tiddler containing the above macro.
-* If you omit the taskname, the recorded times are stored in the current tiddler.
-* If you specify a taskname, the recorded times are stored in a separate tiddler with that taskname.
-* You can also use the following macros to create custom output showing only specific interface elements.
-
-``&lt;&lt;timer_buttons&gt;&gt;`` or ``&lt;&lt;timer_buttons taskname&gt;&gt;``&lt;br&gt;
-''Shows start/stop and reset buttons.''
-
-* The &lt;$button&gt;start&lt;/$button&gt; button begins a &quot;task session&quot; and stores the starting time.  The button changes to &lt;$button&gt;stop&lt;/$button&gt;.
-* The &lt;$button&gt;stop&lt;/$button&gt; button ends the current task session and stores the ending time and the elapsed time.  The button changes back to &lt;$button&gt;start&lt;/$button&gt; so you can begin another task session.
-* Each time you stop the timer, it will also add the elapsed time to the total accumulated time.
-* The &lt;$button&gt;reset&lt;/$button&gt; button clears all stored task session data, including starting/ending times, elapsed time, and total accumulated time.
-
-``&lt;&lt;timer_elapsed&gt;&gt;`` or ``&lt;&lt;timer_elapsed taskname&gt;&gt;``&lt;br&gt;
-''Shows the elapsed time for the current task session.''&lt;br&gt;
-
-* When no task sessions have occurred, there is no output.
-* When a task session has been started, the elapsed time is automatically updated in real-time.
-* When a task session has ended, the final elapsed time is displayed.
-
-``&lt;&lt;timer_total&gt;&gt;`` or ``&lt;&lt;timer_total taskname&gt;&gt;``&lt;br&gt;
-''Shows the total accumulated time for all task sessions.''&lt;br&gt;
-
-* When no task sessions have ended, there is no output.
-
-``&lt;&lt;timer_summary&gt;&gt;`` or ``&lt;&lt;timer_summary taskname&gt;&gt;``&lt;br&gt;
-''Shows a table with the starting, ending, and elapsed times for the most recent task session, as well as the total accumulated time.''
-
-``&lt;&lt;timer_history&gt;&gt;`` or ``&lt;&lt;timer_history taskname&gt;&gt;``&lt;br&gt;
-''Shows a table with the history of all individual task sessions, including the starting, ending, elapsed time and total accumulated time.''
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/CountDown]]
-&lt;&lt;&lt;
-''Displays a countdown timer.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Examples: [[SampleCountdown]], [[SampleSequence]]
-
-* To embed the countdown timer in another tiddler, use transclusion ``{{||TiddlyTools/Timer/CountDown}}``
-* Enter hours, minutes, seconds, and a brief message to be displayed when the countdown is completed.
-* The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
-* The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
-* While paused, you can change the time remaining.  Press &lt;$button&gt;start&lt;/$button&gt; to apply the changes and continue the countdown.
-* The &lt;$button&gt;reset&lt;/$button&gt; button clears the countdown time and message text.
-
-''To define __custom actions__ to be performed when the countdown is completed:''
-
-* Add a macro named ``done`` in the tiddler containing your countdown timer. This macro replaces the standard message box.
-* Enter the desired ``&lt;$action-... /&gt;`` widget syntax inside the macro definition.
-* Use ``$(here)$`` to refer to the title of tiddler containing your countdown timer.
-* To display the standard message box, use ``&lt;&lt;showMessage msg:&quot;your message here&quot;&gt;&gt;``
-* See &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;SampleCountdown&quot;&gt;~SampleCountdown&lt;/$button&gt; for an example.
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/AutoSaver]]
-&lt;&lt;&lt;
-@@.resize
-''Displays a countdown timer in the ~SideBar that triggers a periodic &quot;file save&quot; action.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/CountDown]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-
-* The &lt;$button&gt;start&lt;/$button&gt; button begins the countdown.  The input fields automatically update to show the time remaining.
-* The &lt;$button&gt;pause&lt;/$button&gt; button stops the countdown.  Press &lt;$button&gt;resume&lt;/$button&gt; to continue the countdown.
-* While paused, you can change the time remaining in the __current__ countdown.  Press &lt;$button&gt;start&lt;/$button&gt; to apply the changes and continue the countdown.
-* The &lt;$button&gt;stop&lt;/$button&gt; button stops the countdown and resets the time to use the configured ~AutoSaver interval.
-* When the countdown reaches zero, a &quot;save file&quot; action is triggered.  The specific behavior depends upon which saver method you are using.
-* You will be asked to confirm before the file is saved.  You can change this option in the settings.
-* When the file has been saved, a message will appear below the ~AutoSaver.  You can clear this message by clicking on it.
-* Press {{$:/core/images/options-button}} to change the ~AutoSaver interval and/or the &quot;confirm before saving&quot; option.
-* Press &lt;$button&gt;apply&lt;/$button&gt; to use the new ~AutoSaver interval.  Press &lt;$button&gt;reset&lt;/$button&gt; to restore &quot;factory settings&quot; (1 hour)
-* You can re-arrange the placement of the ~AutoSaver by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Alarms]]
-&lt;&lt;&lt;
-@@.resize
-''Create and manage a list of one-time and/or repeating alarms.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Examples: [[SampleAlarms]]
-
-* To create a separate list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Timer/Alarms}}``.
-* To add an alarm, begin by selecting ''Once'', ''Daily'', or a specific ''Day of the week''.
-* If you select Once, select a ''month'', ''date'', and ''year''.  The inputs will default to the current date.
-* Enter the desired ''hours'', ''minutes'' and ''seconds'' using 24-hour notation.  Any inputs left blank will default to the current time.
-* Enter an (optional) message that will be displayed when the alarm is triggered.  If no message is provided a default message will be used.
-* Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to save the alarm or &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset the inputs. A list of saved alarms will be displayed below the input controls.
-* To change an alarm, press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; next to that alarm.  Press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; to apply your changes or &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to cancel the changes and reset the inputs.
-* To delete an alarm, press &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; next to that alarm.  You will be asked to confirm before that alarm is deleted.
-* To delete all alarms, press {{$:/core/images/delete-button}} in the &quot;Alarms&quot; heading. You will be asked to confirm before the alarms are deleted.
-* To pause/resume alarms, press {{$:/core/images/timestamp-on}} in the &quot;Alarms&quot; heading.  While paused, {{$:/core/images/timestamp-off}} is displayed and no alarm processing occurs.
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Calendar]]
-&lt;&lt;&lt;
-''Displays a yearly or monthly calendar with popups that show links to tiddlers''
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-
-@@.resize
-* By default, the calendar displays the current year.
-* Enter a year number or select a month to change the view.  Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view.
-* Click on a month title to toggle between annual and single-month view.  
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
-* Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
-* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
-* Click the popup's heading date to view a Journal tiddler for that date.
-* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create/edit a Journal tiddler for that date.
-* You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]] below).
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/SidebarCalendar]]
-&lt;&lt;&lt;
-''Displays a monthly calendar in the ~SideBar tabs.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Calendar]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-
-@@.resize
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
-* Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
-* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
-* Click the popup's heading date to view a Journal tiddler for that date.
-* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create/edit a Journal tiddler for that date.
-* You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]] below).
-* You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Events]]
-&lt;&lt;&lt;
-''Defines a set of events used by: [[TiddlyTools/Timer/Calendar]] and [[TiddlyTools/Timer/SidebarCalendar]]''
-
-* To add new events, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
-* List event dates and descriptions, one date and description per line.  Blank lines are ignored.
-* Separate the event date and the event description using a semi-colon (;).
-* Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include a leading zero for single-digit months and days.
-* For events that occur on the same date each year, use ``....`` in place of the year (e.g., ``....0101;New Year's Day``).
-* Note: event dates use [[regular expression syntax|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet]], allowing complex patterns to be specified (e.g. ``202104(10|11|12|13|14|15|16|17|18);Spring Break Vacation``)
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Clocks]]
-&lt;&lt;&lt;
-''Displays analog and digital clocks with automatic update.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-&lt;br&gt;Examples: [[TiddlyTools/Timer/SidebarClocks]], [[TiddlyTools/Timer/WorldClocks]]
-
-* To display either clock in another tiddler, use ``&lt;&lt;clock type:&quot;analog&quot;&gt;&gt;`` or ``&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;``
-* You can set the time format used by the digital clock and the styles used by the analog clock (see [[TiddlyTools/Timer/Setup]] below).
-* To override the format for a specific digital clock instance, add ``format:&quot;...&quot;`` to the macro parameters, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
-* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/SidebarClocks]]
-&lt;&lt;&lt;
-''Displays analog and digital clocks in the ~SideBar.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-
-* You can show/hide the clocks, adjust their sizes and specify a custom format for the digital clock (see [[TiddlyTools/Timer/Setup]] below).
-* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-* You can re-arrange the placement of the clocks by using drag-and-drop in this tag list: {{!!sidebarsegmenttag}}
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/WorldClocks]]
-&lt;&lt;&lt;
-''Displays a set of analog and digital clocks for various places world-wide''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/Places]], [[TiddlyTools/Timer/Ticker]], [[TiddlyTools/Timer/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
-
-* Press &lt;$button&gt;Select places...&lt;/$button&gt; to view a list of clocks to choose from. Use &lt;kbd&gt;shift+click&lt;/kbd&gt; or &lt;kbd&gt;ctrl+click&lt;/kbd&gt; to select multiple places.
-* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to add new places to the list.
-* You can set the time format used by the digital clocks (see [[TiddlyTools/Timer/Setup]] below).
-* The clocks show the local time for each selected place. The digital clocks also display the timezone offset, using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Places]]
-&lt;&lt;&lt;
-''Defines a set of places and timezone offsets used by: [[TiddlyTools/Timer/WorldClocks]]''
-
-* To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Timer/WorldClocks]].
-* Enter place names and timezone offsets, one place name and timezone offset per line.
-* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; are ignored.
-* Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-* To use the current local timezone (from your computer's system settings), omit the timezone offset.
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Setup]]
-&lt;&lt;&lt;
-''Defines settings for use with [[TiddlyTools/Timer]], [[TiddlyTools/Timer/Calendar]], [[TiddlyTools/Timer/SidebarCalendar]], [[TiddlyTools/Timer/Clocks]], [[TiddlyTools/Timer/SidebarClocks]], [[TiddlyTools/Timer/WorldClocks]] and [[TiddlyTools/Timer/AutoSaver]]:''
-
-* To change these settings, you can enter values below, or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Setup&quot;&gt;edit this tiddler&lt;/$button&gt;.
-* If you clear a setting or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot; param=&quot;TiddlyTools/Timer/Setup&quot;&gt;delete this tiddler&lt;/$button&gt;, default values will be used.
-
-@@.resize.nobullets
-* [[TiddlyTools/Timer]]:
-** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;YYYY-0MM-0DD 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/Calendar]]:
-** ''calendar_boxsize:''    &lt;&lt;note &quot;[[CSS units|https://www.w3schools.com/cssref/css_units.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_boxsize&quot; &quot;2.5em&quot;&gt;&gt;
-** ''calendar_background:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_background&quot;   &quot;lightgray&quot;&gt;&gt;
-** ''calendar_foreground:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_foreground&quot;   &quot;white&quot;&gt;&gt;
-** ''calendar_highlight:''  &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_highlight&quot;    &quot;lightblue&quot;&gt;&gt;
-** ''calendar_numbers:''    &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]] and [[CSS fonts|https://developer.mozilla.org/en-US/docs/Web/CSS/font]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;calendar_numbers&quot; &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/Clocks]]:
-** ''clock_format:''     &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;clock_format&quot; &quot;DDD, YYYY-0MM-0DD 0hh:0mm:0ss&quot;&gt;&gt;
-** ''clock_size:''       &lt;&lt;note &quot;[[CSS units|https://www.w3schools.com/cssref/css_units.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_size&quot;       &quot;15em&quot;&gt;&gt;
-** ''clock_background:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt;      &lt;&lt;editSetup &quot;clock_background&quot; &quot;lightgray&quot;&gt;&gt;
-** ''clock_border:''     &lt;&lt;note &quot;[[CSS borders|https://www.w3schools.com/css/css_border.asp]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_border&quot;     &quot;2px solid gray;&quot;&gt;&gt;
-** ''clock_numbers:''    &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]] and [[CSS fonts|https://developer.mozilla.org/en-US/docs/Web/CSS/font]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;clock_numbers&quot; &quot;color:black;font-size:1.5em;&quot;&gt;&gt;
-** ''clock_hands:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_hands&quot;      &quot;black&quot;&gt;&gt;
-** ''clock_ticks:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;clock_ticks&quot;      &quot;black&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/SidebarCalendar]] and [[TiddlyTools/Timer/SidebarClocks]]:
-**&lt;div class=&quot;borderless&quot;&gt;
-
-|''sidebar_calendar:'' &lt;br&gt;&lt;$checkbox tiddler=&quot;TiddlyTools/Timer/SidebarCalendar&quot; tag=&quot;$:/tags/SideBar&quot;&gt; show calendar &lt;/$checkbox&gt;|''sidebar_calendar_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_calendar_size 50 150 5 100&gt;&gt;|
-|''sidebar_analog:'' &lt;br&gt;&lt;&lt;checkboxSetup sidebar_analog  yes yes no &quot;show analog clock&quot;&gt;&gt; |''sidebar_analog_size:'' &lt;br&gt;&lt;&lt;rangeSetup sidebar_analog_size  50 150 5 100&gt;&gt;|
-|''sidebar_digital:''&lt;br&gt;&lt;&lt;checkboxSetup sidebar_digital yes yes no &quot;show digital clock&quot;&gt;&gt;|''sidebar_digital_size:''&lt;br&gt;&lt;&lt;rangeSetup sidebar_digital_size 50 150 5 100&gt;&gt;|
-&lt;/div&gt;
-** ''sidebar_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;sidebar_format&quot; &quot;DDD, YYYY-0MM-0DD 0hh:0mm:0ss&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/WorldClocks]]:
-** ''world_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;world_format&quot; &quot;DDD, YYYY-0MM-0DD 0hh:0mm:0ss&quot;&gt;&gt;
-
-* [[TiddlyTools/Timer/AutoSaver]]:
-**&lt;div class=&quot;borderless&quot;&gt;
-
-|''autosave_countdown'': |&lt;&lt;editSetup &quot;autosave_hours&quot; &quot;01&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_mins&quot;  &quot;00&quot; 2.5em center&gt;&gt; : &lt;&lt;editSetup &quot;autosave_secs&quot;  &quot;00&quot; 2.5em center&gt;&gt; @@font-size:80%;(hours, minutes, seconds)@@|
-|''autosave_ask'':       |&lt;&lt;checkboxSetup autosave_ask yes yes no &quot;confirm before auto saving&quot;&gt;&gt;|
-&lt;/div&gt;
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/Ticker]]
-&lt;&lt;&lt;
-''Defines a &lt;&lt;tag $:/tags/StartupAction&gt;&gt;that automatically updates a [[UTC|https://www.timeanddate.com/time/aboututc.html]] date/time value.''
-&lt;br&gt;Requires: [[TiddlyTools/Timer/action-timeout.js]]
-
-* The date/time value is stored in [[$:/temp/timer/ticker]] and is updated once per second.
-&lt;&lt;&lt;
-!! [[TiddlyTools/Timer/action-timeout.js]]
-&lt;&lt;&lt;
-''Defines a custom widget, ``&lt;$action-timeout&gt;``, that enables real-time updates from [[TiddlyTools/Timer/Ticker]].''
-&lt;&lt;&lt;</pre>
 </div>
 <div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200820133226543" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Timer/Alarms}}</pre>
@@ -11554,7 +11249,7 @@ Month:
 20211125;Thanksgiving Day
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20200911235712417" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200912023055490" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11726,7 +11421,7 @@ Month:
 ''Defines a set of events used by: [[TiddlyTools/Timer/Calendar]] and [[TiddlyTools/Timer/SidebarCalendar]]''
 
 * To add new events, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Timer/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
-* List event dates and descriptions, one date and description per line.
+* List event dates and descriptions, one date and description per line.  Blank lines are ignored.
 * Separate the event date and the event description using a semi-colon (;).
 * Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include a leading zero for single-digit months and days.
 * For events that occur on the same date each year, use ``....`` in place of the year (e.g., ``....0101;New Year's Day``).
