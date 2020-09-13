@@ -151,6 +151,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -170,6 +172,8 @@ Error message and password prompt
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/timer/alarms_msg/13:00:00</li>
 
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
@@ -243,7 +247,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200712230254670" modified="20200905201001421" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200913201401928" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9626,6 +9630,11 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[SampleAlarms]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9641,8 +9650,8 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200913175751784" title="$:/state/tab/sidebar--595412856">
-<pre>TiddlyTools/Timer/SidebarCalendar</pre>
+<div created="20200904222905850" modified="20200913193658721" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
@@ -9666,7 +9675,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9686,7 +9695,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9710,6 +9719,17 @@ SampleSequence</pre>
         }
     }
 }</pre>
+</div>
+<div created="20200913200000195" footer="
+      &lt;$button message=&quot;tm-close-tiddler&quot;&gt; close
+         &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/alarms_msg/13:00:00&quot; /&gt;
+      &lt;/$button&gt;
+   " modified="20200913200000195" subtitle="&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;" title="$:/temp/timer/alarms_msg/13:00:00">
+<pre>      @@font-size:2em;
+      &lt;$reveal default=&quot;test&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;test&lt;/$reveal&gt;
+      &lt;$reveal default=&quot;test&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;BEEP! BEEP! BEEP!&lt;/$reveal&gt;
+      @@
+   </pre>
 </div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
@@ -9758,8 +9778,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200913175755782" title="$:/temp/timer/ticker">
-<pre>20200913175755777</pre>
+<div created="20200814092733654" modified="20200913201632056" title="$:/temp/timer/ticker">
+<pre>20200913201632056</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10327,7 +10347,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20200903131757276" tags="" title="TiddlyTools/Timer/Alarms">
+<div created="20200811043857487" modified="20200913201356185" tags="" title="TiddlyTools/Timer/Alarms">
 <pre>\define alarms_input() $:/temp/timer/alarms_input/$(currentTiddler)$
 \define alarms_msg()   $:/temp/timer/alarms_msg/$(currentTiddler)$
 
@@ -10553,8 +10573,8 @@ at &lt;&lt;alarms_form_time&gt;&gt;&lt;br&gt;
 &lt;$vars this_date=&lt;&lt;now &quot;YYYY-0MM-0DD&quot;&gt;&gt;
        this_time=&lt;&lt;now &quot;0hh:0mm:0ss&quot; &gt;&gt;
         this_day=&lt;&lt;now &quot;DDD&quot;         &gt;&gt;&gt;
-&lt;$list filter=&quot;[all[]has[alarms]!paused[yes]]&quot; variable=&quot;here&quot;&gt;
-&lt;$list filter={{{ [&lt;here&gt;get[alarms]] }}} variable=&quot;this_alarm&quot;&gt;
+&lt;$list filter=&quot;[!is[system]!paused[yes]get[alarms]]&quot; variable=&quot;alarms&quot;&gt;
+&lt;$list filter=&lt;&lt;alarms&gt;&gt; variable=&quot;this_alarm&quot;&gt;
    &lt;$vars freq={{{ [&lt;this_alarm&gt;split[;]nth[1]] }}}
           date={{{ [&lt;this_alarm&gt;split[;]nth[2]] }}}
           time={{{ [&lt;this_alarm&gt;split[;]nth[3]] }}}
