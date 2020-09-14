@@ -159,6 +159,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/input/edit-date/EditDateExample/text</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
@@ -9644,6 +9646,9 @@ SampleSequence</pre>
 <div created="20200621230950964" modified="20200808063356392" title="$:/SiteTitle">
 <pre>Timers and Clocks</pre>
 </div>
+<div created="20200914134228802" modified="20200914134235654" title="$:/state/input/edit-date/EditDateExample/text">
+<pre></pre>
+</div>
 <div created="20200905051927640" modified="20200905052514839" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
@@ -9656,7 +9661,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20200914134513502" list="TiddlyTools/Timer/Info TiddlyTools/Timer/EditDate SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200914134513502" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200913054236115" modified="20200913054241522" title="$:/temp/advancedsearch">
@@ -9778,8 +9783,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200914023849034" title="$:/temp/timer/ticker">
-<pre>20200914023849034</pre>
+<div created="20200814092733654" modified="20200914134620018" title="$:/temp/timer/ticker">
+<pre>20200914134620017</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11250,16 +11255,17 @@ Month:
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200913103134997" modified="20200914023708356" tags="$:/tags/Macro" title="TiddlyTools/Timer/EditDate">
-<pre>\define edit-date(tiddler:&quot;&quot;,field:&quot;date&quot;,format:&quot;YYYY/0MM/0DD&quot;,default:&quot;&quot;,placeholder:&quot;select or enter a date&quot;,size:&quot;&quot;,focus:&quot;&quot;,class:&quot;&quot;)
+<div created="20200913103134997" modified="20200914134617170" tags="$:/tags/Macro" title="TiddlyTools/Timer/EditDate">
+<pre>\define edit-date(tiddler:&quot;&quot;,field:&quot;date&quot;,format:&quot;YYYY/0MM/0DD&quot;,default:&quot;&quot;,placeholder:&quot;&quot;,
+   tabindex:&quot;&quot;,tag:&quot;input&quot;,type:&quot;&quot;,size:&quot;&quot;,autoHeight:&quot;yes&quot;,minHeight:&quot;&quot;,rows:&quot;&quot;,focus:&quot;&quot;,class:&quot;&quot;)
 &lt;$vars  target={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} field=&quot;$field$&quot; format=&quot;$format$&quot;&gt;
 &lt;$vars inputid={{{ [[$:/state/input/edit-date/]addsuffix&lt;target&gt;addsuffix[/]addsuffix&lt;field&gt;] }}}
        popupid={{{ [[$:/state/popup/edit-date/]addsuffix&lt;target&gt;addsuffix[/]addsuffix&lt;field&gt;] }}}
       thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; &gt;
 &lt;$vars yyyy={{{ [&lt;inputid&gt;get[year]else&lt;thisyear&gt;] }}} mm={{{ [&lt;inputid&gt;get[month]else&lt;thismonth&gt;] }}}&gt;
-&lt;$edit-text tag=&quot;input&quot; tiddler=&lt;&lt;inputid&gt;&gt; field=&lt;&lt;field&gt;&gt;
-   default={{{ [&lt;target&gt;get&lt;field&gt;else[$default$]] }}} placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-   size=&quot;$size$&quot; focus=&quot;$focus$&quot; class=&quot;tc-popup-handle $class$&quot; focusPopup=&lt;&lt;popupid&gt;&gt; /&gt;
+&lt;$edit-text tiddler=&lt;&lt;inputid&gt;&gt; field=&lt;&lt;field&gt;&gt; default={{{ [&lt;target&gt;get&lt;field&gt;else[$default$]] }}} placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
+   tabindex=&quot;$tabindex$&quot; tag=&quot;$tag$&quot; type=&quot;$type$&quot; size=&quot;$size$&quot; focus=&quot;$focus$&quot; autoHeight=&quot;$autoHeight$&quot; minHeight=&quot;$minHeight$&quot; rows=&quot;$rows$&quot;
+   class=&quot;tc-popup-handle $class$&quot; focusPopup=&lt;&lt;popupid&gt;&gt; /&gt;
 &lt;$reveal state=&lt;&lt;popupid&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; position=&quot;right&quot; style=&quot;margin-left:0.25em;&quot;&gt;
    &lt;$button tooltip=&quot;save input  &quot;&gt; {{$:/core/images/done-button}}
       &lt;$action-setfield $tiddler=&lt;&lt;target&gt;&gt; $field=&lt;&lt;field&gt;&gt; $value={{{ [&lt;inputid&gt;get&lt;field&gt;] }}} /&gt;
@@ -11294,21 +11300,27 @@ Month:
 
 !Introduction
 &lt;&lt;&lt;
-The edit-date macro provides a user interface that combines the features of a text input (``&lt;$edit-text&gt;`` widget) with &quot;edit-in-place&quot; (save/cancel/delete) buttons and a popup monthly calendar.  This allows you to enter custom text or select and format a date from the calendar.
+The edit-date macro provides a user interface that combines the features of the ``&lt;$edit-text&gt;`` widget with &quot;edit-in-place&quot; buttons (save/cancel/delete) and a popup monthly calendar.  This allows you to enter custom text or select and format a date from the calendar.
 &lt;&lt;&lt;
-!Parameters
+!Attributes
 &lt;&lt;&lt;
-The macro supports a subset of the parameters allowed by the ``&lt;$edit-text&gt;`` widget:
+The macro supports most of the same attributes that are allowed by the ``&lt;$edit-text&gt;`` widget, except for ``index`` and ``focusPopup``:
 
-|Parameter |Description|h
+|Attribute   |Description|h
 |tiddler     |The tiddler in which to save the input (default=``&lt;&lt;currentTiddler&gt;&gt;``)|
 |field       |The field in which to save the input (default=``date``)|
 |format      |The [[TiddlyWiki Date Format|https://tiddlywiki.com/#DateFormat]] used to store a date selected from the calendar (default=``YYYY/0MM/0DD``)|
 |default     |text to be used when the target field doesn't exist|
-|placeholder |text to display when the target field is empty (default=&quot;select or enter a date&quot;)|
-|size	     |The size of the input field in characters (default=``20``)|
-|focus	     |Set to &quot;yes&quot; or &quot;true&quot; to automatically focus the input after creation|
+|placeholder |text to display when the target field is empty|
 |class	     |A CSS class to be assigned to the generated HTML editing element|
+|focus	     |Set to &quot;yes&quot; or &quot;true&quot; to automatically focus the input after creation|
+|tabindex    |Sets the tabindex attribute of the input or textarea to the given value|
+|tag	     |Overrides the generated HTML editing element tag. For a multi-line editor use tag=textarea. For a single-line editor use tag=input|
+|type	     |Overrides the generated HTML editing element type attribute|
+|size	     |The size of the input field (in characters)|
+|autoHeight  |Either &quot;yes&quot; or &quot;no&quot; to specify whether to automatically resize textarea editors to fit their content (defaults to &quot;yes&quot;)|
+|minHeight   |Minimum height for automatically resized textarea editors, specified in CSS length units such as &quot;px&quot;, &quot;em&quot; or &quot;%&quot;|
+|rows        |Sets the rows attribute of a generated textarea|
 &lt;&lt;&lt;
 !Notes
 &lt;&lt;&lt;
@@ -11323,8 +11335,8 @@ The macro supports a subset of the parameters allowed by the ``&lt;$edit-text&gt
 &lt;&lt;&lt;
 !Examples
 &lt;&lt;&lt;
-``&lt;&lt;edit-date tiddler:EditDateExample field:text format:&quot;ddd MMM DDth YYYY&quot;&gt;&gt;``&lt;br&gt;
-&lt;&lt;edit-date tiddler:EditDateExample field:text format:&quot;ddd MMM DDth YYYY&quot;&gt;&gt;
+``&lt;&lt;edit-date tiddler:EditDateExample field:text format:&quot;ddd MMM DDth YYYY&quot; placeholder:&quot;enter or select a date&quot;&gt;&gt;``&lt;br&gt;
+&lt;&lt;edit-date tiddler:EditDateExample field:text format:&quot;ddd MMM DDth YYYY&quot; placeholder:&quot;enter or select a date&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
 <div created="20200911045918968" modified="20200911235809263" tags="" title="TiddlyTools/Timer/Events" type="text/plain">
