@@ -9646,8 +9646,8 @@ SampleSequence</pre>
 <div created="20200621230950964" modified="20200808063356392" title="$:/SiteTitle">
 <pre>Timers and Clocks</pre>
 </div>
-<div created="20200914134228802" modified="20200914134235654" title="$:/state/input/edit-date/EditDateExample/text">
-<pre></pre>
+<div created="20200914134228802" modified="20200914215332009" title="$:/state/input/edit-date/EditDateExample/text">
+<pre>test</pre>
 </div>
 <div created="20200905051927640" modified="20200905052514839" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -9655,13 +9655,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200913202059189" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200914215424640" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200914134513502" list="TiddlyTools/Timer/Info TiddlyTools/Timer/EditDate SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200914134513502" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200913054236115" modified="20200913054241522" title="$:/temp/advancedsearch">
@@ -9783,8 +9783,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200914134620018" title="$:/temp/timer/ticker">
-<pre>20200914134620017</pre>
+<div created="20200814092733654" modified="20200914215429014" title="$:/temp/timer/ticker">
+<pre>20200914215429014</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11255,30 +11255,31 @@ Month:
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200913103134997" modified="20200914134617170" tags="$:/tags/Macro" title="TiddlyTools/Timer/EditDate">
+<div created="20200913103134997" modified="20200914215141638" tags="$:/tags/Macro" title="TiddlyTools/Timer/EditDate">
 <pre>\define edit-date(tiddler:&quot;&quot;,field:&quot;date&quot;,format:&quot;YYYY/0MM/0DD&quot;,default:&quot;&quot;,placeholder:&quot;&quot;,
-   tabindex:&quot;&quot;,tag:&quot;input&quot;,type:&quot;&quot;,size:&quot;&quot;,autoHeight:&quot;yes&quot;,minHeight:&quot;&quot;,rows:&quot;&quot;,focus:&quot;&quot;,class:&quot;&quot;)
+   tabindex:&quot;&quot;,tag:&quot;input&quot;,type:&quot;calendar&quot;,size:&quot;&quot;,autoHeight:&quot;yes&quot;,minHeight:&quot;&quot;,rows:&quot;&quot;,focus:&quot;&quot;,class:&quot;&quot;)
 &lt;$vars  target={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} field=&quot;$field$&quot; format=&quot;$format$&quot;&gt;
 &lt;$vars inputid={{{ [[$:/state/input/edit-date/]addsuffix&lt;target&gt;addsuffix[/]addsuffix&lt;field&gt;] }}}
        popupid={{{ [[$:/state/popup/edit-date/]addsuffix&lt;target&gt;addsuffix[/]addsuffix&lt;field&gt;] }}}
       thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; &gt;
 &lt;$vars yyyy={{{ [&lt;inputid&gt;get[year]else&lt;thisyear&gt;] }}} mm={{{ [&lt;inputid&gt;get[month]else&lt;thismonth&gt;] }}}&gt;
+&lt;$vars target_value={{{ [&lt;target&gt;get&lt;field&gt;else[$default$]] }}}&gt; 
 &lt;$edit-text tiddler=&lt;&lt;inputid&gt;&gt; field=&lt;&lt;field&gt;&gt; default={{{ [&lt;target&gt;get&lt;field&gt;else[$default$]] }}} placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
    tabindex=&quot;$tabindex$&quot; tag=&quot;$tag$&quot; type=&quot;$type$&quot; size=&quot;$size$&quot; focus=&quot;$focus$&quot; autoHeight=&quot;$autoHeight$&quot; minHeight=&quot;$minHeight$&quot; rows=&quot;$rows$&quot;
    class=&quot;tc-popup-handle $class$&quot; focusPopup=&lt;&lt;popupid&gt;&gt; /&gt;
-&lt;$reveal state=&lt;&lt;popupid&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; position=&quot;right&quot; style=&quot;margin-left:0.25em;&quot;&gt;
+&lt;$list filter=&quot;[&lt;popupid&gt;is[tiddler]] [&lt;inputid&gt;get&lt;field&gt;!match&lt;target_value&gt;] +[limit[1]]&quot;&gt;
    &lt;$button tooltip=&quot;save input  &quot;&gt; {{$:/core/images/done-button}}
       &lt;$action-setfield $tiddler=&lt;&lt;target&gt;&gt; $field=&lt;&lt;field&gt;&gt; $value={{{ [&lt;inputid&gt;get&lt;field&gt;] }}} /&gt;
    &lt;/$button&gt;
-   &lt;$button tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/cancel-button}}
-      &lt;$action-setfield $tiddler=&lt;&lt;inputid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $value={{{ [&lt;target&gt;get&lt;field&gt;else[$default$]] }}} /&gt;
+   &lt;$button tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/close-button}}
+      &lt;$action-setfield $tiddler=&lt;&lt;inputid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $value=&lt;&lt;target_value&gt;&gt; /&gt;
    &lt;/$button&gt;
    &lt;$button tooltip=&quot;delete field&quot;&gt; {{$:/core/images/delete-button}}
       &lt;$action-deletefield  $tiddler=&lt;&lt;target&gt;&gt;  $field=&lt;&lt;field&gt;&gt;/&gt;
       &lt;$action-deletefield  $tiddler=&lt;&lt;inputid&gt;&gt; $field=&lt;&lt;field&gt;&gt;/&gt;
    &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$list filter=&quot;[[TiddlyTools/Timer/Calendar]is[tiddler]]&quot;&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$type$]match:caseinsensitive[calendar]] [[TiddlyTools/Timer/Calendar]is[tiddler]]&quot;&gt;
 &lt;$reveal state=&lt;&lt;popupid&gt;&gt; type=&quot;popup&quot; class=&quot;tc-popup-keep tc-block-dropdown&quot; style=&quot;padding:0.5em;min-width:auto;&quot;&gt;
    &lt;$tiddler tiddler=&lt;&lt;inputid&gt;&gt;&gt;
    &lt;$importvariables filter=&quot;TiddlyTools/Timer/Calendar&quot;&gt;
@@ -11316,7 +11317,7 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 |focus	     |Set to &quot;yes&quot; or &quot;true&quot; to automatically focus the input after creation|
 |tabindex    |Sets the tabindex attribute of the input or textarea to the given value|
 |tag	     |Overrides the generated HTML editing element tag. For a multi-line editor use tag=textarea. For a single-line editor use tag=input|
-|type	     |Overrides the generated HTML editing element type attribute|
+|type	     |Overrides the generated HTML editing element type attribute (default=&quot;calendar&quot;)|
 |size	     |The size of the input field (in characters)|
 |autoHeight  |Either &quot;yes&quot; or &quot;no&quot; to specify whether to automatically resize textarea editors to fit their content (defaults to &quot;yes&quot;)|
 |minHeight   |Minimum height for automatically resized textarea editors, specified in CSS length units such as &quot;px&quot;, &quot;em&quot; or &quot;%&quot;|
@@ -11324,14 +11325,18 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 &lt;&lt;&lt;
 !Notes
 &lt;&lt;&lt;
-* Use ``&lt;&lt;edit-date field:fieldname&gt;&gt;`` to embed a date input field in tiddler content.
+* Use ``&lt;&lt;edit-date field:fieldname type:calendar&gt;&gt;`` to embed a date input field in tiddler content.
 * Unlike the ``&lt;$edit-text&gt;`` widget, the ``&lt;&lt;edit-date&gt;&gt;`` macro allows you to input values that are stored in the current tiddler.
-* When the field receives the input focus, a set of &quot;edit-in-place&quot; buttons and a monthly calendar are displayed.
-* &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; cancels changes to the field value.  &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
-* &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
-* Click a date to set the edit field contents using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
-* You can override the default date format (``YYYY/0MM/0DD``) by entering a new format directly in the calendar popup.
-* Note: if [[TiddlyTools/Timer/Calendar]] is not installed, the calendar popup is not displayed.
+* When the field receives the input focus, &quot;edit-in-place&quot; buttons are displayed. Changes to the field value are not updated until one of these buttons is pressed:
+** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value.
+** &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt; cancels changes to the field value.
+** &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
+* When ``type:calendar`` is used and [[TiddlyTools/Timer/Calendar]] is installed, a monthly calendar is displayed:
+** &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month.
+** &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
+** Click a date to update the field value using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
+** You can override the default date format (``YYYY/0MM/0DD``) by entering a new format directly in the calendar popup.
+** You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]]).
 &lt;&lt;&lt;
 !Examples
 &lt;&lt;&lt;
@@ -11373,7 +11378,7 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 20211125;Thanksgiving Day
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20200914023712461" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200914215408506" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11558,7 +11563,7 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 * By default, the calendar displays the current year.
 * Enter a year number or select a month to change the view.  Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view.
 * Click on a month title to toggle between annual and single-month view.  
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
+* &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
 * Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
 * Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
 * Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
@@ -11574,7 +11579,7 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 &lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
 
 @@.resize
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month.  Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
+* &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
 * Dates that have scheduled events (see [[TiddlyTools/Timer/Events]]) are underlined.
 * Dates on which tiddlers were created/modified or have a Journal tiddler or scheduled events are colored light blue.
 * Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
@@ -11602,15 +11607,18 @@ The macro supports most of the same attributes that are allowed by the ``&lt;$ed
 &lt;br&gt;Optional: [[TiddlyTools/Timer/Setup]]
 
 @@.resize
-* Use ``&lt;&lt;edit-date field:fieldname&gt;&gt;`` to embed a date input field in tiddler content (see [[TiddlyTools/Timer/EditDate]] for optional parameters).
+* Use ``&lt;&lt;edit-date field:fieldname type:calendar&gt;&gt;`` to embed a date input field in tiddler content (see [[TiddlyTools/Timer/EditDate]] for optional parameters).
 * Unlike the ``&lt;$edit-text&gt;`` widget, the ``&lt;&lt;edit-date&gt;&gt;`` macro allows you to input values that are stored in the current tiddler.
-* When the field receives the input focus, a set of &quot;edit-in-place&quot; buttons and a monthly calendar are displayed.
-* &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; cancels changes to the field value.  &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
-* &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
-* Click a date to set the edit field contents using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
-* You can override the default date format (``YYYY/0MM/0DD``) by entering a new format directly in the calendar popup.
-* You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]] below).
-* Note: if [[TiddlyTools/Timer/Calendar]] is not installed, the calendar popup is not displayed.
+* When the field receives the input focus, &quot;edit-in-place&quot; buttons are displayed. Changes to the field value are not updated until one of these buttons is pressed:
+** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value.
+** &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt; cancels changes to the field value.
+** &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
+* When ``type:calendar`` is used and [[TiddlyTools/Timer/Calendar]] is installed, a monthly calendar is displayed:
+** &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month.
+** &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
+** Click a date to update the field value using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
+** You can override the default date format (``YYYY/0MM/0DD``) by entering a new format directly in the calendar popup.
+** You can set the colors and font styles used by the calendar (see [[TiddlyTools/Timer/Setup]]).
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/Setup]]
