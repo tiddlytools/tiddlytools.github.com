@@ -151,6 +151,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -9626,6 +9628,11 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Timer/Calendar]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9647,7 +9654,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20200917172746717" list="$:/Import TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917172746717" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9758,8 +9765,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200917165944055" title="$:/temp/timer/ticker">
-<pre>20200917165944055</pre>
+<div created="20200814092733654" modified="20200917172832011" title="$:/temp/timer/ticker">
+<pre>20200917172832011</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10733,7 +10740,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200917165451546" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200917172509724" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10902,22 +10909,22 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;div style=&quot;font-size:10pt;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
 &lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:created&lt;today&gt;sort[created]]&quot;&gt;
 &lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;today&gt;sort[modified]]&quot;&gt;
-&lt;&lt;viewjournal&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;nbsp; &lt;br&gt;
+&lt;&lt;viewjournal&gt;&gt; &lt;&lt;closepopup&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;emsp; &lt;br&gt;
 &lt;$list filter=&quot;[enlist&lt;events&gt;limit[1]]&quot;&gt;
-   events:&lt;br&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+      ''events:''&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;events&gt;]&quot;&gt; &lt;$link/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[enlist&lt;created&gt;limit[1]]&quot;&gt;
-   created:&lt;br&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+      ''created:''&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;created&gt;]&quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;limit[1]]&quot;&gt;
-   modified:&lt;br&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+      ''modified:''&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;] &quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
@@ -10938,6 +10945,13 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;$reveal type=&quot;match&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
       &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text=&lt;&lt;journalText&gt;&gt;/&gt;
    &lt;/$reveal&gt;
+&lt;/$button&gt;
+\end
+
+\define closepopup()
+&lt;$button style=&quot;float:right;padding:0 0.5em;margin-left:0.25em;width:auto;&quot; tooltip=&quot;close&quot;&gt;
+   {{$:/core/images/close-button}}
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
