@@ -9646,13 +9646,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200917084513277" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200917090157756" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200917084237657" list="TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917084457702" title="$:/StoryList">
+<div created="20200917085814111" list="TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917091141233" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9760,8 +9760,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200917084516034" title="$:/temp/timer/ticker">
-<pre>20200917084516034</pre>
+<div created="20200814092733654" modified="20200917091325022" title="$:/temp/timer/ticker">
+<pre>20200917091325022</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10736,7 +10736,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200917084445566" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200917090002679" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10975,7 +10975,7 @@ Month:
 
 \define controls_reset()
 &lt;$button tooltip=&quot;reset&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+   &lt;$action-setfield month=&quot;&quot; year=&lt;&lt;thisyear&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
