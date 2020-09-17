@@ -9652,7 +9652,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200917022713160" list="TiddlyTools/Timer/Info TiddlyTools/Timer/AutoSaver SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917022713160" title="$:/StoryList">
+<div created="20200917024151779" list="TiddlyTools/Timer/WorldClocks TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917024151779" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9760,8 +9760,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200917023226018" title="$:/temp/timer/ticker">
-<pre>20200917023226018</pre>
+<div created="20200814092733654" modified="20200917024506006" title="$:/temp/timer/ticker">
+<pre>20200917024506006</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10610,7 +10610,7 @@ at &lt;&lt;alarms_form_time&gt;&gt;&lt;br&gt;
 &lt;/div&gt;
 &lt;&lt;alarms_list&gt;&gt;</pre>
 </div>
-<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200917023213179" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
+<div created="20200730035446808" list-after="$:/core/ui/SideBarSegments/page-controls" modified="20200917023540115" tags="$:/tags/SideBarSegment" title="TiddlyTools/Timer/AutoSaver">
 <pre>\import TiddlyTools/Timer/CountDown
 \define here() AutoSaver
 \define temp() $:/temp/timer/countdown/AutoSaver
@@ -10630,7 +10630,7 @@ at &lt;&lt;alarms_form_time&gt;&gt;&lt;br&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;close&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/temp/timer/autosaver/settings&quot;&gt;&gt; /&gt;
 &lt;/$button&gt;
-set ~AutoSaver interval:&lt;br&gt;
+set ~AutoSaver interval:&lt;hr&gt;
 &lt;$edit-text field=&quot;autosave_hours&quot; tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveH&gt;&gt;  placeholder=&lt;&lt;saveH&gt;&gt; /&gt;
 &lt;$edit-text field=&quot;autosave_mins&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveM&gt;&gt;  placeholder=&lt;&lt;saveM&gt;&gt; /&gt;
 &lt;$edit-text field=&quot;autosave_secs&quot;  tag=&quot;input&quot; class=&quot;timerCountdown tc-popup-keep&quot; default=&lt;&lt;saveS&gt;&gt;  placeholder=&lt;&lt;saveS&gt;&gt; /&gt;
@@ -11733,7 +11733,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;&lt;ticker&gt;&gt;</pre>
 </div>
-<div created="20200808175138605" modified="20200903131724361" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -07:00]] [[New York;    -04:00]] [[London;      +01:00]] [[Rome;        +02:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:30]] [[Adelaide;    +09:30]] [[Sydney;      +10:00]]" tags="" title="TiddlyTools/Timer/WorldClocks">
+<div created="20200808175138605" modified="20200917024237853" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -07:00]] [[New York;    -04:00]] [[London;      +01:00]] [[Rome;        +02:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:30]] [[Adelaide;    +09:30]] [[Sydney;      +10:00]]" tags="" title="TiddlyTools/Timer/WorldClocks">
 <pre>\define showClock(place,offset)
 ''$place$''
 &lt;div style=&quot;font-size:60%;line-height:100%;&quot;&gt;
@@ -11757,7 +11757,7 @@ Sydney;      +10:00</pre>
    &lt;/$select&gt;
    &lt;/$vars&gt;
 &lt;/$reveal&gt;
-
+&lt;p/&gt;
 &lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
 &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt; format={{{ [[TiddlyTools/Timer/Setup]get[world_format]] ~[[YYYY-0MM-0DD 0hh:0mm:0ss]] }}}&gt;
 &lt;$list filter={{!!places}} variable=&quot;place&quot;&gt;
