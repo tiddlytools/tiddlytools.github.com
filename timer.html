@@ -9654,7 +9654,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200917172746717" list="$:/Import TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200917172746717" title="$:/StoryList">
+<div created="20200918130309202" list="TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200918130309202" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9765,8 +9765,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200917172832011" title="$:/temp/timer/ticker">
-<pre>20200917172832011</pre>
+<div created="20200814092733654" modified="20200918130502010" title="$:/temp/timer/ticker">
+<pre>20200918130502009</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10740,7 +10740,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200917172509724" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200918130458156" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10912,19 +10912,19 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;&lt;viewjournal&gt;&gt; &lt;&lt;closepopup&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;emsp; &lt;br&gt;
 &lt;$list filter=&quot;[enlist&lt;events&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-      ''events:''&lt;br&gt;
+      ''events:'' (&lt;$count filter=&quot;[enlist&lt;events&gt;]&quot;/&gt;)&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;events&gt;]&quot;&gt; &lt;$link/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[enlist&lt;created&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-      ''created:''&lt;br&gt;
+      ''created:'' (&lt;$count filter=&quot;[enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;created&gt;]&quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-      ''modified:''&lt;br&gt;
+      ''modified:'' (&lt;$count filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
       &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;] &quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
