@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/advancedsearch</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/timer/alarms_input/TiddlyTools/Timer/Alarms</li>
@@ -9642,8 +9644,8 @@ SampleSequence</pre>
 <div created="20200621230950964" modified="20200808063356392" title="$:/SiteTitle">
 <pre>Timers and Clocks</pre>
 </div>
-<div created="20200905051927640" modified="20200905052514839" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div created="20200905051927640" modified="20200919073739324" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
@@ -9654,8 +9656,11 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200918130309202" list="TiddlyTools/Timer/Calendar TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" modified="20200918130309202" title="$:/StoryList">
+<div list="TiddlyTools/Timer/Info SampleTimer SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
+</div>
+<div created="20200919073741361" modified="20200919073743641" title="$:/temp/advancedsearch">
+<pre>match[1]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9765,8 +9770,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200918130502010" title="$:/temp/timer/ticker">
-<pre>20200918130502009</pre>
+<div created="20200814092733654" modified="20200919074353067" title="$:/temp/timer/ticker">
+<pre>20200919074353066</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10334,7 +10339,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20200917120115151" tags="" title="TiddlyTools/Timer/Alarms">
+<div created="20200811043857487" modified="20200919074231634" tags="" title="TiddlyTools/Timer/Alarms">
 <pre>\define alarms_input() $:/temp/timer/alarms_input/$(currentTiddler)$
 \define alarms_msg()   $:/temp/timer/alarms_msg/$(currentTiddler)$
 
@@ -10376,7 +10381,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;!-- CALCULATE DAYS FOR SELECTED MONTH (ADJUST FOR LEAP YEARS) --&gt;
 &lt;$set name=&quot;year&quot; value=&lt;&lt;now YYYY&gt;&gt;&gt;
 &lt;$set name=&quot;year&quot; value={{{ [&lt;alarms_input&gt;get[year]] ~[&lt;year&gt;] }}}&gt;
-&lt;$set name=&quot;leap&quot; value={{{ [&lt;year&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set name=&quot;leap&quot; value={{{ [&lt;year&gt;divide[4]split[.]count[]!match[2]then[yes]] }}}&gt;
 &lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
 &lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;$set name=&quot;dm&quot;   value={{{ [&lt;dpm&gt;split[ ]nth{$(alarms_input)$!!month}] }}}&gt; &lt;!-- days in this month --&gt;
@@ -10740,7 +10745,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200918130458156" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200919074213364" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10749,7 +10754,7 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;div style=&quot;display:inline-block;vertical-align:top;&quot;&gt;
       &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;month&gt;&gt; view=&quot;year&quot;/&gt;
    &lt;/div&gt;
-   &lt;$list filter=&quot;[&lt;month&gt;divide[4]split[.]count[]match[1]]&quot;&gt;&lt;p/&gt;&lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;month&gt;divide[4]split[.]count[]!match[2]]&quot;&gt;&lt;p/&gt;&lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
@@ -10835,7 +10840,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$wikify name=&quot;first&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]ddd&quot; /&gt;&quot;&quot;&quot;&gt;
 &lt;$set name=&quot;first&quot; filter=&quot;[all[shadows]prefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]]&quot;&gt;
 &lt;!-- days per month... adjust for leap year --&gt;
-&lt;$set name=&quot;dpm&quot; filter=&quot;[[$yyyy$]divide[4]split[.]count[]match[1]]&quot;
+&lt;$set name=&quot;dpm&quot; filter=&quot;[[$yyyy$]divide[4]split[.]count[]!match[2]]&quot;
    value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt;
 &lt;$vars dm={{{ [&lt;dpm&gt;split[ ]nth[$mm$]] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;!-- grid --&gt;
@@ -10850,7 +10855,7 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;$vars  today={{{ [&lt;date&gt;addsuffix[120000000]]             }}}&gt;
    &lt;$reveal default=&quot;$select$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; &lt;&lt;showday&gt;&gt;   &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$select$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;selectday&gt;&gt; &lt;/$reveal&gt;
-   &lt;$list filter=&quot;[&lt;dd&gt;add&lt;first&gt;divide[7]split[.]count[]match[1]]&quot;&gt;&lt;br&gt;&lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;dd&gt;add&lt;first&gt;divide[7]split[.]count[]!match[2]]&quot;&gt;&lt;br&gt;&lt;/$list&gt;
    &lt;/$vars&gt;&lt;/$vars&gt;&lt;/$vars&gt;&lt;/$vars&gt;
 &lt;/$list&gt;
 &lt;/div&gt;
@@ -10908,7 +10913,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define showday_popup()
 &lt;div style=&quot;font-size:10pt;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
 &lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:created&lt;today&gt;sort[created]]&quot;&gt;
-&lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;today&gt;sort[modified]]&quot;&gt;
+&lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;today&gt;!sort[modified]]&quot;&gt;
 &lt;&lt;viewjournal&gt;&gt; &lt;&lt;closepopup&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;emsp; &lt;br&gt;
 &lt;$list filter=&quot;[enlist&lt;events&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
@@ -11019,7 +11024,7 @@ Month:
    &lt;&lt;calendar&gt;&gt;
 &lt;/$tiddler&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200903131802124" tags="$:/tags/Macro" title="TiddlyTools/Timer/Clocks">
+<div created="20200719094540255" modified="20200919074239693" tags="$:/tags/Macro" title="TiddlyTools/Timer/Clocks">
 <pre>\define clock_ticker() $:/temp/timer/ticker
 
 \define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
@@ -11051,7 +11056,7 @@ Month:
 &lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
 &lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
 &lt;!-- adjust days per month for leap year --&gt;
-&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]match[1]then[yes]] }}}&gt;
+&lt;$set name=&quot;leap&quot; value={{{ [&lt;yyyy&gt;divide[4]split[.]count[]!match[2]then[yes]] }}}&gt;
 &lt;$set name=&quot;dpm&quot;  value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
 &lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
 &lt;!-- adjust hours/minutes for minutes wraparound --&gt;
