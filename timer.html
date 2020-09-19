@@ -9646,7 +9646,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200919093114286" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200919144943576" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9760,8 +9760,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200919094453018" title="$:/temp/timer/ticker">
-<pre>20200919094453018</pre>
+<div created="20200814092733654" modified="20200919144948010" title="$:/temp/timer/ticker">
+<pre>20200919144948009</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10735,7 +10735,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200919092711691" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200919143115501" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10954,11 +10954,11 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;style&gt; .calendarEdit { width:4em; text-align:center; } &lt;/style&gt;
 Year:
 &lt;$button tooltip=&quot;view previous year&quot;&gt; {{$:/core/images/chevron-left}}
-   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
 &lt;/$button&gt;
-&lt;$edit-text tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
+&lt;$edit-text tiddler=&lt;&lt;calendar_input&gt;&gt; tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; default=&lt;&lt;thisyear&gt;&gt; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
 &lt;$button tooltip=&quot;view next year&quot;&gt; {{$:/core/images/chevron-right}}
-   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
 &lt;/$button&gt;
 \end
 
@@ -10966,13 +10966,13 @@ Year:
 Month:
 &lt;$button tooltip=&quot;view previous month&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{!!year}} /&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
-&lt;$select field=&quot;month&quot; default=&quot;&quot;&gt;
+&lt;$select tiddler=&lt;&lt;calendar_input&gt;&gt; field=&quot;month&quot; default=&quot;&quot;&gt;
    &lt;$list filter=&quot;[range[1,12]]&quot;&gt;
       &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;
          {{{ [&lt;currentTiddler&gt;addprefix[$:/language/Date/Long/Month/]get[text]] }}}
@@ -10981,17 +10981,17 @@ Month:
 &lt;/$select&gt;
 &lt;$button tooltip=&quot;view next month&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{!!year}} /&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{!!year}} /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 \end
 
 \define controls_reset()
 &lt;$button tooltip=&quot;reset&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-setfield month=&quot;&quot; year=&lt;&lt;thisyear&gt;&gt; /&gt;
+   &lt;$action-deletefield $tiddler=&lt;&lt;calendar_input&gt;&gt; month year /&gt;
 &lt;/$button&gt;
 \end
 
@@ -11002,17 +11002,24 @@ Month:
 \end
 
 \define calendar()
-&lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}}&gt;
-&lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt; &lt;$macrocall $name=&quot;showyear&quot;  yyyy=&lt;&lt;yyyy&gt;&gt; /&gt;           &lt;/$reveal&gt;
-&lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt; &lt;/$reveal&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;
+&lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
+&lt;&lt;controls_getyear&gt;&gt; &lt;&lt;controls_getmonth&gt;&gt; &lt;&lt;controls_reset&gt;&gt; &lt;&lt;controls_editevents&gt;&gt;&lt;p/&gt;
+&lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+&lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;above&quot; popup_maxheight=&quot;30em&quot;&gt;
+&lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt;
+   &lt;div style=&quot;display:inline-block;text-align:left;font-size:70%;line-height:100%;&quot;&gt;
+       &lt;$macrocall $name=&quot;showyear&quot;  yyyy=&lt;&lt;yyyy&gt;&gt; /&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;div style=&quot;display:inline-block;text-align:left;font-size:150%;line-height:100%;&quot;&gt;
+      &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
 \end
 
-&lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
-&lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
-   &lt;&lt;controls_getyear&gt;&gt; &lt;&lt;controls_getmonth&gt;&gt; &lt;&lt;controls_reset&gt;&gt; &lt;&lt;controls_editevents&gt;&gt;
-   &lt;p/&gt;
-   &lt;&lt;calendar&gt;&gt;
-&lt;/$tiddler&gt;</pre>
+&lt;&lt;calendar&gt;&gt;</pre>
 </div>
 <div created="20200719094540255" modified="20200919093002189" tags="$:/tags/Macro" title="TiddlyTools/Timer/Clocks">
 <pre>\define clock_ticker() $:/temp/timer/ticker
