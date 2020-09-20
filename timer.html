@@ -9760,8 +9760,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200920061744098" title="$:/temp/timer/ticker">
-<pre>20200920061744097</pre>
+<div created="20200814092733654" modified="20200920161118032" title="$:/temp/timer/ticker">
+<pre>20200920161118032</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10735,7 +10735,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200920061123995" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200920160953515" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10869,8 +10869,8 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;/span&gt;
 &lt;/$button&gt;
 &lt;!-- grid popup --&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt;
-   class=&quot;tc-drop-down tt-shadowbox&quot; style=&quot;min-width:auto;padding:0.5em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox&quot;
+   style=&quot;min-width:auto;width:max-content;padding:0.5em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
    &lt;&lt;showday_popup&gt;&gt;
 &lt;/$reveal&gt;
 \end
@@ -10901,10 +10901,12 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showday_popup()
-&lt;div style=&quot;font-size:10pt;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
+&lt;div class=&quot;calendarPopup&quot; style=&quot;font-size:10pt;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
 &lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:created&lt;today&gt;sort[created]]&quot;&gt;
 &lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;today&gt;!sort[modified]]&quot;&gt;
-&lt;&lt;viewjournal&gt;&gt; &lt;&lt;closepopup&gt;&gt; &lt;&lt;editjournal&gt;&gt; &amp;emsp; &lt;br&gt;
+&lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;/div&gt;
+&lt;div style=&quot;float:right;white-space:nowrap;&quot;&gt;&amp;emsp;&lt;&lt;editjournal&gt;&gt;&amp;nbsp;&lt;&lt;closepopup&gt;&gt;&lt;/div&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
 &lt;$list filter=&quot;[enlist&lt;events&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
       ''events:'' (&lt;$count filter=&quot;[enlist&lt;events&gt;]&quot;/&gt;)&lt;br&gt;
@@ -10926,13 +10928,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define viewjournal()
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:left;padding:0;width:auto;&quot; to=&lt;&lt;journalTitle&gt;&gt; tooltip=&quot;view Journal&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:inline;padding:0;width:auto;&quot; to=&lt;&lt;journalTitle&gt;&gt; tooltip=&quot;view Journal&quot;&gt;
    ''__&lt;&lt;journalTitle&gt;&gt;__''
 &lt;/$button&gt; 
 \end
 
 \define editjournal()
-&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;padding:0 0.5em;width:auto;&quot; tooltip=&quot;edit Journal&quot;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline;padding:0 0.5em;width:auto;&quot; tooltip=&quot;edit Journal&quot;&gt;
    {{$:/core/images/edit-button}}
    &lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
       &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text={{{ [&lt;journalTitle&gt;get[]] }}}/&gt;
@@ -10944,7 +10946,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define closepopup()
-&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;padding:0 0.5em;margin-left:0.25em;width:auto;&quot; tooltip=&quot;close&quot;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline;padding:0 0.5em;width:auto;&quot; tooltip=&quot;close&quot;&gt;
    {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; /&gt;
 &lt;/$button&gt;
