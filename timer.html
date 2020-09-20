@@ -9629,7 +9629,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/Calendar]]</pre>
+# [[SampleTimer]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9646,7 +9646,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200920061730457" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200920181010862" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9760,8 +9760,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200920161118032" title="$:/temp/timer/ticker">
-<pre>20200920161118032</pre>
+<div created="20200814092733654" modified="20200920181517028" title="$:/temp/timer/ticker">
+<pre>20200920181517028</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10088,7 +10088,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;&lt;timer_buttons AnotherTimer&gt;&gt; &lt;&lt;timer_elapsed AnotherTimer&gt;&gt;
 &lt;&lt;timer_history AnotherTimer&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200920044041465" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200920174906678" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define timer_ticker() $:/temp/timer/ticker
 
 \define timer_start()
@@ -10217,6 +10217,54 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 |   !total|&lt;&lt;timer_showtime total&gt;&gt;  |
 \end
 
+\define timer_delete()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;delete this timer&quot;&gt;
+   {{$:/core/images/delete-button}}
+   &lt;$action-setfield $tiddler=&quot;$:/temp/time/task/confirmdelete&quot;
+      subtitle=&quot;Delete Timer&quot;
+      text=&quot;&quot;&quot;
+         Are you sure you want to delete
+         &lt;blockquote&gt;
+            ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;''
+         &lt;/blockquote&gt;
+      &quot;&quot;&quot;
+      footer=&quot;&quot;&quot;
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
+            &lt;$action-deletetiddler $tiddler=&quot;$:/temp/time/task/confirmdelete&quot;/&gt;
+         &lt;/$button&gt;
+         &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;delete timer&quot;&gt; delete
+            &lt;$action-deletetiddler $tiddler=&quot;$(currentTiddler)$&quot;/&gt;
+            &lt;$action-deletetiddler $tiddler=&quot;$:/temp/time/task/confirmdelete&quot;/&gt;
+            &lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;Timer deleted&quot;/&gt;
+            &lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
+         &lt;/$button&gt;
+      &quot;&quot;&quot; /&gt;
+   &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/time/task/confirmdelete&quot; /&gt;
+&lt;/$button&gt;
+\end
+
+\define timer_log_button()
+&lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show log&quot;&gt; @@.graysvg {{$:/core/images/chevron-down}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$reveal default={{!!showlog}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show log&quot;&gt; {{$:/core/images/chevron-down}} &lt;$action-setfield showlog=&quot;show&quot; /&gt; &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{!!showlog}} type=&quot;match&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide log&quot;&gt; {{$:/core/images/chevron-up}}  &lt;$action-deletefield showlog /&gt; &lt;/$button&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
+\end
+
+\define timer_log()
+&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$reveal default={{!!showlog}} type=&quot;match&quot; text=&quot;show&quot;&gt;
+      @@font-size:70%;line-height:100%;margin-top:0.25em;&lt;&lt;timer_history&gt;&gt;@@
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
+\end
+
 \define timer_history(taskname)
 &lt;$tiddler tiddler={{{ [[$taskname$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars count={{{ [enlist{!!startlist}count[]] }}}&gt;
@@ -10242,9 +10290,14 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 
 \define timer(taskname)
 &lt;$tiddler tiddler={{{ [[$taskname$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
-&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;
-&lt;&lt;timer_summary&gt;&gt;
-&lt;&lt;timer_history&gt;&gt;
+@@float:right;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_delete&gt;&gt; &lt;&lt;timer_log_button&gt;&gt;@@
+@@float:left; &lt;$link&gt;''&lt;$text text={{{ [&lt;currentTiddler&gt;removeprefix&lt;config&gt;removeprefix[/]else&lt;currentTiddler&gt;] }}}/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''@@&lt;br&gt;
+@@float:left;font-size:80%;line-height:100%;
+   &lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;/$reveal&gt;
+   &lt;&lt;timer_total&gt;&gt;
+@@
+@@display:block;clear:both;@@
+&lt;&lt;timer_log&gt;&gt;
 \end</pre>
 </div>
 <div created="20150728060155235" modified="20200903131714807" module-type="widget" tags="" title="TiddlyTools/Timer/action-timeout.js" type="application/javascript">
