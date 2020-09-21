@@ -153,6 +153,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -172,6 +174,8 @@ Error message and password prompt
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/notify</li>
+
+<li>$:/temp/timer/calendar/TiddlyTools/Timer/Calendar</li>
 
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
@@ -9631,6 +9635,11 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Timer/Calendar]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9716,6 +9725,9 @@ SampleSequence</pre>
 <div created="20200921012434963" modified="20200921013741222" title="$:/temp/notify">
 <pre>Timer deleted</pre>
 </div>
+<div created="20200921022335310" modified="20200921022335310" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/Calendar" year="2020">
+<pre></pre>
+</div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9763,8 +9775,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200921013747073" title="$:/temp/timer/ticker">
-<pre>20200921013747072</pre>
+<div created="20200814092733654" modified="20200921022345024" title="$:/temp/timer/ticker">
+<pre>20200921022345024</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10823,7 +10835,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200920160953515" tags="" title="TiddlyTools/Timer/Calendar">
+<div created="20200902213051882" modified="20200921022222204" tags="" title="TiddlyTools/Timer/Calendar">
 <pre>\define calendar_input() $:/temp/timer/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(today)$
 
@@ -10958,7 +10970,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$button&gt;
 &lt;!-- grid popup --&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox&quot;
-   style=&quot;min-width:auto;width:max-content;padding:0.5em;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
+   style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
    &lt;&lt;showday_popup&gt;&gt;
 &lt;/$reveal&gt;
 \end
@@ -10989,7 +11001,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showday_popup()
-&lt;div class=&quot;calendarPopup&quot; style=&quot;font-size:10pt;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
+&lt;div class=&quot;calendarPopup&quot; style=&quot;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
 &lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:created&lt;today&gt;sort[created]]&quot;&gt;
 &lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;today&gt;!sort[modified]]&quot;&gt;
 &lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;/div&gt;
