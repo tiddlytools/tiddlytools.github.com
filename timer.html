@@ -153,8 +153,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -249,7 +247,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52" modified="20200921012452581" showhistory="show" startlist="20200920160427090" stoplist="20200920160433611" title="$:/config/Timers/Sample" totallist="6.52">
+<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736" modified="20200921012452581" showhistory="show" startlist="20200920160427090 20200920230150602" stoplist="20200920160433611 20200920230220338" title="$:/config/Timers/Sample" totallist="6.52 36.256">
 <pre>&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;</pre>
 </div>
 <div created="20200712230254670" modified="20200913201401928" title="$:/config/TimestampDisable">
@@ -9635,11 +9633,6 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Timer/Alarms]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9775,8 +9768,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200921043215019" title="$:/temp/timer/ticker">
-<pre>20200921043215019</pre>
+<div created="20200814092733654" modified="20200921060235024" title="$:/temp/timer/ticker">
+<pre>20200921060235024</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10099,7 +10092,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 <div created="20200717110550625" modified="20200920220246322" tags="" title="SampleTimers">
 <pre>&lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200921012404702" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200921055714913" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/timer/ticker
 
@@ -10294,7 +10287,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 \define timer_history(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars count={{{ [enlist{!!startlist}count[]] }}}&gt;
-&lt;table&gt;
+&lt;table style=&quot;width:100%;text-align:left;&quot;&gt;
    &lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;started&lt;/th&gt;&lt;th&gt;stopped&lt;/th&gt;&lt;th&gt;elapsed&lt;/th&gt;&lt;th&gt;total&lt;/th&gt;&lt;/tr&gt;
    &lt;$list filter=&quot;[range&lt;count&gt;]&quot; variable=&quot;item&quot;&gt;
       &lt;tr&gt;
