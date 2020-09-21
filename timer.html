@@ -145,7 +145,7 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp</li>
 
-<li>$:/config/Timers/Sample Timer</li>
+<li>$:/config/Timers/Sample</li>
 
 <li>$:/config/TimestampDisable</li>
 
@@ -170,6 +170,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/notify</li>
 
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
@@ -243,7 +245,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52" modified="20200920230436380" showhistory="show" startlist="20200920160427090" stoplist="20200920160433611" title="$:/config/Timers/Sample Timer" totallist="6.52">
+<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52" modified="20200921012452581" showhistory="show" startlist="20200920160427090" stoplist="20200920160433611" title="$:/config/Timers/Sample" totallist="6.52">
 <pre>&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;</pre>
 </div>
 <div created="20200712230254670" modified="20200913201401928" title="$:/config/TimestampDisable">
@@ -9711,6 +9713,9 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
+<div created="20200921012434963" modified="20200921013741222" title="$:/temp/notify">
+<pre>Timer deleted</pre>
+</div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Timer/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9758,8 +9763,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200920230558030" title="$:/temp/timer/ticker">
-<pre>20200920230558030</pre>
+<div created="20200814092733654" modified="20200921013747073" title="$:/temp/timer/ticker">
+<pre>20200921013747072</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10082,7 +10087,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 <div created="20200717110550625" modified="20200920220246322" tags="" title="SampleTimers">
 <pre>&lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200920224855324" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200921012404702" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/timer/ticker
 
@@ -10134,20 +10139,12 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;/div&gt;
 &lt;div style=&quot;display:inline-block;&quot;&gt;
    &lt;br&gt;
-   &lt;$vars this_timer={{{ [&lt;config&gt;get[timername]addprefix[/]addprefix&lt;config&gt;] }}}&gt;
-   &lt;$reveal default=&lt;&lt;this_timer&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Please enter a new timer name&quot;&gt; @@.graysvg {{$:/core/images/new-button}}@@
-         &lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;A timer name is required&quot;/&gt;
-         &lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default=&lt;&lt;this_timer&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;add timer&quot;&gt; {{$:/core/images/new-button}}
-         &lt;$action-createtiddler $basetitle=&lt;&lt;this_timer&gt;&gt; caption={{{ [&lt;config&gt;get[description]] }}}
-            text=&quot;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;&quot;/&gt;
-         &lt;$action-deletetiddler $tiddler=&lt;&lt;config&gt;&gt; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
+   &lt;$vars this_timer={{{ [&lt;config&gt;get[timername]else[Timer]addprefix[/]addprefix&lt;config&gt;] }}}&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;add timer&quot;&gt; {{$:/core/images/new-button}}
+      &lt;$action-createtiddler $basetitle=&lt;&lt;this_timer&gt;&gt; caption={{{ [&lt;config&gt;get[description]] }}}
+         text=&quot;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;&quot;/&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;config&gt;&gt; /&gt;
+   &lt;/$button&gt;
    &lt;/$vars&gt;
 &lt;/div&gt;
 \end
