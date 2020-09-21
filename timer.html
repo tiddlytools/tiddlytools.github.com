@@ -9638,7 +9638,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Timer/Calendar]]</pre>
+# [[TiddlyTools/Timer/Alarms]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9775,8 +9775,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200921022345024" title="$:/temp/timer/ticker">
-<pre>20200921022345024</pre>
+<div created="20200814092733654" modified="20200921043215019" title="$:/temp/timer/ticker">
+<pre>20200921043215019</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10429,7 +10429,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20200920050638358" tags="" title="TiddlyTools/Timer/Alarms">
+<div created="20200811043857487" modified="20200921043059186" tags="" title="TiddlyTools/Timer/Alarms">
 <pre>\define alarms_input() $:/temp/timer/alarms_input/$(currentTiddler)$
 \define alarms_msg()   $:/temp/timer/alarms_msg/$(currentTiddler)$
 
@@ -10492,7 +10492,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define alarms_form_msg()
-&lt;style&gt; .alarmMsg { width:calc(100% - 5.75em); } &lt;/style&gt;
+&lt;style&gt; .alarmMsg { width:calc(100% - 4.5em); } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;alarmMsg&quot; tiddler=&lt;&lt;alarms_input&gt;&gt; field=&quot;msg&quot; default=&quot;&quot; placeholder=&quot;enter a message&quot; /&gt;
 \end
 
@@ -10521,13 +10521,15 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;!-- ADD/UPDATE ALARMS --&gt;
 &lt;$vars old_alarm={{{ [&lt;alarms_input&gt;get[old_alarm]] }}}&gt;
 &lt;$reveal default=&lt;&lt;old_alarm&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;add alarm&quot;&gt; {{$:/core/images/new-button}}
+   &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;padding:1px 0.5em !important;width:2em;&quot; tooltip=&quot;add alarm&quot;&gt;
+      {{$:/core/images/new-button}}
       &lt;$action-listops $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;alarms&quot; $subfilter=&quot;[&lt;newalarm&gt;]&quot; /&gt;
       &lt;$action-deletetiddler $tiddler=&lt;&lt;alarms_input&gt;&gt; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&lt;&lt;old_alarm&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;update alarm&quot;&gt; {{$:/core/images/done-button}}
+   &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;padding:1px 0.5em !important;width:2em;&quot; tooltip=&quot;update alarm&quot;&gt;
+      {{$:/core/images/done-button}}
       &lt;$action-listops $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;alarms&quot; $subfilter=&quot;[&lt;newalarm&gt;] +[replace&lt;old_alarm&gt;]&quot; /&gt;
       &lt;$action-deletetiddler $tiddler=&lt;&lt;alarms_input&gt;&gt; /&gt;
    &lt;/$button&gt;
@@ -10536,7 +10538,8 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define alarms_reset()
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset input&quot;&gt; {{$:/core/images/close-button}}
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;padding:1px 0.5em !important;width:2em;&quot; tooltip=&quot;reset input&quot;&gt;
+   {{$:/core/images/close-button}}
    &lt;$action-deletetiddler $tiddler=&lt;&lt;alarms_input&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
