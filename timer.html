@@ -153,6 +153,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -247,7 +249,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736" modified="20200921012452581" showhistory="show" startlist="20200920160427090 20200920230150602" stoplist="20200920160433611 20200920230220338" title="$:/config/Timers/Sample" totallist="6.52 36.256">
+<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219" modified="20200921012452581" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899" stoplist="20200920160433611 20200920230220338 20200922165159119" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475">
 <pre>&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;</pre>
 </div>
 <div created="20200712230254670" modified="20200913201401928" title="$:/config/TimestampDisable">
@@ -9633,6 +9635,11 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Timer]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9715,7 +9722,7 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
-<div created="20200921012434963" modified="20200921013741222" title="$:/temp/notify">
+<div created="20200921012434963" modified="20200922231022294" title="$:/temp/notify">
 <pre>Timer deleted</pre>
 </div>
 <div created="20200921022335310" modified="20200921022335310" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/Calendar" year="2020">
@@ -9768,8 +9775,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200921193448047" title="$:/temp/timer/ticker">
-<pre>20200921193448047</pre>
+<div created="20200814092733654" modified="20200922235851069" title="$:/temp/timer/ticker">
+<pre>20200922235851068</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10092,25 +10099,32 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 <div created="20200717110550625" modified="20200920220246322" tags="" title="SampleTimers">
 <pre>&lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200921055714913" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200922235711424" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/timer/ticker
 
 \define timer_showdate(time)
+\whitespace trim
+&lt;!-- time = 17-digit date/time stamp --&gt;
 &lt;$vars UTC=&quot;[UTC]&quot;&gt;
 &lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[timer_format]] ~[[YYYY-0MM-0DD 0hh:0mm:0ss.0XXX]] +[addprefix&lt;UTC&gt;] }}}&gt;
 &lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
-   &lt;$tiddler tiddler=&lt;&lt;$time$&gt;&gt;&gt;
-      &lt;$view field=title format=&quot;date&quot; template=&lt;&lt;format&gt;&gt;/&gt;
-   &lt;/$tiddler&gt;
+   &lt;$view tiddler=&lt;&lt;$time$&gt;&gt; field=title format=&quot;date&quot; template=&lt;&lt;format&gt;&gt;/&gt;
 &lt;/$reveal&gt;
 \end
 
-\define timer_showtime(time)
-&lt;$vars    min={{{ [&lt;$time$&gt;divide[60]trunc[]] }}}&gt;
+\define timer_showtime(time,hidemsec)
+\whitespace trim
+&lt;!-- time = seconds.milliseconds... convert to 0hh:0mm:0ss.0XXX --&gt;
+&lt;$vars     hr={{{ [&lt;$time$&gt;divide[3600]trunc[]addprefix[0]split[]last[2]join[]] }}}&gt;
+&lt;$vars  hrsec={{{ [&lt;hr&gt;multiply[3600]] }}}&gt;
+&lt;$vars    min={{{ [&lt;$time$&gt;subtract&lt;hrsec&gt;divide[60]trunc[]addprefix[0]split[]last[2]join[]] }}}&gt;
 &lt;$vars minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
-&lt;$vars    sec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
-&lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt; &lt;&lt;min&gt;&gt; minutes &lt;&lt;sec&gt;&gt; seconds &lt;/$reveal&gt;
+&lt;$vars    sec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;split[.]first[]addprefix[0]split[]last[2]join[]] }}}&gt;
+&lt;$vars   msec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;split[.]rest[]else[0]addsuffix[000]split[]first[3]join[]] }}}&gt;
+&lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+   &lt;&lt;hr&gt;&gt;:&lt;&lt;min&gt;&gt;:&lt;&lt;sec&gt;&gt; &lt;$reveal text=&quot;$hidemsec$&quot; type=&quot;match&quot; default=&quot;&quot;&gt; .&lt;&lt;msec&gt;&gt; &lt;/$reveal&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer_ticker_show()
@@ -10130,7 +10144,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
     day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
 &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
 &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;trunc[]] }}}&gt;
-&lt;&lt;timer_showtime elapsed&gt;&gt;
+&lt;&lt;timer_showtime elapsed hidemsec&gt;&gt;
 \end
 
 \define timer_add()
@@ -10276,10 +10290,14 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$reveal default={{!!showhistory}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}} &lt;$action-setfield showhistory=&quot;show&quot; /&gt; &lt;/$button&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;show&quot; /&gt;
+      &lt;/$button&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}  &lt;$action-deletefield showhistory /&gt; &lt;/$button&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;&quot; /&gt;
+      &lt;/$button&gt;
    &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 \end
@@ -10287,7 +10305,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 \define timer_history(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars count={{{ [enlist{!!startlist}count[]] }}}&gt;
-&lt;table style=&quot;width:100%;text-align:left;&quot;&gt;
+&lt;table style=&quot;width:100%;font-size:90%;line-height:120%;text-align:left;margin:0.25em 0;&quot;&gt;
    &lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;started&lt;/th&gt;&lt;th&gt;stopped&lt;/th&gt;&lt;th&gt;elapsed&lt;/th&gt;&lt;th&gt;total&lt;/th&gt;&lt;/tr&gt;
    &lt;$list filter=&quot;[range&lt;count&gt;]&quot; variable=&quot;item&quot;&gt;
       &lt;tr&gt;
@@ -10309,34 +10327,26 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 
 \define timer(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars name={{{ [&lt;currentTiddler&gt;removeprefix&lt;config&gt;removeprefix[/]else&lt;currentTiddler&gt;] }}}&gt;
 @@float:right;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_delete&gt;&gt; &lt;&lt;timer_history_button&gt;&gt;@@
-@@float:left; &lt;$link&gt;''&lt;$text text={{{ [&lt;currentTiddler&gt;removeprefix&lt;config&gt;removeprefix[/]else&lt;currentTiddler&gt;] }}}/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''@@&lt;br&gt;
-@@float:left;font-size:80%;line-height:100%;
-   &lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;/$reveal&gt;
-   &lt;&lt;timer_total&gt;&gt;
-@@
+@@float:left; &lt;$link&gt;''&lt;$text text=&lt;&lt;name&gt;&gt;/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''@@&lt;br&gt;
+@@float:left; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;@@
 @@display:block;clear:both;@@
 &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
-      @@font-size:70%;line-height:100%;margin-top:0.25em;&lt;&lt;timer_history&gt;&gt;@@
-   &lt;/$reveal&gt;
+   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt; &lt;&lt;timer_history&gt;&gt; &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 \end
 
 \define timer_list()
 &lt;$list filter=&quot;[prefix&lt;config&gt;!sort[created]] -[&lt;config&gt;]&quot;&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-bottom:0.5em;&quot;&gt;
-      &lt;&lt;timer&gt;&gt;
-   &lt;/div&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-bottom:0.5em;&quot;&gt; &lt;&lt;timer&gt;&gt; &lt;/div&gt;
 &lt;/$list&gt;
 \end
 
 \define timers()
 &lt;div style=&quot;display:inline-block;&quot;&gt;
    &lt;&lt;timer_add&gt;&gt;
-   &lt;div style=&quot;margin-top:0.5em;&quot;&gt;
-      &lt;&lt;timer_list&gt;&gt;
-   &lt;/div&gt;
+   &lt;div style=&quot;margin-top:0.5em;&quot;&gt; &lt;&lt;timer_list&gt;&gt; &lt;/div&gt;
 &lt;/div&gt;
 \end</pre>
 </div>
