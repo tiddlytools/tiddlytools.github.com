@@ -9768,8 +9768,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200923064645329" title="$:/temp/timer/ticker">
-<pre>20200923064645327</pre>
+<div created="20200814092733654" modified="20200923171556056" title="$:/temp/timer/ticker">
+<pre>20200923171556055</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10092,7 +10092,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 <div created="20200717110550625" modified="20200920220246322" tags="" title="SampleTimers">
 <pre>&lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200923064256296" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200923170638363" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/timer/ticker
 
@@ -10152,7 +10152,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
    &lt;$vars this_timer={{{ [&lt;config&gt;get[timername]else[Timer]addprefix[/]addprefix&lt;config&gt;] }}}&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;add timer&quot;&gt; {{$:/core/images/new-button}}
       &lt;$action-createtiddler $basetitle=&lt;&lt;this_timer&gt;&gt; caption={{{ [&lt;config&gt;get[description]] }}}
-         text=&quot;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;&quot;/&gt;
+         text=&quot;@@display:inline-block;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;@@&quot;/&gt;
       &lt;$action-deletetiddler $tiddler=&lt;&lt;config&gt;&gt; /&gt;
    &lt;/$button&gt;
    &lt;/$vars&gt;
@@ -10160,8 +10160,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 \end
 
 \define timer_delete()
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;delete this timer&quot;&gt;
-   {{$:/core/images/delete-button}}
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;delete timer&quot;&gt; {{$:/core/images/delete-button}}
    &lt;$action-setfield $tiddler=&quot;$:/temp/timer/confirmdelete&quot;
       subtitle=&quot;Delete Timer&quot;
       text=&quot;&quot;&quot;
@@ -10175,8 +10174,6 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
          &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;delete timer&quot;&gt; delete
             &lt;$action-deletetiddler $tiddler=&quot;$(currentTiddler)$&quot;/&gt;
             &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmdelete&quot;/&gt;
-            &lt;$action-setfield $tiddler=&quot;$:/temp/notify&quot; text=&quot;Timer deleted&quot;/&gt;
-            &lt;$action-sendmessage $message=&quot;tm-notify&quot; $param=&quot;$:/temp/notify&quot;/&gt;
          &lt;/$button&gt;
       &quot;&quot;&quot; /&gt;
    &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/confirmdelete&quot; /&gt;
@@ -10184,81 +10181,126 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 \end
 
 \define timer_start()
-&lt;$button class=&quot;tc-button tt-button&quot; actions=&quot;&quot;&quot;
-   &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
-   &lt;$list filter=&quot;[&lt;currentTiddler&gt;is[missing]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; button=&quot;stop&quot; /&gt; &lt;/$list&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
-&quot;&quot;&quot;&gt; start
-&lt;/$button&gt;
+&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;start timer&quot; actions=&quot;&quot;&quot;
+      &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+      &lt;$list filter=&quot;[&lt;currentTiddler&gt;is[missing]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; button=&quot;stop&quot; /&gt; &lt;/$list&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
+   &quot;&quot;&quot;&gt; {{$:/core/images/timestamp-on}}
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;stop timer&quot; actions=&quot;&quot;&quot;
+      &lt;$vars started={{{ [enlist{!!startlist}last[]] }}} stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+      &lt;$wikify name=&quot;start&quot; text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;started&gt;&gt; /&gt;'&gt;
+      &lt;$wikify name=&quot;stop&quot;  text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;stopped&gt;&gt; /&gt;'&gt;
+      &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;fixed[3]] }}}&gt;
+      &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;fixed[3]] }}}&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot;    stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;stopped&gt;trim[]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
+   &quot;&quot;&quot;&gt; {{$:/core/images/timestamp-off}}
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer_stop()
-&lt;$button class=&quot;tc-button tt-button&quot; actions=&quot;&quot;&quot;
-   &lt;$vars started={{{ [enlist{!!startlist}last[]] }}} stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
-   &lt;$wikify name=&quot;start&quot; text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;started&gt;&gt; /&gt;'&gt;
-   &lt;$wikify name=&quot;stop&quot;  text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;stopped&gt;&gt; /&gt;'&gt;
-   &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;fixed[3]] }}}&gt;
-   &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;fixed[3]] }}}&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot;    stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;stopped&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot; /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
-&quot;&quot;&quot;&gt; stop
-&lt;/$button&gt;
+&lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
+&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot;&gt; @@.graysvg {{$:/core/images/cancel-button}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot; actions=&quot;&quot;&quot;
+      &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [enlist{!!startlist}butlast[]join[ ]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
+   &quot;&quot;&quot;&gt; {{$:/core/images/cancel-button}}
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer_reset()
-&lt;$button class=&quot;tc-button tt-button&quot;&gt; reset
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot;     /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;showhistory&quot; /&gt;
-&lt;/$button&gt;
+&lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
+&lt;$reveal default={{!!stoplist}} type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; @@.graysvg {{$:/core/images/refresh-button}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!stoplist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; {{$:/core/images/refresh-button}}
+      &lt;$action-setfield $tiddler=&quot;$:/temp/timer/confirmreset&quot;
+         subtitle=&quot;Reset Timer History&quot;
+         text=&quot;&quot;&quot;
+            Are you sure you want to reset
+            &lt;blockquote&gt; ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;'' &lt;/blockquote&gt;
+         &quot;&quot;&quot;
+         footer=&quot;&quot;&quot;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
+            &lt;/$button&gt;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;delete timer&quot;&gt; reset
+               &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot;     /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;showhistory&quot; /&gt;
+               &lt;/$tiddler&gt;
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
+            &lt;/$button&gt;
+         &quot;&quot;&quot; /&gt;
+      &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/confirmreset&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+\end
+
+\define timer_history_button()
+&lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
+&lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; @@.graysvg {{$:/core/images/chevron-down}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$reveal default={{!!showhistory}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;show&quot; /&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;&quot; /&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer_buttons(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
-&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; &lt;&lt;timer_start&gt;&gt; &lt;&lt;timer_reset&gt;&gt; &lt;/$reveal&gt;
-&lt;$reveal default={{!!button}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; &lt;&lt;timer_stop&gt;&gt;  &lt;&lt;timer_reset&gt;&gt; &lt;/$reveal&gt;
+&lt;&lt;timer_start&gt;&gt;  &lt;&lt;timer_stop&gt;&gt; &lt;&lt;timer_reset&gt;&gt;
 \end
 
 \define timer_elapsed(timername,label:&quot;elapsed:&quot;)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars elapsed={{{ [enlist{!!elapsedlist}last[]] }}}&gt;
-&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   $label$
-   &lt;$reveal default={{!!button}} type=&quot;match&quot;   text=&quot;stop&quot;&gt; ''&lt;&lt;timer_ticker_show&gt;&gt;''      &lt;/$reveal&gt;
-   &lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt; ''&lt;&lt;timer_showtime elapsed&gt;&gt;'' &lt;/$reveal&gt;
+&lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
+   &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      $label$ ''&lt;&lt;timer_ticker_show&gt;&gt;''
+   &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 \end
 
 \define timer_total(timername,label:&quot;total:&quot;)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars total={{{ [enlist{!!totallist}last[]] }}}&gt;
-&lt;$reveal text=&lt;&lt;total&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt; $label$ ''&lt;&lt;timer_showtime total&gt;&gt;'' &lt;/$reveal&gt;
-\end
-
-\define timer_summary(timername)
-&lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars
-   started={{{ [enlist{!!startlist}last[]]   }}}
-   stopped={{{ [enlist{!!stoplist}last[]]    }}}
-   elapsed={{{ [enlist{!!elapsedlist}last[]] }}}
-     total={{{ [enlist{!!totallist}last[]]   }}}&gt;
-&lt;$vars startcount={{{ [enlist{!!startlist}count[]] }}} stopcount={{{ [enlist{!!stoplist}count[]] }}}&gt;
-&lt;$vars stopped={{{ [&lt;startcount&gt;match&lt;stopcount&gt;then&lt;stopped&gt;else[]] }}}&gt;
-&lt;$vars elapsed={{{ [&lt;startcount&gt;match&lt;stopcount&gt;then&lt;elapsed&gt;else[]] }}}&gt;
-
-| !started|&lt;&lt;timer_showdate started&gt;&gt;|
-| !stopped|&lt;&lt;timer_showdate stopped&gt;&gt;|
-| !elapsed|&lt;&lt;timer_showtime elapsed&gt;&gt;|
-|   !total|&lt;&lt;timer_showtime total&gt;&gt;  |
+&lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
+   &lt;$reveal text=&lt;&lt;total&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+      $label$ ''&lt;&lt;timer_showtime total&gt;&gt;''
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer_history(timername)
@@ -10284,30 +10326,12 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 &lt;/table&gt;
 \end
 
-\define timer_history_button()
-&lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; @@.graysvg {{$:/core/images/chevron-down}}@@ &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$reveal default={{!!showhistory}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}}
-         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;show&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}
-         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-&lt;/$reveal&gt;
-\end
-
 \define timer(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars name={{{ [&lt;currentTiddler&gt;removeprefix&lt;config&gt;removeprefix[/]else&lt;currentTiddler&gt;] }}}&gt;
-@@float:right;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_delete&gt;&gt; &lt;&lt;timer_history_button&gt;&gt;@@
-@@float:left; &lt;$link&gt;''&lt;$text text=&lt;&lt;name&gt;&gt;/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''@@&lt;br&gt;
-@@float:left; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;@@
+&lt;$link&gt;''&lt;$text text=&lt;&lt;name&gt;&gt;/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''&lt;br/&gt;
+@@float:right;&lt;&lt;timer_history_button&gt;&gt; &lt;&lt;timer_delete&gt;&gt;@@
+@@float:left; &lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;@@
 @@display:block;clear:both;@@
 &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt; &lt;&lt;timer_history&gt;&gt; &lt;/$reveal&gt;
@@ -11492,7 +11516,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211125;Thanksgiving Day
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20200920221606118" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
+<div created="20200711063502632" modified="20200923171353826" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Timer/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Timer/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11538,17 +11562,17 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 * To record activities for a task, create a tiddler containing the above macro.
 * If you omit the timername, the recorded times are stored in the current tiddler.
 * If you specify a timername, the recorded times are stored in a separate tiddler with that timername.
-* The &lt;$button&gt;start&lt;/$button&gt; button begins a timer &quot;session&quot; and stores the starting time.  The button changes to &lt;$button&gt;stop&lt;/$button&gt;.
-* The &lt;$button&gt;stop&lt;/$button&gt; button ends the current timer session and stores the ending time and the elapsed time.  The button changes back to &lt;$button&gt;start&lt;/$button&gt; so you can begin another timer session.
-* Each time you stop the timer, it will also add the elapsed time to the total accumulated time.
-* When a timer session has been started, the elapsed time is displayed and automatically updated in real-time.
-* When a timer session ends, the total accumulated time for all timer sessions is displayed.
-* The &lt;$button&gt;reset&lt;/$button&gt; button clears all stored timer session data, including starting/ending times, elapsed time, and total accumulated time.
+* &lt;$button&gt;{{$:/core/images/timestamp-on}}&lt;/$button&gt; starts a timer &quot;session&quot;.  The elapsed time is displayed and automatically updated in real-time.
+* &lt;$button&gt;{{$:/core/images/timestamp-off}}&lt;/$button&gt; stops the current timer session.  The total accumulated time is displayed.
+* &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; cancels the current timer session.
+* &lt;$button&gt;{{$:/core/images/refresh-button}}&lt;/$button&gt; clears all stored timer session data, including starting/ending times, elapsed time, and total accumulated time.  You will be asked to confirm before the data is cleared.
+* &lt;$button&gt;{{$:/core/images/chevron-down}}&lt;/$button&gt; shows/hides a table with the starting, ending, elapsed time and total accumulated time for each timer session.
+* &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the task tiddler and all associated session data.  You will be asked to confirm before the tiddler is deleted.
 
 ''You can also use the following macros to create custom output showing only specific interface elements:''
 
 ``&lt;&lt;timer_buttons&gt;&gt;`` or ``&lt;&lt;timer_buttons timername&gt;&gt;``&lt;br&gt;
-''Shows start/stop and reset buttons.''
+''Shows start, stop and reset buttons.''
 
 ``&lt;&lt;timer_elapsed&gt;&gt;`` or ``&lt;&lt;timer_elapsed timername&gt;&gt;``&lt;br&gt;
 ''Shows the elapsed time for the current timer session.''&lt;br&gt;
@@ -11556,11 +11580,8 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 ``&lt;&lt;timer_total&gt;&gt;`` or ``&lt;&lt;timer_total timername&gt;&gt;``&lt;br&gt;
 ''Shows the total accumulated time for all timer sessions.''&lt;br&gt;
 
-``&lt;&lt;timer_summary&gt;&gt;`` or ``&lt;&lt;timer_summary timername&gt;&gt;``&lt;br&gt;
-''Shows a table with the starting, ending, and elapsed time for the most recent timer session, as well as the total accumulated time.''
-
 ``&lt;&lt;timer_history&gt;&gt;`` or ``&lt;&lt;timer_history timername&gt;&gt;``&lt;br&gt;
-''Shows a table with the history of all individual timer sessions, including the starting, ending, elapsed time and total accumulated time.''
+''Shows a table with the starting, ending, elapsed time and total accumulated time for each timer session''
 &lt;&lt;&lt;
 !! [[TiddlyTools/Timer/CountDown]]
 &lt;&lt;&lt;
