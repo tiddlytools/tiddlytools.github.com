@@ -173,7 +173,7 @@ Error message and password prompt
 
 <li>$:/temp/notify</li>
 
-<li>$:/temp/timer/calendar/TiddlyTools/Timer/Calendar</li>
+<li>$:/temp/search</li>
 
 <li>$:/temp/timer/countdown/AutoSaver</li>
 
@@ -9648,7 +9648,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200820122751866" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200920230550086" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200923064639492" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Timer/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9718,7 +9718,7 @@ SampleSequence</pre>
 <div created="20200921012434963" modified="20200922231022294" title="$:/temp/notify">
 <pre>Timer deleted</pre>
 </div>
-<div created="20200921022335310" modified="20200921022335310" month="9" title="$:/temp/timer/calendar/TiddlyTools/Timer/Calendar" year="2020">
+<div created="20200923055527617" modified="20200923055532129" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200905020846672" done="&lt;$importvariables filter=&quot;TiddlyTools/Timer/CountDown TiddlyTools/Timer/AutoSaver&quot;&gt;
@@ -9768,8 +9768,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200905020846673" secs="00" title="$:/temp/timer/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200814092733654" modified="20200923014431031" title="$:/temp/timer/ticker">
-<pre>20200923014431031</pre>
+<div created="20200814092733654" modified="20200923064645329" title="$:/temp/timer/ticker">
+<pre>20200923064645327</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10092,13 +10092,13 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 <div created="20200717110550625" modified="20200920220246322" tags="" title="SampleTimers">
 <pre>&lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200923014410260" tags="$:/tags/Macro" title="TiddlyTools/Timer">
+<div created="20200712174503125" modified="20200923064256296" tags="$:/tags/Macro" title="TiddlyTools/Timer">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/timer/ticker
 
 \define timer_showdate(time)
 \whitespace trim
-&lt;!-- time = 17-digit date/time stamp --&gt;
+&lt;!-- show 17-digit date/time stamp as formatted date/time --&gt;
 &lt;$vars UTC=&quot;[UTC]&quot;&gt;
 &lt;$vars format={{{ [[TiddlyTools/Timer/Setup]get[timer_format]] ~[[YYYY-0MM-0DD 0hh:0mm:0ss.0XXX]] +[addprefix&lt;UTC&gt;] }}}&gt;
 &lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
@@ -10108,34 +10108,32 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 
 \define timer_showtime(time,hidemsec)
 \whitespace trim
-&lt;!-- time = seconds.milliseconds... convert to 0hh:0mm:0ss.0XXX --&gt;
+&lt;!-- show seconds.msec as 0hh:0mm:0ss.0XXX --&gt;
 &lt;$vars     hr={{{ [&lt;$time$&gt;divide[3600]trunc[]addprefix[0]split[]last[2]join[]] }}}&gt;
-&lt;$vars  hrsec={{{ [&lt;hr&gt;multiply[3600]] }}}&gt;
-&lt;$vars    min={{{ [&lt;$time$&gt;subtract&lt;hrsec&gt;divide[60]trunc[]addprefix[0]split[]last[2]join[]] }}}&gt;
-&lt;$vars minsec={{{ [&lt;min&gt;multiply[60]] }}}&gt;
-&lt;$vars    sec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;split[.]first[]addprefix[0]split[]last[2]join[]] }}}&gt;
-&lt;$vars   msec={{{ [&lt;$time$&gt;subtract&lt;minsec&gt;split[.]rest[]else[0]addsuffix[000]split[]first[3]join[]] }}}&gt;
+&lt;$vars    min={{{ [&lt;$time$&gt;remainder[3600]divide[60]trunc[]addprefix[0]split[]last[2]join[]] }}}&gt;
+&lt;$vars    sec={{{ [&lt;$time$&gt;remainder[60]split[.]first[]addprefix[0]split[]last[2]join[]] }}}&gt;
+&lt;$vars   msec={{{ [&lt;$time$&gt;remainder[60]split[.]rest[]else[0]addsuffix[000]split[]first[3]join[]] }}}&gt;
 &lt;$reveal text=&lt;&lt;$time$&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
    &lt;&lt;hr&gt;&gt;:&lt;&lt;min&gt;&gt;:&lt;&lt;sec&gt;&gt; &lt;$reveal text=&quot;$hidemsec$&quot; type=&quot;match&quot; default=&quot;&quot;&gt; .&lt;&lt;msec&gt;&gt; &lt;/$reveal&gt;
 &lt;/$reveal&gt;
 \end
 
+\define timer_getseconds(time)
+\whitespace trim
+&lt;!-- show DD0hh0mm0ss0XXX as seconds.msec --&gt;
+&lt;$vars 
+    day={{{ [[$time$]split[]first[ 8]last[2]join[]multiply[86400]] }}}
+   hour={{{ [[$time$]split[]first[10]last[2]join[]multiply[3600]]  }}}
+    min={{{ [[$time$]split[]first[12]last[2]join[]multiply[60]]    }}}
+    sec={{{ [[$time$]split[]first[14]last[2]join[]]                }}}
+   msec={{{ [[$time$]split[]first[17]last[3]join[]divide[1000]]    }}}&gt;
+{{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}
+\end
+
 \define timer_ticker_show()
 &lt;$vars started={{!!started}} stopped={{{ [&lt;timer_ticker&gt;get[text]] }}}&gt;
-&lt;$vars 
-   msec={{{ [&lt;started&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
-    sec={{{ [&lt;started&gt;split[]first[14]last[2]join[]]                }}}
-    min={{{ [&lt;started&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
-   hour={{{ [&lt;started&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
-    day={{{ [&lt;started&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
-&lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
-&lt;$vars
-   msec={{{ [&lt;stopped&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
-    sec={{{ [&lt;stopped&gt;split[]first[14]last[2]join[]]                }}}
-    min={{{ [&lt;stopped&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
-   hour={{{ [&lt;stopped&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
-    day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
-&lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
+&lt;$wikify name=&quot;start&quot; text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;started&gt;&gt; /&gt;'&gt;
+&lt;$wikify name=&quot;stop&quot;  text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;stopped&gt;&gt; /&gt;'&gt;
 &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;trunc[]] }}}&gt;
 &lt;&lt;timer_showtime elapsed hidemsec&gt;&gt;
 \end
@@ -10168,9 +10166,7 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
       subtitle=&quot;Delete Timer&quot;
       text=&quot;&quot;&quot;
          Are you sure you want to delete
-         &lt;blockquote&gt;
-            ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;''
-         &lt;/blockquote&gt;
+         &lt;blockquote&gt; ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;'' &lt;/blockquote&gt;
       &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
@@ -10201,22 +10197,10 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 \define timer_stop()
 &lt;$button class=&quot;tc-button tt-button&quot; actions=&quot;&quot;&quot;
    &lt;$vars started={{{ [enlist{!!startlist}last[]] }}} stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
-   &lt;$vars 
-      msec={{{ [&lt;started&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
-       sec={{{ [&lt;started&gt;split[]first[14]last[2]join[]]                }}}
-       min={{{ [&lt;started&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
-      hour={{{ [&lt;started&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
-       day={{{ [&lt;started&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
-   &lt;$vars start={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
-   &lt;$vars
-      msec={{{ [&lt;stopped&gt;split[]first[17]last[3]join[]divide[1000]]    }}}
-       sec={{{ [&lt;stopped&gt;split[]first[14]last[2]join[]]                }}}
-       min={{{ [&lt;stopped&gt;split[]first[12]last[2]join[]multiply[60]]    }}}
-      hour={{{ [&lt;stopped&gt;split[]first[10]last[2]join[]multiply[3600]]  }}}
-       day={{{ [&lt;stopped&gt;split[]first[ 8]last[2]join[]multiply[86400]] }}}&gt;
-   &lt;$vars stop={{{ [&lt;msec&gt;add&lt;sec&gt;add&lt;min&gt;add&lt;hour&gt;add&lt;day&gt;] }}}&gt;
-   &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
-   &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;multiply[1000]trunc[]divide[1000]] }}}&gt;
+   &lt;$wikify name=&quot;start&quot; text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;started&gt;&gt; /&gt;'&gt;
+   &lt;$wikify name=&quot;stop&quot;  text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;stopped&gt;&gt; /&gt;'&gt;
+   &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;fixed[3]] }}}&gt;
+   &lt;$vars   total={{{ [enlist{!!totallist}] ~[[0]] +[last[]add&lt;elapsed&gt;fixed[3]] }}}&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot;    stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;stopped&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
@@ -10277,24 +10261,6 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
 |   !total|&lt;&lt;timer_showtime total&gt;&gt;  |
 \end
 
-\define timer_history_button()
-&lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; @@.graysvg {{$:/core/images/chevron-down}}@@ &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$reveal default={{!!showhistory}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}}
-         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;show&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}
-         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-&lt;/$reveal&gt;
-\end
-
 \define timer_history(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars count={{{ [enlist{!!startlist}count[]] }}}&gt;
@@ -10316,6 +10282,24 @@ __''This [[CountDown|TiddlyTools/Timer/CountDown]] sequence has alternating sess
       &lt;/tr&gt;
    &lt;/$list&gt;
 &lt;/table&gt;
+\end
+
+\define timer_history_button()
+&lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; @@.graysvg {{$:/core/images/chevron-down}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$reveal default={{!!showhistory}} type=&quot;nomatch&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show history&quot;&gt; {{$:/core/images/chevron-down}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;show&quot; /&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{!!showhistory}} type=&quot;match&quot; text=&quot;show&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide history&quot;&gt; {{$:/core/images/chevron-up}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; showhistory=&quot;&quot; /&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
 \end
 
 \define timer(timername)
