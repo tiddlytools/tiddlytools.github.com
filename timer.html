@@ -225,7 +225,7 @@ Error message and password prompt
 
 <li>TiddlyTools/Time/Ticker</li>
 
-<li>TiddlyTools/Time/Timer</li>
+<li>TiddlyTools/Time/Timers</li>
 
 <li>TiddlyTools/Time/WorldClocks</li>
 
@@ -252,7 +252,7 @@ Error message and password prompt
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200921012452581" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
 <pre>&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;</pre>
 </div>
-<div created="20200712230254670" modified="20200924100759127" title="$:/config/TimestampDisable">
+<div created="20200712230254670" modified="20200924113032774" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9773,8 +9773,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200924100816021" title="$:/temp/time/ticker">
-<pre>20200924100816021</pre>
+<div created="20200924032759417" modified="20200924113416039" title="$:/temp/time/ticker">
+<pre>20200924113416038</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11295,7 +11295,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 ''This package contains &lt;$text text={{{ [prefix[TiddlyTools/Time]!suffix[/Info]count[]] }}}/&gt; tiddlers'' (plus documentation and sample content).&lt;br&gt;
 ''To import these tiddlers, &lt;$button dragFilter=&quot;[prefix[TiddlyTools/Time]] [prefix[Sample]]&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;drag this link&lt;/$button&gt; into your own ~TiddlyWiki.''
 
-!! [[TiddlyTools/Time/Timer]]
+!! [[TiddlyTools/Time/Timers]]
 &lt;&lt;&lt;
 ''Displays a list of task timers to record starting, ending, elapsed and total accumulated times.''
 &lt;br&gt;Requires: [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
@@ -11512,13 +11512,13 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/Setup]]
 &lt;&lt;&lt;
-''Defines settings for use with [[TiddlyTools/Time/Timer]], [[TiddlyTools/Time/Calendar]], [[TiddlyTools/Time/SidebarCalendar]], [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/SidebarClocks]], [[TiddlyTools/Time/WorldClocks]] and [[TiddlyTools/Time/AutoSaver]]:''
+''Defines settings for use with [[TiddlyTools/Time/Timers]], [[TiddlyTools/Time/Calendar]], [[TiddlyTools/Time/SidebarCalendar]], [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/SidebarClocks]], [[TiddlyTools/Time/WorldClocks]] and [[TiddlyTools/Time/AutoSaver]]:''
 
 * To change these settings, you can enter values below, or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Setup&quot;&gt;edit this tiddler&lt;/$button&gt;.
 * If you clear a setting or &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-delete-tiddler&quot; param=&quot;TiddlyTools/Time/Setup&quot;&gt;delete this tiddler&lt;/$button&gt;, default values will be used.
 
 @@.resize.nobullets
-* [[TiddlyTools/Time/Timer]]:
+* [[TiddlyTools/Time/Timers]]:
 ** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;YYYY-0MM-0DD 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
 
 * [[TiddlyTools/Time/Calendar]]:
@@ -11633,7 +11633,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;&lt;ticker&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200924032648612" tags="$:/tags/Macro" title="TiddlyTools/Time/Timer">
+<div created="20200712174503125" modified="20200924032445650" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/time/ticker
 
