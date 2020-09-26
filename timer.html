@@ -153,6 +153,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -9629,6 +9631,11 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Time/Setup]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9644,7 +9651,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200926090551394" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200926174452991" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200926225618701" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9698,11 +9705,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9758,8 +9765,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200926174454014" title="$:/temp/time/ticker">
-<pre>20200926174454014</pre>
+<div created="20200924032759417" modified="20200926225744371" title="$:/temp/time/ticker">
+<pre>20200926225744368</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10573,7 +10580,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200926173301954" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20200926225519471" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(thisdate)$
 
@@ -10587,8 +10594,11 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showmonth(yyyy,mm,view,select)
+&lt;$vars boxsize={{{ [[TiddlyTools/Time/Setup]get[calendar_boxsize]]     ~[[2.5em]]      }}}&gt;
+&lt;$wikify name=&quot;events&quot; text=&lt;&lt;getevents&gt;&gt;&gt;
+@@white-space:nowrap;
+&lt;&lt;showheading &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;  &gt;&gt;
 &lt;$vars numbers={{{ [[TiddlyTools/Time/Setup]get[calendar_numbers]]     ~[[color:black;font-size:1.5em;font-weight:bold;]] }}}
-       boxsize={{{ [[TiddlyTools/Time/Setup]get[calendar_boxsize]]     ~[[2.5em]]      }}}
     background={{{ [[TiddlyTools/Time/Setup]get[calendar_background]]  ~[[lightgray]]  }}}
     foreground={{{ [[TiddlyTools/Time/Setup]get[calendar_foreground]]  ~[[white]]      }}}
        todaybg={{{ [[TiddlyTools/Time/Setup]get[calendar_today]]       ~[[gold]]       }}}
@@ -10596,10 +10606,8 @@ set ~AutoSaver interval:&lt;hr&gt;
      changesbg={{{ [[TiddlyTools/Time/Setup]get[calendar_changes]]     ~[[lightblue;text-decoration:underline;]]  }}}
     showevents={{{ [[TiddlyTools/Time/Setup]get[calendar_showevents]]  ~[[yes]] }}}
    showchanges={{{ [[TiddlyTools/Time/Setup]get[calendar_showchanges]] ~[[yes]] }}}&gt;
-&lt;$wikify name=&quot;events&quot; text=&lt;&lt;getevents&gt;&gt;&gt;
-@@white-space:nowrap;
-&lt;&lt;showheading &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;  &gt;&gt;
 &lt;&lt;showgrid    &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$select$&quot;&gt;&gt;
+&lt;/$vars&gt;
 @@
 \end
 
@@ -10608,10 +10616,10 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
       &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
       &lt;&lt;showheading_next     &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
-      &lt;&lt;controls_editevents &quot;tc-btn-invisible&quot;&gt;&gt;
    &lt;/$reveal&gt;
    &lt;&lt;showheading_toggle      &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
+      &lt;&lt;controls_editevents &quot;tc-btn-invisible&quot;&gt;&gt;
       &lt;&lt;controls_settings   &quot;tc-btn-invisible&quot;&gt;&gt;
    &lt;/$reveal&gt;
 &lt;/div&gt;
@@ -10881,15 +10889,39 @@ Month:
 &lt;/$button&gt;
 \end
 
+\define controls_settings_edit(field,default,width:&quot;12em&quot;,align:&quot;left&quot;)
+&lt;style&gt; .calendarEdit_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
+&lt;$edit-text tag=&quot;input&quot; class=&quot;calendarEdit_$field$&quot; tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\end
+
 \define controls_settings(class:&quot;tc-button tt-button&quot;)
 &lt;span style=&quot;position:relative;&quot;&gt;
 &lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt;
    {{$:/core/images/options-button}}
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt;&gt;
-   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot; style=&quot;right:-2em;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:10pt;text-align:left;&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot; style=&quot;right:-5em;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:10pt;text-align:left;&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings/styles&quot;&gt;&gt; tooltip=&quot;edit styles&quot;&gt;
+         {{$:/core/images/edit-button}}
+      &lt;/$button&gt;
+      ''Calendar settings''&lt;hr&gt;
       &lt;$checkbox tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;calendar_showchanges&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; show tiddler additions and changes &lt;/$checkbox&gt;&lt;br&gt;
       &lt;$checkbox tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;calendar_showevents&quot;  default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; show holidays and scheduled events &lt;/$checkbox&gt;&lt;br&gt;
+      &lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings/styles&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
+      &lt;style&gt;
+         .calendarSettingsTable table, .calendarSettingsTable tr, .calendarSettingsTable td { border:0;margin:0;padding:0;white-space:nowrap;line-height:100%; }
+      &lt;/style&gt;
+      &lt;div class=&quot;calendarSettingsTable tc-popup-keep&quot;&gt;
+
+|    boxsize|&lt;&lt;controls_settings_edit &quot;calendar_boxsize&quot;    &quot;2.5em&quot;&gt;&gt;      |
+| background|&lt;&lt;controls_settings_edit &quot;calendar_background&quot; &quot;lightgray&quot;&gt;&gt;  |
+| foreground|&lt;&lt;controls_settings_edit &quot;calendar_foreground&quot; &quot;white&quot;&gt;&gt;      |
+|      today|&lt;&lt;controls_settings_edit &quot;calendar_today&quot;      &quot;gold&quot;&gt;&gt;       |
+|     events|&lt;&lt;controls_settings_edit &quot;calendar_events&quot;     &quot;lightgreen&quot;&gt;&gt; |
+|    changes|&lt;&lt;controls_settings_edit &quot;calendar_changes&quot;    &quot;lightblue;text-decoration:underline;&quot;&gt;&gt;          |
+|    numbers|&lt;&lt;controls_settings_edit &quot;calendar_numbers&quot;    &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt; |
+      &lt;/div&gt;
+      &lt;/$reveal&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 &lt;/span&gt;
