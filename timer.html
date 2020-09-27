@@ -9710,11 +9710,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1600&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9770,8 +9770,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200927063116109" title="$:/temp/time/ticker">
-<pre>20200927063116108</pre>
+<div created="20200924032759417" modified="20200927112722025" title="$:/temp/time/ticker">
+<pre>20200927112722025</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10587,7 +10587,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200927042556921" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20200927112657979" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(thisdate)$
 
@@ -10638,10 +10638,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:left;&quot; tooltip=&quot;view previous month&quot;&gt;
    {{$:/core/images/chevron-left}}
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;gt&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month={{{ [[$mm$]subtract[1]] }}} year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [[$mm$]subtract[1]] }}} year=&quot;$yyyy$&quot; /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month=&quot;12&quot; year={{{ [[$yyyy$]subtract[1]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;12&quot; year={{{ [[$yyyy$]subtract[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 \end
@@ -10650,10 +10650,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;&quot; tooltip=&quot;view next month&quot;&gt;
    {{$:/core/images/chevron-right}}
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;lt&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month={{{ [[$mm$]add[1]] }}} year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [[$mm$]add[1]] }}} year=&quot;$yyyy$&quot; /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month=&quot;1&quot; year={{{ [[$yyyy$]add[1]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;1&quot; year={{{ [[$yyyy$]add[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 \end
@@ -10662,13 +10662,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view this month&quot;&gt;
       ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
-      &lt;$action-setfield month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
       ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
-      &lt;$action-setfield month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
@@ -10785,8 +10785,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showday_popup()
 &lt;div class=&quot;calendarPopup&quot; style=&quot;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
-&lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:created&lt;thisdate&gt;sort[created]]&quot;&gt;
-&lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;!has[draft.of]sameday:modified&lt;thisdate&gt;!sort[modified]]&quot;&gt;
+&lt;$set name=&quot;created&quot;  filter=&quot;[!is[system]!title&lt;journalTitle&gt;sameday:created&lt;thisdate&gt;sort[created]]&quot;&gt;
+&lt;$set name=&quot;modified&quot; filter=&quot;[!is[system]!title&lt;journalTitle&gt;sameday:modified&lt;thisdate&gt;!sort[modified]]&quot;&gt;
 &lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;/div&gt;
 &lt;div style=&quot;float:right;white-space:nowrap;&quot;&gt;&amp;emsp;&lt;&lt;editjournal&gt;&gt;&amp;nbsp;&lt;&lt;closepopup&gt;&gt;&lt;/div&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
@@ -10844,13 +10844,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 Year:
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view previous year&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
-   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
    &lt;/$tiddler&gt;
 &lt;/$button&gt;
 &lt;$edit-text tiddler=&lt;&lt;calendar_input&gt;&gt; tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; default=&lt;&lt;thisyear&gt;&gt; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view next year&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
-   &lt;$action-setfield month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
    &lt;/$tiddler&gt;
 &lt;/$button&gt;
 \end
@@ -10860,10 +10860,10 @@ Month:
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view previous month&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;1&quot;&gt;
-      &lt;$action-setfield month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$select field=&quot;month&quot; default=&quot;&quot;&gt;
@@ -10875,10 +10875,10 @@ Month:
 &lt;/$select&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view next month&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;12&quot;&gt;
-      &lt;$action-setfield month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;/$tiddler&gt;
