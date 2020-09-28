@@ -9653,16 +9653,16 @@ SampleSequence</pre>
 <div created="20200905051927640" modified="20200924032006918" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20200718011630155" modified="20200928011526810" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20200718011630155" modified="20200928080451506" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200928011539425" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200928081759552" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20200928080548787" list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20200928081729465" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9770,8 +9770,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200928015246026" title="$:/temp/time/ticker">
-<pre>20200928015246025</pre>
+<div created="20200924032759417" modified="20200928081813185" title="$:/temp/time/ticker">
+<pre>20200928081813184</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10587,7 +10587,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200928015226914" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20200928081505992" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(date)$
 
@@ -10618,13 +10618,19 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showheading(yyyy,mm,view)
 \whitespace trim
+&lt;$vars thismonth={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}&gt;
 @@white-space:nowrap;
 &lt;div style=&quot;width:calc(2.5em * 7);text-align:center;&quot;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
       &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
       &lt;&lt;showheading_next     &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;/$reveal&gt;
-   &lt;&lt;showheading_toggle      &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;match&quot;   text=&quot;sidebar&quot;&gt;
+      &lt;&lt;showheading_sidebar  &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;sidebar&quot;&gt;
+      &lt;&lt;showheading_toggle   &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
       &lt;&lt;controls_editevents &quot;tc-btn-invisible&quot;&gt;&gt;
       &lt;&lt;controls_settings   &quot;tc-btn-invisible&quot;&gt;&gt;
@@ -10665,17 +10671,26 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showheading_toggle(yyyy,mm)
 &lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view this month&quot;&gt;
-      ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
+   &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view this month&quot;&gt;
+      ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
       &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button  class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
-      ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
+   &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
+      ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
       &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
+\end
+
+\define showheading_sidebar(yyyy,mm)
+&lt;$tiddler tiddler=&quot;TiddlyTools/Time/Calendar&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
+   ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
+   &lt;$action-navigate /&gt;
+&lt;/$button&gt;&amp;nbsp;
 \end
 
 \define showgrid(yyyy,mm,select)
@@ -11679,16 +11694,17 @@ Sydney;      +10:00</pre>
 <div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="color:black;font-size:1.5em;font-weight:bold;" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200928015216868" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Time/Setup" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
-<div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200926045030822" tags="$:/tags/SideBar" title="TiddlyTools/Time/SidebarCalendar">
+<div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200928081710476" tags="$:/tags/SideBar" title="TiddlyTools/Time/SidebarCalendar">
 <pre>\import TiddlyTools/Time/Calendar
 \whitespace trim
-&lt;$tiddler tiddler=&quot;TiddlyTools/Time/SidebarCalendar&quot;&gt; &lt;!-- needed for SideBar --&gt;
+&lt;$tiddler tiddler=&quot;SidebarCalendar&quot;&gt; &lt;!-- needed for SideBar --&gt;
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
 &lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
-&lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;belowleft&quot; popup_maxheight=&quot;30em&quot;&gt;
+&lt;$vars yyyy={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}}&gt;
+&lt;$vars popup_position=&quot;belowleft&quot; popup_maxheight=&quot;30em&quot;&gt;
 &lt;$vars sidebar_size={{{ [[TiddlyTools/Time/Setup]get[sidebar_calendar_size]] ~[[100]] }}}&gt;
 &lt;span style={{{ [[font-size:]addsuffix&lt;sidebar_size&gt;addsuffix[%;]] }}}&gt;
-&lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;
+&lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; view=&quot;sidebar&quot; /&gt;
 &lt;/span&gt;</pre>
 </div>
 <div created="20200723044003911" modified="20200924032215935" tags="$:/tags/SideBarSegment" title="TiddlyTools/Time/SidebarClocks">
