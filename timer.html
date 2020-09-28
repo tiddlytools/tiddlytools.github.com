@@ -227,6 +227,10 @@ Error message and password prompt
 
 <li>TiddlyTools/Time/WorldClocks</li>
 
+<li>UN_Holidays.ics</li>
+
+<li>US_Holidays.ics</li>
+
 </ul>
 </p>
 
@@ -9636,7 +9640,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[UN_Holidays.ics]]</pre>
+# [[US_Holidays.ics]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9656,13 +9660,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200928080451506" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200928081759552" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200928162943752" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20200928162934554" list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20200928162934554" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9770,8 +9774,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200928092517083" title="$:/temp/time/ticker">
-<pre>20200928092517083</pre>
+<div created="20200924032759417" modified="20200928162946092" title="$:/temp/time/ticker">
+<pre>20200928162946091</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10587,7 +10591,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200928081505992" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20200928160343165" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(date)$
 
@@ -10798,7 +10802,6 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define getevents()
-\whitespace trim
 &lt;$reveal default=&lt;&lt;showevents&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
    &lt;$list filter=&quot;[{TiddlyTools/Time/Events}splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
       &lt;$text text=&quot;[[&quot;/&gt;&lt;$text text=&lt;&lt;line&gt;&gt;/&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt;
@@ -10818,6 +10821,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define matchevents()
+&lt;$vars annual_date={{{ [&lt;date&gt;split[]rest[4]join[]addprefix[....]] }}}&gt;
+&lt;$list filter=&quot;[enlist&lt;events&gt;removeprefix&lt;date&gt;] [enlist&lt;events&gt;removeprefix&lt;annual_date&gt;]&quot;&gt;
+   &lt;$text text=&quot;[[&quot;/&gt;&lt;$text text={{{ [&lt;currentTiddler&gt;removeprefix[;]] }}}/&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt;
+&lt;/$list&gt;
+\end
+
+\define matchevents_REGEXP_DISABLED()
 &lt;$list filter=&lt;&lt;events&gt;&gt; variable=&quot;event&quot;&gt;
    &lt;$vars event_date={{{ [&lt;event&gt;split[;]first[]] }}}&gt;
    &lt;$list filter=&quot;[&lt;date&gt;regexp&lt;event_date&gt;]&quot;&gt;
@@ -11323,8 +11333,9 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 &lt;&lt;edit-date tiddler:EditDateExample3 index:date format:&quot;ddd MMM DDth YYYY&quot; placeholder:&quot;enter or select a date&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20200911045918968" modified="20200924032544610" tags="" title="TiddlyTools/Time/Events" type="text/plain">
-<pre>....0202;Groundhog Day
+<div created="20200911045918968" modified="20200928162749725" tags="" title="TiddlyTools/Time/Events" type="text/plain">
+<pre>....0101;New Year's Day
+....0202;Groundhog Day
 ....0214;Valentine's Day
 ....0401;April Fools Day
 ....0505;Cinco de Mayo
@@ -11335,29 +11346,27 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 ....0911;Patriot Day (9/11 Remembrance)
 ....1031;Halloween
 ....1224;Christmas Eve
-....1225;Christmas Day
+....1225;Christmas
 ....1226;Kwanzaa (first day)
 ....1231;New Year's Eve
-....0101;New Year's Day
 
 20200308;Daylight Saving Time starts
 20200525;Memorial Day
 20200907;Labor Day
 20201101;Daylight Saving Time ends
-20201103;Election Day
+20201103;Election Day (US)
 20201126;Thanksgiving Day
 20201211;Hanukkah (first day)
 
-20210120;Inauguration Day
+20210120;Inauguration Day (US)
 20210314;Daylight Saving Time starts
-202104(10|11|12|13|14|15|16|17|18);Spring Break Vacation
 20210531;Memorial Day
 20210906;Labor Day
 20211107;Daylight Saving Time ends
 20211125;Thanksgiving Day
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20200928092314646" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20200928161143908" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11586,9 +11595,8 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 * To add new events, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
 * List event dates and descriptions, one date and description per line.  Blank lines are ignored.
 * Separate the event date and the event description using a semi-colon (;).
-* Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include a leading zero for single-digit months and days.
-* For events that occur on the same date each year, use ``....`` in place of the year (e.g., ``....0101;New Year's Day``).
-* Note: event dates use [[regular expression syntax|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet]], allowing complex patterns to be specified (e.g. ``202104(10|11|12|13|14|15|16|17|18);Spring Break Vacation``)
+* Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include leading zeros for single-digit months and days.
+* Use ``....`` in place of the year for events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
 
 ''You can also define events by importing .ics (ICalendar) files from Google Calendar and other sources.''
 
@@ -12055,6 +12063,2306 @@ Sydney;      +10:00</pre>
    &lt;/div&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20200928152017789" modified="20200928160516675" title="UN_Holidays.ics" type="text/plain">
+<pre>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendar Labs//Calendar 1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:UN Holidays
+X-WR-TIMEZONE:Etc/GMT
+BEGIN:VEVENT
+SUMMARY:International Day of Commemoration in Memory of the Victims of the Holocaust
+DTSTART:20200127
+DTEND:20200127
+LOCATION:International
+DESCRIPTION:International Day of Commemoration in Memory of the Victims of the Holocaust
+UID:5e515111f371d1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Cancer Day
+DTSTART:20200204
+DTEND:20200204
+LOCATION:International
+DESCRIPTION:World Cancer Day
+UID:5e515111f377d1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Zero Tolerance for Female Genital Mutilation
+DTSTART:20200206
+DTEND:20200206
+LOCATION:International
+DESCRIPTION:International Day of Zero Tolerance for Female Genital Mutilation
+UID:5e515111f37d41582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Women and Girls in Science
+DTSTART:20200211
+DTEND:20200211
+LOCATION:International
+DESCRIPTION:International Day of Women and Girls in Science
+UID:5e515111f38261582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Radio Day
+DTSTART:20200213
+DTEND:20200213
+LOCATION:International
+DESCRIPTION:World Radio Day
+UID:5e515111f38741582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day of Social Justice
+DTSTART:20200220
+DTEND:20200220
+LOCATION:International
+DESCRIPTION:World Day of Social Justice
+UID:5e515111f38c41582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Mother Language Day
+DTSTART:20200221
+DTEND:20200221
+LOCATION:International
+DESCRIPTION:International Mother Language Day
+UID:5e515111f39131582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Zero Discrimination Day
+DTSTART:20200301
+DTEND:20200301
+LOCATION:International
+DESCRIPTION:Zero Discrimination Day
+UID:5e515111f39631582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Wildlife Day
+DTSTART:20200303
+DTEND:20200303
+LOCATION:International
+DESCRIPTION:World Wildlife Day
+UID:5e515111f39b21582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Women's Day
+DTSTART:20200308
+DTEND:20200308
+LOCATION:International
+DESCRIPTION:International Women's Day
+UID:5e515111f3a021582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Happiness
+DTSTART:20200320
+DTEND:20200320
+LOCATION:International
+DESCRIPTION:International Day of Happiness
+UID:5e515111f3a531582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:French Language Day
+DTSTART:20200320
+DTEND:20200320
+LOCATION:International
+DESCRIPTION:French Language Day
+UID:5e515111f3ab41582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Nowruz
+DTSTART:20200321
+DTEND:20200321
+LOCATION:International
+DESCRIPTION:International Day of Nowruz
+UID:5e515111f3b061582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Down Syndrome Day
+DTSTART:20200321
+DTEND:20200321
+LOCATION:International
+DESCRIPTION:World Down Syndrome Day
+UID:5e515111f3b661582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Forests
+DTSTART:20200321
+DTEND:20200321
+LOCATION:International
+DESCRIPTION:International Day of Forests
+UID:5e515111f3bcc1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Elimination of Racial Discrimination
+DTSTART:20200321
+DTEND:20200321
+LOCATION:International
+DESCRIPTION:International Day for the Elimination of Racial Discrimination
+UID:5e515111f3c201582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Poetry Day
+DTSTART:20200321
+DTEND:20200321
+LOCATION:International
+DESCRIPTION:World Poetry Day
+UID:5e515111f3c761582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Water Day
+DTSTART:20200322
+DTEND:20200322
+LOCATION:International
+DESCRIPTION:World Water Day
+UID:5e515111f3ccf1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Meteorological Day
+DTSTART:20200323
+DTEND:20200323
+LOCATION:International
+DESCRIPTION:World Meteorological Day
+UID:5e515111f3d241582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Tuberculosis Day
+DTSTART:20200324
+DTEND:20200324
+LOCATION:International
+DESCRIPTION:World Tuberculosis Day
+UID:5e515111f3d771582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Right to the Truth concerning Gross Human Rights Violations
+DTSTART:20200324
+DTEND:20200324
+LOCATION:International
+DESCRIPTION:International Day for the Right to the Truth concerning Gross Human Rights Violations
+UID:5e515111f3dcf1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade
+DTSTART:20200325
+DTEND:20200325
+LOCATION:International
+DESCRIPTION:International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade
+UID:5e515111f3e2d1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Solidarity with Detained and Missing Staff Members
+DTSTART:20200325
+DTEND:20200325
+LOCATION:International
+DESCRIPTION:International Day of Solidarity with Detained and Missing Staff Members
+UID:5e515111f3e871582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Autism Awareness Day
+DTSTART:20200402
+DTEND:20200402
+LOCATION:International
+DESCRIPTION:World Autism Awareness Day
+UID:5e515111f3edc1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Mine Awareness and Assistance in Mine Action
+DTSTART:20200404
+DTEND:20200404
+LOCATION:International
+DESCRIPTION:International Day for Mine Awareness and Assistance in Mine Action
+UID:5e515111f3f341582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Sport for Development and Peace
+DTSTART:20200406
+DTEND:20200406
+LOCATION:International
+DESCRIPTION:International Day of Sport for Development and Peace
+UID:5e515111f3f991582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Reflection on the Genocide in Rwanda
+DTSTART:20200407
+DTEND:20200407
+LOCATION:International
+DESCRIPTION:International Day of Reflection on the Genocide in Rwanda
+UID:5e515111f3ff91582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Health Day
+DTSTART:20200407
+DTEND:20200407
+LOCATION:International
+DESCRIPTION:World Health Day
+UID:5e515111f404f1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Human Space Flight
+DTSTART:20200412
+DTEND:20200412
+LOCATION:International
+DESCRIPTION:International Day of Human Space Flight
+UID:5e515111f40a81582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Chinese Language Day
+DTSTART:20200420
+DTEND:20200420
+LOCATION:International
+DESCRIPTION:Chinese Language Day
+UID:5e515111f41031582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Creativity and Innovation Day
+DTSTART:20200421
+DTEND:20200421
+LOCATION:International
+DESCRIPTION:World Creativity and Innovation Day
+UID:5e515111f41601582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Mother Earth Day
+DTSTART:20200422
+DTEND:20200422
+LOCATION:International
+DESCRIPTION:International Mother Earth Day
+UID:5e515111f41bf1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Book and Copyright Day
+DTSTART:20200423
+DTEND:20200423
+LOCATION:International
+DESCRIPTION:World Book and Copyright Day
+UID:5e515111f42181582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:English Language Day
+DTSTART:20200423
+DTEND:20200423
+LOCATION:International
+DESCRIPTION:English Language Day
+UID:5e515112000321582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Spanish Language Day
+DTSTART:20200423
+DTEND:20200423
+LOCATION:International
+DESCRIPTION:Spanish Language Day
+UID:5e515112000981582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Malaria Day
+DTSTART:20200425
+DTEND:20200425
+LOCATION:International
+DESCRIPTION:World Malaria Day
+UID:5e515112000fb1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Chernobyl Disaster Remembrance Day
+DTSTART:20200426
+DTEND:20200426
+LOCATION:International
+DESCRIPTION:International Chernobyl Disaster Remembrance Day
+UID:5e515112001851582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Intellectual Property Day
+DTSTART:20200426
+DTEND:20200426
+LOCATION:International
+DESCRIPTION:World Intellectual Property Day
+UID:5e515112001e41582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day for Safety and Health at Work
+DTSTART:20200428
+DTEND:20200428
+LOCATION:International
+DESCRIPTION:World Day for Safety and Health at Work
+UID:5e5151120024c1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Jazz Day
+DTSTART:20200430
+DTEND:20200430
+LOCATION:International
+DESCRIPTION:International Jazz Day
+UID:5e515112002b51582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:&quot;Vesak&quot;\, the Day of the Full Moon
+DTSTART:20200430
+DTEND:20200430
+LOCATION:International
+DESCRIPTION:&quot;Vesak&quot;\, the Day of the Full Moon
+UID:5e5151120031a1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Tuna Day
+DTSTART:20200502
+DTEND:20200502
+LOCATION:International
+DESCRIPTION:World Tuna Day
+UID:5e515112003791582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Press Freedom Day
+DTSTART:20200503
+DTEND:20200503
+LOCATION:International
+DESCRIPTION:World Press Freedom Day
+UID:5e515112003da1582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Time of Remembrance and Reconciliation for Those Who Lost Their Lives During the Second World War
+DTSTART:20200508
+DTEND:20200508
+LOCATION:International
+DESCRIPTION:Time of Remembrance and Reconciliation for Those Who Lost Their Lives During the Second World War
+UID:5e515112004421582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Time of Remembrance and Reconciliation for Those Who Lost Their Lives During the Second World War
+DTSTART:20200509
+DTEND:20200509
+LOCATION:International
+DESCRIPTION:Time of Remembrance and Reconciliation for Those Who Lost Their Lives During the Second World War
+UID:5e515112004a71582387473@calendarlabs.com
+DTSTAMP:20200222T160433Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Migratory Bird Day
+DTSTART:20200511
+DTEND:20200511
+LOCATION:International
+DESCRIPTION:World Migratory Bird Day
+UID:5e515112004ee1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Families
+DTSTART:20200515
+DTEND:20200515
+LOCATION:International
+DESCRIPTION:International Day of Families
+UID:5e5151120057d1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Living Together in Peace
+DTSTART:20200516
+DTEND:20200516
+LOCATION:International
+DESCRIPTION:International Day of Living Together in Peace
+UID:5e515112005e01582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Light
+DTSTART:20200516
+DTEND:20200516
+LOCATION:International
+DESCRIPTION:International Day of Light
+UID:5e515112006451582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Telecommunication and Information Society Day
+DTSTART:20200517
+DTEND:20200517
+LOCATION:International
+DESCRIPTION:World Telecommunication and Information Society Day
+UID:5e515112006ab1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Bee Day
+DTSTART:20200520
+DTEND:20200520
+LOCATION:International
+DESCRIPTION:World Bee Day
+UID:5e515112007331582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day for Cultural Diversity for Dialogue and Development
+DTSTART:20200521
+DTEND:20200521
+LOCATION:International
+DESCRIPTION:World Day for Cultural Diversity for Dialogue and Development
+UID:5e515112007971582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Biological Diversity
+DTSTART:20200522
+DTEND:20200522
+LOCATION:International
+DESCRIPTION:International Day for Biological Diversity
+UID:5e515112007fb1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day to End Obstetric Fistula
+DTSTART:20200523
+DTEND:20200523
+LOCATION:International
+DESCRIPTION:International Day to End Obstetric Fistula
+UID:5e5151120085f1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of UN Peacekeepers
+DTSTART:20200529
+DTEND:20200529
+LOCATION:International
+DESCRIPTION:International Day of UN Peacekeepers
+UID:5e515112008c21582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World No-Tobacco Day
+DTSTART:20200531
+DTEND:20200531
+LOCATION:International
+DESCRIPTION:World No-Tobacco Day
+UID:5e515112009501582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Global Day of Parents
+DTSTART:20200601
+DTEND:20200601
+LOCATION:International
+DESCRIPTION:Global Day of Parents
+UID:5e515112009b41582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Bicycle Day
+DTSTART:20200603
+DTEND:20200603
+LOCATION:International
+DESCRIPTION:World Bicycle Day
+UID:5e51511200a191582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Innocent Children Victims of Aggression
+DTSTART:20200604
+DTEND:20200604
+LOCATION:International
+DESCRIPTION:International Day of Innocent Children Victims of Aggression
+UID:5e51511200a801582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Environment Day
+DTSTART:20200605
+DTEND:20200605
+LOCATION:International
+DESCRIPTION:World Environment Day
+UID:5e51511200af31582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Fight against Illegal\, Unreported and Unregulated Fishing
+DTSTART:20200605
+DTEND:20200605
+LOCATION:International
+DESCRIPTION:International Day for the Fight against Illegal\, Unreported and Unregulated Fishing
+UID:5e51511200b881582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Russian Language Day
+DTSTART:20200606
+DTEND:20200606
+LOCATION:International
+DESCRIPTION:Russian Language Day
+UID:5e51511200bee1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Oceans Day
+DTSTART:20200608
+DTEND:20200608
+LOCATION:International
+DESCRIPTION:World Oceans Day
+UID:5e51511200c571582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day Against Child Labour
+DTSTART:20200612
+DTEND:20200612
+LOCATION:International
+DESCRIPTION:World Day Against Child Labour
+UID:5e51511200cc81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Albinism Awareness Day
+DTSTART:20200613
+DTEND:20200613
+LOCATION:International
+DESCRIPTION:International Albinism Awareness Day
+UID:5e51511200d651582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Blood Donor Day
+DTSTART:20200614
+DTEND:20200614
+LOCATION:International
+DESCRIPTION:World Blood Donor Day
+UID:5e51511200dd81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Elder Abuse Awareness Day
+DTSTART:20200615
+DTEND:20200615
+LOCATION:International
+DESCRIPTION:World Elder Abuse Awareness Day
+UID:5e51511200e401582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Family Remittances
+DTSTART:20200616
+DTEND:20200616
+LOCATION:International
+DESCRIPTION:International Day of Family Remittances
+UID:5e51511200ea81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day to Combat Desertification and Drought
+DTSTART:20200617
+DTEND:20200617
+LOCATION:International
+DESCRIPTION:World Day to Combat Desertification and Drought
+UID:5e51511200f121582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Sustainable Gastronomy Day
+DTSTART:20200618
+DTEND:20200618
+LOCATION:International
+DESCRIPTION:Sustainable Gastronomy Day
+UID:5e51511200f831582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Elimination of Sexual Violence in Conflict
+DTSTART:20200619
+DTEND:20200619
+LOCATION:International
+DESCRIPTION:International Day for the Elimination of Sexual Violence in Conflict
+UID:5e51511200fef1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Refugee Day
+DTSTART:20200620
+DTEND:20200620
+LOCATION:International
+DESCRIPTION:World Refugee Day
+UID:5e5151120105c1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Yoga
+DTSTART:20200621
+DTEND:20200621
+LOCATION:International
+DESCRIPTION:International Day of Yoga
+UID:5e515112010c81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:United Nations Public Service Day
+DTSTART:20200623
+DTEND:20200623
+LOCATION:International
+DESCRIPTION:United Nations Public Service Day
+UID:5e515112011681582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Widows' Day
+DTSTART:20200623
+DTEND:20200623
+LOCATION:International
+DESCRIPTION:International Widows' Day
+UID:5e515112011d51582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Day of the Seafarer
+DTSTART:20200625
+DTEND:20200625
+LOCATION:International
+DESCRIPTION:Day of the Seafarer
+UID:5e5151120123d1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day against Drug Abuse and Illicit Trafficking
+DTSTART:20200626
+DTEND:20200626
+LOCATION:International
+DESCRIPTION:International Day against Drug Abuse and Illicit Trafficking
+UID:5e515112012a81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:United Nations International Day in Support of Victims of Torture
+DTSTART:20200626
+DTEND:20200626
+LOCATION:International
+DESCRIPTION:United Nations International Day in Support of Victims of Torture
+UID:5e515112013141582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Micro\, Small and Medium-sized Enterprises Day
+DTSTART:20200627
+DTEND:20200627
+LOCATION:International
+DESCRIPTION:Micro\, Small and Medium-sized Enterprises Day
+UID:5e515112013801582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of the Tropics
+DTSTART:20200629
+DTEND:20200629
+LOCATION:International
+DESCRIPTION:International Day of the Tropics
+UID:5e515112014121582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Asteroid Day
+DTSTART:20200630
+DTEND:20200630
+LOCATION:International
+DESCRIPTION:International Asteroid Day
+UID:5e515112014841582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Parliamentarism
+DTSTART:20200630
+DTEND:20200630
+LOCATION:International
+DESCRIPTION:International Day of Parliamentarism
+UID:5e5151120152b1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Cooperatives
+DTSTART:20200706
+DTEND:20200706
+LOCATION:International
+DESCRIPTION:International Day of Cooperatives
+UID:5e515112015991582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Population Day
+DTSTART:20200711
+DTEND:20200711
+LOCATION:International
+DESCRIPTION:World Population Day
+UID:5e515112016061582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Youth Skills Day
+DTSTART:20200715
+DTEND:20200715
+LOCATION:International
+DESCRIPTION:World Youth Skills Day
+UID:5e515112016981582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Nelson Mandela International Day
+DTSTART:20200718
+DTEND:20200718
+LOCATION:International
+DESCRIPTION:Nelson Mandela International Day
+UID:5e515112017401582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Hepatitis Day
+DTSTART:20200728
+DTEND:20200728
+LOCATION:International
+DESCRIPTION:World Hepatitis Day
+UID:5e515112017be1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day against Trafficking in Persons
+DTSTART:20200730
+DTEND:20200730
+LOCATION:International
+DESCRIPTION:World Day against Trafficking in Persons
+UID:5e5151120182d1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Friendship
+DTSTART:20200730
+DTEND:20200730
+LOCATION:International
+DESCRIPTION:International Day of Friendship
+UID:5e515112018771582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of the World's Indigenous Peoples
+DTSTART:20200809
+DTEND:20200809
+LOCATION:International
+DESCRIPTION:International Day of the World's Indigenous Peoples
+UID:5e515112019131582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Youth Day
+DTSTART:20200812
+DTEND:20200812
+LOCATION:International
+DESCRIPTION:International Youth Day
+UID:5e515112019841582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Humanitarian Day
+DTSTART:20200819
+DTEND:20200819
+LOCATION:International
+DESCRIPTION:World Humanitarian Day
+UID:5e515112019f31582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Remembrance and Tribute to the Victims of Terrorism
+DTSTART:20200821
+DTEND:20200821
+LOCATION:International
+DESCRIPTION:International Day of Remembrance and Tribute to the Victims of Terrorism
+UID:5e51511201a821582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Remembrance of the Slave Trade and Its Abolition
+DTSTART:20200823
+DTEND:20200823
+LOCATION:International
+DESCRIPTION:International Day for the Remembrance of the Slave Trade and Its Abolition
+UID:5e51511201b141582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day against Nuclear Tests
+DTSTART:20200829
+DTEND:20200829
+LOCATION:International
+DESCRIPTION:International Day against Nuclear Tests
+UID:5e51511201b931582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of the Victims of Enforced Disappearances
+DTSTART:20200830
+DTEND:20200830
+LOCATION:International
+DESCRIPTION:International Day of the Victims of Enforced Disappearances
+UID:5e51511201c051582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Charity
+DTSTART:20200905
+DTEND:20200905
+LOCATION:International
+DESCRIPTION:International Day of Charity
+UID:5e51511201c5d1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Literacy Day
+DTSTART:20200908
+DTEND:20200908
+LOCATION:International
+DESCRIPTION:International Literacy Day
+UID:5e51511201cff1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Suicide Prevention Day
+DTSTART:20200910
+DTEND:20200910
+LOCATION:International
+DESCRIPTION:World Suicide Prevention Day
+UID:5e51511201d711582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:United Nations Day for South-South Cooperation
+DTSTART:20200912
+DTEND:20200912
+LOCATION:International
+DESCRIPTION:United Nations Day for South-South Cooperation
+UID:5e51511201de51582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Democracy
+DTSTART:20200915
+DTEND:20200915
+LOCATION:International
+DESCRIPTION:International Day of Democracy
+UID:5e51511201e5a1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Preservation of the Ozone Layer
+DTSTART:20200916
+DTEND:20200916
+LOCATION:International
+DESCRIPTION:International Day for the Preservation of the Ozone Layer
+UID:5e51511201eec1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Peace
+DTSTART:20200921
+DTEND:20200921
+LOCATION:International
+DESCRIPTION:International Day of Peace
+UID:5e51511201f5f1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Sign Languages
+DTSTART:20200923
+DTEND:20200923
+LOCATION:International
+DESCRIPTION:International Day of Sign Languages
+UID:5e51511201fd61582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Total Elimination of Nuclear Weapons
+DTSTART:20200926
+DTEND:20200926
+LOCATION:International
+DESCRIPTION:International Day for the Total Elimination of Nuclear Weapons
+UID:5e515112020451582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Maritime Day
+DTSTART:20200926
+DTEND:20200926
+LOCATION:International
+DESCRIPTION:World Maritime Day
+UID:5e515112020e41582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Tourism Day
+DTSTART:20200927
+DTEND:20200927
+LOCATION:International
+DESCRIPTION:World Tourism Day
+UID:5e5151120215a1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Universal Access to Information
+DTSTART:20200928
+DTEND:20200928
+LOCATION:International
+DESCRIPTION:International Day for Universal Access to Information
+UID:5e515112021cf1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Rabies Day
+DTSTART:20200928
+DTEND:20200928
+LOCATION:International
+DESCRIPTION:World Rabies Day
+UID:5e515112022431582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Translation Day
+DTSTART:20200930
+DTEND:20200930
+LOCATION:International
+DESCRIPTION:International Translation Day
+UID:5e515112022bb1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Older Persons
+DTSTART:20201001
+DTEND:20201001
+LOCATION:International
+DESCRIPTION:International Day of Older Persons
+UID:5e515112023661582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Non-Violence
+DTSTART:20201002
+DTEND:20201002
+LOCATION:International
+DESCRIPTION:International Day of Non-Violence
+UID:5e515112023e81582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Teachers’ Day
+DTSTART:20201005
+DTEND:20201005
+LOCATION:International
+DESCRIPTION:World Teachers’ Day
+UID:5e5151120246a1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Habitat Day
+DTSTART:20201007
+DTEND:20201007
+LOCATION:International
+DESCRIPTION:World Habitat Day
+UID:5e515112024ed1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Post Day
+DTSTART:20201009
+DTEND:20201009
+LOCATION:International
+DESCRIPTION:World Post Day
+UID:5e515112025681582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Mental Health Day
+DTSTART:20201010
+DTEND:20201010
+LOCATION:International
+DESCRIPTION:World Mental Health Day
+UID:5e515112025de1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of the Girl Child
+DTSTART:20201011
+DTEND:20201011
+LOCATION:International
+DESCRIPTION:International Day of the Girl Child
+UID:5e515112026561582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Migratory Bird Day
+DTSTART:20201012
+DTEND:20201012
+LOCATION:International
+DESCRIPTION:World Migratory Bird Day
+UID:5e515112026cc1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Disaster Reduction
+DTSTART:20201013
+DTEND:20201013
+LOCATION:International
+DESCRIPTION:International Day for Disaster Reduction
+UID:5e515112027461582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Rural Women
+DTSTART:20201015
+DTEND:20201015
+LOCATION:International
+DESCRIPTION:International Day of Rural Women
+UID:5e515112027bd1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Food Day
+DTSTART:20201016
+DTEND:20201016
+LOCATION:International
+DESCRIPTION:World Food Day
+UID:5e515112028161582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Eradication of Poverty
+DTSTART:20201017
+DTEND:20201017
+LOCATION:International
+DESCRIPTION:International Day for the Eradication of Poverty
+UID:5e515112028ad1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Statistics Day
+DTSTART:20201020
+DTEND:20201020
+LOCATION:International
+DESCRIPTION:World Statistics Day
+UID:5e515112029251582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:United Nations Day
+DTSTART:20201024
+DTEND:20201024
+LOCATION:International
+DESCRIPTION:United Nations Day
+UID:5e5151120299e1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Development Information Day
+DTSTART:20201024
+DTEND:20201024
+LOCATION:International
+DESCRIPTION:World Development Information Day
+UID:5e51511202a4b1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day for Audiovisual Heritage
+DTSTART:20201027
+DTEND:20201027
+LOCATION:International
+DESCRIPTION:World Day for Audiovisual Heritage
+UID:5e51511202af91582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Cities Day
+DTSTART:20201031
+DTEND:20201031
+LOCATION:International
+DESCRIPTION:World Cities Day
+UID:5e51511202b8c1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day to End Impunity for Crimes against Journalists
+DTSTART:20201102
+DTEND:20201102
+LOCATION:International
+DESCRIPTION:International Day to End Impunity for Crimes against Journalists
+UID:5e51511202bff1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Tsunami Awareness Day
+DTSTART:20201105
+DTEND:20201105
+LOCATION:International
+DESCRIPTION:World Tsunami Awareness Day
+UID:5e51511202c931582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Preventing the Exploitation of the Environment in War and Armed Conflict
+DTSTART:20201106
+DTEND:20201106
+LOCATION:International
+DESCRIPTION:International Day for Preventing the Exploitation of the Environment in War and Armed Conflict
+UID:5e51511202d201582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Science Day for Peace and Development
+DTSTART:20201110
+DTEND:20201110
+LOCATION:International
+DESCRIPTION:World Science Day for Peace and Development
+UID:5e51511202da61582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Diabetes Day
+DTSTART:20201114
+DTEND:20201114
+LOCATION:International
+DESCRIPTION:World Diabetes Day
+UID:5e51511202e291582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for Tolerance
+DTSTART:20201116
+DTEND:20201116
+LOCATION:International
+DESCRIPTION:International Day for Tolerance
+UID:5e51511202eb51582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Day of Remembrance for Road Traffic Victims
+DTSTART:20201117
+DTEND:20201117
+LOCATION:International
+DESCRIPTION:World Day of Remembrance for Road Traffic Victims
+UID:5e51511202f3d1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Toilet Day
+DTSTART:20201119
+DTEND:20201119
+LOCATION:International
+DESCRIPTION:World Toilet Day
+UID:5e51511202fbf1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Africa Industrialization Day
+DTSTART:20201120
+DTEND:20201120
+LOCATION:International
+DESCRIPTION:Africa Industrialization Day
+UID:5e515112030581582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Universal Children’s Day
+DTSTART:20201120
+DTEND:20201120
+LOCATION:International
+DESCRIPTION:Universal Children’s Day
+UID:5e515112030db1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Philosophy Day
+DTSTART:20201121
+DTEND:20201121
+LOCATION:International
+DESCRIPTION:World Philosophy Day
+UID:5e5151120315f1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Television Day
+DTSTART:20201121
+DTEND:20201121
+LOCATION:International
+DESCRIPTION:World Television Day
+UID:5e515112031e61582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Elimination of Violence against Women
+DTSTART:20201125
+DTEND:20201125
+LOCATION:International
+DESCRIPTION:International Day for the Elimination of Violence against Women
+UID:5e515112032811582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Solidarity with the Palestinian People
+DTSTART:20201129
+DTEND:20201129
+LOCATION:International
+DESCRIPTION:International Day of Solidarity with the Palestinian People
+UID:5e515112033191582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Day of Remembrance for all Victims of Chemical Warfare
+DTSTART:20201130
+DTEND:20201130
+LOCATION:International
+DESCRIPTION:Day of Remembrance for all Victims of Chemical Warfare
+UID:5e515112033a11582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World AIDS Day
+DTSTART:20201201
+DTEND:20201201
+LOCATION:International
+DESCRIPTION:World AIDS Day
+UID:5e515112034561582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day for the Abolition of Slavery
+DTSTART:20201202
+DTEND:20201202
+LOCATION:International
+DESCRIPTION:International Day for the Abolition of Slavery
+UID:5e515112034db1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Persons with Disabilities
+DTSTART:20201203
+DTEND:20201203
+LOCATION:International
+DESCRIPTION:International Day of Persons with Disabilities
+UID:5e515112035651582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Volunteer Day for Economic and Social Development
+DTSTART:20201205
+DTEND:20201205
+LOCATION:International
+DESCRIPTION:International Volunteer Day for Economic and Social Development
+UID:5e515112035ee1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:World Soil Day
+DTSTART:20201205
+DTEND:20201205
+LOCATION:International
+DESCRIPTION:World Soil Day
+UID:5e515112036741582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Civil Aviation Day
+DTSTART:20201207
+DTEND:20201207
+LOCATION:International
+DESCRIPTION:International Civil Aviation Day
+UID:5e515112036fa1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Commemoration and Dignity of the Victims of the Crime of Genocide
+DTSTART:20201209
+DTEND:20201209
+LOCATION:International
+DESCRIPTION:International Day of Commemoration and Dignity of the Victims of the Crime of Genocide
+UID:5e515112037881582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Anti-Corruption Day
+DTSTART:20201209
+DTEND:20201209
+LOCATION:International
+DESCRIPTION:International Anti-Corruption Day
+UID:5e5151120383f1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Human Rights Day
+DTSTART:20201210
+DTEND:20201210
+LOCATION:International
+DESCRIPTION:Human Rights Day
+UID:5e515112038c71582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Mountain Day
+DTSTART:20201211
+DTEND:20201211
+LOCATION:International
+DESCRIPTION:International Mountain Day
+UID:5e5151120394e1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Day of Neutrality
+DTSTART:20201212
+DTEND:20201212
+LOCATION:International
+DESCRIPTION:International Day of Neutrality
+UID:5e51511203a511582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Universal Health Coverage Day
+DTSTART:20201212
+DTEND:20201212
+LOCATION:International
+DESCRIPTION:International Universal Health Coverage Day
+UID:5e51511203adb1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Migrants Day
+DTSTART:20201218
+DTEND:20201218
+LOCATION:International
+DESCRIPTION:International Migrants Day
+UID:5e51511203b641582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Arabic Language Day
+DTSTART:20201218
+DTEND:20201218
+LOCATION:International
+DESCRIPTION:Arabic Language Day
+UID:5e51511203c001582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:International Human Solidarity Day
+DTSTART:20201220
+DTEND:20201220
+LOCATION:International
+DESCRIPTION:International Human Solidarity Day
+UID:5e51511203c9e1582387474@calendarlabs.com
+DTSTAMP:20200222T160434Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR</pre>
+</div>
+<div created="20200928160437568" modified="20200928160440434" title="US_Holidays.ics" type="text/plain">
+<pre>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendar Labs//Calendar 1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:US Holidays
+X-WR-TIMEZONE:Etc/GMT
+BEGIN:VEVENT
+SUMMARY:New Year's Day
+DTSTART:20190101
+DTEND:20190101
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/new-years-day.php to know more about New Year's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28d231582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:M L King Day
+DTSTART:20190121
+DTEND:20190121
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/martin-luther-king-day.php to know more about M L King Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28dbe1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Valentine's Day
+DTSTART:20190214
+DTEND:20190214
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/valentines-day.php to know more about Valentine's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28e411582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Presidents' Day
+DTSTART:20190218
+DTEND:20190218
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/presidents-day.php to know more about Presidents' Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28ec61582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Good Friday
+DTSTART:20190419
+DTEND:20190419
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/good-friday.php to know more about Good Friday. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28f2f1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Easter Sunday
+DTSTART:20190421
+DTEND:20190421
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/easter.php to know more about Easter Sunday. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a28fc31582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mother's Day
+DTSTART:20190512
+DTEND:20190512
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/shared/mothers-day.php to know more about Mother's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2904a1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Memorial Day
+DTSTART:20190527
+DTEND:20190527
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/memorial-day.php to know more about Memorial Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a290ca1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Father's Day
+DTSTART:20190616
+DTEND:20190616
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/shared/fathers-day.php to know more about Father's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2914f1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Independence Day
+DTSTART:20190704
+DTEND:20190704
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/independence-day.php to know more about Independence Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a291d71582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Labor Day
+DTSTART:20190902
+DTEND:20190902
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/labor-day.php to know more about Labor Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2925f1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Columbus Day
+DTSTART:20191014
+DTEND:20191014
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/columbus-day.php to know more about Columbus Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a292eb1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Halloween
+DTSTART:20191031
+DTEND:20191031
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/halloween.php to know more about Halloween. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2937f1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Veterans Day
+DTSTART:20191111
+DTEND:20191111
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/veterans-day.php to know more about Veterans Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2940b1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Thanksgiving Day
+DTSTART:20191128
+DTEND:20191128
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/thanksgiving-day.php to know more about Thanksgiving Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a294981582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Christmas
+DTSTART:20191225
+DTEND:20191225
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/christmas.php to know more about Christmas. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a295541582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:New Year's Day
+DTSTART:20200101
+DTEND:20200101
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/new-years-day.php to know more about New Year's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a295e71582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:M L King Day
+DTSTART:20200120
+DTEND:20200120
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/martin-luther-king-day.php to know more about M L King Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a296731582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Valentine's Day
+DTSTART:20200214
+DTEND:20200214
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/valentines-day.php to know more about Valentine's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a296ff1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Presidents' Day
+DTSTART:20200217
+DTEND:20200217
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/presidents-day.php to know more about Presidents' Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2979c1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Good Friday
+DTSTART:20200410
+DTEND:20200410
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/good-friday.php to know more about Good Friday. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a298271582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Easter Sunday
+DTSTART:20200412
+DTEND:20200412
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/easter.php to know more about Easter Sunday. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a298b71582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Mother's Day
+DTSTART:20200510
+DTEND:20200510
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/shared/mothers-day.php to know more about Mother's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a2994e1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Memorial Day
+DTSTART:20200525
+DTEND:20200525
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/memorial-day.php to know more about Memorial Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a299e61582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Father's Day
+DTSTART:20200621
+DTEND:20200621
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/shared/fathers-day.php to know more about Father's Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29a7a1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Independence Day Holiday
+DTSTART:20200703
+DTEND:20200703
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/independence-day.php to know more about Independence Day Holiday. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29ae61582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Independence Day
+DTSTART:20200704
+DTEND:20200704
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/independence-day.php to know more about Independence Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29b8c1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Labor Day
+DTSTART:20200907
+DTEND:20200907
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/labor-day.php to know more about Labor Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29c1c1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Columbus Day
+DTSTART:20201012
+DTEND:20201012
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/columbus-day.php to know more about Columbus Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29cac1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Halloween
+DTSTART:20201031
+DTEND:20201031
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/halloween.php to know more about Halloween. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29d461582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Veterans Day
+DTSTART:20201111
+DTEND:20201111
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/veterans-day.php to know more about Veterans Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29ded1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Thanksgiving Day
+DTSTART:20201126
+DTEND:20201126
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/thanksgiving-day.php to know more about Thanksgiving Day. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29eaa1582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Christmas
+DTSTART:20201225
+DTEND:20201225
+LOCATION:United States
+DESCRIPTION:Visit https://calendarlabs.com/holidays/us/christmas.php to know more about Christmas. \n\n Like us on Facebook: http://fb.com/calendarlabs to get updates
+UID:5e52949a29f571582470298@calendarlabs.com
+DTSTAMP:20200223T150458Z
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR</pre>
 </div>
 
 
