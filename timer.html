@@ -9660,7 +9660,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200928080451506" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200929055743502" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200929142814179" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9682,7 +9682,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9702,7 +9702,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9774,8 +9774,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200929055746116" title="$:/temp/time/ticker">
-<pre>20200929055746116</pre>
+<div created="20200924032759417" modified="20200929144225121" title="$:/temp/time/ticker">
+<pre>20200929144225120</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10942,10 +10942,8 @@ Month:
 
 &lt;&lt;calendar&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20200924032604407" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
-<pre>\define clock_ticker() $:/temp/time/ticker
-
-\define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
+<div created="20200719094540255" modified="20200929140316025" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
+<pre>\define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
 &lt;$vars format={{{ [[TiddlyTools/Time/Setup]get[clock_format]] ~[[DDD, YYYY-0MM-0DD 0hh:0mm:0ss]] }}}&gt;
 &lt;$set  name=&quot;format&quot; value=&quot;&quot;&quot;$format$&quot;&quot;&quot; emptyValue=&lt;&lt;format&gt;&gt;&gt;
 &lt;$vars clock_size={{{ [[TiddlyTools/Time/Setup]get[clock_size]]       ~[[15em]]                         }}}
@@ -10959,7 +10957,7 @@ Month:
 \end
 
 \define clock_adjustForTimezone(type,-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
-&lt;$set name=&quot;time&quot; value={{{ [&lt;clock_ticker&gt;get[text]] }}} emptyValue=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
+&lt;$vars   time=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;!-- split time into parts --&gt;
 &lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
 &lt;$vars     mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]  }}}&gt;
@@ -11723,7 +11721,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;&lt;ticker&gt;&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20200924032445650" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
+<div created="20200712174503125" modified="20200929144215892" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define config()       $:/config/Timers
 \define timer_ticker() $:/temp/time/ticker
 
@@ -11762,11 +11760,13 @@ Sydney;      +10:00</pre>
 \end
 
 \define timer_ticker_show()
-&lt;$vars started={{!!started}} stopped={{{ [&lt;timer_ticker&gt;get[text]] }}}&gt;
+&lt;$vars started={{{ [enlist{!!startlist}last[]] }}} stopped=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
 &lt;$wikify name=&quot;start&quot; text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;started&gt;&gt; /&gt;'&gt;
 &lt;$wikify name=&quot;stop&quot;  text='&lt;$macrocall $name=&quot;timer_getseconds&quot; time=&lt;&lt;stopped&gt;&gt; /&gt;'&gt;
 &lt;$vars elapsed={{{ [&lt;stop&gt;subtract&lt;start&gt;trunc[]] }}}&gt;
-&lt;&lt;timer_showtime elapsed hidemsec&gt;&gt;
+&lt;$list filter=&quot;[&lt;timer_ticker&gt;is[tiddler]]&quot; emptyMessage=&quot;in progress...&quot;&gt;
+   &lt;&lt;timer_showtime elapsed hidemsec&gt;&gt;
+&lt;/$list&gt;
 \end
 
 \define timer_add()
@@ -11817,7 +11817,6 @@ Sydney;      +10:00</pre>
       &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
       &lt;$list filter=&quot;[&lt;currentTiddler&gt;is[missing]]&quot;&gt; &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; button=&quot;stop&quot; /&gt; &lt;/$list&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [{!!startlist}addsuffix[ ]addsuffix&lt;started&gt;trim[]] }}}/&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; started=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;stop&quot;/&gt;
    &quot;&quot;&quot;&gt; {{$:/core/images/timestamp-on}}
    &lt;/$button&gt;
@@ -11832,7 +11831,6 @@ Sydney;      +10:00</pre>
       &lt;$action-setfield $timestamp=&quot;no&quot;    stoplist={{{ [{!!stoplist}addsuffix[ ]addsuffix&lt;stopped&gt;trim[]] }}}/&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; elapsedlist={{{ [{!!elapsedlist}addsuffix[ ]addsuffix&lt;elapsed&gt;trim[]] }}}/&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot;   totallist={{{ [{!!totallist}addsuffix[ ]addsuffix&lt;total&gt;trim[]] }}}/&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot; /&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
    &quot;&quot;&quot;&gt; {{$:/core/images/timestamp-off}}
    &lt;/$button&gt;
@@ -11846,9 +11844,7 @@ Sydney;      +10:00</pre>
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot; actions=&quot;&quot;&quot;
-      &lt;$vars started=&lt;&lt;now YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [enlist{!!startlist}butlast[]join[ ]] }}}/&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot; /&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
    &quot;&quot;&quot;&gt; {{$:/core/images/cancel-button}}
    &lt;/$button&gt;
@@ -11878,7 +11874,6 @@ Sydney;      +10:00</pre>
                   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
                   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
                   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;started&quot;     /&gt;
                   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
                   &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;showhistory&quot; /&gt;
                &lt;/$tiddler&gt;
