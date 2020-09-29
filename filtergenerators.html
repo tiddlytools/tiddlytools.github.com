@@ -163,8 +163,6 @@ Error message and password prompt
 
 <li>$:/state/tab/sidebar--595412856</li>
 
-<li>$:/state/TiddlyTools/PowerSearch/show</li>
-
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
@@ -9613,9 +9611,6 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20200526055243825" modified="20200926101426323" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20200926105512135" modified="20200926105512135" title="$:/state/TiddlyTools/PowerSearch/show">
-<pre>show</pre>
-</div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
@@ -9798,7 +9793,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20200923174135268" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20200929170126719" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define    tidinput()   $:/temp/TiddlyTools/PowerSearch/tids
 \define    preinput()   $:/temp/TiddlyTools/PowerSearch/prefix
 \define notpreinput()   $:/temp/TiddlyTools/PowerSearch/notprefix
@@ -9980,11 +9975,11 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 \define doToggle()
 &lt;$button class=&quot;tc-button tt-button&quot;&gt;
    &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &amp;nbsp;show results&amp;nbsp;
+      &amp;nbsp;show results {{$:/core/images/chevron-down}}&amp;nbsp;
       &lt;$action-setfield $tiddler=&lt;&lt;show&gt;&gt; text=&quot;show&quot; /&gt;
    &lt;/$reveal&gt;
    &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
-      &amp;nbsp;hide results&amp;nbsp;
+      &amp;nbsp;hide results {{$:/core/images/chevron-up}}&amp;nbsp;
       &lt;$action-deletetiddler $tiddler=&lt;&lt;show&gt;&gt; /&gt;
    &lt;/$reveal&gt;
 &lt;/$button&gt;
@@ -10003,12 +9998,12 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 
 \define doSearch_inner()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]&quot;&quot;&quot;&gt;
-&lt;&lt;doResetAll&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doOptions&gt;&gt; &lt;&lt;doToggle&gt;&gt;
-&lt;p/&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;filter&gt;&gt; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
    filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
 &lt;/$button&gt;
-&lt;br/&gt;
+&lt;p/&gt;
+&lt;&lt;doResetAll&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doOptions&gt;&gt; &lt;&lt;doToggle&gt;&gt;
+&lt;p/&gt;
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
    &lt;$vars height={{{ [&lt;maxheight&gt;get[text]] ~[&lt;default_maxheight&gt;] }}} cols={{{ [&lt;columns&gt;get[text]]   ~[&lt;default_columns&gt;]   }}}&gt;
    &lt;&lt;doSearch_showresults&gt;&gt;
