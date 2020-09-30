@@ -147,8 +147,6 @@ Error message and password prompt
 
 <li>$:/config/Timers/Sample</li>
 
-<li>$:/config/TimestampDisable</li>
-
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -173,6 +171,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/time/calendar/TiddlyTools/Time/Calendar</li>
+
 <li>$:/temp/time/countdown/AutoSaver</li>
 
 <li>$:/temp/time/ticker</li>
@@ -188,6 +188,8 @@ Error message and password prompt
 <li>SampleAlarms</li>
 
 <li>SampleCountdown</li>
+
+<li>SampleEvents</li>
 
 <li>SampleSequence</li>
 
@@ -251,9 +253,6 @@ Error message and password prompt
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
 <pre>@@display:inline-block;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;@@</pre>
-</div>
-<div created="20200712230254670" modified="20200928004219799" title="$:/config/TimestampDisable">
-<pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -9650,10 +9649,10 @@ SampleSequence</pre>
 <div created="20200905051927640" modified="20200924032006918" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20200718011630155" modified="20200928080451506" title="$:/state/tab/moresidebar-1850697562">
+<div created="20200718011630155" modified="20200930050140916" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20200929215054404" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20200930105435964" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9720,6 +9719,9 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
+<div month="9" title="$:/temp/time/calendar/TiddlyTools/Time/Calendar" year="2020">
+<pre></pre>
+</div>
 <div created="20200924033144370" done="&lt;$importvariables filter=&quot;TiddlyTools/Time/CountDown TiddlyTools/Time/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Time/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9767,8 +9769,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20200929215116198" title="$:/temp/time/ticker">
-<pre>20200929215116197</pre>
+<div created="20200924032759417" modified="20200930112314056" title="$:/temp/time/ticker">
+<pre>20200930112314056</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9898,6 +9900,9 @@ SampleSequence</pre>
 \end
 
 {{||TiddlyTools/Time/CountDown}}</pre>
+</div>
+<div caption="Birthdays" created="20200930061453434" modified="20200930073255558" tags="events" title="SampleEvents">
+<pre>....0724;Eric's Birthday</pre>
 </div>
 <div created="20200816001146767" modified="20200924032716655" title="SampleSequence">
 <pre>\import TiddlyTools/Time/CountDown
@@ -10547,7 +10552,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20200929055649218" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20200930105333736" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
 \define calendar_popup() $:/state/popup/calendar/$(date)$
 
@@ -10562,17 +10567,19 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showmonth(yyyy,mm,view,select)
 &lt;&lt;showheading &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;  &gt;&gt;
+&lt;$set name=allevents filter=&quot;[[TiddlyTools/Time/Events]] [suffix[.ics]] [tag[events]]&quot;&gt;
 &lt;$vars numbers={{{ [[TiddlyTools/Time/Setup]get[calendar_numbers]]      ~[[color:black;font-size:1.5em;font-weight:bold;]] }}}
     background={{{ [[TiddlyTools/Time/Setup]get[calendar_background]]   ~[[lightgray]]  }}}
     foreground={{{ [[TiddlyTools/Time/Setup]get[calendar_foreground]]   ~[[white]]      }}}
        todaybg={{{ [[TiddlyTools/Time/Setup]get[calendar_today]]        ~[[gold]]       }}}
       eventsbg={{{ [[TiddlyTools/Time/Setup]get[calendar_events]]       ~[[lightgreen]] }}}
      changesbg={{{ [[TiddlyTools/Time/Setup]get[calendar_changes]]      ~[[lightblue;text-decoration:underline;]]  }}}
-    showevents={{{ [[TiddlyTools/Time/Setup]get[calendar_showevents]]   ~[[yes]] }}}
-  showtiddlers={{{ [[TiddlyTools/Time/Setup]get[calendar_showtiddlers]] ~[[yes]] }}}
-    showsystem={{{ [[TiddlyTools/Time/Setup]get[calendar_showsystem]]   ~[[no]]  }}}
-    showcustom={{{ [[TiddlyTools/Time/Setup]get[calendar_showcustom]]   ~[[no]]  }}}
-  customfilter={{{ [[TiddlyTools/Time/Setup]get[calendar_customfilter]]          }}}&gt;
+    showevents={{{ [[TiddlyTools/Time/Setup]get[calendar_showevents]]   ~[[yes]]        }}}
+  showtiddlers={{{ [[TiddlyTools/Time/Setup]get[calendar_showtiddlers]] ~[[yes]]        }}}
+    showsystem={{{ [[TiddlyTools/Time/Setup]get[calendar_showsystem]]   ~[[no]]         }}}
+    showcustom={{{ [[TiddlyTools/Time/Setup]get[calendar_showcustom]]   ~[[no]]         }}}
+    eventlists={{{ [[TiddlyTools/Time/Setup]get[calendar_eventlists]]   ~[&lt;allevents&gt;]  }}}
+  customfilter={{{ [[TiddlyTools/Time/Setup]get[calendar_customfilter]]                 }}}&gt;
 &lt;&lt;showgrid &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$select$&quot;&gt;&gt;
 \end
 
@@ -10760,10 +10767,17 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define getevents()
 &lt;$reveal default=&lt;&lt;showevents&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
-   &lt;$list filter=&quot;[{TiddlyTools/Time/Events}splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
-      &lt;$text text=&quot;[[&quot;/&gt;&lt;$text text=&lt;&lt;line&gt;&gt;/&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt;
+   &lt;$list filter=&quot;[enlist&lt;eventlists&gt;match[TiddlyTools/Time/Events]]&quot;&gt;
+      &lt;$list filter=&quot;[{!!text}splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
+         &lt;$text text=&quot;[[&quot;/&gt;&lt;$text text=&lt;&lt;line&gt;&gt;/&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt;
+      &lt;/$list&gt;
    &lt;/$list&gt;
-   &lt;$list filter=&quot;[suffix[.ics]]&quot;&gt;
+   &lt;$list filter=&quot;[enlist&lt;eventlists&gt;tag[events]]&quot;&gt;
+      &lt;$list filter=&quot;[{!!text}splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
+         &lt;$text text=&quot;[[&quot;/&gt;&lt;$text text=&lt;&lt;line&gt;&gt;/&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt;
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;[enlist&lt;eventlists&gt;suffix[.ics]]&quot;&gt;
       &lt;!-- get ICS calendar events --&gt;
       &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]split[BEGIN:VEVENT]rest[]trim[]]&quot; variable=&quot;event&quot;&gt;
          &lt;$set name=&quot;lines&quot; filter=&quot;[&lt;event&gt;splitregexp[\n|\r]!match[]trim[]]&quot;&gt;
@@ -10774,6 +10788,7 @@ set ~AutoSaver interval:&lt;hr&gt;
          &lt;/$vars&gt;
          &lt;/$set&gt;
       &lt;/$list&gt;
+   &lt;/$list&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
 \end
@@ -10811,14 +10826,14 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define controls_getyear()
-&lt;style&gt; .calendarEdit { width:4em; text-align:center; } &lt;/style&gt;
+&lt;style&gt; .calEditYear { width:4em; text-align:center; } &lt;/style&gt;
 Year:
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view previous year&quot;&gt; {{$:/core/images/chevron-left}}
    &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
    &lt;/$tiddler&gt;
 &lt;/$button&gt;
-&lt;$edit-text tiddler=&lt;&lt;calendar_input&gt;&gt; tag=&quot;input&quot; class=&quot;calendarEdit&quot; field=&quot;year&quot; default=&lt;&lt;thisyear&gt;&gt; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
+&lt;$edit-text tag=&quot;input&quot; class=&quot;calEditYear&quot; tiddler=&lt;&lt;calendar_input&gt;&gt; field=&quot;year&quot; default=&lt;&lt;thisyear&gt;&gt; placeholder=&lt;&lt;thisyear&gt;&gt; /&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view next year&quot;&gt; {{$:/core/images/chevron-right}}
    &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
    &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
@@ -10862,43 +10877,45 @@ Month:
 \end
 
 \define controls_editevents(class:&quot;tc-button tt-button&quot;)
-&lt;$button class=&quot;$class$&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Events&quot; tooltip=&quot;edit events&quot;&gt;
-   {{$:/core/images/edit-button}}
-&lt;/$button&gt;
+&lt;style&gt; .calEventsList { overflow:auto; } &lt;/style&gt;
+&lt;$set name=allevents filter=&quot;[[TiddlyTools/Time/Events]] [suffix[.ics]] [tag[events]] +[!has[draft.of]sort[]]&quot;&gt;
+&lt;span style=&quot;position:relative;&quot;&gt;
+&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/editevents&quot;&gt;&gt; tooltip=&quot;edit events&quot;&gt; {{$:/core/images/edit-button}} &lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/editevents&quot;&gt;&gt;&gt;
+   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot;
+      style=&quot;right:-2em;min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:12pt;line-height:140%;text-align:left;&quot;&gt;
+   ''edit event list:''&lt;br&gt;
+   &lt;$select tiddler=&quot;$:/temp/time/calendar/editevents&quot; field=&quot;selection&quot; size={{{ [enlist&lt;allevents&gt;count[]min[10]] }}} class=&quot;calEventsList&quot;
+      actions=&quot;&quot;&quot;
+         &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param={{$:/temp/time/calendar/editevents!!selection}} /&gt;
+         &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/time/calendar/editevents]]&quot; /&gt;
+      &quot;&quot;&quot;&gt;
+      &lt;$list filter=&lt;&lt;allevents&gt;&gt;&gt;&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=&quot;caption&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$view&gt;&amp;emsp;&lt;/option&gt;&lt;/$list&gt;
+   &lt;/$select&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/span&gt;
 \end
 
 \define controls_settings(class:&quot;tc-button tt-button&quot;)
 &lt;span style=&quot;position:relative;&quot;&gt;
-&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt;
-   {{$:/core/images/options-button}}
-&lt;/$button&gt;
+&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt; {{$:/core/images/options-button}} &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt;&gt;
-   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot; style=&quot;right:-5em;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:10pt;line-height:140%;text-align:left;&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;&quot; popup=&quot;$:/temp/time/calendar/settings/styles&quot; tooltip=&quot;edit styles&quot;&gt;
-         {{$:/core/images/edit-button}}
-      &lt;/$button&gt;
+   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot;
+      style=&quot;right:-4em;min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:12pt;line-height:140%;text-align:left;&quot;&gt;
+      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;&quot; popup=&quot;$:/temp/time/calendar/settings/styles&quot; tooltip=&quot;edit styles&quot;&gt; &amp;#x1F3A8; &lt;/$button&gt;
       ''__Calendar settings__''&lt;br&gt;
-      &lt;&lt;controls_settings_checkbox calendar_showevents yes yes no &quot;show holidays and scheduled events&quot;&gt;&gt;&lt;br&gt;
+      &lt;&lt;controls_settings_toggleevents&gt;&gt;&lt;br&gt;
       &lt;$reveal default={{TiddlyTools/Time/Setup!!calendar_showcustom}} type=&quot;nomatch&quot; text=&quot;yes&quot;&gt;
-         &lt;&lt;controls_settings_checkbox calendar_showtiddlers yes yes no &quot;show tiddler additions and changes&quot;&gt;&gt;&lt;br&gt;
-         &lt;&lt;controls_settings_checkbox calendar_showsystem   no  yes no &quot;show system additions and changes &quot;&gt;&gt;&lt;br&gt;
+         &lt;&lt;controls_settings_checkbox calendar_showtiddlers yes yes no &quot;show tiddler additions/changes&quot;&gt;&gt;&lt;br&gt;
+         &lt;&lt;controls_settings_checkbox calendar_showsystem   no  yes no &quot;show system additions/changes &quot;&gt;&gt;&lt;br&gt;
       &lt;/$reveal&gt;
       &lt;&lt;controls_settings_checkbox calendar_showcustom no yes no &quot;use a custom filter&quot;&gt;&gt;&lt;br&gt;
       &lt;$reveal default={{TiddlyTools/Time/Setup!!calendar_showcustom}} type=&quot;match&quot; text=&quot;yes&quot;&gt;
          &lt;&lt;controls_settings_edit &quot;calendar_customfilter&quot; &quot;[prefix[$:/config]]&quot; &quot;100%;&quot;&gt;&gt;&lt;br&gt;
       &lt;/$reveal&gt;
       &lt;$reveal state=&quot;$:/temp/time/calendar/settings/styles&quot; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot; tag=&quot;div&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-         ''__Calendar styles__''&lt;br&gt;
-         &lt;style&gt; .calSettings table, .calSettings tr, .calSettings td { border:0;margin:0;padding:0 0.25em 0.25em 0;white-space:nowrap;line-height:100%; } &lt;/style&gt;
-         &lt;div class=&quot;calSettings tc-popup-keep&quot;&gt;
-
-| background|&lt;&lt;controls_settings_edit &quot;calendar_background&quot; &quot;lightgray&quot;&gt;&gt;  |
-| foreground|&lt;&lt;controls_settings_edit &quot;calendar_foreground&quot; &quot;white&quot;&gt;&gt;      |
-|      today|&lt;&lt;controls_settings_edit &quot;calendar_today&quot;      &quot;gold&quot;&gt;&gt;       |
-|     events|&lt;&lt;controls_settings_edit &quot;calendar_events&quot;     &quot;lightgreen&quot;&gt;&gt; |
-|    changes|&lt;&lt;controls_settings_edit &quot;calendar_changes&quot;    &quot;lightblue;text-decoration:underline;&quot;&gt;&gt;          |
-|    numbers|&lt;&lt;controls_settings_edit &quot;calendar_numbers&quot;    &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt; |
-         &lt;/div&gt;
+         &lt;&lt;controls_settings_styles&gt;&gt;
       &lt;/$reveal&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
@@ -10909,9 +10926,62 @@ Month:
 &lt;$checkbox tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; checked=&quot;$checked$&quot; unchecked=&quot;$unchecked$&quot;&gt; $label$ &lt;/$checkbox&gt;
 \end
 
-\define controls_settings_edit(field,default,width:&quot;11.5em&quot;,align:&quot;left&quot;)
-&lt;style&gt; .calendarEdit_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
-&lt;$edit-text tag=&quot;input&quot; class=&quot;calendarEdit_$field$&quot; tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\define controls_settings_edit(field,default,width:&quot;10em&quot;)
+&lt;style&gt; .calEdit_$field$ { width:$width$; } &lt;/style&gt;
+&lt;$edit-text tag=&quot;input&quot; class=&quot;calEdit_$field$&quot; tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\end
+
+\define controls_settings_styles()
+''__Calendar styles__''&lt;br&gt;
+&lt;style&gt; .calSettings table, .calSettings tr, .calSettings td { border:0;margin:0;padding:0 0.25em 0.25em 0;white-space:nowrap;line-height:100%; } &lt;/style&gt;
+&lt;div class=&quot;calSettings tc-popup-keep&quot;&gt;
+
+| background|&lt;&lt;controls_settings_edit &quot;calendar_background&quot; &quot;lightgray&quot;&gt;&gt;  |
+| foreground|&lt;&lt;controls_settings_edit &quot;calendar_foreground&quot; &quot;white&quot;&gt;&gt;      |
+|      today|&lt;&lt;controls_settings_edit &quot;calendar_today&quot;      &quot;gold&quot;&gt;&gt;       |
+|     events|&lt;&lt;controls_settings_edit &quot;calendar_events&quot;     &quot;lightgreen&quot;&gt;&gt; |
+|    changes|&lt;&lt;controls_settings_edit &quot;calendar_changes&quot;    &quot;lightblue;text-decoration:underline;&quot;&gt;&gt;          |
+|    numbers|&lt;&lt;controls_settings_edit &quot;calendar_numbers&quot;    &quot;color:black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt; |
+&lt;/div&gt;
+\end
+
+\define controls_settings_toggleevents()
+&lt;$tiddler tiddler=&quot;TiddlyTools/Time/Setup&quot;&gt;
+&lt;$set name=allevents filter=&quot;[[TiddlyTools/Time/Events]] [suffix[.ics]] [tag[events]] +[!has[draft.of]sort[]]&quot;&gt;
+&lt;$checkbox field=&quot;calendar_showevents&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
+   checkactions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;currentTiddler&gt;!has[calendar_eventlists]]&quot;&gt;&lt;$action-setfield calendar_eventlists=&lt;&lt;allevents&gt;&gt; /&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
+&lt;/$checkbox&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings/eventlists&quot;&gt;&gt;&gt;
+   show holidays and events
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings/eventlists&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tc-popup-keep&quot;
+      style=&quot;min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;font-size:12pt;line-height:140%;text-align:left;&quot;&gt;
+   ''select event lists:''&lt;br&gt;
+   &lt;&lt;controls_settings_selectevents&gt;&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_settings_selectevents(maxheight:&quot;10&quot;)
+&lt;style&gt; .calEventsList { overflow:auto; } &lt;/style&gt;
+&lt;$tiddler tiddler=&quot;TiddlyTools/Time/Setup&quot;&gt;
+&lt;$set name=allevents filter=&quot;[[TiddlyTools/Time/Events]] [suffix[.ics]] [tag[events]] +[sort[]]&quot;&gt;
+&lt;$select field=&quot;calendar_eventlists&quot; multiple size={{{ [enlist&lt;allevents&gt;count[]min[$maxheight$]] }}} class=&quot;calEventsList&quot;
+   actions=&quot;&lt;$action-setfield calendar_showevents={{{ [{!!calendar_eventlists}match[]then[no]else[yes]] }}}/&gt;&quot;&gt;
+   &lt;$list filter=&lt;&lt;allevents&gt;&gt;&gt;
+      &lt;$list filter=&quot;[[TiddlyTools/Time/Setup]!contains:calendar_eventlists&lt;currentTiddler&gt;]&quot; variable=&quot;not_selected&quot;&gt;
+         &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=&quot;caption&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$view&gt;&amp;emsp;&lt;/option&gt;
+      &lt;/$list&gt;
+      &lt;$list filter=&quot;[[TiddlyTools/Time/Setup]contains:calendar_eventlists&lt;currentTiddler&gt;]&quot; variable=&quot;selected&quot;&gt;
+         &lt;option value=&lt;&lt;currentTiddler&gt;&gt; selected&gt;&lt;$view field=&quot;caption&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$view&gt;&amp;emsp;&lt;/option&gt;
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+&lt;/$select&gt;&lt;br&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;width:100%;&quot;&gt; select all
+   &lt;$action-setfield calendar_eventlists=&lt;&lt;allevents&gt;&gt;/&gt;
+   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/time/calendar/settings/eventlists]]&quot; /&gt;
+&lt;/$button&gt;
 \end
 
 \define calendar()
@@ -11279,7 +11349,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 &lt;&lt;edit-date tiddler:EditDateExample3 index:date format:&quot;ddd MMM DDth YYYY&quot; placeholder:&quot;enter or select a date&quot;&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20200911045918968" modified="20200928162749725" tags="" title="TiddlyTools/Time/Events" type="text/plain">
+<div caption="Default Events" created="20200911045918968" modified="20200930062409586" tags="events" title="TiddlyTools/Time/Events" type="text/plain">
 <pre>....0101;New Year's Day
 ....0202;Groundhog Day
 ....0214;Valentine's Day
@@ -11288,7 +11358,6 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 ....0614;Flag Day
 ....0619;Juneteenth
 ....0704;Independence Day
-....0724;Eric's Birthday
 ....0911;Patriot Day (9/11 Remembrance)
 ....1031;Halloween
 ....1224;Christmas Eve
@@ -11312,7 +11381,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211125;Thanksgiving Day
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20200929214952467" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20200930111829689" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
 &lt;style&gt; .editSetup_$field$ { width:$width$; text-align:$align$; } &lt;/style&gt;
 &lt;$edit-text tag=&quot;input&quot; class=&quot;editSetup_$field$&quot; tiddler=&quot;TiddlyTools/Time/Setup&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
@@ -11483,18 +11552,18 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/Calendar]]
 &lt;&lt;&lt;
-''Displays a yearly or monthly calendar with popups that show links to tiddlers, journals, and scheduled events.''
+''Displays a yearly or monthly calendar with popups that show links to tiddlers, journals, and events.''
 &lt;br&gt;Optional: [[TiddlyTools/Time/Setup]]
 
 @@.resize
 * By default, the calendar displays the current year.  Enter a year number or select a month to change the view.
-* Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view. Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to edit the list of scheduled events. Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; for settings.
+* Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view. Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to edit events. Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; for settings.
 * Click on any month title to toggle between annual and single-month view.  
 * In single-month view, press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
 * Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
-* Dates that have scheduled events (see [[TiddlyTools/Time/Events]]) are colored light green.
+* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green.
 * Today's date is colored gold.
-* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
+* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date.
 * In the popup, you can:
 ** Click the date heading to view a Journal tiddler for that date.
 ** Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create or edit a Journal tiddler for that date.
@@ -11510,11 +11579,11 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 
 @@.resize
 * Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Press {{$:/core/images/edit-button}} next to the month name to edit the list of scheduled events. Press {{$:/core/images/options-button}} for settings.
+* Press {{$:/core/images/edit-button}} next to the month name to edit events. Press {{$:/core/images/options-button}} for settings.
 * Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
-* Dates that have scheduled events (see [[TiddlyTools/Time/Events]]) are colored light green.
+* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green.
 * Today's date is colored gold.
-* Click a date to show a popup with links to tiddlers created/modified as well as any scheduled events for that date.
+* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date.
 * In the popup, you can:
 ** Click the date heading to view a Journal tiddler for that date.
 ** Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to create or edit a Journal tiddler for that date.
@@ -11532,6 +11601,7 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * Separate the event date and the event description using a semi-colon (;).
 * Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include leading zeros for single-digit months and days.
 * Use ``....`` in place of the year for events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
+* To define additional lists of events, you can create tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as described above.
 
 ''You can also define events by importing .ics (ICalendar) files from Google Calendar and other sources.''
 
@@ -11547,8 +11617,8 @@ Another site that has many free .ics files is: https://www.calendarlabs.com/ical
 # You can &quot;subscribe or download&quot; the selected calendar.  Press &quot;download&quot; to get an .ics file on your local system.
 
 * Drag-and-drop the downloaded .ics files onto your ~TiddlyWiki to import them as tiddlers.
-* You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix.
 * [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
+* You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix to be recognized by the [[TiddlyTools/Time/Calendar]].
 * See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
 
 &lt;&lt;&lt;
@@ -11583,14 +11653,14 @@ Another site that has many free .ics files is: https://www.calendarlabs.com/ical
 ** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;YYYY-0MM-0DD 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
 
 * [[TiddlyTools/Time/Calendar]]:
-** &lt;div class=&quot;borderless&quot;&gt;
-
-|@@line-height:140%;''calendar_showevents:''  @@ |&lt;&lt;checkboxSetup calendar_showevents   yes yes no &quot;show holidays and scheduled events&quot; &gt;&gt; |
-|@@line-height:140%;''calendar_showtiddlers:''@@ |&lt;&lt;checkboxSetup calendar_showtiddlers yes yes no &quot;show tiddler additions and changes&quot; &gt;&gt; |
-|@@line-height:140%;''calendar_showsystem:''  @@ |&lt;&lt;checkboxSetup calendar_showsystem   no  yes no &quot;show system additions and changes&quot;  &gt;&gt; |
-|@@line-height:140%;''calendar_showcustom:''  @@ |&lt;&lt;checkboxSetup calendar_showcustom   no  yes no &quot;use a custom filter&quot;                &gt;&gt; |
+** &lt;div style=&quot;float:left;padding-right:2em;line-height:120%;&quot;&gt;
+''calendar_showevents:''  &lt;br&gt;&lt;&lt;checkboxSetup calendar_showevents   yes yes no &quot;show holidays and events&quot;       &gt;&gt;&lt;br&gt;
+''calendar_showtiddlers:''&lt;br&gt;&lt;&lt;checkboxSetup calendar_showtiddlers yes yes no &quot;show tiddler additions/changes&quot; &gt;&gt;&lt;br&gt;
+''calendar_showsystem:''  &lt;br&gt;&lt;&lt;checkboxSetup calendar_showsystem   no  yes no &quot;show system additions/changes&quot;  &gt;&gt;&lt;br&gt;
+''calendar_showcustom:''  &lt;br&gt;&lt;&lt;checkboxSetup calendar_showcustom   no  yes no &quot;use a custom filter&quot;            &gt;&gt;&lt;br&gt;
 &lt;/div&gt;
-** ''calendar_customfilter:''     &lt;&lt;note &quot;[[TiddlyWiki Filter Syntax|https://tiddlywiki.com/#Filter%20Syntax:%5B%5BFilter%20Syntax%5D%5D%20%5B%5BIntroduction%20to%20filter%20notation%5D%5D%20%5B%5BFilter%20Operators%5D%5D]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_customfilter&quot;   &quot;[prefix[$:/config]]&quot;&gt;&gt;
+** ''calendar_eventlists:''&lt;br&gt;&lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;&lt;&lt;controls_settings_selectevents 6 70%&gt;&gt;&lt;/$importvariables&gt;
+** &lt;div style=&quot;clear:both;&quot;&gt;''calendar_customfilter:''     &lt;&lt;note &quot;[[TiddlyWiki Filter Syntax|https://tiddlywiki.com/#Filter%20Syntax:%5B%5BFilter%20Syntax%5D%5D%20%5B%5BIntroduction%20to%20filter%20notation%5D%5D%20%5B%5BFilter%20Operators%5D%5D]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_customfilter&quot;   &quot;[prefix[$:/config]]&quot;&gt;&gt;&lt;/div&gt;
 ** ''calendar_background:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_background&quot;   &quot;lightgray&quot;&gt;&gt;
 ** ''calendar_foreground:'' &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_foreground&quot;   &quot;white&quot;&gt;&gt;
 ** ''calendar_today:''      &lt;&lt;note &quot;[[CSS colors|https://en.wikipedia.org/wiki/Web_colors]]&quot;&gt;&gt;&lt;br&gt; &lt;&lt;editSetup &quot;calendar_today&quot;        &quot;gold&quot;&gt;&gt;
@@ -11653,7 +11723,7 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="color:black;font-size:1.5em;font-weight:bold;" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200928015216868" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Time/Setup" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_eventlists="SampleEvents TiddlyTools/Time/Events UN_Holidays.ics US_Holidays.ics" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="color:black;font-size:1.5em;font-weight:bold;" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20200930104905154" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="TiddlyTools/Time/Setup" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div caption="Calendar" created="20200904020839440" list-after="$:/core/ui/SideBar/Recent" modified="20200928081710476" tags="$:/tags/SideBar" title="TiddlyTools/Time/SidebarCalendar">
