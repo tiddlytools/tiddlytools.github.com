@@ -261,7 +261,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_timeline="start-date" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201004110309746" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Birthdays Canada_Holidays.ics UN_Holidays.ics US_Holidays.ics TiddlyTools/Time/Events [[Timelines and Journals]]" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_timeline="start-date" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201004131721702" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Birthdays Canada_Holidays.ics UN_Holidays.ics US_Holidays.ics TiddlyTools/Time/Events [[Timelines and Journals]]" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9679,7 +9679,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20201004130322501" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201004130322501" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9787,8 +9787,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201004111456025" title="$:/temp/time/ticker">
-<pre>20201004111456025</pre>
+<div created="20200924032759417" modified="20201004132017058" title="$:/temp/time/ticker">
+<pre>20201004132017058</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10996,7 +10996,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201004111421767" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201004131450735" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
@@ -11139,29 +11139,23 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$set name=&quot;changesbg&quot;  filter=&quot;[&lt;haschanges&gt;!match[]]&quot;          value={{{ [[background:]addsuffix&lt;changesbg&gt;addsuffix[;]] }}} emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;eventsbg&quot;   filter=&quot;[&lt;todays_events&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;eventsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;todaybg&quot;    filter=&quot;[&lt;todays_date&gt;match&lt;date&gt;]&quot;      value={{{ [[background:]addsuffix&lt;todaybg&gt;addsuffix[;]]   }}} emptyValue=&quot;&quot;&gt;
-&lt;$vars   btnstyle={{{ [[width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;todaybg&gt;] }}}
-&lt;!-- grid button --&gt;
+&lt;$vars   btnstyle={{{ [[width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
+&lt;!-- grid button/popup --&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt;&gt;
    &lt;span style={{{ [[color:]addsuffix&lt;numbers&gt;addsuffix[;]] }}}&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
 &lt;/$button&gt;
-&lt;!-- grid popup --&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox&quot;
-   style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot; position=&lt;&lt;popup_position&gt;&gt;&gt;
-   &lt;&lt;showday_popup&gt;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox&quot; position=&lt;&lt;popup_position&gt;&gt;
+   style=&quot;min-width:auto;width:max-content;max-height:$(popup_maxheight)$;overflow:auto;padding:0.5em;font-size:10pt;&quot;&gt;
+   &lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;/div&gt;
+   &lt;div style=&quot;float:right;white-space:nowrap;&quot;&gt;&amp;emsp;&lt;&lt;editjournal&gt;&gt;&amp;nbsp;&lt;&lt;closepopup&gt;&gt;&lt;/div&gt;
+   &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+   &lt;&lt;showday_events&gt;&gt;
+   &lt;&lt;showday_created&gt;&gt;
+   &lt;&lt;showday_modified&gt;&gt;
 &lt;/$reveal&gt;
 \end
 
-\define showday_popup()
-&lt;div class=&quot;calendarPopup&quot; style=&quot;max-height:$(popup_maxheight)$;overflow:auto;&quot;&gt;
-&lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;/div&gt;
-&lt;div style=&quot;float:right;white-space:nowrap;&quot;&gt;&amp;emsp;&lt;&lt;editjournal&gt;&gt;&amp;nbsp;&lt;&lt;closepopup&gt;&gt;&lt;/div&gt;
-&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-&lt;&lt;showday_popup_events&gt;&gt;
-&lt;&lt;showday_popup_created&gt;&gt;
-&lt;&lt;showday_popup_modified&gt;&gt;
-\end
-
-\define showday_popup_events()
+\define showday_events()
 &lt;$list filter=&quot;[enlist&lt;todays_events&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
       ''events:'' (&lt;$count filter=&quot;[enlist&lt;todays_events&gt;]&quot;/&gt;)&lt;br&gt;
@@ -11176,7 +11170,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$list&gt;
 \end
 
-\define showday_popup_created()
+\define showday_created()
 &lt;$list filter=&quot;[enlist&lt;created&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
       ''created:'' (&lt;$count filter=&quot;[enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
@@ -11185,7 +11179,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$list&gt;
 \end
 
-\define showday_popup_modified()
+\define showday_modified()
 &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;limit[1]]&quot;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
       ''modified:'' (&lt;$count filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
