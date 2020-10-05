@@ -177,8 +177,6 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/time/calendar/TiddlyTools/Time/Calendar</li>
-
 <li>$:/temp/time/countdown/AutoSaver</li>
 
 <li>$:/temp/time/ticker</li>
@@ -197,7 +195,7 @@ Error message and password prompt
 
 <li>SampleAlarms</li>
 
-<li>SampleAnniversary</li>
+<li>SampleBirthday</li>
 
 <li>SampleCountdown</li>
 
@@ -9677,7 +9675,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20200930123124753" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201005161127889" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201005201218691" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9744,9 +9742,6 @@ SampleSequence</pre>
     }
 }</pre>
 </div>
-<div month="" title="$:/temp/time/calendar/TiddlyTools/Time/Calendar" year="2021">
-<pre></pre>
-</div>
 <div created="20200924033144370" done="&lt;$importvariables filter=&quot;TiddlyTools/Time/CountDown TiddlyTools/Time/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
 &lt;$vars saveH={{{ [[TiddlyTools/Time/Setup]get[autosave_hours]] ~[[&lt;saveH&gt;]] }}}
@@ -9794,8 +9789,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201005175007029" title="$:/temp/time/ticker">
-<pre>20201005175007028</pre>
+<div created="20200924032759417" modified="20201005201227206" title="$:/temp/time/ticker">
+<pre>20201005201227205</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10336,8 +10331,9 @@ END:VCALENDAR</pre>
 <div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200924032917154" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Time/Alarms}}</pre>
 </div>
-<div caption="Mom and Dad (1954)" created="20201005151333417" end-date="2030" modified="20201005174732739" start-date="19540815" tags="" title="SampleAnniversary">
-<pre></pre>
+<div caption="AlbertEinstein (1879-1955)" created="20201005151333417" date-type="annual" end-date="19550418" modified="20201005201000121" start-date="18790314" tags="" title="SampleBirthday">
+<pre>https://en.wikipedia.org/wiki/Albert_Einstein&lt;br&gt;
+Born: March 14, 1879; Died: April 18, 1955</pre>
 </div>
 <div created="20200726025847494" modified="20200924032711633" tags="" title="SampleCountdown">
 <pre>\define done()
@@ -11006,7 +11002,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201005174428140" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201005193632712" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
@@ -11254,23 +11250,31 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define getevents_timeline()
-&lt;$vars start={{{ [&lt;currentTiddler&gt;get&lt;startfield&gt;] }}}&gt;
+&lt;$vars start={{{ [&lt;currentTiddler&gt;get&lt;startfield&gt;]          }}}&gt;
 &lt;$vars   end={{{ [&lt;currentTiddler&gt;get&lt;endfield&gt;else&lt;start&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;end&gt;length[]match[4]]&quot;  variable=&quot;annual&quot;&gt; &lt;&lt;getevents_timeline_annual&gt;&gt; &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;end&gt;length[]!match[4]]&quot; variable=&quot;range&quot;&gt;  &lt;&lt;getevents_timeline_range&gt;&gt;  &lt;/$list&gt;
+&lt;$vars  type={{{ [&lt;currentTiddler&gt;get[date-type]]           }}}&gt;
+&lt;$list filter=&quot;[&lt;end&gt;length[]match[4]] [&lt;type&gt;match[annual]] +[limit[1]]&quot; variable=&quot;annual&quot;&gt; &lt;&lt;getevents_timeline_annual&gt;&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;end&gt;length[]match[8]then&lt;type&gt;!match[annual]]&quot;           variable=&quot;range&quot;&gt;  &lt;&lt;getevents_timeline_range&gt;&gt;  &lt;/$list&gt;
 \end
 
 \define getevents_timeline_annual()
-&lt;$vars start={{{ [&lt;start&gt;split[]first[4]join[]] }}} mmdd={{{ [&lt;start&gt;split[]rest[4]join[]]  }}}&gt;
+&lt;$vars start={{{ [&lt;start&gt;split[]first[4]join[]] }}}
+        mmdd={{{ [&lt;start&gt;split[]rest[4]join[]]  }}}
+         end={{{ [&lt;end&gt;split[]first[4]join[]]   }}}&gt;
 &lt;$list filter=&lt;&lt;getevents_timeline_years&gt;&gt; variable=&quot;yyyy&quot;&gt;
    ``[[``&lt;&lt;yyyy&gt;&gt;&lt;&lt;mmdd&gt;&gt;;{{!!title}}{{{ [{!!caption}!match[]then[: ]] }}}{{!!caption}}|{{!!title}}``]]``&lt;br&gt;
 \end
 \define getevents_timeline_years() [range[$(start)$,$(end)$]]
 
 \define getevents_timeline_range()
-&lt;$vars start={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]first[]] }}} end={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]last[]] }}}&gt;
-&lt;$vars YS={{{ [&lt;start&gt;split[]first[4]join[]] }}} MS={{{ [&lt;start&gt;split[]rest[4]first[2]join[]multiply[1]] }}} DS={{{ [&lt;start&gt;split[]rest[6]first[2]join[]multiply[1]] }}}
-       YE={{{ [&lt;end&gt;split[]first[4]join[]]   }}} ME={{{ [&lt;end&gt;split[]rest[4]first[2]join[]multiply[1]]   }}} DE={{{ [&lt;end&gt;split[]rest[6]first[2]join[]multiply[1]]   }}}&gt;
+&lt;$vars start={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]first[]] }}}
+         end={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]last[]] }}}&gt;
+&lt;$vars YS={{{ [&lt;start&gt;split[]first[4]join[]]                   }}}
+       MS={{{ [&lt;start&gt;split[]rest[4]first[2]join[]multiply[1]] }}}
+       DS={{{ [&lt;start&gt;split[]rest[6]first[2]join[]multiply[1]] }}}
+       YE={{{ [&lt;end&gt;split[]first[4]join[]]                     }}}
+       ME={{{ [&lt;end&gt;split[]rest[4]first[2]join[]multiply[1]]   }}}
+       DE={{{ [&lt;end&gt;split[]rest[6]first[2]join[]multiply[1]]   }}}&gt;
 &lt;$list filter=&lt;&lt;getevents_timelineY&gt;&gt; variable=&quot;Y&quot;&gt;
    &lt;$vars DPM={{{ [&lt;Y&gt;remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
    &lt;$vars M1={{{ [&lt;Y&gt;match&lt;YS&gt;then&lt;MS&gt;else[1]] }}} M2={{{ [&lt;Y&gt;match&lt;YE&gt;then&lt;ME&gt;else[12]] }}}&gt;
@@ -11896,7 +11900,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201005175002660" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201005200348645" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 &lt;style&gt;
@@ -12102,7 +12106,7 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * Enter event dates using ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include leading zeros for single-digit months and days.
 * Use ``....`` in place of the year for events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
 * To define additional lists of events, you can create tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as outlined above.
-* You can add optional ``caption`` fields to the tiddlers to provide a name for each list of events.
+* You can add optional ''caption'' fields to the tiddlers to provide a short description for each list of events.
 
 ''You can also define lists of events by importing .ics (ICalendar) files from Google Calendar and other sources.''
 
@@ -12119,17 +12123,20 @@ Another site that has many free .ics files is: https://www.calendarlabs.com/ical
 
 * Drag-and-drop the downloaded .ics files onto your ~TiddlyWiki to import them as tiddlers.
 * You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix to be recognized by the [[TiddlyTools/Time/Calendar]].
-* You can add optional ``caption`` fields to the tiddlers to provide a name for each imported list.
+* You can add optional ''caption'' fields to the tiddlers to provide a short description for each imported list.
 * [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
 * See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
 
-''You can also define individual &quot;Timeline&quot; events&quot; by creating tiddlers that have ``start-date``, ``end-date`` and ``caption`` fields.''
+''You can also define individual &quot;Timeline&quot; events&quot; by creating tiddlers that have a start-date field and optional end-date, date-type and caption fields.''
 
-* Create a ''start-date'' field containing ``YYYYMMDD``, where YYYY is the year, MM is the month number, and DD is the day number.  Include leading zeros for single-digit months and days.
-* To define a __multi-day event__, create an ''end-date'' field containing another ``YYYYMMDD`` value.  The event will appear each day from the ''start-date'' to the ''end-date''
-* To define an __annual event__, create an ''end-date'' field containing a 4-digit ``YYYY`` value.  The event will appear on the same day each year from the ''start-date'' to the ''end-date''.
-* To define a __single-day event__, omit the end-date field (or leave it blank).
-* You can add an optional ``caption`` field to the tiddler to provide a name for the event.  If you omit this field (or leave it blank), the tiddler's title will be used.
+* To define a __single-day event__, create a ''start-date'' field containing an 8-digit ``YYYYMMDD`` value.
+* ``YYYY`` is the year, ``MM`` is the month number, and ``DD`` is the day number. Include leading zeros for single-digit months and days.
+* To define a __multi-day event__, add an ''end-date'' field with an 8-digit ``YYYYMMDD`` value.
+* Multi-day events will appear each day from the ''start-date'' to the ''end-date''.
+* To define an __annual event__, add an ''end-date'' field with a 4-digit ``YYYY`` value.
+* You can also define an __annual event__ with an 8-digit ``YYYYMMDD`` ''end-date'' value by adding a ''date-type'' field with a value of ``annual``.
+* Annual events will appear on the same day each year from the ''start-date'' to the ''end-date''.
+* You can add an optional ''caption'' field to the tiddler to provide a short description for the event.  If you omit this field (or leave it blank), the tiddler's title will be used.
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/EditDate]]
 &lt;&lt;&lt;
