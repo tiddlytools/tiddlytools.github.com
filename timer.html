@@ -9682,7 +9682,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201006015714244" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201006034655969" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9808,8 +9808,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201006015718012" title="$:/temp/time/ticker">
-<pre>20201006015718012</pre>
+<div created="20200924032759417" modified="20201006034722085" title="$:/temp/time/ticker">
+<pre>20201006034722085</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11040,7 +11040,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201006014720986" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201006032003419" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
@@ -11479,25 +11479,23 @@ Month:
 \end
 
 \define controls_events_new()
-&lt;span style=&quot;position:relative;&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/new&quot;&gt;&gt; tooltip=&quot;create new eventlist or timeline&quot;&gt;
    {{$:/core/images/new-button}}
 &lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/new&quot;&gt;&gt; type=&quot;popup&quot; class=&quot;tc-popup-handle&quot;&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/new&quot;&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;transform:translate(calc(-100% + 1em),0);&quot;&gt;
       &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;create new eventlist&quot;&gt;
-            new event list
-            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New EventList&quot; text=&quot;YYYYMMDD;Event Description&quot; type=&quot;text/plain&quot; tags=&quot;events&quot; caption=&quot;&quot;/&gt;
-         &lt;/$button&gt;&lt;br&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;create new timeline&quot;&gt;
-            new timeline
-            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot; text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot; timeline_fields=&quot;start-date end-date&quot;/&gt;
-         &lt;/$button&gt;&lt;br&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;&quot; tooltip=&quot;create new eventlist&quot;&gt; new event list
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New EventList&quot;
+               text=&quot;YYYYMMDD;Event Description&quot; type=&quot;text/plain&quot; tags=&quot;events&quot; caption=&quot;&quot;/&gt;
+         &lt;/$button&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;&quot; tooltip=&quot;create new timeline&quot; &gt; new timeline
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot;
+               text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot; timeline_fields=&quot;start-date end-date&quot;/&gt;
+         &lt;/$button&gt;
       &lt;/div&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
-&lt;/span&gt;
 \end
 
 \define controls_events_list(maxheight:&quot;15em&quot;)
@@ -12237,7 +12235,7 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div created="20201003001310270" modified="20201006012427489" tags="" title="TiddlyTools/Time/Setup">
+<div created="20201003001310270" modified="20201006034611645" tags="" title="TiddlyTools/Time/Setup">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
@@ -12274,10 +12272,10 @@ Sydney;      +10:00</pre>
 ** ''timer_format:'' &lt;&lt;note &quot;[[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]&quot;&gt;&gt;&lt;br&gt;&lt;&lt;editSetup &quot;timer_format&quot; &quot;YYYY-0MM-0DD 0hh:0mm:0ss.0XXX&quot;&gt;&gt;
 
 * [[TiddlyTools/Time/Calendar]]:
-** &lt;div class=&quot;borderless&quot;&gt;&lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
+** &lt;div class=&quot;borderless&quot; style=&quot;position:relative;&quot;&gt;&lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 
-|@@line-height:140%;''calendar_showevents:''  @@|&lt;&lt;controls_events_toggleall &quot;show events and timelines&quot;&gt;&gt;                               |
-|&gt;|@@line-height:140%;&lt;div style=&quot;display:inline-block;width:30em;border:1px solid;&quot;&gt;&lt;&lt;controls_events_list&gt;&gt;&lt;/div&gt;@@                |
+|@@line-height:140%;''calendar_showevents:''  @@|&lt;&lt;controls_events_toggleall &quot;show events and timelines&quot;&gt;&gt;                           |
+|&gt;|&lt;div style=&quot;display:inline-block;width:30em;border:1px solid;line-height:140%;&quot;&gt;&lt;&lt;controls_events_list&gt;&gt;&lt;/div&gt;                |
 |@@line-height:140%;''calendar_showtiddlers:''@@|&lt;&lt;checkboxSetup calendar_showtiddlers yes yes no &quot;show tiddler changes/additions&quot; &gt;&gt;|
 |@@line-height:140%;''calendar_showsystem:''  @@|&lt;&lt;checkboxSetup calendar_showsystem   no  yes no &quot;show system changes/additions&quot;  &gt;&gt;|
 |@@line-height:140%;''calendar_showcustom:''  @@|&lt;&lt;checkboxSetup calendar_showcustom   no  yes no &quot;show filtered changes/additions&quot;&gt;&gt;|
