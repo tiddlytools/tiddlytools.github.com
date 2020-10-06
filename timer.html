@@ -275,7 +275,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_endfield="end-date" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_startfield="start-date" calendar_timeline="start-date" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201006103317086" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics UN_Holidays.ics US_Holidays.ics PersonalEvents SampleTimeline TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_endfield="end-date" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="no" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_startfield="start-date" calendar_timeline="start-date" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201006110819831" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9808,8 +9808,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201006104451012" title="$:/temp/time/ticker">
-<pre>20201006104451012</pre>
+<div created="20200924032759417" modified="20201006111340019" title="$:/temp/time/ticker">
+<pre>20201006111340019</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11040,7 +11040,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201006104332951" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201006111151330" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
@@ -11465,10 +11465,10 @@ Month:
 &lt;/div&gt;
 \end
 
-\define controls_events_toggleall(label:&quot;''Events and Timelines:''&quot;)
+\define controls_events_toggleall(label:&quot;''Events and Timelines:''&quot;,id:&quot;&quot;)
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
 &lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] -[has[draft.of]] +[sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
-&lt;&lt;controls_events_new&gt;&gt;
+&lt;&lt;controls_events_new &quot;$id$&quot;&gt;&gt;
 &lt;div style=&quot;display:block;margin-right:1.5em;&quot;&gt;
    &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; field=&quot;calendar_showevents&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
         checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&lt;&lt;allevents&gt;&gt;/&gt;&quot;&quot;&quot;
@@ -11478,11 +11478,11 @@ Month:
 &lt;/div&gt;
 \end
 
-\define controls_events_new()
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/new&quot;&gt;&gt; tooltip=&quot;create new eventlist or timeline&quot;&gt;
+\define controls_events_new(id)
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/new$id$&quot;&gt;&gt; tooltip=&quot;create new eventlist or timeline&quot;&gt;
    {{$:/core/images/new-button}}
 &lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/new&quot;&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/new$id$&quot;&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;transform:translate(calc(-100% + 1em),0);&quot;&gt;
       &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
          &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;&quot; tooltip=&quot;create new eventlist&quot;&gt; new event list
@@ -11525,7 +11525,7 @@ Month:
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;transform:translate(-65%,0);&quot;&gt;
 &lt;style&gt; .calStyles table, .calStyles tr, .calStyles td { border:0;margin:0;padding:0 0.25em 0 0;white-space:normal;line-height:100%; } &lt;/style&gt;
 &lt;div class=&quot;calStyles&quot;&gt;
-   &lt;&lt;controls_events_toggleall&gt;&gt;
+   &lt;&lt;controls_events_toggleall &quot;''Events and Timelines:''&quot; &quot;/viewall&quot;&gt;&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;&quot;&gt;
       &lt;&lt;controls_events_list&gt;&gt;
    &lt;/div&gt;
