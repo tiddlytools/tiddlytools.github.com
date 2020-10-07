@@ -9788,8 +9788,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201007143156027" title="$:/temp/time/ticker">
-<pre>20201007143156027</pre>
+<div created="20200924032759417" modified="20201007185617027" title="$:/temp/time/ticker">
+<pre>20201007185617027</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11998,7 +11998,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201007134912513" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201007185529934" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 &lt;style&gt;
@@ -12016,6 +12016,138 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 
 ''To import this package, &lt;$button dragFilter=&quot;[prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [prefix[Sample]] [tag[events]] [suffix[.ics]]&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;drag this link&lt;/$button&gt; into your own ~TiddlyWiki.''
 
+!! [[TiddlyTools/Time/Clocks]]
+&lt;&lt;&lt;
+''Displays analog and digital clocks with automatic update.''
+&lt;br&gt;Requires: [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
+&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+&lt;br&gt;Examples: [[TiddlyTools/Time/SidebarClocks]], [[TiddlyTools/Time/WorldClocks]]
+
+* To display either clock in another tiddler, use ``&lt;&lt;clock type:&quot;analog&quot;&gt;&gt;`` or ``&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;``
+* You can set the time format used by the digital clock and the styles used by the analog clock (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
+* To override the format for a specific digital clock instance, add ``format:&quot;...&quot;`` to the macro parameters, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
+* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/SidebarClocks]]
+&lt;&lt;&lt;
+''Displays analog and digital clocks in the ~SideBar.''
+&lt;br&gt;Requires: [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
+&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+
+* You can show/hide the clocks, adjust their sizes and specify a custom format for the digital clock (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
+* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
+* You can re-arrange the placement of the clocks by using drag-and-drop in this tag list: {{!!sidebarsegmenttag}}
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/WorldClocks]]
+&lt;&lt;&lt;
+''Displays a set of analog and digital clocks for various places world-wide''
+&lt;br&gt;Requires: [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/Places]], [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
+&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+
+* Press &lt;$button&gt;Select places...&lt;/$button&gt; to view a list of clocks to choose from. Use &lt;kbd&gt;shift+click&lt;/kbd&gt; or &lt;kbd&gt;ctrl+click&lt;/kbd&gt; to select multiple places.
+* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to add new places to the list.
+* You can set the time format used by the digital clocks (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
+* The clocks show the local time for each selected place. The digital clocks also display the timezone offset, using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/Places]]
+&lt;&lt;&lt;
+''Defines a set of places and timezone offsets used by: [[TiddlyTools/Time/WorldClocks]]''
+
+* To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Time/WorldClocks]].
+* Enter place names and timezone offsets, one place name and timezone offset per line.
+* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; are ignored.
+* Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
+* To use the current local timezone (from your computer's system settings), omit the timezone offset.
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/Calendar]]
+&lt;&lt;&lt;
+''Displays a yearly or monthly calendar with popups that show links to tiddlers, journals, and events.''
+&lt;br&gt;Optional: [[TiddlyTools/Time/Events]], [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+
+@@.resize
+* By default, the calendar displays the current year.  Enter a year number or select a month to change the view. Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view.
+* Click on any month title to toggle between annual and single-month view.  
+* In single-month view, press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
+* Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
+* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green. Today's date is colored gold.
+* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date. In the popup, you can:
+** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
+** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
+** Click any link to view that event or tiddler.
+* Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; to display the Calendar settings and select which events and tiddler changes are currently shown in the calendar.
+* In the settings popup, press &amp;#x1F4C5; to view a date-sorted list of all selected events. Press &amp;#x1F3A8; to change the colors and font styles used by the calendar.
+* You can also change these settings in [[TiddlyTools/Time/Setup]] or by directly editing &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;.
+@@
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/SidebarCalendar]]
+&lt;&lt;&lt;
+''Displays a monthly calendar in the ~SideBar tabs.''
+&lt;br&gt;Requires: [[TiddlyTools/Time/Calendar]]
+&lt;br&gt;Optional: [[TiddlyTools/Time/Events]], [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+
+@@.resize
+* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
+* Click on the month title to display an annual calendar in the Story River.
+* Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
+* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green. Today's date is colored gold.
+* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date. In the popup, you can:
+** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
+** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
+** Click any link to view that event or tiddler.
+* Press {{$:/core/images/options-button}} next to the month name to to display the Calendar settings and select which events and tiddler changes are currently shown in the calendar.
+* In the settings popup, press &amp;#x1F4C5; to view a date-sorted list of all selected events. Press &amp;#x1F3A8; to change the colors and font styles used by the calendar.
+* You can also change these settings in [[TiddlyTools/Time/Setup]] or by directly editing &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;.
+* You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
+@@
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/Events]]
+&lt;&lt;&lt;
+''Define &quot;Event Lists&quot; and &quot;Timelines&quot; used by: [[TiddlyTools/Time/Calendar]] and [[TiddlyTools/Time/SidebarCalendar]]''
+
+* To add event dates and descriptions to the default event list, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
+* Enter event dates using ``YYYYMMDD``, where ``YYYY`` is the year, ``MM`` is the month number, and ``DD`` is the day number. Include leading zeros for single-digit months and days.
+* Enter one date and description per line. Separate the date and the description using a semi-colon (;).  Blank lines are ignored.
+* Use ``....`` in place of the year for annual events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
+* You can add an optional ''caption'' field to provide an alternative name for the Event List. If you omit this field (or leave it blank), the tiddler title will be used.
+* To define multiple Event Lists, you can create additional tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as outlined above.
+* After you have created one or more Event Lists, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to select an Event List and add/edit the events listed.
+
+''You can also define one or more &quot;Timeline&quot; tiddlers to manage sets of related &quot;Timeline Events&quot;, each stored in a separate tiddler.''
+
+* Start by creating a single timeline tiddler, tagged with &lt;&lt;tag timeline&gt;&gt;. You can give this tiddler any title you like.
+* You can add an optional ''caption'' field to the timeline to provide an alternative name that will be displayed in the Calendar Settings.
+* Next, create a separate event tiddler, tagged with the title of the timeline tiddler. You can give this tiddler any title you like.
+* Add a ''start-date'' field containing an 8-digit ``YYYYMMDD`` value to define a __single-day event__.
+* Add a ''start-date'' and an ''end-date'' field, both with 8-digit ``YYYYMMDD`` values, to define a __multi-day event__.
+* Add an 8-digit ``YYYYMMDD`` ''start-date'' and a 4-digit ``YYYY`` ''end-date'' (i.e., omit the ``MMDD`` part of the date) to define an __annual event__.
+* You can also define an __annual event__ using an 8-digit ``YYYYMMDD`` ''end-date'' by adding a ''date-type'' field with a value of ``annual``.
+* Single-day events will appear once, on the indicated ''start-date''.
+* Multi-day events will appear each day from the ''start-date'' to the ''end-date''.
+* Annual events will appear on the same day each year from the ''start-date'' to the ''end-date'' year.
+* You can add an optional ''caption'' field to the event tiddler to provide a short description for that event.  If you omit this field (or leave it blank), the tiddler title will be used.
+* Repeat the above steps to create as many individual event tiddlers as you need, each tagged with the same timeline tiddler title.
+* To define multiple sets of related events, you can create additional timeline tiddlers and their associated event tiddlers.
+* After you have created one or more timelines, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to select a timeline and add more event tiddlers.
+
+''You can also import .ics (ICalendar) files from Google Calendar and other sources.''
+
+To import calendar data from Google Calendar:
+
+# Go to http://calendar.google.com and press the Settings button (gear icon, upper right of page).
+# Choose &quot;Import &amp; export&quot; from left side menu and press the &quot;export&quot; button to download &quot;yourname@gmail.com.ical.zip&quot;.
+# On your local system, unzip the downloaded file, which will contain one or more .ics (calendar data) files.
+
+Another site that has many free .ics files is: https://www.calendarlabs.com/ical-calendar/
+
+# From their home page, select a calendar of interest.
+# You can &quot;subscribe or download&quot; the selected calendar.  Press &quot;download&quot; to get an .ics file on your local system.
+
+* Drag-and-drop the downloaded .ics files onto your ~TiddlyWiki to import them as tiddlers.
+* You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix to be recognized by the [[TiddlyTools/Time/Calendar]].
+* You can add optional ''caption'' fields to the tiddlers to provide a short description for each imported list.
+* [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
+* See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
+&lt;&lt;&lt;
 !! [[TiddlyTools/Time/Timers]]
 &lt;&lt;&lt;
 ''Displays a list of task timers to record starting, ending, elapsed and total accumulated times.''
@@ -12109,141 +12241,7 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * To create a separate list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Time/Alarms}}``.
 @@
 &lt;&lt;&lt;
-!! [[TiddlyTools/Time/Clocks]]
-&lt;&lt;&lt;
-''Displays analog and digital clocks with automatic update.''
-&lt;br&gt;Requires: [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-&lt;br&gt;Examples: [[TiddlyTools/Time/SidebarClocks]], [[TiddlyTools/Time/WorldClocks]]
 
-* To display either clock in another tiddler, use ``&lt;&lt;clock type:&quot;analog&quot;&gt;&gt;`` or ``&lt;&lt;clock type:&quot;digital&quot;&gt;&gt;``
-* You can set the time format used by the digital clock and the styles used by the analog clock (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
-* To override the format for a specific digital clock instance, add ``format:&quot;...&quot;`` to the macro parameters, where the text of the format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
-* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/SidebarClocks]]
-&lt;&lt;&lt;
-''Displays analog and digital clocks in the ~SideBar.''
-&lt;br&gt;Requires: [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-
-* You can show/hide the clocks, adjust their sizes and specify a custom format for the digital clock (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
-* By default, the clocks show the local time. To specify a different timezone, add ``offset:&quot;+00:00&quot;`` or ``offset:&quot;-00:00&quot;`` to the macro parameters, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-* You can re-arrange the placement of the clocks by using drag-and-drop in this tag list: {{!!sidebarsegmenttag}}
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/WorldClocks]]
-&lt;&lt;&lt;
-''Displays a set of analog and digital clocks for various places world-wide''
-&lt;br&gt;Requires: [[TiddlyTools/Time/Clocks]], [[TiddlyTools/Time/Places]], [[TiddlyTools/Time/Ticker]], [[TiddlyTools/Time/action-timeout.js]]
-&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-
-* Press &lt;$button&gt;Select places...&lt;/$button&gt; to view a list of clocks to choose from. Use &lt;kbd&gt;shift+click&lt;/kbd&gt; or &lt;kbd&gt;ctrl+click&lt;/kbd&gt; to select multiple places.
-* Press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; to add new places to the list.
-* You can set the time format used by the digital clocks (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
-* The clocks show the local time for each selected place. The digital clocks also display the timezone offset, using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/Places]]
-&lt;&lt;&lt;
-''Defines a set of places and timezone offsets used by: [[TiddlyTools/Time/WorldClocks]]''
-
-* To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Time/WorldClocks]].
-* Enter place names and timezone offsets, one place name and timezone offset per line.
-* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; are ignored.
-* Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
-* To use the current local timezone (from your computer's system settings), omit the timezone offset.
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/Calendar]]
-&lt;&lt;&lt;
-''Displays a yearly or monthly calendar with popups that show links to tiddlers, journals, and events.''
-&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-
-@@.resize
-* By default, the calendar displays the current year.  Enter a year number or select a month to change the view.
-* Press &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset to the current year view. Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; for settings.
-* Click on any month title to toggle between annual and single-month view.  
-* In single-month view, press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
-* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green.
-* Today's date is colored gold.
-* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date.
-* In the popup, you can:
-** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
-** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
-** Click any link to view that tiddler.
-* You can set the colors and font styles used by the calendar (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/SidebarCalendar]]
-&lt;&lt;&lt;
-''Displays a monthly calendar in the ~SideBar tabs.''
-&lt;br&gt;Requires: [[TiddlyTools/Time/Calendar]]
-&lt;br&gt;Optional: [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-
-@@.resize
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Press {{$:/core/images/options-button}} next to the month name for settings.
-* Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
-* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green.
-* Today's date is colored gold.
-* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date.
-* In the popup, you can:
-** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
-** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
-** Click any link to view that tiddler.
-* You can set the colors and font styles used by the calendar (see [[TiddlyTools/Time/Setup]] or &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;).
-* You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/Events]]
-&lt;&lt;&lt;
-''Defines an &quot;Event List&quot; used by: [[TiddlyTools/Time/Calendar]] and [[TiddlyTools/Time/SidebarCalendar]]''
-
-* To add new events, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Events&quot;&gt;edit this tiddler&lt;/$button&gt;.
-* List event dates and descriptions, one date and description per line.  Blank lines are ignored.
-* Separate the event date and the event description using a semi-colon (;).
-* Enter event dates using ``YYYYMMDD``, where ``YYYY`` is the year, ``MM`` is the month number, and ``DD`` is the day number. Include leading zeros for single-digit months and days.
-* Use ``....`` in place of the year for annual events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
-* You can add an optional ''caption'' field to provide an alternative name for the Event List that is displayed in the Calendar Settings.
-* To define additional lists of events, you can create tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as outlined above.
-* After you have created one or more Event Lists, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in a Calendar date popup to edit any selected Event List to add more events.
-
-''You can also define one or more &quot;Timeline&quot; tiddlers to manage sets of related &quot;Timeline Events&quot;, each stored in a separate tiddler.''
-
-* Start by creating a single tiddler, tagged with &lt;&lt;tag timeline&gt;&gt;. You can give this &quot;Timeline&quot; tiddler any title you like.
-* You can add an optional ''caption'' field to this tiddler to provide an alternative name that will be displayed in the Calendar Settings.
-* Then, create a separate &quot;Timeline Event&quot; tiddler, tagged with the title of the Timeline tiddler.
-* To define a __single-day__ Timeline Event tiddler, add a ''start-date'' field containing an 8-digit ``YYYYMMDD`` value.
-* To define a __multi-day__, Timeline Event tiddler, add an ''end-date'' field with an 8-digit ``YYYYMMDD`` value.
-* To define an __annual__ Timeline Event tiddler, add an ''end-date'' field with a 4-digit ``YYYY`` value (i.e., omit the ``MMDD`` part of the date).
-* You can also define an annual Timeline Event tiddler with an 8-digit ``YYYYMMDD`` ''end-date'' value by adding a ''date-type'' field with a value of ``annual``.
-* Single-day events will appear once, on the indicated ''start-date''.
-* Multi-day events will appear each day from the ''start-date'' to the ''end-date''.
-* Annual events will appear on the same day each year from the ''start-date'' to the ''end-date''.
-* You can add an optional ''caption'' field to any Timeline Event tiddler to provide a short description for that event.  If you omit this field (or leave it blank), the tiddler's title will be used.
-* Repeat the above steps to create as many individual Timeline Event tiddlers as you need.
-* You can also create separate &quot;Timeline&quot; tiddlers to define additional sets of related Timeline Events.
-* Each Timeline Event tiddler within a given set is tagged with the title of the same Timeline tiddler.
-* After you have created one or more Timeline tiddlers, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in a Calendar date popup to add more Timeline Event tiddlers to any selected Timeline.
-
-''You can also import .ics (ICalendar) files from Google Calendar and other sources.''
-
-To import calendar data from Google Calendar:
-
-# Go to http://calendar.google.com and press the Settings button (gear icon, upper right of page).
-# Choose &quot;Import &amp; export&quot; from left side menu and press the &quot;export&quot; button to download &quot;yourname@gmail.com.ical.zip&quot;.
-# On your local system, unzip the downloaded file, which will contain one or more .ics (calendar data) files.
-
-Another site that has many free .ics files is: https://www.calendarlabs.com/ical-calendar/
-
-# From their home page, select a calendar of interest.
-# You can &quot;subscribe or download&quot; the selected calendar.  Press &quot;download&quot; to get an .ics file on your local system.
-
-* Drag-and-drop the downloaded .ics files onto your ~TiddlyWiki to import them as tiddlers.
-* You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix to be recognized by the [[TiddlyTools/Time/Calendar]].
-* You can add optional ''caption'' fields to the tiddlers to provide a short description for each imported list.
-* [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
-* See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
-&lt;&lt;&lt;
 !! [[TiddlyTools/Time/EditDate]]
 &lt;&lt;&lt;
 ''Displays a text input field with &quot;edit-in-place&quot; buttons and a popup monthly calendar to select a date.''
