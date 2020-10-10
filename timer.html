@@ -9676,7 +9676,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201010011955133" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201010080341723" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9790,8 +9790,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201010011956076" title="$:/temp/time/ticker">
-<pre>20201010011956074</pre>
+<div created="20200924032759417" modified="20201010080345077" title="$:/temp/time/ticker">
+<pre>20201010080345077</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11026,7 +11026,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201010011226141" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201010075507728" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
@@ -11072,7 +11072,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 @@white-space:nowrap;
 &lt;div style=&quot;width:calc(2.5em * 7);text-align:center;&quot;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
-      &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt; &lt;&lt;showheading_next &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+      &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+      &lt;&lt;showheading_next     &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;/$reveal&gt;
    &lt;&lt;showheading_title &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;&gt;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
@@ -11105,29 +11106,25 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showheading_title(yyyy,mm,view)
-&lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;sidebar&quot;&gt;
-   &lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt;
-      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view this month&quot;&gt;
-         ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
+&lt;$vars tooltip={{{ [{!!month}match[]then[$view$]!match[sidebar]then[view this month]else[view entire year]] }}}&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
+   ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;sidebar&quot;&gt;
+      &lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt;
          &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt;
-      &lt;/$button&gt;
+      &lt;/$reveal&gt;
+      &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+         &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot;     year=&quot;$yyyy$&quot; /&gt;
+      &lt;/$reveal&gt;
    &lt;/$reveal&gt;
-   &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
-         ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
-         &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
-      &lt;/$button&gt;
-   &lt;/$reveal&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default=&quot;$view$&quot; type=&quot;match&quot;   text=&quot;sidebar&quot;&gt;
-   &lt;$tiddler tiddler=&quot;TiddlyTools/Time/Calendar&quot;&gt;
-   &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;view entire year&quot;&gt;
-      ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;match&quot;   text=&quot;sidebar&quot;&gt;
+      &lt;$tiddler tiddler=&quot;TiddlyTools/Time/Calendar&quot;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
       &lt;$action-navigate /&gt;
-   &lt;/$button&gt;
-   &lt;/$tiddler&gt;
-&lt;/$reveal&gt;
+      &lt;/$tiddler&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;/$vars&gt;
 \end
 
 \define showgrid(yyyy,mm,select)
@@ -11135,7 +11132,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;!-- day number for first of the month --&gt;
 &lt;$vars date={{{ [[$mm$]addprefix[0]split[]last[2]join[]addprefix[$yyyy$]addsuffix[01]] }}}&gt;
 &lt;$wikify name=&quot;first&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]ddd&quot; /&gt;&quot;&quot;&quot;&gt;
-&lt;$set name=&quot;first&quot; filter=&quot;[all[shadows]prefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]]&quot;&gt;
+&lt;$set    name=&quot;first&quot; filter=&quot;[all[shadows]prefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]]&quot;&gt;
 &lt;!-- days per month... adjust for leap year --&gt;
 &lt;$vars dpm={{{ [[$yyyy$]remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
 &lt;$vars  dm={{{ [&lt;dpm&gt;split[ ]nth[$mm$]] }}}&gt; &lt;!-- days in this month --&gt;
@@ -11357,8 +11354,12 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;$vars start={{{ [&lt;currentTiddler&gt;get[start-date]]          }}}&gt;
    &lt;$vars   end={{{ [&lt;currentTiddler&gt;get[end-date]else&lt;start&gt;] }}}&gt;
    &lt;$vars  type={{{ [&lt;currentTiddler&gt;get[date-type]]           }}}&gt;
-   &lt;$list filter=&quot;[&lt;end&gt;length[]match[4]] [&lt;type&gt;match[annual]] +[limit[1]]&quot; variable=&quot;annual&quot;&gt; &lt;&lt;getevents_timeline_annual&gt;&gt; &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;end&gt;length[]match[8]then&lt;type&gt;!match[annual]]&quot;           variable=&quot;range&quot;&gt;  &lt;&lt;getevents_timeline_range&gt;&gt;  &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;end&gt;length[]match[4]] [&lt;type&gt;match[annual]] +[limit[1]]&quot; variable=&quot;annual&quot;&gt;
+      &lt;&lt;getevents_timeline_annual&gt;&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;end&gt;length[]match[8]then&lt;type&gt;!match[annual]]&quot; variable=&quot;range&quot;&gt;
+      &lt;&lt;getevents_timeline_range&gt;&gt;
+   &lt;/$list&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
@@ -11561,9 +11562,7 @@ Month:
 &lt;/style&gt;
 &lt;div class=&quot;calEvents&quot;&gt;
    &lt;&lt;controls_events_toggleall &quot;''Events and Timelines:''&quot; &quot;/viewall&quot;&gt;&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;&quot;&gt;
-      &lt;&lt;controls_events_list&gt;&gt;
-   &lt;/div&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;&quot;&gt; &lt;&lt;controls_events_list&gt;&gt; &lt;/div&gt;
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;margin-top:0.5em;&quot;&gt;
       &lt;$wikify name=&quot;all&quot; text=&lt;&lt;getevents&gt;&gt;&gt;
       &lt;$list filter=&quot;[enlist&lt;all&gt;count[]!match[0]]&quot;&gt; __''&lt;&lt;currentTiddler&gt;&gt; events:''__ &lt;/$list&gt;
