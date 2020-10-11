@@ -269,7 +269,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201010172444228" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics US_Holidays.ics PersonalEvents TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201011031209772" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics PersonalEvents SampleTimeline TiddlyTools/Time/Events US_Holidays.ics" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9676,7 +9676,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201010080341723" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201011034032607" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9790,8 +9790,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201010174659114" title="$:/temp/time/ticker">
-<pre>20201010174659113</pre>
+<div created="20200924032759417" modified="20201011034037132" title="$:/temp/time/ticker">
+<pre>20201011034037131</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11026,11 +11026,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201010144027595" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201011033850968" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
-\define calendar_input() $:/temp/time/calendar/$(currentTiddler)$
-\define calendar_popup() $:/state/popup/calendar/$(date)$
+\define calendar_input() $:/state/popup/calendar/$(currentTiddler)$
 
 \define showyear(yyyy)
 &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;month&quot;&gt;
@@ -11182,10 +11181,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars   btnstyle={{{ [[width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[|]first[]] }}}&gt;
 &lt;!-- grid button/popup --&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
    &lt;span style={{{ [[color:]addsuffix&lt;numbers&gt;addsuffix[;]] }}}&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(calendar_popup)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
    position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot;&gt;
    &lt;div style=&quot;float:left;white-space:nowrap;&quot;&gt;&lt;&lt;viewjournal&gt;&gt;&lt;&lt;editjournal&gt;&gt;&lt;/div&gt;
    &lt;div style=&quot;float:right;white-space:nowrap;&quot;&gt;&amp;emsp;&lt;&lt;addevent&gt;&gt;&lt;/div&gt;
@@ -11219,54 +11218,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define addevent()
-&lt;style&gt; .calAddEvent { overflow:hidden auto; max-width:13.5em; } &lt;/style&gt;
-&lt;$vars popupid=&lt;&lt;qualify &quot;$:/state/popup/calendar/add&quot;&gt;&gt;&gt;
-&lt;$button class=&quot;tc-button tt-button tc-popup-keep&quot; popup=&lt;&lt;popupid&gt;&gt; tooltip=&quot;add an event&quot;
-   style=&quot;display:inline;padding:0 0.5em;width:auto;&quot;&gt; {{$:/core/images/new-button}}
-&lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;popupid&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
-   &lt;div style=&quot;min-width:auto;padding:0em;transform:translate(calc(-100% + 2.25em),0);&quot;&gt;
-      &lt;$select tiddler=&lt;&lt;popupid&gt;&gt; field=&quot;target&quot; default=&quot;&quot; actions=&lt;&lt;addevent_actions&gt;&gt;
-         class=&quot;calAddEvent&quot; size={{{ [tag[events]] [tag[timeline]] +[count[]add[3]min[10]] }}}&gt;
-         &lt;option selected disabled value=&quot;&quot; style=&quot;font-weight:bold;&quot;&gt;add an event:&lt;/option&gt;
-         &lt;$list filter=&quot;[tag[events]] [tag[timeline]]&quot;&gt;
-            &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&amp;emsp;&lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;&amp;emsp;&lt;/option&gt;
-         &lt;/$list&gt;
-         &lt;option value=&quot;_eventlist&quot;&gt;create a new event list&lt;/option&gt;
-         &lt;option value=&quot;_timeline&quot; &gt;create a new timeline  &lt;/option&gt;
-      &lt;/$select&gt;
-   &lt;/div&gt;
-&lt;/$reveal&gt;
+&lt;&lt;controls_events_new &quot;/showday&quot; &quot;tc-button tt-button&quot; &quot;padding:0 0.5em;width:auto;&quot; &quot;showlist&quot; &quot;add an event&quot;&gt;&gt;
 \end
-
-\define addevent_actions()
-&lt;$vars target={{{ [&lt;popupid&gt;get[target]] }}} lf=&quot;
-&quot;&gt;
-&lt;$list filter=&quot;[&lt;target&gt;tag[events]]&quot;&gt;
-   &lt;$vars old={{{ [&lt;target&gt;get[text]addsuffix&lt;lf&gt;addsuffix&lt;lf&gt;else[]]         }}}
-          new={{{ [&lt;date&gt;addsuffix[;]addsuffix[enter event description here]] }}}&gt;
-   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;target&gt;&gt; text={{{ [&lt;old&gt;addsuffix&lt;new&gt;] }}} /&gt;
-   &lt;$action-listops  $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&lt;&lt;addevent_targettag&gt;&gt; /&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot;    /&gt;
-   &lt;/$vars&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;target&gt;tag[timeline]]&quot;&gt;
-   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param={{{ [&lt;target&gt;addsuffix[ Event]] }}}
-      text=&quot;&quot; caption=&quot;&quot; tags=&lt;&lt;addevent_targettag&gt;&gt; start-date=&lt;&lt;date&gt;&gt; end-date=&lt;&lt;date&gt;&gt; /&gt;
-   &lt;$action-listops  $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&lt;&lt;addevent_targettag&gt;&gt; /&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot;    /&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;target&gt;match[_eventlist]]&quot;&gt;
-   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Event List&quot;
-      text=&quot;YYYYMMDD;Event Description&quot; type=&quot;text/plain&quot; tags=&quot;events&quot; caption=&quot;&quot;/&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;target&gt;match[_timeline]]&quot;&gt;
-   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot; text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot;/&gt;
-&lt;/$list&gt;
-&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid&gt;&gt; /&gt;
-&lt;/$vars&gt;
-\end
-\define addevent_targettag() [[$(target)$]]
 
 \define showday_events()
 &lt;$list filter=&quot;[enlist&lt;todays_events&gt;limit[1]]&quot;&gt;
@@ -11508,25 +11461,6 @@ Month:
 &lt;/div&gt;
 \end
 
-\define controls_events_new(id,styles)
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;$styles$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/new$id$&quot;&gt;&gt; tooltip=&quot;create a new event list or timeline&quot;&gt;
-   {{$:/core/images/new-button}}
-&lt;/$button&gt;
-&lt;$reveal state=&lt;&lt;qualify &quot;$:/temp/time/calendar/new$id$&quot;&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
-   &lt;div class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;transform:translate(calc(-100% + 1em),0);&quot;&gt;
-      &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;&quot;&gt; ''create a new event list''
-            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Event List&quot;
-               text=&quot;YYYYMMDD;Event Description&quot; type=&quot;text/plain&quot; tags=&quot;events&quot; caption=&quot;&quot;/&gt;
-         &lt;/$button&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;&quot;&gt; ''create a new timeline''
-            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot; text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot; /&gt;
-         &lt;/$button&gt;
-      &lt;/div&gt;
-   &lt;/div&gt;
-&lt;/$reveal&gt;
-\end
-
 \define controls_events_list(maxheight:&quot;15em&quot;)
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
 &lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
@@ -11546,11 +11480,63 @@ Month:
 &lt;/div&gt;
 \end
 
+\define controls_events_new(id,class:&quot;tc-btn-invisible&quot;,style:&quot;&quot;,showlist:&quot;&quot;,tooltip:&quot;create a new eventlist or timeline&quot;)
+&lt;style&gt; .calAddEvent { overflow:hidden auto; max-width:13.5em; } &lt;/style&gt;
+&lt;$vars popupid=&lt;&lt;qualify &quot;$:/state/popup/calendar/add$id$&quot;&gt;&gt;&gt;
+&lt;$button class={{{ [[$class$]addsuffix[ tc-popup-keep]] }}} style=&quot;float:right;$style$;&quot; popup=&lt;&lt;popupid&gt;&gt; tooltip=&quot;$tooltip$&quot;&gt;
+   {{$:/core/images/new-button}}
+&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;popupid&gt;&gt; type=&quot;popup&quot; text=&quot;&quot; class=&quot;tc-popup-handle&quot;&gt;
+   &lt;div class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;transform:translate(calc(-100% + 2.0em),0);&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+         &lt;$reveal default=&quot;$showlist$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+            &lt;$list filter=&quot;[tag[events]] [tag[timeline]] +[limit[1]]&quot;&gt;
+               &lt;$select tiddler=&lt;&lt;popupid&gt;&gt; field=&quot;target&quot; default=&quot;&quot; actions=&lt;&lt;controls_events_new_actions&gt;&gt;
+                  class=&quot;calAddEvent&quot; size={{{ [tag[events]] [tag[timeline]] +[count[]add[1]min[10]] }}}&gt;
+                  &lt;option selected disabled value=&quot;&quot; style=&quot;font-weight:bold;&quot;&gt;add an event:&lt;/option&gt;
+                  &lt;$list filter=&quot;[tag[events]] [tag[timeline]]&quot;&gt;
+                     &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&amp;emsp;&lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;&amp;emsp;&lt;/option&gt;
+                  &lt;/$list&gt;
+               &lt;/$select&gt;
+            &lt;/$list&gt;
+         &lt;/$reveal&gt;
+         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;margin-bottom:1px;&quot;&gt; create a new event list
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Event List&quot;
+               text=&quot;YYYYMMDD;Event Description&quot; type=&quot;text/plain&quot; tags=&quot;events&quot; caption=&quot;&quot;/&gt;
+         &lt;/$button&gt;
+         &lt;$button class=&quot;tc-button tt-button&quot;&gt; create a new timeline
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot; text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot;/&gt;
+         &lt;/$button&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_new_actions()
+&lt;$vars target={{{ [&lt;popupid&gt;get[target]] }}} lf=&quot;
+&quot;&gt;
+&lt;$list filter=&quot;[&lt;target&gt;tag[events]]&quot;&gt;
+   &lt;$vars old={{{ [&lt;target&gt;get[text]addsuffix&lt;lf&gt;addsuffix&lt;lf&gt;else[]]         }}}
+          new={{{ [&lt;date&gt;addsuffix[;]addsuffix[enter event description here]] }}}&gt;
+   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;target&gt;&gt; text={{{ [&lt;old&gt;addsuffix&lt;new&gt;] }}} /&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;target&gt;tag[timeline]]&quot;&gt;
+   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param={{{ [&lt;target&gt;addsuffix[ Event]] }}}
+      text=&quot;&quot; caption=&quot;&quot; tags=&lt;&lt;addevent_targettag&gt;&gt; start-date=&lt;&lt;date&gt;&gt; end-date=&lt;&lt;date&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;$action-listops  $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&lt;&lt;addevent_targettag&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot;    /&gt;
+&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid&gt;&gt; /&gt;
+&lt;/$vars&gt;
+\end
+\define addevent_targettag() [[$(target)$]]
+
 \define controls_events_viewall()
 &lt;$vars showevents=&quot;yes&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/events&quot;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;
    style=&quot;float:right;margin-right:0.5em;&quot; tooltip=&quot;view all events&quot;&gt; &amp;#x1F4C5; &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/events&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;transform:translate(-65%,0);&quot;&gt;
 &lt;style&gt;
    .calEvents table, .calEvents tr, .calEvents td { border:0;margin:0;padding:2px 0.25em; }
@@ -11575,9 +11561,9 @@ Month:
 \end
 
 \define controls_styles()
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/styles&quot;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt;
    style=&quot;float:right;&quot; tooltip=&quot;calendar styles&quot;&gt; &amp;#x1F3A8; &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/styles&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-2.25em;&quot;&gt;
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
 ''Calendar styles''
@@ -11596,10 +11582,10 @@ Month:
 \define controls_popup(class:&quot;tc-button tt-button&quot;)
 &lt;style&gt; .controlPanel { min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;text-align:left;font-size:10pt;line-height:140%; } &lt;/style&gt;
 &lt;span style=&quot;position:relative;&quot;&gt;
-&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt;
+&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt;
    {{$:/core/images/options-button}}
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/temp/time/calendar/settings&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-5.25em;&quot;&gt;
       &lt;&lt;controls_styles&gt;&gt;
       &lt;&lt;controls_events_viewall&gt;&gt;
