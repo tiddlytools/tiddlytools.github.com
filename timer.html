@@ -9682,7 +9682,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201011041945823" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201011041945823" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9730,11 +9730,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9790,8 +9790,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201011042407051" title="$:/temp/time/ticker">
-<pre>20201011042407051</pre>
+<div created="20200924032759417" modified="20201011054027083" title="$:/temp/time/ticker">
+<pre>20201011054027082</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11994,7 +11994,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201008131442374" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201011053948526" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -12107,28 +12107,28 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 * Enter event dates using ``YYYYMMDD``, where ``YYYY`` is the year, ``MM`` is the month number, and ``DD`` is the day number. Include leading zeros for single-digit months and days.
 * Enter one date and description per line. Separate the date and the description using a semi-colon (;).  Blank lines are ignored.
 * Use ``....`` in place of the year for annual events that occur on the same date each year (such as birthdays and some holidays; e.g., ``....0101;New Year's Day``).
-* You can add an optional ''caption'' field to provide an alternative name for the Event List. If you omit this field (or leave it blank), the tiddler title will be used.
-* To define multiple Event Lists, you can create additional tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as outlined above.
-* After you have created one or more Event Lists, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to select an Event List and add/edit the events listed.
+* You can add an optional //caption// field to provide an alternative name for the Event List. If you omit this field (or leave it blank), the tiddler title will be used.
+* To define multiple Event Lists, create additional tiddlers tagged with &lt;&lt;tag events&gt;&gt;and enter dates and descriptions as outlined above.
+* You can also press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to create/select an Event List and add/edit events.
 
-''You can also define one or more &quot;Timeline&quot; tiddlers to manage sets of related &quot;Timeline Events&quot;, each stored in a separate tiddler.''
+''You can define one or more &quot;Timeline&quot; tiddlers to manage sets of related &quot;Timeline Events&quot;, each stored in a separate tiddler.''
 
 * Start by creating a single timeline tiddler, tagged with &lt;&lt;tag timeline&gt;&gt;. You can give this tiddler any title you like.
-* You can add an optional ''caption'' field to the timeline to provide an alternative name that will be displayed in the Calendar Settings.
+* You can add an optional //caption// field to the timeline tiddler to provide an alternative name that will be displayed in the Calendar Settings.
 * Next, create a separate event tiddler, tagged with the title of the timeline tiddler. You can give this tiddler any title you like.
-* Add a ''start-date'' field containing an 8-digit ``YYYYMMDD`` value to define a __single-day event__.
-* Add a ''start-date'' and an ''end-date'' field, both with 8-digit ``YYYYMMDD`` values, to define a __multi-day event__.
-* Add an 8-digit ``YYYYMMDD`` ''start-date'' and a 4-digit ``YYYY`` ''end-date'' (i.e., omit the ``MMDD`` part of the date) to define an __annual event__.
-* You can also define an __annual event__ using an 8-digit ``YYYYMMDD`` ''end-date'' by adding a ''date-type'' field with a value of ``annual``.
-* Single-day events will appear once, on the indicated ''start-date''.
-* Multi-day events will appear each day from the ''start-date'' to the ''end-date''.
-* Annual events will appear on the same day each year from the ''start-date'' to the ''end-date'' year.
-* You can add an optional ''caption'' field to the event tiddler to provide a short description for that event.  If you omit this field (or leave it blank), the tiddler title will be used.
+* Add a //start-date// field containing an 8-digit ``YYYYMMDD`` value to define a __single-day event__.
+* Add a //start-date// and an //end-date// field, both with 8-digit ``YYYYMMDD`` values, to define a __multi-day event__.
+* Add an 8-digit ``YYYYMMDD`` //start-date// and a 4-digit ``YYYY`` //end-date// (i.e., omit the ``MMDD`` part of the date) to define an __annual event__.
+* You can also define an __annual event__ using an 8-digit ``YYYYMMDD`` //end-date// by adding a //date-type// field with a value of ``annual``.
+* Single-day events will appear once, on the indicated //start-date//.
+* Multi-day events will appear each day from the //start-date// to the //end-date//.
+* Annual events will appear on the same day each year from the //start-date// to the //end-date// year.
+* You can add an optional //caption// field to the event tiddler to provide a short description for that event.  If you omit this field (or leave it blank), the tiddler title will be used.
 * Repeat the above steps to create as many individual event tiddlers as you need, each tagged with the same timeline tiddler title.
-* To define multiple sets of related events, you can create additional timeline tiddlers and their associated event tiddlers.
-* After you have created one or more timelines, you can press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to select a timeline and add more event tiddlers.
+* To define multiple sets of related events, create additional timeline tiddlers and associated event tiddlers, each tagged with the title of the timeline tiddler.
+* You can also press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; in any Calendar date popup to create/select a timeline and add events.
 
-''You can also import .ics (ICalendar) files from Google Calendar and other sources.''
+''You can import .ics (ICalendar) files from Google Calendar and other sources.''
 
 To import calendar data from Google Calendar:
 
@@ -12143,7 +12143,7 @@ Another site that has many free .ics files is: https://www.calendarlabs.com/ical
 
 * Drag-and-drop the downloaded .ics files onto your ~TiddlyWiki to import them as tiddlers.
 * You can rename the imported tiddlers, but they must have &quot;.ics&quot; as a suffix to be recognized by the [[TiddlyTools/Time/Calendar]].
-* You can add optional ''caption'' fields to the tiddlers to provide a short description for each imported list.
+* You can add optional //caption// fields to the tiddlers to provide a short description for each imported list.
 * [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
 * See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
 &lt;&lt;&lt;
