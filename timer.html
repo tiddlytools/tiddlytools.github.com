@@ -9676,13 +9676,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201011062211830" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201012172504105" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201012032616825" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201012032616825" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9698,7 +9698,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9718,7 +9718,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(2).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9790,8 +9790,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201012034222073" title="$:/temp/time/ticker">
-<pre>20201012034222073</pre>
+<div created="20200924032759417" modified="20201012172513122" title="$:/temp/time/ticker">
+<pre>20201012172513121</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10346,7 +10346,7 @@ Born: October 5, 1958;</pre>
 <pre>....0724;Eric's Birthday (1962)
 ....0815;Mom and Dad's Anniversary (1954)</pre>
 </div>
-<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20200924032917154" tags="" title="SampleAlarms">
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]]" created="20200717110550625" modified="20201012172421521" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Time/Alarms}}</pre>
 </div>
 <div created="20200726025847494" modified="20200924032711633" tags="" title="SampleCountdown">
@@ -10613,9 +10613,9 @@ TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 exports[&quot;action-timeout&quot;] = TimeoutWidget;
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20200927061556691" tags="" title="TiddlyTools/Time/Alarms">
+<div created="20200811043857487" modified="20201012172300789" tags="" title="TiddlyTools/Time/Alarms">
 <pre>\define alarms_input() $:/temp/time/alarms_input/$(currentTiddler)$
-\define alarms_msg()   $:/temp/time/alarms_msg/$(currentTiddler)$
+\define alarms_msg()   $:/temp/time/alarms_msg/$(freq)$/$(this_time)$
 
 \define alarms_form()
 &lt;style&gt; .alarmEdit { width:3em; text-align:center; } &lt;/style&gt;
@@ -10847,47 +10847,40 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
           date={{{ [&lt;this_alarm&gt;split[;]nth[2]] }}}
           time={{{ [&lt;this_alarm&gt;split[;]nth[3]] }}}
            msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
-   &lt;$list filter=&quot;[&lt;freq&gt;match[once]]&quot;&gt;
-      &lt;$list filter=&quot;[&lt;date&gt;match&lt;this_date&gt;]&quot;&gt;
-         &lt;$list filter=&quot;[&lt;time&gt;match&lt;this_time&gt;]&quot;&gt;
+   &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;once&quot;&gt;
+      &lt;$reveal default=&lt;&lt;date&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_date&gt;&gt;&gt;
+         &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
             &lt;&lt;alarms_message&gt;&gt;
-         &lt;/$list&gt;
-      &lt;/$list&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;freq&gt;match[daily]]&quot;&gt;
-      &lt;$list filter=&quot;[&lt;time&gt;match&lt;this_time&gt;]&quot;&gt;
+         &lt;/$reveal&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;daily&quot;&gt;
+      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
          &lt;&lt;alarms_message&gt;&gt;
-      &lt;/$list&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;freq&gt;!match[once]]&quot;    &gt;
-      &lt;$list filter=&quot;[&lt;freq&gt;!match[daily]]&quot;&gt;
-         &lt;$list filter=&quot;[&lt;freq&gt;match&lt;this_day&gt;]&quot;&gt;
-            &lt;$list filter=&quot;[&lt;time&gt;match&lt;this_time&gt;]&quot;&gt;
-               &lt;&lt;alarms_message&gt;&gt;
-            &lt;/$list&gt;
-         &lt;/$list&gt;
-      &lt;/$list&gt;
-   &lt;/$list&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_day&gt;&gt;&gt;
+      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
+         &lt;&lt;alarms_message&gt;&gt;
+      &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
 \define alarms_message()
-&lt;$action-setfield $tiddler=&quot;$(alarms_msg)$&quot;
+&lt;$reveal state=&lt;&lt;alarms_msg&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;alarms_msg&gt;&gt;
    subtitle=&quot;&quot;&quot;&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;&quot;&quot;&quot;
-   text=&quot;&quot;&quot;
-      @@font-size:2em;
-      &lt;$reveal default=&quot;$(msg)$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;$(msg)$&lt;/$reveal&gt;
-      &lt;$reveal default=&quot;$(msg)$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;BEEP! BEEP! BEEP!&lt;/$reveal&gt;
-      @@
-   &quot;&quot;&quot;
-   footer=&quot;&quot;&quot;
-      &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; close
-         &lt;$action-deletetiddler $tiddler=&quot;$(alarms_msg)$&quot; /&gt;
-      &lt;/$button&gt;
-   &quot;&quot;&quot; /&gt;
-&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$(alarms_msg)$&quot; /&gt;
+       text={{{ [&lt;msg&gt;!match[]else[BEEP! BEEP! BEEP!]addprefix[@@font-size:2em;]addsuffix[@@]] }}}
+     footer=&quot;&quot;&quot;
+        &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt;
+           close &lt;$action-deletetiddler $tiddler=&quot;$(alarms_msg)$&quot; /&gt;
+        &lt;/$button&gt;
+     &quot;&quot;&quot; /&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&lt;&lt;alarms_msg&gt;&gt; /&gt;
+&lt;/$reveal&gt;
 \end
 
 &lt;div style=&quot;display:inline-block;white-space:nowrap;margin-bottom:0.25em;&quot;&gt;
