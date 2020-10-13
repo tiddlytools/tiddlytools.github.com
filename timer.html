@@ -9682,13 +9682,13 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201013001619234" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200904222905850" modified="20201013003541101" title="$:/state/tab/sidebar--595412856">
+<pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201013002454253" list="TiddlyTools/Time/Info TiddlyTools/Time/Ticker SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201013002454253" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012234403235" modified="20201012234403235" title="$:/temp/HidePluginWarning">
@@ -9707,7 +9707,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9727,7 +9727,7 @@ SampleSequence</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/Eric/Documents/TWDev/GitHub/EricShulman/tiddlytools.github.com/timer%20(1).html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9805,8 +9805,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201013002549187" title="$:/temp/time/ticker">
-<pre>20201013002549187</pre>
+<div created="20200924032759417" modified="20201013005228965" title="$:/temp/time/ticker">
+<pre>20201013005228965</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10583,16 +10583,15 @@ __''This [[CountDown|TiddlyTools/Time/CountDown]] sequence has alternating sessi
 <div created="20201004000502665" end-date="20210725" modified="20201008122555321" start-date="20210717" tags="SampleTimeline" title="Summer Science Symposium 2021">
 <pre></pre>
 </div>
-<div created="20150728060155235" modified="20201012235501645" module-type="widget" tags="" title="TiddlyTools/Time/action-timeout.js" type="application/javascript">
+<div created="20150728060155235" modified="20201013004527886" module-type="widget" tags="" title="TiddlyTools/Time/action-timeout.js" type="application/javascript">
 <pre>/*\
 title: action-timeout.js
 type: application/javascript
 module-type: widget
 author: Eric Shulman elsdesign@gmail.com
-revision: 1.3
+revision: 1.4
 
-$action-timeout invokes actions after a delay
-$action-interval periodically invoke actions
+$action-timeout invokes actions once after a specified delay, or repeatedly at a specified interval
 
 \*/
 
@@ -10610,8 +10609,9 @@ TimeoutWidget.prototype.render = function(parent,nextSibling) {
 	this.execute();
 };
 TimeoutWidget.prototype.execute = function() {
-	this.delay     = this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
-	this.actions   = this.getAttribute(&quot;actions&quot;,  &quot;&quot;);
+	this.delay     = this.getAttribute(&quot;delay&quot;,   &quot;1000&quot;);
+	this.interval  = this.getAttribute(&quot;interval&quot;,&quot;1000&quot;);
+	this.actions   = this.getAttribute(&quot;actions&quot;,     &quot;&quot;);
 };
 TimeoutWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
@@ -10621,42 +10621,11 @@ TimeoutWidget.prototype.refresh = function(changedTiddlers) {
 TimeoutWidget.prototype.allowActionPropagation = function() { return false; };
 TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 	var self=this;
-	this.makeChildWidgets();
-	setTimeout(function() { self.invokeActionString(self.actions,self,event); }, self.delay);
+	if (self.delay)    setTimeout( function() { self.invokeActionString(self.actions,self,event); }, self.delay);
+	if (self.interval) setInterval(function() { self.invokeActionString(self.actions,self,event); }, self.interval);
 	return true; // Action was invoked
 };
 exports[&quot;action-timeout&quot;] = TimeoutWidget;
-})();
-
-(function(){
-/*jslint node: true, browser: true */
-/*global $tw: false */
-&quot;use strict&quot;;
-var Widget = require(&quot;$:/core/modules/widgets/widget.js&quot;).widget;
-var IntervalWidget= function(parseTreeNode,options) {
-	this.initialise(parseTreeNode,options);
-};
-IntervalWidget.prototype = new Widget();
-IntervalWidget.prototype.render = function(parent,nextSibling) {
-	this.computeAttributes();
-	this.execute();
-};
-IntervalWidget.prototype.execute = function() {
-	this.delay     = this.getAttribute(&quot;delay&quot;,&quot;1000&quot;);
-	this.actions   = this.getAttribute(&quot;actions&quot;,  &quot;&quot;);
-};
-IntervalWidget.prototype.refresh = function(changedTiddlers) {
-	var changedAttributes = this.computeAttributes();
-	if(Object.keys(changedAttributes).length &gt; 0) { this.refreshSelf(); return true; }
-	return this.refreshChildren(changedTiddlers);
-};
-IntervalWidget.prototype.allowActionPropagation = function() { return false; };
-IntervalWidget.prototype.invokeAction = function(triggeringWidget,event) {
-	var self=this;
-	setInterval(function() { $tw.rootWidget.invokeActionString(self.actions,$tw.rootWidget,event); }, self.delay);
-	return true; // Action was invoked
-};
-exports[&quot;action-interval&quot;] = IntervalWidget;
 })();</pre>
 </div>
 <div created="20200811043857487" modified="20201013001154505" tags="" title="TiddlyTools/Time/Alarms">
@@ -12035,7 +12004,7 @@ In addition, the ``format`` attribute can be used to specify the calendar select
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201013002432094" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201013004942555" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -12317,16 +12286,16 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 ''Defines a &lt;&lt;tag $:/tags/StartupAction&gt;&gt;that automatically updates a [[UTC|https://www.timeanddate.com/time/aboututc.html]] date/time value.''
 &lt;br&gt;Requires: [[TiddlyTools/Time/action-timeout.js]]
 
-* The Ticker uses the ``&lt;$action-interval&gt;`` custom widget and is started when the ~TiddlyWiki is loaded into the browser.
+* The Ticker uses the ``&lt;$action-timeout&gt;`` custom widget and is started when the ~TiddlyWiki is loaded into the browser.
 * The date/time value is updated once per second and is stored in [[$:/temp/time/ticker]] as a 17-digit number using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]]: ``[UTC]YYYY0MM0DD0hh0mm0ss0XXX``
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/action-timeout.js]]
 &lt;&lt;&lt;
-''Defines two custom widgets, ``&lt;$action-timeout&gt;`` and ``&lt;$action-interval&gt;`` that invoke actions using interrupt-driven timers.''
+''Defines a custom widget, ``&lt;$action-timeout&gt;`` that invokes actions using an interrupt-driven timer.''
 
 * To invoke actions one time, use ``&lt;$action-timeout delay=nnnn actions=... /&gt;``.
-* To invoke actions repeatedly, use ``&lt;$action-interval delay=nnnn actions=... /&gt;``.
-* ``delay`` is specified in milliseconds (default = 1000).
+* To invoke actions repeatedly, use ``&lt;$action-timeout interval=nnnn actions=... /&gt;``.
+* ``delay`` and ``interval`` are specified in milliseconds (default = 1000).
 * ``actions`` can be specified using quoted text or a macro reference
 &lt;&lt;&lt;</pre>
 </div>
@@ -12469,13 +12438,13 @@ Sydney;      +10:00</pre>
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20200814085053745" modified="20201013001340064" tags="$:/tags/StartupAction" title="TiddlyTools/Time/Ticker" type="text/plain">
+<div created="20200814085053745" modified="20201013004609062" tags="$:/tags/StartupAction" title="TiddlyTools/Time/Ticker" type="text/plain">
 <pre>\define ticker_actions()
 &lt;$action-setfield $tiddler=&quot;$:/temp/time/ticker&quot; text=&lt;&lt;now [UTC]YYYY0MM0DD0hh0mm0ss0XXX&gt;&gt; /&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Alarms&quot;&gt;    &lt;&lt;alarms_check&gt;&gt;   &lt;/$importvariables&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/CountDown&quot;&gt; &lt;&lt;countdown_tick&gt;&gt; &lt;/$importvariables&gt;
 \end
-&lt;$action-interval delay=&quot;1000&quot; actions=&lt;&lt;ticker_actions&gt;&gt;/&gt;</pre>
+&lt;$action-timeout interval=&quot;1000&quot; actions=&lt;&lt;ticker_actions&gt;&gt;/&gt;</pre>
 </div>
 <div created="20200712174503125" modified="20201002235444849" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
