@@ -279,7 +279,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201013114553224" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="TiddlyTools/Time/Events Canada_Holidays.ics US_Holidays.ics PersonalEvents" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="lightgray" calendar_changes="lightblue;text-decoration:underline;" calendar_customfilter="" calendar_events="lightgreen" calendar_foreground="white" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="gold" clock_background="lightgray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201013182812142" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics US_Holidays.ics PersonalEvents TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9692,7 +9692,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201005215921535" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201013003541101" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201013174708078" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9815,8 +9815,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201013114617623" title="$:/temp/time/ticker">
-<pre>20201013114617623</pre>
+<div created="20200924032759417" modified="20201013182821489" title="$:/temp/time/ticker">
+<pre>20201013182821489</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11044,7 +11044,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201013114544961" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201013182745422" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input() $:/state/popup/calendar/$(currentTiddler)$
@@ -11071,7 +11071,7 @@ set ~AutoSaver interval:&lt;hr&gt;
     showsystem={{{ [&lt;tt_time_config&gt;get[calendar_showsystem]]   ~[[no]]         }}}
     showcustom={{{ [&lt;tt_time_config&gt;get[calendar_showcustom]]   ~[[no]]         }}}
   customfilter={{{ [&lt;tt_time_config&gt;get[calendar_customfilter]]                 }}}&gt;
-&lt;!-- get tiddlers and events --&gt;
+&lt;!-- get tiddlers --&gt;
 &lt;$set name=&quot;show&quot; value=&quot; &quot;&gt;
 &lt;$set name=&quot;show&quot; filter=&quot;[&lt;showtiddlers&gt;addsuffix&lt;showsystem&gt;match[yesno]]&quot;  value=&quot;[!is[system]]&quot;       emptyValue=&lt;&lt;show&gt;&gt;&gt;
 &lt;$set name=&quot;show&quot; filter=&quot;[&lt;showtiddlers&gt;addsuffix&lt;showsystem&gt;match[noyes]]&quot;  value=&quot;[is[system]]&quot;        emptyValue=&lt;&lt;show&gt;&gt;&gt;
@@ -11079,8 +11079,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$set name=&quot;show&quot; filter=&quot;[&lt;showcustom&gt;match[yes]then&lt;customfilter&gt;!match[]]&quot; value=&lt;&lt;customfilter&gt;&gt;      emptyValue=&lt;&lt;show&gt;&gt;&gt;
 &lt;$set name=&quot;show&quot; filter=&quot;[&lt;showcustom&gt;match[yes]then&lt;customfilter&gt;match[]]&quot;  value=&quot;[prefix[$:/config]]&quot; emptyValue=&lt;&lt;show&gt;&gt;&gt;
 &lt;$set name=&quot;tiddlers&quot; filter=&lt;&lt;show&gt;&gt;&gt;
-&lt;$wikify name=&quot;events&quot; text=&lt;&lt;getevents&gt;&gt;&gt;
-&lt;&lt;showgrid &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$select$&quot;&gt;&gt;
+&lt;!-- get events for this year/month --&gt;
+&lt;$vars mm={{{ [[$mm$]addprefix[0]split[]last[2]join[]] }}}&gt; &lt;!-- ZERO PAD --&gt;
+&lt;$wikify     name=&quot;events&quot;   text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;getevents&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=&quot;showgrid&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; select=&quot;$select$&quot; /&gt;
 \end
 
 \define showheading(yyyy,mm,view)
@@ -11143,7 +11145,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define showgrid(yyyy,mm,select)
 \whitespace trim
 &lt;!-- day number for first of the month --&gt;
-&lt;$vars date={{{ [[$mm$]addprefix[0]split[]last[2]join[]addprefix[$yyyy$]addsuffix[01]] }}}&gt;
+&lt;$vars date={{{ [[$yyyy$$mm$]addsuffix[01]] }}}&gt;
 &lt;$wikify name=&quot;first&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]ddd&quot; /&gt;&quot;&quot;&quot;&gt;
 &lt;$set    name=&quot;first&quot; filter=&quot;[all[shadows]prefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]]&quot;&gt;
 &lt;!-- days per month... adjust for leap year --&gt;
@@ -11155,14 +11157,12 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;div style=&quot;display:inline-block;width:2.5em;height:1px;&quot;&gt;&lt;/div&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[range&lt;dm&gt;]&quot; variable=&quot;dd&quot;&gt;
-   &lt;$vars    month={{{ [[$mm$]addprefix[0]split[]last[2]join[]] }}}&gt;
-   &lt;$vars      day={{{ [&lt;dd&gt;addprefix[0]split[]last[2]join[]]   }}}&gt;
-   &lt;$vars     date={{{ [[$yyyy$]addsuffix&lt;month&gt;addsuffix&lt;day&gt;] }}}&gt;
-   &lt;$vars thisdate={{{ [&lt;date&gt;addsuffix[120000000]]             }}}&gt;
+   &lt;$vars      day={{{ [&lt;dd&gt;addprefix[0]split[]last[2]join[]]   }}}&gt; &lt;!-- ZERO PAD --&gt;
+   &lt;$vars     date={{{ [[$yyyy$$mm$]addsuffix&lt;day&gt;]             }}}&gt;
    &lt;$reveal default=&quot;$select$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;&lt;selectday&gt;&gt; &lt;/$reveal&gt;
    &lt;$reveal default=&quot;$select$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; &lt;&lt;showday&gt;&gt;   &lt;/$reveal&gt;
    &lt;$list filter=&quot;[&lt;dd&gt;add&lt;first&gt;remainder[7]match[0]]&quot;&gt;&lt;br&gt;&lt;/$list&gt;
-   &lt;/$vars&gt;&lt;/$vars&gt;&lt;/$vars&gt;&lt;/$vars&gt;
+   &lt;/$vars&gt;&lt;/$vars&gt;
 &lt;/$list&gt;
 &lt;/div&gt;
 \end
@@ -11183,6 +11183,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showday()
 \whitespace trim
+&lt;$vars thisdate={{{ [&lt;date&gt;addsuffix[120000000]] }}}&gt;
 &lt;!-- journal title/tags/text --&gt;
 &lt;$vars journalTitle={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
 &lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;thisdate&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitle&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
@@ -11266,33 +11267,36 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$list&gt;
 \end
 
-\define getevents()
+\define getevents(yyyy,mm)
+&lt;!-- if yyyy and mm are omitted, gets ALL events --&gt;
 &lt;$reveal default=&lt;&lt;showevents&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
    &lt;$list filter=&quot;[tag[events]!has[draft.of]]&quot;&gt;
       &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot;&gt;
-         &lt;&lt;getevents_listed&gt;&gt;
+         &lt;&lt;getevents_listed &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
       &lt;/$list&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[suffix[.ics]!has[draft.of]]&quot;&gt;
       &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot;&gt;
-         &lt;&lt;getevents_ics&gt;&gt;
+         &lt;&lt;getevents_ics &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
       &lt;/$list&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[tag[timeline]!has[draft.of]]&quot;&gt;
       &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot;&gt;
-         &lt;&lt;getevents_timeline&gt;&gt;
+         &lt;&lt;getevents_timeline &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
       &lt;/$list&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
 \end
 
-\define getevents_listed()
+\define getevents_listed(yyyy,mm)
 &lt;$vars eventlist={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars eventlist={{{ [&lt;currentTiddler&gt;!match[TiddlyTools/Time/Events]then&lt;eventlist&gt;addsuffix[: ]] }}}&gt;
 &lt;$list filter=&quot;[{!!text}splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
    &lt;$vars event_date={{{ [&lt;line&gt;split[;]nth[1]] }}}&gt;
    &lt;$vars event_text={{{ [&lt;line&gt;split[;]rest[]join[;]] }}}&gt;
-   ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;eventlist&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt;
+   &lt;$list filter=&quot;[&lt;event_date&gt;prefix[....$mm$]] [&lt;event_date&gt;prefix[$yyyy$$mm$]] +[limit[1]]&quot; variable=&quot;thismonth&quot;&gt;
+      ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;eventlist&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt;
+   &lt;/$list&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;
@@ -11300,14 +11304,16 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$vars&gt;
 \end
 
-\define getevents_ics()
+\define getevents_ics(yyyy,mm)
 &lt;!-- get ICS calendar events --&gt;
 &lt;$vars calname={{{ [&lt;currentTiddler&gt;get[text]split[X-WR-CALNAME:]rest[]splitregexp[\n|\r]first[]trim[]addsuffix[: ]] }}}&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]split[BEGIN:VEVENT]rest[]trim[]]&quot; variable=&quot;event&quot;&gt;
    &lt;$set name=&quot;lines&quot; filter=&quot;[&lt;event&gt;splitregexp[\n|\r]!match[]trim[]]&quot;&gt;
    &lt;$vars event_date={{{ [enlist&lt;lines&gt;removeprefix[DTSTART]split[:]rest[]split[]first[8]join[]!match[]] }}}&gt;
    &lt;$vars event_text={{{ [enlist&lt;lines&gt;removeprefix[SUMMARY:]] }}}&gt;
-   ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;calname&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt;
+   &lt;$list filter=&quot;[&lt;event_date&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+      ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;calname&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt;
+   &lt;/$list&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
    &lt;/$set&gt;
@@ -11315,17 +11321,17 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$vars&gt;
 \end
 
-\define getevents_timeline()
+\define getevents_timeline(yyyy,mm)
 &lt;$vars timeline={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;$list filter=&quot;[all[]tag&lt;currentTiddler&gt;!has[draft.of]!title&lt;tt_time_config&gt;has[start-date]]&quot;&gt;
    &lt;$vars start={{{ [&lt;currentTiddler&gt;get[start-date]]          }}}&gt;
    &lt;$vars   end={{{ [&lt;currentTiddler&gt;get[end-date]else&lt;start&gt;] }}}&gt;
    &lt;$vars  type={{{ [&lt;currentTiddler&gt;get[date-type]]           }}}&gt;
    &lt;$list filter=&quot;[&lt;end&gt;length[]match[4]] [&lt;type&gt;match[annual]] +[limit[1]]&quot; variable=&quot;annual&quot;&gt;
-      &lt;&lt;getevents_timeline_annual&gt;&gt;
+      &lt;&lt;getevents_timeline_annual &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;end&gt;length[]match[8]then&lt;type&gt;!match[annual]]&quot; variable=&quot;range&quot;&gt;
-      &lt;&lt;getevents_timeline_range&gt;&gt;
+      &lt;&lt;getevents_timeline_range &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
    &lt;/$vars&gt;
@@ -11334,16 +11340,18 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$vars&gt;
 \end
 
-\define getevents_timeline_annual()
-&lt;$vars start={{{ [&lt;start&gt;split[]first[4]join[]] }}}
-        mmdd={{{ [&lt;start&gt;split[]rest[4]join[]]  }}}
-         end={{{ [&lt;end&gt;split[]first[4]join[]]   }}}&gt;
-&lt;$list filter=&lt;&lt;getevents_timeline_years&gt;&gt; variable=&quot;yyyy&quot;&gt;
-   ``[[``&lt;&lt;yyyy&gt;&gt;&lt;&lt;mmdd&gt;&gt;;&lt;&lt;timeline&gt;&gt;: {{{ [{!!caption}!match[]else{!!title}] }}}|{{!!title}}``]]``&lt;br&gt;
+\define getevents_timeline_annual(yyyy,mm)
+&lt;$vars start={{{ [&lt;start&gt;split[]first[4]join[]]        }}}
+          mm={{{ [&lt;start&gt;split[]rest[4]first[2]join[]] }}}
+          dd={{{ [&lt;start&gt;split[]rest[4]last[2]join[]]  }}}
+         end={{{ [&lt;end&gt;split[]first[4]join[]]          }}}&gt;
+&lt;$list filter=&lt;&lt;getevents_timeline_years&gt;&gt; variable=&quot;year&quot;&gt;
+   &lt;$list filter=&quot;[&lt;year&gt;addsuffix&lt;mm&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+      ``[[``&lt;&lt;year&gt;&gt;&lt;&lt;mm&gt;&gt;&lt;&lt;dd&gt;&gt;;&lt;&lt;timeline&gt;&gt;: {{{ [{!!caption}!match[]else{!!title}] }}}|{{!!title}}``]]``&lt;br&gt;
 \end
 \define getevents_timeline_years() [range[$(start)$,$(end)$]]
 
-\define getevents_timeline_range()
+\define getevents_timeline_range(yyyy,mm)
 &lt;$vars start={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]first[]] }}}
          end={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]last[]] }}}&gt;
 &lt;$vars YS={{{ [&lt;start&gt;split[]first[4]join[]]                   }}}
@@ -11360,7 +11368,8 @@ set ~AutoSaver interval:&lt;hr&gt;
       &lt;$vars D1={{{ [&lt;Y&gt;match&lt;YS&gt;then&lt;M&gt;match&lt;MS&gt;then&lt;DS&gt;else[1]] }}} D2={{{ [&lt;Y&gt;match&lt;YE&gt;then&lt;M&gt;match&lt;ME&gt;then&lt;DE&gt;else&lt;DM&gt;] }}}&gt;
       &lt;$list filter=&lt;&lt;getevents_timelineD&gt;&gt; variable=&quot;D&quot;&gt;
          &lt;$vars M={{{ [&lt;M&gt;addprefix[0]split[]last[2]join[]] }}} D={{{ [&lt;D&gt;addprefix[0]split[]last[2]join[]] }}}&gt;
-         ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;timeline&gt;&gt;: {{{ [{!!caption}!match[]else{!!title}] }}}|{{!!title}}``]]``&lt;br&gt;
+         &lt;$list filter=&quot;[&lt;Y&gt;addsuffix&lt;M&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+            ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;timeline&gt;&gt;: {{{ [{!!caption}!match[]else{!!title}] }}}|{{!!title}}``]]``&lt;br&gt;
 \end
 \define getevents_timelineY() [range[$(YS)$,$(YE)$]]
 \define getevents_timelineM() [range[$(M1)$,$(M2)$]]
