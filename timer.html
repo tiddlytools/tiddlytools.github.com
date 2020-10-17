@@ -9807,8 +9807,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201016205329085" title="$:/temp/time/ticker">
-<pre>20201016205329085</pre>
+<div created="20200924032759417" modified="20201017005446112" title="$:/temp/time/ticker">
+<pre>20201017005446112</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11038,7 +11038,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201016205210922" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201017004644606" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11092,7 +11092,7 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;/$reveal&gt;
    &lt;&lt;showheading_title &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;&gt;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
-      &lt;&lt;controls_popup &quot;tc-btn-invisible&quot; &quot;$view$&quot;&gt;&gt;
+      &lt;&lt;controls_settings &quot;tc-btn-invisible&quot; &quot;$view$&quot;&gt;&gt;
    &lt;/$reveal&gt;
 &lt;/div&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
@@ -11517,7 +11517,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[delete ]] }}}&gt;
 &lt;$vars popupid_delete=&lt;&lt;qualify &quot;$(calendar_events_delete_popup)$$id$&quot;&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot; popup=&lt;&lt;popupid_delete&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
-   {{$:/core/images/delete-button}}
+   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/delete-button}} &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_delete&gt;&gt;&gt;
    &lt;div class=&quot;tc-drop-down tt-shadowbox&quot; style=&quot;min-width:auto;max-width:20em;padding:0.5em 1.5em;transform:translate(calc(-100% + 5em),0);&quot;&gt;
@@ -11656,11 +11657,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define controls_events_admin(view)
 &lt;$vars showevents=&quot;yes&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;
+&lt;$vars popupid_admin=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_admin&gt;&gt;
    style=&quot;float:right;margin-right:0.5em;&quot; tooltip=&quot;manage events and timelines&quot;&gt;
-   &amp;#x1F4C5; &lt;!-- CALENDAR EMOJI --&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; &amp;#x1F4C5; &lt;!-- CALENDAR EMOJI --&gt; &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_admin&gt;&gt;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;transform:translate(-62.5%,0);&quot;&gt;
       &lt;&lt;controls_events_admin_panel &quot;$view$&quot;&gt;&gt;
    &lt;/div&gt;
@@ -11701,11 +11704,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define controls_styles()
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt;
+&lt;$vars popupid_styles=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_styles&gt;&gt;
    style=&quot;float:right;&quot; tooltip=&quot;calendar styles&quot;&gt;
-   &amp;#x1F3A8; &lt;!-- PALETTE EMOJI --&gt;
+   &lt;$reveal state=&lt;&lt;popupid_styles&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; &amp;#x1F3A8; &lt;!-- PALETTE EMOJI --&gt; &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_styles&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_styles&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-6em;&quot;&gt;
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
 ''Calendar styles''
@@ -11721,13 +11726,15 @@ set ~AutoSaver interval:&lt;hr&gt;
 |    numbers|&lt;&lt;controls_edit &quot;calendar_numbers&quot;    &quot;black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt;|
 \end
 
-\define controls_popup(class:&quot;tc-button tt-button&quot;,view)
+\define controls_settings(class:&quot;tc-button tt-button&quot;,view)
 &lt;style&gt; .controlPanel { min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;text-align:left;font-size:10pt;line-height:140%; } &lt;/style&gt;
+&lt;$vars popupid_settings=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt;&gt;
 &lt;span style=&quot;position:relative;&quot;&gt;
-&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt; tooltip=&quot;settings&quot;&gt;
-   {{$:/core/images/options-button}}
+&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;popupid_settings&gt;&gt; tooltip=&quot;calendar settings&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_settings&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/options-button}} &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_settings&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_settings&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;max-width:18em;right:-4.25em;&quot;&gt;
       &lt;&lt;controls_styles&gt;&gt;
       &lt;&lt;controls_events_admin &quot;$view$&quot;&gt;&gt;
@@ -11746,7 +11753,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
 Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&amp;emsp;&lt;&lt;controls_reset&gt;&gt;
 &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
-&lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt; &lt;&lt;controls_popup&gt;&gt; &lt;/$reveal&gt; &lt;p/&gt;
+&lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt; &lt;&lt;controls_settings&gt;&gt; &lt;/$reveal&gt; &lt;p/&gt;
 &lt;$vars yyyy={{{ [{!!year}multiply[1]!match[0]else&lt;thisyear&gt;addprefix[0000]split[]last[4]join[]] }}}
          mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;above&quot; popup_maxheight=&quot;30em&quot;&gt;
 &lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt;
