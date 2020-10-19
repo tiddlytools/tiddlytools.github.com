@@ -9716,7 +9716,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20201019143728219" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201019144431373" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9824,8 +9824,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201019143155866" title="$:/temp/time/ticker">
-<pre>20201019143155866</pre>
+<div created="20200924032759417" modified="20201019145019169" title="$:/temp/time/ticker">
+<pre>20201019145019169</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11058,7 +11058,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201019134415946" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201019144353077" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11112,7 +11112,9 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;/$reveal&gt;
    &lt;&lt;showheading_title &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;&gt;&gt;
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
-      &lt;&lt;controls_settings &quot;tc-btn-invisible&quot; &quot;$view$&quot;&gt;&gt;
+      &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;edit&quot;&gt;
+         &lt;&lt;controls_settings &quot;tc-btn-invisible&quot; &quot;$view$&quot;&gt;&gt;
+      &lt;/$reveal&gt;
    &lt;/$reveal&gt;
 &lt;/div&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
@@ -11142,7 +11144,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define showheading_title(yyyy,mm,view)
 &lt;$vars tooltip={{{ [{!!month}match[]then[$view$]!match[sidebar]then[view this month]else[view entire year]] }}}&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:inline !important;&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
    ''&lt;$text text=&lt;&lt;thismonth&gt;&gt;/&gt;&amp;nbsp;$yyyy$''
    &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;sidebar&quot;&gt;
       &lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt; &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt; &lt;/$reveal&gt;
@@ -12079,7 +12081,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200913103134997" modified="20201019143127128" tags="$:/tags/Macro" title="TiddlyTools/Time/EditDate">
+<div created="20200913103134997" modified="20201019144434492" tags="$:/tags/Macro" title="TiddlyTools/Time/EditDate">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define edit-date-selectday()
@@ -12130,7 +12132,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
    &lt;$tiddler tiddler=&lt;&lt;inputid&gt;&gt;&gt;
    &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
    &lt;$vars showday=&lt;&lt;edit-date-selectday&gt;&gt; timestamp=&quot;$timestamp$&quot;&gt;
-   &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;
+   &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; view=&quot;edit&quot; /&gt;
    &lt;/$vars&gt;
    &lt;/$importvariables&gt;
    &lt;br&gt;format:&lt;br&gt;
