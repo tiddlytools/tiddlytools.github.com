@@ -155,8 +155,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -9666,11 +9664,6 @@ SampleAlarms
 SampleCountdown
 SampleSequence</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Time/EditDate]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9809,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201021170909588" title="$:/temp/time/ticker">
-<pre>20201021170909588</pre>
+<div created="20200924032759417" modified="20201021193349145" title="$:/temp/time/ticker">
+<pre>20201021193349145</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11043,7 +11036,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201021170845760" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201021193333008" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11445,7 +11438,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
 &lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[LightGreen]] }}}&gt;
 @@float:right;&lt;&lt;controls_colors &quot;$id$&quot; &quot;calendar_events&quot;&gt;&gt;@@
-@@float:right;margin-right:0.65em;&lt;&lt;controls_events_new &quot;$id$&quot;&gt;&gt;@@
+@@float:right;margin-right:0.5em;&lt;&lt;controls_events_new &quot;$id$&quot;&gt;&gt;@@
 @@display:block;margin-right:3em;
 &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; field=&quot;calendar_showevents&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
      checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&lt;&lt;allevents&gt;&gt;/&gt;&quot;&quot;&quot;
@@ -11696,11 +11689,12 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars      popupid_color=&lt;&lt;qualify &quot;$(calendar_colors_popup)$$id$&quot;&gt;&gt;&gt;
 &lt;$vars popupid_color_list=&lt;&lt;qualify &quot;$(calendar_colors_popup)$/list$id$&quot;&gt;&gt;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_color&gt;&gt; tooltip={{{ [[change color: ]addsuffix&lt;currentcolor&gt;] }}}
-   style={{{ [[display:inline-block;border:1px solid gray;width:0.9em;height:0.9em;background:]addsuffix&lt;currentcolor&gt;] }}}&gt;
+   style={{{ [[display:inline-block;border:1px solid gray;width:1em;height:1em;background:]addsuffix&lt;currentcolor&gt;] }}}&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;popupid_color&gt;&gt; $field=&quot;$colorfield$&quot; $value=&lt;&lt;currentcolor&gt;&gt; /&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color&gt;&gt; position=&quot;left&quot; class=&quot;tc-popup-keep&quot; style=&quot;left:auto;right:0;&quot;&gt;
-   &lt;style&gt; .calColorEdit { outline:none; width:8em; } &lt;/style&gt;
+   &lt;style&gt; .calColorEdit { outline:none; width:10em;   } &lt;/style&gt;
+   &lt;style&gt; .calColorList { outline:none; width:13.5em; } &lt;/style&gt;
    &lt;div style=&quot;min-width:auto;padding:0;transform:translate(-0.25em,-0.25em);font-size:90%;position:relative;&quot;&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;&quot;&gt;
       &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;
@@ -11709,7 +11703,7 @@ set ~AutoSaver interval:&lt;hr&gt;
          &lt;$edit-text tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;$colorfield$&quot; default=&lt;&lt;currentcolor&gt;&gt; placeholder=&lt;&lt;defaultcolor&gt;&gt;
             class=&quot;calColorEdit tc-popup-handle&quot; focus=&quot;yes&quot; focusPopup=&lt;&lt;popupid_color_list&gt;&gt; /&gt;
          &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color_list&gt;&gt;&gt;
-            &lt;$select tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;$colorfield$&quot; size=&quot;10&quot;&gt;
+            &lt;$select tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;$colorfield$&quot; size=&quot;10&quot; class=&quot;calColorList&quot;&gt;
                 &lt;$list filter=&lt;&lt;controls_colors_X11names&gt;&gt;&gt;
                    &lt;option style={{{ [[background:]addsuffix&lt;currentTiddler&gt;] }}}&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;
                 &lt;/$list&gt;
