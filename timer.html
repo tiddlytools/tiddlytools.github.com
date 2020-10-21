@@ -9809,8 +9809,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201021141301919" title="$:/temp/time/ticker">
-<pre>20201021141301919</pre>
+<div created="20200924032759417" modified="20201021170909588" title="$:/temp/time/ticker">
+<pre>20201021170909588</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11043,7 +11043,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201021135711390" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201021170845760" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11273,7 +11273,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define getevents_listed(yyyy,mm,convert)
 &lt;$vars eventlist={{{ [&lt;event_source&gt;get[caption]else&lt;event_source&gt;] }}}&gt;
-&lt;$vars eventlist={{{ [&lt;event_source&gt;!match[TiddlyTools/Time/Events]then&lt;event_source&gt;addsuffix[: ]] }}}&gt;
+&lt;$vars eventlist={{{ [&lt;event_source&gt;!match[TiddlyTools/Time/Events]then&lt;eventlist&gt;addsuffix[: ]] }}}&gt;
 &lt;$wikify name=&quot;eventdata&quot; text={{{ [&lt;event_source&gt;get[text]] }}} mode=&quot;inline&quot;&gt;
 &lt;$list filter=&quot;[&lt;eventdata&gt;splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
    &lt;$vars event_date={{{ [&lt;line&gt;split[;]nth[1]] }}}&gt;
