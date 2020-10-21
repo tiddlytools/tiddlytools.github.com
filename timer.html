@@ -205,6 +205,8 @@ Error message and password prompt
 
 <li>Neil deGrasse Tyson (1958-)</li>
 
+<li>New Tiddler</li>
+
 <li>PersonalEvents</li>
 
 <li>SampleAlarms</li>
@@ -277,7 +279,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201021115624902" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics US_Holidays.ics PersonalEvents TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201021140635507" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics US_Holidays.ics PersonalEvents TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9809,8 +9811,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201021115743544" title="$:/temp/time/ticker">
-<pre>20201021115743544</pre>
+<div created="20200924032759417" modified="20201021140702518" title="$:/temp/time/ticker">
+<pre>20201021140702518</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10363,6 +10365,17 @@ Born: November 7, 1867; Died: July 4, 1934</pre>
 <div created="20201005214452835" modified="20201017223136809" tags="SampleTimeline" timeline.end="2058" timeline.start="19581005" timeline.type="" title="Neil deGrasse Tyson (1958-)">
 <pre>https://en.wikipedia.org/wiki/Neil_deGrasse_Tyson&lt;br&gt;
 Born: October 5, 1958;</pre>
+</div>
+<div created="20201021133832327" modified="20201021140135486" tags="" title="New Tiddler">
+<pre>\import TiddlyTools/Time/Calendar
+
+&lt;$vars showevents=&quot;yes&quot;&gt;
+&lt;$vars event_source=&quot;SampleTimeline&quot;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[events]]&quot;   value=&quot;getevents_listed&quot;   emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;suffix[.ics]]&quot;  value=&quot;getevents_ics&quot;      emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[timeline]]&quot; value=&quot;getevents_timeline&quot; emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$wikify name=&quot;eventlist&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&lt;&lt;get_by_type&gt;&gt; convert=&quot;yes&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;pre&gt;&lt;&lt;eventlist&gt;&gt;&lt;/pre&gt;</pre>
 </div>
 <div caption="Family &amp; Friends" created="20200930061453434" eventcolor="OrangeRed" modified="20201017165014967" tags="events" title="PersonalEvents" type="text/plain">
 <pre>....0525;Mom's Birthday (1935)
@@ -11043,7 +11056,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201021115603798" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201021135711390" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11274,7 +11287,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define getevents_listed(yyyy,mm,convert)
 &lt;$vars eventlist={{{ [&lt;event_source&gt;get[caption]else&lt;event_source&gt;] }}}&gt;
 &lt;$vars eventlist={{{ [&lt;event_source&gt;!match[TiddlyTools/Time/Events]then&lt;event_source&gt;addsuffix[: ]] }}}&gt;
-&lt;$wikify name=&quot;eventdata&quot; text={{!!text}} mode=&quot;inline&quot;&gt;
+&lt;$wikify name=&quot;eventdata&quot; text={{{ [&lt;event_source&gt;get[text]] }}} mode=&quot;inline&quot;&gt;
 &lt;$list filter=&quot;[&lt;eventdata&gt;splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
    &lt;$vars event_date={{{ [&lt;line&gt;split[;]nth[1]] }}}&gt;
    &lt;$vars event_text={{{ [&lt;line&gt;split[;]nth[2]] }}}&gt;
@@ -11542,9 +11555,10 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define controls_events_list_copy_tiddler()
 \whitespace trim
 &lt;!-- get event list --&gt;
-&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;currentTiddler&gt;tag[events]]&quot;   value=&quot;getevents_listed&quot;   emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
-&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;currentTiddler&gt;suffix[.ics]]&quot;  value=&quot;getevents_ics&quot;      emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
-&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;currentTiddler&gt;tag[timeline]]&quot; value=&quot;getevents_timeline&quot; emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$vars event_source=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[events]]&quot;   value=&quot;getevents_listed&quot;   emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;suffix[.ics]]&quot;  value=&quot;getevents_ics&quot;      emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[timeline]]&quot; value=&quot;getevents_timeline&quot; emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
 &lt;$wikify name=&quot;eventlist&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&lt;&lt;get_by_type&gt;&gt; convert=&quot;yes&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars lf=&quot;
 &quot;&gt;
