@@ -9688,7 +9688,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201020063950913" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201020135007900" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20201022084055911" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9742,11 +9742,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9802,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201022041113584" title="$:/temp/time/ticker">
-<pre>20201022041113584</pre>
+<div created="20200924032759417" modified="20201022084209428" title="$:/temp/time/ticker">
+<pre>20201022084209428</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11036,7 +11036,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201022041012017" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201022084028533" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11435,8 +11435,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define controls_events_toggleall(label:&quot;''Events and Timelines:''&quot;,id:&quot;&quot;)
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
-&lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
 &lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[LightGreen]] }}}&gt;
+&lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
 @@float:right;&lt;&lt;controls_colors &quot;$id$&quot; &quot;calendar_events&quot;&gt;&gt;@@
 @@float:right;margin-right:0.5em;&lt;&lt;controls_events_new &quot;$id$&quot;&gt;&gt;@@
 @@display:block;margin-right:3em;
@@ -11449,10 +11449,11 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 \define controls_events_list(id:&quot;&quot;)
 &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[LightGreen]] }}}&gt;
 &lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
 @@display:block;max-height:25em;overflow:auto;
 &lt;$list filter=&lt;&lt;allevents&gt;&gt;&gt;
-   @@float:right;&lt;&lt;controls_events_list_color &quot;$id$&quot;&gt;&gt;@@
+   @@float:right;&lt;&lt;controls_colors &quot;$id$&quot; &quot;eventcolor&quot;&gt;&gt;@@
    &lt;div style=&quot;max-width:calc(100% - 1.5em);overflow:hidden;&quot;&gt;
       &lt;&lt;controls_events_list_menu &quot;$id$&quot;&gt;&gt;
       &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; tag=&lt;&lt;currentTiddler&gt;&gt;
@@ -11461,11 +11462,6 @@ set ~AutoSaver interval:&lt;hr&gt;
       &lt;/$checkbox&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
-\end
-
-\define controls_events_list_color(id)
-&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[lightgreen]] }}}&gt;
-&lt;&lt;controls_colors &quot;$id$&quot; &quot;eventcolor&quot;&gt;&gt;
 \end
 
 \define controls_events_list_menu(id:&quot;&quot;)
@@ -12489,7 +12485,7 @@ Perth;       +08:30
 Adelaide;    +09:30
 Sydney;      +10:00</pre>
 </div>
-<div created="20201003001310270" modified="20201021070343276" tags="" title="TiddlyTools/Time/Setup">
+<div created="20201003001310270" modified="20201022082808034" tags="" title="TiddlyTools/Time/Setup">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define editSetup(field,default,width:&quot;30em&quot;,align:&quot;left&quot;)
