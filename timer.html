@@ -9694,7 +9694,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201023025518006" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201023025518006" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9802,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201023030026484" title="$:/temp/time/ticker">
-<pre>20201023030026484</pre>
+<div created="20200924032759417" modified="20201023072338516" title="$:/temp/time/ticker">
+<pre>20201023072338516</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -12206,7 +12206,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201017224605630" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201023072320417" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -12282,33 +12282,15 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 * Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
 * Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green. Today's date is colored gold.
 * Click a date to show a popup with links to tiddlers created/modified as well as any events for that date. In the popup, you can:
-** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
-** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
 ** Click any link to view that event or tiddler.
-* Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; to display the Calendar settings and select which events and tiddler changes are currently shown in the calendar.
-* In the settings popup, press &amp;#x1F4C5; to view a date-sorted list of all selected events. Press &amp;#x1F3A8; to change the colors and font styles used by the calendar.
-* You can also change these settings in [[TiddlyTools/Time/Setup]] or by directly editing &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;.
-@@
-&lt;&lt;&lt;
-!! [[TiddlyTools/Time/SidebarCalendar]]
-&lt;&lt;&lt;
-''Displays a monthly calendar in the ~SideBar tabs.''
-&lt;br&gt;Requires: [[TiddlyTools/Time/Calendar]]
-&lt;br&gt;Optional: [[TiddlyTools/Time/Events]], [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
-
-@@.resize
-* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
-* Click on the month title to display the calendar in the Story River.
-* Dates on which tiddlers were created/modified or have a Journal tiddler are colored light blue and underlined.
-* Dates that have events (see [[TiddlyTools/Time/Events]]) are colored light green. Today's date is colored gold.
-* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date. In the popup, you can:
-** Click the date heading or press {{$:/core/images/edit-button}} to view or edit a Journal tiddler for that date.
+** Click the date heading to view a Journal tiddler for that date. Press {{$:/core/images/edit-button}} to edit a Journal tiddler for that date.
 ** Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to add an event for that date (see [[TiddlyTools/Time/Events]]).
-** Click any link to view that event or tiddler.
-* Press {{$:/core/images/options-button}} to display the Calendar settings and select which events and tiddler changes are currently shown in the calendar.
-* In the settings popup, press &amp;#x1F4C5; to view a date-sorted list of all selected events. Press &amp;#x1F3A8; to change the colors and font styles used by the calendar.
+* Press &lt;$button&gt;{{$:/core/images/options-button}}&lt;/$button&gt; to show a popup with the Calendar Settings.  In the popup, you can:
+** Press &amp;#x1F4C5; to view a date-sorted list of all selected events, or &amp;#x1F3A8; to change the overall colors and font styles used by the calendar.
+** Use checkboxes to select the types of events and tiddler changes that will be shown in the calendar.
+** Click on color boxes to change the colors used to show events and tiddler changes.  You can enter CSS color values or select from a list of X11 color names.
+** Press {{$:/core/images/menu-button}} to edit &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt;, copy &lt;$button&gt;{{$:/core/images/clone-button}}&lt;/$button&gt;, or delete &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; an individual event list, Timeline or .ics definition.
 * You can also change these settings in [[TiddlyTools/Time/Setup]] or by directly editing &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;.
-* You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/Events]]
@@ -12361,6 +12343,20 @@ Another site that has many free .ics files is: https://www.calendarlabs.com/ical
 * You can add optional __eventcolor__ fields to the .ics tiddlers to override the default light green event color shown in the calendar.
 * [[TiddlyTools/Time/Calendar]] will process any &quot;VEVENT&quot; records contained in .ics tiddlers, using the DTSTART value as the event date and the SUMMARY text as the event description.
 * See https://en.wikipedia.org/wiki/ICalendar for more information about the .ics file format.
+&lt;&lt;&lt;
+!! [[TiddlyTools/Time/SidebarCalendar]]
+&lt;&lt;&lt;
+''Displays a monthly calendar in the ~SideBar tabs.''
+&lt;br&gt;Requires: [[TiddlyTools/Time/Calendar]]
+&lt;br&gt;Optional: [[TiddlyTools/Time/Events]], [[TiddlyTools/Time/Setup]], &lt;$link to=&lt;&lt;tt_time_config&gt;&gt;/&gt;
+
+@@.resize
+* Press &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; to view the previous month. Press &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; to view the next month.
+* Click on the month title to display an annual calendar in the Story River.
+* Click a date to show a popup with links to tiddlers created/modified as well as any events for that date (see [[TiddlyTools/Time/Calendar]]).
+* Press {{$:/core/images/options-button}} to show a popup with the Calendar Settings (see [[TiddlyTools/Time/Calendar]]).
+* You can re-arrange the placement of the Calendar in the ~SideBar tabs by using drag-and-drop in this tag list: &lt;&lt;tag &quot;$:/tags/SideBar&quot;&gt;&gt;
+@@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/Timers]]
 &lt;&lt;&lt;
