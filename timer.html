@@ -275,7 +275,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_admin_width="" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201022225813138" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="TiddlyTools/Time/Events US_Holidays.ics Canada_Holidays.ics PersonalEvents" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_admin_width="" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="black;font-size:1.5em;font-weight:bold;" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="black" clock_numbers="color:black;font-size:1.5em;" clock_size="15em" clock_ticks="black" created="20200723071051066" modified="20201023024911718" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="Canada_Holidays.ics TiddlyTools/Time/Events US_Holidays.ics PersonalEvents" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20200924122829391" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
@@ -9694,7 +9694,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20201023025518006" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201023025518006" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9802,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201022225816718" title="$:/temp/time/ticker">
-<pre>20201022225816718</pre>
+<div created="20200924032759417" modified="20201023030026484" title="$:/temp/time/ticker">
+<pre>20201023030026484</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11036,7 +11036,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201022225657295" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201023030000257" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11181,8 +11181,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
    position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot;&gt;
-   @@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt;@@
-   @@float:right;white-space:nowrap; &amp;emsp;&lt;&lt;showday_addevent&gt;&gt;@@
+   @@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
+   @@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
    &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
    &lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
       &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
@@ -11443,7 +11443,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; field=&quot;calendar_showevents&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
      checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&lt;&lt;allevents&gt;&gt;/&gt;&quot;&quot;&quot;
    uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&quot;&quot;           /&gt;&quot;&quot;&quot;&gt;
-   $label$ &amp;emsp;
+   $label$
 &lt;/$checkbox&gt;
 \end
 
@@ -11454,8 +11454,8 @@ set ~AutoSaver interval:&lt;hr&gt;
 @@display:block;max-height:25em;overflow:auto;
 &lt;$list filter=&lt;&lt;allevents&gt;&gt;&gt;
    @@float:right;&lt;&lt;controls_colors &quot;$id$&quot; &quot;eventcolor&quot;&gt;&gt;@@
-   &lt;div style=&quot;max-width:calc(100% - 1.5em);overflow:hidden;&quot;&gt;
-      &lt;&lt;controls_events_list_menu &quot;$id$&quot;&gt;&gt;
+   &lt;&lt;controls_events_list_menu &quot;$id$&quot;&gt;&gt;
+   &lt;div style=&quot;max-width:calc(100% - 3em);overflow:hidden;&quot;&gt;
       &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; tag=&lt;&lt;currentTiddler&gt;&gt;
          checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot; /&gt;&quot;&quot;&quot;&gt;
          &lt;$view field=&quot;caption&quot;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$view&gt;
@@ -11467,12 +11467,12 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define controls_events_list_menu(id:&quot;&quot;)
 &lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[edit, copy, or delete ]] }}}&gt;
 &lt;$vars popupid_menu=&lt;&lt;qualify &quot;$(calendar_events_menu_popup)$$id$&quot;&gt;&gt;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; popup=&lt;&lt;popupid_menu&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;margin-right:0.5em;&quot; popup=&lt;&lt;popupid_menu&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
    &lt;$reveal state=&lt;&lt;popupid_menu&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/menu-button}}  &lt;/$reveal&gt;
    &lt;$reveal state=&lt;&lt;popupid_menu&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-left}} &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_menu&gt;&gt; position=&quot;left&quot;&gt;
-   &lt;div style=&quot;transform:translate(-0.5em,0);font-size:90%;&quot;&gt;
+   &lt;div style=&quot;transform:translate(-0.25em,0);font-size:90%;&quot;&gt;
       &lt;&lt;controls_events_list_edit&gt;&gt;
       &lt;&lt;controls_events_list_copy&gt;&gt;
       &lt;&lt;controls_events_list_delete &quot;$id$&quot;&gt;&gt;
@@ -11635,7 +11635,7 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;$reveal state=&lt;&lt;popupid_admin&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_admin&gt;&gt;&gt;
-   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-7em;&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-7.5em;&quot;&gt;
       &lt;&lt;controls_events_admin_panel &quot;$view$&quot;&gt;&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
@@ -11677,15 +11677,21 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_admin_width&gt;&gt;&gt;
    &lt;div class=&quot;tc-block-dropdown tt-shadowbox&quot; style=&quot;right:-2.5em;padding:0.5em;min-width:max-content;&quot;&gt;
       &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
-         max panel width:
-         &lt;$edit-text tag=&quot;input&quot; class=&quot;calEditYear&quot; tiddler=&lt;&lt;popupid_admin_width&gt;&gt; field=&quot;width&quot; default=&lt;&lt;maxwidth&gt;&gt; placeholder=&quot;auto&quot; /&gt;
+         max panel width:&lt;br&gt;
+         &lt;$keyboard key=&quot;escape&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;&quot;&gt;
+         &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;
+               &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_admin_width={{{ [&lt;popupid_admin_width&gt;get[width]] }}} /&gt;
+               &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt; &quot;&quot;&quot;&gt;
+            &lt;$edit-text tag=&quot;input&quot; class=&quot;calEditYear&quot; tiddler=&lt;&lt;popupid_admin_width&gt;&gt; field=&quot;width&quot; default=&lt;&lt;maxwidth&gt;&gt; placeholder=&quot;auto&quot; focus=&quot;yes&quot; /&gt;
+         &lt;/$keyboard&gt;
+         &lt;/$keyboard&gt;
          &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;cancel&quot;&gt;
             {{$:/core/images/close-button}}
             &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;
          &lt;/$button&gt;
          &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;set width&quot;&gt;
             {{$:/core/images/done-button}}
-            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; $field=&quot;calendar_admin_width&quot; $value={{{ [&lt;popupid_admin_width&gt;get[width]] }}} /&gt;
+            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_admin_width={{{ [&lt;popupid_admin_width&gt;get[width]] }}} /&gt;
             &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;
          &lt;/$button&gt;
       &lt;/div&gt;
@@ -11760,7 +11766,7 @@ AliceBlue AntiqueWhite Aquamarine Azure Beige Bisque Black BlanchedAlmond Blue B
    &lt;$reveal state=&lt;&lt;popupid_styles&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_styles&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
-   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-4.5em;&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-5.5em;&quot;&gt;
       &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
       ''Calendar styles''
       &lt;div class=&quot;tt-shadowbox inset calStyles&quot;&gt;
@@ -11787,7 +11793,7 @@ AliceBlue AntiqueWhite Aquamarine Azure Beige Bisque Black BlanchedAlmond Blue B
    &lt;$reveal state=&lt;&lt;popupid_settings&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_settings&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
-   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;max-width:18em;right:-5.5em;&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;max-width:18em;right:-4.75em;&quot;&gt;
       &lt;&lt;controls_styles&gt;&gt;
       &lt;&lt;controls_events_admin &quot;$view$&quot;&gt;&gt;
       ''Calendar settings''
