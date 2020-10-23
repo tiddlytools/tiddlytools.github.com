@@ -9802,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201023072338516" title="$:/temp/time/ticker">
-<pre>20201023072338516</pre>
+<div created="20200924032759417" modified="20201023145316834" title="$:/temp/time/ticker">
+<pre>20201023145316834</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11036,7 +11036,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20201023030000257" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20201023144850838" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11666,7 +11666,6 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define controls_events_admin_panel_width(view)
-&lt;!-- WFFL --&gt;
 &lt;$list filter=&quot;[[$view$]!match[sidebar]]&quot; variable=&quot;not-in-sidebar&quot;&gt;&amp;nbsp;
 &lt;$vars popupid_admin_width=&lt;&lt;qualify &quot;$:/state/popup/calendar/events/width&quot;&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; popup=&lt;&lt;popupid_admin_width&gt;&gt; style=&quot;float:right;&quot; tooltip=&quot;set panel width&quot;&gt;
@@ -11719,7 +11718,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars popupid_color_list=&lt;&lt;qualify &quot;$(calendar_colors_popup)$/list$id$&quot;&gt;&gt;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_color&gt;&gt; tooltip={{{ [[change color: ]addsuffix&lt;currentcolor&gt;] }}}
    style={{{ [[display:inline-block;border:1px solid gray;width:1em;height:1em;background:]addsuffix&lt;currentcolor&gt;] }}}&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;popupid_color&gt;&gt; $field=&quot;$colorfield$&quot; $value=&lt;&lt;currentcolor&gt;&gt; /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;popupid_color&gt;&gt; input=&lt;&lt;currentcolor&gt;&gt; /&gt;
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color&gt;&gt; position=&quot;left&quot; class=&quot;tc-popup-keep&quot; style=&quot;left:auto;right:0;&quot;&gt;
    &lt;style&gt; .calColorEdit { outline:none; width:10em;   } &lt;/style&gt;
@@ -11727,14 +11726,18 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;div style=&quot;min-width:auto;padding:0;transform:translate(-0.25em,-0.15em);font-size:90%;position:relative;&quot;&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;&quot;&gt;
       &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;
-            &lt;$action-setfield $timestamp='no' $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[$colorfield$]] }}} /&gt;
+            &lt;$action-setfield $timestamp='no' $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[input]] }}} /&gt;
             &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt; &quot;&quot;&quot;&gt;
-         &lt;$edit-text tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;$colorfield$&quot; default=&lt;&lt;currentcolor&gt;&gt; placeholder=&lt;&lt;defaultcolor&gt;&gt;
+         &lt;$edit-text tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;input&quot; default=&lt;&lt;currentcolor&gt;&gt; placeholder=&lt;&lt;defaultcolor&gt;&gt;
             class=&quot;calColorEdit tc-popup-handle&quot; focus=&quot;yes&quot; focusPopup=&lt;&lt;popupid_color_list&gt;&gt; /&gt;
          &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color_list&gt;&gt;&gt;
-            &lt;$select tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;$colorfield$&quot; size=&quot;10&quot; class=&quot;calColorList&quot;&gt;
-                &lt;$list filter=&lt;&lt;controls_colors_X11names&gt;&gt;&gt;
-                   &lt;option style={{{ [[background:]addsuffix&lt;currentTiddler&gt;] }}}&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;
+            &lt;$select tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;input&quot; size=&quot;10&quot; class=&quot;calColorList&quot;&gt;
+                &lt;$list filter=&lt;&lt;controls_colors_X11names&gt;&gt; variable=&quot;thiscolor&quot;&gt;
+                   &lt;$vars foreground={{{ [enlist&lt;controls_colors_X11names_dark&gt;match&lt;thiscolor&gt;then[LightGray]else[Black]] }}}&gt;
+                   &lt;$vars fontweight={{{ [&lt;popupid_color&gt;get[input]match&lt;thiscolor&gt;then[bold]else[normal]] }}}&gt;
+                   &lt;option style=&lt;&lt;controls_colors_style&gt;&gt;&gt; &lt;&lt;thiscolor&gt;&gt; &lt;/option&gt;
+                   &lt;/$vars&gt;
+                   &lt;/$vars&gt;
                 &lt;/$list&gt;
             &lt;/$select&gt;
          &lt;/$reveal&gt;
@@ -11746,16 +11749,19 @@ set ~AutoSaver interval:&lt;hr&gt;
       &lt;/$button&gt;
       &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;save&quot;&gt;
          {{$:/core/images/done-button}}
-         &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[$colorfield$]] }}} /&gt;
+         &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[input]] }}} /&gt;
          &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;
       &lt;/$button&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
+\define controls_colors_style() color:$(foreground)$;background:$(thiscolor)$;font-weight:$(fontweight)$;
 
 \define controls_colors_X11names()
 AliceBlue AntiqueWhite Aquamarine Azure Beige Bisque Black BlanchedAlmond Blue BlueViolet Brown Burlywood CadetBlue Chartreuse Chocolate Coral CornflowerBlue Cornsilk Crimson Cyan DarkBlue DarkCyan DarkGoldenrod DarkGray DarkGreen DarkKhaki DarkMagenta DarkOliveGreen DarkOrange DarkOrchid DarkRed DarkSalmon DarkSeaGreen DarkSlateBlue DarkSlateGray DarkTurquoise DarkViolet DeepPink DeepSkyBlue DimGray DodgerBlue Firebrick FloralWhite ForestGreen Gainsboro GhostWhite Gold Goldenrod Gray Green GreenYellow Honeydew HotPink IndianRed Ivory Khaki Lavender LavenderBlush LawnGreen LemonChiffon LightBlue LightCoral LightCyan LightGoldenrod LightGoldenrodYellow LightGray LightGreen LightPink LightSalmon LightSeaGreen LightSkyBlue LightSlateBlue LightSlateGray LightSteelBlue LightYellow LimeGreen Linen Magenta Maroon MediumAquamarine MediumBlue MediumOrchid MediumPurple MediumSeaGreen MediumSlateBlue MediumSpringGreen MediumTurquoise MediumVioletRed MidnightBlue MintCream MistyRose Moccasin NavajoWhite Navy NavyBlue OldLace OliveDrab Orange OrangeRed Orchid PaleGoldenrod PaleGreen PaleTurquoise PaleVioletRed PapayaWhip PeachPuff Peru Pink Plum PowderBlue Purple Red RosyBrown RoyalBlue SaddleBrown Salmon SandyBrown SeaGreen Seashell Sienna SkyBlue SlateBlue SlateGray Snow SpringGreen SteelBlue Tan Thistle Tomato Turquoise Violet VioletRed Wheat White WhiteSmoke Yellow YellowGreen
 \end
+
+\define controls_colors_X11names_dark() Black Blue DarkBlue DarkSlateBlue DarkSlateGray MediumBlue MidnightBlue Navy
 
 \define controls_styles()
 &lt;style&gt; .calStyles table, .calStyles tr, .calStyles td { border:0;margin:0;padding:0 0.25em 0.25em 0;white-space:nowrap;line-height:100%; } &lt;/style&gt;
