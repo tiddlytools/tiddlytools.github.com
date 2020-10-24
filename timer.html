@@ -9688,8 +9688,8 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201020063950913" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20201022225758328" title="$:/state/tab/sidebar--595412856">
-<pre>TiddlyTools/Time/SidebarCalendar</pre>
+<div created="20200904222905850" modified="20201024130055573" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
@@ -9802,8 +9802,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201024111832786" title="$:/temp/time/ticker">
-<pre>20201024111832786</pre>
+<div created="20200924032759417" modified="20201024130832629" title="$:/temp/time/ticker">
+<pre>20201024130832628</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -12654,7 +12654,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;$action-timeout interval=&quot;1000&quot; actions=&lt;&lt;ticker_actions&gt;&gt;/&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20201002235444849" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
+<div created="20200712174503125" modified="20201024130803593" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define timer_config() $:/config/Timers
@@ -12731,7 +12731,7 @@ Sydney;      +10:00</pre>
       subtitle=&quot;Delete Timer&quot;
       text=&quot;&quot;&quot;
          Are you sure you want to delete
-         &lt;blockquote&gt; ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;'' &lt;/blockquote&gt;
+         &lt;blockquote&gt; @@font-size:1.5em;''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;''@@ &lt;/blockquote&gt;
       &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
@@ -12772,7 +12772,7 @@ Sydney;      +10:00</pre>
 &lt;/$reveal&gt;
 \end
 
-\define timer_stop()
+\define timer_cancel()
 &lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
 &lt;$reveal default={{!!button}} type=&quot;nomatch&quot; text=&quot;stop&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot;&gt; @@.graysvg {{$:/core/images/cancel-button}}@@ &lt;/$button&gt;
@@ -12785,41 +12785,6 @@ Sydney;      +10:00</pre>
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
-
-\define timer_reset()
-&lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
-&lt;$reveal default={{!!stoplist}} type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; @@.graysvg {{$:/core/images/refresh-button}}@@ &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal default={{!!stoplist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; {{$:/core/images/refresh-button}}
-      &lt;$action-setfield $tiddler=&quot;$:/temp/timer/confirmreset&quot;
-         subtitle=&quot;Reset Timer History&quot;
-         text=&quot;&quot;&quot;
-            Are you sure you want to reset
-            &lt;blockquote&gt; ''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;'' &lt;/blockquote&gt;
-         &quot;&quot;&quot;
-         footer=&quot;&quot;&quot;
-            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
-               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
-            &lt;/$button&gt;
-            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;delete timer&quot;&gt; reset
-               &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
-                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;showhistory&quot; /&gt;
-               &lt;/$tiddler&gt;
-               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
-            &lt;/$button&gt;
-         &quot;&quot;&quot; /&gt;
-      &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/confirmreset&quot; /&gt;
-   &lt;/$button&gt;
-&lt;/$reveal&gt;
-\end
-
 \define timer_history_button()
 &lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
 &lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
@@ -12839,9 +12804,43 @@ Sydney;      +10:00</pre>
 &lt;/$reveal&gt;
 \end
 
+\define timer_reset()
+&lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
+&lt;$reveal default={{!!stoplist}} type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; @@.graysvg {{$:/core/images/refresh-button}}@@ &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!stoplist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset history&quot;&gt; {{$:/core/images/refresh-button}}
+      &lt;$action-setfield $tiddler=&quot;$:/temp/timer/confirmreset&quot;
+         subtitle=&quot;Reset Timer History&quot;
+         text=&quot;&quot;&quot;
+            Are you sure you want to reset the history for
+            &lt;blockquote&gt; @@font-size:1.5em;''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;''@@ &lt;/blockquote&gt;
+         &quot;&quot;&quot;
+         footer=&quot;&quot;&quot;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; cancel
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
+            &lt;/$button&gt;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;reset timer history&quot;&gt; reset
+               &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;startlist&quot;   /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;stoplist&quot;    /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;elapsedlist&quot; /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;totallist&quot;   /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;button&quot;      /&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;showhistory&quot; /&gt;
+               &lt;/$tiddler&gt;
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmreset&quot;/&gt;
+            &lt;/$button&gt;
+         &quot;&quot;&quot; /&gt;
+      &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/confirmreset&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+\end
+
 \define timer_buttons(timername)
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
-&lt;&lt;timer_start&gt;&gt;  &lt;&lt;timer_stop&gt;&gt; &lt;&lt;timer_reset&gt;&gt;
+&lt;&lt;timer_start&gt;&gt; &lt;&lt;timer_cancel&gt;&gt;
 \end
 
 \define timer_elapsed(timername,label:&quot;elapsed:&quot;)
@@ -12891,7 +12890,7 @@ Sydney;      +10:00</pre>
 &lt;$tiddler tiddler={{{ [[$timername$]!match[]] ~[&lt;currentTiddler&gt;] }}}&gt;
 &lt;$vars name={{{ [&lt;currentTiddler&gt;removeprefix&lt;timer_config&gt;removeprefix[/]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;$link&gt;''&lt;$text text=&lt;&lt;name&gt;&gt;/&gt;''&lt;/$link&gt;: ''&lt;$text text={{!!caption}}/&gt;''&lt;br/&gt;
-@@float:right;&lt;&lt;timer_history_button&gt;&gt; &lt;&lt;timer_delete&gt;&gt;@@
+@@float:right;&lt;&lt;timer_history_button&gt;&gt; &lt;&lt;timer_reset&gt;&gt; &lt;&lt;timer_delete&gt;&gt;@@
 @@float:left; &lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt;@@
 @@display:block;clear:both;@@
 &lt;$reveal default={{!!startlist}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
