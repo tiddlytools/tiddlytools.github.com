@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/temp/time/countdown/AutoSaver</li>
 
 <li>$:/temp/time/ticker</li>
@@ -9742,11 +9744,11 @@ SampleSequence</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1600&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9754,6 +9756,9 @@ SampleSequence</pre>
         }
     }
 }</pre>
+</div>
+<div created="20201024232500371" modified="20201024232503837" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200924033144370" done="&lt;$importvariables filter=&quot;TiddlyTools/Time/CountDown TiddlyTools/Time/AutoSaver&quot;&gt;
 &lt;$vars here=&quot;AutoSaver&quot;&gt;
@@ -9802,8 +9807,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201024133449008" title="$:/temp/time/ticker">
-<pre>20201024133449008</pre>
+<div created="20200924032759417" modified="20201024232551868" title="$:/temp/time/ticker">
+<pre>20201024232551868</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -12654,7 +12659,7 @@ Sydney;      +10:00</pre>
 \end
 &lt;$action-timeout interval=&quot;1000&quot; actions=&lt;&lt;ticker_actions&gt;&gt;/&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20201024130803593" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
+<div created="20200712174503125" modified="20201024232515310" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define timer_config() $:/config/Timers
@@ -12778,13 +12783,30 @@ Sydney;      +10:00</pre>
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot;&gt; @@.graysvg {{$:/core/images/cancel-button}}@@ &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default={{!!button}} type=&quot;match&quot; text=&quot;stop&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot; actions=&quot;&quot;&quot;
-      &lt;$action-setfield $timestamp=&quot;no&quot; startlist={{{ [enlist{!!startlist}butlast[]join[ ]] }}}/&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; button=&quot;start&quot;/&gt;
-   &quot;&quot;&quot;&gt; {{$:/core/images/cancel-button}}
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot;&gt; {{$:/core/images/cancel-button}}
+      &lt;$action-setfield $tiddler=&quot;$:/temp/timer/confirmcancel&quot;
+         subtitle=&quot;Cancel Timer&quot;
+         text=&quot;&quot;&quot;
+            Are you sure you want to stop/discard the current timer session for
+            &lt;blockquote&gt; @@font-size:1.5em;''&lt;$text text=&quot;$(currentTiddler)$&quot; /&gt;''@@ &lt;/blockquote&gt;
+         &quot;&quot;&quot;
+         footer=&quot;&quot;&quot;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;close&quot;&gt; continue timer
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmcancel&quot;/&gt;
+            &lt;/$button&gt;
+            &lt;$button message=&quot;tm-close-tiddler&quot; class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel timer&quot;&gt; discard timer
+               &lt;$tiddler tiddler=&quot;$(currentTiddler)$&quot;&gt;
+               &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$(currentTiddler)$&quot; startlist={{{ [enlist{!!startlist}butlast[]join[ ]] }}}/&gt;
+               &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$(currentTiddler)$&quot; button=&quot;start&quot;/&gt;
+               &lt;$action-deletetiddler $tiddler=&quot;$:/temp/timer/confirmcancel&quot;/&gt;
+               &lt;/$tiddler&gt;
+            &lt;/$button&gt;
+         &quot;&quot;&quot; /&gt;
+      &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&quot;$:/temp/timer/confirmcancel&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
+
 \define timer_history_button()
 &lt;style&gt; .graysvg  { fill:#cccccc !important; } &lt;/style&gt;
 &lt;$reveal default={{!!startlist}} type=&quot;match&quot; text=&quot;&quot;&gt;
