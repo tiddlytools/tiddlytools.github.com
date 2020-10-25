@@ -191,6 +191,14 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/GitHub/Filename</li>
+
+<li>$:/GitHub/Path</li>
+
+<li>$:/GitHub/Repo</li>
+
+<li>$:/GitHub/Username</li>
+
 <li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
@@ -804,8 +812,9 @@ Error message and password prompt
 <div created="20191107120408275" creator="EricShulman" modified="20191107120408275" modifier="EricShulman" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20150525051351569" creator="EricShulman" modified="20191107161206830" modifier="EricShulman" title="$:/config/SaverFilter">
-<pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[[$:/view]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]] -[[ChangeLog]] -[tag[$:/tags/SavedSettings]]</pre>
+<div created="20150525051351569" creator="EricShulman" modified="20201025075547932" modifier="EricShulman" title="$:/config/SaverFilter">
+<pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[[$:/view]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]]
+-[prefix[$:/language/ControlPanel/Saving/GitService/CommitMessage]] -[[ChangeLog]] -[tag[$:/tags/SavedSettings]]</pre>
 </div>
 <div created="20200807011849838" creator="EricShulman" modified="20200807011849838" modifier="EricShulman" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
@@ -821,7 +830,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20200929170803919" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20201025075940257" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -879,7 +888,7 @@ Error message and password prompt
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
     &quot;FontColor/Links&quot;: &quot;RoyalBlue&quot;
 }</pre>
 </div>
@@ -900,10 +909,10 @@ Error message and password prompt
     &quot;usetemplate&quot;: &quot;yes&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20200929170803919" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20201025075940257" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20200929170803919" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20201025075940257" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -10770,10 +10779,22 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <pre>CoverPage
 </pre>
 </div>
+<div created="20201025075856233" creator="EricShulman" modified="20201025075857497" modifier="EricShulman" title="$:/GitHub/Filename">
+<pre>index.html</pre>
+</div>
+<div created="20201025075843504" creator="EricShulman" modified="20201025075850998" modifier="EricShulman" title="$:/GitHub/Path">
+<pre>InsideTW</pre>
+</div>
+<div created="20201025075839128" creator="EricShulman" modified="20201025075839128" modifier="EricShulman" title="$:/GitHub/Repo">
+<pre>tiddlytools/tiddlytools.github.com</pre>
+</div>
+<div created="20201025075903594" creator="EricShulman" modified="20201025075908831" modifier="EricShulman" title="$:/GitHub/Username">
+<pre>ericshulman</pre>
+</div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/FilterGenerators/PowerSearch]]</pre>
+# [[TiddlyTools/Buttons/SaveChanges]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10939,8 +10960,10 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20150211220102231" creator="EricShulman" modified="20150316210458357" modifier="EricShulman" title="$:/SiteTitle">
 <pre>Inside ~TiddlyWiki</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20200526045252718" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="20.09.29.100748">
-<pre>* 20.09.29.100748 TiddlyTools/FilterGenerators/PowerSearch - updated from FilterGenerators.html
+<div created="20191105045421013" creator="EricShulman" modified="20200526045252718" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="20.10.25.005804">
+<pre>* 20.10.25.005613 TiddlyTools/Buttons/SaveChanges - added set_commitmsg() for GitHub saver
+* 20.10.25.005613 $:/config/saverfilter - exclude $:/language/ControlPanel/Saving/GitService/CommitMessage
+* 20.09.29.100748 TiddlyTools/FilterGenerators/PowerSearch - updated from FilterGenerators.html
 * 20.09.26.040452 TiddlyTools/Macros/edit-list - fix default tiddler=&lt;&lt;currentTiddler&gt;&gt;
 * 20.09.21.032939 TiddlyTools/FilterGenerators/PowerSearch - optimized and added show/hide button
 * 20.08.23.013408 TiddlyTools/Macros/edit-list - tweak CSS specificity for input.editCombo_$tid$
@@ -11970,7 +11993,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 * 15.03.22 through 15.05.24 manual revision notes were spotty at best
 * 15.03.21 Initial release for feedback</pre>
 </div>
-<div created="20200526044517760" creator="EricShulman" modified="20200929170803919" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20200526044517760" creator="EricShulman" modified="20201025075940257" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200823083235556" creator="EricShulman" modified="20200823083235556" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -11979,8 +12002,8 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20200806231609087" creator="EricShulman" modified="20200806231609087" modifier="EricShulman" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
-<div created="20200526050926720" creator="EricShulman" modified="20200526050926720" modifier="EricShulman" title="$:/state/tab--486472640">
-<pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
+<div created="20200526050926720" creator="EricShulman" modified="20201025075809715" modifier="EricShulman" title="$:/state/tab--486472640">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
 <div created="20200806231605199" creator="EricShulman" modified="20200807012030289" modifier="EricShulman" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
@@ -11988,8 +12011,8 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20200807011856648" creator="EricShulman" modified="20200807011856648" modifier="EricShulman" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/TiddlySpot</pre>
 </div>
-<div created="20200526045055330" creator="EricShulman" modified="20200526050407425" modifier="EricShulman" title="$:/state/tab-513410736">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20200526045055330" creator="EricShulman" modified="20201025075355461" modifier="EricShulman" title="$:/state/tab-513410736">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20200526044510494" creator="EricShulman" modified="20200526044510494" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
@@ -12000,7 +12023,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20200929164959516" creator="EricShulman" list="CoverPage" modified="20200929170803920" modifier="EricShulman" title="$:/StoryList">
+<div created="20201025075940259" creator="EricShulman" list="CoverPage" modified="20201025075940259" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -12139,7 +12162,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20200526050937436" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20200929170803919" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20201025075940257" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -16181,7 +16204,7 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20191208060423151" modifier="EricShulman" title="TiddlyTools/Buttons/SaveChanges">
+<div created="20150316090221888" creator="EricShulman" modified="20201025073732910" modifier="EricShulman" title="TiddlyTools/Buttons/SaveChanges">
 <pre>\define changeLog() $:/state/ChangeLog
 
 \define show_popup()
@@ -16214,7 +16237,7 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save changes&quot;&gt;
    &amp;nbsp; &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt; ''save file'' &amp;nbsp;
    &lt;!-- NOTE: &lt;&lt;reset_config&gt;&gt; is OPTIONAL... only if defined elsewhere using $:/tags/Macro --&gt;
-   &lt;&lt;reset_config&gt;&gt; &lt;&lt;update_log&gt;&gt; &lt;&lt;close_popup&gt;&gt; &lt;&lt;save_file&gt;&gt;
+   &lt;&lt;reset_config&gt;&gt; &lt;&lt;update_log&gt;&gt; &lt;&lt;set_commitmsg&gt;&gt; &lt;&lt;close_popup&gt;&gt; &lt;&lt;save_file&gt;&gt;
 &lt;/$button&gt;
 \end
 
@@ -16292,6 +16315,20 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
    &lt;/$set&gt;
    &lt;/$set&gt;
 &lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+\define set_commitmsg()
+&lt;$vars notes={{$:/temp/savechanges}} lf=&quot;
+&quot;&gt;
+&lt;$set name=&quot;txt&quot; filter=&quot;[&lt;notes&gt;trim[]split&lt;lf&gt;first[]]&quot; select=0&gt;
+&lt;$reveal default=&lt;&lt;txt&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$action-deletetiddler $tiddler=&quot;$:/language/ControlPanel/Saving/GitService/CommitMessage&quot; /&gt;
+&lt;/$reveal&gt;
+&lt;$reveal default=&lt;&lt;txt&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$action-setfield $tiddler=&quot;$:/language/ControlPanel/Saving/GitService/CommitMessage&quot; text=&lt;&lt;txt&gt;&gt; /&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;
 &lt;/$vars&gt;
 \end
 
@@ -18530,7 +18567,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
     &quot;FontColor/Links&quot;: &quot;RoyalBlue&quot;
 }</pre>
 </div>
@@ -18593,7 +18630,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
 }</pre>
 </div>
 <div caption="PaperBackWriter" created="20180103100901735" creator="EricShulman" modified="20191218212723502" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/PaperBackWriter" type="application/json">
@@ -18654,7 +18691,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
     &quot;FontColor/Links&quot;: &quot;RoyalBlue&quot;
 }</pre>
 </div>
@@ -18717,7 +18754,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;
 }</pre>
 </div>
 <div caption="TouchOfGray" created="20191217071430661" creator="EricShulman" modified="20191218212940799" modifier="EricShulman" tags="$:/tags/SavedSettings" title="TiddlyTools/Settings/Themes/TouchOfGray" type="application/json">
@@ -18778,7 +18815,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
     &quot;FontColor/Links&quot;: &quot;#666&quot;
 }</pre>
 </div>
@@ -18840,7 +18877,7 @@ rgba(0,0,0,1.0)</pre>
     &quot;AuthorToolBar&quot;: &quot;no&quot;,
     &quot;AuthorToolBar/Hover&quot;: &quot;yes&quot;,
     &quot;AuthorToolBar/Size&quot;: &quot;&quot;,
-    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;ðŸ‘·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
+    &quot;AuthorToolBar/Label&quot;: &quot;&lt;div class='authortools'&gt;@@font-size:150%;í ½í±·@@&lt;!--&amp;#x1F477;--&gt;&lt;/div&gt;&quot;,
     &quot;FontColor/Links&quot;: &quot;Maroon&quot;
 }</pre>
 </div>
