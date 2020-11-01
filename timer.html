@@ -9696,7 +9696,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201101094657957" list="TiddlyTools/Time/Places TiddlyTools/Time/WorldClocks SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20201101094657957" title="$:/StoryList">
+<div created="20201101194145347" list="TiddlyTools/Time/Info TiddlyTools/Time/WorldClocks" modified="20201101194935696" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9807,8 +9807,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20201101095809016" title="$:/temp/time/ticker">
-<pre>20201101095809016</pre>
+<div created="20200924032759417" modified="20201101195456069" title="$:/temp/time/ticker">
+<pre>20201101195456069</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -12217,7 +12217,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20201024080336753" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20201101195358717" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -12277,7 +12277,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 
 * To add new places, &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; message=&quot;tm-edit-tiddler&quot; param=&quot;TiddlyTools/Time/Places&quot;&gt;edit this tiddler&lt;/$button&gt; or press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; in [[TiddlyTools/Time/WorldClocks]].
 * Enter place names and timezone offsets, one place name and timezone offset per line.
-* Separate the place names and the timezone offsets using a semi-colon (;). Leading and trailing &quot;whitespace&quot; are ignored.
+* Separate the place names and the timezone offsets using a colon (:). Leading and trailing &quot;whitespace&quot; are ignored.
 * Enter timezone offsets using ``+00:00`` or ``-00:00``, where the number is the hours and minutes offset from [[UTC|https://www.timeanddate.com/time/aboututc.html]].
 * To use the current local timezone (from your computer's system settings), omit the timezone offset.
 &lt;&lt;&lt;
@@ -12512,19 +12512,19 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * ``actions`` can be specified using quoted text or a macro reference
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20200808204411274" modified="20201101095420912" tags="" title="TiddlyTools/Time/Places" type="text/plain">
-<pre>local time;
-Honolulu;    -10:00
-Los Angeles; -08:00
-New York;    -05:00
-London;      +00:00
-Rome;        +01:00
-Moscow;      +03:00
-New Delhi;   +05:30
-Tokyo;       +09:00
-Perth;       +08:00
-Adelaide;    +10:30
-Sydney;      +11:00</pre>
+<div created="20200808204411274" modified="20201101195348037" tags="" title="TiddlyTools/Time/Places" type="application/x-tiddler-dictionary">
+<pre>local time
+Honolulu:    -10:00
+Los Angeles: -08:00
+New York:    -05:00
+London:      +00:00
+Rome:        +01:00
+Moscow:      +03:00
+New Delhi:   +05:30
+Tokyo:       +09:00
+Perth:       +08:00
+Adelaide:    +10:30
+Sydney:      +11:00</pre>
 </div>
 <div created="20201003001310270" modified="20201024075843223" tags="" title="TiddlyTools/Time/Setup">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
@@ -12935,7 +12935,7 @@ Sydney;      +11:00</pre>
 
 &lt;&lt;timers&gt;&gt;</pre>
 </div>
-<div created="20200808175138605" modified="20201101095425831" places="[[local time;]] [[Honolulu;    -10:00]] [[Los Angeles; -08:00]] [[New York;    -05:00]] [[London;      +00:00]] [[Rome;        +01:00]] [[Moscow;      +03:00]] [[New Delhi;   +05:30]] [[Tokyo;       +09:00]] [[Perth;       +08:00]] [[Adelaide;    +10:30]] [[Sydney;      +11:00]]" tags="" title="TiddlyTools/Time/WorldClocks">
+<div created="20200808175138605" modified="20201101194829606" places="[[local time]] Honolulu [[Los Angeles]] [[New York]] London Rome Moscow [[New Delhi]] Tokyo Perth Adelaide Sydney" tags="" title="TiddlyTools/Time/WorldClocks">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define showClock(place,offset)
@@ -12957,7 +12957,7 @@ Sydney;      +11:00</pre>
    &lt;$vars places={{TiddlyTools/Time/Places}}&gt;
    &lt;$select field=&quot;places&quot; multiple size={{{ [&lt;places&gt;splitregexp[\n]count[]] }}}&gt;
       &lt;$list filter=&quot;[&lt;places&gt;splitregexp[\n]]&quot; variable=&quot;place&quot;&gt;
-         &lt;option value=&lt;&lt;place&gt;&gt;&gt; &amp;nbsp;&lt;$text text={{{ [&lt;place&gt;split[;]first[]] }}} /&gt;&amp;emsp; &lt;/option&gt;
+         &lt;option value={{{ [&lt;place&gt;split[:]first[]] }}}&gt; &amp;nbsp;&lt;$text text={{{ [&lt;place&gt;split[:]first[]] }}} /&gt;&amp;emsp; &lt;/option&gt;
       &lt;/$list&gt;
    &lt;/$select&gt;
    &lt;/$vars&gt;
@@ -12966,7 +12966,7 @@ Sydney;      +11:00</pre>
 &lt;style&gt; .worldClock { display:inline-block;text-align:center;margin:0 0.5em; } &lt;/style&gt;
 &lt;$vars TZD=&lt;&lt;now &quot;TZD&quot;&gt;&gt; format={{{ [&lt;tt_time_config&gt;get[world_format]] ~[[ddd, YYYY-0MM-0DD 0hh:0mm:0ss]] }}}&gt;
 &lt;$list filter={{!!places}} variable=&quot;place&quot;&gt;
-   &lt;$vars place={{{ [&lt;place&gt;split[;]trim[]first[]] }}} offset={{{ [&lt;place&gt;split[;]trim[]last[]] }}}&gt;
+   &lt;$vars offset={{{ [[TiddlyTools/Time/Places]getindex&lt;place&gt;] }}}&gt;
    &lt;div class=&quot;worldClock&quot;&gt;
       &lt;$macrocall $name=&quot;showClock&quot; place=&lt;&lt;place&gt;&gt; offset={{{ [&lt;offset&gt;!match[]then&lt;offset&gt;else&lt;TZD&gt;] }}} /&gt;
    &lt;/div&gt;
