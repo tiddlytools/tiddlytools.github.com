@@ -9675,7 +9675,7 @@ TiddlyTools/FilterGenerators/Tags
     }
 }</pre>
 </div>
-<div created="20200926091931550" modified="20200926105251713" title="$:/temp/NewTagName">
+<div created="20200926091931550" modified="20210512064314585" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -10073,7 +10073,7 @@ There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; matching tiddlers:
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20191128174135234" modified="20200807164433050" sortorder="count" tags="" title="TiddlyTools/FilterGenerators/TagCloud">
+<div created="20191128174135234" modified="20210512064906793" sortorder="count" tags="" title="TiddlyTools/FilterGenerators/TagCloud">
 <pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
 \define tag-pill-styles()
    background-color:$(backgroundColor)$;
@@ -10099,7 +10099,7 @@ $actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt;
 
 \define tagcloud_sort()
 &lt;$list filter=&quot;[enlist&lt;items&gt;!nsort[]]&quot;&gt;
-   &lt;$list filter=&quot;[&lt;currentTiddler&gt;split[;]last[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;split[;]last[]]&quot;&gt;&lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
