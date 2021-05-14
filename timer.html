@@ -9679,7 +9679,8 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Time/Places]]</pre>
+# [[TiddlyTools/Time/Info]]
+# [[TiddlyTools/Time/Alarms]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9825,8 +9826,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20210510165022766" title="$:/temp/time/ticker">
-<pre>20210510165022766</pre>
+<div created="20200924032759417" modified="20210514051113426" title="$:/temp/time/ticker">
+<pre>20210514051113425</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10665,9 +10666,10 @@ TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 exports[&quot;action-timeout&quot;] = TimeoutWidget;
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20201013001154505" tags="" title="TiddlyTools/Time/Alarms">
-<pre>\define alarms_input() $:/temp/time/alarms_input/$(currentTiddler)$
-\define alarms_msg()   $:/temp/time/alarms_msg/$(freq)$/$(this_time)$
+<div created="20200811043857487" modified="20210514045218191" tags="" title="TiddlyTools/Time/Alarms">
+<pre>\define alarms_input()      $:/temp/time/alarms_input/$(currentTiddler)$
+\define alarms_msg()        $:/temp/time/alarms_msg/$(freq)$/$(this_time)$
+\define alarms_defaultmsg() BEEP! BEEP! BEEP!
 
 \define alarms_form()
 &lt;style&gt; .alarmEdit { width:3em; text-align:center; } &lt;/style&gt;
@@ -10870,7 +10872,12 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
    &lt;tr style=&quot;vertical-align:top;&quot;&gt;
    &lt;td style=&quot;white-space:nowrap;&quot;&gt; &lt;&lt;alarms_edit&gt;&gt; &lt;&lt;alarms_delete&gt;&gt; &lt;/td&gt;
    &lt;td style=&quot;white-space:nowrap;text-align:right;padding:0 0.5em;&quot;&gt; ''&lt;&lt;alarms_show&gt;&gt;'' &lt;/td&gt;
-   &lt;td&gt; &lt;$text text={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}} /&gt; &lt;/td&gt;
+   &lt;td&gt;
+      &lt;$vars msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
+      &lt;$list filter=&quot;[&lt;msg&gt;is[tiddler]]&quot;&gt;  Action: &lt;$link to=&lt;&lt;msg&gt;&gt; /&gt;                                  &lt;/$list&gt;
+      &lt;$list filter=&quot;[&lt;msg&gt;!is[tiddler]]&quot;&gt; &lt;$text text={{{ [&lt;msg&gt;!match[]else&lt;alarms_defaultmsg&gt;] }}} /&gt; &lt;/$list&gt;
+      &lt;/$vars&gt;
+   &lt;/td&gt;
    &lt;/tr&gt;
 &lt;/$list&gt;
 &lt;/table&gt;
@@ -10922,17 +10929,22 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 \end
 
 \define alarms_message()
-&lt;$reveal state=&lt;&lt;alarms_msg&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;alarms_msg&gt;&gt;
-   subtitle=&quot;&quot;&quot;&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;&quot;&quot;&quot;
-       text={{{ [&lt;msg&gt;!match[]else[BEEP! BEEP! BEEP!]addprefix[@@font-size:2em;]addsuffix[@@]] }}}
-     footer=&quot;&quot;&quot;
-        &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt;
-           close &lt;$action-deletetiddler $tiddler=&quot;$(alarms_msg)$&quot; /&gt;
-        &lt;/$button&gt;
-     &quot;&quot;&quot; /&gt;
-&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&lt;&lt;alarms_msg&gt;&gt; /&gt;
-&lt;/$reveal&gt;
+&lt;$list filter=&quot;[&lt;msg&gt;is[tiddler]]&quot;&gt;
+   &lt;$transclude tiddler=&lt;&lt;msg&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;msg&gt;!is[tiddler]]&quot;&gt;
+   &lt;$reveal state=&lt;&lt;alarms_msg&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;alarms_msg&gt;&gt;
+         subtitle=&quot;&quot;&quot;&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;&lt;now &quot;DDD, YYYY-0MM-0DD at 0hh:0mm:0ss&quot;&gt;&gt; &lt;/span&gt;&quot;&quot;&quot;
+             text={{{ [&lt;msg&gt;!match[]else&lt;alarms_defaultmsg&gt;addprefix[@@font-size:2em;]addsuffix[@@]] }}}
+           footer=&quot;&quot;&quot;
+              &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt;
+                 close &lt;$action-deletetiddler $tiddler=&quot;$(alarms_msg)$&quot; /&gt;
+              &lt;/$button&gt;
+           &quot;&quot;&quot; /&gt;
+      &lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&lt;&lt;alarms_msg&gt;&gt; /&gt;
+   &lt;/$reveal&gt;
+&lt;/$list&gt;
 \end
 
 &lt;div style=&quot;display:inline-block;white-space:nowrap;margin-bottom:0.25em;&quot;&gt;
@@ -12248,7 +12260,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210510164808717" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210514050714535" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -12494,6 +12506,12 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * To delete all alarms, press {{$:/core/images/delete-button}} in the &quot;Alarms&quot; heading. You will be asked to confirm before the alarms are deleted.
 * To pause/resume alarms, press {{$:/core/images/timestamp-on}} in the &quot;Alarms&quot; heading.  While paused, {{$:/core/images/timestamp-off}} is displayed and no alarm processing occurs.
 * To create a separate list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Time/Alarms}}``.
+
+''To define __custom actions__ to be performed when an alarm is triggered:''
+
+* Create a tiddler containing one or more desired ``&lt;$action-... /&gt;`` widgets and enter the title of this tiddler as the message text for the alarm.
+* When the alarm is triggered, the ``&lt;$action-... /&gt;`` widgets contained in the specified tiddler will be invoked.
+* To display a message in addition to performing the specified actions, you can define a separate alarm with the desired message text.
 @@
 &lt;&lt;&lt;
 
