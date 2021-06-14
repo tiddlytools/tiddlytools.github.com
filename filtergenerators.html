@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210614044138356" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210614050302076" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9984,8 +9984,8 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]&quot;&quot;&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;font-size:90%;word-break:break-all;&quot;
    message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;filter&gt;&gt; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
-   filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
-&lt;/$button&gt;&lt;p/&gt;
+   ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
+&lt;/$button&gt;&lt;br/&gt;
 &lt;&lt;doSearch_showresults&gt;&gt;
 &lt;/$vars&gt;
 \end
@@ -10039,6 +10039,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 &lt;$vars inputwidth={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;]   }}}&gt;
    &lt;&lt;setStyles&gt;&gt; &lt;&lt;getInputs&gt;&gt;
 &lt;/$vars&gt;
+
 &lt;$vars
     tids={{{ [&lt;config&gt;get[tids]]     ~[[tiddlers]]        }}}
      pre={{{ [&lt;config&gt;get[prefix]]                        }}}
