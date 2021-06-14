@@ -218,7 +218,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210614033537176" modified="20210614044623468" title="$:/config/TiddlyTools/PowerSearch">
+<div columns="" created="20210614033537176" modified="20210614131056889" title="$:/config/TiddlyTools/PowerSearch">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210614050302076" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210614130631287" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9829,63 +9829,63 @@ regexp
 &lt;/$list&gt;
 \end
 
-\define getTid(width)
+\define getTid()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tids&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre(width)
+\define getPre()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;prefix&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!prefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotPre(width)
+\define getNotPre()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notprefix&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notprefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getSuff(width)
+\define getSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;suffix&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!suffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotSuff(width)
+\define getNotSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notsuffix&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notsuffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getTag(width)
+\define getTag()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tag&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!tag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotTag(width)
+\define getNotTag()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;nottag&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getFields(width)
+\define getFields()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;field&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
-\define getFlags(width)
+\define getFlags()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;flags&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
-\define getSort(width)
+\define getSort()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;sort&quot;
-   width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
@@ -9932,11 +9932,11 @@ regexp
 
 \define doDelete_text()
 Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;/&gt; tiddlers?
-&lt;div class=&quot;tc-popup-handle&quot; style=&quot;font-size:80%;line-height:100%;white-space:nowrap;&quot;&gt;
+&lt;blockquote class=&quot;tc-popup-handle&quot; style=&quot;font-size:80%;line-height:100%;white-space:nowrap;&quot;&gt;
    &lt;ol style=&quot;margin:0;padding-left:2em;&quot;&gt;
       &lt;$list filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
    &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/blockquote&gt;
 \end
 
 \define doOptions()
@@ -9945,11 +9945,11 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(options)$&gt;&gt; position=&quot;below&quot;
    class=&quot;tc-drop-down tt-drop-down tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;&quot;&gt;
-   ~PowerSearch options:
+   ~PowerSearch options
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:right;&quot;&gt;
-      input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
-       max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
-          columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;
+      input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
+       max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
+          columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -9982,12 +9982,16 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 
 \define doSearch_inner()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]&quot;&quot;&quot;&gt;
+&lt;&lt;doSearch_showfilter&gt;&gt;&lt;br/&gt;
+&lt;&lt;doSearch_showresults&gt;&gt;
+&lt;/$vars&gt;
+\end
+
+\define doSearch_showfilter()
 &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;font-size:90%;word-break:break-all;&quot;
    message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;filter&gt;&gt; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
    ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
-&lt;/$button&gt;&lt;br/&gt;
-&lt;&lt;doSearch_showresults&gt;&gt;
-&lt;/$vars&gt;
+&lt;/$button&gt;
 \end
 
 \define doSearch_showresults()
@@ -9999,20 +10003,18 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 \end
 
 \define doSearch_showresults_list()
-&lt;div style=&quot;overflow-y:auto;max-width:100%;max-height:$(height)$;font-size:80%;line-height:100%;white-space:nowrap;&quot;&gt;
-   &lt;ol style=&quot;margin:0;padding-left:2em;column-count:$(cols)$;column-gap:1em;&quot;&gt;
+&lt;blockquote style=&quot;font-size:80%;line-height:100%;white-space:nowrap;overflow-y:auto;max-width:100%;max-height:$(height)$;&quot;&gt;
+   &lt;ol style=&quot;margin:0;padding-left:2em;column-gap:1em;column-count:$(cols)$;&quot;&gt;
       &lt;$list filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
    &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/blockquote&gt;
 \end
 
 \define setStyles()
 &lt;style&gt;
-.borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
-.small       { font-size:80%; line-height:1.3em; }
-.nowrap      { white-space:nowrap; }
-.powersearch_editwidth   { width:$(inputwidth)$ !important; }
-.powersearch_optionwidth { width:auto !important; }
+.powersearch_borderless, .powersearch_borderless table, .powersearch_borderless tr, .powersearch_borderless td { border:0; padding:0 0.1em; margin:0; }
+.powersearch_editwidth   { width:$(width)$ !important; }
+.powersearch_optionwidth { width:5em !important; }
 &lt;/style&gt;
 \end
 
@@ -10020,23 +10022,23 @@ Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filt
 &lt;$set    name=&quot;tagsList&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
 &lt;$wikify name=&quot;shadowList&quot; text=&lt;&lt;getShadowList&gt;&gt;&gt;
 
-|borderless|k
-|     search all&amp;nbsp;|&lt;&lt;getTid     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset tids&gt;&gt;       |
-|   match prefix&amp;nbsp;|&lt;&lt;getPre     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset prefix&gt;&gt;     |
-| exclude prefix&amp;nbsp;|&lt;&lt;getNotPre  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notprefix&gt;&gt;  |
-|   match suffix&amp;nbsp;|&lt;&lt;getSuff    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset suffix&gt;&gt;     |
-| exclude suffix&amp;nbsp;|&lt;&lt;getNotSuff $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notsuffix&gt;&gt;  |
-|      match tag&amp;nbsp;|&lt;&lt;getTag     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset tag&gt;&gt;        |
-|    exclude tag&amp;nbsp;|&lt;&lt;getNotTag  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset nottag&gt;&gt;     |
-|  search fields&amp;nbsp;|&lt;&lt;getFields  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset field&gt;&gt;      |
-|    using flags&amp;nbsp;|&lt;&lt;getFlags   $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset flags&gt;&gt;      |
-|        sort by&amp;nbsp;|&lt;&lt;getSort    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset sort&gt;&gt;       |
-|     match term&amp;nbsp;|&lt;&lt;getTerm    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset term&gt;&gt;       |
+|powersearch_borderless|k
+|     search all|&lt;&lt;getTid    &gt;&gt; |&lt;&lt;doReset tids&gt;&gt;      |
+|   match prefix|&lt;&lt;getPre    &gt;&gt; |&lt;&lt;doReset prefix&gt;&gt;    |
+| exclude prefix|&lt;&lt;getNotPre &gt;&gt; |&lt;&lt;doReset notprefix&gt;&gt; |
+|   match suffix|&lt;&lt;getSuff   &gt;&gt; |&lt;&lt;doReset suffix&gt;&gt;    |
+| exclude suffix|&lt;&lt;getNotSuff&gt;&gt; |&lt;&lt;doReset notsuffix&gt;&gt; |
+|      match tag|&lt;&lt;getTag    &gt;&gt; |&lt;&lt;doReset tag&gt;&gt;       |
+|    exclude tag|&lt;&lt;getNotTag &gt;&gt; |&lt;&lt;doReset nottag&gt;&gt;    |
+|  search fields|&lt;&lt;getFields &gt;&gt; |&lt;&lt;doReset field&gt;&gt;     |
+|    using flags|&lt;&lt;getFlags  &gt;&gt; |&lt;&lt;doReset flags&gt;&gt;     |
+|        sort by|&lt;&lt;getSort   &gt;&gt; |&lt;&lt;doReset sort&gt;&gt;      |
+|     match term|&lt;&lt;getTerm   &gt;&gt; |&lt;&lt;doReset term&gt;&gt;      |
 &lt;/$wikify&gt;
 &lt;/$set&gt;
 \end
 
-&lt;$vars inputwidth={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;]   }}}&gt;
+&lt;$vars width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;]   }}}&gt;
    &lt;&lt;setStyles&gt;&gt; &lt;&lt;getInputs&gt;&gt;
 &lt;/$vars&gt;
 
