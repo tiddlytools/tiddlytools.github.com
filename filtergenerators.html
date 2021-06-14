@@ -149,6 +149,8 @@ Error message and password prompt
 
 <li>$:/config/Tiddlers/TitleLinks</li>
 
+<li>$:/config/TiddlyTools/PowerSearch</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -158,6 +160,10 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -211,6 +217,9 @@ Error message and password prompt
 </div>
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
+</div>
+<div created="20210614033537176" modified="20210614033652098" title="$:/config/TiddlyTools/PowerSearch">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -9601,13 +9610,19 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
-<div created="20210512075836894" modified="20210512080035310" title="$:/state/tab/sidebar--595412856">
+<div created="20210613235246472" modified="20210614001013308" title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
+<div created="20210614001018574" modified="20210614001018574" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/System</pre>
+</div>
+<div created="20210512075836894" modified="20210614033656128" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20210614033519769" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210614033519769" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9783,27 +9798,14 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210512080347083" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
-<pre>\define    tidinput()   $:/temp/TiddlyTools/PowerSearch/tids
-\define    preinput()   $:/temp/TiddlyTools/PowerSearch/prefix
-\define notpreinput()   $:/temp/TiddlyTools/PowerSearch/notprefix
-\define    suffinput()  $:/temp/TiddlyTools/PowerSearch/suffix
-\define notsuffinput()  $:/temp/TiddlyTools/PowerSearch/notsuffix
-\define    taginput()   $:/temp/TiddlyTools/PowerSearch/tag
-\define nottaginput()   $:/temp/TiddlyTools/PowerSearch/nottag
-\define    fieldinput() $:/temp/TiddlyTools/PowerSearch/fields
-\define    terminput()  $:/temp/TiddlyTools/PowerSearch/term
-\define    flaginput()  $:/temp/TiddlyTools/PowerSearch/flags
-\define    sortinput()  $:/temp/TiddlyTools/PowerSearch/sort
-\define    inputwidth() $:/state/TiddlyTools/PowerSearch/inputwidth
-\define    maxheight()  $:/state/TiddlyTools/PowerSearch/maxheight
-\define    columns()    $:/state/TiddlyTools/PowerSearch/columns
-\define    show()       $:/state/TiddlyTools/PowerSearch/show
-\define    options()    $:/state/popup/TiddlyTools/PowerSearch/options
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210614033512770" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<pre>\define config()  $:/config/TiddlyTools/PowerSearch
+\define show()    $:/config/TiddlyTools/PowerSearch!!show
+\define options() $:/state/popup/TiddlyTools/PowerSearch/options
 
-\define default_width()     100%
-\define default_columns()   1
-\define default_maxheight() 20em
+\define default_width()   100%
+\define default_columns() 1
+\define default_height()  20em
 
 \define tidList()    tiddlers shadows system orphans tiddlers+shadows system+shadows
 \define fieldsList() title title,text title,tags title,text,tags text text,tags tags *
@@ -9828,125 +9830,113 @@ regexp
 \end
 
 \define getTid(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;tidinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tids&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 \define getPre(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;preinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;prefix&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(preinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!prefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotPre(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;notpreinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notprefix&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(notpreinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notprefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getSuff(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;suffinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;suffix&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(suffinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!suffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotSuff(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;notsuffinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notsuffix&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(notsuffinput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notsuffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;taginput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tag&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(taginput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!tag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotTag(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;nottaginput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;nottag&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
-   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(nottaginput)$}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;fieldinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;field&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;flaginput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;flags&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort(width)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;sortinput&gt;&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;sort&quot;
    width=&quot;$width$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
 \define getTerm()
-&lt;$edit-text tiddler=&lt;&lt;terminput&gt;&gt;  tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
+&lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define doReset(id)
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;$id$&gt;&gt;   /&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;$id$&quot; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doResetAll()
+&lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;tidinput&gt;&gt;     /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;preinput&gt;&gt;     /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;notpreinput&gt;&gt;  /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;suffinput&gt;&gt;    /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;notsuffinput&gt;&gt; /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;taginput&gt;&gt;     /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;nottaginput&gt;&gt;  /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;fieldinput&gt;&gt;   /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;flaginput&gt;&gt;    /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;terminput&gt;&gt;    /&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;sortinput&gt;&gt;    /&gt;
+   &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag field term flags sort&quot;&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+   &lt;/$list&gt;
 &lt;/$button&gt;
 \end
 
 \define doExport()
 &lt;$vars tv-config-toolbar-class=&quot;tc-button tt-button&quot;&gt;
-&lt;$macrocall $name=&quot;exportButton&quot; exportFilter=&quot;$(filter)$&quot; lingoBase=&quot;$:/language/Buttons/ExportTiddlers/&quot;/&gt;
+&lt;$macrocall $name=&quot;exportButton&quot; exportFilter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot; lingoBase=&quot;$:/language/Buttons/ExportTiddlers/&quot;/&gt;
 &lt;/$vars&gt;
 \end
 
 \define doDelete()
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/delete&quot; tooltip=&quot;Delete matching tiddlers&quot;&gt; {{$:/core/images/delete-button}}
-   &lt;$action-setfield $tiddler=&quot;$:/temp/delete&quot;
+&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/delete&quot; tooltip=&quot;Delete matching tiddlers&quot;&gt; {{$:/core/images/delete-button}}
+   &lt;$action-setfield $tiddler=&quot;$:/temp/PowerSearch/delete&quot;
       subtitle=&quot;Confirm Deletion&quot; footer=&lt;&lt;doDelete_footer&gt;&gt; text=&lt;&lt;doDelete_text&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doDelete_footer()
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
-   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/delete]]&quot; /&gt;
+   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; delete
-   &lt;$action-deletetiddler $filter=&quot;$(filter)$ -[prefix[$:/temp/delete]]&quot; /&gt;
-   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/delete]]&quot; /&gt;
+   &lt;$action-deletetiddler $filter=&quot;&quot;&quot;$(filter)$ [prefix[$:/temp/PowerSearch]]&quot;&quot;&quot; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doDelete_text()
-Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefix[$:/temp/delete]]&quot;/&gt; tiddlers?
-&lt;$button class=&quot;tc-button tt-button&quot; popup=&quot;$:/temp/delete/showlist&quot;&gt;
-   &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; show list &lt;/$reveal&gt;
-   &lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; hide list &lt;/$reveal&gt;
-&lt;/$button&gt;
-&lt;$reveal state=&quot;$:/temp/delete/showlist&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;blockquote class=&quot;tc-popup-handle small nowrap&quot;&gt;
-      &lt;$list filter=&quot;$(filter)$ -[prefix[$:/temp/delete]]&quot;&gt; &lt;$link /&gt;&lt;br&gt; &lt;/$list&gt;
-   &lt;/blockquote&gt;
-&lt;/$reveal&gt;
+Are you sure you want to delete these &lt;$count filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;/&gt; tiddlers?
+&lt;div class=&quot;tc-popup-handle&quot; style=&quot;font-size:80%;line-height:100%;white-space:nowrap;&quot;&gt;
+   &lt;ol style=&quot;margin:0;padding-left:2em;&quot;&gt;
+      &lt;$list filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
+   &lt;/ol&gt;
+&lt;/div&gt;
 \end
 
 \define doOptions()
@@ -9957,24 +9947,26 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
    class=&quot;tc-drop-down tt-drop-down tc-popup-keep&quot; style=&quot;min-width:auto;padding:0.5em;&quot;&gt;
    ~PowerSearch options:
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:right;&quot;&gt;
-      input width:&lt;$edit-text tiddler=&lt;&lt;inputwidth&gt;&gt; tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;     /&gt;&lt;br&gt;
-       max height:&lt;$edit-text tiddler=&lt;&lt;maxheight&gt;&gt;  tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_maxheight&gt;&gt; /&gt;&lt;br&gt;
-          columns:&lt;$edit-text tiddler=&lt;&lt;columns&gt;&gt;    tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt;   /&gt;
+      input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
+       max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
+          columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; tag=&quot;input&quot; size=&quot;3&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
 
-\define doToggle()
-&lt;$button class=&quot;tc-button tt-button&quot;&gt;
-   &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-      &amp;nbsp;show results {{$:/core/images/chevron-down}}&amp;nbsp;
-      &lt;$action-setfield $tiddler=&lt;&lt;show&gt;&gt; text=&quot;show&quot; /&gt;
-   &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
-      &amp;nbsp;hide results {{$:/core/images/chevron-up}}&amp;nbsp;
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;show&gt;&gt; /&gt;
-   &lt;/$reveal&gt;
-&lt;/$button&gt;
+\define doShowList()
+&lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Show results&quot;&gt;
+      {{$:/core/images/chevron-down}}
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; show=&quot;show&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Hide results&quot;&gt;
+      {{$:/core/images/chevron-up}}
+      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;show&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$reveal&gt;
 \end
 
 \define doSearch()
@@ -9982,7 +9974,7 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 &lt;$set name=&quot;notpreFilter&quot;  filter=&quot;[&lt;notpre&gt;!is[blank]]&quot;  value=&quot;!prefix[$(notpre)$]&quot;                 emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;suffFilter&quot;    filter=&quot;[&lt;suff&gt;!is[blank]]&quot;    value=&quot;suffix[$(suff)$]&quot;                    emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;notsuffFilter&quot; filter=&quot;[&lt;notsuff&gt;!is[blank]]&quot; value=&quot;!suffix[$(notsuff)$]&quot;                emptyValue=&quot;&quot;&gt;
-&lt;$set name=&quot;tagFilter&quot;     filter=&quot;[&lt;tag&gt;!is[blank]]&quot;     value=&quot;tag[$(tag)$]&quot;                        emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;tagFilter&quot;     filter=&quot;[&lt;tagval&gt;!is[blank]]&quot;  value=&quot;tag[$(tagval)$]&quot;                     emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;nottagFilter&quot;  filter=&quot;[&lt;nottag&gt;!is[blank]]&quot;  value=&quot;!tag[$(nottag)$]&quot;                    emptyValue=&quot;&quot;&gt;
 &lt;$set name=&quot;searchFilter&quot;  filter=&quot;[&lt;term&gt;!is[blank]]&quot;    value=&quot;search:$(field)$:$(flag)$[$(term)$]&quot; emptyValue=&quot;&quot;&gt;
 &lt;&lt;doSearch_inner&gt;&gt;
@@ -9990,37 +9982,32 @@ Are you sure you want to delete these &lt;$count filter=&quot;$(filter)$ -[prefi
 
 \define doSearch_inner()
 &lt;$vars filter=&quot;&quot;&quot;[all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]&quot;&quot;&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;font-size:80%;word-break:break-all;&quot;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;font-size:90%;word-break:break-all;&quot;
    message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;filter&gt;&gt; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
-   ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
-&lt;/$button&gt;
-&lt;br/&gt;
-&lt;&lt;doResetAll&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doOptions&gt;&gt; &lt;&lt;doToggle&gt;&gt;
-&lt;p/&gt;
-&lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
-   &lt;$vars height={{{ [&lt;maxheight&gt;get[text]] ~[&lt;default_maxheight&gt;] }}} cols={{{ [&lt;columns&gt;get[text]]   ~[&lt;default_columns&gt;]   }}}&gt;
-   &lt;&lt;doSearch_showresults&gt;&gt;
-   &lt;/$vars&gt;
-&lt;/$reveal&gt;
+   filter: ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
+&lt;/$button&gt;&lt;p/&gt;
+&lt;&lt;doSearch_showresults&gt;&gt;
 &lt;/$vars&gt;
 \end
 
 \define doSearch_showresults()
-There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; matching tiddlers:
-&lt;blockquote style=&quot;overflow-y:auto;max-width:100%;max-height:$(height)$;&quot;&gt;
-   &lt;div class=&quot;columns$(cols)$ small nowrap&quot; style=&quot;margin:0;&quot;&gt;
-      &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
-   &lt;/div&gt;
-&lt;/blockquote&gt;
+''There are &lt;$count filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;/&gt; matching tiddlers''
+&lt;&lt;doShowList&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doResetAll&gt;&gt; &lt;&lt;doOptions&gt;&gt;
+&lt;$vars height={{{ [&lt;config&gt;get[height]] ~[&lt;default_height&gt;] }}} cols={{{ [&lt;config&gt;get[columns]] ~[&lt;default_columns&gt;] }}}&gt;
+&lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt; &lt;&lt;doSearch_showresults_list&gt;&gt; &lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+\define doSearch_showresults_list()
+&lt;div style=&quot;overflow-y:auto;max-width:100%;max-height:$(height)$;font-size:80%;line-height:100%;white-space:nowrap;&quot;&gt;
+   &lt;ol style=&quot;margin:0;padding-left:2em;column-count:$(cols)$;column-gap:1em;&quot;&gt;
+      &lt;$list filter=&quot;&quot;&quot;$(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]&quot;&quot;&quot;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
+   &lt;/ol&gt;
+&lt;/div&gt;
 \end
 
 \define setStyles()
 &lt;style&gt;
-.columns1    { display:block; column-count:1; column-gap:1em; }
-.columns2    { display:block; column-count:2; column-gap:1em; }
-.columns3    { display:block; column-count:3; column-gap:1em; }
-.columns4    { display:block; column-count:4; column-gap:1em; }
-.columns5    { display:block; column-count:5; column-gap:1em; }
 .borderless, .borderless table, .borderless tr, .borderless td { border:0; padding:0; margin:0; }
 .small       { font-size:80%; line-height:1.3em; }
 .nowrap      { white-space:nowrap; }
@@ -10034,37 +10021,36 @@ There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; matching tiddlers:
 &lt;$wikify name=&quot;shadowList&quot; text=&lt;&lt;getShadowList&gt;&gt;&gt;
 
 |borderless|k
-|     search all|&lt;&lt;getTid     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset tidinput&gt;&gt;     |
-|   match prefix|&lt;&lt;getPre     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset preinput&gt;&gt;     |
-| exclude prefix|&lt;&lt;getNotPre  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notpreinput&gt;&gt;  |
-|   match suffix|&lt;&lt;getSuff    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset suffinput&gt;&gt;    |
-| exclude suffix|&lt;&lt;getNotSuff $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notsuffinput&gt;&gt; |
-|      match tag|&lt;&lt;getTag     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset taginput&gt;&gt;     |
-|    exclude tag|&lt;&lt;getNotTag  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset nottaginput&gt;&gt;  |
-|  search fields|&lt;&lt;getFields  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset fieldinput&gt;&gt;   |
-|    using flags|&lt;&lt;getFlags   $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset flaginput&gt;&gt;    |
-|        sort by|&lt;&lt;getSort    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset sortinput&gt;&gt;    |
-|     match term|&lt;&lt;getTerm    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset terminput&gt;&gt;    |
+|     search all&amp;nbsp;|&lt;&lt;getTid     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset tids&gt;&gt;       |
+|   match prefix&amp;nbsp;|&lt;&lt;getPre     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset prefix&gt;&gt;     |
+| exclude prefix&amp;nbsp;|&lt;&lt;getNotPre  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notprefix&gt;&gt;  |
+|   match suffix&amp;nbsp;|&lt;&lt;getSuff    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset suffix&gt;&gt;     |
+| exclude suffix&amp;nbsp;|&lt;&lt;getNotSuff $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset notsuffix&gt;&gt;  |
+|      match tag&amp;nbsp;|&lt;&lt;getTag     $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset tag&gt;&gt;        |
+|    exclude tag&amp;nbsp;|&lt;&lt;getNotTag  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset nottag&gt;&gt;     |
+|  search fields&amp;nbsp;|&lt;&lt;getFields  $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset field&gt;&gt;      |
+|    using flags&amp;nbsp;|&lt;&lt;getFlags   $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset flags&gt;&gt;      |
+|        sort by&amp;nbsp;|&lt;&lt;getSort    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset sort&gt;&gt;       |
+|     match term&amp;nbsp;|&lt;&lt;getTerm    $(inputwidth)$&gt;&gt; |&amp;nbsp;&lt;&lt;doReset term&gt;&gt;       |
 &lt;/$wikify&gt;
 &lt;/$set&gt;
 \end
 
-&lt;$vars inputwidth={{{ [&lt;inputwidth&gt;get[text]] ~[&lt;default_width&gt;]   }}}&gt;
+&lt;$vars inputwidth={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;]   }}}&gt;
    &lt;&lt;setStyles&gt;&gt; &lt;&lt;getInputs&gt;&gt;
 &lt;/$vars&gt;
-
 &lt;$vars
-    tids={{{ [&lt;tidinput&gt;get[text]]   ~[[tiddlers]]        }}}
-     pre={{{ [&lt;preinput&gt;get[text]]                        }}}
-  notpre={{{ [&lt;notpreinput&gt;get[text]]                     }}}
-    suff={{{ [&lt;suffinput&gt;get[text]]                       }}}
- notsuff={{{ [&lt;notsuffinput&gt;get[text]]                    }}}
-     tag={{{ [&lt;taginput&gt;get[text]]                        }}}
-  nottag={{{ [&lt;nottaginput&gt;get[text]]                     }}}
-   field={{{ [&lt;fieldinput&gt;get[text]] ~[[title,text,tags]] }}}
-    flag={{{ [&lt;flaginput&gt;get[text]]  ~[[words]]           }}}
-    term={{{ [&lt;terminput&gt;get[text]]                       }}}
-    sort={{{ [&lt;sortinput&gt;get[text]]  ~[[title]]           }}}&gt;
+    tids={{{ [&lt;config&gt;get[tids]]     ~[[tiddlers]]        }}}
+     pre={{{ [&lt;config&gt;get[prefix]]                        }}}
+  notpre={{{ [&lt;config&gt;get[notprefix]]                     }}}
+    suff={{{ [&lt;config&gt;get[suffix]]                        }}}
+ notsuff={{{ [&lt;config&gt;get[notsuffix]]                     }}}
+  tagval={{{ [&lt;config&gt;get[tag]]                           }}}
+  nottag={{{ [&lt;config&gt;get[nottag]]                        }}}
+   field={{{ [&lt;config&gt;get[field]]    ~[[title,text,tags]] }}}
+    flag={{{ [&lt;config&gt;get[flags]]    ~[[words]]           }}}
+    term={{{ [&lt;config&gt;get[term]]                          }}}
+    sort={{{ [&lt;config&gt;get[sort]]     ~[[title]]           }}}&gt;
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
