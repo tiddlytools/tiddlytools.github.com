@@ -218,7 +218,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="1" created="20210616021750234" height="auto" modified="20210616033737777" title="$:/config/TiddlyTools/PowerSearch">
+<div columns="" created="20210616021750234" height="" modified="20210616085124665" title="$:/config/TiddlyTools/PowerSearch" width="">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9616,7 +9616,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20210616033724074" modified="20210616033724074" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210616033716188" modified="20210616033725702" title="$:/state/tab/sidebar--595412856">
+<div created="20210616033716188" modified="20210616085442036" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210616033513661" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210616085333393" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9916,10 +9916,9 @@ regexp
 
 \define doSearch_showresults()
 &lt;$vars count={{{ $(filter_exclude)$ +[count[]] }}}&gt;
-&lt;&lt;doSearch_showfilter&gt;&gt;
 ''There &lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot; emptyMessage=&quot;is&quot;&gt;are&lt;/$list&gt;
 &lt;&lt;count&gt;&gt; matching tiddler&lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot;&gt;s&lt;/$list&gt;''
-&lt;&lt;doToggleList&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doResetAll&gt;&gt; &lt;&lt;doOptions&gt;&gt;
+&lt;&lt;doToggleList&gt;&gt; &lt;&lt;doExport&gt;&gt; &lt;&lt;doDelete&gt;&gt; &lt;&lt;doResetAll&gt;&gt; &lt;&lt;doOptions&gt;&gt;&lt;br/&gt;
 &lt;$vars height={{{ [&lt;config&gt;get[height]] ~[&lt;default_height&gt;] }}} cols={{{ [&lt;config&gt;get[columns]] ~[&lt;default_columns&gt;] }}}&gt;
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt; &lt;&lt;doSearch_showlist&gt;&gt; &lt;/$reveal&gt;
 &lt;/$vars&gt;
@@ -9930,20 +9929,21 @@ regexp
    message=&quot;tm-copy-to-clipboard&quot; param=&lt;&lt;filter&gt;&gt; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
    ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;'' {{$:/core/images/copy-clipboard}}
 &lt;/$button&gt;
-&lt;br/&gt;
 \end
 
 \define doSearch_showlist()
-&lt;div style=&quot;font-size:80%;line-height:100%;white-space:nowrap;overflow-y:auto;max-width:100%;max-height:$(height)$;padding:0.2em;&quot;&gt;
+&lt;fieldset style=&quot;border-radius:0.5em;&quot;&gt;&lt;legend&gt;&lt;&lt;doSearch_showfilter&gt;&gt;&lt;/legend&gt;
+&lt;div style=&quot;max-height:$(height)$;padding:0.2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
    &lt;ol style=&quot;margin:0;padding-left:2em;column-gap:1em;column-count:$(cols)$;&quot;&gt;
       &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
    &lt;/ol&gt;
 &lt;/div&gt;
+&lt;/fieldset&gt;
 \end
 
 \define doReset(id)
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;$id$&quot; /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;$id$&quot; /&gt;
 &lt;/$button&gt;
 \end
 
@@ -9951,14 +9951,14 @@ regexp
 &lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
    &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag field term flags sort&quot;&gt;
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&lt;&lt;currentTiddler&gt;&gt; /&gt;
    &lt;/$list&gt;
 &lt;/$button&gt;
 \end
 
 \define doExport()
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/export&quot; tooltip=&quot;export matching tiddlers&quot;&gt; {{$:/core/images/export-button}}
-   &lt;$action-setfield $tiddler=&quot;$:/temp/PowerSearch/export&quot;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$:/temp/PowerSearch/export&quot;
       subtitle=&quot;Confirm Export&quot; text=&lt;&lt;doExport_text&gt;&gt; footer=&lt;&lt;doExport_footer&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
@@ -9967,24 +9967,9 @@ regexp
 \define filter_exclude() $(filter_exclude)$
 &lt;$vars count={{{ $(filter_exclude)$ +[count[]] }}}&gt;
 ''Are you sure you want to export &lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot; emptyMessage=&quot;this tiddler?&quot;&gt;these &lt;&lt;count&gt;&gt; tiddlers?&lt;/$list&gt;''
-&lt;div style=&quot;font-size:80%;line-height:100%;white-space:nowrap;overflow-y:auto;max-width:100%;max-height:30vh;padding:0.2em;&quot;&gt;
-   &lt;ol style=&quot;margin:0;padding-left:2em;&quot;&gt;
-      &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
-   &lt;/ol&gt;
-&lt;/div&gt;
-&lt;p/&gt;
-''Output filename and format''&lt;br&gt;
-&lt;div style=&quot;display:inline-block;&quot;&gt;
-   &lt;$edit-text tiddler=&quot;$:/temp/PowerSearch/export/filename&quot; tag=&quot;input&quot; size=&quot;40&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;/&gt;
-&lt;/div&gt;
-&lt;div style=&quot;display:inline-block;&quot;&gt;
-   &lt;$select tiddler=&quot;$:/temp/PowerSearch/export/format&quot; default=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
-      &lt;option value=&quot;$:/core/templates/exporters/CsvFile&quot;&gt;     CSV &lt;/option&gt;
-      &lt;option value=&quot;$:/core/templates/exporters/StaticRiver&quot;&gt; HTML&lt;/option&gt;
-      &lt;option value=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;    JSON&lt;/option&gt;
-      &lt;option value=&quot;$:/core/templates/exporters/TidFile&quot;&gt;     &quot;.tid&quot; file&lt;/option&gt;
-   &lt;/$select&gt;
-&lt;/div&gt;
+&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
+   &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
+&lt;/ol&gt;
 \end
 
 \define doExport_footer()
@@ -9992,6 +9977,16 @@ regexp
 &lt;$set name=&quot;filename&quot; value={{$:/temp/PowerSearch/export/filename}} emptyValue=&quot;tiddlers&quot;&gt;
 &lt;$set name=&quot;format&quot;   value={{$:/temp/PowerSearch/export/format}}   emptyValue=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
 &lt;$set name=&quot;target&quot;   value={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
+&lt;div style=&quot;float:left;text-align:left;margin-top:-1em;&quot;&gt;
+   ''Filename and format''&lt;br&gt;
+   &lt;$edit-text tiddler=&quot;$:/temp/PowerSearch/export/filename&quot; tag=&quot;input&quot; size=&quot;30&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;/&gt;
+   &lt;$select tiddler=&quot;$:/temp/PowerSearch/export/format&quot; default=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
+      &lt;option value=&quot;$:/core/templates/exporters/CsvFile&quot;&gt;     CSV &lt;/option&gt;
+      &lt;option value=&quot;$:/core/templates/exporters/StaticRiver&quot;&gt; HTML&lt;/option&gt;
+      &lt;option value=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;    JSON&lt;/option&gt;
+      &lt;option value=&quot;$:/core/templates/exporters/TidFile&quot;&gt;     &quot;.tid&quot; file&lt;/option&gt;
+   &lt;/$select&gt;
+&lt;/div&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
@@ -10003,7 +9998,7 @@ regexp
 
 \define doDelete()
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/delete&quot; tooltip=&quot;Delete matching tiddlers&quot;&gt; {{$:/core/images/delete-button}}
-   &lt;$action-setfield $tiddler=&quot;$:/temp/PowerSearch/delete&quot;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$:/temp/PowerSearch/delete&quot;
       subtitle=&quot;Confirm Deletion&quot; text=&lt;&lt;doDelete_text&gt;&gt; footer=&lt;&lt;doDelete_footer&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
@@ -10012,11 +10007,9 @@ regexp
 \define filter_exclude() $(filter_exclude)$
 &lt;$vars count={{{ $(filter_exclude)$ +[count[]] }}}&gt;
 ''Are you sure you want to delete &lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot; emptyMessage=&quot;this tiddler?&quot;&gt;these &lt;&lt;count&gt;&gt; tiddlers?&lt;/$list&gt;''
-&lt;div style=&quot;font-size:80%;line-height:100%;white-space:nowrap;overflow-y:auto;max-width:100%;max-height:30vh;padding:0.2em;&quot;&gt;
-   &lt;ol style=&quot;margin:0;padding-left:2em;&quot;&gt;
-      &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
-   &lt;/ol&gt;
-&lt;/div&gt;
+&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
+   &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
+&lt;/ol&gt;
 \end
 
 \define doDelete_footer()
@@ -10049,13 +10042,13 @@ regexp
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Show results&quot;&gt;
       {{$:/core/images/chevron-down}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; show=&quot;show&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; show=&quot;show&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Hide results&quot;&gt;
       {{$:/core/images/chevron-up}}
-      &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;show&quot; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;show&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
