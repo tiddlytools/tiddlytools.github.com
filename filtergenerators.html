@@ -218,7 +218,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="" created="20210616021750234" height="" modified="20210616085124665" title="$:/config/TiddlyTools/PowerSearch" width="">
+<div columns="" created="20210616021750234" height="" modified="20210616092718693" title="$:/config/TiddlyTools/PowerSearch" width="">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210616085333393" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210616092705007" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9933,8 +9933,8 @@ regexp
 
 \define doSearch_showlist()
 &lt;fieldset style=&quot;border-radius:0.5em;&quot;&gt;&lt;legend&gt;&lt;&lt;doSearch_showfilter&gt;&gt;&lt;/legend&gt;
-&lt;div style=&quot;max-height:$(height)$;padding:0.2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
-   &lt;ol style=&quot;margin:0;padding-left:2em;column-gap:1em;column-count:$(cols)$;&quot;&gt;
+&lt;div style=&quot;max-height:$(height)$;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
+   &lt;ol style=&quot;margin:0;column-gap:1em;column-count:$(cols)$;&quot;&gt;
       &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
    &lt;/ol&gt;
 &lt;/div&gt;
@@ -9967,7 +9967,7 @@ regexp
 \define filter_exclude() $(filter_exclude)$
 &lt;$vars count={{{ $(filter_exclude)$ +[count[]] }}}&gt;
 ''Are you sure you want to export &lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot; emptyMessage=&quot;this tiddler?&quot;&gt;these &lt;&lt;count&gt;&gt; tiddlers?&lt;/$list&gt;''
-&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
+&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:revert;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
    &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
 &lt;/ol&gt;
 \end
@@ -10007,7 +10007,7 @@ regexp
 \define filter_exclude() $(filter_exclude)$
 &lt;$vars count={{{ $(filter_exclude)$ +[count[]] }}}&gt;
 ''Are you sure you want to delete &lt;$list filter=&quot;[&lt;count&gt;!match[1]]&quot; emptyMessage=&quot;this tiddler?&quot;&gt;these &lt;&lt;count&gt;&gt; tiddlers?&lt;/$list&gt;''
-&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:2em;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
+&lt;ol style=&quot;max-height:40vh;margin:0;padding:0.2em;padding-left:revert;white-space:nowrap;overflow:auto;font-size:80%;line-height:100%;&quot;&gt;
    &lt;$list filter=&lt;&lt;filter_exclude&gt;&gt;&gt;&lt;li&gt;&lt;$link/&gt;&lt;/li&gt;&lt;/$list&gt;
 &lt;/ol&gt;
 \end
