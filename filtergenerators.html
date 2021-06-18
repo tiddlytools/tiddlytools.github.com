@@ -9622,7 +9622,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210617074926902" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210617074926902" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210617075900438" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210618202105481" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9973,9 +9973,6 @@ regexp
 
 \define doExport_footer()
 \define filter_exclude() $(filter_exclude)$
-&lt;$set name=&quot;filename&quot; value={{$:/temp/PowerSearch/export/filename}} emptyValue=&quot;tiddlers&quot;&gt;
-&lt;$set name=&quot;format&quot;   value={{$:/temp/PowerSearch/export/format}}   emptyValue=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
-&lt;$set name=&quot;target&quot;   value={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
 &lt;div style=&quot;float:left;text-align:left;margin-top:-1em;&quot;&gt;
    ''Filename and format''&lt;br&gt;
    &lt;$edit-text tiddler=&quot;$:/temp/PowerSearch/export/filename&quot; tag=&quot;input&quot; size=&quot;30&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;/&gt;
@@ -9990,8 +9987,12 @@ regexp
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; export
+   &lt;$set name=&quot;filename&quot; value={{$:/temp/PowerSearch/export/filename}} emptyValue=&quot;tiddlers&quot;&gt;
+   &lt;$set name=&quot;format&quot;   value={{$:/temp/PowerSearch/export/format}}   emptyValue=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
+   &lt;$set name=&quot;target&quot;   value={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
    &lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&lt;&lt;format&gt;&gt; exportFilter=&lt;&lt;filter_exclude&gt;&gt; filename=&lt;&lt;target&gt;&gt; /&gt;
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
+   &lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;
 &lt;/$button&gt;
 \end
 
