@@ -9670,11 +9670,11 @@ TiddlyTools/FilterGenerators/Tags
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1600&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9798,7 +9798,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210618202105481" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210619031031293" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -9973,9 +9973,9 @@ regexp
 
 \define doExport_footer()
 \define filter_exclude() $(filter_exclude)$
-&lt;div style=&quot;float:left;text-align:left;margin-top:-1em;&quot;&gt;
-   ''Filename and format''&lt;br&gt;
-   &lt;$edit-text tiddler=&quot;$:/temp/PowerSearch/export/filename&quot; tag=&quot;input&quot; size=&quot;30&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;/&gt;
+&lt;div style=&quot;float:left;text-align:left;&quot;&gt;
+   ''Filename and format'':
+   &lt;$edit-text tiddler=&quot;$:/temp/PowerSearch/export/filename&quot; tag=&quot;input&quot; size=&quot;20&quot; default=&quot;&quot; placeholder=&quot;tiddlers&quot;/&gt;
    &lt;$select tiddler=&quot;$:/temp/PowerSearch/export/format&quot; default=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
       &lt;option value=&quot;$:/core/templates/exporters/CsvFile&quot;&gt;     CSV &lt;/option&gt;
       &lt;option value=&quot;$:/core/templates/exporters/StaticRiver&quot;&gt; HTML&lt;/option&gt;
@@ -9983,16 +9983,15 @@ regexp
       &lt;option value=&quot;$:/core/templates/exporters/TidFile&quot;&gt;     &quot;.tid&quot; file&lt;/option&gt;
    &lt;/$select&gt;
 &lt;/div&gt;
+&lt;$vars format={{{ [[$:/temp/PowerSearch/export/format]get[text]else[$:/core/templates/exporters/JsonFile]] }}}
+     filename={{{ [[$:/temp/PowerSearch/export/filename]get[text]else[tiddlers]] }}}&gt;
+&lt;$vars target={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; export
-   &lt;$set name=&quot;filename&quot; value={{$:/temp/PowerSearch/export/filename}} emptyValue=&quot;tiddlers&quot;&gt;
-   &lt;$set name=&quot;format&quot;   value={{$:/temp/PowerSearch/export/format}}   emptyValue=&quot;$:/core/templates/exporters/JsonFile&quot;&gt;
-   &lt;$set name=&quot;target&quot;   value={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
    &lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&lt;&lt;format&gt;&gt; exportFilter=&lt;&lt;filter_exclude&gt;&gt; filename=&lt;&lt;target&gt;&gt; /&gt;
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
-   &lt;/$set&gt;&lt;/$set&gt;&lt;/$set&gt;
 &lt;/$button&gt;
 \end
 
