@@ -147,7 +147,7 @@ Error message and password prompt
 
 <li>$:/config/TiddlyTools/Time</li>
 
-<li>$:/config/Timers/Sample</li>
+<li>$:/config/Timers/SampleTimer</li>
 
 <li>$:/config/TimestampDisable</li>
 
@@ -288,7 +288,7 @@ Error message and password prompt
 <div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_admin_width="" calendar_alarms="OrangeRed" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="Black;font-size:1.5em;font-weight:bold;" calendar_order="0 1 2 3 4 5 6" calendar_showalarms="yes" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_timers="LightYellow" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="Black" clock_numbers="Black;font-size:1.5em;" clock_size="15em" clock_ticks="Black" created="20200723071051066" modified="20210628114442145" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="TiddlyTools/Time/Events US_Holidays.ics Canada_Holidays.ics UK_Holidays.ics PersonalEvents" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
-<div button="start" caption="This is an example of a timer" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20210628074344232" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/Sample" totallist="6.52 36.256 43.475 49.557">
+<div button="start" caption="Timer Example" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20210628154743529" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/SampleTimer" totallist="6.52 36.256 43.475 49.557">
 <pre>@@display:inline-block;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;@@</pre>
 </div>
 <div created="20201002222557507" modified="20201013002522560" title="$:/config/TimestampDisable">
@@ -9704,7 +9704,7 @@ SampleSequence</pre>
 <div created="20200718011630155" modified="20201020063950913" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20200904222905850" modified="20210628114344888" title="$:/state/tab/sidebar--595412856">
+<div created="20200904222905850" modified="20210628155133440" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -9821,8 +9821,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20210628114513053" title="$:/temp/time/ticker">
-<pre>20210628114513053</pre>
+<div created="20200924032759417" modified="20210628155141260" title="$:/temp/time/ticker">
+<pre>20210628155141260</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11080,7 +11080,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20210627150413083" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210628154333308" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11335,13 +11335,12 @@ set ~AutoSaver interval:&lt;hr&gt;
 \import TiddlyTools/Time/Timers
 &lt;$reveal default=&lt;&lt;showtimers&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
 &lt;$list filter=&quot;[!has[draft.of]has[startlist]has[stoplist]]&quot;&gt;
-   &lt;$vars timer_name={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] }}}
-         timer_count={{{ [enlist{!!startlist}count[]] }}}&gt;
+   &lt;$vars timer_name={{{ [&lt;currentTiddler&gt;removeprefix&lt;timer_config&gt;removeprefix[/]] }}} timer_count={{{ [enlist{!!startlist}count[]] }}}&gt;
    &lt;$list filter=&quot;[range&lt;timer_count&gt;]&quot; variable=&quot;item&quot;&gt;
       &lt;$vars date={{{ [enlist{!!startlist}nth&lt;item&gt;split[]first[8]join[]] }}}
             start={{{ [enlist{!!startlist}nth&lt;item&gt;]   }}}
              stop={{{ [enlist{!!stoplist}nth&lt;item&gt;]    }}}&gt;
-      ``[[``&lt;&lt;date&gt;&gt;;&lt;&lt;currentTiddler&gt;&gt;;&lt;$view tiddler=&lt;&lt;start&gt;&gt; field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt;-&lt;$view tiddler=&lt;&lt;stop&gt;&gt;  field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt; &lt;&lt;timer_name&gt;&gt;|&lt;&lt;currentTiddler&gt;&gt;``]]``&lt;br&gt;
+      ``[[``&lt;&lt;date&gt;&gt;;&lt;&lt;currentTiddler&gt;&gt;;&lt;&lt;timer_name&gt;&gt; &lt;$view tiddler=&lt;&lt;start&gt;&gt; field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt;-&lt;$view tiddler=&lt;&lt;stop&gt;&gt;  field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt;|&lt;&lt;currentTiddler&gt;&gt;``]]``&lt;br&gt;
       &lt;/$vars&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
@@ -12857,7 +12856,7 @@ Sydney:      +10:00</pre>
 \end
 &lt;$action-timeout interval=&quot;1000&quot; actions=&lt;&lt;ticker_actions&gt;&gt;/&gt;</pre>
 </div>
-<div created="20200712174503125" modified="20210628103358273" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
+<div created="20200712174503125" modified="20210628154059318" tags="$:/tags/Macro" title="TiddlyTools/Time/Timers">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define timer_ticker() $:/temp/time/ticker
@@ -13101,60 +13100,71 @@ Sydney:      +10:00</pre>
          &lt;td&gt;&lt;&lt;timer_showdate stopped&gt;&gt;&lt;/td&gt;
          &lt;td&gt;&lt;&lt;timer_showtime elapsed&gt;&gt;&lt;/td&gt;
          &lt;td&gt;&lt;&lt;timer_showtime total&gt;&gt;&lt;/td&gt;
-         &lt;td style=&quot;padding:0;&quot;&gt;&lt;&lt;timer_history_note&gt;&gt;&lt;/td&gt;
+         &lt;td style=&quot;padding:0;padding-bottom:1px;&quot;&gt;&lt;&lt;timer_history_note_button&gt;&gt;&lt;/td&gt;
       &lt;/tr&gt;
-      &lt;&lt;timer_history_note_edit&gt;&gt;
+      &lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;nomatch&quot; text=&lt;&lt;started&gt;&gt; tag=&quot;tr&quot;&gt;
+         &lt;&lt;timer_history_note_view&gt;&gt;
+      &lt;/$reveal&gt;
+      &lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;match&quot;   text=&lt;&lt;started&gt;&gt; tag=&quot;tr&quot;&gt;
+         &lt;&lt;timer_history_note_edit&gt;&gt;
+      &lt;/$reveal&gt;
       &lt;/$vars&gt;
    &lt;/$list&gt;
 &lt;/table&gt;
 \end
 
-\define timer_history_note()
-&lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;
+\define timer_history_note_button()
+&lt;$list filter=&quot;[&lt;timer_temp&gt;!has[show]]&quot; variable=&quot;enable_button&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;line-height:100%;&quot; tooltip=&quot;add/edit a comment&quot;&gt;
       {{$:/core/images/edit-button}}
       &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; comment={{{ [&lt;currentTiddler&gt;get&lt;started&gt;] }}} /&gt;
       &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; show=&lt;&lt;started&gt;&gt; /&gt;
    &lt;/$button&gt;
-&lt;/$reveal&gt;
-&lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;timer_temp&gt;has[show]]&quot; variable=&quot;disable_button&quot;&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;line-height:100%;color:gray;fill:gray;&quot; tooltip=&quot;add/edit a comment&quot;&gt;
       {{$:/core/images/edit-button}}
    &lt;/$button&gt;
-&lt;/$reveal&gt;
+&lt;/$list&gt;
+\end
+
+\define timer_history_note_view()
+\whitespace trim
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has&lt;started&gt;]&quot; variable=&quot;view_note&quot;&gt;
+   &lt;td&gt;&lt;&lt;item&gt;&gt;&lt;/td&gt;
+   &lt;td colspan=&quot;4&quot;&gt;
+      &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;edit this comment&quot; style=&quot;float:left;width:100%;height:1.5em;text-align:left;&quot;&gt;
+         {{!!$(started)$}}
+         &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; comment={{{ [&lt;currentTiddler&gt;get&lt;started&gt;] }}} /&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; show=&lt;&lt;started&gt;&gt; /&gt;
+      &lt;/$button&gt;
+   &lt;/td&gt;
+   &lt;td style=&quot;padding:0;padding-bottom:1px;&quot;&gt;&lt;&lt;timer_history_note_button&gt;&gt;&lt;/td&gt;
+&lt;/$list&gt;
 \end
 
 \define timer_history_note_edit()
 \whitespace trim
 &lt;style&gt; .timer_comment { width:calc(100% - 8em);height:1.5em;padding-left:0.5em;border:0;outline:0; } &lt;/style&gt;
-&lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;match&quot; text=&lt;&lt;started&gt;&gt; tag=&quot;tr&quot;&gt;
-   &lt;td&gt;&lt;&lt;item&gt;&gt;&lt;/td&gt;
-   &lt;td colspan=&quot;5&quot; style=&quot;padding:0;white-space:nowrap;&quot;&gt;
-      &lt;$keyboard class=&quot;inline&quot; key=&quot;escape&quot; actions=&lt;&lt;timer_history_note_cancel&gt;&gt;&gt;
-      &lt;$keyboard class=&quot;inline&quot; key=&quot;enter&quot;  actions=&lt;&lt;timer_history_note_ok&gt;&gt;&gt;
-         &lt;$edit-text tiddler=&lt;&lt;timer_temp&gt;&gt; field=&quot;comment&quot; focus=&quot;yes&quot; class=&quot;timer_comment&quot; placeholder=&quot;enter a comment&quot;/&gt;
-      &lt;/$keyboard&gt;
-      &lt;/$keyboard&gt;
-      &lt;div style=&quot;float:right;&quot;&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;delete this comment&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;timer_history_note_delete&gt;&gt; &lt;/$button&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;cancel changes&quot;&gt;      {{$:/core/images/close-button}}  &lt;&lt;timer_history_note_cancel&gt;&gt; &lt;/$button&gt;
-      &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;save this comment&quot;&gt;   {{$:/core/images/done-button}}   &lt;&lt;timer_history_note_ok&gt;&gt;     &lt;/$button&gt;
-      &lt;/div&gt;
-   &lt;/td&gt;
-&lt;/$reveal&gt;
-&lt;$reveal stateTitle=&lt;&lt;currentTiddler&gt;&gt; stateField=&lt;&lt;started&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; tag=&quot;tr&quot;&gt;
-   &lt;td&gt;&lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;nomatch&quot; text=&lt;&lt;started&gt;&gt;&gt;&lt;&lt;item&gt;&gt;&lt;/$reveal&gt;&lt;/td&gt;
-   &lt;td colspan=&quot;4&quot;&gt;
-      &lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;nomatch&quot; text=&lt;&lt;started&gt;&gt;&gt;
-         &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;edit this comment&quot; style=&quot;width:100%;height:1.5em;text-align:left;&quot;&gt;
-            {{!!$(started)$}}
-            &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; comment={{{ [&lt;currentTiddler&gt;get&lt;started&gt;] }}} /&gt;
-            &lt;$action-setfield $tiddler=&lt;&lt;timer_temp&gt;&gt; show=&lt;&lt;started&gt;&gt; /&gt;
-         &lt;/$button&gt;
-      &lt;/$reveal&gt;
-   &lt;/td&gt;
-   &lt;td style=&quot;padding:0;&quot;&gt;&lt;$reveal stateTitle=&lt;&lt;timer_temp&gt;&gt; stateField=&quot;show&quot; type=&quot;nomatch&quot; text=&lt;&lt;started&gt;&gt;&gt;&lt;&lt;timer_history_note&gt;&gt;&lt;/$reveal&gt;&lt;/td&gt;
-&lt;/$reveal&gt;
+&lt;td&gt;&lt;&lt;item&gt;&gt;&lt;/td&gt;
+&lt;td colspan=&quot;5&quot; style=&quot;padding:0;padding-right:1px;white-space:nowrap;&quot;&gt;
+   &lt;$keyboard class=&quot;inline&quot; key=&quot;escape&quot; actions=&lt;&lt;timer_history_note_cancel&gt;&gt;&gt;
+   &lt;$keyboard class=&quot;inline&quot; key=&quot;enter&quot;  actions=&lt;&lt;timer_history_note_ok&gt;&gt;&gt;
+      &lt;$edit-text tiddler=&lt;&lt;timer_temp&gt;&gt; field=&quot;comment&quot; focus=&quot;yes&quot; class=&quot;timer_comment&quot; placeholder=&quot;enter a comment&quot;/&gt;
+   &lt;/$keyboard&gt;
+   &lt;/$keyboard&gt;
+   &lt;div style=&quot;float:right;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;delete this comment&quot;&gt;
+      {{$:/core/images/delete-button}} &lt;&lt;timer_history_note_delete&gt;&gt;
+   &lt;/$button&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;cancel changes&quot;&gt;
+      {{$:/core/images/close-button}}  &lt;&lt;timer_history_note_cancel&gt;&gt;
+   &lt;/$button&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;font-size:90%;&quot; tooltip=&quot;save this comment&quot;&gt;
+      {{$:/core/images/done-button}}   &lt;&lt;timer_history_note_ok&gt;&gt;
+   &lt;/$button&gt;
+   &lt;/div&gt;
+&lt;/td&gt;
 \end
 
 \define timer_history_note_delete()
