@@ -9710,7 +9710,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20210630004334297" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20210630004334297" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9821,8 +9821,8 @@ SampleSequence</pre>
 &lt;$macrocall $name=&quot;setCountdown&quot; H=&lt;&lt;saveH&gt;&gt; M=&lt;&lt;saveM&gt;&gt; S=&lt;&lt;saveS&gt;&gt; /&gt;" hours="01" mins="00" modified="20200924033144371" secs="00" title="$:/temp/time/countdown/AutoSaver">
 <pre></pre>
 </div>
-<div created="20200924032759417" modified="20210628155141260" title="$:/temp/time/ticker">
-<pre>20210628155141260</pre>
+<div created="20200924032759417" modified="20210630010424237" title="$:/temp/time/ticker">
+<pre>20210630010424237</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11080,7 +11080,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20210628154333308" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210630010147882" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11212,24 +11212,22 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars journalTitle={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
 &lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;thisdate&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitle&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;!-- today's events and changes --&gt;
-&lt;$wikify name=&quot;todays_timers&quot; text=&lt;&lt;matchtimers&gt;&gt;&gt;
-&lt;$set    name=&quot;todays_timers&quot; filter=&quot;[enlist&lt;todays_timers&gt;sort[]]&quot;&gt;
-&lt;$wikify name=&quot;todays_alarms&quot; text=&lt;&lt;matchalarms&gt;&gt;&gt;
-&lt;$set    name=&quot;todays_alarms&quot; filter=&quot;[enlist&lt;todays_alarms&gt;sort[]]&quot;&gt;
-&lt;$wikify name=&quot;todays_events&quot; text=&lt;&lt;matchevents&gt;&gt;&gt;
-&lt;$set    name=&quot;todays_events&quot; filter=&quot;[enlist&lt;todays_events&gt;sort[]]&quot;&gt;
-&lt;$set name=&quot;created&quot;       filter=&quot;[enlist&lt;tiddlers&gt;sameday:created&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;sort[]]&quot;&gt;
-&lt;$set name=&quot;modified&quot;      filter=&quot;[enlist&lt;tiddlers&gt;sameday:modified&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;!sort[modified]]&quot;&gt;
+&lt;$wikify name=&quot;todays_timers&quot;   text=&lt;&lt;matchitems timers&gt;&gt;&gt;
+&lt;$wikify name=&quot;todays_alarms&quot;   text=&lt;&lt;matchitems alarms&gt;&gt;&gt;
+&lt;$wikify name=&quot;todays_events&quot;   text=&lt;&lt;matchitems events&gt;&gt;&gt;
+&lt;$set name=&quot;created&quot;          filter=&quot;[enlist&lt;tiddlers&gt;sameday:created&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;sort[]]&quot;&gt;
+&lt;$set name=&quot;modified&quot;         filter=&quot;[enlist&lt;tiddlers&gt;sameday:modified&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;!sort[modified]]&quot;&gt;
 &lt;!-- grid button styles and tooltip --&gt;
 &lt;$vars todays_date=&lt;&lt;now &quot;YYYY0MM0DD&quot;&gt;&gt;&gt;
-&lt;$set    name=&quot;haschanges&quot; filter=&quot;[&lt;created&gt;!match[]] [&lt;modified&gt;!match[]] [&lt;journalTitle&gt;is[tiddler]]&quot;&gt;
-&lt;$set    name=&quot;changesbg&quot;  filter=&quot;[&lt;haschanges&gt;!match[]]&quot;          value={{{ [[background:]addsuffix&lt;changesbg&gt;addsuffix[;text-decoration:underline;]] }}} emptyValue=&quot;&quot;&gt;
-&lt;$set    name=&quot;eventsbg&quot;   filter=&quot;[&lt;todays_events&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;eventsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
-&lt;$set    name=&quot;timersbg&quot;   filter=&quot;[&lt;todays_timers&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;timersbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
-&lt;$set    name=&quot;alarmsbg&quot;   filter=&quot;[&lt;todays_alarms&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;alarmsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
-&lt;$set    name=&quot;todaybg&quot;    filter=&quot;[&lt;todays_date&gt;match&lt;date&gt;]&quot;      value={{{ [[background:]addsuffix&lt;todaybg&gt;addsuffix[;]]   }}} emptyValue=&quot;&quot;&gt;
-&lt;$wikify name=&quot;colors&quot;       text=&quot;&lt;$list filter=&lt;&lt;todays_events&gt;&gt;&gt;{{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]] }}} &lt;/$list&gt;&quot;&gt;
-&lt;$set    name=&quot;eventsbg&quot;   filter=&quot;[enlist&lt;colors&gt;first[]addprefix[background:]addsuffix[;]else&lt;eventsbg&gt;]&quot;&gt;
+&lt;$set    name=&quot;haschanges&quot;    filter=&quot;[&lt;created&gt;!match[]] [&lt;modified&gt;!match[]] [&lt;journalTitle&gt;is[tiddler]]&quot;&gt;
+&lt;$set    name=&quot;changesbg&quot;     filter=&quot;[&lt;haschanges&gt;!match[]]&quot;          value={{{ [[background:]addsuffix&lt;changesbg&gt;addsuffix[;text-decoration:underline;]] }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;eventsbg&quot;      filter=&quot;[&lt;todays_events&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;eventsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;timersbg&quot;      filter=&quot;[&lt;todays_timers&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;timersbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;alarmsbg&quot;      filter=&quot;[&lt;todays_alarms&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;alarmsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;todaybg&quot;       filter=&quot;[&lt;todays_date&gt;match&lt;date&gt;]&quot;      value={{{ [[background:]addsuffix&lt;todaybg&gt;addsuffix[;]]   }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;todays_events&quot; filter=&quot;[enlist&lt;todays_events&gt;sort[]]&quot;&gt;
+&lt;$wikify name=&quot;colors&quot;          text=&quot;&lt;$list filter=&lt;&lt;todays_events&gt;&gt;&gt;{{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]] }}} &lt;/$list&gt;&quot;&gt;
+&lt;$set    name=&quot;eventsbg&quot;      filter=&quot;[enlist&lt;colors&gt;first[]addprefix[background:]addsuffix[;]else&lt;eventsbg&gt;]&quot;&gt;
 &lt;$vars   btnstyle={{{ [[width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]] }}}&gt;
 &lt;$vars   btnstyle={{{ [&lt;btnstyle&gt;addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;timersbg&gt;addsuffix&lt;alarmsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
@@ -11244,7 +11242,9 @@ set ~AutoSaver interval:&lt;hr&gt;
    &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
    &lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
       &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-         @@display:block;max-height:$(popup_maxheight)$;overflow:auto; &lt;&lt;showday_timers&gt;&gt; &lt;&lt;showday_alarms&gt;&gt; &lt;&lt;showday_events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;@@
+         @@display:block;max-height:$(popup_maxheight)$;overflow:auto;
+            &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
+         @@
       &lt;/div&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
@@ -11272,44 +11272,14 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;&lt;controls_events_new id:&quot;/showday&quot; class:&quot;tc-button tt-button&quot; style:&quot;padding:0 0.25em !important;width:auto;&quot; tooltip:&quot;add an event&quot;&gt;&gt;
 \end
 
-\define showday_timers()
-&lt;$list filter=&quot;[enlist&lt;todays_timers&gt;limit[1]]&quot;&gt;
-   ''timers:'' (&lt;$count filter=&quot;[enlist&lt;todays_timers&gt;]&quot;/&gt;)&lt;br&gt;
-   &lt;$list filter=&quot;[enlist&lt;todays_timers&gt;]&quot;&gt;
-      &lt;$vars timer_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
-      &lt;$vars timer_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
-      &lt;$link to={{{ [&lt;timer_link&gt;!match[]else&lt;timer_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
-         @@font-style:normal;&lt;$text text=&lt;&lt;timer_text&gt;&gt;/&gt;@@
-      &lt;/$link&gt;
-      &lt;/$vars&gt;
-      &lt;/$vars&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;
-\end
-
-\define showday_alarms()
-&lt;$list filter=&quot;[enlist&lt;todays_alarms&gt;limit[1]]&quot;&gt;
-   ''alarms:'' (&lt;$count filter=&quot;[enlist&lt;todays_alarms&gt;]&quot;/&gt;)&lt;br&gt;
-   &lt;$list filter=&quot;[enlist&lt;todays_alarms&gt;]&quot;&gt;
-      &lt;$vars alarm_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
-      &lt;$vars alarm_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
-      &lt;$link to={{{ [&lt;alarm_link&gt;!match[]else&lt;alarm_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
-         @@font-style:normal;&lt;$text text=&lt;&lt;alarm_text&gt;&gt;/&gt;@@
-      &lt;/$link&gt;
-      &lt;/$vars&gt;
-      &lt;/$vars&gt;
-   &lt;/$list&gt;
-&lt;/$list&gt;
-\end
-
-\define showday_events()
-&lt;$list filter=&quot;[enlist&lt;todays_events&gt;limit[1]]&quot;&gt;
-   ''events:'' (&lt;$count filter=&quot;[enlist&lt;todays_events&gt;]&quot;/&gt;)&lt;br&gt;
-   &lt;$list filter=&quot;[enlist&lt;todays_events&gt;]&quot;&gt;
-      &lt;$vars event_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
-      &lt;$vars event_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
-      &lt;$link to={{{ [&lt;event_link&gt;!match[]else&lt;event_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
-         @@font-style:normal;&lt;$text text=&lt;&lt;event_text&gt;&gt;/&gt;@@
+\define showday_items(type)
+&lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;limit[1]]&quot;&gt;
+   ''$type$:'' (&lt;$count filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;/&gt;)&lt;br&gt;
+   &lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;&gt;
+      &lt;$vars this_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
+      &lt;$vars this_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
+      &lt;$link to={{{ [&lt;this_link&gt;!match[]else&lt;this_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
+         @@font-style:normal;&lt;$text text=&lt;&lt;this_text&gt;&gt;/&gt;@@
       &lt;/$link&gt;
       &lt;/$vars&gt;
       &lt;/$vars&gt;
@@ -11462,21 +11432,9 @@ set ~AutoSaver interval:&lt;hr&gt;
 \define getevents_timelineM() [range[$(M1)$,$(M2)$]]
 \define getevents_timelineD() [range[$(D1)$,$(D2)$]]
 
-\define matchtimers()
-&lt;$list filter=&quot;[enlist&lt;timers&gt;removeprefix&lt;date&gt;]&quot;&gt;
-   ``[[``{{{ [&lt;currentTiddler&gt;removeprefix[;]] }}}``]]``&lt;br&gt;
-&lt;/$list&gt;
-\end
-
-\define matchalarms()
-&lt;$list filter=&quot;[enlist&lt;alarms&gt;removeprefix&lt;date&gt;]&quot;&gt;
-   ``[[``{{{ [&lt;currentTiddler&gt;removeprefix[;]] }}}``]]``&lt;br&gt;
-&lt;/$list&gt;
-\end
-
-\define matchevents()
+\define matchitems(type)
 &lt;$vars annual_date={{{ [&lt;date&gt;split[]rest[4]join[]addprefix[....]] }}}&gt;
-&lt;$list filter=&quot;[enlist&lt;events&gt;removeprefix&lt;date&gt;] [enlist&lt;events&gt;removeprefix&lt;annual_date&gt;]&quot;&gt;
+&lt;$list filter=&quot;[enlist&lt;$type$&gt;removeprefix&lt;date&gt;] [enlist&lt;$type$&gt;removeprefix&lt;annual_date&gt;]&quot;&gt;
    ``[[``{{{ [&lt;currentTiddler&gt;removeprefix[;]] }}}``]]``&lt;br&gt;
 &lt;/$list&gt;
 \end
