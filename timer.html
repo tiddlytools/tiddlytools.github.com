@@ -10221,7 +10221,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210705091217942" list="TiddlyTools/Time/Info TiddlyTools/Time/Clocks SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20210705091217942" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12345,7 +12345,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 
 &lt;&lt;calendar&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20210705091058075" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
+<div created="20200719094540255" modified="20210705162949673" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
@@ -12361,10 +12361,10 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;&lt;clock_adjustForTimezone &quot;$type$&quot;&gt;&gt;
 \end
 
-\define clock_adjustForTimezone(type)
+\define clock_adjustForTimezone(type,-is-:&quot;compare:integer:&quot;,-pad-:&quot;addprefix[00]split[]last[2]join[]&quot;)
 &lt;$vars   time=&lt;&lt;now &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;&gt;
 &lt;!-- split time into parts --&gt;
-&lt;$vars     yy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
+&lt;$vars   yyyy={{{ [&lt;time&gt;split[]first[4]join[]]         }}}&gt;
 &lt;$vars     mm={{{ [&lt;time&gt;split[]first[6]last[2]join[]]  }}}&gt;
 &lt;$vars     dd={{{ [&lt;time&gt;split[]first[8]last[2]join[]]  }}}&gt;
 &lt;$vars     hh={{{ [&lt;time&gt;split[]first[10]last[2]join[]] }}}&gt;
@@ -12376,35 +12376,36 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;$vars offmin={{{ [&lt;TZD&gt;split[]last[2]join[]addprefix&lt;sign&gt;] }}}&gt;
 &lt;$vars     hh={{{ [&lt;hh&gt;add&lt;offhh&gt;]   }}}&gt;
 &lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
-&lt;!-- get days per month (adjust for leap year) --&gt;
-&lt;$vars dpm={{{ [&lt;yy&gt;remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
+&lt;!-- adjust days per month for leap year --&gt;
+&lt;$set name=&quot;leap&quot;  value={{{ [&lt;yyyy&gt;remainder[4]match[0]then[yes]] }}}&gt;
+&lt;$set name=&quot;dpm&quot;   value=&quot;31 28 31 30 31 30 31 31 30 31 30 31&quot;&gt; &lt;!-- days per month --&gt;
+&lt;$set name=&quot;dpm&quot;  filter=&quot;[&lt;leap&gt;!match[]]&quot; value=&quot;31 29 31 30 31 30 31 31 30 31 30 31&quot; emptyValue=&lt;&lt;dpm&gt;&gt;&gt;
+&lt;$set name=&quot;dm&quot;    value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$vars  hh={{{ [&lt;min&gt;compare::gteq[00]then&lt;hh&gt;else&lt;hh&gt;subtract[1]]    }}}&gt;
-&lt;$vars  hh={{{ [&lt;min&gt;compare::lteq[59]then&lt;hh&gt;else&lt;hh&gt;add[1]]         }}}&gt;
-&lt;$vars min={{{ [&lt;min&gt;compare::gteq[00]then&lt;min&gt;else&lt;min&gt;add[60]]      }}}&gt;
-&lt;$vars min={{{ [&lt;min&gt;compare::lteq[59]then&lt;min&gt;else&lt;min&gt;subtract[60]] }}}&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;hh&gt;subtract[1]]      }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;hh&gt;add[1]]           }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$lt[0]]&quot;    value={{{ [&lt;min&gt;add[60]]         }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
+&lt;$set name=&quot;min&quot;  filter=&quot;[&lt;min&gt;$-is-$gteq[60]]&quot; value={{{ [&lt;min&gt;subtract[60]]    }}} emptyValue=&lt;&lt;min&gt;&gt;&gt;
 &lt;!-- adjust date/hours for hours wraparound --&gt;
-&lt;$vars  dd={{{ [&lt;hh&gt;compare::gteq[00]then&lt;dd&gt;else&lt;dd&gt;subtract[1]]     }}}&gt;
-&lt;$vars  dd={{{ [&lt;hh&gt;compare::lteq[23]then&lt;dd&gt;else&lt;hh&gt;add[1]]          }}}&gt;
-&lt;$vars  hh={{{ [&lt;hh&gt;compare::gteq[00]then&lt;hh&gt;else&lt;hh&gt;add[24]]         }}}&gt;
-&lt;$vars  hh={{{ [&lt;hh&gt;compare::lteq[23]then&lt;hh&gt;else&lt;hh&gt;subtract[24]]    }}}&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$lt[0]]&quot;     value={{{ [&lt;dd&gt;subtract[1]]      }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;hh&gt;$-is-$gteq[24]]&quot;  value={{{ [&lt;dd&gt;add[1]]           }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$lt[0]]&quot;     value={{{ [&lt;hh&gt;add[24]]          }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
+&lt;$set name=&quot;hh&quot;   filter=&quot;[&lt;hh&gt;$-is-$gteq[24]]&quot;  value={{{ [&lt;hh&gt;subtract[24]]     }}} emptyValue=&lt;&lt;hh&gt;&gt;&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$vars  dm={{{ [enlist:raw&lt;dpm&gt;nth&lt;mm&gt;]                               }}}&gt;
-&lt;$vars  mm={{{ [&lt;dd&gt;compare::gteq[01]then&lt;mm&gt;else&lt;mm&gt;subtract[1]]     }}}&gt;
-&lt;$vars  mm={{{ [&lt;dd&gt;compare::lteq&lt;dm&gt;then&lt;mm&gt;else&lt;mm&gt;add[1]]          }}}&gt;
-&lt;$vars  dm={{{ [enlist:raw&lt;dpm&gt;nth&lt;mm&gt;]                               }}}&gt;
-&lt;$vars  dd={{{ [&lt;dd&gt;compare::gteq[01]then&lt;dd&gt;else&lt;dm&gt;]                }}}&gt;
-&lt;$vars  dd={{{ [&lt;dd&gt;compare::lteq&lt;dm&gt;then&lt;dd&gt;else[1]]                 }}}&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;mm&gt;subtract[1]]      }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [&lt;mm&gt;add[1]]           }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;dd&gt;$-is-$gt&lt;dm&gt;]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
 &lt;!-- adjust year/date/month for month wraparound --&gt;
-&lt;$vars  yy={{{ [&lt;mm&gt;compare::gteq[01]then&lt;yy&gt;else&lt;yy&gt;subtract[1]]     }}}&gt;
-&lt;$vars  yy={{{ [&lt;mm&gt;compare::lteq[12]then&lt;yy&gt;else&lt;yy&gt;add[1]]          }}}&gt;
-&lt;$vars  dd={{{ [&lt;mm&gt;compare::gteq[01]then&lt;dd&gt;else[31]]                }}}&gt;
-&lt;$vars  dd={{{ [&lt;mm&gt;compare::lteq[12]then&lt;dd&gt;else[01]]                }}}&gt;
-&lt;$vars  mm={{{ [&lt;mm&gt;compare::gteq[01]then&lt;mm&gt;else[12]]                }}}&gt;
-&lt;$vars  mm={{{ [&lt;mm&gt;compare::lteq[12]then&lt;mm&gt;else[01]]                }}}&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [&lt;yyyy&gt;subtract[1]]    }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;yyyy&quot; filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [&lt;yyyy&gt;add[1]]         }}} emptyValue=&lt;&lt;yyyy&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[31]]                 }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;dd&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;dd&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$lteq[0]]&quot;   value={{{ [[12]]                 }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
+&lt;$set name=&quot;mm&quot;   filter=&quot;[&lt;mm&gt;$-is-$gt[12]]&quot;    value={{{ [[1]]                  }}} emptyValue=&lt;&lt;mm&gt;&gt;&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
-&lt;$vars   mm={{{ [&lt;mm&gt;pad[2]] }}} dd={{{ [&lt;dd&gt;pad[2]] }}} hh={{{ [&lt;hh&gt;pad[2]] }}} min={{{ [&lt;min&gt;pad[2]] }}}&gt;
-&lt;$vars time={{{ [&lt;yy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
+&lt;$vars   mm={{{ [&lt;mm&gt;$-pad-$] }}} dd={{{ [&lt;dd&gt;$-pad-$] }}} hh={{{ [&lt;hh&gt;$-pad-$] }}} min={{{ [&lt;min&gt;$-pad-$] }}}&gt;
+&lt;$vars time={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
 &lt;$list filter=&quot;[[$type$]match[analog]]&quot;&gt;  &lt;&lt;clock_show_analog&gt;&gt;  &lt;/$list&gt;
 &lt;$list filter=&quot;[[$type$]match[digital]]&quot;&gt; &lt;&lt;clock_show_digital&gt;&gt; &lt;/$list&gt;
 \end
