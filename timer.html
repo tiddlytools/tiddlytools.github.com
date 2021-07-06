@@ -10225,8 +10225,8 @@ SampleSequence</pre>
 <div created="20210705224417963" modified="20210705224417963" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div created="20210705091059720" modified="20210705230305232" title="$:/state/tab/sidebar--595412856">
-<pre>TiddlyTools/Time/SidebarCalendar</pre>
+<div created="20210705091059720" modified="20210706040330623" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
@@ -12355,7 +12355,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 
 &lt;&lt;calendar&gt;&gt;</pre>
 </div>
-<div created="20200719094540255" modified="20210705230252313" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
+<div created="20200719094540255" modified="20210706041615383" tags="$:/tags/Macro" title="TiddlyTools/Time/Clocks">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define clock_show(type:&quot;analog&quot;,offset:&quot;&lt;&lt;now TZD&gt;&gt;&quot;,format)
@@ -12388,30 +12388,29 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;$vars    min={{{ [&lt;min&gt;add&lt;offmin&gt;] }}}&gt;
 &lt;!-- get days per month (adjust for leap year) --&gt;
 &lt;$vars dpm={{{ [&lt;yy&gt;remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
+&lt;$vars  dm={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;!-- adjust hours/minutes for minutes wraparound --&gt;
-&lt;$vars  hh={{{ [&lt;min&gt;compare:integer:gteq[00]then&lt;hh&gt;]  ~[&lt;hh&gt;subtract[1]]   }}}&gt;
-&lt;$vars  hh={{{ [&lt;min&gt;compare:integer:lteq[59]then&lt;hh&gt;]  ~[&lt;hh&gt;add[1]]        }}}&gt;
-&lt;$vars min={{{ [&lt;min&gt;compare:integer:gteq[00]then&lt;min&gt;] ~[&lt;min&gt;add[60]]      }}}&gt;
-&lt;$vars min={{{ [&lt;min&gt;compare:integer:lteq[59]then&lt;min&gt;] ~[&lt;min&gt;subtract[60]] }}}&gt;
+&lt;$vars  hh={{{ [&lt;min&gt;compare::gteq[00]then&lt;hh&gt;]  ~[&lt;hh&gt;subtract[1]]      }}}&gt;
+&lt;$vars  hh={{{ [&lt;min&gt;compare::lteq[59]then&lt;hh&gt;]  ~[&lt;hh&gt;add[1]]           }}}&gt;
+&lt;$vars min={{{ [&lt;min&gt;compare::gteq[00]then&lt;min&gt;] ~[&lt;min&gt;add[60]]         }}}&gt;
+&lt;$vars min={{{ [&lt;min&gt;compare::lteq[59]then&lt;min&gt;] ~[&lt;min&gt;subtract[60]]    }}}&gt;
 &lt;!-- adjust date/hours for hours wraparound --&gt;
-&lt;$vars  dd={{{ [&lt;hh&gt;compare:integer:gteq[00]then&lt;dd&gt;]   ~[&lt;dd&gt;subtract[1]]   }}}&gt;
-&lt;$vars  dd={{{ [&lt;hh&gt;compare:integer:lteq[23]then&lt;dd&gt;]   ~[&lt;dd&gt;add[1]]        }}}&gt;
-&lt;$vars  hh={{{ [&lt;hh&gt;compare:integer:gteq[00]then&lt;hh&gt;]   ~[&lt;hh&gt;add[24]]       }}}&gt;
-&lt;$vars  hh={{{ [&lt;hh&gt;compare:integer:lteq[23]then&lt;hh&gt;]   ~[&lt;hh&gt;subtract[24]]  }}}&gt;
+&lt;$vars  dd={{{ [&lt;hh&gt;compare::gteq[00]then&lt;dd&gt;]   ~[&lt;dd&gt;subtract[1]]      }}}&gt;
+&lt;$vars  dd={{{ [&lt;hh&gt;compare::lteq[23]then&lt;dd&gt;]   ~[&lt;dd&gt;add[1]]           }}}&gt;
+&lt;$vars  hh={{{ [&lt;hh&gt;compare::gteq[00]then&lt;hh&gt;]   ~[&lt;hh&gt;add[24]]          }}}&gt;
+&lt;$vars  hh={{{ [&lt;hh&gt;compare::lteq[23]then&lt;hh&gt;]   ~[&lt;hh&gt;subtract[24]]     }}}&gt;
 &lt;!-- adjust month/date for date wraparound --&gt;
-&lt;$vars  dm={{{ [enlist:raw&lt;dpm&gt;nth&lt;mm&gt;]                                      }}}&gt;
-&lt;$vars  mm={{{ [&lt;dd&gt;compare:integer:gteq[01]then&lt;mm&gt;]   ~[&lt;mm&gt;subtract[1]]   }}}&gt;
-&lt;$vars  mm={{{ [&lt;dd&gt;compare:integer:lteq&lt;dm&gt;then&lt;mm&gt;]   ~[&lt;mm&gt;add[1]]        }}}&gt;
-&lt;$vars  dm={{{ [enlist:raw&lt;dpm&gt;nth&lt;mm&gt;]                                      }}}&gt;
-&lt;$vars  dd={{{ [&lt;dd&gt;compare:integer:gteq[01]then&lt;dd&gt;]   ~[&lt;dm&gt;]              }}}&gt;
-&lt;$vars  dd={{{ [&lt;dd&gt;compare:integer:lteq&lt;dm&gt;then&lt;dd&gt;]   ~[[01]]              }}}&gt;
+&lt;$vars  mm={{{ [&lt;dd&gt;compare::gteq[01]then&lt;mm&gt;]   ~[&lt;mm&gt;subtract[1]]      }}}&gt;
+&lt;$vars  mm={{{ [&lt;dd&gt;compare::lteq&lt;dm&gt;then&lt;mm&gt;]   ~[&lt;mm&gt;add[1]]           }}}&gt;
+&lt;$vars  dd={{{ [&lt;dd&gt;compare::gteq[01]then&lt;dd&gt;]   ~[&lt;dpm&gt;split[ ]nth&lt;mm&gt;] }}}&gt;
+&lt;$vars  dd={{{ [&lt;dd&gt;compare::lteq&lt;dm&gt;then&lt;dd&gt;]   ~[[01]]                 }}}&gt;
 &lt;!-- adjust year/date/month for month wraparound --&gt;
-&lt;$vars  yy={{{ [&lt;mm&gt;compare:integer:gteq[01]then&lt;yy&gt;]   ~[&lt;yy&gt;subtract[1]]   }}}&gt;
-&lt;$vars  yy={{{ [&lt;mm&gt;compare:integer:lteq[12]then&lt;yy&gt;]   ~[&lt;yy&gt;add[1]]        }}}&gt;
-&lt;$vars  dd={{{ [&lt;mm&gt;compare:integer:gteq[01]then&lt;dd&gt;]   ~[[31]]              }}}&gt;
-&lt;$vars  dd={{{ [&lt;mm&gt;compare:integer:lteq[12]then&lt;dd&gt;]   ~[[01]]              }}}&gt;
-&lt;$vars  mm={{{ [&lt;mm&gt;compare:integer:gteq[01]then&lt;mm&gt;]   ~[[12]]              }}}&gt;
-&lt;$vars  mm={{{ [&lt;mm&gt;compare:integer:lteq[12]then&lt;mm&gt;]   ~[[01]]              }}}&gt;
+&lt;$vars  yy={{{ [&lt;mm&gt;compare::gteq[01]then&lt;yy&gt;]   ~[&lt;yy&gt;subtract[1]]      }}}&gt;
+&lt;$vars  yy={{{ [&lt;mm&gt;compare::lteq[12]then&lt;yy&gt;]   ~[&lt;yy&gt;add[1]]           }}}&gt;
+&lt;$vars  dd={{{ [&lt;mm&gt;compare::gteq[01]then&lt;dd&gt;]   ~[[31]]                 }}}&gt;
+&lt;$vars  dd={{{ [&lt;mm&gt;compare::lteq[12]then&lt;dd&gt;]   ~[[01]]                 }}}&gt;
+&lt;$vars  mm={{{ [&lt;mm&gt;compare::gteq[01]then&lt;mm&gt;]   ~[[12]]                 }}}&gt;
+&lt;$vars  mm={{{ [&lt;mm&gt;compare::lteq[12]then&lt;mm&gt;]   ~[[01]]                 }}}&gt;
 &lt;!-- zero-pad and assemble new time --&gt;
 &lt;$vars   mm={{{ [&lt;mm&gt;pad[2]] }}} dd={{{ [&lt;dd&gt;pad[2]] }}} hh={{{ [&lt;hh&gt;pad[2]] }}} min={{{ [&lt;min&gt;pad[2]] }}}&gt;
 &lt;$vars time={{{ [&lt;yy&gt;addsuffix&lt;mm&gt;addsuffix&lt;dd&gt;addsuffix&lt;hh&gt;addsuffix&lt;min&gt;addsuffix&lt;ssxxx&gt;] }}}&gt;
