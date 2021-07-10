@@ -155,8 +155,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10088,29 +10086,6 @@ TiddlyTools/FilterGenerators/Titles
 TiddlyTools/FilterGenerators/Tags
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[$:/build]]
-# [[$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home]]
-# [[$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp]]
-# [[$:/config/Tiddlers/TitleLinks]]
-# [[$:/config/TiddlyTools/PowerSearch]]
-# [[$:/DefaultTiddlers]]
-# [[$:/isEncrypted]]
-# [[$:/SiteSubtitle]]
-# [[$:/SiteTitle]]
-# [[$:/status/RequireReloadDueToPluginChange]]
-# [[$:/themes/tiddlywiki/snowwhite]]
-# [[$:/themes/tiddlywiki/vanilla]]
-# [[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]]
-# [[$:/themes/tiddlywiki/vanilla/settings/editorfontfamily]]
-# [[TiddlyTools/FilterGenerators/PowerSearch]]
-# [[TiddlyTools/FilterGenerators/TagCloud]]
-# [[TiddlyTools/FilterGenerators/Tags]]
-# [[TiddlyTools/FilterGenerators/Titles]]
-# [[TiddlyTools/Macros/edit-list]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10126,7 +10101,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210710143703079" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210710143703079" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10244,7 +10219,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210619031031293" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210710150132203" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10387,14 +10362,14 @@ regexp
 \end
 
 \define doReset(id)
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
+&lt;$button tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
    &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;$id$&quot; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doResetAll()
 &lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
+&lt;$button tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
    &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag field term flags sort&quot;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&lt;&lt;currentTiddler&gt;&gt; /&gt;
    &lt;/$list&gt;
@@ -10402,7 +10377,7 @@ regexp
 \end
 
 \define doExport()
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/export&quot; tooltip=&quot;export matching tiddlers&quot;&gt; {{$:/core/images/export-button}}
+&lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/export&quot; tooltip=&quot;export matching tiddlers&quot;&gt; {{$:/core/images/export-button}}
    &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$:/temp/PowerSearch/export&quot;
       subtitle=&quot;Confirm Export&quot; text=&lt;&lt;doExport_text&gt;&gt; footer=&lt;&lt;doExport_footer&gt;&gt; /&gt;
 &lt;/$button&gt;
@@ -10432,17 +10407,17 @@ regexp
 &lt;$vars format={{{ [[$:/temp/PowerSearch/export/format]get[text]else[$:/core/templates/exporters/JsonFile]] }}}
      filename={{{ [[$:/temp/PowerSearch/export/filename]get[text]else[tiddlers]] }}}&gt;
 &lt;$vars target={{{ [&lt;format&gt;get[extension]addprefix&lt;filename&gt;] }}}&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; export
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; export
    &lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&lt;&lt;format&gt;&gt; exportFilter=&lt;&lt;filter_exclude&gt;&gt; filename=&lt;&lt;target&gt;&gt; /&gt;
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doDelete()
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/delete&quot; tooltip=&quot;Delete matching tiddlers&quot;&gt; {{$:/core/images/delete-button}}
+&lt;$button message=&quot;tm-modal&quot; param=&quot;$:/temp/PowerSearch/delete&quot; tooltip=&quot;Delete matching tiddlers&quot;&gt; {{$:/core/images/delete-button}}
    &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&quot;$:/temp/PowerSearch/delete&quot;
       subtitle=&quot;Confirm Deletion&quot; text=&lt;&lt;doDelete_text&gt;&gt; footer=&lt;&lt;doDelete_footer&gt;&gt; /&gt;
 &lt;/$button&gt;
@@ -10459,17 +10434,17 @@ regexp
 
 \define doDelete_footer()
 \define filter_exclude() $(filter_exclude)$
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; cancel
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; delete
+&lt;$button message=&quot;tm-close-tiddler&quot;&gt; delete
    &lt;$action-deletetiddler $filter=&lt;&lt;filter_exclude&gt;&gt; /&gt;
    &lt;$action-deletetiddler $filter=&quot;[prefix[$:/temp/PowerSearch]]&quot; /&gt;
 &lt;/$button&gt;
 \end
 
 \define doOptions()
-&lt;$button popup=&lt;&lt;qualify $(options)$&gt;&gt; class=&quot;tc-button tt-button&quot; tooltip=&quot;Set display options&quot;&gt;
+&lt;$button popup=&lt;&lt;qualify $(options)$&gt;&gt; tooltip=&quot;Set display options&quot;&gt;
    {{$:/core/images/options-button}}
 &lt;/$button&gt;
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $(options)$&gt;&gt; position=&quot;below&quot;
@@ -10485,13 +10460,13 @@ regexp
 
 \define doToggleList()
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Show results&quot;&gt;
+   &lt;$button tooltip=&quot;Show results&quot;&gt;
       {{$:/core/images/chevron-down}}
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; show=&quot;show&quot; /&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal state=&lt;&lt;show&gt;&gt; type=&quot;match&quot; text=&quot;show&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;Hide results&quot;&gt;
+   &lt;$button tooltip=&quot;Hide results&quot;&gt;
       {{$:/core/images/chevron-up}}
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;show&quot; /&gt;
    &lt;/$button&gt;
