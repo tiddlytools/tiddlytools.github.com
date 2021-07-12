@@ -10101,7 +10101,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20210712152333087" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210712153144948" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,7 +10219,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210712151841152" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210712152925935" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10455,7 +10455,7 @@ regexp
       input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
        max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
           columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;&lt;br&gt;
-      &lt;center&gt;&lt;$checkbox tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot;&gt; use modal inputs &lt;/$checkbox&gt;&lt;/center&gt;
+      &lt;center&gt;&lt;$checkbox tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot; class=&quot;powersearch_checkboxwidth&quot;&gt; use modal inputs &lt;/$checkbox&gt;&lt;/center&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -10478,8 +10478,9 @@ regexp
 \define setStyles()
 &lt;style&gt;
 .powersearch_borderless, .powersearch_borderless table, .powersearch_borderless tr, .powersearch_borderless td { border:0; padding:0 0.1em; margin:0; }
-.powersearch_editwidth   { width:$(width)$ !important; }
-.powersearch_optionwidth { width:5em !important; }
+.powersearch_editwidth           { width:$(width)$ !important; }
+.powersearch_optionwidth         { width:5em       !important; }
+.powersearch_checkboxwidth input { width:auto      !important; }
 &lt;/style&gt;
 \end
 
