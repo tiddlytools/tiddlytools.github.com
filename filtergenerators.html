@@ -212,7 +212,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" created="20210617075024384" modified="20210712065930859" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
+<div columns="3" confirm="" created="20210617075024384" modified="20210712151902321" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10101,7 +10101,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210712092259910" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210712092259910" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,12 +10219,12 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210712012656930" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210712151841152" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
 
-\define default_width()   100%
+\define default_width()   15em
 \define default_columns() 1
 \define default_height()  auto
 
@@ -10252,71 +10252,67 @@ regexp
 
 \define getTid()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tids&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 \define getPre()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;prefix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!prefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotPre()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notprefix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notprefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;suffix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!suffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notsuffix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notsuffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tag&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!tag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotTag()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;nottag&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;field&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;flags&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;sort&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
 \define getTerm()
-&lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt;
-&lt;!--
-&lt;div style=&quot;min-width:10em&quot;&gt;
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;term&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; width=&quot;$(width)$&quot; placeholder=&quot;(none)&quot; confirm=&quot;yes&quot;/&gt;
-&lt;/div&gt;
---&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;term&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; width=&quot;$(width)$&quot; confirm=&lt;&lt;confirm&gt;&gt; placeholder=&quot;(none)&quot;/&gt;
+&lt;!-- &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt; --&gt;
 \end
 
 \define preFilter()      prefix[$(pre)$]
@@ -10458,7 +10454,8 @@ regexp
    &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:right;&quot;&gt;
       input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
        max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
-          columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;
+          columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;&lt;br&gt;
+      &lt;center&gt;&lt;$checkbox tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot;&gt; use modal inputs &lt;/$checkbox&gt;&lt;/center&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -10506,7 +10503,8 @@ regexp
 &lt;/$set&gt;
 \end
 
-&lt;$vars width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;]   }}}&gt;
+&lt;$vars width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;] }}}
+     confirm={{{ [&lt;config&gt;get[confirm]]                  }}}&gt;
    &lt;&lt;setStyles&gt;&gt; &lt;&lt;getInputs&gt;&gt;
 &lt;/$vars&gt;
 
