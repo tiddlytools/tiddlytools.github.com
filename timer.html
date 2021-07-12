@@ -167,6 +167,10 @@ Error message and password prompt
 
 <li>$:/state/advancedsearch/currentTab</li>
 
+<li>$:/state/input/edit-date/EditDateExample/date</li>
+
+<li>$:/state/input/edit-date/EditDateExample3/date</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -188,8 +192,6 @@ Error message and password prompt
 <li>Canada_Holidays.ics</li>
 
 <li>Carl Sagan (1934-1996)</li>
-
-<li>EditDateExample</li>
 
 <li>Marie Curie (1867-1934)</li>
 
@@ -10222,6 +10224,12 @@ SampleSequence</pre>
 <div created="20210705224417963" modified="20210705224417963" title="$:/state/advancedsearch/currentTab">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
+<div created="20210712023453438" modified="20210712024755258" title="$:/state/input/edit-date/EditDateExample/date">
+<pre></pre>
+</div>
+<div created="20210712025006944" modified="20210712025006944" title="$:/state/input/edit-date/EditDateExample3/date">
+<pre></pre>
+</div>
 <div created="20210705224417963" modified="20210705224417963" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
@@ -10231,7 +10239,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div created="20210712022844512" list="TiddlyTools/Time/EditDate TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20210712025024382" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10786,9 +10794,6 @@ END:VCALENDAR</pre>
 <div created="20201005214452835" modified="20201017223136808" tags="SampleTimeline" timeline.end="19961220" timeline.start="19341109" timeline.type="annual" title="Carl Sagan (1934-1996)">
 <pre>https://en.wikipedia.org/wiki/Carl_Sagan&lt;br&gt;
 Born: November 9, 1934; Died: December 20, 1996</pre>
-</div>
-<div title="EditDateExample">
-<pre></pre>
 </div>
 <div created="20201005214209281" modified="20201017223136809" tags="SampleTimeline" timeline.end="19340704" timeline.start="18671107" timeline.type="annual" title="Marie Curie (1867-1934)">
 <pre>https://en.wikipedia.org/wiki/Marie_Curie&lt;br&gt;
@@ -12596,7 +12601,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;$set  name=&quot;done&quot; filter=&quot;[&lt;done&gt;!match[]]&quot; value=&lt;&lt;done&gt;&gt; emptyValue=&lt;&lt;default_done&gt;&gt;&gt;
 &lt;&lt;getCountdown&gt;&gt; &lt;&lt;getMessage&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;reset&gt;&gt;</pre>
 </div>
-<div created="20200913103134997" modified="20201019144434492" tags="$:/tags/Macro" title="TiddlyTools/Time/EditDate">
+<div created="20200913103134997" modified="20210712025103594" tags="$:/tags/Macro" title="TiddlyTools/Time/EditDate">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define edit-date-selectday()
@@ -12624,22 +12629,24 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;$vars inputid={{{ [[$:/state/input/edit-date/]addsuffix&lt;tiddler&gt;addsuffix[/]addsuffix&lt;target&gt;] }}}
        popupid={{{ [[$:/state/popup/edit-date/]addsuffix&lt;tiddler&gt;addsuffix[/]addsuffix&lt;target&gt;] }}}
         format=&quot;$format$&quot; thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; &gt;
-&lt;$vars yyyy={{{ [&lt;inputid&gt;get[year]else&lt;thisyear&gt;] }}} mm={{{ [&lt;inputid&gt;get[month]else&lt;thismonth&gt;] }}}&gt;
+&lt;$vars    save=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tiddler&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value={{{ [&lt;inputid&gt;get[text]] }}}/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  cancel=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;inputid&gt;&gt; $field=&quot;text&quot; $value=&lt;&lt;value&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  delete=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tiddler&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;
+                  &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;inputid&gt;&gt; $field=&quot;text&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars   close=&quot;&quot;&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+&lt;$vars    yyyy={{{ [&lt;inputid&gt;get[year]else&lt;thisyear&gt;] }}} mm={{{ [&lt;inputid&gt;get[month]else&lt;thismonth&gt;] }}}&gt;
+&lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;close&gt;&gt;&quot;&quot;&quot;&gt;
+&lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;cancel&gt;&gt;&lt;&lt;close&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$edit-text tiddler=&lt;&lt;inputid&gt;&gt; field=&quot;text&quot; default=&lt;&lt;value&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
    tabindex=&quot;$tabindex$&quot; tag=&quot;$tag$&quot; type=&quot;$type$&quot; size=&quot;$size$&quot; focus=&quot;$focus$&quot; autoHeight=&quot;$autoHeight$&quot; minHeight=&quot;$minHeight$&quot; rows=&quot;$rows$&quot;
    class=&quot;tc-popup-handle $class$&quot; focusPopup=&lt;&lt;popupid&gt;&gt; /&gt;
+&lt;/$keyboard&gt;
+&lt;/$keyboard&gt;
 &lt;$list filter=&quot;[&lt;popupid&gt;is[tiddler]] [&lt;tiddler&gt;is[tiddler]then&lt;inputid&gt;get[text]!match&lt;value&gt;] +[limit[1]]&quot;&gt;
    &lt;span style=&quot;position:absolute;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save input  &quot; style=&quot;display:inline-block;&quot;&gt; {{$:/core/images/done-button}}
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tiddler&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value={{{ [&lt;inputid&gt;get[text]] }}} /&gt;
-   &lt;/$button&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel input&quot; style=&quot;display:inline-block;&quot;&gt; {{$:/core/images/close-button}}
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;inputid&gt;&gt; $field=&quot;text&quot; $value=&lt;&lt;value&gt;&gt; /&gt;
-   &lt;/$button&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;delete field&quot; style=&quot;display:inline-block;&quot;&gt; {{$:/core/images/delete-button}}
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tiddler&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; /&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;inputid&gt;&gt; $field=&quot;text&quot; /&gt;
-   &lt;/$button&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save input  &quot;&gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;  &lt;&lt;close&gt;&gt; &lt;/$button&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;cancel&gt;&gt;&lt;&lt;close&gt;&gt; &lt;/$button&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;delete field&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;delete&gt;&gt;&lt;&lt;close&gt;&gt; &lt;/$button&gt;
    &lt;/span&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[[TiddlyTools/Time/Calendar]is[tiddler]] +[[$type$]match:caseinsensitive[calendar]]&quot;&gt;
@@ -12695,7 +12702,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 * Use ``&lt;&lt;edit-date tiddler:tiddlername field:fieldname type:calendar&gt;&gt;`` to embed a date input control in tiddler content.
 * Unlike the ``&lt;$edit-text&gt;`` widget, the ``&lt;&lt;edit-date&gt;&gt;`` macro allows you to input values that are stored in the current tiddler.
 * When the field receives the input focus, &quot;edit-in-place&quot; buttons are displayed. Changes to the field value are not updated until one of these buttons is pressed:
-** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt; cancels changes to the field value. &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
+** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; cancels changes to the field value. &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
 * When ``type:calendar`` is used and [[TiddlyTools/Time/Calendar]] is installed, a monthly calendar is displayed:
 ** &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
 ** Click a date to update the field value using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
@@ -12735,7 +12742,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210628112911628" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210712022839244" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
 
@@ -13006,7 +13013,7 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * See [[TiddlyTools/Time/EditDate]] for default and optional parameters.
 * Unlike the ``&lt;$edit-text&gt;`` widget, the ``&lt;&lt;edit-date&gt;&gt;`` macro allows you to input values that are stored in the current tiddler.
 * When the field receives the input focus, &quot;edit-in-place&quot; buttons are displayed. Changes to the field value are not updated until one of these buttons is pressed:
-** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/close-button}}&lt;/$button&gt; cancels changes to the field value. &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
+** &lt;$button tooltip=&quot;save input  &quot;&gt;{{$:/core/images/done-button}}&lt;/$button&gt; saves changes to the field value. &lt;$button tooltip=&quot;cancel input&quot;&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; cancels changes to the field value. &lt;$button tooltip=&quot;delete field&quot;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; deletes the field value.
 * When ``type:calendar`` is used and [[TiddlyTools/Time/Calendar]] is installed, a monthly calendar is displayed:
 ** &lt;$button&gt;{{$:/core/images/chevron-left}}&lt;/$button&gt; displays the previous month. &lt;$button&gt;{{$:/core/images/chevron-right}}&lt;/$button&gt; displays the next month.
 ** Click a date to set the field value using the indicated [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]].
