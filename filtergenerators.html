@@ -10101,7 +10101,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20210712021935256" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210712021935256" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10657,7 +10657,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210712013010410" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210712022329358" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10725,9 +10725,9 @@ __find titles containing__:&lt;br&gt;
       &lt;/$keyboard&gt;
       &lt;span style=&quot;position:relative;&quot;&gt;
       &lt;span style=&quot;position:absolute;left:calc($width$ + 0.2em);WFFLtop:-1px;width:7em;&quot;&gt;
-      &lt;$button tooltip=&quot;delete input&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
-      &lt;$button tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;          &lt;/$button&gt;
       &lt;$button tooltip=&quot;save input&quot;&gt;   {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;done&gt;&gt;  &lt;/$button&gt;
+      &lt;$button tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;          &lt;/$button&gt;
+      &lt;$button tooltip=&quot;delete input&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
       &lt;/span&gt;
       &lt;/span&gt;
    &lt;/$list&gt;
@@ -10785,7 +10785,7 @@ The edit-list macro provides a user interface in the browser that combines the f
 |focus       |Set to &quot;yes&quot; to automatically focus the input after creation|
 |focusPopup  |Set to &quot;yes&quot; to automatically show the select list when the input gets focus|
 |goto        |If set to &quot;yes&quot;, when the input gets focus then pressing &lt;kbd&gt;enter&lt;/kbd&gt; will view/navigate to a tiddler whose title matches the current input|
-|confirm     |If set to &quot;yes&quot;, when the input gets focus then &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; (delete/cancel/save) buttons appear. The input is not changed unless &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; or &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; is pressed|
+|confirm     |If set to &quot;yes&quot;, when the input gets focus then &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; (save/cancel/delete) buttons appear. The input is not changed unless &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; is pressed|
 
 !Examples
 
