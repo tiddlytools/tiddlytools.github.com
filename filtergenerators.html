@@ -212,7 +212,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="yes" created="20210617075024384" modified="20210712213929812" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
+<div columns="3" confirm="" created="20210617075024384" modified="20210713035516632" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10219,7 +10219,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210712152925935" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210713035500166" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10323,7 +10323,7 @@ regexp
 \define nottagFilter()   !tag[$(nottag)$]
 \define searchFilter()   search:$(field)$:$(flags)$[$(term)$]
 \define filter()         [all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]
-\define filter_exclude() $(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]]
+\define filter_exclude() $(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp]search:title[PowerSearch]]
 
 \define doSearch()
 &lt;$vars preFilter={{{ [&lt;pre&gt;!is[blank]then&lt;preFilter&gt;]         }}}
