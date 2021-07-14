@@ -155,6 +155,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10086,6 +10088,11 @@ TiddlyTools/FilterGenerators/Titles
 TiddlyTools/FilterGenerators/Tags
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Macros/edit-list]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10101,7 +10108,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210714172736586" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210714172736586" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,7 +10226,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210714173206203" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210714210035871" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10464,7 +10471,7 @@ regexp
       input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
        max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
           columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;&lt;br&gt;
-           &lt;center&gt;&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot; class=&quot;powersearch_checkboxwidth&quot;&gt; confirm changes &lt;/$checkbox&gt;&lt;/center&gt;
+           &lt;center&gt;&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot; class=&quot;powersearch_checkboxwidth&quot;&gt; use modal input &lt;/$checkbox&gt;&lt;/center&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -10665,7 +10672,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210714173053497" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210714210148328" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10675,6 +10682,7 @@ __find titles containing__:&lt;br&gt;
    placeholder:&quot;&quot;,
          focus:&quot;&quot;,
     focusPopup:&quot;&quot;,
+  cancelPopups:&quot;yes&quot;,
         filter:&quot;&quot;,
           find:&quot;&quot;,
          width:&quot;15em&quot;,
@@ -10730,7 +10738,7 @@ __find titles containing__:&lt;br&gt;
    &lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
    &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
       default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-      focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;yes&quot;/&gt;
+      focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
    &lt;/$keyboard&gt;
 &lt;/$list&gt;
 &lt;!-- MODAL INPUT --&gt;
@@ -10740,7 +10748,7 @@ __find titles containing__:&lt;br&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;!is[tiddler]]&quot; variable=&quot;inactive&quot;&gt;
       &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
          default=&lt;&lt;input&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-         focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;yes&quot;/&gt;
+         focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
       &lt;$button class=&quot;selectCombo_$id$ tc-popup-handle tc-btn-invisible&quot; set=&lt;&lt;temp&gt;&gt; setTo=&lt;&lt;input&gt;&gt;&gt;&amp;nbsp;&lt;/$button&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]]&quot; variable=&quot;active&quot;&gt;
@@ -10748,7 +10756,7 @@ __find titles containing__:&lt;br&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;done&gt;&gt;&gt;
       &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; tiddler=&lt;&lt;temp&gt;&gt; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
          default=&lt;&lt;input&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-         focus=&quot;yes&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;yes&quot;/&gt;
+         focus=&quot;yes&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
       &lt;/$keyboard&gt;
       &lt;/$keyboard&gt;
       &lt;span style=&quot;position:relative;&quot;&gt;&lt;span style=&quot;position:absolute;left:calc($width$ + 0.2em);width:7em;&quot;&gt;
@@ -10807,6 +10815,7 @@ The edit-list macro provides a user interface in the browser that combines the f
 |placeholder |Text to display when the field or index doesn't exist or is blank|
 |focus       |Set to &quot;yes&quot; to automatically focus the input after creation|
 |focusPopup  |Set to &quot;yes&quot; to automatically show the selection list when the input gets focus|
+|cancelPopups|Set to &quot;no&quot; to prevent closing of other popups. Useful if the edit-list macro itself is contained within a popup (defaults to `yes`)|
 |filter      |A filter used to determine the contents of the selection list.  If no filter is specified, no selection list is displayed|
 |find        |Set to &quot;yes&quot; to progressively filter the selection list to show only items that match the current input|
 |width       |CSS width of edit-text and select widgets (defaults to `15em`)|
@@ -10816,6 +10825,10 @@ The edit-list macro provides a user interface in the browser that combines the f
 |tooltip     |Tooltip to show when hovering over edit-text widget|
 |goto        |When set to &quot;yes&quot; and the input has focus, press &lt;kbd&gt;enter&lt;/kbd&gt; to open the tiddler whose title matches the current input|
 |confirm     |When set to &quot;yes&quot; and the input gets focus, &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;&lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; (save/cancel/clear) buttons will appear. Press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; to update the stored field/index value|
+
+!Notes
+
+`cancelPopups=no` can also be set using a variable (`&lt;$vars cancelPopups=&quot;no&quot;&gt;`) or a macro (e.g., `\define cancelPopups() no`).  This permits more flexible control of the popup behavior when multiple instances of the edit-list macro are contained within several layers of popups.
 
 !Examples
 
