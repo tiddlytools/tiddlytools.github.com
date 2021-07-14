@@ -212,8 +212,10 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210714023113116" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
-<pre>{}</pre>
+<div columns="3" confirm="" created="20210617075024384" modified="20210714052957742" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
+<pre>{
+    &quot;filter&quot;: &quot;[all[tiddlers]has:field[caption]sort[title]]&quot;
+}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10101,7 +10103,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20210714043813552" list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210714043844241" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,7 +10221,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210714030719898" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210714052820782" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10228,8 +10230,8 @@ TiddlyTools/FilterGenerators/Tags
 \define default_columns() 1
 \define default_height()  auto
 
-\define tidList()    tiddlers shadows system orphans tiddlers+shadows system+shadows
-\define fieldsList() title title,text title,tags title,text,tags text text,tags tags *
+\define tidList()    tiddlers shadows tiddlers+shadows tags orphans missing
+\define fieldsList() title title,text title,tags title,text,tags text text,tags tags created creator modified modifier *
 \define sortList()   title created modified
 \define flagsList()
 words      words,casesensitive   words,casesensitive,anchored   words,anchored
@@ -10292,6 +10294,12 @@ regexp
    filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$##nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
+\define getHas()
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;has&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;has&quot;
+   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   filter=&quot;[enlist&lt;allFields&gt;]&quot; placeholder=&quot;(none)&quot;/&gt;
+\end
+
 \define getFields()
 &lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;field&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
@@ -10321,8 +10329,9 @@ regexp
 \define notsuffFilter()  !suffix[$(notsuff)$]
 \define tagFilter()      tag[$(tagval)$]
 \define nottagFilter()   !tag[$(nottag)$]
+\define hasFilter()      has:field[$(has)$]
 \define searchFilter()   search:$(field)$:$(flags)$[$(term)$]
-\define filter()         [all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(searchFilter)$sort[$(sort)$]]
+\define filter()         [all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(hasFilter)$$(searchFilter)$sort[$(sort)$]]
 \define filter_exclude() $(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp]search:title[PowerSearch]]
 
 \define doSearch()
@@ -10332,6 +10341,7 @@ regexp
    notsuffFilter={{{ [&lt;notsuff&gt;!is[blank]then&lt;notsuffFilter&gt;] }}}
        tagFilter={{{ [&lt;tagval&gt;!is[blank]then&lt;tagFilter&gt;]      }}}
     nottagFilter={{{ [&lt;nottag&gt;!is[blank]then&lt;nottagFilter&gt;]   }}}
+       hasFilter={{{ [&lt;has&gt;!is[blank]then&lt;hasFilter&gt;]         }}}
     searchFilter={{{ [&lt;term&gt;!is[blank]then&lt;searchFilter&gt;]     }}}&gt;
 &lt;&lt;doSearch_showresults&gt;&gt;
 \end
@@ -10371,7 +10381,7 @@ regexp
 \define doResetAll()
 &lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
 &lt;$button tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag field term flags sort&quot;&gt;
+   &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag has field term flags sort&quot;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;
    &lt;/$list&gt;
 &lt;/$button&gt;
@@ -10478,15 +10488,16 @@ regexp
 \define setStyles()
 &lt;style&gt;
 .powersearch_borderless, .powersearch_borderless table, .powersearch_borderless tr, .powersearch_borderless td { border:0; padding:0 0.1em; margin:0; }
-.powersearch_editwidth           { width:$(width)$ !important; }
-.powersearch_optionwidth         { width:5em       !important; }
-.powersearch_checkboxwidth input { width:auto      !important; }
+.powersearch_editwidth           { width:$(width)$        !important; }
+.powersearch_optionwidth         { width:5em              !important; }
+.powersearch_checkboxwidth input { width:auto             !important; }
 &lt;/style&gt;
 \end
 
 \define getInputs()
-&lt;$set    name=&quot;tagsList&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
-&lt;$wikify name=&quot;shadowList&quot; text=&lt;&lt;getShadowList&gt;&gt;&gt;
+&lt;$set    name=&quot;tagsList&quot;  filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
+&lt;$set    name=&quot;allFields&quot; filter=&quot;[all[tiddlers+shadows]fields[]sort[]]&quot;&gt;
+&lt;$wikify name=&quot;shadowList&quot;  text=&lt;&lt;getShadowList&gt;&gt;&gt;
 
 |powersearch_borderless|k
 |     search all|&lt;&lt;getTid    &gt;&gt; |&lt;&lt;doReset tids&gt;&gt;      |
@@ -10496,6 +10507,7 @@ regexp
 | exclude suffix|&lt;&lt;getNotSuff&gt;&gt; |&lt;&lt;doReset notsuffix&gt;&gt; |
 |      match tag|&lt;&lt;getTag    &gt;&gt; |&lt;&lt;doReset tag&gt;&gt;       |
 |    exclude tag|&lt;&lt;getNotTag &gt;&gt; |&lt;&lt;doReset nottag&gt;&gt;    |
+|      has field|&lt;&lt;getHas    &gt;&gt; |&lt;&lt;doReset has&gt;&gt;       |
 |  search fields|&lt;&lt;getFields &gt;&gt; |&lt;&lt;doReset field&gt;&gt;     |
 |    using flags|&lt;&lt;getFlags  &gt;&gt; |&lt;&lt;doReset flags&gt;&gt;     |
 |        sort by|&lt;&lt;getSort   &gt;&gt; |&lt;&lt;doReset sort&gt;&gt;      |
@@ -10516,6 +10528,7 @@ regexp
  notsuff={{{ [&lt;config&gt;getindex[notsuffix]]                     }}}
   tagval={{{ [&lt;config&gt;getindex[tag]]                           }}}
   nottag={{{ [&lt;config&gt;getindex[nottag]]                        }}}
+     has={{{ [&lt;config&gt;getindex[has]]                           }}}
    field={{{ [&lt;config&gt;getindex[field]]    ~[[title,text,tags]] }}}
    flags={{{ [&lt;config&gt;getindex[flags]]    ~[[words]]           }}}
     term={{{ [&lt;config&gt;getindex[term]]                          }}}
