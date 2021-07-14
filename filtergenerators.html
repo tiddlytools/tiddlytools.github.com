@@ -212,8 +212,8 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210713035516632" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
-<pre></pre>
+<div columns="3" confirm="" created="20210617075024384" modified="20210714023113116" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
+<pre>{}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10095,7 +10095,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
-<div created="20210705093359199" modified="20210712074520541" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210714013312558" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -10219,7 +10219,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210713035500166" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210714030719898" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10251,68 +10251,68 @@ regexp
 \end
 
 \define getTid()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tids&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tid&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tids&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 \define getPre()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;prefix&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;pre&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;prefix&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!prefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$##prefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotPre()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notprefix&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notpre&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notprefix&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notprefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$##notprefix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getSuff()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;suffix&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;suff&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;suffix&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!suffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$##suffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotSuff()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;notsuffix&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;notsuff&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notsuffix&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$!!notsuffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;shadowList&gt;] +[search:title{$(config)$##notsuffix}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;tag&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;tag&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tag&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!tag}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$##tag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotTag()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;nottag&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;nottag&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;nottag&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
-   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$!!nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
+   filter=&quot;[enlist&lt;tagsList&gt;] +[search:title{$(config)$##nottag}]&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;field&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;field&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;field&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;flags&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;flags&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;flags&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;sort&quot;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;sort&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;sort&quot;
    width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;true&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
 \define getTerm()
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;term&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; width=&quot;$(width)$&quot; confirm=&lt;&lt;confirm&gt;&gt; placeholder=&quot;(none)&quot;/&gt;
-&lt;!-- &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt; --&gt;
+&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;term&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;term&quot; width=&quot;$(width)$&quot; confirm=&lt;&lt;confirm&gt;&gt; placeholder=&quot;(none)&quot;/&gt;
+&lt;!-- &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; index=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt; --&gt;
 \end
 
 \define preFilter()      prefix[$(pre)$]
@@ -10364,7 +10364,7 @@ regexp
 
 \define doReset(id)
 &lt;$button tooltip=&quot;reset $id$&quot;&gt; {{$:/core/images/close-button}}
-   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&quot;$id$&quot; /&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;$id$&quot; /&gt;
 &lt;/$button&gt;
 \end
 
@@ -10372,7 +10372,7 @@ regexp
 &lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
 &lt;$button tooltip=&quot;Reset all inputs&quot;&gt; {{$:/core/images/close-button}}
    &lt;$list filter=&quot;tids prefix notprefix suffix notsuffix tag nottag field term flags sort&quot;&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $field=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;
    &lt;/$list&gt;
 &lt;/$button&gt;
 \end
@@ -10455,7 +10455,7 @@ regexp
       input width: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;width&quot;   class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_width&gt;&gt;   /&gt;&lt;br&gt;
        max height: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;height&quot;  class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_height&gt;&gt;  /&gt;&lt;br&gt;
           columns: &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; field=&quot;columns&quot; class=&quot;powersearch_optionwidth&quot; default=&quot;&quot; placeholder=&lt;&lt;default_columns&gt;&gt; /&gt;&lt;br&gt;
-      &lt;center&gt;&lt;$checkbox tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot; class=&quot;powersearch_checkboxwidth&quot;&gt; use modal inputs &lt;/$checkbox&gt;&lt;/center&gt;
+           &lt;center&gt;&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; field=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;&quot; default=&quot;&quot; class=&quot;powersearch_checkboxwidth&quot;&gt; use modal inputs &lt;/$checkbox&gt;&lt;/center&gt;
    &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
@@ -10504,23 +10504,22 @@ regexp
 &lt;/$set&gt;
 \end
 
-&lt;$vars width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;] }}}
-     confirm={{{ [&lt;config&gt;get[confirm]]                  }}}&gt;
+&lt;$vars  width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;] }}} confirm={{{ [&lt;config&gt;get[confirm]] }}}&gt;
    &lt;&lt;setStyles&gt;&gt; &lt;&lt;getInputs&gt;&gt;
 &lt;/$vars&gt;
 
 &lt;$vars
-    tids={{{ [&lt;config&gt;get[tids]]     ~[[tiddlers]]        }}}
-     pre={{{ [&lt;config&gt;get[prefix]]                        }}}
-  notpre={{{ [&lt;config&gt;get[notprefix]]                     }}}
-    suff={{{ [&lt;config&gt;get[suffix]]                        }}}
- notsuff={{{ [&lt;config&gt;get[notsuffix]]                     }}}
-  tagval={{{ [&lt;config&gt;get[tag]]                           }}}
-  nottag={{{ [&lt;config&gt;get[nottag]]                        }}}
-   field={{{ [&lt;config&gt;get[field]]    ~[[title,text,tags]] }}}
-   flags={{{ [&lt;config&gt;get[flags]]    ~[[words]]           }}}
-    term={{{ [&lt;config&gt;get[term]]                          }}}
-    sort={{{ [&lt;config&gt;get[sort]]     ~[[title]]           }}}&gt;
+    tids={{{ [&lt;config&gt;getindex[tids]]     ~[[tiddlers]]        }}}
+     pre={{{ [&lt;config&gt;getindex[prefix]]                        }}}
+  notpre={{{ [&lt;config&gt;getindex[notprefix]]                     }}}
+    suff={{{ [&lt;config&gt;getindex[suffix]]                        }}}
+ notsuff={{{ [&lt;config&gt;getindex[notsuffix]]                     }}}
+  tagval={{{ [&lt;config&gt;getindex[tag]]                           }}}
+  nottag={{{ [&lt;config&gt;getindex[nottag]]                        }}}
+   field={{{ [&lt;config&gt;getindex[field]]    ~[[title,text,tags]] }}}
+   flags={{{ [&lt;config&gt;getindex[flags]]    ~[[words]]           }}}
+    term={{{ [&lt;config&gt;getindex[term]]                          }}}
+    sort={{{ [&lt;config&gt;getindex[sort]]     ~[[title]]           }}}&gt;
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
@@ -10656,7 +10655,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210712213523493" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210714025513371" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10667,7 +10666,7 @@ __find titles containing__:&lt;br&gt;
          focus:&quot;&quot;,
     focusPopup:&quot;&quot;,
         filter:&quot;&quot;,
-         width:&quot;100%&quot;,
+         width:&quot;15em&quot;,
      listwidth:&quot;100%&quot;,
     listlength:&quot;10&quot;,
       listview:&quot;&lt;&lt;value&gt;&gt;&quot;,
@@ -10675,14 +10674,18 @@ __find titles containing__:&lt;br&gt;
           goto:&quot;&quot;,
        confirm:&quot;&quot;)
 \whitespace trim
+&lt;!-- OUTER WRAPPER: set width, target tiddler, and tooltip --&gt;
 &lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$;&quot;&gt;
 &lt;$tiddler tiddler={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
-&lt;$set name=&quot;temp&quot; filter=&quot;[[$field$]!match[]]&quot;  value={{{ [[$:/temp/]addsuffix&lt;currentTiddler&gt;addsuffix[/]addsuffix[$field$]] }}}  emptyValue=&quot;&quot;&gt;
-&lt;$set name=&quot;temp&quot; filter=&quot;[[$index$]!match[]]&quot;  value={{{ [[$:/temp/]addsuffix&lt;currentTiddler&gt;addsuffix[/]addsuffix[$index$]] }}}  emptyValue=&lt;&lt;temp&gt;&gt;&gt;
-&lt;$set name=&quot;goto&quot; filter=&quot;[[$goto$]!match[]]&quot;   value=&quot;&lt;$action-navigate $to={{!!$field$}}/&gt;&lt;$action-navigate $to={{##$index$}}/&gt;&quot; emptyValue=&quot;&quot;&gt;
-&lt;$set name=&quot;clear&quot; value=&quot;&lt;$action-deletefield   $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field='$field$' $index='$index$' /&gt;&quot;&gt;
-&lt;$set name=&quot;save&quot;  value=&quot;&lt;$action-setfield      $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field='$field$' $index='$index$' $value={{{ [&lt;temp&gt;get[text]] }}} /&gt;&quot;&gt;
-&lt;$set name=&quot;done&quot;  value=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;temp&gt;&gt; /&gt;&quot;&gt;
+&lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+&lt;!-- ABBREVIATIONS --&gt;
+&lt;$vars  temp={{{ [[$:/temp/edit-list/$id$/]addsuffix&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars  save=&quot;&quot;&quot;&lt;$action-setfield      $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;value&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars clear=&quot;&quot;&quot;&lt;$action-deletefield   $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  done=&quot;&quot;&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;temp&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  goto=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;temp&gt;!is[tiddler]]&quot; variable=&quot;go&quot;&gt;&lt;$action-navigate $to={{!!$field$}}/&gt;&lt;$action-navigate $to={{##$index$}}/&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  goto={{{ [[$goto$]!match[]then&lt;goto&gt;] }}}&gt;
+&lt;!-- STYLES --&gt;
 &lt;style&gt;
    .editCombo_$id$   { position:absolute; width:calc(100% - 1.2em) !important; height:1.5em; margin-top:0.1em; }
    .selectCombo_$id$ { position:absolute; width:100%               !important; height:1.5em; margin-top:0.1em; }
@@ -10691,10 +10694,10 @@ __find titles containing__:&lt;br&gt;
 &lt;$reveal default=&quot;&quot;&quot;$filter$&quot;&quot;&quot; type=&quot;match&quot;   text=&quot;&quot;&gt;
    &lt;style&gt;.editCombo_$id$ { width:100% !important; }&lt;/style&gt;
 &lt;/$reveal&gt;
+&lt;!-- SELECTION LIST --&gt;
 &lt;$reveal default=&quot;&quot;&quot;$filter$&quot;&quot;&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$tiddler tiddler={{{ [&lt;temp&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
-   &lt;$select class=&quot;selectCombo_$id$&quot;
-      field={{{ [&lt;temp&gt;is[tiddler]then[text]else[$field$]] }}} index={{{ [&lt;temp&gt;!is[tiddler]then[$index$]] }}}
+   &lt;$select class=&quot;selectCombo_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot;
       default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
       &lt;$list filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; variable=&quot;value&quot;&gt;
          &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt; $listview$ &lt;/option&gt;
@@ -10702,42 +10705,45 @@ __find titles containing__:&lt;br&gt;
    &lt;/$select&gt;
    &lt;/$tiddler&gt;
 &lt;/$reveal&gt;
-&lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+&lt;!-- DIRECT INPUT --&gt;
 &lt;$list filter=&quot;[[$confirm$]match[]]&quot; variable=&quot;direct_input&quot;&gt;
    &lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
    &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
+      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; /&gt;
    &lt;/$keyboard&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[[$confirm$]!match[]]&quot; variable=&quot;temp_input&quot;&gt;
+&lt;!-- MODAL INPUT --&gt;
+&lt;$list filter=&quot;[[$confirm$]!match[]]&quot; variable=&quot;modal_input&quot;&gt;
    &lt;$set name=&quot;default&quot; filter=&quot;[[$field$]!match[]]&quot;  value={{{ [&lt;currentTiddler&gt;get[$field$]]      }}} emptyValue=&quot;&quot;&quot;$default$&quot;&quot;&quot;&gt;
    &lt;$set name=&quot;default&quot; filter=&quot;[[$index$]!match[]]&quot;  value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue=&lt;&lt;default&gt;&gt;&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;!is[tiddler]]&quot; variable=&quot;inactive&quot;&gt;
       &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-         default=&lt;&lt;default&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; /&gt;
+         default=&lt;&lt;default&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; /&gt;
       &lt;$button class=&quot;selectCombo_$id$ tc-popup-handle tc-btn-invisible&quot; set=&lt;&lt;temp&gt;&gt; setTo=&lt;&lt;default&gt;&gt;&gt;&amp;nbsp;&lt;/$button&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]]&quot; variable=&quot;active&quot;&gt;
-      &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;done&gt;&gt;&lt;&lt;goto&gt;&gt;&quot;&quot;&quot;&gt;
+      &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-      &lt;$edit-text tiddler=&lt;&lt;temp&gt;&gt; class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot;
-         default=&lt;&lt;default&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
+      &lt;$edit-text class=&quot;editCombo_$id$ tc-popup-handle&quot; tag=&quot;input&quot; tiddler=&lt;&lt;temp&gt;&gt; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
+         default=&lt;&lt;default&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
          focus=&quot;yes&quot; focusPopup=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; /&gt;
       &lt;/$keyboard&gt;
       &lt;/$keyboard&gt;
       &lt;span style=&quot;position:relative;&quot;&gt;
          &lt;span style=&quot;position:absolute;left:calc($width$ + 0.2em);width:7em;&quot;&gt;
-            &lt;$button tooltip=&quot;save input&quot;&gt;   {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;done&gt;&gt;&lt;&lt;goto&gt;&gt; &lt;/$button&gt;
-            &lt;$button tooltip=&quot;cancel input&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;                 &lt;/$button&gt;
-            &lt;$button tooltip=&quot;delete input&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt;        &lt;/$button&gt;
+            &lt;$set name=&quot;value&quot; value={{{ [&lt;temp&gt;getindex[$index$]] }}} emptyValue={{{ [&lt;temp&gt;get[$field$]] }}}&gt;
+            &lt;$button tooltip=&quot;save&quot;   actions=&lt;&lt;goto&gt;&gt;&gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;done&gt;&gt;  &lt;/$button&gt;
+            &lt;$button tooltip=&quot;cancel&quot;                 &gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;          &lt;/$button&gt;
+            &lt;$button tooltip=&quot;delete&quot;                 &gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
+            &lt;/$set&gt;
          &lt;/span&gt;
       &lt;/span&gt;
    &lt;/$list&gt;
    &lt;/$set&gt;
    &lt;/$set&gt;
 &lt;/$list&gt;
-&lt;/span&gt;
+&lt;!-- POPUP LIST --&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
       &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
@@ -10747,8 +10753,7 @@ __find titles containing__:&lt;br&gt;
                        [enlist&lt;results&gt;match{!!$field$}count[]!match[1]]
                       +[limit[1]]&quot;&quot;&quot; variable=&quot;show_list&quot;&gt;
          &lt;$tiddler tiddler={{{ [&lt;temp&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
-         &lt;$select class=&quot;selectPopup_$id$&quot;
-            field={{{ [&lt;temp&gt;is[tiddler]then[text]else[$field$]] }}} index={{{ [&lt;temp&gt;!is[tiddler]then[$index$]] }}}
+         &lt;$select class=&quot;selectPopup_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot;
             default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;
             size={{{ [enlist&lt;results&gt;] +[count[]min[$listlength$]max[2]] }}}&gt;
             &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;]&quot;&quot;&quot; variable=&quot;value&quot;&gt;
@@ -10769,23 +10774,23 @@ __find titles containing__:&lt;br&gt;
 
 !Introduction
 
-The edit-list macro provides a user interface in the browser that combines the features of a text input (``&lt;$edit-text&gt;`` widget) and a &quot;drop-down&quot; selection list (``&lt;$select&gt;`` widget).  This allows you to enter custom text value or select from pre-defined values that are determined by a specified filter.  The list contents can be automatically &quot;pruned&quot; to only show the subset of items that contain the current text input.
+The edit-list macro provides a user interface in the browser that combines the features of a text input (`&lt;$edit-text&gt;` widget) and a &quot;drop-down&quot; selection list (`&lt;$select&gt;` widget).  This allows you to enter custom text value or select from pre-defined values that are determined by a specified filter.  The list contents can be automatically &quot;pruned&quot; to only show the subset of items that contain the current text input.
 
 !Parameters
 
 |Parameter   |Description|h
-|id          |Specifies a unique ID for the combined controls.  This is only needed when more than one ``&lt;&lt;edit-list&gt;&gt;`` macro is used in the same tiddler|
+|id          |Specifies a unique ID for the combined controls.  This is only needed when more than one `&lt;&lt;edit-list&gt;&gt;` macro is used in the same tiddler|
 |tiddler     |The tiddler in which to save the input (defaults to the current tiddler)|
-|field       |The field in which to save the input (defaults to ``text``)|
-|index       |The index in which to save the input. Takes precedence over the ``field`` parameter|
+|field       |The field in which to save the input (defaults to `text`)|
+|index       |The index in which to save the input. Takes precedence over the `field` parameter|
 |default     |Text to display when the target tiddler doesn't exist|
 |placeholder |Text to display when the field or index doesn't exist or is blank|
 |focus       |Set to &quot;yes&quot; to automatically focus the input after creation|
 |focusPopup  |Set to &quot;yes&quot; to automatically show the selection list when the input gets focus|
 |filter      |A filter used to determine the contents of the selection list.  If no filter is specified, no selection list is displayed|
-|width       |CSS width of edit-text and select widgets|
-|listwidth   |CSS width of focusPopup list (defaults to ``100%``)|
-|listlength  |Maximum number of lines to display before scrolling in focusPopup list (defaults to ``10``)|
+|width       |CSS width of edit-text and select widgets (defaults to `15em`)|
+|listwidth   |CSS width of focusPopup list (defaults to `100%`)|
+|listlength  |Maximum number of lines to display before scrolling in focusPopup list (defaults to `10`)|
 |listview    |Alternative text to show for listbox items (defaults to selection value).  See Examples, below|
 |tooltip     |Tooltip to show when hovering over edit-text widget|
 |goto        |If set to &quot;yes&quot;, when the input gets focus then pressing &lt;kbd&gt;enter&lt;/kbd&gt; will view/navigate to a tiddler whose title matches the current input|
@@ -10793,7 +10798,62 @@ The edit-list macro provides a user interface in the browser that combines the f
 
 !Examples
 
-!Notes</pre>
+# Direct input (no list, equivalent to `&lt;$edit-text&gt;`):&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:1 tiddler:Example tooltip:&quot;Demo&quot;&gt;&gt;
+```
+&lt;&lt;edit-list id:1 tiddler:Example tooltip:&quot;Demo&quot;&gt;&gt;
+&lt;/div&gt;
+# Modal input (no list with confirmation):&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:2 tiddler:Example tooltip:&quot;Demo&quot; confirm:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:2 tiddler:Example tooltip:&quot;Demo&quot; confirm:yes&gt;&gt;
+&lt;/div&gt;
+# Direct combobox (enter or select):&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:3 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+```
+&lt;&lt;edit-list id:3 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+&lt;/div&gt;
+# Modal combobox (enter or select):&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:4 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:4 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+&lt;/div&gt;
+# Direct combobox (enter or select) with automatic list &quot;pruning&quot;:&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:5 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]search:title{Example}] focusPopup:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:5 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]search:title{Example}] focusPopup:yes&gt;&gt;
+&lt;/div&gt;
+# Modal combobox (enter or select) with automatic list &quot;pruning&quot;:&lt;div&gt;
+
+```
+&lt;&lt;edit-list id:6 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]search:title{$:/temp/edit-list/6/Example}] focusPopup:yes confirm:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:6 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]tags[]sort[]search:title{$:/temp/edit-list/6/Example}] focusPopup:yes confirm:yes&gt;&gt;
+&lt;/div&gt;
+# Direct goto tiddler with automatic list &quot;pruning&quot; &lt;div&gt;
+
+```
+&lt;&lt;edit-list id:7 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]sort[]search:title{Example}] focusPopup:yes goto:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:7 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]sort[]search:title{Example}] focusPopup:yes goto:yes&gt;&gt;
+&lt;/div&gt;
+# Modal goto tiddler with automatic list &quot;pruning&quot; &lt;div&gt;
+
+```
+&lt;&lt;edit-list id:8 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]sort[]search:title{$:/temp/edit-list/8/Example}] focusPopup:yes goto:yes confirm:yes&gt;&gt;
+```
+&lt;&lt;edit-list id:8 tiddler:Example tooltip:&quot;Demo&quot; filter:[all[tiddlers+shadows]sort[]search:title{$:/temp/edit-list/8/Example}] focusPopup:yes goto:yes confirm:yes&gt;&gt;
+&lt;/div&gt;</pre>
 </div>
 
 
