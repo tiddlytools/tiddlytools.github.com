@@ -10108,7 +10108,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210715083618799" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210715083618799" title="$:/StoryList">
+<div created="20210715142349375" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch" modified="20210715142349375" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10672,7 +10672,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210715083403245" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210715145551628" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10696,21 +10696,21 @@ __find titles containing__:&lt;br&gt;
        confirm:&quot;&quot;)
 \whitespace trim
 &lt;!-- OUTER WRAPPER: set width, target tiddler, and tooltip --&gt;
-&lt;div style=&quot;position:relative; display:inline-block; height:1.25em; width:$width$;&quot;&gt;
+&lt;div style=&quot;position:relative; display:inline-block; width:$width$; margin-bottom:1.2em;&quot;&gt;
 &lt;$tiddler tiddler={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;span title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
 &lt;!-- STYLES --&gt;
 &lt;style&gt;
-   .editCombo_$id$   { position:absolute; width:calc(100% - 1.2em) !important; height:1.5em; margin-top:0.1em; }
-   .selectCombo_$id$ { position:absolute; width:100%               !important; height:1.5em; margin-top:0.1em; overflow-y:auto; }
-   .selectPopup_$id$ { position:absolute; width:$listwidth$        !important; z-index:1;    margin-top:1.6em; overflow-y:auto; }
+   .editCombo_$id$   { position:absolute; width:calc(100% - 1.2em) !important; height:1.5em; margin-top:0.0em; }
+   .selectCombo_$id$ { position:absolute; width:100%               !important; height:1.5em; margin-top:0.0em; overflow-y:auto; }
+   .selectPopup_$id$ { position:absolute; width:$listwidth$        !important; z-index:1;    margin-top:1.5em; overflow-y:auto; }
 &lt;/style&gt;
 &lt;$reveal default=&quot;&quot;&quot;$filter$&quot;&quot;&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;style&gt; .editCombo_$id$ { width:100% !important; } &lt;/style&gt;
 &lt;/$reveal&gt;
 &lt;$reveal default=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; type=&quot;nomatch&quot; text=&quot;1&quot;&gt;
    &lt;style&gt; .editCombo_$id$   { width:100% !important; } &lt;/style&gt;
-   &lt;style&gt; .selectCombo_$id$ { position:static; display:block; width:$listwidth$ !important; height:auto; margin-top:0.0em; } &lt;/style&gt;
+   &lt;style&gt; .selectCombo_$id$ { position:static; display:block; width:$listwidth$ !important; height:auto; } &lt;/style&gt;
 &lt;/$reveal&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;$vars  temp={{{ [[$:/temp/edit-list/$id$/]addsuffix&lt;currentTiddler&gt;] }}}&gt;
@@ -10777,7 +10777,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$list&gt;
 &lt;!-- POPUP LIST --&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-&lt;$reveal default=&quot;$listheight$&quot;   type=&quot;match&quot;   text=&quot;1&quot;&gt;
+&lt;$reveal default=&quot;$listheight$&quot; type=&quot;match&quot;   text=&quot;1&quot;&gt;
    &lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
       &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
       &lt;$tiddler tiddler={{{ [&lt;temp&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
@@ -10872,12 +10872,10 @@ By default, `listview=&lt;&lt;value&gt;&gt;` displays the value of each item in 
 `&lt;&lt;edit-list id:6 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:6 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes&gt;&gt;
 
-&lt;br/&gt;
 ''Modal edit and listbox = enter/select a value with progressively filtered fixed height listbox&lt;br&gt;''
 `&lt;&lt;edit-list id:7 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes confirm:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:7 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes confirm:yes&gt;&gt;
 
-&lt;br/&gt;
 ''Modal combobox = enter/select with popup list and confirmation&lt;br&gt;''
 `&lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;
