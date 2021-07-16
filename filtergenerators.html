@@ -212,7 +212,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210716042914968" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
+<div columns="3" confirm="" created="20210617075024384" modified="20210716095812101" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
 <pre>{}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10095,13 +10095,13 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
-<div created="20210705093359199" modified="20210714170520963" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210716095625159" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div created="20210716100435259" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210716100435259" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,10 +10219,11 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210715235943441" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210716100135228" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
+\define exclude() [&lt;config&gt;] [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
 
 \define default_width()   15em
 \define default_columns() 1
@@ -10330,7 +10331,7 @@ regexp
 \define hasFilter()      has:field[$(has)$]
 \define searchFilter()   search:$(field)$:$(flags)$[$(term)$]
 \define filter()         [all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(hasFilter)$$(searchFilter)$sort[$(sort)$]]
-\define filter_exclude() $(filter)$ -[prefix[$:/state/popup]] -[prefix[$:/temp]search:title[PowerSearch]]
+\define filter_exclude() $(filter)$ -[subfilter&lt;exclude&gt;]
 
 \define doSearch()
 &lt;$vars preFilter={{{ [&lt;pre&gt;!is[blank]then&lt;preFilter&gt;]         }}}
@@ -10665,7 +10666,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210715235949944" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210716102157122" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10708,7 +10709,7 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;$vars popid=&lt;&lt;qualify &quot;$:/state/popup/edit-list/$id$&quot;&gt;&gt;&gt;
 &lt;$vars  temp={{{ [[$:/temp/edit-list/$id$/]addsuffix&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars  done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;temp&gt;] [prefix[$:/state/popup/edit-list/$id$]]&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;temp&gt;] [&lt;popid&gt;]&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars clear=&quot;&quot;&quot;&lt;$action-deletefield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;
                 &lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$vars  save=&quot;&quot;&quot;&lt;$set name=&quot;input&quot; value={{{ [&lt;temp&gt;getindex[$index$]] }}} emptyValue={{{ [&lt;temp&gt;get[$field$]] }}}&gt;
@@ -10724,11 +10725,12 @@ __find titles containing__:&lt;br&gt;
    &lt;$set name=&quot;filter&quot;  filter=&quot;[[$find$]match[yes]then&lt;find&gt;!match[{}]then&lt;find&gt;!match[]]&quot; value=&quot;&quot;&quot;$filter$ +[search:title&lt;find&gt;]&quot;&quot;&quot; emptyValue=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
    &lt;$set name=&quot;results&quot; filter=&lt;&lt;filter&gt;&gt;&gt;
    &lt;$set name=&quot;size&quot;    filter=&quot;[[$listheight$]match[1]]&quot; value=&quot;1&quot; emptyValue={{{ [[$listheight$]add[1]] }}}&gt;
-   &lt;$select class=&quot;selectCombo_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
-      &lt;option disabled=&quot;yes&quot; style=&quot;font-weight:bold;font-size:80%;line-height:1em;&quot;&gt;{{{ [enlist&lt;results&gt;count[]addsuffix[ items:]addprefix[$listlabel$]] }}}&lt;/option&gt;
+   &lt;$select class=&quot;selectCombo_$id$ tc-popup-handle&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
+      &lt;optgroup label={{{ [enlist&lt;results&gt;count[]addsuffix[ items]addprefix[$listlabel$]] }}}&gt;
       &lt;$list filter=&quot;[enlist&lt;results&gt;]&quot; variable=&quot;value&quot;&gt;
          &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt; $listview$ &lt;/option&gt;
       &lt;/$list&gt;
+      &lt;/optgroup&gt;
    &lt;/$select&gt;
    &lt;/$set&gt;
    &lt;/$set&gt;
@@ -10779,25 +10781,20 @@ __find titles containing__:&lt;br&gt;
 &lt;$reveal default=&quot;$focusPopup$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
 &lt;$reveal default=&quot;$listheight$&quot; type=&quot;match&quot;   text=&quot;1&quot;&gt;
    &lt;$reveal state=&lt;&lt;popid&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep&quot;&gt;
-      &lt;!-- SHOW LIST ONLY IF THERE ARE RESULTS AND MULTIPLE RESULTS OR NOT EXACT MATCH --&gt;
       &lt;$tiddler tiddler={{{ [&lt;temp&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
       &lt;$set name=&quot;find&quot;     value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;currentTiddler&gt;get[$field$]] }}}&gt;
       &lt;$set name=&quot;filter&quot;  filter=&quot;[[$find$]match[yes]then&lt;find&gt;!match[{}]then&lt;find&gt;!match[]]&quot; value=&quot;&quot;&quot;$filter$ +[search:title&lt;find&gt;]&quot;&quot;&quot; emptyValue=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
       &lt;$set name=&quot;results&quot; filter=&lt;&lt;filter&gt;&gt;&gt;
-      &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[0]]&quot;&quot;&quot; variable=&quot;show_list&quot;&gt;
-      &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;count[]!match[1]]
-                       [enlist&lt;results&gt;match{!!$field$}count[]!match[1]]
-                       [enlist&lt;results&gt;match{##$index$}count[]!match[1]]
-                      +[limit[1]]&quot;&quot;&quot; variable=&quot;show_list&quot;&gt;
-         &lt;$select class=&quot;selectPopup_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;
-            size={{{ [enlist&lt;results&gt;] +[count[]min[$listscroll$]add[1]max[2]] }}}&gt;
-            &lt;option disabled=&quot;yes&quot; style=&quot;font-weight:bold;font-size:80%;line-height:1em;&quot;&gt;{{{ [enlist&lt;results&gt;count[]addsuffix[ items:]addprefix[$listlabel$]] }}}&lt;/option&gt;
+      &lt;!-- SHOW LIST ONLY IF THERE IS NOT AN EXACT MATCH --&gt;
+      &lt;$list filter=&quot;&quot;&quot;[enlist&lt;results&gt;!match&lt;find&gt;limit[1]]&quot;&quot;&quot; variable=&quot;show_list&quot;&gt;
+         &lt;$select class=&quot;selectPopup_$id$ tc-popup-handle&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; default=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;
+            size={{{ [enlist&lt;results&gt;count[]min[$listscroll$]add[1]max[2]] }}}&gt;
+            &lt;optgroup label={{{ [enlist&lt;results&gt;count[]addsuffix[ items]addprefix[$listlabel$]] }}}&gt;
             &lt;$list filter=&quot;[enlist&lt;results&gt;]&quot; variable=&quot;value&quot;&gt;
                &lt;option style={{{ [[background-color:]] +[addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt; $listview$ &lt;/option&gt;
             &lt;/$list&gt;
             &lt;/optgroup&gt;
          &lt;/$select&gt;
-      &lt;/$list&gt;
       &lt;/$list&gt;
       &lt;/$set&gt;
       &lt;/$set&gt;
@@ -10883,15 +10880,15 @@ By default, `listview:&quot;&lt;&lt;value&gt;&gt;&quot;` displays the value of e
 `&lt;&lt;edit-list id:7 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes confirm:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:7 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 listlabel:&quot;Choose a tag - &quot; find:yes confirm:yes&gt;&gt;
 
-''Modal combobox = enter/select with popup list and confirmation&lt;br&gt;''
-`&lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
-&lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;
+''Modal combobox = enter/select a value with progressively filtered popup list and confirmation&lt;br&gt;''
+`&lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes find:yes confirm:yes&gt;&gt;`&lt;br&gt;
+&lt;&lt;edit-list id:8 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes find:yes confirm:yes&gt;&gt;
 
-''Direct goto tiddler = enter/select with progressively filtered popup list and open selected tiddler&lt;br&gt;''
+''Direct goto tiddler = enter/select a value with progressively filtered popup list and open selected tiddler&lt;br&gt;''
 `&lt;&lt;edit-list id:9 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] focusPopup:yes find:yes goto:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:9 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] focusPopup:yes find:yes goto:yes&gt;&gt;
 
-''Modal goto tiddler = enter/select with progressively filtered popup list and confirmation and open selected tiddler&lt;br&gt;''
+''Modal goto tiddler = enter/select a value with progressively filtered popup list and confirmation and open selected tiddler&lt;br&gt;''
 `&lt;&lt;edit-list id:10 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] focusPopup:yes find:yes goto:yes confirm:yes&gt;&gt;`&lt;br&gt;
 &lt;&lt;edit-list id:10 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] focusPopup:yes find:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
