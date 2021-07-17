@@ -214,7 +214,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210717065856163" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
+<div columns="3" confirm="" created="20210617075024384" modified="20210717152730355" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
 <pre>{}</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10106,7 +10106,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210717065943164" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210717065943164" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10671,7 +10671,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210717072915957" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210717152422786" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10694,69 +10694,70 @@ __find titles containing__:&lt;br&gt;
    liststretch:&quot;yes&quot;,
           goto:&quot;no&quot;,
        confirm:&quot;no&quot;)
-\whitespace trim
 &lt;!-- OUTER WRAPPER: set width, target tiddler, and tooltip --&gt;
-&lt;div style=&quot;position:relative; display:inline-block; width:$width$;&quot; class=&quot;tc-popup-keep editlist_hoverzone&quot;&gt;
+&lt;div style=&quot;position:relative; display:inline-block; width:$width$;&quot; class=&quot;editlist_wrapper tc-popup-keep&quot;&gt;
 &lt;div style={{{ [[$listheight$]match[1]then[margin-bottom:1.2em;]] }}}&gt;
 &lt;$tiddler tiddler={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;div title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
 &lt;!-- STYLES --&gt;
 &lt;style&gt;
-   .editlist_hoverzone       .fadeIn { opacity:0.0; transition: opacity 0.5s; }
-   .editlist_hoverzone:hover .fadeIn { opacity:1.0; transition: opacity 0.5s; }
+   .editlist_wrapper                 { position:relative; display:inline-block; width:$width$; }
+   .editlist_wrapper       .fadeIn   { opacity:0.0; transition: opacity 0.5s; }
+   .editlist_wrapper:hover .fadeIn   { opacity:1.0; transition: opacity 0.5s; }
    .editlist_input_$id$              { position:absolute; width:100% !important; height:1.5em; }
-   .editlist_popup_$id$              { position:absolute; min-width:$listwidth$; width:fit-content; z-index:1; top:1.6em; }
+   .editlist_input_buttons_$id$      { position:absolute; width:7em; left:calc($width$ + 0.2em); margin-top:-1px; }
+   .editlist_popup_$id$              { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; top:1.6em; }
+   .editlist_popup_button_$id$       { position:absolute; right:0; height:1.5em; padding:0 0.25em; border-style:double; line-height:100%; }
    .editlist_popup_heading_$id$      { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
-   .editlist_select_$id$             { width:100% !important; overflow-y:auto; outline:0; border-top:0; font-size:$listfontsize$; }
+   .editlist_popup_select_$id$       { width:100% !important; overflow-y:auto; outline:0; font-size:$listfontsize$; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[[$liststretch$]match[yes]]&quot;&gt;
-   &lt;style&gt; .editlist_select_$id$:hover, .editlist_select_$id$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
+   &lt;style&gt; .editlist_popup_select_$id$:hover, .editlist_popup_select_$id$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[[$listheight$]!match[1]]&quot;&gt;
    &lt;style&gt; .editlist_popup_$id$ { position:static; padding-top:1.6em; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;!-- ABBREVIATIONS --&gt;
-&lt;$vars popid={{{ [[$:/temp/edit-list/]addsuffix&lt;currentTiddler&gt;addsuffix[/$id$/list]] }}}&gt;
-&lt;$vars  temp={{{ [[$:/temp/edit-list/]addsuffix&lt;currentTiddler&gt;addsuffix[/$id$/data]] }}}&gt;
-&lt;$vars  done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;temp&gt;] [&lt;popid&gt;]&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars popup={{{ [[$:/temp/edit-list/]addsuffix&lt;currentTiddler&gt;addsuffix[/$id$/popup]] }}}&gt;
+&lt;$vars input={{{ [[$:/temp/edit-list/]addsuffix&lt;currentTiddler&gt;addsuffix[/$id$/input]] }}}&gt;
+&lt;$vars  done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;input&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars clear=&quot;&quot;&quot;&lt;$action-deletefield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;
                 &lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-&lt;$vars  save=&quot;&quot;&quot;&lt;$set name=&quot;input&quot; value={{{ [&lt;temp&gt;getindex[$index$]] }}} emptyValue={{{ [&lt;temp&gt;get[$field$]] }}}&gt;
-                &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;input&gt;&gt;/&gt;
+&lt;$vars  save=&quot;&quot;&quot;&lt;$set name=&quot;value&quot; value={{{ [&lt;input&gt;getindex[$index$]] }}} emptyValue={{{ [&lt;input&gt;get[$field$]] }}}&gt;
+                &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;value&gt;&gt;/&gt;
                 &lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-&lt;$vars  goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]then&lt;temp&gt;!is[tiddler]]&quot; variable=&quot;go&quot;&gt;
+&lt;$vars  goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]then&lt;input&gt;!is[tiddler]]&quot; variable=&quot;go&quot;&gt;
                 &lt;$action-navigate $to={{!!$field$}}/&gt;&lt;$action-navigate $to={{##$index$}}/&gt;
                 &lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;!-- DIRECT INPUT --&gt;
 &lt;$list filter=&quot;[[$confirm$]!match[yes]]&quot; variable=&quot;direct_input&quot;&gt;
    &lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
    &lt;$edit-text class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-      focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popid&gt;] }}} cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
+      focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
    &lt;/$keyboard&gt;
 &lt;/$list&gt;
 &lt;!-- MODAL INPUT --&gt;
-&lt;$set name=&quot;input&quot; filter=&quot;[[$field$]!match[]]&quot; value={{{ [&lt;currentTiddler&gt;get[$field$]]      }}} emptyValue=&quot;&quot;&quot;$default$&quot;&quot;&quot;&gt;
-&lt;$set name=&quot;input&quot; filter=&quot;[[$index$]!match[]]&quot; value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue=&lt;&lt;input&gt;&gt;&gt;
+&lt;$set name=&quot;value&quot; filter=&quot;[[$field$]!match[]]&quot; value={{{ [&lt;currentTiddler&gt;get[$field$]]      }}} emptyValue=&quot;&quot;&quot;$default$&quot;&quot;&quot;&gt;
+&lt;$set name=&quot;value&quot; filter=&quot;[[$index$]!match[]]&quot; value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue=&lt;&lt;value&gt;&gt;&gt;
 &lt;$list filter=&quot;[[$confirm$]match[yes]]&quot; variable=&quot;modal_input&quot;&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;!is[tiddler]]&quot; variable=&quot;inactive&quot;&gt;
-      &lt;$edit-text class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; default=&lt;&lt;input&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;/&gt;
-      &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;position:absolute;width:100% !important;height:1.5em;margin-top:0.1em;&quot;
-         set=&lt;&lt;temp&gt;&gt; setTo=&lt;&lt;input&gt;&gt;&gt;&amp;nbsp;&lt;/$button&gt;
+   &lt;$list filter=&quot;[&lt;input&gt;!is[tiddler]]&quot; variable=&quot;inactive&quot;&gt;
+      &lt;$edit-text class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; default=&lt;&lt;value&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;/&gt;
+      &lt;$button class=&quot;editlist_input_$id$ tc-btn-invisible&quot; set=&lt;&lt;input&gt;&gt; setTo=&lt;&lt;value&gt;&gt;&gt;&amp;nbsp;&lt;/$button&gt;
    &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]]&quot; variable=&quot;active&quot;&gt;
+   &lt;$list filter=&quot;[&lt;input&gt;is[tiddler]]&quot; variable=&quot;active&quot;&gt;
       &lt;$keyboard key=&quot;enter&quot;  actions=&lt;&lt;save&gt;&gt;&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;done&gt;&gt;&gt;
-      &lt;$tiddler tiddler=&lt;&lt;temp&gt;&gt;&gt;
-      &lt;$edit-text class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; default=&lt;&lt;input&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-         focus=&quot;yes&quot; focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popid&gt;] }}} cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
+      &lt;$tiddler tiddler=&lt;&lt;input&gt;&gt;&gt;
+      &lt;$edit-text class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; default=&lt;&lt;value&gt;&gt; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
+         focus=&quot;yes&quot; focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} cancelPopups=&quot;$cancelPopups$$(cancelPopups)$&quot;/&gt;
       &lt;/$tiddler&gt;
       &lt;/$keyboard&gt;
       &lt;/$keyboard&gt;
    &lt;/$list&gt;
    &lt;$set name=&quot;currval&quot; value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;currentTiddler&gt;get[$field$]] }}}&gt;
-   &lt;$set name=&quot;tempval&quot; value={{{ [&lt;temp&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;temp&gt;get[$field$]] }}}&gt;
-   &lt;$list filter=&quot;[&lt;temp&gt;is[tiddler]] [&lt;temp&gt;is[tiddler]then&lt;tempval&gt;!match&lt;currval&gt;] +[limit[1]]&quot; variable=&quot;active_or_changed&quot;&gt;
-      &lt;span style=&quot;position:relative;&quot;&gt;&lt;span style=&quot;position:absolute;left:calc($width$ + 0.2em);margin-top:-1px;width:7em;&quot;&gt;
+   &lt;$set name=&quot;inputval&quot; value={{{ [&lt;input&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;input&gt;get[$field$]] }}}&gt;
+   &lt;$list filter=&quot;[&lt;input&gt;is[tiddler]] [&lt;input&gt;is[tiddler]then&lt;inputval&gt;!match&lt;currval&gt;] +[limit[1]]&quot; variable=&quot;active_or_changed&quot;&gt;
+      &lt;span style=&quot;position:relative;&quot;&gt;&lt;span class=&quot;editlist_input_buttons_$id$&quot;&gt;
          &lt;$button tooltip=&quot;save&quot; actions=&lt;&lt;goto&gt;&gt;&gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;  &lt;/$button&gt;
          &lt;$button tooltip=&quot;cancel&quot;               &gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;  &lt;/$button&gt;
          &lt;$button tooltip=&quot;clear&quot;                &gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt; &lt;/$button&gt;
@@ -10768,25 +10769,25 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- POPUP BUTTON --&gt;
 &lt;$reveal default=&quot;$filter$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$list filter=&quot;[[$listheight$]match[1]]&quot; variable=&quot;show_button&quot;&gt;
-      &lt;$button class=&quot;tc-btn-invisible fadeIn&quot; style=&quot;position:absolute;right:0;height:1.5em;padding:0 0.25em;line-height:100%;&quot; popup=&lt;&lt;popid&gt;&gt;&gt;
-         &lt;$list filter=&quot;[[$confirm$]match[yes]]&quot; variable=&quot;activate&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;temp&gt;&gt; text=&lt;&lt;input&gt;&gt;/&gt;&lt;/$list&gt;
-         &lt;span style=&quot;font-size:100%;&quot;&gt;&amp;#x25BC;&lt;/span&gt;
+      &lt;$button class=&quot;editlist_popup_button_$id$ fadeIn&quot; popup=&lt;&lt;popup&gt;&gt;&gt;
+         &lt;span style=&quot;font-size:90%;&quot;&gt;&amp;#x25BC;&lt;/span&gt;
+         &lt;$list filter=&quot;[[$confirm$]match[yes]]&quot; variable=&quot;activate&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; text=&lt;&lt;value&gt;&gt;/&gt;&lt;/$list&gt;
       &lt;/$button&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
 &lt;!-- SELECTION LIST --&gt;
 &lt;$reveal default=&quot;$filter$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$tiddler tiddler={{{ [&lt;temp&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
+   &lt;$tiddler tiddler={{{ [&lt;input&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
    &lt;$set name=&quot;find&quot;     value={{{ [&lt;currentTiddler&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;currentTiddler&gt;get[$field$]] }}}&gt;
    &lt;$set name=&quot;filter&quot;  filter=&quot;[[$find$]match[yes]then&lt;find&gt;!match[{}]then&lt;find&gt;!match[]]&quot; value=&quot;&quot;&quot;$filter$ +[search:title&lt;find&gt;]&quot;&quot;&quot; emptyValue=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
    &lt;$set name=&quot;results&quot; filter=&lt;&lt;filter&gt;&gt;&gt;
    &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]match[1]]&quot; value=&quot;&quot;&quot;$filter$&quot;&quot;&quot; emptyValue=&quot;[enlist&lt;results&gt;]&quot;&gt;
    &lt;!-- SHOW FIXED-HEIGHT LIST OR POPUP LIST IF THERE IS NOT AN EXACT MATCH --&gt;
-   &lt;$list filter=&quot;[[$listheight$]!match[1]] [&lt;popid&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_list&quot;&gt;
+   &lt;$list filter=&quot;[[$listheight$]!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_list&quot;&gt;
       &lt;$set name=&quot;size&quot; filter=&quot;[[$listheight$]match[1]]&quot; value={{{ [subfilter&lt;found&gt;] +[count[]min[$listscroll$]max[2]] }}} emptyValue=&quot;$listheight$&quot;&gt;
          &lt;div class=&quot;editlist_popup_$id$&quot;&gt;
          &lt;div class=&quot;editlist_popup_heading_$id$&quot;&gt;''&lt;$text text={{{ [subfilter&lt;found&gt;count[]addsuffix[ items:]] }}}/&gt;''&lt;/div&gt;
-         &lt;$select class=&quot;editlist_select_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
+         &lt;$select class=&quot;editlist_popup_select_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
             &lt;$list filter=&lt;&lt;found&gt;&gt; variable=&quot;value&quot;&gt;&lt;option style={{{ [[background-color:]addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;$listview$&lt;/option&gt;&lt;/$list&gt;
          &lt;/$select&gt;
          &lt;/div&gt;
