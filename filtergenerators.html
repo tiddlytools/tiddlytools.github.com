@@ -161,6 +161,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/advancedsearch/currentTab</li>
+
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -10097,16 +10101,22 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
+<div created="20210719011600392" modified="20210719011600392" title="$:/state/advancedsearch/currentTab">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+</div>
+<div created="20210719011600392" modified="20210719011600392" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+</div>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210718143226814" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210719011638831" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210718140357269" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210718150607693" title="$:/StoryList">
+<div created="20210719011640465" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210719012726881" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10665,7 +10675,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210718154044023" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210719012724298" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10703,7 +10713,7 @@ __find titles containing__:&lt;br&gt;
    .editlist_wrapper:hover .fadeIn   { opacity:1.0; transition: opacity 0.5s; }
    .editlist_input_$id$              { position:absolute; width:100% !important; height:1.5em; }
    .editlist_input_buttons_$id$      { position:absolute; width:max-content; left:calc($width$ + 0.2em); margin-top:-1px; }
-   .editlist_delete_button_$id$      { position:absolute; left:calc($width$ + 0.2em); z-index:1; margin-top:-1px; }
+   .editlist_delete_button_$id$      { position:absolute; width:max-content; left:calc($width$ + 0.2em); z-index:1; margin-top:-1px; }
    .editlist_popup_$id$              { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; top:1.6em; }
    .editlist_popup_button_$id$       { position:absolute; right:0; height:1.5em; padding:0 0.25em; }
    .editlist_popup_heading_$id$      { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
@@ -10724,7 +10734,7 @@ __find titles containing__:&lt;br&gt;
 &lt;$vars clear=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$vars  save=&quot;&quot;&quot;&lt;$set name=&quot;newval&quot; value={{{ [&lt;input&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;input&gt;get[$field$]] }}}&gt;
                 &lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;newval&gt;&gt;/&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-&lt;$vars  goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]then&lt;input&gt;!is[tiddler]]&quot; variable=&quot;go&quot;&gt;
+&lt;$vars  goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]]&quot; variable=&quot;go&quot;&gt;
                 &lt;$action-navigate $to={{!!$field$}}/&gt;&lt;$action-navigate $to={{##$index$}}/&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;!-- DIRECT INPUT --&gt;
 &lt;$list filter=&quot;[[$confirm$]!match[yes]]&quot; variable=&quot;direct_input&quot;&gt;
@@ -10737,33 +10747,36 @@ __find titles containing__:&lt;br&gt;
       &lt;&lt;edit&gt;&gt;&lt;$button class=&quot;editlist_input_$id$ tc-btn-invisible&quot;&gt; &amp;nbsp;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;input&gt;is[tiddler]]&quot;  variable=&quot;active&quot;&gt;
-      &lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;save&gt;&gt;&gt;&lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;done&gt;&gt;&gt;
+      &lt;$keyboard key=&quot;enter&quot; actions=&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&quot;&gt;&lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;done&gt;&gt;&gt;
          &lt;$tiddler tiddler=&lt;&lt;input&gt;&gt;&gt;&lt;$vars focus=&quot;yes&quot;&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;&lt;/$tiddler&gt;
       &lt;/$keyboard&gt;&lt;/$keyboard&gt;
       &lt;span style=&quot;position:relative;&quot;&gt;&lt;span class=&quot;editlist_input_buttons_$id$&quot;&gt;
-         &lt;$button tooltip=&quot;save&quot; actions=&lt;&lt;goto&gt;&gt;&gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;  &lt;/$button&gt;
-         &lt;$button tooltip=&quot;cancel&quot;               &gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;  &lt;/$button&gt;
-         &lt;$button tooltip=&quot;clear&quot;                &gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt; &lt;/$button&gt;
+         &lt;$button tooltip=&quot;save&quot;  &gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt; &lt;/$button&gt;
+         &lt;$button tooltip=&quot;cancel&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;         &lt;/$button&gt;
+         &lt;$button tooltip=&quot;clear&quot; &gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;        &lt;/$button&gt;
       &lt;/span&gt;&lt;/span&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
 &lt;!-- POPUP BUTTON --&gt;
 &lt;$reveal default=&quot;$filter$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$list filter=&quot;[[$listheight$]match[1]]&quot; variable=&quot;show_button&quot;&gt;
-      &lt;$button class=&quot;tc-button editlist_popup_button_$id$ fadeIn&quot; popup=&lt;&lt;popup&gt;&gt;&gt; &lt;span style=&quot;font-size:90%;&quot;&gt;&amp;#x25BC;&lt;/span&gt;
+      &lt;$button class=&quot;tc-button editlist_popup_button_$id$ fadeIn&quot; popup=&lt;&lt;popup&gt;&gt;&gt;
+         &lt;span style=&quot;font-size:90%;&quot;&gt;&amp;#x25BC;&lt;/span&gt;
          &lt;$list filter=&quot;[[$confirm$]match[yes]]&quot; variable=&quot;activate&quot;&gt; &lt;&lt;start&gt;&gt; &lt;/$list&gt;
       &lt;/$button&gt;
    &lt;/$list&gt;
 &lt;/$reveal&gt;
 &lt;!-- DELETE BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;currval&gt;!match[]then&lt;input&gt;!is[tiddler]]&quot; variable=&quot;show_delete&quot;&gt;
-   &lt;$button class=&quot;editlist_delete_button_$id$ fadeIn&quot; tooltip=&quot;clear&quot;&gt; {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt; &lt;/$button&gt;
+   &lt;$button class=&quot;editlist_delete_button_$id$ fadeIn&quot; tooltip=&quot;clear&quot;&gt;
+      {{$:/core/images/delete-button}} &lt;&lt;clear&gt;&gt;
+   &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;!-- SELECTION LIST --&gt;
 &lt;$list filter=&quot;[[$listheight$]!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_list&quot;&gt;
 &lt;$tiddler tiddler={{{ [&lt;input&gt;is[tiddler]else&lt;currentTiddler&gt;] }}}&gt;
 &lt;$reveal default=&quot;$filter$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$set name=&quot;all&quot;     filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
+   &lt;$set name=&quot;all&quot;     filter=&quot;&quot;&quot;$filter$ -[prefix[$:/temp/edit-list]]&quot;&quot;&quot;&gt;
    &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
    &lt;$set name=&quot;results&quot; filter=&quot;[enlist&lt;all&gt;search:title&lt;currval&gt;]&quot;&gt;
    &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
@@ -10774,7 +10787,8 @@ __find titles containing__:&lt;br&gt;
       &lt;div class=&quot;editlist_popup_heading_$id$&quot;&gt;
          &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;&lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
       &lt;/div&gt;
-      &lt;$select class=&quot;editlist_popup_select_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; actions=&lt;&lt;goto&gt;&gt;&gt;
+      &lt;$select class=&quot;editlist_popup_select_$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; size=&lt;&lt;size&gt;&gt; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;
+         actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;input&gt;!is[tiddler]]&quot; variable=&quot;goto_tiddler&quot;&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
          &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;value&quot;&gt;
             &lt;option style={{{ [[$listcolors$]match[yes]then[background-color:]addsuffix&lt;value&gt;] }}} value=&lt;&lt;value&gt;&gt;&gt;$listview$&lt;/option&gt;
          &lt;/$list&gt;
@@ -10790,12 +10804,11 @@ __find titles containing__:&lt;br&gt;
 
 !Introduction
 
-The edit-list macro provides a user interface in the browser that combines the features of a text input (`&lt;$edit-text&gt;` widget) and a selection list (`&lt;$select&gt;` widget).
+The edit-list macro combines the features of a text input (`&lt;$edit-text&gt;` widget) and a selection list (`&lt;$select&gt;` widget).  This permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.  Optional features include:
 
-* Enter custom text values or select from pre-defined values that are determined by a specified filter.
-* Use `find=yes` to progressively filter the list contents as you type!
-* Use `confirm=yes` to change fields in the current tiddler without losing the input focus!
-* Use `goto=yes` to quickly navigate to any tiddler by matching a partial title!
+* `find=yes` to progressively filter the selection list contents to __show only those items that contain your current input__.
+* `confirm=yes` to enter text without immediately updating the value stored in the target tiddler. This allows you to __change values stored in the current tiddler without losing the input focus__!
+* `goto=yes` to enter text and quickly __navigate to any tiddler by matching a partial title__!
 
 !Parameters
 
@@ -10805,16 +10818,16 @@ The edit-list macro provides a user interface in the browser that combines the f
 |Parameter   | Default  |Description |h
 |id          | //none// |Specifies a unique ID for the combined controls.  This is only needed if more than one `&lt;&lt;edit-list&gt;&gt;` macro is used in the same tiddler.|
 |tiddler     | //none// |The tiddler in which to save the input. If no tiddler is specified, the current tiddler is used.|
-|field       | `text`   |The field in which to save the input.|
+|field       | `text`   |The field in which to save the input. See Notes below.|
 |index       | //none// |The index in which to save the input. Takes precedence over the `field` parameter.|
 |default     | //none// |Text to display when the target tiddler doesn't exist.|
 |placeholder | //none// |Text to display when the field or index doesn't exist or is blank.|
-|tooltip     | //none// |Text to display when the mouse is hovering over the input field.|
+|tooltip     | //none// |Text to display when the mouse is hovering over the input control.|
 |filter      | //none// |A filter used to determine the contents of the list.  If a filter is not provided, no list is displayed.|
 |find        | `no`     |Set to `yes` to progressively filter the list to show only items that contain the current input.|
-|width       | `15em`   |Width of the input field.  Use CSS units.|
-|focus       | `no`     |Set to `yes` to automatically set focus to the input field after creation.|
-|focusPopup  | `no`     |Set to `yes` to automatically show the list when the input field gets focus.|
+|width       | `15em`   |Width of the input control.  Use CSS units.|
+|focus       | `no`     |Set to `yes` to automatically set focus to the input control after creation.|
+|focusPopup  | `no`     |Set to `yes` to automatically show the list when the input control gets focus.|
 |cancelPopups| `yes`    |Set to `no` to prevent closing of other popups. See Notes below.|
 |listwidth   | `100%`   |Width of the list. 100% automatically matches the width of the edit-text widget. Use CSS units.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` and `listscroll` are ignored.|
@@ -10822,11 +10835,15 @@ The edit-list macro provides a user interface in the browser that combines the f
 |listview    | `&lt;&lt;value&gt;&gt;` |Alternative text to show for list items.  See Notes below.|
 |listfontsize| `1em`    |Size of the font used to display the list items. Use CSS units.|
 |liststretch | `yes`    |When set to `yes` and the list has focus, the list display automatically expands to fit the widest item.|
-|listcolors  | `no`     |When set to `yes` and a list item is a CSS color name/value (e.g., `white` or `#fff`), the item background uses the indicated color.|
-|goto        | `no`     |When set to `yes` and the input field has focus, press &lt;kbd&gt;enter&lt;/kbd&gt; to view the tiddler whose title matches the current input.|
-|confirm     | `no`     |When set to `yes` and the input field has focus or the input value has been changed but not saved, buttons are shown:&lt;br/&gt;&amp;emsp;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; saves changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;esc&lt;/kbd&gt; discards changes, &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; clears the stored field/index value.|
+|listcolors  | `no`     |When set to `yes` and a list item is a CSS color name/value (e.g., `white` or `#fff`), the item background will show the indicated color.|
+|goto        | `no`     |When set to `yes` and the input control has focus, press &lt;kbd&gt;enter&lt;/kbd&gt; to view the tiddler whose title matches the current input.|
+|confirm     | `no`     |When set to `yes` and the input control has focus or the input value has been changed but not saved, buttons are shown:&lt;br/&gt;&amp;emsp;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; saves changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;esc&lt;/kbd&gt; discards changes, &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; clears the stored field/index value.|
 
 !Notes
+
+''tiddler''&lt;blockquote&gt;
+If you specify a target tiddler that does not yet exist, the first keystroke you enter into the input control will create that target tiddler and the input control will lose focus due to ~TiddlyWiki's automatic display refresh processing.  You will need click in the input control to restore focus and continue typing.  Once the target tiddler exists, this temporary loss of focus will no longer happen.  Note that this effect does occur if you are using the `confirm:yes` parameter, as this automatically uses a secondary tiddler to process your input and the target tiddler is only created when you click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to save your changes.
+&lt;/blockquote&gt;
 
 ''cancelPopups''&lt;blockquote&gt;
 By default, edit-list will only display one popup selection list at a time. If the edit-list macro itself occurs within a popup, you can use `cancelPopups:no` to bypass this behavior so that the containing popup remains visible.  This option can also be set using a variable (`&lt;$vars cancelPopups=&quot;no&quot;&gt;`) or a macro (e.g., `\define cancelPopups() no`).  This permits more flexible control of the popup behavior if multiple instances of the edit-list macro are contained within several layers of popups.
@@ -10838,84 +10855,86 @@ By default, `listview:&quot;&lt;&lt;value&gt;&gt;&quot;` displays the value of e
 
 !Examples
 
-''Direct input = no list (equivalent to `&lt;$edit-text&gt;`)&lt;br&gt;''
+''Direct input = no list (equivalent to `&lt;$edit-text&gt;`)''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal input = type a value with confirmation&lt;br&gt;''
+''Modal input = type a value with confirmation''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Direct combobox = type or select a value&lt;br&gt;''
+''Direct combobox = type or select a value''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal combobox = type or select a value with confirmation&lt;br&gt;''
+''Modal combobox = type or select a value with confirmation''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Direct combobox = type or select a value with popup list&lt;br&gt;''
+''Direct combobox = type or select a value with popup list''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal combobox = type or select a value with popup list and confirmation&lt;br&gt;''
+''Modal combobox = type or select a value with popup list and confirmation''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Direct combobox = type or select a value with progressively filtered popup list&lt;br&gt;''
+''Direct combobox = type or select a value with progressively filtered popup list''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal combobox = type or select a value with progressively filtered popup list and confirmation&lt;br&gt;''
+''Modal combobox = type or select a value with progressively filtered popup list and confirmation''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Direct goto = type or select a value with progressively filtered popup list. Select a title or press enter to open tiddler&lt;br&gt;''
+''Direct goto = type or select a value with progressively filtered popup list''
+&lt;span style=&quot;font-size:80%;&quot;&gt;Select a value or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:5 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:5 tiddler:Demo filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal goto = type or select a value with progressively filtered popup list. Click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; to open tiddler&lt;br&gt;''
+''Modal goto = type or select a value with progressively filtered popup list and confirmation''
+&lt;span style=&quot;font-size:80%;&quot;&gt;Click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:5a tiddler:Demo filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:5a tiddler:Demo filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Direct edit and listbox = type or select a value with progressively filtered fixed height listbox&lt;br&gt;''
+''Direct edit and listbox = type or select a value with progressively filtered fixed height listbox''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:6 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 find:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:6 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 find:yes&gt;&gt;
 &lt;&lt;&lt;
 
-''Modal edit and listbox = type or select a value with progressively filtered fixed height listbox and confirmation&lt;br&gt;''
+''Modal edit and listbox = type or select a value with progressively filtered fixed height listbox and confirmation''
 
 &lt;&lt;&lt;
 `&lt;&lt;edit-list id:6a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 find:yes confirm:yes&gt;&gt;`&lt;br&gt;
