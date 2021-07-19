@@ -10116,7 +10116,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210719011640465" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210719012726881" title="$:/StoryList">
+<div created="20210719015208218" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210719015943500" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10675,7 +10675,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210719012724298" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210719015903056" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
             id:&quot;&quot;,
        tiddler:&quot;&quot;,
@@ -10739,6 +10739,11 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- DIRECT INPUT --&gt;
 &lt;$list filter=&quot;[[$confirm$]!match[yes]]&quot; variable=&quot;direct_input&quot;&gt;
    &lt;$keyboard key=&quot;enter&quot; actions=&lt;&lt;goto&gt;&gt;&gt;&lt;&lt;edit&gt;&gt;&lt;/$keyboard&gt;
+   &lt;$list filter=&quot;[&lt;currentTiddler&gt;!is[tiddler]]&quot; variable=&quot;missing&quot;&gt;
+      &lt;$button class=&quot;editlist_input_$id$ tc-btn-invisible&quot;&gt; &amp;nbsp;
+         &lt;$action-setfield $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&quot;&quot;/&gt;
+      &lt;/$button&gt;
+   &lt;/$list&gt;
 &lt;/$list&gt;
 &lt;!-- MODAL INPUT --&gt;
 &lt;$set name=&quot;currval&quot; value={{##$index$}} emptyValue={{{ [[$index$]match[]then{!!$field$}] }}}&gt;
@@ -10842,7 +10847,7 @@ The edit-list macro combines the features of a text input (`&lt;$edit-text&gt;` 
 !Notes
 
 ''tiddler''&lt;blockquote&gt;
-If you specify a target tiddler that does not yet exist, the first keystroke you enter into the input control will create that target tiddler and the input control will lose focus due to ~TiddlyWiki's automatic display refresh processing.  You will need click in the input control to restore focus and continue typing.  Once the target tiddler exists, this temporary loss of focus will no longer happen.  Note that this effect does occur if you are using the `confirm:yes` parameter, as this automatically uses a secondary tiddler to process your input and the target tiddler is only created when you click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to save your changes.
+If you specify a target tiddler that does not yet exist, the first time you click on the input control it will create that target tiddler.  You will need click a second time to begin typing.  Note that this effect does not occur if you are using the `confirm:yes` parameter which automatically uses a temporary tiddler to process your input and the target tiddler is only created after you click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to save your changes.
 &lt;/blockquote&gt;
 
 ''cancelPopups''&lt;blockquote&gt;
