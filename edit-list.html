@@ -10222,7 +10222,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210721201307357" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210721232446244" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10250,6 +10250,9 @@ TiddlyTools/Macros/edit-list</pre>
 &lt;$vars   edit=&quot;&quot;&quot;&lt;$edit-text tiddler=&lt;&lt;tid&gt;&gt; class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot;
                     field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
                     focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars select=&quot;&quot;&quot;&lt;$select class=&quot;editlist_popup_select_$id$&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt;
+                    size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}} actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
+                    &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt;&lt;&lt;option&gt;&gt;&lt;/$list&gt;&lt;/$select&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   save=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot; variable=&quot;is_modal&quot;&gt;
                  &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;modal&gt;get&lt;field&gt;] }}}&gt;
                  &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
@@ -10270,15 +10273,16 @@ TiddlyTools/Macros/edit-list</pre>
    .editlist_clear_button_$id$          { height:1.5em; padding:0 0.35em; }
    .editlist_popup_button_$id$          { height:1.5em; padding:0 0.25em; }
    .editlist_modal_buttons_$id$         { position:absolute; width:max-content; left:calc($width$ + 0.2em); margin-top:-1px; }
-   .editlist_popup_$id$                 { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; top:1.6em; }
+   .editlist_popup_$id$                 { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; padding-top:1.6em; }
    .editlist_popup_heading_$id$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$id$          { width:100% !important; overflow-y:auto; outline:0; font-size:$fontsize$; }
+   .editlist_popup_select_cover_$id$    { position:absolute; top:0; left:0; width:100%; height:100%; }
 &lt;/style&gt;
+&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_$id$ { position:static !important; } &lt;/style&gt;
+&lt;/$list&gt;
 &lt;$list filter=&quot;[[$stretch$]match[yes]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$id$:hover, .editlist_popup_select_$id$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_$id$ { position:static; padding-top:1.6em; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;!--------------&gt;
 &lt;!-- CONTROLS --&gt;
@@ -10309,29 +10313,25 @@ TiddlyTools/Macros/edit-list</pre>
 
 \define editlist_input()
 &lt;$vars target={{{ [&lt;confirm&gt;match[yes]then&lt;modal&gt;else&lt;direct&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;target&gt;match&lt;direct&gt;then&lt;tid&gt;is[missing]]&quot; variable=&quot;is_direct_and_missing&quot;&gt;
-   &lt;&lt;edit&gt;&gt;
-   &lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot;&gt;&lt;&lt;clear&gt;&gt;&lt;&lt;editlist_activate&gt;&gt;&lt;/$button&gt;
+&lt;$list filter=&quot;[&lt;target&gt;!is[tiddler]]&quot; variable=&quot;is_inactive&quot;&gt;
+   &lt;&lt;edit&gt;&gt;&lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot;&gt;&lt;&lt;editlist_activate&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;target&gt;match&lt;modal&gt;] [&lt;tid&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;is_modal_or_exists&quot;&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;!is[tiddler]]&quot; variable=&quot;is_inactive&quot;&gt;
-      &lt;&lt;edit&gt;&gt;
-      &lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot;&gt;&lt;&lt;editlist_activate&gt;&gt;&lt;/$button&gt;
-   &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;is[tiddler]]&quot; variable=&quot;is_active&quot;&gt;
-      &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-      &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-         &lt;$vars focus={{{ [&lt;active&gt;get[text]!match&lt;target&gt;then[no]else[yes]] }}}&gt;
-         &lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
-         &lt;/$vars&gt;
-      &lt;/$keyboard&gt;
-      &lt;/$keyboard&gt;
-      &lt;$list filter=&quot;[&lt;target&gt;match&lt;modal&gt;]&quot; variable=&quot;is_modal&quot;&gt;
-         &lt;span style=&quot;position:relative;&quot;&gt;&lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;
-            &lt;$button tooltip=&quot;save&quot;  &gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
-            &lt;$button tooltip=&quot;cancel&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;                 &lt;/$button&gt;
-         &lt;/span&gt;&lt;/span&gt;
-      &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;target&gt;is[tiddler]]&quot; variable=&quot;is_active&quot;&gt;
+   &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
+   &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
+      &lt;$vars focus={{{ [&lt;active&gt;get[text]!match&lt;target&gt;then[no]else[yes]] }}}&gt;
+      &lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
+      &lt;/$vars&gt;
+   &lt;/$keyboard&gt;
+   &lt;/$keyboard&gt;
+   &lt;$list filter=&quot;[&lt;target&gt;match&lt;modal&gt;]&quot; variable=&quot;is_modal&quot;&gt;
+      &lt;span style=&quot;position:relative;&quot;&gt;&lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;
+         &lt;$button tooltip=&quot;save&quot;  &gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
+         &lt;$button tooltip=&quot;cancel&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;                 &lt;/$button&gt;
+         &lt;$button tooltip=&quot;clear&quot;&gt;  {{$:/core/images/delete-button}}
+            &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;target&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;
+         &lt;/$button&gt;
+      &lt;/span&gt;&lt;/span&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
 \end
@@ -10352,7 +10352,7 @@ TiddlyTools/Macros/edit-list</pre>
 &lt;$list filter=&quot;[&lt;currval&gt;!match[]]&quot;  variable=&quot;show_clear_button&quot;&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot; variable=&quot;show_clear_button&quot;&gt;
 &lt;$button class=&quot;editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear&quot;&gt;
-   ''X''
+   {{$:/core/images/delete-button}}
    &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10360,7 +10360,7 @@ TiddlyTools/Macros/edit-list</pre>
 \define editlist_select()
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]]&quot;                                       variable=&quot;show_select&quot;&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars    tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
@@ -10370,23 +10370,18 @@ TiddlyTools/Macros/edit-list</pre>
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;currval&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
 &lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;show&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;size&quot;    filter=&quot;[&lt;listheight&gt;match[1]then&lt;count&gt;min&lt;scroll&gt;max[2]else&lt;listheight&gt;]&quot;&gt;
-&lt;$vars target={{{ [&lt;confirm&gt;match[yes]then&lt;modal&gt;else&lt;direct&gt;] }}}&gt;
 &lt;div class=&quot;editlist_popup_$(id)$&quot;&gt;
    &lt;div class=&quot;editlist_popup_heading_$(id)$&quot;&gt;
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
    &lt;/div&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;match&lt;modal&gt;then&lt;target&gt;!is[tiddler]]&quot; variable=&quot;is_modal_and_inactive&quot;&gt;
-      &lt;$select class=&quot;editlist_popup_select_$(id)$&quot; tiddler=&lt;&lt;modal&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt;
-         size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}} actions=&lt;&lt;editlist_activate&gt;&gt;&gt;
-         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
-      &lt;/$select&gt;
+   &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot; variable=&quot;is_modal_and_inactive&quot;&gt;
+      &lt;div style=&quot;position:relative;&quot;&gt;
+         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot;&gt;&lt;&lt;editlist_activate&gt;&gt;&lt;/$button&gt;
+      &lt;/div&gt;
    &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;match&lt;direct&gt;] [&lt;target&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;is_direct_or_active&quot;&gt;
-      &lt;$select class=&quot;editlist_popup_select_$(id)$&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt;
-         size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}} actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
-         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
-      &lt;/$select&gt;
+   &lt;$list filter=&quot;[&lt;confirm&gt;match[no]] [&lt;modal&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;is_direct_or_active&quot;&gt;
+      &lt;&lt;select&gt;&gt;
    &lt;/$list&gt;
 &lt;/div&gt;
 \end
@@ -10397,7 +10392,7 @@ TiddlyTools/Macros/edit-list</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210719102404282" modified="20210721201045227" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210721230423440" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10432,7 +10427,7 @@ TiddlyTools/Macros/edit-list</pre>
 |filter      | //none// |Use ~TiddlyWiki filter syntax to specify the contents of the select list.  If a filter is not provided, no list is displayed.|
 |find        | `no`     |If `yes`, progressively filter the list to show only items that contain the current input.|
 |goto        | `no`     |If `yes`, selecting a list item or pressing &lt;kbd&gt;enter&lt;/kbd&gt; views the tiddler whose title matches the current input.|
-|confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes.|
+|confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes, or &lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt; to clear the current input.|
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
 |focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
 |listwidth   | `100%`   |Width of the list. 100% automatically matches the width of the edit-text widget. Use CSS units.|
@@ -10458,7 +10453,7 @@ For example, in a list containing tiddler titles, `view:&quot;{{{ [&lt;item&gt;g
 &lt;/blockquote&gt;
 
 ''clearing the input field''&lt;blockquote&gt;
-When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ will appear in the text input control.  You can use this button to quickly clear the input field without having to select the text and or use your keyboard to erase the input field contents.
+When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, a @@font-size:80%;&lt;$button&gt;{{$:/core/images/delete-button}}&lt;/$button&gt;@@ button will appear in the text input control.  You can use this button to quickly clear the input field without having to select the text and or use your keyboard to erase the input field contents.
 &lt;/blockquote&gt;
 
 !Known Bugs
@@ -10529,10 +10524,8 @@ When a value has been set into a field or index and the mouse pointer is over th
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210721015652739" modified="20210721200250238" tags="" title="TiddlyTools/Macros/edit-list/Tests">
-<pre>&lt;div style=&quot;font-size:80%;line-height:1em;&quot;&gt;
-
-[[Demo]] text field is: {{Demo!!text}}&lt;br&gt;
+<div created="20210721015652739" modified="20210721211831568" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<pre>[[Demo]] text field is: {{Demo!!text}}&lt;br&gt;
 [[Demo]] tags field is: {{Demo!!tags}}&lt;br&gt;
 [[Demo]] type field is: {{Demo!!type}}&lt;br&gt;
 
@@ -10572,10 +10565,7 @@ When a value has been set into a field or index and the mouse pointer is over th
  &lt;&lt;edit-list id:8 tiddler:Demo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
 `&lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
-
-
-</pre>
+ &lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;</pre>
 </div>
 
 
