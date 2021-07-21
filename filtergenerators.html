@@ -189,9 +189,9 @@ Error message and password prompt
 
 <li>TiddlyTools/Macros/edit-list</li>
 
-<li>TiddlyTools/Macros/edit-list/Debug</li>
-
 <li>TiddlyTools/Macros/edit-list/Info</li>
+
+<li>TiddlyTools/Macros/edit-list/Tests</li>
 
 </ul>
 </p>
@@ -10115,7 +10115,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210721120634364" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721120812872" title="$:/StoryList">
+<div created="20210721152628438" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721155110722" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10674,13 +10674,17 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210721120804648" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210721155906515" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
                focus:&quot;no&quot;,   focusPopup:&quot;no&quot;,    listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,
               scroll:&quot;10&quot;,     fontsize:&quot;1em&quot;,     stretch:&quot;yes&quot;,      colors:&quot;no&quot;,
             multiple:&quot;no&quot;,         view:&quot;&lt;&lt;item&gt;&gt;&quot;)
+&lt;!---------------------------------------------------&gt;
+&lt;!-- author: Eric Shulman                          --&gt;
+&lt;!-- source: http://TiddlyTools.com/edit-list.html --&gt;
+&lt;!---------------------------------------------------&gt;
 &lt;!-----------------&gt;
 &lt;!-- ENVIRONMENT --&gt;
 &lt;!-----------------&gt;
@@ -10690,20 +10694,24 @@ __find titles containing__:&lt;br&gt;
 &lt;$vars direct={{{ [[$:/state/popup/edit-list/direct/]addsuffix&lt;suffix&gt;] }}}&gt;
 &lt;$vars  modal={{{ [[$:/state/popup/edit-list/modal/]addsuffix&lt;suffix&gt;]  }}}&gt;
 &lt;$vars  popup={{{ [[$:/state/popup/edit-list/popup/]addsuffix&lt;suffix&gt;]  }}}&gt;
-&lt;$vars     id=&quot;$id$&quot;        field=&quot;$field$&quot;     index=&quot;$index$&quot;     confirm=&quot;$confirm$&quot; timestamp=&quot;$timestamp$&quot;&gt;
-&lt;$vars filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; find=&quot;$find$&quot; listheight=&quot;$listheight$&quot; scroll=&quot;$scroll$&quot;   multiple=&quot;$multiple$&quot;&gt;
+&lt;!---------------&gt;
+&lt;!-- VARIABLES --&gt;
+&lt;!---------------&gt;
+&lt;$vars  id=&quot;$id$&quot; field=&quot;$field$&quot; index=&quot;$index$&quot; timestamp=&quot;$timestamp$&quot; default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
+   tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot; focus=&quot;$focus$&quot; focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot; find=&quot;$find$&quot;
+   confirm=&quot;$confirm$&quot; listheight=&quot;$listheight$&quot; scroll=&quot;$scroll$&quot; multiple=&quot;$multiple$&quot;&gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;!-------------------&gt;
 &lt;$vars   edit=&quot;&quot;&quot;&lt;$edit-text tiddler=&lt;&lt;tid&gt;&gt; class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot;
-                    field=&quot;$field$&quot; index=&quot;$index$&quot; default=&quot;$default$&quot; placeholder=&quot;$placeholder$&quot;
-                    focus={{{ [&lt;focus&gt;else[$focus$]] }}} focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}/&gt;&quot;&quot;&quot;&gt;
+                    field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
+                    focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   save=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot; variable=&quot;is_modal&quot;&gt;
-                 &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;modal&gt;get[$field$]] }}}&gt;
-                 &lt;$action-setfield $timestamp=&quot;$timestamp$&quot; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;newval&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+                 &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;modal&gt;get&lt;field&gt;] }}}&gt;
+                 &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]]&quot; variable=&quot;do_goto&quot;&gt;
-                 &lt;$action-navigate $to={{{ [&lt;tid&gt;get[$field$]] }}}/&gt;&lt;$action-navigate $to={{{ [&lt;tid&gt;getindex[$index$]] }}}/&gt;&quot;&quot;&quot;&gt;
-&lt;$vars  clear=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;$timestamp$&quot; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;&quot;&quot;&quot;&gt;
+                 &lt;$action-navigate $to={{{ [&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}}/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars  clear=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;active&gt;] [&lt;direct&gt;] [&lt;modal&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars option=&quot;&quot;&quot;&lt;option style={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;] }}} value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;&gt;
 &lt;!------------&gt;
@@ -10731,9 +10739,7 @@ __find titles containing__:&lt;br&gt;
 &lt;!--------------&gt;
 &lt;!-- CONTROLS --&gt;
 &lt;!--------------&gt;
-&lt;div class=&quot;editlist_wrapper_$id$ tc-popup-keep&quot;
-     style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1.2em;]] }}}
-     title=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;&gt;
+&lt;div class=&quot;editlist_wrapper_$id$ tc-popup-keep&quot; style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1.2em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
 &lt;&lt;editlist_input&gt;&gt;
 &lt;div class=&quot;editlist_input_buttons_$id$&quot;&gt;
    &lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;
@@ -10802,7 +10808,7 @@ __find titles containing__:&lt;br&gt;
 &lt;$list filter=&quot;[&lt;currval&gt;!match[]]&quot;  variable=&quot;show_clear_button&quot;&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot; variable=&quot;show_clear_button&quot;&gt;
 &lt;$button class=&quot;editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear&quot;&gt;
-   X
+   ''X''
    &lt;&lt;clear&gt;&gt;&lt;&lt;done&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10842,56 +10848,7 @@ __find titles containing__:&lt;br&gt;
 \end
 </pre>
 </div>
-<div created="20210721015652739" modified="20210721083628942" tags="" title="TiddlyTools/Macros/edit-list/Debug">
-<pre>|  Active focus:|{{$:/state/popup/edit-list/active}}|
-| Direct inputs:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct/]sort[]]&quot;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
-|  Modal inputs:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal/]sort[]]&quot;&gt; &lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
-|        Popups:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/popup/]sort[]]&quot;&gt; &lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
-&lt;$button&gt; delete state tiddlers
-   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot;/&gt;
-&lt;/$button&gt;
-
-[[Demo]] text field is: {{Demo!!text}}&lt;br&gt;
-[[Demo]] tags field is: {{Demo!!tags}}&lt;br&gt;
-[[Demo]] type field is: {{Demo!!type}}&lt;br&gt;
-
-&lt;$button&gt; delete Demo tiddler
-   &lt;$action-deletetiddler $tiddler=&quot;Demo&quot; /&gt;
-&lt;/$button&gt;
-
-`&lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;
-
-`&lt;&lt;edit-list id:2 tiddler:Demo field:tags&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2 tiddler:Demo field:tags&gt;&gt;
-
-`&lt;&lt;edit-list id:3 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
-
-`&lt;&lt;edit-list id:4 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
-
-`&lt;&lt;edit-list id:5 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:5 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
-
-`&lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes confirm:yes&gt;&gt;
-
-----
-
-`&lt;&lt;edit-list id:7 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:7 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
-
-`&lt;&lt;edit-list id:8 tiddler:Demo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:8 tiddler:Demo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
-
-`&lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
-
-
-</pre>
-</div>
-<div created="20210719102404282" modified="20210721100722849" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210721154951774" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10952,7 +10909,7 @@ For example, in a list containing tiddler titles, `view:&quot;{{{ [&lt;item&gt;g
 &lt;/blockquote&gt;
 
 ''clearing the input field''&lt;blockquote&gt;
-When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, an @@font-size:80%;&lt;$button&gt;X&lt;/$button&gt;@@ will appear in the text input control.  You can use this button to quickly clear the input field without having to select the text and or use your keyboard to erase the input field contents.
+When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ will appear in the text input control.  You can use this button to quickly clear the input field without having to select the text and or use your keyboard to erase the input field contents.
 &lt;/blockquote&gt;
 
 !Known Bugs
@@ -11022,6 +10979,55 @@ When a value has been set into a field or index and the mouse pointer is over th
 `&lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;</pre>
+</div>
+<div created="20210721015652739" modified="20210721154928630" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<pre>|  Active focus:|{{$:/state/popup/edit-list/active}}|
+| Direct inputs:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct/]sort[]]&quot;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
+|  Modal inputs:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal/]sort[]]&quot;&gt; &lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
+|        Popups:|&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/popup/]sort[]]&quot;&gt; &lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;|
+&lt;$button&gt; delete state tiddlers
+   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot;/&gt;
+&lt;/$button&gt;
+
+[[Demo]] text field is: {{Demo!!text}}&lt;br&gt;
+[[Demo]] tags field is: {{Demo!!tags}}&lt;br&gt;
+[[Demo]] type field is: {{Demo!!type}}&lt;br&gt;
+
+&lt;$button&gt; delete Demo tiddler
+   &lt;$action-deletetiddler $tiddler=&quot;Demo&quot; /&gt;
+&lt;/$button&gt;
+
+`&lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;
+
+`&lt;&lt;edit-list id:2 tiddler:Demo field:tags&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:2 tiddler:Demo field:tags&gt;&gt;
+
+`&lt;&lt;edit-list id:3 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:3 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+
+`&lt;&lt;edit-list id:4 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:4 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+
+`&lt;&lt;edit-list id:5 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:5 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
+
+`&lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes confirm:yes&gt;&gt;
+
+----
+
+`&lt;&lt;edit-list id:7 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:7 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+
+`&lt;&lt;edit-list id:8 tiddler:Demo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:8 tiddler:Demo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+
+`&lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:9 tiddler:Demo field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
+
+
+</pre>
 </div>
 
 
