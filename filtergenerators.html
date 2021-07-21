@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
+<li>Demo</li>
+
 <li>TiddlyTools/FilterGenerators/PowerSearch</li>
 
 <li>TiddlyTools/FilterGenerators/TagCloud</li>
@@ -10115,7 +10117,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210721095500804" list="TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Info TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721100740950" title="$:/StoryList">
+<div created="20210721102632292" list="TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Info TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721103538686" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10232,6 +10234,9 @@ TiddlyTools/FilterGenerators/Tags
 </div>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
+</div>
+<div created="20210721102643126" goto="$:/Acknowledgements" modified="20210721103538685" title="Demo">
+<pre></pre>
 </div>
 <div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210719113600563" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
@@ -10674,7 +10679,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210721100730014" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210721103526101" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10702,7 +10707,7 @@ __find titles containing__:&lt;br&gt;
                  &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex[$index$]] }}} emptyValue={{{ [[$index$]match[]then&lt;modal&gt;get[$field$]] }}}&gt;
                  &lt;$action-setfield $timestamp=&quot;$timestamp$&quot; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot; $value=&lt;&lt;newval&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   goto=&quot;&quot;&quot;&lt;$list filter=&quot;[[$goto$]match[yes]]&quot; variable=&quot;do_goto&quot;&gt;
-                 &lt;$action-navigate $to={{$(tid)$!!$field$}}/&gt;&lt;$action-navigate $to={{$(tid)$##$index$}}/&gt;&quot;&quot;&quot;&gt;
+                 &lt;$action-navigate $to={{{ [&lt;tid&gt;get[$field$]] }}}/&gt;&lt;$action-navigate $to={{{ [&lt;tid&gt;getindex[$index$]] }}}/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars  clear=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;$timestamp$&quot; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;$field$&quot; $index=&quot;$index$&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   done=&quot;&quot;&quot;&lt;$action-deletetiddler $filter=&quot;[&lt;active&gt;] [&lt;direct&gt;] [&lt;modal&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;&gt;
 &lt;$vars option=&quot;&quot;&quot;&lt;option style={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;] }}} value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;&gt;
