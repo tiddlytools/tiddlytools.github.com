@@ -179,8 +179,6 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
-<li>Demo</li>
-
 <li>TiddlyTools/FilterGenerators/PowerSearch</li>
 
 <li>TiddlyTools/FilterGenerators/TagCloud</li>
@@ -10117,7 +10115,7 @@ TiddlyTools/FilterGenerators/Tags
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210721102632292" list="TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Info TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721103538686" title="$:/StoryList">
+<div created="20210721120634364" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" modified="20210721120812872" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10234,9 +10232,6 @@ TiddlyTools/FilterGenerators/Tags
 </div>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
-</div>
-<div created="20210721102643126" goto="$:/Acknowledgements" modified="20210721103538685" title="Demo">
-<pre></pre>
 </div>
 <div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210719113600563" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
@@ -10679,7 +10674,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210721103526101" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210721120804648" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10747,14 +10742,14 @@ __find titles containing__:&lt;br&gt;
 \end
 
 \define editlist_activate()
-&lt;$set name=&quot;currval&quot; value={{$(tid)$##$(index)$}} emptyValue={{{ [&lt;index&gt;match[]then{$(tid)$!!$(field)$}] }}}&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct]]&quot;&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct]]&quot; variable=&quot;tid&quot;&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;tid&gt;&gt; /&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal]]&quot;&gt;
-   &lt;$set name=&quot;thisval&quot; value={{##$(index)$}} emptyValue={{{ [&lt;index&gt;match[]then{!!$(field)$}] }}}&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal]]&quot; variable=&quot;tid&quot;&gt;
+   &lt;$set name=&quot;thisval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
    &lt;$list filter=&quot;[&lt;thisval&gt;match&lt;currval&gt;]&quot; variable=&quot;no_changes&quot;&gt;
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;tid&gt;&gt; /&gt;
    &lt;/$list&gt;
    &lt;/$set&gt;
 &lt;/$list&gt;
@@ -10803,7 +10798,7 @@ __find titles containing__:&lt;br&gt;
 
 \define editlist_clear()
 \whitespace trim
-&lt;$set name=&quot;currval&quot; value={{$(tid)$##$(index)$}} emptyValue={{{ [&lt;index&gt;match[]then{$(tid)$!!$(field)$}] }}}&gt;
+&lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$list filter=&quot;[&lt;currval&gt;!match[]]&quot;  variable=&quot;show_clear_button&quot;&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot; variable=&quot;show_clear_button&quot;&gt;
 &lt;$button class=&quot;editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear&quot;&gt;
@@ -10816,7 +10811,7 @@ __find titles containing__:&lt;br&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]]&quot;                                       variable=&quot;show_select&quot;&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex[$(index)$]] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get[$(field)$]] }}}&gt;
+&lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;currval&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
@@ -10825,17 +10820,27 @@ __find titles containing__:&lt;br&gt;
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;currval&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
 &lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;show&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;size&quot;    filter=&quot;[&lt;listheight&gt;match[1]then&lt;count&gt;min&lt;scroll&gt;max[2]else&lt;listheight&gt;]&quot;&gt;
+&lt;$vars target={{{ [&lt;confirm&gt;match[yes]then&lt;modal&gt;else&lt;direct&gt;] }}}&gt;
 &lt;div class=&quot;editlist_popup_$(id)$&quot;&gt;
    &lt;div class=&quot;editlist_popup_heading_$(id)$&quot;&gt;
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
    &lt;/div&gt;
-   &lt;$select class=&quot;editlist_popup_select_$(id)$&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}}
-      actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot; variable=&quot;goto_tiddler&quot;&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
-      &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
-   &lt;/$select&gt;
+   &lt;$list filter=&quot;[&lt;target&gt;match&lt;modal&gt;then&lt;target&gt;!is[tiddler]]&quot; variable=&quot;is_modal_and_inactive&quot;&gt;
+      &lt;$select class=&quot;editlist_popup_select_$(id)$&quot; tiddler=&lt;&lt;modal&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt;
+         size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}} actions=&lt;&lt;editlist_activate&gt;&gt;&gt;
+         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
+      &lt;/$select&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;target&gt;match&lt;direct&gt;] [&lt;target&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;is_direct_or_active&quot;&gt;
+      &lt;$select class=&quot;editlist_popup_select_$(id)$&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt;
+         size=&lt;&lt;size&gt;&gt; multiple={{{ [&lt;multiple&gt;match[yes]] }}} actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;&gt;
+         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
+      &lt;/$select&gt;
+   &lt;/$list&gt;
 &lt;/div&gt;
-\end</pre>
+\end
+</pre>
 </div>
 <div created="20210721015652739" modified="20210721083628942" tags="" title="TiddlyTools/Macros/edit-list/Debug">
 <pre>|  Active focus:|{{$:/state/popup/edit-list/active}}|
