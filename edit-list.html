@@ -155,6 +155,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10086,6 +10088,11 @@ Error message and password prompt
 TiddlyTools/Macros/edit-list
 TiddlyTools/Macros/edit-list/Tester</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Macros/edit-list/Tests]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10104,7 +10111,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10222,7 +10229,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210723024335471" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210723034108541" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10471,7 +10478,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210723024329597" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210723034104458" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10613,7 +10620,7 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 
 {{TiddlyTools/Macros/edit-list/Tests}}</pre>
 </div>
-<div created="20210722235506436" modified="20210723022127352" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210722235506436" modified="20210723031834243" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>`&lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;
 
@@ -10641,14 +10648,20 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 `&lt;&lt;edit-list id:8 tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:8 tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
-`&lt;&lt;edit-list id:8a tiddler:Test index:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:8a tiddler:Test index:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;
+`&lt;&lt;edit-list id:8a tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:8a tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 
-`&lt;&lt;edit-list id:8b tiddler:Test field:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:8b tiddler:Test field:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;
+`&lt;&lt;edit-list id:8c tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:8c tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 
-`&lt;&lt;edit-list id:9 tiddler:Test field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:9 tiddler:Test field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;</pre>
+`&lt;&lt;edit-list id:9 tiddler:Test index:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:9 tiddler:Test index:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;
+
+`&lt;&lt;edit-list id:9a tiddler:Test field:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:9a tiddler:Test field:color filter:&quot;#ff0000 #00ff00 #0000ff&quot; colors:yes&gt;&gt;
+
+`&lt;&lt;edit-list id:10 tiddler:Test field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:10 tiddler:Test field:text filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;</pre>
 </div>
 
 
