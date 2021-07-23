@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>TiddlyTools/Macros/edit-list</li>
 
+<li>TiddlyTools/Macros/edit-list/Examples</li>
+
 <li>TiddlyTools/Macros/edit-list/Info</li>
 
 <li>TiddlyTools/Macros/edit-list/Tester</li>
@@ -10079,9 +10081,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191118105110098" modified="20210722234433281" title="$:/DefaultTiddlers">
+<div created="20191118105110098" modified="20210723003204174" title="$:/DefaultTiddlers">
 <pre>TiddlyTools/Macros/edit-list/Info
-TiddlyTools/Macros/edit-list</pre>
+TiddlyTools/Macros/edit-list
+TiddlyTools/Macros/edit-list/Tester</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10101,7 +10104,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210723000634644" list="TiddlyTools/Macros/edit-list" modified="20210723000815365" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10219,7 +10222,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210723002104267" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210723003921034" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10394,7 +10397,78 @@ TiddlyTools/Macros/edit-list</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210719102404282" modified="20210723000823494" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210723003702394" modified="20210723003754876" tags="" title="TiddlyTools/Macros/edit-list/Examples">
+<pre>\define reset()
+&lt;$list filter=&quot;[[Demo]is[tiddler]]&quot;&gt;
+   &lt;$button style=&quot;font-size:50%;&quot;&gt;
+      reset
+      &lt;$action-deletetiddler $tiddler=&quot;Demo&quot; /&gt;
+      &lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list]]&quot; /&gt;
+   &lt;/$button&gt;
+&lt;/$list&gt;
+\end
+
+!Examples &lt;&lt;reset&gt;&gt;
+
+''Direct input: updates immediately''
+
+&lt;&lt;&lt;
+''no list, type a value (equivalent to `&lt;$edit-text&gt;`)''&lt;br&gt;
+`&lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;
+
+''combobox, type or select a value''&lt;br&gt;
+`&lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+
+''combobox, type or select a value with popup list''&lt;br&gt;
+`&lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
+
+''combobox, type or select a value with progressively filtered popup list''&lt;br&gt;
+`&lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;
+
+''combobox, type or select a value with progressively filtered popup list''
+&lt;span style=&quot;font-size:80%;&quot;&gt;Select a value or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;&lt;br&gt;
+`&lt;&lt;edit-list id:5 tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:5 tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;
+
+''edit and listbox, type or select multiple values with a fixed height list''&lt;br&gt;
+`&lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes&gt;&gt;
+&lt;&lt;&lt;
+
+''Modal input: requires confirmation''
+
+&lt;&lt;&lt;
+''no list, type a value ''&lt;br&gt;
+`&lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;
+
+''combobox, type or select a value''&lt;br&gt;
+`&lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+
+''combobox, type or select a value with popup list''&lt;br&gt;
+`&lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;
+
+''combobox, type or select a value with progressively filtered popup list''&lt;br&gt;
+`&lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;
+
+''combobox, type or select a value with progressively filtered popup list''
+&lt;span style=&quot;font-size:80%;&quot;&gt;Click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;&lt;br&gt;
+`&lt;&lt;edit-list id:5a tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:5a tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;
+
+''edit and listbox, type or select multiple values with a fixed height list''&lt;br&gt;
+`&lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
+<div created="20210719102404282" modified="20210723003915813" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10473,67 +10547,9 @@ If `find:yes` is specified and you use the keyboard to scroll through list items
 A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a value of `$:/tags/Macro` is selected in the list'', as this value triggers a system-wide refresh event because the ~TiddlyWiki system assumes that a new global macro is being declared.
 &lt;&lt;&lt;
 
-!Examples &lt;$list filter=&quot;[[Demo]is[tiddler]]&quot;&gt;&lt;$button style=&quot;font-size:50%;&quot;&gt;reset&lt;$action-deletetiddler $tiddler=&quot;Demo&quot; /&gt;&lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list]]&quot; /&gt;&lt;/$button&gt;&lt;/$list&gt;
-
-''Direct input: updates immediately''
-
-&lt;&lt;&lt;
-''no list, type a value (equivalent to `&lt;$edit-text&gt;`)''&lt;br&gt;
-`&lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1 tiddler:Demo&gt;&gt;
-
-''combobox, type or select a value''&lt;br&gt;
-`&lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
-
-''combobox, type or select a value with popup list''&lt;br&gt;
-`&lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
-
-''combobox, type or select a value with progressively filtered popup list''&lt;br&gt;
-`&lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4 tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes&gt;&gt;
-
-''combobox, type or select a value with progressively filtered popup list''
-&lt;span style=&quot;font-size:80%;&quot;&gt;Select a value or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:5 tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:5 tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;
-
-''edit and listbox, type or select multiple values with a fixed height list''&lt;br&gt;
-`&lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:6 tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes&gt;&gt;
-&lt;&lt;&lt;
-
-''Modal input: requires confirmation''
-
-&lt;&lt;&lt;
-''no list, type a value ''&lt;br&gt;
-`&lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1a tiddler:Demo confirm:yes&gt;&gt;
-
-''combobox, type or select a value''&lt;br&gt;
-`&lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
-
-''combobox, type or select a value with popup list''&lt;br&gt;
-`&lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes confirm:yes&gt;&gt;
-
-''combobox, type or select a value with progressively filtered popup list''&lt;br&gt;
-`&lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4a tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] find:yes focusPopup:yes confirm:yes&gt;&gt;
-
-''combobox, type or select a value with progressively filtered popup list''
-&lt;span style=&quot;font-size:80%;&quot;&gt;Click &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or press &lt;kbd&gt;enter&lt;/kbd&gt; to view tiddler&lt;/span&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:5a tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:5a tiddler:Demo field:goto timestamp:no filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes confirm:yes goto:yes&gt;&gt;
-
-''edit and listbox, type or select multiple values with a fixed height list''&lt;br&gt;
-`&lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
-&lt;&lt;&lt;</pre>
+{{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210723000804336" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<div created="20210721015652739" modified="20210723003900129" tags="" title="TiddlyTools/Macros/edit-list/Tester">
 <pre>\define showstates()
 &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]count[]!match[0]]&quot;&gt;
    &lt;table&gt;
@@ -10602,7 +10618,7 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 
 {{TiddlyTools/Macros/edit-list/Tests}}</pre>
 </div>
-<div created="20210722235506436" modified="20210723000818177" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210722235506436" modified="20210723003910252" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>`&lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;
 
