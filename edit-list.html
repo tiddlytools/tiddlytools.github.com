@@ -10222,7 +10222,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210723003921034" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210723024335471" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,        tiddler:&quot;&quot;,          field:&quot;text&quot;,      index:&quot;&quot;,    timestamp:&quot;yes&quot;,
              default:&quot;&quot;,    placeholder:&quot;&quot;,        tooltip:&quot;&quot;,          width:&quot;15em&quot;, 
               filter:&quot;&quot;,           find:&quot;no&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,
@@ -10301,19 +10301,22 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 \end
 
 \define editlist_activate()
-&lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct]]&quot; variable=&quot;tid&quot;&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;tid&gt;&gt; /&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct]]&quot; variable=&quot;direct&quot;&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;direct&gt;&gt; /&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal]]&quot; variable=&quot;tid&quot;&gt;
-   &lt;$set name=&quot;thisval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal]]&quot; variable=&quot;modal&quot;&gt;
+   &lt;$vars target={{{ [&lt;modal&gt;removeprefix[$:/state/popup/edit-list/modal/]removeprefix&lt;tid&gt;removeprefix[/]splitbefore[/]removesuffix[/]] }}}&gt;
+   &lt;$set name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;target&gt;]   }}} emptyValue={{{ [&lt;tid&gt;get&lt;target&gt;]   }}}&gt;
+   &lt;$set name=&quot;thisval&quot; value={{{ [&lt;modal&gt;getindex&lt;target&gt;] }}} emptyValue={{{ [&lt;modal&gt;get&lt;target&gt;] }}}&gt;
    &lt;$list filter=&quot;[&lt;thisval&gt;match&lt;currval&gt;]&quot; variable=&quot;no_changes&quot;&gt;
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;tid&gt;&gt; /&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;modal&gt;&gt; /&gt;
    &lt;/$list&gt;
    &lt;/$set&gt;
+   &lt;/$set&gt;
+   &lt;/$vars&gt;
 &lt;/$list&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;active&gt;&gt; text={{{ [&lt;confirm&gt;match[yes]then&lt;modal&gt;else&lt;direct&gt;] }}}/&gt;
-&lt;$action-setfield $tiddler={{{ [&lt;active&gt;get[text]] }}} $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;currval&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt;   title={{{ [&lt;active&gt;get[text]] }}} /&gt;
 \end
 
 \define editlist_input()
@@ -10468,7 +10471,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210723003915813" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210723024329597" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10549,7 +10552,7 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210723003900129" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<div created="20210721015652739" modified="20210723015356965" tags="" title="TiddlyTools/Macros/edit-list/Tester">
 <pre>\define showstates()
 &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]count[]!match[0]]&quot;&gt;
    &lt;table&gt;
@@ -10564,24 +10567,19 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 &lt;/$list&gt;
 \end
 
-\define showfields(tid:Test)
+\define showtid(tid:Test)
 &lt;$list filter=&quot;[[$tid$]is[tiddler]]&quot;&gt;
-   [[$tid$]] fields (&lt;$count filter=&quot;[[$tid$]fields[]]&quot;/&gt;):
+   [[$tid$]]
    &lt;table&gt;
+      &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[[$tid$]fields[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
       &lt;$list filter=&quot;[[$tid$]fields[]]&quot; variable=&quot;fieldname&quot;&gt;
-         &lt;tr&gt;&lt;th&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]get&lt;fieldname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+         &lt;tr&gt;&lt;th style=&quot;text-align:right;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]get&lt;fieldname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
       &lt;/$list&gt;
-   &lt;/table&gt;
-   &lt;br&gt;
-&lt;/$list&gt;
-\end
-
-\define showindexes(tid:Test)
-&lt;$list filter=&quot;[[$tid$]indexes[]count[]!match[0]]&quot;&gt;
-   [[$tid$]] indexes (&lt;$count filter=&quot;[[$tid$]indexes[]]&quot;/&gt;):
-   &lt;table&gt;
-      &lt;$list filter=&quot;[[$tid$]indexes[]]&quot; variable=&quot;indexname&quot;&gt;
-         &lt;tr&gt;&lt;th&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]getindex&lt;indexname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;$list filter=&quot;[[$tid$]indexes[]count[]!match[0]]&quot;&gt;
+         &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[[$tid$]indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
+         &lt;$list filter=&quot;[[$tid$]indexes[]]&quot; variable=&quot;indexname&quot;&gt;
+            &lt;tr&gt;&lt;th style=&quot;text-align:right;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]getindex&lt;indexname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+         &lt;/$list&gt;
       &lt;/$list&gt;
    &lt;/table&gt;
    &lt;br&gt;
@@ -10597,20 +10595,17 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 
 \define showmodals()
 &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal/]]&quot;&gt;
-   &lt;$macrocall $name=&quot;showfields&quot;  tid=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-   &lt;$macrocall $name=&quot;showindexes&quot; tid=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+   &lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
 
 &lt;style&gt;
    .editlist_test table    { margin:0; text-align:left; }
-   .editlist_test table th { text-align:right; }
    .editlist_test code     { font-size:70%; font-weight:bold; line-height:1em; }
 &lt;/style&gt;
 &lt;span class=&quot;editlist_test&quot; style=&quot;font-size:70%; line-height:1.2em; text-align:right;&quot;&gt;   
 @@clear:right;float:right;display:inline-block; &lt;&lt;showstates&gt;&gt; @@
-@@clear:right;float:right;display:inline-block; &lt;&lt;showfields&gt;&gt; @@
-@@clear:right;float:right;display:inline-block; &lt;&lt;showindexes&gt;&gt;@@
+@@clear:right;float:right;display:inline-block; &lt;&lt;showtid&gt;&gt;    @@
 @@clear:right;float:right;display:inline-block; &lt;&lt;deletetest&gt;&gt; @@
 @@clear:right;float:right;display:inline-block; &lt;&lt;showmodals&gt;&gt; @@
 &lt;/span&gt;
@@ -10618,9 +10613,12 @@ A similar &quot;loss of focus&quot; occurs when ''targeting `field:tags` and a v
 
 {{TiddlyTools/Macros/edit-list/Tests}}</pre>
 </div>
-<div created="20210722235506436" modified="20210723003910252" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210722235506436" modified="20210723022127352" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>`&lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1 tiddler:Test&gt;&gt;
+
+`&lt;&lt;edit-list id:1a tiddler:Test confirm:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1a tiddler:Test confirm:yes&gt;&gt;
 
 `&lt;&lt;edit-list id:2 tiddler:Test field:tags&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:2 tiddler:Test field:tags&gt;&gt;
