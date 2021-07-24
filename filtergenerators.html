@@ -10677,7 +10677,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210724033329250" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210724063122688" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,      tiddler:&quot;&quot;,       field:&quot;text&quot;,      index:&quot;&quot;, timestamp:&quot;yes&quot;, default:&quot;&quot;,   placeholder:&quot;&quot;,
              tooltip:&quot;&quot;,         type:&quot;&quot;,       width:&quot;15em&quot;,     filter:&quot;&quot;,      find:&quot;no&quot;,     goto:&quot;no&quot;,     confirm:&quot;no&quot;,
                focus:&quot;no&quot;, focusPopup:&quot;no&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,   scroll:&quot;10&quot;, fontsize:&quot;1em&quot;,    stretch:&quot;yes&quot;,
@@ -10815,7 +10815,6 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- IF FILTERING AND FIXED-HEIGHT LISTBOX OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot;                                       variable=&quot;show_select&quot;&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;$vars  target={{{ [&lt;confirm&gt;match[yes]then&lt;modal&gt;else&lt;direct&gt;] }}}&gt;
 &lt;$vars currtid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$set name=&quot;currval&quot; value={{{ [&lt;find&gt;match[yes]then&lt;currtid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;find&gt;match[yes]then&lt;index&gt;match[]then&lt;currtid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
@@ -10831,8 +10830,8 @@ __find titles containing__:&lt;br&gt;
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
    &lt;/div&gt;
-   &lt;!-- IF NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;!is[tiddler]]&quot;&gt;
+   &lt;!-- IF MODAL AND NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
+   &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
       &lt;div style=&quot;position:relative;&quot;&gt;
          &lt;&lt;select&gt;&gt;
          &lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
@@ -10840,8 +10839,8 @@ __find titles containing__:&lt;br&gt;
          &lt;/$button&gt;
       &lt;/div&gt;
    &lt;/$list&gt;
-   &lt;!-- IF ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
-   &lt;$list filter=&quot;[&lt;target&gt;is[tiddler]]&quot;&gt;
+   &lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
+   &lt;$list filter=&quot;[&lt;confirm&gt;!match[yes]] [&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
       &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
       &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
          &lt;&lt;select&gt;&gt;
