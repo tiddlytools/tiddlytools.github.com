@@ -10100,7 +10100,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210724030911351" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210724233259474" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -10224,7 +10224,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210724153152656" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210724233125074" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,      tiddler:&quot;&quot;,       field:&quot;text&quot;,      index:&quot;&quot;, timestamp:&quot;yes&quot;, default:&quot;&quot;,   placeholder:&quot;&quot;,
              tooltip:&quot;&quot;,         type:&quot;&quot;,       width:&quot;15em&quot;,     filter:&quot;&quot;,      find:&quot;no&quot;,     goto:&quot;no&quot;,     confirm:&quot;no&quot;,
                focus:&quot;no&quot;, focusPopup:&quot;no&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,   scroll:&quot;10&quot;, fontsize:&quot;1em&quot;,    stretch:&quot;yes&quot;,
@@ -10488,7 +10488,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;&lt;br&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210724153010060" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210724233119927" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10577,14 +10577,17 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210724104122262" tags="" title="TiddlyTools/Macros/edit-list/Tester">
-<pre>\define showtid(tid:Test)
+<div created="20210721015652739" modified="20210724232839478" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<pre>\define tests()  TiddlyTools/Macros/edit-list/Tests
+\define target() Test
+
+\define showtid(tid:Test)
 &lt;$list filter=&quot;[[$tid$]is[tiddler]]&quot;&gt;
-   &lt;div style=&quot;white-space:nowrap;margin-top:1em;&quot;&gt;
+   &lt;div style=&quot;white-space:nowrap;&quot;&gt;
       [[$tid$]]
       &lt;$button style=&quot;float:right;&quot;&gt;delete&lt;$action-deletetiddler $tiddler=&quot;$tid$&quot;/&gt;&lt;/$button&gt;
    &lt;/div&gt;
-   &lt;table&gt;
+   &lt;table style=&quot;margin-bottom:1em;&quot;&gt;
       &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[[$tid$]fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
       &lt;$list filter=&quot;[[$tid$]fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;
          &lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]get&lt;fieldname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
@@ -10599,60 +10602,49 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 &lt;/$list&gt;
 \end
 
-\define showbuttons()
-&lt;$button style=&quot;float:left;&quot; &gt; edit tests
-   &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&quot;TiddlyTools/Macros/edit-list/Tests&quot; /&gt;
-&lt;/$button&gt;
-&lt;$button style=&quot;float:right;&quot;&gt; reset all
-   &lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot;/&gt;
-&lt;/$button&gt;
-&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-\end
-
-\define showfocus()
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]count[]!match[0]]&quot;&gt;
-   &lt;br&gt;
-   &lt;table&gt;&lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;Current focus:&lt;/th&gt;&lt;td&gt;{{$:/state/popup/edit-list/active}}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/$list&gt;
-\end
-
-\define showmodals()
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal/]]&quot;&gt;
-   &lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
-&lt;/$list&gt;
-\end
-
-\define showdirect()
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct/]]&quot;&gt;
-   &lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
-&lt;/$list&gt;
-\end
-
-\define showpopup()
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/popup/]]&quot;&gt;
-   &lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
-&lt;/$list&gt;
-\end
-
 &lt;style&gt;
-   fieldset.editlist_debug        { width:40%; float:right; margin-left:1em; }
-   fieldset.editlist_debug        { border-radius:1em; }
-   fieldset.editlist_debug legend { font-size:200%; line-height:1em; }
-   fieldset.editlist_debug .inner { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
-   fieldset.editlist_debug table  { width:100%; margin:0; text-align:left; }
-   .editlist_tests                { max-height:60vh; overflow-y:auto; width:55%; padding-bottom:40vh; }
-   .editlist_tests code           { font-size:70%; line-height:1em; }
+   .editlist_debug               { width:40%; float:right; border-radius:1em; }
+   .editlist_debug legend        { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_debug legend button { vertical-align:bottom; font-size:50%; margin-left:0.25em; }
+   .editlist_debug .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
+   .editlist_debug table         { width:100%; margin:0; text-align:left; }
+
+   .editlist_tests               { width:calc(60% - 1em); float:left; border-radius:1em; }
+   .editlist_tests legend        { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_tests legend button { vertical-align:bottom; font-size:50%; margin-left:0.25em; }
+   .editlist_tests .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; }
+   .editlist_tests h2            { margin:0; }
+   .editlist_tests code          { font-size:70%; line-height:1em; }
 &lt;/style&gt;
 
 &lt;fieldset class=&quot;editlist_debug&quot;&gt;
-   &lt;legend&gt; state data &lt;/legend&gt;
-   &lt;div class=&quot;inner&quot;&gt; &lt;&lt;showbuttons&gt;&gt; &lt;&lt;showfocus&gt;&gt; &lt;&lt;showtid&gt;&gt; &lt;&lt;showmodals&gt;&gt; &lt;&lt;showdirect&gt;&gt; &lt;&lt;showpopup&gt;&gt; &lt;/div&gt;
+   &lt;legend&gt;
+      Data
+      &lt;$button&gt; delete all &lt;$action-deletetiddler  $filter=&quot;[&lt;target&gt;] [prefix[$:/state/popup/edit-list/]]&quot;/&gt; &lt;/$button&gt;
+   &lt;/legend&gt;
+   &lt;div class=&quot;inner&quot;&gt;
+      &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+      &lt;$macrocall $name=&quot;showtid&quot; tid=&lt;&lt;target&gt;&gt;/&gt;
+      &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/active]]&quot; &gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+      &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/modal/]]&quot; &gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+      &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/direct/]]&quot;&gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+      &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/popup/]]&quot; &gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+   &lt;/div&gt;
 &lt;/fieldset&gt;
 
-&lt;div class=&quot;editlist_tests&quot;&gt; &lt;$transclude tiddler=&quot;TiddlyTools/Macros/edit-list/Tests&quot; mode=block/&gt; &lt;/div&gt;
+&lt;fieldset class=&quot;editlist_tests&quot;&gt;
+   &lt;legend&gt;
+      Tests
+      &lt;$button&gt; edit tests &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;tests&gt;&gt; /&gt; &lt;/$button&gt;
+   &lt;/legend&gt;
+   &lt;div class=&quot;inner&quot;&gt;
+      &lt;$transclude tiddler=&lt;&lt;tests&gt;&gt; mode=&quot;block&quot; /&gt;
+   &lt;/div&gt;
+&lt;/fieldset&gt;
+
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210724150233622" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210724233054497" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
 `&lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;&lt;br&gt;
