@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/build</li>
 
+<li>$:/config/EditTemplateFields/Visibility/color</li>
+
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp</li>
@@ -161,6 +163,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/advancedsearch/currentTab</li>
+
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -178,6 +184,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
 
 <li>TiddlyTools/Macros/edit-list</li>
+
+<li>TiddlyTools/Macros/edit-list/ColorEditTemplate</li>
 
 <li>TiddlyTools/Macros/edit-list/Examples</li>
 
@@ -206,6 +214,9 @@ Error message and password prompt
 <div commit="75589d78d8d381cc52db4637606cf19f4fb3459d" title="$:/build">
 <pre>Built from branch 'tiddlywiki-com' at commit 75589d78d8d381cc52db4637606cf19f4fb3459d of https://github.com/Jermolene/TiddlyWiki5.git at 2020-05-16 18:55:25 UTC
 </pre>
+</div>
+<div created="20210725083359285" modified="20210725083406288" tags="" title="$:/config/EditTemplateFields/Visibility/color">
+<pre>hide</pre>
 </div>
 <div created="20200711140037404" modified="20200711140037404" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home">
 <pre>show</pre>
@@ -10097,6 +10108,12 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
+<div created="20210725083344576" modified="20210725083344576" title="$:/state/advancedsearch/currentTab">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+</div>
+<div created="20210725083344576" modified="20210725083344576" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+</div>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
@@ -10106,7 +10123,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
+<div created="20210725084329718" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" modified="20210725084329718" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10224,7 +10241,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210725072524095" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210725084309266" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(id:&quot;&quot;,      tiddler:&quot;&quot;,       field:&quot;text&quot;,      index:&quot;&quot;, timestamp:&quot;yes&quot;, default:&quot;&quot;,   placeholder:&quot;&quot;,
              tooltip:&quot;&quot;,         type:&quot;&quot;,       width:&quot;15em&quot;,     filter:&quot;&quot;,      find:&quot;no&quot;,     goto:&quot;no&quot;,     confirm:&quot;no&quot;,
                focus:&quot;no&quot;, focusPopup:&quot;no&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,   scroll:&quot;10&quot;, fontsize:&quot;1em&quot;,    stretch:&quot;yes&quot;,
@@ -10416,7 +10433,26 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210723003702394" modified="20210725071556094" tags="" title="TiddlyTools/Macros/edit-list/Examples">
+<div color="Beige" created="20210725082117520" list-before="$:/core/ui/EditTemplate/fields" modified="20210725084131607" tags="$:/tags/EditTemplate" title="TiddlyTools/Macros/edit-list/ColorEditTemplate" type="">
+<pre>&lt;!--
+TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibility/color contents to &quot;hide&quot;
+--&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has:field[color]]&quot; variable=&quot;has_color&quot;&gt;
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;color:&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;&lt;edit-list field:color colors:yes find:yes focusPopup:yes placeholder:&quot;select a color&quot; filter:[{TiddlyTools/Settings/Colors/X11Names}]&gt;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20210723003702394" modified="20210725084251711" tags="" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define reset()
 &lt;$list filter=&quot;[[Demo]is[tiddler]]&quot;&gt;
    &lt;$button style=&quot;font-size:50%;&quot;&gt;
@@ -10475,7 +10511,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;&lt;br&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210725072149695" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210725084304510" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10564,7 +10600,7 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210725071835956" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<div created="20210721015652739" modified="20210725084255280" tags="" title="TiddlyTools/Macros/edit-list/Tester">
 <pre>\define showData() $:/state/popup/edit-list/tester/showdata
 \define tests()    TiddlyTools/Macros/edit-list/Tests
 \define target()   Test
@@ -10639,7 +10675,7 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210725072145141" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210725084259816" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
 `&lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;&lt;br&gt;
