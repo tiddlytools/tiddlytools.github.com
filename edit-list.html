@@ -10104,6 +10104,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
+# [[TiddlyTools/FilterGenerators/PowerSearch]]
 # [[TiddlyTools/Macros/edit-list]]</pre>
 </div>
 <div title="$:/isEncrypted">
@@ -10130,7 +10131,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10248,55 +10249,33 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210725181601992" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
-<pre>\define edit-list(id:&quot;&quot;,      tiddler:&quot;&quot;,       field:&quot;text&quot;,      index:&quot;&quot;, timestamp:&quot;yes&quot;, default:&quot;&quot;,   placeholder:&quot;&quot;,
-             tooltip:&quot;&quot;,         type:&quot;&quot;,       width:&quot;15em&quot;,     filter:&quot;&quot;,      find:&quot;no&quot;,     goto:&quot;no&quot;,     confirm:&quot;no&quot;,
-               focus:&quot;no&quot;, focusPopup:&quot;no&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,   scroll:&quot;10&quot;, fontsize:&quot;1em&quot;,    stretch:&quot;yes&quot;,
-              colors:&quot;no&quot;,   multiple:&quot;no&quot;,      view:&quot;&lt;&lt;item&gt;&gt;&quot;)
+<div created="20191214071309583" creator="EricShulman" modified="20210726000859337" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<pre>\define edit-list(
+         id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
+    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
+     filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
+ focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
+   fontsize:&quot;1em&quot;,      stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+)
 \whitespace trim
 &lt;!-----------------&gt;
 &lt;!-- ENVIRONMENT --&gt;
 &lt;!-----------------&gt;
-&lt;$vars    tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars suffix={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[/$id$]addsuffix&lt;qualify&gt;] }}}&gt;
-&lt;$vars  modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;suffix&gt;]  }}}&gt;
-&lt;$vars  popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;suffix&gt;]  }}}&gt;
+&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$-]addsuffix&lt;qualify&gt;] }}}&gt;
+&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g[/],[_]search-replace[--],[]] }}}&gt;
+&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
+&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;!---------------&gt;
 &lt;!-- VARIABLES --&gt;
 &lt;!---------------&gt;
-&lt;$vars   id=&quot;&quot;&quot;$id$&quot;&quot;&quot;          field=&quot;&quot;&quot;$field$&quot;&quot;&quot;         index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-  timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot; default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-    tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;     focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}
-     filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;       find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;
- listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     multiple={{{ [[$multiple$]match[yes]] }}}
+&lt;$vars
+       field=&quot;&quot;&quot;$field$&quot;&quot;&quot;         index=&quot;&quot;&quot;$index$&quot;&quot;&quot;    timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;    default=&quot;&quot;&quot;$default$&quot;&quot;&quot;
+ placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;      width=&quot;&quot;&quot;$width$&quot;&quot;&quot;         filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;
+        find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;  listwidth=&quot;&quot;&quot;$listwidth$&quot;&quot;&quot; listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;
+      scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;     focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;
+  focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} multiple={{{ [[$multiple$]match[yes]] }}}
 &gt;
-&lt;!------------&gt;
-&lt;!-- STYLES --&gt;
-&lt;!------------&gt;
-&lt;style&gt;
-   .editlist_wrapper_$id$               { position:relative; display:inline-block; width:$width$; }
-   .editlist_wrapper_$id$       .fadeIn { opacity:0; transition: opacity 2s; }
-   .editlist_wrapper_$id$:hover .fadeIn { opacity:1; transition: opacity 1s; }
-   .editlist_input_$id$                 { position:absolute; width:100% !important; height:1.5em; }
-   .editlist_input_buttons_$id$         { position:absolute; right:0; width:max-content; }
-   .editlist_clear_button_$id$          { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_button_$id$          { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_modal_buttons_$id$         { position:absolute; width:max-content; left:$width$; }
-   .editlist_modal_buttons_$id$ button  { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_$id$                 { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; top:1.5em; }
-   .editlist_popup_heading_$id$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
-   .editlist_popup_select_$id$          { width:100% !important; overflow-y:auto; outline:0; font-size:$fontsize$; }
-   .editlist_popup_select_cover_$id$    { position:absolute; top:0; left:0; width:100%; height:100%; }
-&lt;/style&gt;
-&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-   &lt;style&gt; .editlist_wrapper_$id$ .fadeIn { opacity:1; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_$id$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[[$stretch$]match[yes]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_select_$id$:hover, .editlist_popup_select_$id$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
-&lt;/$list&gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;!-------------------&gt;
@@ -10304,10 +10283,11 @@ TiddlyTools/Macros/edit-list/Tester</pre>
    start=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; type=&quot;$type$&quot;
-         field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt; focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt;/&gt;&quot;&quot;&quot;
+      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input_]addsuffix&lt;id&gt;] }}}
+         tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
+         focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
-      &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class=&quot;editlist_popup_select_$id$&quot;
+      &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
          &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
@@ -10332,17 +10312,45 @@ TiddlyTools/Macros/edit-list/Tester</pre>
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
-&lt;!--------------&gt;
-&lt;!-- CONTROLS --&gt;
-&lt;!--------------&gt;
-&lt;div class=&quot;editlist_wrapper_$id$&quot; style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
+&lt;!-------------------------&gt;
+&lt;!-- STYLES AND CONTROLS --&gt;
+&lt;!-------------------------&gt;
+&lt;&lt;editlist_styles&gt;&gt;
+&lt;div class={{{ [[editlist_wrapper_]addsuffix&lt;id&gt;] }}} style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;div class=&quot;editlist_input_buttons_$id$&quot;&gt;
+   &lt;div class={{{ [[editlist_input_buttons_]addsuffix&lt;id&gt;] }}}&gt;
       &lt;&lt;editlist_clear_button&gt;&gt;
       &lt;&lt;editlist_popup_button&gt;&gt;
    &lt;/div&gt;
    &lt;&lt;editlist_select&gt;&gt;
 &lt;/div&gt;
+\end
+
+\define editlist_styles()
+&lt;style&gt;
+   .editlist_wrapper_$(id)$               { position:relative; display:inline-block; width:$(width)$; }
+   .editlist_wrapper_$(id)$       .fadeIn { opacity:0; transition: opacity 2s; }
+   .editlist_wrapper_$(id)$:hover .fadeIn { opacity:1; transition: opacity 1s; }
+   .editlist_input_$(id)$                 { position:absolute; width:100% !important; height:1.5em; }
+   .editlist_input_buttons_$(id)$         { position:absolute; right:0; width:max-content; }
+   .editlist_clear_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_popup_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_modal_buttons_$(id)$         { position:absolute; width:max-content; left:$(width)$; }
+   .editlist_modal_buttons_$(id)$ button  { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_popup_$(id)$                 { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
+   .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
+   .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; outline:0; font-size:$(fontsize)$; }
+   .editlist_popup_select_cover_$(id)$    { position:absolute; top:0; left:0; width:100%; height:100%; }
+&lt;/style&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
+   &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$stretch$]match[yes]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
 \end
 
 \define editlist_input()
@@ -10384,7 +10392,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]]&quot;     variable=&quot;show_popup_button&quot;&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup_button&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&lt;&lt;popup&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10393,8 +10401,8 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 \whitespace trim
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, OR FOCUSPOPUP+MODAL, SHOW LIST  --&gt;
-&lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] [&lt;focusPopup&gt;!match[]then&lt;modal&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
+&lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
+&lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$vars currtid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$set name=&quot;currval&quot; value={{{ [&lt;find&gt;match[yes]then&lt;currtid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;find&gt;match[yes]then&lt;index&gt;match[]then&lt;currtid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
@@ -10413,7 +10421,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
    &lt;!-- IF MODAL AND NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
    &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
       &lt;div style=&quot;position:relative;&quot;&gt;
-         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
+         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&quot;$(focusPopup)$&quot;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
       &lt;/div&gt;
    &lt;/$list&gt;
    &lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
@@ -10511,20 +10519,18 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;&lt;br&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210725132754706" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210725235333714" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
 
 !Introduction
 
-''The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget.''
+''The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget.''  It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
 
-It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
-
-* You can use the `find:yes` parameter to ''progressively filter the selection list'' contents to __show only those items that contain your current input__.
+* The `find:yes` parameter will ''progressively filter the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
 * The `confirm:yes` parameter provides save/cancel/clear buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
-* The `goto:yes` parameter lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:yes`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to go to that tiddler.
+* The `goto:yes` parameter lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:yes`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
 
 !Parameters
 
@@ -10536,7 +10542,6 @@ It operates similar to the combination of HTML `&lt;input list=&quot;listname&qu
 
 |editlist_infotable|k
 |Parameter   | Default  |Description |h
-|id          | //none// |Specifies a unique ID for the combined controls.  This is only needed if more than one `&lt;&lt;edit-list&gt;&gt;` macro is used in the same tiddler.|
 |tiddler     | //none// |The tiddler in which to save the input. If no tiddler is specified, the current tiddler is used.|
 |field       | `text`   |The field in which to save the input. See Notes below.|
 |index       | //none// |The index in which to save the input. Takes precedence over the `field` parameter.|
@@ -10552,6 +10557,7 @@ It operates similar to the combination of HTML `&lt;input list=&quot;listname&qu
 |confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes.|
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
 |focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
+|cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes below.|
 |listwidth   | `100%`   |Width of the list. 100% automatically matches the width of the edit-text widget. Use CSS units.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` is ignored.|
 |scroll      | `10`     |Maximum number of lines to display before adding a scroll bar to the list.|
@@ -10560,6 +10566,7 @@ It operates similar to the combination of HTML `&lt;input list=&quot;listname&qu
 |colors      | `no`     |If `yes` and a list item is a CSS color name/value (e.g., `white` or `#FFFFFF`), the item background will show the indicated color.|
 |multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.|
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes below.|
+|id          | //none// |Specifies a unique ID for the combined controls. See Notes below.|
 
 !Notes
 
@@ -10589,6 +10596,26 @@ There are many other input types, including: `type:email`, `type:number`, `type:
 The `view:&quot;...&quot;` parameter uses ~TiddlyWiki wikitext syntax to render the contents of the selection list.  A variable named `item` is automatically set so that the default parameter value, `view:&quot;&lt;&lt;item&gt;&gt;&quot;` will show the corresponding title for each list item.  This can be overridden to ''show alternative text in the list.''
 
 For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, then the list will show the caption text (if any) for each tiddler title.  Note that while this changes the list __display text__, the actual __selected value__ that will be stored into the target field or index will still be the tiddler's title.
+&lt;&lt;&lt;
+
+!!!''cancelPopups parameter''
+&lt;&lt;&lt;
+Typically, there should be only one `&lt;&lt;edit-list&gt;&gt;` popup list shown at a time.  The default `cancelPopups:yes` parameter ensures that ''all open popups are automatically closed whenever you move the focus to a different input control.''  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior will interfere with the normal display of the containing popup.
+
+You can override this default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.  Note that if there are multiple instances of `&lt;&lt;edit-list&gt;&gt;` within a containing popup, this may result in the wrong popup list being shown.  This can be avoided by using the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button to manually close the popup list before moving the focus to a different input control.
+&lt;&lt;&lt;
+
+!!!''id parameter''
+&lt;&lt;&lt;
+Each use of `&lt;&lt;edit-list&gt;&gt;` is internally identified by a combination of three values:
+
+# A target tiddlername (the `tiddler:...` parameter)
+# A target fieldname or indexname (the `field:...` or `index:...` parameter)
+# A ~TiddlyWiki system-generated &quot;qualifier number&quot; (based on the tiddler in which the macro occurs)
+
+Under most circumstances, this combination is sufficient to guarantee that the processing of `&lt;&lt;edit-list&gt;&gt;` events and control elements will operate independently of each other.
+
+However, ''when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler //and// field/index'', it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure each instance of `&lt;&lt;edit-list&gt;&gt;` is uniquely named.  The id value can be any combination of letters and numbers, so long as it is different for each affected `&lt;&lt;edit-list&gt;&gt;` instance.
 &lt;&lt;&lt;
 
 !!!''limitations on list selection when using the keyboard''
@@ -10660,7 +10687,7 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210725171027829" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210725231308331" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
 `&lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;&lt;br&gt;
@@ -10684,10 +10711,10 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
  &lt;&lt;edit-list id:1j tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes listheight:5 multiple:yes&gt;&gt;&lt;br&gt;
 `&lt;&lt;edit-list id:1k tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
  &lt;&lt;edit-list id:1k tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1l tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1l tiddler:Demo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1m tiddler:Demo filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1m tiddler:Demo filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;&lt;br&gt;
+`&lt;&lt;edit-list id:1l tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1l tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;&lt;br&gt;
+`&lt;&lt;edit-list id:1m tiddler:Test filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
+ &lt;&lt;edit-list id:1m tiddler:Test filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;&lt;br&gt;
 
 !!__field:tags__
 `&lt;&lt;edit-list id:2a tiddler:Test field:tags&gt;&gt;`&lt;br&gt;
