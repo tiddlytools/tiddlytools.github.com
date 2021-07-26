@@ -157,8 +157,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10095,11 +10093,6 @@ TiddlyTools/FilterGenerators/Titles
 TiddlyTools/FilterGenerators/Tags
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Macros/edit-list]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10676,7 +10669,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210726000859337" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210726060925812" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10688,9 +10681,9 @@ __find titles containing__:&lt;br&gt;
 &lt;!-----------------&gt;
 &lt;!-- ENVIRONMENT --&gt;
 &lt;!-----------------&gt;
-&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$-]addsuffix&lt;qualify&gt;] }}}&gt;
-&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g[/],[_]search-replace[--],[]] }}}&gt;
+&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} re=&quot;[^a-zA-Z0-9\-\_]&quot;&gt;
+&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$]] }}}&gt;
+&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g:regexp&lt;re&gt;,[_]addsuffix&lt;qualify&gt;search-replace[--],[-]] }}}&gt;
 &lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;!---------------&gt;
