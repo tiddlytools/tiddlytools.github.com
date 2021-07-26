@@ -218,8 +218,8 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210723213702759" show="show" title="$:/config/TiddlyTools/PowerSearch" type="application/json" width="">
-<pre>{}</pre>
+<div columns="3" confirm="" created="20210617075024384" modified="20210726000624331" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
+<pre></pre>
 </div>
 <div created="20210721061341667" modified="20210721061341667" title="$:/config/TimestampDisable">
 <pre>no</pre>
@@ -10112,13 +10112,13 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210721083726785" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210726000630240" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10236,7 +10236,7 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210719113600563" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210726000550929" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10268,75 +10268,75 @@ regexp
 &lt;/$list&gt;
 \end
 
-\define getTid(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tids&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getTid()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tids&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
-\define getPre(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;prefix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getPre()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;prefix&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotPre(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notprefix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getNotPre()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notprefix&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getSuff(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;suffix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getSuff()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;suffix&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotSuff(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notsuffix&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getNotSuff()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notsuffix&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getTag(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tag&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getTag()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tag&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getNotTag(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;nottag&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getNotTag()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;nottag&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getHas(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;has&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getHas()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;has&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;allFields&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
-\define getFields(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;field&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getFields()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;field&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
-\define getFlags(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;flags&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getFlags()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;flags&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
-\define getSort(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;sort&quot;
-   width=&quot;$(width)$&quot; listwidth=&quot;100%&quot; listlength=&quot;15&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+\define getSort()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;sort&quot;
+   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
-\define getTerm(id)
-&lt;$macrocall $name=&quot;edit-list&quot; id=&quot;$id$&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;term&quot; width=&quot;$(width)$&quot; confirm=&lt;&lt;confirm&gt;&gt; placeholder=&quot;(none)&quot;/&gt;
-&lt;!-- &lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; index=&quot;term&quot; tag=&quot;input&quot; class=&quot;powersearch_editwidth&quot; default=&quot;&quot; placeholder=&quot;(none)&quot;/&gt; --&gt;
+\define getTerm()
+&lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;term&quot;
+   width=&quot;$(width)$&quot; confirm=&lt;&lt;confirm&gt;&gt; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define preFilter()      prefix[$(pre)$]
@@ -10499,9 +10499,8 @@ regexp
 \define setStyles()
 &lt;style&gt;
 .powersearch_borderless, .powersearch_borderless table, .powersearch_borderless tr, .powersearch_borderless td { border:0; padding:1px 0.1em; margin:0; }
-.powersearch_editwidth           { width:$(width)$        !important; }
-.powersearch_optionwidth         { width:5em              !important; }
-.powersearch_checkboxwidth input { width:auto             !important; }
+.powersearch_optionwidth         { width:5em  !important; }
+.powersearch_checkboxwidth input { width:auto !important; }
 &lt;/style&gt;
 \end
 
@@ -10511,18 +10510,18 @@ regexp
 &lt;$wikify name=&quot;shadowList&quot;  text=&lt;&lt;getShadowList&gt;&gt;&gt;
 
 |powersearch_borderless|k
-|     search all|&lt;&lt;getTid     tid    &gt;&gt; |
-|   match prefix|&lt;&lt;getPre     pre    &gt;&gt; |
-| exclude prefix|&lt;&lt;getNotPre  notpre &gt;&gt; |
-|   match suffix|&lt;&lt;getSuff    suff   &gt;&gt; |
-| exclude suffix|&lt;&lt;getNotSuff notsuff&gt;&gt; |
-|      match tag|&lt;&lt;getTag     tag    &gt;&gt; |
-|    exclude tag|&lt;&lt;getNotTag  nottag &gt;&gt; |
-|      has field|&lt;&lt;getHas     has    &gt;&gt; |
-|  search fields|&lt;&lt;getFields  fields &gt;&gt; |
-|    using flags|&lt;&lt;getFlags   flags  &gt;&gt; |
-|        sort by|&lt;&lt;getSort    sort   &gt;&gt; |
-|     match term|&lt;&lt;getTerm    term   &gt;&gt; |
+|     search all|&lt;&lt;getTid    &gt;&gt; |
+|   match prefix|&lt;&lt;getPre    &gt;&gt; |
+| exclude prefix|&lt;&lt;getNotPre &gt;&gt; |
+|   match suffix|&lt;&lt;getSuff   &gt;&gt; |
+| exclude suffix|&lt;&lt;getNotSuff&gt;&gt; |
+|      match tag|&lt;&lt;getTag    &gt;&gt; |
+|    exclude tag|&lt;&lt;getNotTag &gt;&gt; |
+|      has field|&lt;&lt;getHas    &gt;&gt; |
+|  search fields|&lt;&lt;getFields &gt;&gt; |
+|    using flags|&lt;&lt;getFlags  &gt;&gt; |
+|        sort by|&lt;&lt;getSort   &gt;&gt; |
+|     match term|&lt;&lt;getTerm   &gt;&gt; |
 \end
 
 &lt;$vars  width={{{ [&lt;config&gt;get[width]] ~[&lt;default_width&gt;] }}} confirm={{{ [&lt;config&gt;get[confirm]] }}}&gt;
@@ -10677,55 +10676,33 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210725181601992" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
-<pre>\define edit-list(id:&quot;&quot;,      tiddler:&quot;&quot;,       field:&quot;text&quot;,      index:&quot;&quot;, timestamp:&quot;yes&quot;, default:&quot;&quot;,   placeholder:&quot;&quot;,
-             tooltip:&quot;&quot;,         type:&quot;&quot;,       width:&quot;15em&quot;,     filter:&quot;&quot;,      find:&quot;no&quot;,     goto:&quot;no&quot;,     confirm:&quot;no&quot;,
-               focus:&quot;no&quot;, focusPopup:&quot;no&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,   scroll:&quot;10&quot;, fontsize:&quot;1em&quot;,    stretch:&quot;yes&quot;,
-              colors:&quot;no&quot;,   multiple:&quot;no&quot;,      view:&quot;&lt;&lt;item&gt;&gt;&quot;)
+<div created="20191214071309583" creator="EricShulman" modified="20210726000859337" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<pre>\define edit-list(
+         id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
+    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
+     filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
+ focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
+   fontsize:&quot;1em&quot;,      stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+)
 \whitespace trim
 &lt;!-----------------&gt;
 &lt;!-- ENVIRONMENT --&gt;
 &lt;!-----------------&gt;
-&lt;$vars    tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars suffix={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[/$id$]addsuffix&lt;qualify&gt;] }}}&gt;
-&lt;$vars  modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;suffix&gt;]  }}}&gt;
-&lt;$vars  popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;suffix&gt;]  }}}&gt;
+&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$-]addsuffix&lt;qualify&gt;] }}}&gt;
+&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g[/],[_]search-replace[--],[]] }}}&gt;
+&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
+&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;!---------------&gt;
 &lt;!-- VARIABLES --&gt;
 &lt;!---------------&gt;
-&lt;$vars   id=&quot;&quot;&quot;$id$&quot;&quot;&quot;          field=&quot;&quot;&quot;$field$&quot;&quot;&quot;         index=&quot;&quot;&quot;$index$&quot;&quot;&quot;
-  timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot; default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot;
-    tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;     focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}
-     filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;       find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;
- listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     multiple={{{ [[$multiple$]match[yes]] }}}
+&lt;$vars
+       field=&quot;&quot;&quot;$field$&quot;&quot;&quot;         index=&quot;&quot;&quot;$index$&quot;&quot;&quot;    timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;    default=&quot;&quot;&quot;$default$&quot;&quot;&quot;
+ placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;      width=&quot;&quot;&quot;$width$&quot;&quot;&quot;         filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;
+        find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;  listwidth=&quot;&quot;&quot;$listwidth$&quot;&quot;&quot; listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;
+      scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;     focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;
+  focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} multiple={{{ [[$multiple$]match[yes]] }}}
 &gt;
-&lt;!------------&gt;
-&lt;!-- STYLES --&gt;
-&lt;!------------&gt;
-&lt;style&gt;
-   .editlist_wrapper_$id$               { position:relative; display:inline-block; width:$width$; }
-   .editlist_wrapper_$id$       .fadeIn { opacity:0; transition: opacity 2s; }
-   .editlist_wrapper_$id$:hover .fadeIn { opacity:1; transition: opacity 1s; }
-   .editlist_input_$id$                 { position:absolute; width:100% !important; height:1.5em; }
-   .editlist_input_buttons_$id$         { position:absolute; right:0; width:max-content; }
-   .editlist_clear_button_$id$          { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_button_$id$          { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_modal_buttons_$id$         { position:absolute; width:max-content; left:$width$; }
-   .editlist_modal_buttons_$id$ button  { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_$id$                 { position:absolute; width:fit-content; min-width:$listwidth$; z-index:1; top:1.5em; }
-   .editlist_popup_heading_$id$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
-   .editlist_popup_select_$id$          { width:100% !important; overflow-y:auto; outline:0; font-size:$fontsize$; }
-   .editlist_popup_select_cover_$id$    { position:absolute; top:0; left:0; width:100%; height:100%; }
-&lt;/style&gt;
-&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-   &lt;style&gt; .editlist_wrapper_$id$ .fadeIn { opacity:1; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_$id$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[[$stretch$]match[yes]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_select_$id$:hover, .editlist_popup_select_$id$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
-&lt;/$list&gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;!-------------------&gt;
@@ -10733,10 +10710,11 @@ __find titles containing__:&lt;br&gt;
    start=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class=&quot;editlist_input_$id$ tc-popup-handle&quot; tag=&quot;input&quot; type=&quot;$type$&quot;
-         field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt; focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt;/&gt;&quot;&quot;&quot;
+      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input_]addsuffix&lt;id&gt;] }}}
+         tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
+         focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
-      &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class=&quot;editlist_popup_select_$id$&quot;
+      &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
          &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
@@ -10761,17 +10739,45 @@ __find titles containing__:&lt;br&gt;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
-&lt;!--------------&gt;
-&lt;!-- CONTROLS --&gt;
-&lt;!--------------&gt;
-&lt;div class=&quot;editlist_wrapper_$id$&quot; style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
+&lt;!-------------------------&gt;
+&lt;!-- STYLES AND CONTROLS --&gt;
+&lt;!-------------------------&gt;
+&lt;&lt;editlist_styles&gt;&gt;
+&lt;div class={{{ [[editlist_wrapper_]addsuffix&lt;id&gt;] }}} style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;div class=&quot;editlist_input_buttons_$id$&quot;&gt;
+   &lt;div class={{{ [[editlist_input_buttons_]addsuffix&lt;id&gt;] }}}&gt;
       &lt;&lt;editlist_clear_button&gt;&gt;
       &lt;&lt;editlist_popup_button&gt;&gt;
    &lt;/div&gt;
    &lt;&lt;editlist_select&gt;&gt;
 &lt;/div&gt;
+\end
+
+\define editlist_styles()
+&lt;style&gt;
+   .editlist_wrapper_$(id)$               { position:relative; display:inline-block; width:$(width)$; }
+   .editlist_wrapper_$(id)$       .fadeIn { opacity:0; transition: opacity 2s; }
+   .editlist_wrapper_$(id)$:hover .fadeIn { opacity:1; transition: opacity 1s; }
+   .editlist_input_$(id)$                 { position:absolute; width:100% !important; height:1.5em; }
+   .editlist_input_buttons_$(id)$         { position:absolute; right:0; width:max-content; }
+   .editlist_clear_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_popup_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_modal_buttons_$(id)$         { position:absolute; width:max-content; left:$(width)$; }
+   .editlist_modal_buttons_$(id)$ button  { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_popup_$(id)$                 { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
+   .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
+   .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; outline:0; font-size:$(fontsize)$; }
+   .editlist_popup_select_cover_$(id)$    { position:absolute; top:0; left:0; width:100%; height:100%; }
+&lt;/style&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
+   &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$stretch$]match[yes]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
 \end
 
 \define editlist_input()
@@ -10813,7 +10819,7 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]]&quot;     variable=&quot;show_popup_button&quot;&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup_button&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&lt;&lt;popup&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10822,8 +10828,8 @@ __find titles containing__:&lt;br&gt;
 \whitespace trim
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, OR FOCUSPOPUP+MODAL, SHOW LIST  --&gt;
-&lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] [&lt;focusPopup&gt;!match[]then&lt;modal&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
+&lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
+&lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$vars currtid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$set name=&quot;currval&quot; value={{{ [&lt;find&gt;match[yes]then&lt;currtid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;find&gt;match[yes]then&lt;index&gt;match[]then&lt;currtid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
@@ -10842,7 +10848,7 @@ __find titles containing__:&lt;br&gt;
    &lt;!-- IF MODAL AND NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
    &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
       &lt;div style=&quot;position:relative;&quot;&gt;
-         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
+         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&quot;$(focusPopup)$&quot;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
       &lt;/div&gt;
    &lt;/$list&gt;
    &lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
