@@ -167,6 +167,8 @@ Error message and password prompt
 
 <li>$:/state/advancedsearch/currentTab</li>
 
+<li>$:/state/modal/edit-list/Test_text_1h2063431451</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
@@ -229,7 +231,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210721061341667" modified="20210725125824653" title="$:/config/TimestampDisable">
+<div created="20210721061341667" modified="20210726055552849" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10119,6 +10121,9 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20210725083344576" modified="20210725083344576" title="$:/state/advancedsearch/currentTab">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
+<div created="20210726051706117" modified="20210726051706117" title="$:/state/modal/edit-list/Test_text_1h2063431451">
+<pre></pre>
+</div>
 <div created="20210725083344576" modified="20210725083344576" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
@@ -10131,7 +10136,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10249,7 +10254,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210726000859337" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210726055254721" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10261,9 +10266,9 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 &lt;!-----------------&gt;
 &lt;!-- ENVIRONMENT --&gt;
 &lt;!-----------------&gt;
-&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}}&gt;
-&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$-]addsuffix&lt;qualify&gt;] }}}&gt;
-&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g[/],[_]search-replace[--],[]] }}}&gt;
+&lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} re=&quot;[^a-zA-Z0-9\-\_]&quot;&gt;
+&lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$]] }}}&gt;
+&lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g:regexp&lt;re&gt;,[_]addsuffix&lt;qualify&gt;] }}}&gt;
 &lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;!---------------&gt;
@@ -10633,7 +10638,7 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 \define showtid(tid:Test)
 &lt;$list filter=&quot;[[$tid$]is[tiddler]]&quot;&gt;
-   &lt;div style=&quot;white-space:nowrap;&quot;&gt;
+   &lt;div&gt;
       [[$tid$]]
       &lt;$button style=&quot;float:right;&quot;&gt;delete&lt;$action-deletetiddler $tiddler=&quot;$tid$&quot;/&gt;&lt;/$button&gt;
    &lt;/div&gt;
@@ -10656,13 +10661,13 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 \define deleteAll() &lt;$button&gt; delete all &lt;$action-deletetiddler $filter=&quot;[&lt;target&gt;] [prefix[$:/state/modal/edit-list/]]&quot;/&gt; &lt;/$button&gt;
 
 &lt;style&gt;
-   .editlist_debug               { width:40%; float:right; border-radius:1em; }
+   .editlist_debug               { width:calc(40% - 2vw); float:right; border-radius:1em; }
    .editlist_debug legend        { font-size:200%; line-height:1em; padding:0 5px; }
    .editlist_debug legend button { vertical-align:bottom; font-size:50%; }
    .editlist_debug .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
    .editlist_debug table         { width:100%; margin:0; text-align:left; }
 
-   .editlist_tests               { width:calc(60% - 1em); float:left; border-radius:1em; }
+   .editlist_tests               { width:60%; float:left; border-radius:1em; }
    .editlist_tests legend        { font-size:200%; line-height:1em; padding:0 5px; }
    .editlist_tests legend button { vertical-align:bottom; font-size:50%; }
    .editlist_tests .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; }
