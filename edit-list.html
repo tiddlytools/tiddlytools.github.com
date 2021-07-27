@@ -10233,7 +10233,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210727085536048" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210727133029743" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10265,7 +10265,8 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 &lt;!-------------------&gt;
 &lt;$vars
    start=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
+      &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
@@ -10274,27 +10275,25 @@ TiddlyTools/Macros/edit-list/Tester</pre>
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
-         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;
-      &lt;/$select&gt;&quot;&quot;&quot;
+         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
    option=&quot;&quot;&quot;
       &lt;option style={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;] }}} value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;
    save=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-      &lt;$vars newval={{{ [&lt;modal&gt;getindex&lt;index&gt;] ~[&lt;modal&gt;get&lt;field&gt;] }}}&gt;
-      &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;
-      &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;&lt;clear&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;
+         &lt;$vars newval={{{ [&lt;modal&gt;getindex&lt;index&gt;] ~[&lt;modal&gt;get&lt;field&gt;] }}}&gt;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;
+         &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;&lt;clear&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;
    clear=&quot;&quot;&quot;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;&quot;&quot;&quot;
    done=&quot;&quot;&quot;
       &lt;$action-deletetiddler $filter=&quot;[&lt;modal&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;
    goto=&quot;&quot;&quot;
       &lt;$list filter=&quot;[[$goto$]match[yes]]&quot;&gt;
-      &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&quot;&quot;&quot;
+         &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&quot;&quot;&quot;
    reset=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]] [&lt;field&gt;match[text]] +[limit[1]]&quot;&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
-         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;
-      &lt;/$list&gt;&quot;&quot;&quot;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
 &lt;!-------------------------&gt;
 &lt;!-- STYLES AND CONTROLS --&gt;
@@ -10362,10 +10361,9 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 
 \define editlist_clear_button()
 \whitespace trim
-&lt;!-- IF VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
+&lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$list  filter=&quot;[&lt;currval&gt;!match[]]&quot; variable=&quot;show_clear_button&quot;&gt;
+&lt;$list filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear_button&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    ''x'' &lt;&lt;clear&gt;&gt;   
 &lt;/$button&gt;
@@ -10424,7 +10422,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210726224241382" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210727133024888" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10552,7 +10550,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;&lt;br&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210726224126851" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210727133000299" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10619,7 +10617,7 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 
 * Use `type:color` to select an RGB color value from a system-provided popup &quot;color picker&quot;.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]).&lt;p/&gt;
 
-* Use `type:date` and the input will be restricted to a standard date format and you can select a date from a system-provided popup calendar.  Note that, based on your operating  system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to stored the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).
+* Use `type:date` and the input will be restricted to a standard date format and you can select a date from a system-provided popup calendar.  Note that, based on your operating  system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
@@ -10628,14 +10626,14 @@ There are many other input types, including: `type:email`, `type:number`, `type:
 &lt;&lt;&lt;
 The `view:&quot;...&quot;` parameter uses ~TiddlyWiki wikitext syntax to render the contents of the selection list.  A variable named `item` is automatically set so that the default parameter value, `view:&quot;&lt;&lt;item&gt;&gt;&quot;` will show the corresponding title for each list item.  This can be overridden to ''show alternative text in the list.''
 
-For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, then the list will show the caption text (if any) for each tiddler title.  Note that while this changes the list __display text__, the actual __selected value__ that will be stored into the target field or index will still be the tiddler's title.
+For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, then the list will show the caption text (if any) for each tiddler title.  Note that while this changes the text displayed in the list, ''the selected value that will be stored into the target field or index will still be the actual `&lt;&lt;item&gt;&gt;` value'' (i.e., the tiddler's title).  Also note that, although the `view:...` parameter uses wikitext syntax, the list will only show plain text content without any special formatting (e.g., no bold/italics, colors, fonts, etc.)
 &lt;&lt;&lt;
 
 !!!''cancelPopups parameter''
 &lt;&lt;&lt;
 Typically, there should be only one `&lt;&lt;edit-list&gt;&gt;` popup list shown at a time.  The default `cancelPopups:yes` parameter ensures that ''all open popups are automatically closed whenever you move the focus to a different input control.''  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior will interfere with the normal display of the containing popup.
 
-You can override this default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.  Note that if there are multiple instances of `&lt;&lt;edit-list&gt;&gt;` within a containing popup, this may result in the wrong popup list being shown.  This can be avoided by using the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button to manually close the popup list before moving the focus to a different input control.
+You can override this default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.  Note that if there are multiple instances of `&lt;&lt;edit-list&gt;&gt;` within a containing popup, this may result in the wrong popup list being shown.  This can be avoided by ''using the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button or clicking away from the `&lt;&lt;edit-list&gt;&gt;` control'' to ensure that the popup list is closed before moving the focus to a different `&lt;&lt;edit-list&gt;&gt;` control.
 &lt;&lt;&lt;
 
 !!!''id parameter''
@@ -10648,7 +10646,7 @@ Each use of `&lt;&lt;edit-list&gt;&gt;` is internally identified by a combinatio
 
 Under most circumstances, this combination is sufficient to guarantee that the processing of `&lt;&lt;edit-list&gt;&gt;` events and control elements will operate independently of each other.
 
-However, ''when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler //and// field/index'', it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure each instance of `&lt;&lt;edit-list&gt;&gt;` is uniquely named.  The id value can be any combination of letters and numbers, so long as it is different for each affected `&lt;&lt;edit-list&gt;&gt;` instance.
+However, ''when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler and field/index'', it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure that each instance is uniquely named.  The id value can be any combination of letters and numbers (but //not// punctuation such as `#` or `.` or other special characters), so long as it is different for each affected instance.
 &lt;&lt;&lt;
 
 !!!''limitations on list selection when using the keyboard''
@@ -10660,14 +10658,14 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 
 !!!''parameters vs. variables''
 &lt;&lt;&lt;
-For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, an alternative macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
+For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, an additional macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
 
-To use this alternative, ''define the desired variables with `&lt;$vars ...&gt;`'', and then invoke the alternative macro, like this:
+To use this macro, ''define the desired variables with `&lt;$vars ...&gt;`'', and then invoke it, like this:
 &lt;pre style=&quot;background:transparent;border:0;margin:0;padding:0;&quot;&gt;
 
 ```
-&lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; goto=yes   scroll=5 placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;&lt;br&gt;
 &lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; field=tags scroll=5 placeholder=&quot;add a tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
+&lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; goto=yes   scroll=5 placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
 ```
 &lt;/pre&gt;
 
@@ -10678,8 +10676,8 @@ The same effect can be achieved ''using `\define` to set the values of common va
 \define tiddler() Demo
 \define filter()  [all[tiddlers+shadows]tags[]sort[]]
 \define scroll()  5
-&lt;$vars goto=yes   placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;&lt;br&gt;
 &lt;$vars field=tags placeholder=&quot;add a tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
+&lt;$vars goto=yes   placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
 ```
 &lt;/pre&gt;
 
@@ -10690,14 +10688,14 @@ Note also the ability to ''mix variables and macro parameters'' in the same usag
 \define tiddler() Demo
 \define filter()  [all[tiddlers+shadows]tags[]sort[]]
 \define scroll()  5
-&lt;&lt;edit-list-vars goto:yes   placeholder:&quot;go to tag&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;edit-list-vars field:tags placeholder:&quot;add a tag&quot;&gt;&gt;
+&lt;&lt;edit-list-vars goto:yes   placeholder:&quot;go to tag&quot;&gt;&gt;
 ```
 &lt;/pre&gt;
 
 All of the above examples will appear like this:&lt;br&gt;
-&lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; goto=yes   scroll=5 placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;&lt;br&gt;
 &lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; field=tags scroll=5 placeholder=&quot;add a tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
+&lt;$vars tiddler=&quot;Demo&quot; filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot; goto=yes   scroll=5 placeholder=&quot;go to tag&quot;&gt; &lt;&lt;edit-list-vars&gt;&gt; &lt;/$vars&gt;
 &lt;&lt;&lt;
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
