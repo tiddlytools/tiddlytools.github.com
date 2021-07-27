@@ -10676,7 +10676,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210727052038189" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210727085536048" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10697,11 +10697,11 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- VARIABLES --&gt;
 &lt;!---------------&gt;
 &lt;$vars
-       field=&quot;&quot;&quot;$field$&quot;&quot;&quot;         index=&quot;&quot;&quot;$index$&quot;&quot;&quot;    timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;    default=&quot;&quot;&quot;$default$&quot;&quot;&quot;
- placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;      width=&quot;&quot;&quot;$width$&quot;&quot;&quot;         filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;
-        find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;  listwidth=&quot;&quot;&quot;$listwidth$&quot;&quot;&quot; listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;
-      scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;     focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;
-  focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}} multiple={{{ [[$multiple$]match[yes]] }}}
+       field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
+     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
+      filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth=&quot;&quot;&quot;$listwidth$&quot;&quot;&quot;
+  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;   scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;      focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;
+  focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10723,23 +10723,18 @@ __find titles containing__:&lt;br&gt;
       &lt;option style={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;] }}} value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;
    save=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-      &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;modal&gt;get&lt;field&gt;] }}}&gt;
+      &lt;$vars newval={{{ [&lt;modal&gt;getindex&lt;index&gt;] ~[&lt;modal&gt;get&lt;field&gt;] }}}&gt;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;
-      &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;&lt;clear&gt;&gt;&quot;&quot;&quot;
+      &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;&lt;clear&gt;&gt;&lt;/$list&gt;&quot;&quot;&quot;
    clear=&quot;&quot;&quot;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;&quot;&quot;&quot;
    done=&quot;&quot;&quot;
       &lt;$action-deletetiddler $filter=&quot;[&lt;modal&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;
    goto=&quot;&quot;&quot;
       &lt;$list filter=&quot;[[$goto$]match[yes]]&quot;&gt;
-      &lt;$action-navigate $to={{{ [&lt;tid&gt;get&lt;field&gt;] }}}/&gt;
-      &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}}/&gt;&quot;&quot;&quot;
+      &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&quot;&quot;&quot;
    reset=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]]&quot;&gt;
-         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
-         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;
-      &lt;/$list&gt;
-      &lt;$list filter=&quot;[&lt;index&gt;match[]then&lt;field&gt;match[text]]&quot;&gt;
+      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]] [&lt;field&gt;match[text]] +[limit[1]]&quot;&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;
       &lt;/$list&gt;&quot;&quot;&quot;
@@ -10811,9 +10806,9 @@ __find titles containing__:&lt;br&gt;
 \define editlist_clear_button()
 \whitespace trim
 &lt;!-- IF VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
-&lt;$vars    tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$set    name=&quot;currval&quot; value={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;currval&gt;!match[]]&quot;  variable=&quot;show_clear_button&quot;&gt;
+&lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$list  filter=&quot;[&lt;currval&gt;!match[]]&quot; variable=&quot;show_clear_button&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    ''x'' &lt;&lt;clear&gt;&gt;   
 &lt;/$button&gt;
@@ -10822,8 +10817,7 @@ __find titles containing__:&lt;br&gt;
 \define editlist_popup_button()
 \whitespace trim
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;filter&gt;!match[]]&quot;     variable=&quot;show_popup_button&quot;&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup_button&quot;&gt;
+&lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup_button&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10836,7 +10830,7 @@ __find titles containing__:&lt;br&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$vars currtid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$set name=&quot;currval&quot; value={{{ [&lt;find&gt;match[yes]then&lt;currtid&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;find&gt;match[yes]then&lt;index&gt;match[]then&lt;currtid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$vars currval={{{ [&lt;find&gt;match[yes]then&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;currval&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
