@@ -10676,7 +10676,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210726230832986" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210727052038189" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10725,9 +10725,9 @@ __find titles containing__:&lt;br&gt;
       &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
       &lt;$set name=&quot;newval&quot; value={{{ [&lt;modal&gt;getindex&lt;index&gt;] }}} emptyValue={{{ [&lt;index&gt;match[]then&lt;modal&gt;get&lt;field&gt;] }}}&gt;
       &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;newval&gt;&gt;/&gt;
-      &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;&quot;&quot;&quot;
+      &lt;$list filter=&quot;[&lt;newval&gt;match[]]&quot;&gt;&lt;&lt;clear&gt;&gt;&quot;&quot;&quot;
    clear=&quot;&quot;&quot;
-      &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $index=&lt;&lt;index&gt;&gt; $field=&lt;&lt;field&gt;&gt;/&gt;&quot;&quot;&quot;
+      &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt;/&gt;&quot;&quot;&quot;
    done=&quot;&quot;&quot;
       &lt;$action-deletetiddler $filter=&quot;[&lt;modal&gt;] [&lt;popup&gt;]&quot;/&gt;&quot;&quot;&quot;
    goto=&quot;&quot;&quot;
@@ -10736,8 +10736,13 @@ __find titles containing__:&lt;br&gt;
       &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] }}}/&gt;&quot;&quot;&quot;
    reset=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]]&quot;&gt;
-      &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
-      &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;
+      &lt;/$list&gt;
+      &lt;$list filter=&quot;[&lt;index&gt;match[]then&lt;field&gt;match[text]]&quot;&gt;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
+         &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;
+      &lt;/$list&gt;&quot;&quot;&quot;
 &gt;
 &lt;!-------------------------&gt;
 &lt;!-- STYLES AND CONTROLS --&gt;
