@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -225,7 +227,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210721061341667" modified="20210726055552849" title="$:/config/TimestampDisable">
+<div created="20210721061341667" modified="20210727181927691" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10097,6 +10099,13 @@ Error message and password prompt
 TiddlyTools/Macros/edit-list
 TiddlyTools/Macros/edit-list/Tester</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Macros/edit-list]]
+# [[TiddlyTools/Macros/edit-list-vars]]
+# [[TiddlyTools/Macros/edit-list/Info]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10109,13 +10118,13 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210727085404996" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210727234115045" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" title="$:/StoryList">
+<div created="20210728020159550" list="TiddlyTools/Macros/edit-list/Tester" modified="20210728020431493" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10233,7 +10242,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210727133029743" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210728014424513" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10422,7 +10431,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210727133024888" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210728014420008" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10550,7 +10559,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
  &lt;&lt;edit-list id:6a tiddler:Demo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes confirm:yes&gt;&gt;&lt;br&gt;
 &lt;&lt;&lt;</pre>
 </div>
-<div created="20210719102404282" modified="20210727133000299" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210728014415475" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10700,15 +10709,19 @@ All of the above examples will appear like this:&lt;br&gt;
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210725130732141" tags="" title="TiddlyTools/Macros/edit-list/Tester">
-<pre>\define tests()    TiddlyTools/Macros/edit-list/Tests
-\define target()   Test
+<div created="20210721015652739" modified="20210728020345570" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<pre>\define toggle()  $:/state/popup/edit-list_showdata
+\define tests()   TiddlyTools/Macros/edit-list/Tests
+\define target()  Test
+\define default() &lt;&lt;edit-list tiddler:Test&gt;&gt;
 
-\define showtid(tid:Test)
+\define showTiddler(tid:Test)
 &lt;$list filter=&quot;[[$tid$]is[tiddler]]&quot;&gt;
    &lt;div&gt;
       [[$tid$]]
-      &lt;$button style=&quot;float:right;&quot;&gt;delete&lt;$action-deletetiddler $tiddler=&quot;$tid$&quot;/&gt;&lt;/$button&gt;
+      &lt;$button style=&quot;float:right;&quot; tooltip=&quot;delete this data&quot;&gt; {{$:/core/images/delete-button}}
+         &lt;$action-deletetiddler $tiddler=&quot;$tid$&quot;/&gt;
+      &lt;/$button&gt;
    &lt;/div&gt;
    &lt;table style=&quot;margin-bottom:1em;&quot;&gt;
       &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[[$tid$]fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
@@ -10725,101 +10738,150 @@ All of the above examples will appear like this:&lt;br&gt;
 &lt;/$list&gt;
 \end
 
-\define editTests() &lt;$button&gt; edit tests &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;tests&gt;&gt;/&gt;                &lt;/$button&gt;
-\define deleteAll() &lt;$button&gt; delete all &lt;$action-deletetiddler $filter=&quot;[&lt;target&gt;] [prefix[$:/state/modal/edit-list/]]&quot;/&gt; &lt;/$button&gt;
+\define showTests()
+&lt;$list filter=&quot;[&lt;tests&gt;get[text]splitregexp[\n]]&quot; variable=&quot;thisline&quot;&gt;
+   &lt;$list filter=&quot;[&lt;thisline&gt;!match[]]&quot;&gt;
+      &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]match[!]]&quot;&gt;
+         &lt;div style=&quot;margin:1em 0;&quot;&gt;
+
+         &lt;&lt;thisline&gt;&gt;
+         &lt;/div&gt;
+      &lt;/$list&gt;
+      &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;vertical-align:text-bottom;&quot; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
+            ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;'' &lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
+            &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
+         &lt;/$button&gt;
+         &lt;div style=&quot;margin:0;&quot;&gt;&lt;&lt;thisline&gt;&gt;&lt;/div&gt;
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define newTest()
+New test:&lt;br&gt;
+&lt;table style=&quot;width:100%;margin:0;border:0;padding:0;&quot;&gt;&lt;tr style=&quot;border:0;padding:0;&quot;&gt;
+   &lt;td class=&quot;tc-edit-field-value&quot; style=&quot;border:0;padding:0;&quot;&gt;&lt;$edit tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot; placeholder=&lt;&lt;default&gt;&gt;/&gt;&lt;/td&gt;
+   &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;copyTest&gt;&gt;&lt;/td&gt;
+   &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;clearTest&gt;&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;&lt;tryTest&gt;&gt;
+&lt;p/&gt;
+\end
+
+\define copyTest()
+&lt;$button tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt; {{$:/core/images/copy-clipboard}}
+   &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param={{{ [&lt;tests&gt;get[newtest]] }}}/&gt;
+&lt;/$button&gt;
+\end
+
+\define clearTest()
+&lt;$button tooltip=&quot;clear test&quot;&gt; {{$:/core/images/delete-button}}
+   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tests&gt;&gt; newtest=&lt;&lt;default&gt;&gt; /&gt;
+&lt;/$button&gt;
+\end
+
+\define tryTest()
+&lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;tests&gt;get[newtest]]&quot; emptyMessage=&quot;&quot;&quot;Try it:&lt;br&gt;&lt;&lt;default&gt;&gt;&quot;&quot;&quot; variable=&quot;try_it&quot;&gt;
+   Try it:&lt;br&gt;&lt;$transclude tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot;/&gt;
+&lt;/$list&gt;
+&lt;/$tiddler&gt;
+\end
+
+\define editTests()
+&lt;$button tooltip=&quot;edit tests&quot;&gt; {{$:/core/images/edit-button}}
+   &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;tests&gt;&gt;/&gt;
+&lt;/$button&gt;
+\end
+
+\define toggleData()
+&lt;$button tooltip=&quot;show/hide test data&quot;&gt;
+   &lt;$list filter=&quot;[&lt;toggle&gt;is[missing]]&quot;&gt; {{$:/core/images/preview-closed}} &lt;$action-setfield $tiddler=&lt;&lt;toggle&gt;&gt; text=&quot;show&quot;/&gt; &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;toggle&gt;is[tiddler]]&quot;&gt; {{$:/core/images/preview-open}}   &lt;$action-deletetiddler $tiddler=&lt;&lt;toggle&gt;&gt;/&gt;        &lt;/$list&gt;
+&lt;/$button&gt;
+\end
+
+\define showData()
+&lt;$macrocall $name=&quot;showTiddler&quot; tid=&lt;&lt;target&gt;&gt;/&gt;
+&lt;$list filter=&quot;[prefix[$:/state/modal/edit-list/]]&quot; &gt;&lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot; &gt;&lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
+\end
+
+\define deleteData()
+&lt;$list filter=&quot;[&lt;target&gt;is[tiddler]] [prefix[$:/state/modal/edit-list/]] +[limit[1]]&quot;&gt;
+   &lt;$button tooltip=&quot;delete all data&quot;&gt; {{$:/core/images/delete-button}}
+      &lt;$action-deletetiddler $filter=&quot;[&lt;target&gt;] [prefix[$:/state/modal/edit-list/]]&quot;/&gt;
+   &lt;/$button&gt;
+&lt;/$list&gt;
+\end
 
 &lt;style&gt;
-   .editlist_debug               { width:calc(40% - 2vw); float:right; border-radius:1em; }
-   .editlist_debug legend        { font-size:200%; line-height:1em; padding:0 5px; }
-   .editlist_debug legend button { vertical-align:bottom; font-size:50%; }
-   .editlist_debug .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
-   .editlist_debug table         { width:100%; margin:0; text-align:left; }
+   .editlist_debug                      { width:calc(40% - 2vw); float:right; border-radius:1em; }
+   .editlist_debug legend               { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_debug legend button        { vertical-align:bottom; font-size:50%; }
+   .editlist_debug .inner               { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
+   .editlist_debug table                { width:100%; margin:0; text-align:left; }
 
-   .editlist_tests               { width:60%; float:left; border-radius:1em; }
-   .editlist_tests legend        { font-size:200%; line-height:1em; padding:0 5px; }
-   .editlist_tests legend button { vertical-align:bottom; font-size:50%; }
-   .editlist_tests .inner        { max-height:60vh; overflow-y:auto; padding:0.5em; }
-   .editlist_tests h2            { margin:0; }
-   .editlist_tests code          { font-size:70%; line-height:1em; }
+   .editlist_tests                      { width:100%; float:left; border-radius:1em; }
+   .editlist_tests legend               { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_tests legend button        { vertical-align:bottom; font-size:50%; }
+   .editlist_tests .inner               { max-height:60vh; overflow-y:auto; padding:0.5em; }
+   .editlist_tests h2                   { margin:0; }
+   .editlist_tests code                 { font-size:80%; line-height:1em; }
+   .editlist_tests button       .fadeIn { opacity:0; transition: opacity 2s; }
+   .editlist_tests button:hover .fadeIn { opacity:1; transition: opacity 1s; }
 &lt;/style&gt;
 
-&lt;fieldset class=&quot;editlist_debug&quot;&gt;
-   &lt;legend&gt; Data &lt;&lt;deleteAll&gt;&gt; &lt;/legend&gt;
-   &lt;div class=&quot;inner&quot;&gt;
-      &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-      &lt;$macrocall $name=&quot;showtid&quot; tid=&lt;&lt;target&gt;&gt;/&gt;
-      &lt;$list filter=&quot;[prefix[$:/state/modal/edit-list/]]&quot; &gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
-      &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot; &gt;&lt;$macrocall $name=&quot;showtid&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$list&gt;
-   &lt;/div&gt;
-&lt;/fieldset&gt;
+&lt;$list filter=&quot;[&lt;toggle&gt;is[tiddler]]&quot;&gt;
+   &lt;style&gt; .editlist_tests { width:60%; } &lt;/style&gt;
+   &lt;fieldset class=&quot;editlist_debug&quot;&gt;
+      &lt;legend&gt; Data &lt;&lt;deleteData&gt;&gt; &lt;/legend&gt;
+      &lt;div class=&quot;inner&quot;&gt; &lt;&lt;showData&gt;&gt; &lt;/div&gt;
+   &lt;/fieldset&gt;
+&lt;/$list&gt;
 
 &lt;fieldset class=&quot;editlist_tests&quot;&gt;
-   &lt;legend&gt; Tests &lt;&lt;editTests&gt;&gt; &lt;/legend&gt;
-   &lt;div class=&quot;inner&quot;&gt; &lt;$transclude tiddler=&lt;&lt;tests&gt;&gt; mode=&quot;block&quot; /&gt; &lt;/div&gt;
+   &lt;legend&gt; Tests &lt;&lt;editTests&gt;&gt; &lt;&lt;toggleData&gt;&gt; &lt;/legend&gt;
+   &lt;div class=&quot;inner&quot;&gt; &lt;&lt;newTest&gt;&gt; &lt;&lt;showTests&gt;&gt; &lt;/div&gt;
 &lt;/fieldset&gt;
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210725231308331" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210728020434118" newtest="&lt;&lt;edit-list tiddler:Test&gt;&gt;" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
-`&lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1b tiddler:Test confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1b tiddler:Test confirm:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1c tiddler:Test type:date&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1c tiddler:Test type:date&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1d tiddler:Test type:password&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1d tiddler:Test type:password&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1e tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1e tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1f tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1f tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1g tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1g tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1h tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1h tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1i tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes focusPopup:yes multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1i tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes focusPopup:yes multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1j tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1j tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes listheight:5 multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1k tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1k tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1l tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1l tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:1m tiddler:Test filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:1m tiddler:Test filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;&lt;br&gt;
+&lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;
+&lt;&lt;edit-list id:1b tiddler:Test confirm:yes&gt;&gt;
+&lt;&lt;edit-list id:1c tiddler:Test type:date&gt;&gt;
+&lt;&lt;edit-list id:1d tiddler:Test type:password&gt;&gt;
+&lt;&lt;edit-list id:1e tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+&lt;&lt;edit-list id:1f tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1g tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1h tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1i tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes focusPopup:yes multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1j tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes listheight:5 multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1k tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1l tiddler:Test filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
+&lt;&lt;edit-list id:1m tiddler:Test filter:[all[tiddlers+shadows]sort[]] field:goto find:yes focusPopup:yes goto:yes&gt;&gt;
 
 !!__field:tags__
-`&lt;&lt;edit-list id:2a tiddler:Test field:tags&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2a tiddler:Test field:tags&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:2b tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2b tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:2c tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2c tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:2d tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2d tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:2e tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes listheight:5 confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:2e tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes listheight:5 confirm:yes&gt;&gt;&lt;br&gt;
+&lt;&lt;edit-list id:2a tiddler:Test field:tags&gt;&gt;
+&lt;&lt;edit-list id:2b tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+&lt;&lt;edit-list id:2c tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+&lt;&lt;edit-list id:2d tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:2e tiddler:Test field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes listheight:5 confirm:yes&gt;&gt;
 
 !!__index:test vs. field:test__
-`&lt;&lt;edit-list id:3a tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3a tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:3b tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3b tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:3c tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3c tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:3d tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:3d tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;&lt;br&gt;
+&lt;&lt;edit-list id:3a tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+&lt;&lt;edit-list id:3b tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
+&lt;&lt;edit-list id:3c tiddler:Test index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
+&lt;&lt;edit-list id:3d tiddler:Test field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 
 !!__field:color, type:color, colors:yes, RGB and X11Colors__
-`&lt;&lt;edit-list id:4a tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4a tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:4b tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4b tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:4c tiddler:Test field:color colors:yes find:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4c tiddler:Test field:color colors:yes find:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;&lt;br&gt;
-`&lt;&lt;edit-list id:4d tiddler:Test field:color colors:yes find:yes confirm:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;`&lt;br&gt;
- &lt;&lt;edit-list id:4d tiddler:Test field:color colors:yes find:yes confirm:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;edit-list id:4a tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;
+&lt;&lt;edit-list id:4b tiddler:Test field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;
+&lt;&lt;edit-list id:4c tiddler:Test field:color colors:yes find:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;
+&lt;&lt;edit-list id:4d tiddler:Test field:color colors:yes find:yes confirm:yes focusPopup:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; placeholder:&quot;select a color&quot;&gt;&gt;
 </pre>
 </div>
 <div created="20160129222605332" creator="EricShulman" modified="20191216010047403" modifier="EricShulman" title="TiddlyTools/Settings/Colors/X11Names" type="text/plain">
