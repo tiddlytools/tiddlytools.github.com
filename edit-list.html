@@ -165,6 +165,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/edit-list/Tester/showdata</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -227,7 +229,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210721061341667" modified="20210727181927691" title="$:/config/TimestampDisable">
+<div created="20210721061341667" modified="20210728063944555" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10115,16 +10117,19 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
-<div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
+<div created="20210728064109182" modified="20210728064109182" title="$:/state/edit-list/Tester/showdata">
+<pre>show</pre>
+</div>
+<div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210728023346948" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210728064120192" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210728022147336" list="TiddlyTools/Macros/edit-list/Tester" modified="20210728023320527" title="$:/StoryList">
+<div created="20210728064140730" list="TiddlyTools/Macros/edit-list/Tests TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list/Tester" modified="20210728064140730" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10320,7 +10325,7 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 
 \define editlist_styles()
 &lt;style&gt;
-   .editlist_wrapper_$(id)$               { position:relative; display:inline-block; width:$(width)$; }
+   .editlist_wrapper_$(id)$               { position:relative; display:inline-block; width:$(width)$; margin:0; }
    .editlist_wrapper_$(id)$       .fadeIn { opacity:0; transition: opacity 2s; }
    .editlist_wrapper_$(id)$:hover .fadeIn { opacity:1; transition: opacity 1s; }
    .editlist_input_$(id)$                 { position:absolute; width:100% !important; height:1.5em; }
@@ -10709,8 +10714,8 @@ All of the above examples will appear like this:&lt;br&gt;
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210728023241480" tags="" title="TiddlyTools/Macros/edit-list/Tester">
-<pre>\define toggle()  $:/state/popup/edit-list_showdata
+<div created="20210721015652739" modified="20210728064105981" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<pre>\define toggle()  $:/state/edit-list/Tester/showdata
 \define tests()   TiddlyTools/Macros/edit-list/Tests
 \define target()  Test
 \define default() &lt;&lt;edit-list tiddler:Test&gt;&gt;
@@ -10739,13 +10744,13 @@ All of the above examples will appear like this:&lt;br&gt;
 \end
 
 \define showTests()
+&lt;$list filter=&quot;[&lt;tests&gt;get[text]]&quot;&gt;&lt;h1&gt;''Saved Tests:'' &lt;&lt;editTests&gt;&gt;&lt;/h1&gt;&lt;/$list&gt;
+&lt;blockquote&gt;
 &lt;$list filter=&quot;[&lt;tests&gt;get[text]splitregexp[\n]]&quot; variable=&quot;thisline&quot;&gt;
    &lt;$list filter=&quot;[&lt;thisline&gt;!match[]]&quot;&gt;
       &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]match[!]]&quot;&gt;
-         &lt;div style=&quot;margin:1em 0;&quot;&gt;
 
          &lt;&lt;thisline&gt;&gt;
-         &lt;/div&gt;
       &lt;/$list&gt;
       &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
          &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;vertical-align:text-bottom;&quot; tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
@@ -10756,20 +10761,27 @@ All of the above examples will appear like this:&lt;br&gt;
       &lt;/$list&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
+&lt;/blockquote&gt;
+\end
+
+\define editTests()
+&lt;$button style=&quot;font-size:50%;vertical-align:middle;&quot; tooltip=&quot;edit saved tests&quot;&gt; {{$:/core/images/edit-button}}
+   &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;tests&gt;&gt;/&gt;
+&lt;/$button&gt;
 \end
 
 \define newTest()
-New test:&lt;br&gt;
-&lt;table style=&quot;width:100%;margin:0;border:0;padding:0;&quot;&gt;&lt;tr style=&quot;border:0;padding:0;&quot;&gt;
-   &lt;td class=&quot;tc-edit-field-value&quot; style=&quot;border:0;padding:0;&quot;&gt;
+&lt;h1&gt;''New Test:''&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;table&gt;&lt;tr&gt;
+   &lt;td class=&quot;tc-edit-field-value&quot;&gt;
       &lt;$edit tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot; placeholder=&lt;&lt;default&gt;&gt;
          inputActions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;target&gt;&gt; modified=&lt;&lt;now &quot;YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;/&gt;&quot;&quot;&quot;/&gt;
    &lt;/td&gt;
-   &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;copyTest&gt;&gt;&lt;/td&gt;
-   &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;clearTest&gt;&gt;&lt;/td&gt;
+   &lt;td style=&quot;width:7em;text-align:right;&quot;&gt; &lt;&lt;copyTest&gt;&gt; &lt;&lt;clearTest&gt;&gt; &lt;&lt;saveTest&gt;&gt; &lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;&lt;tryTest&gt;&gt;
-&lt;p/&gt;
+&lt;/blockquote&gt;
 \end
 
 \define copyTest()
@@ -10779,23 +10791,29 @@ New test:&lt;br&gt;
 \end
 
 \define clearTest()
-&lt;$button tooltip=&quot;clear test&quot;&gt; {{$:/core/images/delete-button}}
+&lt;$button tooltip=&quot;clear new test&quot;&gt; {{$:/core/images/delete-button}}
    &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tests&gt;&gt; newtest=&lt;&lt;default&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
-\define tryTest()
-&lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
-&lt;$list filter=&quot;[&lt;tests&gt;get[newtest]]&quot; emptyMessage=&quot;&quot;&quot;Try it:&lt;br&gt;&lt;&lt;default&gt;&gt;&quot;&quot;&quot; variable=&quot;try_it&quot;&gt;
-   Try it:&lt;br&gt;&lt;$transclude tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot;/&gt;
-&lt;/$list&gt;
-&lt;/$tiddler&gt;
+\define saveTest()
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$vars old={{{ [&lt;tests&gt;get[text]] }}}&gt;
+&lt;$vars new={{{ [&lt;tests&gt;get[newtest]addsuffix&lt;lf&gt;addsuffix&lt;old&gt;] }}}&gt;
+&lt;$button tooltip=&quot;save new test&quot;&gt; {{$:/core/images/save-button}}
+   &lt;$action-setfield $tiddler=&lt;&lt;tests&gt;&gt; text=&lt;&lt;new&gt;&gt; /&gt;
+&lt;/$button&gt;
 \end
 
-\define editTests()
-&lt;$button tooltip=&quot;edit tests&quot;&gt; {{$:/core/images/edit-button}}
-   &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;tests&gt;&gt;/&gt;
-&lt;/$button&gt;
+\define tryTest()
+&lt;$list filter=&quot;[&lt;tests&gt;get[newtest]]&quot; emptyMessage=&quot;&quot;&quot;Try it:&lt;br&gt;&lt;&lt;default&gt;&gt;&quot;&quot;&quot; variable=&quot;try_it&quot;&gt;
+   &lt;$eventcatcher events=&quot;click&quot; actions-click=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;target&gt;&gt; modified=&lt;&lt;now &quot;YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+      &lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
+         Try it:&lt;br&gt;&lt;$transclude tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot;/&gt;
+      &lt;/$tiddler&gt;
+   &lt;/$eventcatcher&gt;
+&lt;/$list&gt;
 \end
 
 \define toggleData()
@@ -10820,38 +10838,41 @@ New test:&lt;br&gt;
 \end
 
 &lt;style&gt;
-   .editlist_debug                      { width:calc(40% - 1em); float:right; border-radius:1em; }
-   .editlist_debug legend               { font-size:200%; line-height:1em; padding:0 5px; }
-   .editlist_debug legend button        { vertical-align:bottom; font-size:50%; }
-   .editlist_debug .inner               { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
-   .editlist_debug table                { width:100%; margin:0; text-align:left; }
+   .editlist_tests                       { width:100%; float:left; border-radius:1em; }
+   .editlist_tests legend                { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_tests legend button         { vertical-align:bottom; font-size:50%; }
+   .editlist_tests .inner                { max-height:60vh; overflow-y:auto; padding:0.5em; }
+   .editlist_tests table                 { width:100%; margin:0; border:0; padding:0; }
+   .editlist_tests table td              { margin:0; border:0; padding:0; }
+   .editlist_tests blockquote            { margin-right:0; }
+   .editlist_tests h1, editlist_tests h2 { margin:0; }
+   .editlist_tests code                  { font-size:80%; line-height:1em; }
+   .editlist_tests button       .fadeIn  { opacity:0; transition: opacity 2s; }
+   .editlist_tests button:hover .fadeIn  { opacity:1; transition: opacity 1s; }
 
-   .editlist_tests                      { width:100%; float:left; border-radius:1em; }
-   .editlist_tests legend               { font-size:200%; line-height:1em; padding:0 5px; }
-   .editlist_tests legend button        { vertical-align:bottom; font-size:50%; }
-   .editlist_tests .inner               { max-height:60vh; overflow-y:auto; padding:0.5em; }
-   .editlist_tests h2                   { margin:0; }
-   .editlist_tests code                 { font-size:80%; line-height:1em; }
-   .editlist_tests button       .fadeIn { opacity:0; transition: opacity 2s; }
-   .editlist_tests button:hover .fadeIn { opacity:1; transition: opacity 1s; }
+   .editlist_data                        { width:calc(40% - 1em); float:right; border-radius:1em; }
+   .editlist_data legend                 { font-size:200%; line-height:1em; padding:0 5px; }
+   .editlist_data legend button          { vertical-align:bottom; font-size:50%; }
+   .editlist_data .inner                 { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
+   .editlist_data table                  { width:100%; margin:0; text-align:left; }
 &lt;/style&gt;
 
 &lt;$list filter=&quot;[&lt;toggle&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt; .editlist_tests { width:60%; } &lt;/style&gt;
-   &lt;fieldset class=&quot;editlist_debug&quot;&gt;
+   &lt;fieldset class=&quot;editlist_data&quot;&gt;
       &lt;legend&gt; Data &lt;&lt;deleteData&gt;&gt; &lt;/legend&gt;
       &lt;div class=&quot;inner&quot;&gt; &lt;&lt;showData&gt;&gt; &lt;/div&gt;
    &lt;/fieldset&gt;
 &lt;/$list&gt;
 
 &lt;fieldset class=&quot;editlist_tests&quot;&gt;
-   &lt;legend&gt; Tests &lt;&lt;editTests&gt;&gt; &lt;&lt;toggleData&gt;&gt; &lt;/legend&gt;
+   &lt;legend&gt; Tests &lt;&lt;toggleData&gt;&gt; &lt;/legend&gt;
    &lt;div class=&quot;inner&quot;&gt; &lt;&lt;newTest&gt;&gt; &lt;&lt;showTests&gt;&gt; &lt;/div&gt;
 &lt;/fieldset&gt;
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210728023323336" newtest="&lt;&lt;edit-list tiddler:Test&gt;&gt;" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210728064143943" newtest="&lt;&lt;edit-list tiddler:Test&gt;&gt;" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
 &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;
 &lt;&lt;edit-list id:1b tiddler:Test confirm:yes&gt;&gt;
