@@ -10118,13 +10118,13 @@ TiddlyTools/Macros/edit-list/Tester</pre>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210727234115045" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210728023346948" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210728020159550" list="TiddlyTools/Macros/edit-list/Tester" modified="20210728020431493" title="$:/StoryList">
+<div created="20210728022147336" list="TiddlyTools/Macros/edit-list/Tester" modified="20210728023320527" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10709,7 +10709,7 @@ All of the above examples will appear like this:&lt;br&gt;
 
 {{TiddlyTools/Macros/edit-list/Examples}}</pre>
 </div>
-<div created="20210721015652739" modified="20210728020345570" tags="" title="TiddlyTools/Macros/edit-list/Tester">
+<div created="20210721015652739" modified="20210728023241480" tags="" title="TiddlyTools/Macros/edit-list/Tester">
 <pre>\define toggle()  $:/state/popup/edit-list_showdata
 \define tests()   TiddlyTools/Macros/edit-list/Tests
 \define target()  Test
@@ -10761,7 +10761,10 @@ All of the above examples will appear like this:&lt;br&gt;
 \define newTest()
 New test:&lt;br&gt;
 &lt;table style=&quot;width:100%;margin:0;border:0;padding:0;&quot;&gt;&lt;tr style=&quot;border:0;padding:0;&quot;&gt;
-   &lt;td class=&quot;tc-edit-field-value&quot; style=&quot;border:0;padding:0;&quot;&gt;&lt;$edit tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot; placeholder=&lt;&lt;default&gt;&gt;/&gt;&lt;/td&gt;
+   &lt;td class=&quot;tc-edit-field-value&quot; style=&quot;border:0;padding:0;&quot;&gt;
+      &lt;$edit tiddler=&lt;&lt;tests&gt;&gt; field=&quot;newtest&quot; placeholder=&lt;&lt;default&gt;&gt;
+         inputActions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;target&gt;&gt; modified=&lt;&lt;now &quot;YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;/&gt;&quot;&quot;&quot;/&gt;
+   &lt;/td&gt;
    &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;copyTest&gt;&gt;&lt;/td&gt;
    &lt;td style=&quot;width:2em;border:0;padding:0;&quot;&gt;&lt;&lt;clearTest&gt;&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
@@ -10817,7 +10820,7 @@ New test:&lt;br&gt;
 \end
 
 &lt;style&gt;
-   .editlist_debug                      { width:calc(40% - 2vw); float:right; border-radius:1em; }
+   .editlist_debug                      { width:calc(40% - 1em); float:right; border-radius:1em; }
    .editlist_debug legend               { font-size:200%; line-height:1em; padding:0 5px; }
    .editlist_debug legend button        { vertical-align:bottom; font-size:50%; }
    .editlist_debug .inner               { max-height:60vh; overflow-y:auto; padding:0.5em; font-size:80%; line-height:1.2em; }
@@ -10848,7 +10851,7 @@ New test:&lt;br&gt;
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210728020434118" newtest="&lt;&lt;edit-list tiddler:Test&gt;&gt;" tags="" title="TiddlyTools/Macros/edit-list/Tests">
+<div created="20210723184252329" modified="20210728023323336" newtest="&lt;&lt;edit-list tiddler:Test&gt;&gt;" tags="" title="TiddlyTools/Macros/edit-list/Tests">
 <pre>!!__field:text__
 &lt;&lt;edit-list id:1a tiddler:Test&gt;&gt;
 &lt;&lt;edit-list id:1b tiddler:Test confirm:yes&gt;&gt;
