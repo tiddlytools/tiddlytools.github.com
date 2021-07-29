@@ -10112,7 +10112,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210729130249646" list="TiddlyTools/Macros/edit-list/Info" modified="20210729135945166" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10230,7 +10230,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210729135942348" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210729171219790" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10296,12 +10296,10 @@ TiddlyTools/Macros/edit-list</pre>
 &lt;!-- STYLES AND CONTROLS --&gt;
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
-&lt;div class={{{ [[editlist_wrapper_]addsuffix&lt;id&gt;] }}} style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}} title=&lt;&lt;tooltip&gt;&gt;&gt;
+&lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
+     style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
+     title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;div class={{{ [[editlist_input_buttons_]addsuffix&lt;id&gt;] }}}&gt;
-      &lt;&lt;editlist_clear_button&gt;&gt;
-      &lt;&lt;editlist_popup_button&gt;&gt;
-   &lt;/div&gt;
    &lt;&lt;editlist_select&gt;&gt;
 &lt;/div&gt;
 \end
@@ -10312,12 +10310,13 @@ TiddlyTools/Macros/edit-list</pre>
    .editlist_wrapper_$(id)$       .fadeIn { opacity:0; transition: opacity 2s; }
    .editlist_wrapper_$(id)$:hover .fadeIn { opacity:1; transition: opacity 1s; }
    .editlist_input_$(id)$                 { position:absolute; width:100% !important; height:1.5em; }
-   .editlist_input_buttons_$(id)$         { position:absolute; right:0; width:max-content; }
-   .editlist_clear_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_button_$(id)$          { height:1.5em; width:1.5em; padding:0 0.25em; }
+   .editlist_input_buttons_$(id)$         { position:absolute; width:max-content; right:0; }
    .editlist_modal_buttons_$(id)$         { position:absolute; width:max-content; left:$(width)$; }
-   .editlist_modal_buttons_$(id)$ button  { height:1.5em; width:1.5em; padding:0 0.25em; }
-   .editlist_popup_$(id)$                 { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
+   .editlist_clear_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
+   .editlist_popup_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
+   .editlist_save_$(id)$                  { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
+   .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; }
+   .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; outline:0; font-size:$(fontsize)$; }
    .editlist_popup_select_cover_$(id)$    { position:absolute; top:0; left:0; width:100%; height:100%; }
@@ -10326,7 +10325,7 @@ TiddlyTools/Macros/edit-list</pre>
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
+   &lt;style&gt; .editlist_popup_wrapper_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;match[yes]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
@@ -10337,41 +10336,57 @@ TiddlyTools/Macros/edit-list</pre>
 \whitespace trim
 &lt;!-- IF MODAL AND NOT ACTIVE, SHOW EDIT WITH TRIGGERING COVER BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
-   &lt;&lt;edit&gt;&gt;&lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
+   &lt;&lt;edit&gt;&gt;
+   &lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
+      &lt;&lt;start&gt;&gt;
+   &lt;/$button&gt;
 &lt;/$list&gt;
-&lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW EDIT WITH MODAL FOCUS AND KEY HANDLERS --&gt;
+&lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW EDIT WITH MODAL FOCUS, KEY HANDLERS, AND BUTTONS --&gt;
 &lt;$list filter=&quot;[&lt;confirm&gt;match[no]] [&lt;confirm&gt;match[yes]then&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
       &lt;$vars focus={{{ [&lt;modal&gt;is[tiddler]then[yes]else&lt;focus&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
    &lt;/$keyboard&gt;
    &lt;/$keyboard&gt;
-   &lt;!-- IF MODAL, SHOW SAVE/CANCEL BUTTONS --&gt;
-   &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-      &lt;span style=&quot;position:relative;&quot;&gt;&lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;
-         &lt;$button class=&quot;editlist_save_button&quot;   tooltip=&quot;save&quot;  &gt; {{$:/core/images/done-button}}   &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt; &lt;/$button&gt;
-         &lt;$button class=&quot;editlist_cancel_button&quot; tooltip=&quot;cancel&quot;&gt; {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;                 &lt;/$button&gt;
-      &lt;/span&gt;&lt;/span&gt;
-   &lt;/$list&gt;
+   &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
+   &lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_save&gt;&gt;&lt;&lt;editlist_cancel&gt;&gt;&lt;/span&gt;
 &lt;/$list&gt;
 \end
 
-\define editlist_clear_button()
+\define editlist_clear()
 \whitespace trim
 &lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear_button&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_clear_button editlist_clear_button_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_clear editlist_clear_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    ''x'' &lt;&lt;clear&gt;&gt;   
 &lt;/$button&gt;
 \end
 
-\define editlist_popup_button()
+\define editlist_popup()
 \whitespace trim
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup_button&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup_button editlist_popup_button_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
+&lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
+&lt;/$button&gt;
+\end
+
+\define editlist_save()
+\whitespace trim
+&lt;!-- IF MODAL IS ACTIVE, SHOW SAVE BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_save editlist_save_$(id)$&quot; tooltip=&quot;save&quot;&gt;
+   {{$:/core/images/done-button}} &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;
+&lt;/$button&gt;
+\end
+
+\define editlist_cancel()
+\whitespace trim
+&lt;!-- IF MODAL IS ACTIVE, SHOW CANCEL BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_cancel editlist_cancel_$(id)$&quot; tooltip=&quot;cancel&quot;&gt;
+   {{$:/core/images/cancel-button}} &lt;&lt;done&gt;&gt;
 &lt;/$button&gt;
 \end
 
@@ -10391,16 +10406,17 @@ TiddlyTools/Macros/edit-list</pre>
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;currval&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
 &lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;show&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;size&quot;    filter=&quot;[&lt;listheight&gt;match[1]then&lt;count&gt;min&lt;scroll&gt;max[2]else&lt;listheight&gt;]&quot;&gt;
-&lt;div class=&quot;editlist_popup_$(id)$&quot;&gt;
+&lt;div class=&quot;editlist_popup_wrapper_$(id)$&quot;&gt;
    &lt;div class=&quot;editlist_popup_heading_$(id)$&quot;&gt;
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
    &lt;/div&gt;
    &lt;!-- IF MODAL AND NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
    &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
-      &lt;div style=&quot;position:relative;&quot;&gt;
-         &lt;&lt;select&gt;&gt;&lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&quot;$(focusPopup)$&quot;&gt;&lt;&lt;start&gt;&gt;&lt;/$button&gt;
-      &lt;/div&gt;
+      &lt;&lt;select&gt;&gt;
+      &lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
+         &lt;&lt;start&gt;&gt;
+      &lt;/$button&gt;
    &lt;/$list&gt;
    &lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
    &lt;$list filter=&quot;[&lt;confirm&gt;!match[yes]] [&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
@@ -10419,7 +10435,7 @@ TiddlyTools/Macros/edit-list</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210729135937447" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210729171213034" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10718,7 +10734,7 @@ columns:
 &lt;&lt;edit-list id:5c tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes listheight:5   goto:yes&gt;&gt;
 </pre>
 </div>
-<div created="20210719102404282" modified="20210729135546431" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210729171113529" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
@@ -10828,19 +10844,20 @@ However, ''when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single
 &lt;&lt;&lt;
 In addition to generating a unique ID for each instance of `&lt;&lt;edit-list&gt;&gt;`, the macro also applies ''general-purpose CSS classnames'' to each control element that makes up the combined `&lt;&lt;edit-list&gt;&gt;` interface:
 
-* ''.editlist_input'' - the `&lt;$edit-text&gt;` widget text input
-* ''.editlist_select'' - the `&lt;$select&gt;` widget list
-* ''.editlist_clear_button'' - the &lt;$button&gt;''X''&lt;/$button&gt; button
-* ''.editlist_popup_button'' - the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button
-* ''.editlist_save_button'' - the &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; button
-* ''.editlist_cancel_button'' - the &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; button
+* ''.editlist_input'' - the `&lt;$edit-text&gt;` text input
+* ''.editlist_select'' - the `&lt;$select&gt;` list
+* ''.editlist_clear'' - the &lt;$button&gt;''X''&lt;/$button&gt; button
+* ''.editlist_popup'' - the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button
+* ''.editlist_save'' - the &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; button
+* ''.editlist_cancel'' - the &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; button
+* ''.editlist_wrapper'' - the container surrounding all of the above control elements
 
 These general-purpose classnames can be used to ''add extra CSS styles to all instances of a specific control element''.  For example, the colors used to display the save and cancel buttons can be changed by providing a custom CSS Stylesheet containing:
 &lt;pre style=&quot;background:transparent;border:0;margin:0;padding:0;&quot;&gt;
 
 ```
-.editlist_save_button   { fill:green; }
-.editlist_cancel_button { fill:red;   }
+.editlist_save   { fill:green; }
+.editlist_cancel { fill:red;   }
 ```
 &lt;/pre&gt;
 
@@ -10850,7 +10867,7 @@ These classnames can also be used to ''add side-effect processing when interacti
 &lt;pre style=&quot;background:transparent;border:0;margin:0;padding:0;&quot;&gt;
 
 ```
-&lt;$eventcatcher event=&quot;click&quot; selector=&quot;.editlist_save_button&quot; actions-click=&lt;&lt;handleClickEvents&gt;&gt;/&gt;
+&lt;$eventcatcher event=&quot;click&quot; selector=&quot;.editlist_save&quot; actions-click=&lt;&lt;handleClickEvents&gt;&gt;/&gt;
    &lt;&lt;edit-list ...&gt;&gt;
 &lt;/$eventcatcher&gt;
 ```
