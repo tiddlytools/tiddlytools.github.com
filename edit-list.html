@@ -163,8 +163,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/showeditpreview</li>
-
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -10105,19 +10103,16 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
-<div created="20210728144701304" modified="20210728144740479" title="$:/state/showeditpreview">
-<pre>no</pre>
-</div>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210729013024132" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210729035540709" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list" title="$:/StoryList">
+<div created="20210729035636549" list="TiddlyTools/Macros/edit-list/Examples" modified="20210729035659678" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10235,7 +10230,7 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210729022418992" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210729035646303" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10270,7 +10265,7 @@ TiddlyTools/Macros/edit-list</pre>
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input_]addsuffix&lt;id&gt;] }}}
+      &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
@@ -10424,7 +10419,7 @@ TiddlyTools/Macros/edit-list</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210729022412701" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210729035639667" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10493,7 +10488,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210729022225944" tags="" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210729035058710" tags="" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define tryitnow() $:/state/popup/edit-list/Examples/tryitnow
@@ -10555,7 +10550,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
    &lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;$vars target={{{ [&lt;tryitnow&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
-&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;touchTarget&gt;&gt;&gt;
+&lt;$eventcatcher events=&quot;focusin&quot; selector=&quot;.editlist_input&quot; actions-focusin=&lt;&lt;touchTarget&gt;&gt;&gt;
    &lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
       ''//Try it now://''&lt;br&gt;
       &lt;$list filter=&quot;[&lt;tryitnow&gt;get[text]]&quot; emptyMessage=&lt;&lt;default&gt;&gt; variable=&quot;try_it&quot;&gt;
@@ -10723,7 +10718,7 @@ columns:
 &lt;&lt;edit-list id:5c tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes listheight:5   goto:yes confirm:yes&gt;&gt;
 </pre>
 </div>
-<div created="20210719102404282" modified="20210729022407268" tags="" title="TiddlyTools/Macros/edit-list/Info">
+<div created="20210719102404282" modified="20210729035631803" tags="" title="TiddlyTools/Macros/edit-list/Info">
 <pre>|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
