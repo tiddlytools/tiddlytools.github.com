@@ -285,7 +285,7 @@ Error message and password prompt
 <div button="start" caption="Timer Example" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20210628154743529" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/SampleTimer" totallist="6.52 36.256 43.475 49.557">
 <pre>@@display:inline-block;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;@@</pre>
 </div>
-<div created="20201002222557507" modified="20201013002522560" title="$:/config/TimestampDisable">
+<div created="20201002222557507" modified="20210730115326273" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10239,7 +10239,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210712022844512" list="TiddlyTools/Time/EditDate TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20210712025024382" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12742,9 +12742,21 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210712022839244" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210730115953719" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
-\define package() [prefix[TiddlyTools/Time]]  [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]]
+\define tids()    [prefix[TiddlyTools/Time]] +[!sort[modified]] [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]] 
+\define popup()   $:/state/popup/package/time
+\define package()
+''This package contains &lt;$count filter=&lt;&lt;tids&gt;&gt;/&gt; tiddlers.''
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; popup=&lt;&lt;popup&gt;&gt; dragFilter=&lt;&lt;tids&gt;&gt;&gt;''Drag this link''&lt;/$button&gt; ''to import into your own ~TiddlyWiki.''
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;padding:1em;&quot;&gt;''Package contents''&lt;hr&gt;&lt;$list filter=&lt;&lt;tids&gt;&gt;&gt;&lt;$link/&gt;&lt;/$list&gt;&lt;/$reveal&gt;
+\end
+
+|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
+|  source|''http://TiddlyTools.com/timer.html''|
+| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
+
+&lt;&lt;package&gt;&gt;
 
 &lt;style&gt;
    .resize svg   { height:1em; width:1em; }
@@ -12752,14 +12764,6 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
    .nobullets li { list-style-type:none;  }
    .borderless table, .borderless tr, .borderless td { border:0; margin:0; padding:0 1em 0 0; white-space:nowrap; line-height:100%; }
 &lt;/style&gt;
-
-|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
-|  source|''http://TiddlyTools.com/timer.html''|
-| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
-
-''This package contains &lt;$text text={{{ [subfilter&lt;package&gt;] +[count[]] }}}/&gt; tiddlers'' (including documentation, sample content and default settings).
-
-''To import this package, &lt;$button dragFilter=&lt;&lt;package&gt;&gt; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;drag this link&lt;/$button&gt; into your own ~TiddlyWiki.''
 
 !! [[TiddlyTools/Time/Clocks]]
 &lt;&lt;&lt;
