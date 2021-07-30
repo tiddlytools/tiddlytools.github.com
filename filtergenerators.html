@@ -10676,7 +10676,7 @@ __find titles containing__:&lt;br&gt;
 &lt;/$set&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210729171219790" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210730062159357" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10780,14 +10780,15 @@ __find titles containing__:&lt;br&gt;
 
 \define editlist_input()
 \whitespace trim
-&lt;!-- IF MODAL AND NOT ACTIVE, SHOW EDIT WITH TRIGGERING COVER BUTTON --&gt;
+&lt;!-- IF MODAL AND NOT ACTIVE, SHOW EDIT WITH TRIGGERING COVER BUTTON AND CLEAR/POPUP BUTTONS--&gt;
 &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
    &lt;&lt;edit&gt;&gt;
    &lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
       &lt;&lt;start&gt;&gt;
    &lt;/$button&gt;
+   &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
 &lt;/$list&gt;
-&lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW EDIT WITH MODAL FOCUS, KEY HANDLERS, AND BUTTONS --&gt;
+&lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW EDIT WITH MODAL FOCUS, KEY HANDLERS, AND CLEAR/POPUP BUTTONS --&gt;
 &lt;$list filter=&quot;[&lt;confirm&gt;match[no]] [&lt;confirm&gt;match[yes]then&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
