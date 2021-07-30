@@ -161,6 +161,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
@@ -211,7 +213,7 @@ Error message and password prompt
 <div created="20200710045101386" modified="20200710045101386" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20200710045104131" modified="20200717075504704" title="$:/config/TimestampDisable">
+<div created="20200710045104131" modified="20210730121220306" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10117,6 +10119,9 @@ TiddlyTools/AutoScroll/Setup</pre>
 <div created="20200709112245721" modified="20200711135730899" title="$:/SiteTitle">
 <pre>~AutoScroll</pre>
 </div>
+<div title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
@@ -19097,8 +19102,16 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;A NAME=5.2.424&gt;Go, bid the soldiers shoot.&lt;/A&gt;&lt;br&gt;
 &lt;p&gt;&lt;i&gt;A dead march. Exeunt, bearing off the dead bodies; after which a peal of ordnance is shot off&lt;/i&gt;&lt;/p&gt;</pre>
 </div>
-<div created="20200711063502632" modified="20200717080902123" showtags1="&lt;&lt;showtags&gt;&gt;" showtags2="&lt;&lt;showtags&gt;&gt;" tags="" title="TiddlyTools/AutoScroll/Info">
-<pre>\define editsetup(field,default,size:60)
+<div created="20200711063502632" modified="20210730122131436" showtags1="&lt;&lt;showtags&gt;&gt;" showtags2="&lt;&lt;showtags&gt;&gt;" tags="TiddlyTools" title="TiddlyTools/AutoScroll/Info">
+<pre>\define tids()    [prefix[TiddlyTools/AutoScroll/]] [tag[autoscroll]]
+\define popup()   $:/state/popup/package/autoscroll
+\define package()
+''This package contains &lt;$count filter=&lt;&lt;tids&gt;&gt;/&gt; tiddlers.''
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; popup=&lt;&lt;popup&gt;&gt; dragFilter=&lt;&lt;tids&gt;&gt;&gt;''Drag this link''&lt;/$button&gt; ''to import into your own ~TiddlyWiki.''
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;padding:1em;&quot;&gt;''Package contents''&lt;hr&gt;&lt;$list filter=&lt;&lt;tids&gt;&gt;&gt;&lt;$link/&gt;&lt;/$list&gt;&lt;/$reveal&gt;
+\end
+
+\define editsetup(field,default,size:60)
 &lt;$edit-text tag=&quot;input&quot; tiddler=&quot;TiddlyTools/AutoScroll/Setup&quot; size=&quot;$size$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
 \end
 
@@ -19108,6 +19121,12 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;$wikify name=&quot;taglist&quot; text=&lt;&lt;autotags&gt;&gt;&gt;&lt;&lt;taglist&gt;&gt;&lt;/$wikify&gt;
 \end
 
+|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
+|  source|''http://TiddlyTools.com/autoscroll.html''|
+| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
+
+&lt;&lt;package&gt;&gt;
+
 &lt;style&gt;
    .resize svg { height:1em; width:1em; }
    .nobullets  { list-style-type:none;  }
@@ -19116,12 +19135,6 @@ TiddlyTools/AutoScroll/Setup</pre>
 &lt;$vars prefix=&quot;[tag[&quot; suffix=&quot;]]&quot;&gt;
 &lt;$set name=&quot;autotags&quot; filter=&quot;[enlist{TiddlyTools/AutoScroll/Setup!!autotags}] [[autoscroll]] +[sort[]addprefix&lt;prefix&gt;addsuffix&lt;suffix&gt;]&quot;&gt;
 &lt;$vars  button={{{ [[TiddlyTools/AutoScroll/Setup]get[button]]  ~[[$:/core/images/spiral]] }}}&gt;
-
-|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
-|  source|''http://TiddlyTools.com/autoscroll.html''|
-| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh:0mm:0ssam&quot;/&gt;''|
-
-''This package contains &lt;$text text={{{ [prefix[TiddlyTools/AutoScroll/]!suffix[/Info]count[]] }}}/&gt; tiddlers'' (excluding this documentation and sample content).
 
 !! [[TiddlyTools/AutoScroll/Viewer]]
 &lt;&lt;&lt;
