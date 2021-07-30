@@ -149,21 +149,27 @@ Error message and password prompt
 
 <li>$:/config/Tiddlers/TitleLinks</li>
 
+<li>$:/config/TiddlyTools/FindTags</li>
+
+<li>$:/config/TiddlyTools/FindTitles</li>
+
 <li>$:/config/TiddlyTools/PowerSearch</li>
 
-<li>$:/config/TimestampDisable</li>
+<li>$:/config/TiddlyTools/TagCloud</li>
 
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
-
-<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/advancedsearch/currentTab</li>
+
+<li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
 
@@ -180,6 +186,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
 <li>$:/themes/tiddlywiki/vanilla/settings/editorfontfamily</li>
+
+<li>TiddlyTools/FilterGenerators/Info</li>
 
 <li>TiddlyTools/FilterGenerators/PowerSearch</li>
 
@@ -218,11 +226,27 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div columns="3" confirm="" created="20210617075024384" modified="20210729172254082" show="show" title="$:/config/TiddlyTools/PowerSearch" width="">
+<div created="20210730202248567" modified="20210730202252483" title="$:/config/TiddlyTools/FindTags" type="application/json">
+<pre>{
+    &quot;$:/tags/AdvancedSearch&quot;: &quot; &quot;,
+    &quot;TiddlyTools&quot;: &quot; &quot;
+}</pre>
+</div>
+<div created="20210730204803400" modified="20210730205355119" title="$:/config/TiddlyTools/FindTitles" type="application/json">
+<pre>{
+    &quot;text&quot;: &quot;TiddlyTools&quot;,
+    &quot;tiddler&quot;: &quot;is[tiddler]&quot;,
+    &quot;shadow&quot;: &quot;&quot;,
+    &quot;system&quot;: &quot;&quot;,
+    &quot;image&quot;: &quot;&quot;,
+    &quot;binary&quot;: &quot;&quot;
+}</pre>
+</div>
+<div columns="3" created="20210730202157567" modified="20210730202157567" show="show" title="$:/config/TiddlyTools/PowerSearch">
 <pre></pre>
 </div>
-<div created="20210721061341667" modified="20210721061341667" title="$:/config/TimestampDisable">
-<pre>no</pre>
+<div created="20210730202238075" modified="20210730202238075" sortorder="count" title="$:/config/TiddlyTools/TagCloud">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10088,17 +10112,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191118105110098" modified="20191223115023557" title="$:/DefaultTiddlers">
-<pre>TiddlyTools/FilterGenerators/PowerSearch
-TiddlyTools/FilterGenerators/TagCloud
+<div created="20191118105110098" modified="20210730205731444" title="$:/DefaultTiddlers">
+<pre>TiddlyTools/FilterGenerators/Info
 TiddlyTools/FilterGenerators/Titles
 TiddlyTools/FilterGenerators/Tags
-</pre>
-</div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Macros/edit-list]]</pre>
+TiddlyTools/FilterGenerators/TagCloud
+TiddlyTools/FilterGenerators/PowerSearch</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10109,16 +10128,22 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
+<div created="20210730184113095" modified="20210730205706486" title="$:/state/advancedsearch/currentTab">
+<pre>TiddlyTools/FilterGenerators/Tags</pre>
+</div>
+<div created="20210730184113096" modified="20210730205706487" title="$:/state/tab--1498284803">
+<pre>TiddlyTools/FilterGenerators/Tags</pre>
+</div>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210726000630240" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210730210335772" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/PowerSearch TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10236,11 +10261,67 @@ TiddlyTools/FilterGenerators/Tags
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210726000550929" modifier="EricShulman" tags="$:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div created="20210719102404282" modified="20210730210502860" tags="TiddlyTools" title="TiddlyTools/FilterGenerators/Info">
+<pre>\define tids()    [prefix[TiddlyTools/FilterGenerators]] [[TiddlyTools/Macros/edit-list]] +[!sort[modified]]
+\define popup()   $:/state/popup/package/filtergenerators
+\define package()
+''This package contains &lt;$count filter=&lt;&lt;tids&gt;&gt;/&gt; tiddlers.''
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; popup=&lt;&lt;popup&gt;&gt; dragFilter=&lt;&lt;tids&gt;&gt;&gt;''Drag this link''&lt;/$button&gt; ''to import into your own ~TiddlyWiki.''
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;padding:1em;&quot;&gt;''Package contents''&lt;hr&gt;&lt;$list filter=&lt;&lt;tids&gt;&gt;&gt;&lt;$link/&gt;&lt;/$list&gt;&lt;/$reveal&gt;
+\end
+
+|  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
+|  source|''http://TiddlyTools.com/filtergenerators.html''|
+| updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
+
+&lt;&lt;package&gt;&gt;
+
+~TiddlyTools' ~FilterGenerators define several $:/AdvancedSearch addon tabs to provide a variety of specialized searches.
+
+!! [[TiddlyTools/FilterGenerators/Titles]]
+&lt;&lt;&lt;
+''Search for tiddler titles in selected types of tiddlers''
+
+* Finds tiddlers that contain the specified text anywhere in their title
+* Select one or more types of tiddlers to search in:&lt;br&gt;&amp;emsp;tiddlers, shadows, system, tags, missing, orphans, images, binaries
+&lt;&lt;&lt;
+
+!! [[TiddlyTools/FilterGenerators/Tags]]
+&lt;&lt;&lt;
+''Search for tiddlers using a combination of tags''
+
+* Shows checkboxes for all tags in the file, including shadow tags
+* Select any combination of tags to search for
+* Shows results matching all tags (AND) and one or more tags (OR
+&lt;&lt;&lt;
+
+!! [[TiddlyTools/FilterGenerators/TagCloud]]
+&lt;&lt;&lt;
+''Display all tags using proportional size based on the number of tiddlers for each tag''
+
+* Shows number of matching tiddlers on each tag &quot;pill&quot;
+* Sort results by tag title or number of matching tiddlers
+&lt;&lt;&lt;
+
+!! [[TiddlyTools/FilterGenerators/PowerSearch]]
+&lt;&lt;&lt;
+''Assemble a complex filter to search for matching tiddlers''
+&lt;br&gt;Requires: [[TiddlyTools/Macros/edit-list]]
+
+* select types of tiddlers to search
+* include/exclude prefixes, suffixes or tags
+* find tiddlers that have a specific field (even if blank)
+* search in one or more specified fields
+* use flags to define the search criteria
+* copy the assembled filter syntax to the clipboard
+* export or delete the matching tiddlers
+&lt;&lt;&lt;</pre>
+</div>
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210730185946218" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
-\define exclude() [&lt;config&gt;] [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
+\define exclude() [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
 
 \define default_width()   15em
 \define default_columns() 1
@@ -10544,8 +10625,10 @@ regexp
    &lt;&lt;doSearch&gt;&gt;
 &lt;/$vars&gt;</pre>
 </div>
-<div created="20191128174135234" modified="20210512064906793" sortorder="count" tags="" title="TiddlyTools/FilterGenerators/TagCloud">
-<pre>\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
+<div caption="TagCloud" created="20191128174135234" modified="20210730192924082" tags="TiddlyTools $:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/TagCloud">
+<pre>\define config() $:/config/TiddlyTools/TagCloud
+
+\define tag-pill-styles() ---------- copied from $:/core/macros/tag - use $(count)$ to set font-size
 \define tag-pill-styles()
    background-color:$(backgroundColor)$;
    fill:$(foregroundColor)$;
@@ -10594,89 +10677,100 @@ $actions$&lt;$transclude tiddler=&quot;&quot;&quot;$icon$&quot;&quot;&quot;/&gt;
 &lt;/$list&gt;
 \end
 
-__Tag Cloud__:&lt;br&gt;
+&lt;style&gt; .tt-tagcloud input { width:auto !important; } &lt;/style&gt;
+
+&lt;div class=&quot;tt-tagcloud&quot;&gt;
 There are      ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]count[]]&quot; }}}/&gt; tags''
 and a total of ''&lt;$text text={{{ [all[tiddlers+shadows]tags[]tagging[]count[]]&quot; }}}/&gt;
 tagged tiddlers''&lt;br&gt;
 sort by:
-&lt;$radio field=&quot;sortorder&quot; value=&quot;count&quot;&gt; tagging count &lt;/$radio&gt;
-&lt;$radio field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
-&lt;blockquote&gt;
-&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;count&quot;&gt; &lt;&lt;tagcloud_showbycount&gt;&gt; &lt;/$reveal&gt;
-&lt;$reveal default={{!!sortorder}} type=&quot;match&quot; text=&quot;name&quot;&gt;  &lt;&lt;tagcloud_showbyname&gt;&gt;  &lt;/$reveal&gt;
-&lt;/blockquote&gt;</pre>
+&lt;$radio tiddler=&lt;&lt;config&gt;&gt; field=&quot;sortorder&quot; value=&quot;count&quot;&gt; tagging count &lt;/$radio&gt;
+&lt;$radio tiddler=&lt;&lt;config&gt;&gt; field=&quot;sortorder&quot; value=&quot;name&quot;&gt;  tag name      &lt;/$radio&gt;
+&lt;p&gt;
+&lt;$reveal default={{{ [&lt;config&gt;get[sortorder]] ~[[count]] }}} type=&quot;match&quot; text=&quot;count&quot;&gt; &lt;&lt;tagcloud_showbycount&gt;&gt; &lt;/$reveal&gt;
+&lt;$reveal default={{{ [&lt;config&gt;get[sortorder]]            }}} type=&quot;match&quot; text=&quot;name&quot;&gt;  &lt;&lt;tagcloud_showbyname&gt;&gt;  &lt;/$reveal&gt;
+&lt;/p&gt;</pre>
 </div>
-<div created="20191118104819715" modified="20200807164502015" tags="" title="TiddlyTools/FilterGenerators/Tags">
-<pre>&lt;style&gt;
-.columns4 { display:block; column-count:4; column-gap:1em; }
-.small    { font-size:80%; line-height:1.3em; }
-.nowrap   { white-space:nowrap; }
+<div caption="Tags" created="20191118104819715" modified="20210730201807416" tags="TiddlyTools $:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/Tags">
+<pre>\define config() $:/config/TiddlyTools/FindTags
+
+&lt;style&gt;
+.tt-findTags input     { width:auto !important; }
+.tt-findTags .columns4 { display:block; column-count:4; column-gap:1em; }
+.tt-findTags .small    { font-size:80%; line-height:1.3em; }
+.tt-findTags .nowrap   { white-space:nowrap; }
 &lt;/style&gt;
 
-__find tiddlers tagged with__:
-@@.columns4.small.nowrap
+&lt;span class=&quot;tt-findTags&quot;&gt;
+find tiddlers tagged with:
+&lt;p class=&quot;columns4 small nowrap&quot;&gt;
 &lt;$list filter=&quot;[all[tiddlers+shadows]tags[]sort[]]&quot;&gt;
-   &lt;$checkbox tiddler=&quot;$:/temp/selectedTags&quot; index=&lt;&lt;currentTiddler&gt;&gt; checked=&quot; &quot;
-        checkactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/temp/selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; $value=&quot; &quot; /&gt;&quot;&quot;&quot;
-      uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/temp/selectedTags&quot; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+   &lt;$checkbox tiddler=&lt;&lt;config&gt;&gt; index=&lt;&lt;currentTiddler&gt;&gt; checked=&quot; &quot;
+        checkactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;currentTiddler&gt;&gt; $value=&quot; &quot; /&gt;&quot;&quot;&quot;
+      uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&lt;&lt;currentTiddler&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
          &lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;
    &lt;/$checkbox&gt;&lt;br&gt;
 &lt;/$list&gt;
-@@
+&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;[all[tiddlers+shadows]&lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]]&quot;&gt;tag[&lt;&lt;currentTiddler&gt;&gt;]&lt;/$list&gt;] +[sort[]]&quot;&quot;&quot;&gt; 
-   &lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]count[]] -[[0]]&quot;&gt;
-      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[$:/temp/selectedTags]indexes[]join[ AND ]]&quot;&gt;
-         &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
-            @@.small __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;__&lt;br&gt;@@
-         &lt;/$wikify&gt;
-      &lt;/$set&gt;
-      @@.columns4.small &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;@@
-   &lt;/$list&gt;
+&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;[all[tiddlers+shadows]&lt;$list filter=&quot;[title&lt;config&gt;indexes[]]&quot;&gt;tag[&lt;&lt;currentTiddler&gt;&gt;]&lt;/$list&gt;] +[sort[]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;[&lt;config&gt;indexes[]count[]] -[[0]]&quot;&gt;
+   &lt;$set name=&quot;filter_text&quot; filter=&quot;[&lt;config&gt;indexes[]join[ AND ]]&quot;&gt;
+   &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
+   There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;
+   &lt;/$wikify&gt;
+   &lt;/$set&gt;
+   &lt;blockquote class=&quot;columns4 small&quot;&gt; &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt; &lt;/blockquote&gt;
+&lt;/$list&gt;
 &lt;/$wikify&gt;
-&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]]&quot;&gt;[all[tiddlers+shadows]tag[&lt;&lt;currentTiddler&gt;&gt;]] &lt;/$list&gt; +[sort[]]&quot;&quot;&quot;&gt; 
-   &lt;$list filter=&quot;[title[$:/temp/selectedTags]indexes[]count[]] -[[0]] -[[1]]&quot;&gt;
-      &lt;$set name=&quot;filter_text&quot; filter=&quot;[title[$:/temp/selectedTags]indexes[]join[ OR ]]&quot;&gt;
-         &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
-            @@.small __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;__&lt;br&gt;@@
-         &lt;/$wikify&gt;
-      &lt;/$set&gt;
-      @@.columns4.small &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;@@
-   &lt;/$list&gt;
-&lt;/$wikify&gt;
-&lt;/blockquote&gt;</pre>
-</div>
-<div created="20191126184117322" modified="20200807164453703" tags="" title="TiddlyTools/FilterGenerators/Titles">
-<pre>&lt;style&gt;
-.columns3 { display:block; column-count:3; column-gap:1em; }
-.small    { font-size:80%; line-height:1.3em; }
-.nowrap   { white-space:nowrap; }
-&lt;/style&gt;
 
-__find titles containing__:&lt;br&gt;
-&lt;$edit-text tiddler=&quot;find&quot; field=&quot;name&quot;/&gt; in
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_tiddlers&quot; checked=&quot;+tiddlers&quot; unchecked=&quot;&quot;&gt;tiddlers&lt;/$checkbox&gt;
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_shadows&quot;  checked=&quot;+shadows&quot;  unchecked=&quot;&quot;&gt;shadows &lt;/$checkbox&gt;
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_system&quot;   checked=&quot;+system&quot;   unchecked=&quot;&quot;&gt;system  &lt;/$checkbox&gt;
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_tags&quot;     checked=&quot;+tags&quot;     unchecked=&quot;&quot;&gt;tags    &lt;/$checkbox&gt;
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_missing&quot;  checked=&quot;+missing&quot;  unchecked=&quot;&quot;&gt;missing &lt;/$checkbox&gt;
-&lt;$checkbox tiddler=&quot;find&quot; field=&quot;all_orphans&quot;  checked=&quot;+orphans&quot;  unchecked=&quot;&quot;&gt;orphans &lt;/$checkbox&gt;
-
-&lt;$wikify name=&quot;all&quot;    text=&quot;{{find!!all_tiddlers}}{{find!!all_shadows}}{{find!!all_system}}{{find!!all_tags}}{{find!!all_missing}}{{find!!all_orphans}}&quot;&gt;
-&lt;$set    name=&quot;all&quot;  filter=&quot;[&lt;all&gt;removeprefix[+]]&quot;&gt;
-&lt;$wikify name=&quot;filter&quot; text=&quot;[all[&lt;&lt;all&gt;&gt;]search:title[{{find!!name}}]sort[]]&quot;&gt;
-&lt;$reveal default=&lt;&lt;all&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-&lt;blockquote&gt;
-   @@.small __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''__&lt;br&gt;@@
-   @@.columns3.small &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;@@
-&lt;/blockquote&gt;
-&lt;/$reveal&gt;
-&lt;/$wikify&gt;
-&lt;/$set&gt;
+&lt;$wikify name=&quot;filter&quot; text=&quot;&quot;&quot;&lt;$list filter=&quot;[title&lt;config&gt;indexes[]]&quot;&gt;[all[tiddlers+shadows]tag[&lt;&lt;currentTiddler&gt;&gt;]] &lt;/$list&gt; +[sort[]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;[&lt;config&gt;indexes[]count[]] -[[0]] -[[1]]&quot;&gt;
+   &lt;$set name=&quot;filter_text&quot; filter=&quot;[&lt;config&gt;indexes[]join[ OR ]]&quot;&gt;
+   &lt;$wikify name=&quot;filter_text&quot; text=&lt;&lt;filter_text&gt;&gt;&gt;
+   There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers tagged with &lt;&lt;filter_text&gt;&gt;
+   &lt;/$wikify&gt;
+   &lt;/$set&gt;
+   &lt;blockquote class=&quot;columns4 small&quot;&gt; &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt; &lt;/blockquote&gt;
+&lt;/$list&gt;
 &lt;/$wikify&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210730062159357" modifier="EricShulman" tags="$:/tags/Macro" title="TiddlyTools/Macros/edit-list">
+<div caption="Titles" created="20191126184117322" modified="20210730204747016" tags="TiddlyTools $:/tags/AdvancedSearch" title="TiddlyTools/FilterGenerators/Titles">
+<pre>\define config() $:/config/TiddlyTools/FindTitles
+
+&lt;style&gt;
+.tt-findTitles input[type=text]      { min-width:30vw; }
+.tt-findTitles input[type=checkbox]  { width:auto !important; }
+.tt-findTitles .columns3             { display:block; column-count:3; column-gap:1em; }
+.tt-findTitles .small                { font-size:80%; line-height:1.3em; }
+.tt-findTitles .nowrap               { white-space:nowrap; }
+&lt;/style&gt;
+
+&lt;span class=&quot;tt-findTitles&quot;&gt;
+find titles containing:
+&lt;$edit-text tiddler=&lt;&lt;config&gt;&gt; index=&quot;text&quot; tag=&quot;input&quot; focus=&quot;yes&quot;/&gt;&lt;br&gt;
+in
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;tiddler&quot; checked=&quot;is[tiddler]&quot;  unchecked=&quot;&quot;&gt; tiddlers &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;shadow&quot;  checked=&quot;is[shadow]&quot;   unchecked=&quot;&quot;&gt; shadows  &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;system&quot;  checked=&quot;is[system]&quot;   unchecked=&quot;&quot;&gt; system   &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;tag&quot;     checked=&quot;is[tag]&quot;      unchecked=&quot;&quot;&gt; tags     &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;missing&quot; checked=&quot;is[missing]&quot;  unchecked=&quot;&quot;&gt; missing  &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;orphan&quot;  checked=&quot;is[orphan]&quot;   unchecked=&quot;&quot;&gt; orphans  &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;image&quot;   checked=&quot;is[image]&quot;    unchecked=&quot;&quot;&gt; images   &lt;/$checkbox&gt;
+&lt;$checkbox  tiddler=&lt;&lt;config&gt;&gt; index=&quot;binary&quot;  checked=&quot;is[binary]&quot;   unchecked=&quot;&quot;&gt; binaries &lt;/$checkbox&gt;
+
+&lt;$tiddler tiddler=&lt;&lt;config&gt;&gt;&gt;
+&lt;$wikify name=&quot;is&quot;    text=&quot;{{##tiddler}}{{##shadow}}{{##system}}{{##tag}}{{##missing}}{{##orphan}}{{##image}}{{##binary}}&quot;&gt;
+&lt;$wikify name=&quot;filter&quot; text=&quot;[&lt;&lt;is&gt;&gt;search:title[{{##text}}]sort[]]&quot;&gt;
+&lt;$reveal default=&lt;&lt;is&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;p/&gt;
+   __There are &lt;$count filter=&lt;&lt;filter&gt;&gt;/&gt; tiddlers matching ''&lt;$text text=&lt;&lt;filter&gt;&gt;/&gt;''__
+   &lt;blockquote class=&quot;columns3 small nowrap&quot;&gt;
+      &lt;$list filter=&lt;&lt;filter&gt;&gt;&gt;&lt;$link/&gt;&lt;br&gt;&lt;/$list&gt;
+   &lt;/blockquote&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div created="20191214071309583" creator="EricShulman" modified="20210730062159357" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
