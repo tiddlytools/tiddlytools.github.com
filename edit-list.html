@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210721061341667" modified="20210729215000711" title="$:/config/TimestampDisable">
+<div created="20210721061341667" modified="20210730035845172" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10106,13 +10106,13 @@ TiddlyTools/Macros/edit-list</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210729035540709" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210730040744228" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210729220221858" list="TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info" modified="20210729220227964" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10507,6 +10507,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 <div created="20210721015652739" modified="20210729220203675" tags="" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
+\define height()   $:/state/popup/edit-list/Examples/height
 \define tryitnow() $:/state/popup/edit-list/Examples/tryitnow
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define default()  &lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;
@@ -10541,7 +10542,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 
          &lt;&lt;thisline&gt;&gt;
       &lt;/$list&gt;
-      &lt;blockquote style=&quot;WFFLborder-left:2px solid black;word-break:break-all;break-inside:avoid;&quot;&gt;
+      &lt;blockquote style=&quot;word-break:break-all;break-inside:avoid;&quot;&gt;
       &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
          &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;vertical-align:text-bottom;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
             ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
@@ -10558,7 +10559,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \define newExample()
 &lt;table&gt;&lt;tr&gt;
    &lt;td class=&quot;tc-edit-field-value&quot;&gt;
-      ''//Click on example syntax above, or enter your own here://''&lt;br&gt;
+      ''//Click an example syntax above, or enter your own here://''&lt;br&gt;
       &lt;$edit-text tiddler=&lt;&lt;tryitnow&gt;&gt; field=&quot;text&quot; tag=&quot;input&quot; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;default&gt;&gt;/&gt;
    &lt;/td&gt;
    &lt;td style=&quot;width:4.75em;text-align:right;&quot;&gt;
@@ -10618,7 +10619,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;$list filter=&quot;[prefix[$:/state/modal/edit-list/]]&quot;&gt;
    &lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]] -[&lt;toggle&gt;] -[&lt;columns&gt;] -[&lt;tryitnow&gt;]&quot;&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]] -[&lt;toggle&gt;] -[&lt;columns&gt;] -[&lt;height&gt;] -[&lt;tryitnow&gt;]&quot;&gt;
    &lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
 \end
@@ -10639,8 +10640,18 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$button&gt;
 \end
 
+\define setHeight()
+&lt;span style=&quot;float:right;font-size:50%;line-height:2em;padding-top:0.25em;&quot;&gt;
+height:
+&lt;$select tiddler=&lt;&lt;height&gt;&gt; default=&quot;auto&quot;
+   actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;height&gt;get[text]match[auto]]&quot;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;height&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+  &lt;option&gt;auto&lt;/option&gt;&lt;option&gt;30vh&lt;/option&gt;&lt;option&gt;40vh&lt;/option&gt;&lt;option&gt;50vh&lt;/option&gt;&lt;option&gt;60vh&lt;/option&gt;&lt;option&gt;70vh&lt;/option&gt;
+&lt;/$select&gt;
+&amp;nbsp;
+&lt;/span&gt;
+\end
+
 \define setColumns()
-&lt;style&gt; .editlist_examples .columns { width:3em; text-align:center; } &lt;/style&gt;
 &lt;span style=&quot;float:right;font-size:50%;line-height:2em;padding-top:0.25em;&quot;&gt;
 columns:
 &lt;$select tiddler=&lt;&lt;columns&gt;&gt; default=&quot;1&quot;
@@ -10676,21 +10687,26 @@ columns:
    .editlist_examples .mouseover:hover .fadeIn { opacity:1; transition: opacity 1s; }
 &lt;/style&gt;
 
+&lt;$vars cols={{{ [&lt;columns&gt;get[text]else[0]]       }}}&gt;
+&lt;$vars cols={{{ [&lt;cols&gt;match[1]then[0]else&lt;cols&gt;] }}}&gt;
+&lt;$vars maxh={{{ [&lt;height&gt;get[text]else[500vh]]    }}}&gt;
+&lt;$vars maxh=&quot;40vh&quot;&gt; &lt;!-- FIXED HEIGHT --&gt;
+
 &lt;$list filter=&quot;[&lt;toggle&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt; .editlist_examples { width:60%; } &lt;/style&gt;
    &lt;fieldset class=&quot;editlist_data&quot;&gt;
       &lt;legend&gt; Data &lt;&lt;deleteData&gt;&gt; &lt;/legend&gt;
-      &lt;div class=&quot;scroll&quot;&gt; &lt;&lt;showData&gt;&gt; &lt;/div&gt;
+      &lt;div class=&quot;scroll&quot; style={{{ [[max-height:calc(]addsuffix&lt;maxh&gt;addsuffix[ - 1em);]] }}}&gt;
+         &lt;&lt;showData&gt;&gt;
+      &lt;/div&gt;
    &lt;/fieldset&gt;
 &lt;/$list&gt;
 
 &lt;div class=&quot;editlist_examples&quot;&gt;
-   &lt;h1&gt;Examples &lt;&lt;toggleData&gt;&gt; &lt;&lt;editExamples&gt;&gt; &lt;&lt;deleteData close &quot;reset all&quot;&gt;&gt; &lt;&lt;setColumns&gt;&gt;&lt;/h1&gt;
-   &lt;$vars cols={{{ [&lt;columns&gt;get[text]else[0]] }}}&gt;
-   &lt;$vars cols={{{ [&lt;cols&gt;match[1]then[0]else&lt;cols&gt;] +[addprefix[column-count:]] }}}&gt;
-   &lt;div class=&quot;scroll&quot; style=&lt;&lt;cols&gt;&gt;&gt; &lt;&lt;showExamples&gt;&gt; &lt;/div&gt;
-   &lt;/$vars&gt;
-   &lt;/$vars&gt;
+   &lt;h1&gt;Examples &lt;&lt;toggleData&gt;&gt; &lt;&lt;editExamples&gt;&gt; &lt;&lt;deleteData close &quot;reset all&quot;&gt;&gt; &lt;&lt;setColumns&gt;&gt; &lt;&lt;HIDEsetHeight&gt;&gt; &lt;/h1&gt;
+   &lt;div class=&quot;scroll&quot; style={{{ [[column-count:]addsuffix&lt;cols&gt;addsuffix[;max-height:]addsuffix&lt;maxh&gt;addsuffix[;]] }}}&gt;
+      &lt;&lt;showExamples&gt;&gt;
+   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;editlist_tryit&quot;&gt;
