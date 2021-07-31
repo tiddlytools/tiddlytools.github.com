@@ -10777,7 +10777,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210731020413480" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210731185147007" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10821,7 +10821,11 @@ in
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
          &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
    option=&quot;&quot;&quot;
-      &lt;option style={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;] }}} value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;
+      &lt;$vars fg={{{ [enlist&lt;dark&gt;match&lt;item&gt;then[#eee;]] }}}&gt;
+      &lt;$vars colors={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;addsuffix[;color:]addsuffix&lt;fg&gt;] }}}&gt;
+      &lt;option style=&lt;&lt;colors&gt;&gt; value=&lt;&lt;item&gt;&gt;&gt; $view$ &lt;/option&gt;&quot;&quot;&quot;
+   dark=&quot;&quot;&quot;
+      Black Blue DarkBlue DarkGreen DarkOliveGreen DarkSlateBlue DarkSlateGrey DimGrey ForestGreen Grey Indigo Maroon MediumBlue MidnightBlue Navy Purple&quot;&quot;&quot;
    save=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
          &lt;$vars newval={{{ [&lt;modal&gt;getindex&lt;index&gt;] ~[&lt;modal&gt;get&lt;field&gt;] }}}&gt;
