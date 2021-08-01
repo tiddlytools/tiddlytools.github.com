@@ -10107,13 +10107,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210801040313774" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210801060400000" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210801055035543" list="TiddlyTools/Macros/edit-list/Examples" modified="20210801060021531" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210801040129892" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210801060024109" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10442,7 +10442,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210801040125278" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210801060019879" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10511,7 +10511,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210801035607276" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210801060009809" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define height()   $:/state/popup/edit-list/Examples/height
@@ -10671,8 +10671,8 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
    &lt;$button tooltip=&quot;edit examples&quot;  &gt; {{$:/core/images/edit-button}}   &lt;&lt;startEditor&gt;&gt;  &lt;/$button&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt;
-   &lt;$button tooltip=&quot;save changes&quot;   &gt; {{$:/core/images/done-button}}   &lt;&lt;saveEditor&gt;&gt;   &lt;/$button&gt;
    &lt;$button tooltip=&quot;cancel changes&quot; &gt; {{$:/core/images/cancel-button}} &lt;&lt;cancelEditor&gt;&gt; &lt;/$button&gt;
+   &lt;$button tooltip=&quot;save changes&quot;   &gt; {{$:/core/images/done-button}}   &lt;&lt;saveEditor&gt;&gt;   &lt;/$button&gt;
 &lt;/$list&gt;
 \end
 
@@ -10749,11 +10749,10 @@ columns:
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt;
-      .editlist_editor           { width:calc(100% + 0.5em); font-family:monospace; font-size:80%; line-height:1em; }
-      .editlist_examples .scroll { overflow:hidden; column-count:auto; }
+      .editlist_editor           { width:100%; font-family:monospace; font-size:80%; line-height:1em;   }
+      .editlist_examples .scroll { column-count:auto; overflow:hidden; margin:0; padding:0; }
    &lt;/style&gt;
    &lt;$list filter=&quot;[&lt;maxh&gt;!match[auto]]&quot;&gt; &lt;style&gt; .editlist_editor { height:$(maxh)$ !important; } &lt;/style&gt; &lt;/$list&gt;
-   &lt;$list filter=&quot;[&lt;maxh&gt;match[auto]]&quot; &gt; &lt;style&gt; .editlist_editor { height:40vh     !important; } &lt;/style&gt; &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 
@@ -10785,7 +10784,7 @@ columns:
 
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210801025901836" newexample="&lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<div created="20210723184252329" modified="20210801054417636" newexample="&lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
 <pre>!!''field:text''
 &lt;&lt;edit-list id:1a tiddler:EditListDemo&gt;&gt;
 &lt;&lt;edit-list id:1b tiddler:EditListDemo confirm:yes&gt;&gt;
@@ -10819,7 +10818,7 @@ columns:
 &lt;&lt;edit-list id:5b tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;
 </pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210801040121257" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210801060015747" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
