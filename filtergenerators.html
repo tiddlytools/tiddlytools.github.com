@@ -10777,7 +10777,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210731185147007" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210801084257622" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10949,14 +10949,14 @@ in
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;$vars currtid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars currval={{{ [&lt;find&gt;match[yes]then&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars val={{{ [&lt;find&gt;match[yes]then&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;currval&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
 &lt;$set name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;currval&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
+&lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
 &lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;show&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;size&quot;    filter=&quot;[&lt;listheight&gt;match[1]then&lt;count&gt;min&lt;scroll&gt;max[2]else&lt;listheight&gt;]&quot;&gt;
 &lt;div class=&quot;editlist_popup_wrapper_$(id)$&quot;&gt;
