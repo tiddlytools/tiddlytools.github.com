@@ -10777,13 +10777,13 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210801084257622" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210801140720401" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
      filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
-   fontsize:&quot;1em&quot;,      stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10880,6 +10880,9 @@ in
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;match[yes]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;stretch&gt;match[always]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_select_$(id)$ { min-width:100%; width:auto !important; } &lt;/style&gt;
 &lt;/$list&gt;
 \end
 
