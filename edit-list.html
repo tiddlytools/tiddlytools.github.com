@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210801110458786" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210801140944262" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,13 +10231,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210801084257622" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210801140720401" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
      filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
-   fontsize:&quot;1em&quot;,      stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10334,6 +10334,9 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;match[yes]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;stretch&gt;match[always]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_select_$(id)$ { min-width:100%; width:auto !important; } &lt;/style&gt;
 &lt;/$list&gt;
 \end
 
@@ -10442,7 +10445,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210801072904603" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210801140710789" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10472,7 +10475,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
     listwidth={{{ [[$listwidth$]!is[blank]]    ~[&lt;listwidth&gt;!is[blank]]    ~[[100%]]     }}}
    listheight={{{ [[$listheight$]!is[blank]]   ~[&lt;listheight&gt;!is[blank]]   ~[[1]]        }}}
        scroll={{{ [[$scroll$]!is[blank]]       ~[&lt;scroll&gt;!is[blank]]       ~[[10]]       }}}
-     fontsize={{{ [[$fontsize$]!is[blank]]     ~[&lt;fontsize&gt;!is[blank]]     ~[[1em]]      }}}
+     fontsize={{{ [[$fontsize$]!is[blank]]     ~[&lt;fontsize&gt;!is[blank]]     ~[[100%]]     }}}
       stretch={{{ [[$stretch$]!is[blank]]      ~[&lt;stretch&gt;!is[blank]]      ~[[yes]]      }}}
        colors={{{ [[$colors$]!is[blank]]       ~[&lt;colors&gt;!is[blank]]       ~[[no]]       }}}
      multiple={{{ [[$multiple$]!is[blank]]     ~[&lt;multiple&gt;!is[blank]]     ~[[no]]       }}}
@@ -10511,7 +10514,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210801072851963" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210801140701349" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define height()   $:/state/popup/edit-list/Examples/height
@@ -10786,9 +10789,8 @@ columns:
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210801072846287" newexample="&lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
-<pre>
-!!''field:text''
+<div created="20210723184252329" modified="20210801140201357" newexample="&lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<pre>!!''field:text''
 &lt;&lt;edit-list id:1a tiddler:EditListDemo&gt;&gt;
 &lt;&lt;edit-list id:1b tiddler:EditListDemo confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:1c tiddler:EditListDemo type:date&gt;&gt;
@@ -10817,11 +10819,11 @@ columns:
 &lt;&lt;edit-list id:4b tiddler:EditListDemo field:color colors:yes focusPopup:yes find:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;
 
 !!!''open a tiddler''
-&lt;&lt;edit-list id:5a tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes&gt;&gt;
+&lt;&lt;edit-list id:5a tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;
 </pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210801072859166" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210801140706807" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10875,8 +10877,8 @@ Some optional features include:
 |listwidth   | `100%`   |Width of the list. 100% automatically matches the width of the edit-text widget. Use CSS units.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` is ignored.|
 |scroll      | `10`     |Maximum number of lines to display before adding a scroll bar to the list.|
-|fontsize    | `1em`    |Size of the font used to display the list items. Use CSS units.|
-|stretch     | `yes`    |If `yes` and the list has focus, the list display automatically expands to fit the widest item.|
+|fontsize    | `100%`   |Size of the font used to display the list items. Use a percentage or CSS units.|
+|stretch     | `yes`    |If `yes` and the list has hover or focus, it expands to fit the widest item. If `always`, the list width stays expanded all the time.|
 |colors      | `no`     |If `yes` and a list item is a CSS color name/value (e.g., `white` or `#FFFFFF`), the item background will show the indicated color.|
 |multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.|
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes below.|
