@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210801140944262" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210802001009565" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210802003611851" list="TiddlyTools/Macros/edit-list/Examples" modified="20210802003611851" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210801140720401" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210802000807048" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10445,7 +10445,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210801140710789" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210802000802600" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10514,11 +10514,11 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210801140701349" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210802000706028" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define height()   $:/state/popup/edit-list/Examples/height
-\define tryitnow() $:/state/popup/edit-list/Examples/tryitnow
+\define tryit()    $:/state/popup/edit-list/Examples/tryit
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/editor/$(examples)$
 \define default()  &lt;&lt;edit-list tiddler:EditListDemo&gt;&gt;
@@ -10559,7 +10559,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
       &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
          &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;vertical-align:text-bottom;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
             ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
-            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryitnow&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
+            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryit&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
             &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
          &lt;/$button&gt;
          &lt;div style=&quot;margin:0;&quot;&gt;&lt;&lt;thisline&gt;&gt;&lt;/div&gt;
@@ -10569,22 +10569,22 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$list&gt;
 \end
 
-\define newExample()
+\define newTryIt()
 &lt;table&gt;&lt;tr&gt;
    &lt;td class=&quot;tc-edit-field-value&quot;&gt;
-      Click on example syntax above, or enter your own here:&lt;br&gt;
-      &lt;$edit-text tiddler=&lt;&lt;tryitnow&gt;&gt; field=&quot;text&quot; tag=&quot;input&quot; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;default&gt;&gt;/&gt;
+      Select syntax from Examples, or enter your own here:&lt;br&gt;
+      &lt;$edit-text tiddler=&lt;&lt;tryit&gt;&gt; field=&quot;text&quot; tag=&quot;input&quot; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;default&gt;&gt;/&gt;
    &lt;/td&gt;
    &lt;td style=&quot;width:4.75em;text-align:right;&quot;&gt;
-      &lt;br&gt;&lt;&lt;copyExample&gt;&gt; &lt;&lt;clearExample&gt;&gt;
+      &lt;br&gt;&lt;&lt;copyTryIt&gt;&gt; &lt;&lt;clearTryIt&gt;&gt;
    &lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
-&lt;$vars target={{{ [&lt;tryitnow&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
+&lt;$vars target={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
 &lt;$eventcatcher events=&quot;focusin&quot; selector=&quot;.editlist_input&quot; actions-focusin=&lt;&lt;touchTarget&gt;&gt;&gt;
    &lt;$tiddler tiddler=&lt;&lt;target&gt;&gt;&gt;
       Result:&lt;br&gt;
-      &lt;$list filter=&quot;[&lt;tryitnow&gt;get[text]]&quot; emptyMessage=&lt;&lt;default&gt;&gt; variable=&quot;try_it&quot;&gt;
-         &lt;$transclude tiddler=&lt;&lt;tryitnow&gt;&gt;/&gt;
+      &lt;$list filter=&quot;[&lt;tryit&gt;get[text]]&quot; emptyMessage=&lt;&lt;default&gt;&gt; variable=&quot;try_it&quot;&gt;
+         &lt;$transclude tiddler=&lt;&lt;tryit&gt;&gt;/&gt;
       &lt;/$list&gt;
    &lt;/$tiddler&gt;
 &lt;/$eventcatcher&gt;
@@ -10597,27 +10597,27 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$list&gt;
 \end
 
-\define copyExample()
+\define copyTryIt()
 &lt;$button tooltip={{$:/language/Buttons/CopyToClipboard/Hint}}&gt;
    {{$:/core/images/copy-clipboard}}
-   &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param={{{ [&lt;tryitnow&gt;get[text]] }}}/&gt;
+   &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param={{{ [&lt;tryit&gt;get[text]] }}}/&gt;
 &lt;/$button&gt;
 \end
 
-\define clearExample()
-&lt;$button tooltip=&quot;clear new example&quot;&gt;
+\define clearTryIt()
+&lt;$button tooltip=&quot;clear 'Try it now'&quot;&gt;
    {{$:/core/images/delete-button}}
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;tryitnow&gt;&gt; /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;tryit&gt;&gt; /&gt;
 &lt;/$button&gt;
 \end
 
-\define saveExample()
+\define saveTryIt()
 &lt;$vars lf=&quot;
 &quot;&gt;
 &lt;$vars old={{{ [&lt;examples&gt;get[text]] }}}&gt;
-&lt;$vars new={{{ [&lt;tryitnow&gt;get[text]] ~[&lt;default&gt;] +[addsuffix&lt;lf&gt;addsuffix&lt;old&gt;] }}}&gt;
-&lt;$vars msg={{{ [[Are you sure you want to save this to:]addsuffix&lt;lf&gt;addsuffix[    ]addsuffix&lt;examples&gt;] }}}&gt;
-&lt;$button tooltip=&quot;save new example&quot;&gt;
+&lt;$vars new={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] +[addsuffix&lt;lf&gt;addsuffix&lt;old&gt;] }}}&gt;
+&lt;$vars msg={{{ [[Are you sure you want to save this to:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;examples&gt;] }}}&gt;
+&lt;$button tooltip=&quot;save 'Try it now'&quot;&gt;
    {{$:/core/images/save-button}}
    &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; text=&lt;&lt;new&gt;&gt; /&gt;
@@ -10644,22 +10644,22 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \end
 
 \define showData()
-&lt;$vars target={{{ [&lt;tryitnow&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
+&lt;$vars target={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
 &lt;$macrocall $name=&quot;showTiddler&quot; tid=&lt;&lt;target&gt;&gt;   label=&quot;Target:&quot;/&gt;
 &lt;$list filter=&quot;[prefix[$:/state/modal/edit-list/]]&quot;&gt;
    &lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]] -[&lt;toggle&gt;] -[&lt;columns&gt;] -[&lt;height&gt;] -[&lt;tryitnow&gt;]&quot;&gt;
+&lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]] -[&lt;toggle&gt;] -[&lt;columns&gt;] -[&lt;height&gt;] -[&lt;tryit&gt;]&quot;&gt;
    &lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
 \end
 
 \define deleteData()
 &lt;$vars lf=&quot;
-    &quot;&gt;
-&lt;$vars target={{{ [&lt;tryitnow&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
-&lt;$set name=&quot;tids&quot; filter=&quot;[&lt;target&gt;is[tiddler]] [prefix[$:/state/modal/edit-list/]] +[addprefix&lt;lf&gt;join[]]&quot; select=0&gt;
-&lt;$set name=&quot;msg&quot;   value=&quot;Are you sure you want to remove these tiddlers:&quot;&gt;
+&quot;&gt;
+&lt;$vars target={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] +[search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
+&lt;$set    name=&quot;tids&quot; filter=&quot;[&lt;target&gt;is[tiddler]] [prefix[$:/state/modal/edit-list/]] +[addprefix[   ]addprefix&lt;lf&gt;join[]]&quot; select=0&gt;
+&lt;$vars    msg=&quot;Are you sure you want to delete these tiddlers:&quot;&gt;
 &lt;$list filter=&quot;[&lt;tids&gt;!match[]]&quot;&gt;
    &lt;$button tooltip=&quot;reset all data (including target)&quot;&gt;
       {{$:/core/images/delete-button}}
@@ -10689,18 +10689,18 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \end
 
 \define startEditor()
-&lt;$action-setfield $tiddler=&lt;&lt;examples&gt;&gt; title=&lt;&lt;editor&gt;&gt;/&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; title=&lt;&lt;editor&gt;&gt;/&gt;
 \end
 
 \define saveEditor()
-&lt;$action-setfield $tiddler=&lt;&lt;editor&gt;&gt; title=&lt;&lt;examples&gt;&gt;/&gt;
+&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;editor&gt;&gt; title=&lt;&lt;examples&gt;&gt;/&gt;
 &lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
 \end
 
 \define cancelEditor()
 &lt;$vars lf=&quot;
-    &quot;&gt;
-&lt;$vars msg={{{ [[Are you sure you want to discard changes to]addsuffix&lt;lf&gt;addsuffix&lt;examples&gt;] }}}&gt;
+&quot;&gt;
+&lt;$vars msg={{{ [[Are you sure you want to discard changes to]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;examples&gt;] }}}&gt;
 &lt;$list filter=&quot;[{$(editor)$}match{$(examples)$}]&quot;&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
 &lt;/$list&gt;
@@ -10784,8 +10784,8 @@ columns:
 &lt;/div&gt;
 
 &lt;div class=&quot;editlist_tryit&quot;&gt;
-   &lt;h1&gt; Try it now &lt;&lt;toggleData&gt;&gt; &lt;&lt;saveExample&gt;&gt; &lt;/h1&gt;
-   &lt;blockquote&gt; &lt;&lt;newExample&gt;&gt; &lt;/blockquote&gt;
+   &lt;h1&gt; Try it now &lt;&lt;toggleData&gt;&gt; &lt;&lt;saveTryIt&gt;&gt; &lt;/h1&gt;
+   &lt;blockquote&gt; &lt;&lt;newTryIt&gt;&gt; &lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
@@ -10801,29 +10801,28 @@ columns:
 &lt;&lt;edit-list id:1h tiddler:EditListDemo filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:1i tiddler:EditListDemo filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes find:yes&gt;&gt;
 
-!!!''field:tags''
+!!''field:tags''
 &lt;&lt;edit-list id:2a tiddler:EditListDemo field:tags&gt;&gt;
 &lt;&lt;edit-list id:2b tiddler:EditListDemo field:tags filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:2c tiddler:EditListDemo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:2d tiddler:EditListDemo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes&gt;&gt;
 &lt;&lt;edit-list id:2e tiddler:EditListDemo field:tags filter:[all[tiddlers+shadows]tags[]sort[]] find:yes multiple:yes listheight:5 confirm:yes&gt;&gt;
 
-!!!''index:test vs. field:test''
+!!''index:test vs. field:test''
 &lt;&lt;edit-list id:3a tiddler:EditListDemo index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:3b tiddler:EditListDemo field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:3c tiddler:EditListDemo index:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:3d tiddler:EditListDemo field:test filter:[all[tiddlers+shadows]tags[]sort[]] confirm:yes&gt;&gt;
 
-!!!''field:color, colors:yes, type:color, RGB and X11Colors''
+!!''field:color, colors:yes, type:color, RGB and X11Colors''
 &lt;&lt;edit-list id:4a tiddler:EditListDemo field:color colors:yes type:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;
 &lt;&lt;edit-list id:4b tiddler:EditListDemo field:color colors:yes focusPopup:yes find:yes filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot;&gt;&gt;
 
-!!!''open a tiddler''
+!!''open a tiddler''
 &lt;&lt;edit-list id:5a tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
-&lt;&lt;edit-list id:5b tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;
-</pre>
+&lt;&lt;edit-list id:5b tiddler:EditListDemo field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210801140706807" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210802000758600" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
