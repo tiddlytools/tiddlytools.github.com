@@ -227,7 +227,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210803091428979" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210803150936339" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10123,7 +10123,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10241,7 +10241,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210803093339893" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210803152530297" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10455,7 +10455,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210803093334118" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210803152525727" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10524,7 +10524,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210803093246907" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210803152503430" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define height()   $:/state/popup/edit-list/Examples/height
@@ -10536,21 +10536,22 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \whitespace trim
 
 \define showTiddler(tid,label)
-&lt;$list filter=&quot;[[$tid$]is[tiddler]]&quot;&gt;
-   $label$ [[$tid$]]
+\define tid() $tid$
+&lt;$list filter=&quot;[&lt;tid&gt;is[tiddler]]&quot;&gt;
+   $label$ &lt;$link to=&lt;&lt;tid&gt;&gt; /&gt;
    &lt;$button style=&quot;float:right;&quot; tooltip=&quot;delete this data&quot;&gt;
       {{$:/core/images/delete-button}}
-      &lt;$action-deletetiddler $tiddler=&quot;$tid$&quot;/&gt;
+      &lt;$action-deletetiddler $filter=&quot;[&lt;tid&gt;]&quot;/&gt;
    &lt;/$button&gt;
    &lt;table&gt;
-      &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[[$tid$]fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
-      &lt;$list filter=&quot;[[$tid$]fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;
-         &lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]get&lt;fieldname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[&lt;tid&gt;fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;
+         &lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
       &lt;/$list&gt;
-      &lt;$list filter=&quot;[[$tid$]indexes[]count[]!match[0]]&quot;&gt;
-         &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[[$tid$]indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
-         &lt;$list filter=&quot;[[$tid$]indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;
-            &lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [[$tid$]getindex&lt;indexname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
+         &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[&lt;tid&gt;indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
+         &lt;$list filter=&quot;[&lt;tid&gt;indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;
+            &lt;tr&gt;&lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;&lt;td&gt;&lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;&lt;/td&gt;&lt;/tr&gt;
          &lt;/$list&gt;
       &lt;/$list&gt;
    &lt;/table&gt;
@@ -10566,7 +10567,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
    &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
       &lt;blockquote&gt;
          &lt;$list filter=&quot;[&lt;thisline&gt;search:title[&lt;&lt;edit-list]trim[]]&quot; variable=&quot;thisline&quot;&gt;
-            &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;font-size:80%;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
+            &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
                ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
                &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryit&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
                &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
@@ -10601,11 +10602,15 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 
 \define tryItNow_getTarget()
 \whitespace trim
-&lt;$vars   input={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] }}}&gt;
-&lt;$vars target1={{{ [&lt;input&gt;search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]trim[&gt;&gt;]] }}}&gt;
-&lt;$vars target2={{{ [&lt;input&gt;search:title:literal[ tiddler:&quot;]split[ tiddler:&quot;]rest[]split[&quot;]first[]trim[&gt;&gt;]] }}}&gt;
-&lt;$vars  target={{{ [&lt;target2&gt;!match[]else&lt;target1&gt;!match[]else&lt;target&gt;trim[&quot;]] }}}&gt;
-&lt;&lt;target&gt;&gt;
+&lt;$vars rsb=&quot;]]&quot;&gt;
+&lt;$vars in={{{ [&lt;tryit&gt;get[text]] ~[&lt;default&gt;] }}}&gt;
+&lt;$vars t1={{{ [&lt;in&gt;search:title:literal[ tiddler:]split[ tiddler:]rest[]split[ ]first[]]         }}}&gt;
+&lt;$vars t2={{{ [&lt;in&gt;search:title:literal[ tiddler:&quot;]split[ tiddler:&quot;]rest[]split[&quot;]first[]]       }}}&gt;
+&lt;$vars t3={{{ [&lt;in&gt;search:title:literal[ tiddler:']split[ tiddler:']rest[]split[']first[]]       }}}&gt;
+&lt;$vars t4={{{ [&lt;in&gt;search:title:literal[ tiddler:&quot;&quot;&quot;]split[ tiddler:&quot;&quot;&quot;]rest[]split[&quot;&quot;&quot;]first[]] }}}&gt;
+&lt;$vars t5={{{ [&lt;in&gt;search:title:literal[ tiddler:[[]split[ tiddler:[[]rest[]split&lt;rsb&gt;first[]]   }}}&gt;
+&lt;$vars  t={{{ [&lt;t5&gt;!match[]else&lt;t4&gt;!match[]else&lt;t3&gt;!match[]else&lt;t2&gt;!match[]else&lt;t1&gt;!match[]else&lt;target&gt;] +[trim[&gt;&gt;]] }}}&gt;
+&lt;$text text=&lt;&lt;t&gt;&gt;/&gt;
 \end
 
 \define tryItNow_touch()
@@ -10841,7 +10846,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210803093329701" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210803152521583" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
