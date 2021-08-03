@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210802140831776" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210803020610170" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10712,8 +10712,8 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \define setDisplayOptions()
 &lt;span style=&quot;float:right;font-size:50%;line-height:2em;margin-top:0.5em;&quot;&gt;
 height:
-&lt;$select tiddler=&lt;&lt;height&gt;&gt; default=&quot;40vh&quot;
-   actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;height&gt;get[text]match[40vh]]&quot;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;height&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$select tiddler=&lt;&lt;height&gt;&gt; default=&quot;50vh&quot;
+   actions=&quot;&quot;&quot;&lt;$list filter=&quot;[&lt;height&gt;get[text]match[50vh]]&quot;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;height&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
    &lt;option&gt;auto&lt;/option&gt;&lt;option&gt;30vh&lt;/option&gt;&lt;option&gt;40vh&lt;/option&gt;&lt;option&gt;50vh&lt;/option&gt;&lt;option&gt;60vh&lt;/option&gt;&lt;option&gt;70vh&lt;/option&gt;
 &lt;/$select&gt;
 columns:
@@ -10761,7 +10761,7 @@ columns:
 
 &lt;$vars cols={{{ [&lt;columns&gt;get[text]else[0]]       }}}&gt;
 &lt;$vars cols={{{ [&lt;cols&gt;match[1]then[0]else&lt;cols&gt;] }}}&gt;
-&lt;$vars maxh={{{ [&lt;height&gt;get[text]else[40vh]]     }}}&gt;
+&lt;$vars maxh={{{ [&lt;height&gt;get[text]else[50vh]]     }}}&gt;
 &lt;&lt;setStyles&gt;&gt;
 
 &lt;div style=&quot;position:relative;&quot;&gt;
@@ -10837,6 +10837,7 @@ columns:
 
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Introduction&lt;/h1&gt;
 
+&lt;&lt;&lt;
 ''The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget.''  It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
 
 Some optional features include:
@@ -10844,9 +10845,11 @@ Some optional features include:
 * The `find:yes` parameter ''progressively filters the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
 * The `confirm:yes` parameter provides save/cancel/clear buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
 * The `goto:yes` parameter lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:yes`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
+&lt;&lt;&lt;
 
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Parameters&lt;/h1&gt;
 
+&lt;&lt;&lt;
 &lt;style&gt;
    .editlist_infotable td     { vertical-align:top; }
    .editlist_infotable kbd    { font-size:70%;      }
@@ -10881,23 +10884,24 @@ Some optional features include:
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes below.|
 |id          | //none// |Specifies a unique ID for the combined controls. See Notes below.|
 
+&lt;&lt;&lt;
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Notes&lt;/h1&gt;
 
-!!!''clearing the input field''
+!!''clearing the input field''
 &lt;&lt;&lt;
 When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ button will appear in the text input control.  You can use this button to ''quickly clear the input field'' without having to select the text and use the keyboard to erase the input field contents.
 &lt;&lt;&lt;
-!!!''limitations on list selection when using the keyboard''
+!!''limitations on list selection when using the keyboard''
 &lt;&lt;&lt;
 If `find:yes` is specified and you scroll through the list items ''using the arrow keys, the list control will &quot;lose focus&quot; whenever the selection changes.''  This is because the currently selected value is used to progressively filter the list, causing the list contents to refresh whenever the value changes.
 
 A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and you select or enter a value of `$:/tags/Macro`'', as this triggers a system-wide refresh event because ~TiddlyWiki assumes that a new global macro has been declared.
 &lt;&lt;&lt;
-!!!''tiddler, field and index parameters''
+!!''tiddler, field and index parameters''
 &lt;&lt;&lt;
 @@color:red;''CAUTION:''@@ ''When a `tiddler:...` parameter is not specified'', then care should be taken to ''avoid using `field:text` or any `index:...` parameters'', as these will cause `&lt;&lt;edit-list&gt;&gt;` to overwrite the text field of the current tiddler.  Also note that if both `field:...` and `index:...` parameters are omitted, then `field:text` will be used as the default, with the same results as above.
 &lt;&lt;&lt;
-!!!''type parameter''
+!!''type parameter''
 &lt;&lt;&lt;
 You can use the `type:...` parameter to ''display specialized kinds of input fields'' that apply formatting or limits to the text you can enter.  For example:
 
@@ -10907,19 +10911,19 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
-!!!''view parameter''
+!!''view parameter''
 &lt;&lt;&lt;
 The `view:&quot;...&quot;` parameter uses ~TiddlyWiki wikitext syntax to render the contents of the selection list.  A variable named `item` is automatically set so that the default parameter value, `view:&quot;&lt;&lt;item&gt;&gt;&quot;` will show the corresponding title for each list item.  This can be overridden to ''show alternative text in the list.''
 
 For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, then the list will show the caption text (if any) for each tiddler title.  Note that while this changes the text displayed in the list, ''the selected value that will be stored into the target field or index will still be the actual `&lt;&lt;item&gt;&gt;` value'' (i.e., the tiddler's title).  Also note that, although the `view:...` parameter uses wikitext syntax, the list will only show plain text content without any special formatting (e.g., no bold/italics, colors, fonts, etc.)
 &lt;&lt;&lt;
-!!!''cancelPopups parameter''
+!!''cancelPopups parameter''
 &lt;&lt;&lt;
 Typically, there should be only one `&lt;&lt;edit-list&gt;&gt;` popup list shown at a time.  The default `cancelPopups:yes` parameter ensures that ''all open popups are automatically closed whenever you move the focus to a different input control.''  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior will interfere with the normal display of the containing popup.
 
 You can override this default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.  Note that if there are multiple instances of `&lt;&lt;edit-list&gt;&gt;` within a containing popup, this may result in the wrong popup list being shown.  This can be avoided by ''using the &lt;$button&gt;&amp;#x25BC;&lt;/$button&gt; button or clicking away from the `&lt;&lt;edit-list&gt;&gt;` control'' to ensure that the popup list is closed before moving the focus to a different `&lt;&lt;edit-list&gt;&gt;` control.
 &lt;&lt;&lt;
-!!!''id parameter''
+!!''id parameter''
 &lt;&lt;&lt;
 Each use of `&lt;&lt;edit-list&gt;&gt;` is internally identified by a combination of three values:
 
@@ -10931,7 +10935,7 @@ Under most circumstances, this combination is sufficient to guarantee that the p
 
 However, ''when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler and field/index'', it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure that each instance is uniquely named.  The id value can be any combination of letters and numbers (but //not// punctuation such as `#` or `.` or other special characters), so long as it is different for each affected instance.
 &lt;&lt;&lt;
-!!!''general-purpose CSS classnames''
+!!''general-purpose CSS classnames''
 &lt;&lt;&lt;
 In addition to generating a unique ID for each instance of `&lt;&lt;edit-list&gt;&gt;`, the macro also applies ''general-purpose CSS classnames'' to each control element that makes up the combined `&lt;&lt;edit-list&gt;&gt;` interface:
 
@@ -10966,7 +10970,7 @@ These classnames can also be used to ''add side-effect processing when interacti
 
 where `&lt;&lt;handleClickEvents&gt;&gt;` refers to a separate macro definition containing various $action-* widgets to perform the side-effect processing. See [[EventCatcherWidget|https://tiddlywiki.com/#EventCatcherWidget]] at http://TiddlyWiki.com for more details.
 &lt;&lt;&lt;
-!!!''parameters vs. variables''
+!!''parameters vs. variables''
 &lt;&lt;&lt;
 For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, an additional macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
 
