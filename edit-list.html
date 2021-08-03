@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210803020610170" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210803041507312" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10555,7 +10555,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
    &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
       &lt;blockquote&gt;
          &lt;$list filter=&quot;[&lt;thisline&gt;search:title[&lt;&lt;edit-list]trim[]]&quot; variable=&quot;thisline&quot;&gt;
-            &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
+            &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;font-size:80%;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
                ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
                &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryit&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
                &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
@@ -10745,7 +10745,8 @@ columns:
    .editlist_examples h1         { margin:0; border-bottom:1px solid; }
    .editlist_examples h1 button  { vertical-align:middle; font-size:50%; }
    .editlist_examples blockquote { margin-top:0; margin-bottom:0; margin-right:0; word-break:break-word; break-inside:avoid;}
-   .editlist_examples .scroll    { height:$(maxh)$; column-count:$(cols)$; clear:right; overflow-y:auto; margin:0.0em; padding-right:0.5em; padding-bottom:0.5em; }
+   .editlist_examples .scroll    { height:$(maxh)$; clear:right; overflow-y:auto; margin:0; padding:0 0.5em 0.5em 0; }
+   .editlist_examples .scroll    { column-count:$(cols)$; column-gap:0; column-fill:auto; }
    .editlist_examples code       { font-size:80%; line-height:1em; }
    .editlist_examples .mouseover       .fadeIn { opacity:0; transition: opacity 2s; }
    .editlist_examples .mouseover:hover .fadeIn { opacity:1; transition: opacity 1s; }
