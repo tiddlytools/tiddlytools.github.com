@@ -10107,13 +10107,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210804031134503" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210804105202706" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210804031050933" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210804031050933" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210804031038367" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210804104908227" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10445,7 +10445,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210804031033719" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210804104902575" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10514,7 +10514,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210804030845923" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210804104850803" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define toggle()   $:/state/popup/edit-list/Examples/showdata
 \define columns()  $:/state/popup/edit-list/Examples/columns
 \define height()   $:/state/popup/edit-list/Examples/height
@@ -10555,16 +10555,14 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
       &lt;&lt;thisline&gt;&gt;
    &lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;thisline&gt;split[]first[]!match[!]]&quot;&gt;
-      &lt;blockquote&gt;
-         &lt;$list filter=&quot;[&lt;thisline&gt;search:title[&lt;&lt;edit-list]trim[]]&quot; variable=&quot;thisline&quot;&gt;
-            &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
-               ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
-               &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryit&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
-               &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
-            &lt;/$button&gt;&lt;br&gt;
-         &lt;/$list&gt;
-         &lt;&lt;thisline&gt;&gt;
-      &lt;/blockquote&gt;
+      &lt;$list filter=&quot;[&lt;thisline&gt;search:title[&lt;&lt;edit-list]trim[]]&quot; variable=&quot;thisline&quot;&gt;
+         &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and 'Try it now'&quot;&gt;
+            ''&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;''&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
+            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tryit&gt;&gt; text=&lt;&lt;thisline&gt;&gt;/&gt;
+            &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
+         &lt;/$button&gt;&lt;br&gt;
+      &lt;/$list&gt;
+      &lt;&lt;thisline&gt;&gt;&lt;br&gt;
    &lt;/$list&gt;
 &lt;/$list&gt;
 \end
@@ -10761,9 +10759,9 @@ columns:
    .editlist_examples            { width:100%; }
    .editlist_examples h1         { margin:0; border-bottom:1px solid; }
    .editlist_examples h1 button  { vertical-align:middle; font-size:50%; }
-   .editlist_examples blockquote { margin-top:0; margin-bottom:0; margin-right:0; word-break:break-word; break-inside:avoid;}
+   .editlist_examples blockquote { margin-right:0; word-break:break-word; break-inside:avoid;}
    .editlist_examples .scroll    { height:$(maxh)$; clear:right; overflow-y:auto; margin:0; padding:0 0.5em 0.5em 0; }
-   .editlist_examples .scroll    { column-count:$(cols)$; column-gap:0; column-fill:auto; }
+   .editlist_examples .scroll    { column-count:$(cols)$; column-fill:auto; }
    .editlist_examples code       { font-size:80%; line-height:1em; }
    .editlist_examples .mouseover       .fadeIn { opacity:0; transition: opacity 2s; }
    .editlist_examples .mouseover:hover .fadeIn { opacity:1; transition: opacity 1s; }
@@ -10793,10 +10791,12 @@ columns:
 
 &lt;div class=&quot;editlist_examples&quot;&gt;
    &lt;h1&gt; Examples &lt;&lt;toggleData&gt;&gt; &lt;&lt;editExamples&gt;&gt; &lt;&lt;setDisplayOptions&gt;&gt; &lt;/h1&gt;
-   &lt;div class=&quot;scroll&quot;&gt;
-      &lt;$list filter=&quot;[&lt;editor&gt;is[missing]]&quot;&gt; &lt;&lt;showExamples&gt;&gt; &lt;/$list&gt;
-      &lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt; &lt;&lt;showEditor&gt;&gt;   &lt;/$list&gt;
-   &lt;/div&gt;
+   &lt;blockquote&gt;
+      &lt;div class=&quot;scroll&quot;&gt;
+         &lt;$list filter=&quot;[&lt;editor&gt;is[missing]]&quot;&gt; &lt;&lt;showExamples&gt;&gt; &lt;/$list&gt;
+         &lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt; &lt;&lt;showEditor&gt;&gt;   &lt;/$list&gt;
+      &lt;/div&gt;
+   &lt;/blockquote&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;editlist_tryit&quot;&gt;
@@ -10805,7 +10805,7 @@ columns:
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210803085000925" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<div created="20210723184252329" modified="20210804104845615" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
 <pre>!!''field:text''
 &lt;&lt;edit-list id:1a tiddler:&quot;Try It Now&quot;&gt;&gt;
 &lt;&lt;edit-list id:1b tiddler:&quot;Try It Now&quot; confirm:yes&gt;&gt;
@@ -10838,7 +10838,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210804031029668" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210804104856161" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
