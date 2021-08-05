@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210805135001014" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210805135001014" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210805134849558" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210805191853595" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10445,7 +10445,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210805134844663" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210805191847836" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10514,7 +10514,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210805134834495" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210805191650696" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10530,7 +10530,9 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
    &lt;$button style=&quot;float:right;&quot; tooltip=&quot;delete this tiddler&quot;&gt;
       {{$:/core/images/delete-button}}
       &lt;$vars msg={{{ [[Are you sure you want to delete this tiddler:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;tid&gt;] }}}&gt;
-      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-deletetiddler $filter=&quot;[&lt;tid&gt;]&quot;/&gt;&lt;/$action-confirm&gt;
+      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
+         &lt;$action-deletetiddler $filter=&quot;[&lt;tid&gt;]&quot;/&gt;
+      &lt;/$action-confirm&gt;
       &lt;/$vars&gt;
    &lt;/$button&gt;
    $label$ &lt;$link to=&lt;&lt;tid&gt;&gt; /&gt;
@@ -10539,13 +10541,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
       &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
          &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;
          &lt;td style=&quot;word-break:break-all;&quot;&gt;
-            &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete field&quot;&gt;
-               {{$:/core/images/delete-button}}
-               &lt;$vars msg={{{ [[Are you sure you want to delete this field:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;fieldname&gt;] }}}&gt;
-               &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tid&gt;&gt; $field=&lt;&lt;fieldname&gt;&gt; /&gt;&lt;/$action-confirm&gt;
-               &lt;/$vars&gt;
-            &lt;/$button&gt;
-            &lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;
+            &lt;&lt;showTiddler_deleterow field&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;
          &lt;/td&gt;
       &lt;/tr&gt;&lt;/$list&gt;
       &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
@@ -10553,13 +10549,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
          &lt;$list filter=&quot;[&lt;tid&gt;indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;&lt;tr&gt;
             &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;
             &lt;td style=&quot;word-break:break-all;&quot;&gt;
-               &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete index&quot;&gt;
-                  {{$:/core/images/delete-button}}
-                  &lt;$vars msg={{{ [[Are you sure you want to delete this index:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;fieldname&gt;] }}}&gt;
-                  &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tid&gt;&gt; $index=&lt;&lt;indexname&gt;&gt; /&gt;&lt;/$action-confirm&gt;
-                  &lt;/$vars&gt;
-               &lt;/$button&gt;
-               &lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;
+               &lt;&lt;showTiddler_deleterow index&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;
             &lt;/td&gt;
          &lt;/tr&gt;&lt;/$list&gt;
       &lt;/$list&gt;
@@ -10567,9 +10557,20 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$list&gt;
 \end
 
+\define showTiddler_deleterow(type:field)
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete $type$&quot;&gt;
+   {{$:/core/images/delete-button}}
+   &lt;$vars msg={{{ [[Are you sure you want to delete this $type$:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;$type$name&gt;] }}}&gt;
+   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tid&gt;&gt; $$type$=&lt;&lt;$type$name&gt;&gt; /&gt;
+   &lt;/$action-confirm&gt;
+   &lt;/$vars&gt;
+&lt;/$button&gt;
+\end
+
 \define showExamples()
 &lt;!-- ADD CODE BUTTON BEFORE EACH &lt;&lt;edit-list&gt;&gt; MACRO --&gt;
-&lt;$vars search=&quot;(.*)(&lt;&lt;edit-list.*&gt;&gt;)(.*)&quot; replace='$1$(showExamples_codebutton)$&lt;br&gt;$2&lt;br&gt;$3'&gt;
+&lt;$vars search=&quot;(.*)(&lt;&lt;edit-list.*&gt;&gt;)(.*)&quot; replace='$1$(showExamples_code)$&lt;br&gt;$2&lt;br&gt;$3'&gt;
 &lt;$list filter=&quot;[&lt;examples&gt;get[text]search-replace:g:regexp&lt;search&gt;,&lt;replace&gt;]&quot; variable=&quot;output&quot;&gt;
 
    &lt;&lt;output&gt;&gt;
@@ -10577,7 +10578,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$vars&gt;
 \end
 
-\define showExamples_codebutton()
+\define showExamples_code()
 &lt;$vars thisline=&quot;&quot;&quot;$2&quot;&quot;&quot;&gt;
 &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and Try it now&quot;&gt;
    &lt;b&gt;&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;&lt;/b&gt;&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
@@ -10655,7 +10656,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 
 \define toggleData()
 &lt;$vars show={{{ [&lt;config&gt;getindex[showdata]match[yes]else[no]] }}}&gt;
-&lt;$button style=&quot;margin-left:0.125em;&quot; tooltip=&quot;show/hide data&quot;&gt;
+&lt;$button class=&quot;databutton&quot; tooltip=&quot;show/hide data&quot;&gt;
    &lt;$list filter=&quot;[&lt;show&gt;match[no]]&quot;&gt;
       {{$:/core/images/preview-closed}}
       &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;showdata&quot; $value=&quot;yes&quot;/&gt;
@@ -10756,29 +10757,31 @@ columns:
 
 \define setStyles()
 &lt;style&gt;
-   .editlist_data                { position:absolute; right:0; top:0; bottom:0; width:calc(40% - 1em); }
-   .editlist_data                { background:ivory; border:1px solid; border-radius:0.5em; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
-   .editlist_data h1             { margin:0; padding-left:0.25em; border-bottom:1px solid; }
-   .editlist_data h1 button      { vertical-align:middle; font-size:50%; }
-   .editlist_data .scroll        { height:calc(100% - 4.5em); overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
-   .editlist_data .scroll        { font-size:80%; line-height:1.2em; }
-   .editlist_data table          { width:100%; margin:0; margin-bottom:0.5em; text-align:left; }
+   .editlist_data                 { position:absolute; right:0; top:0; bottom:0; width:calc(40% - 1em); }
+   .editlist_data                 { background:ivory; border:1px solid; border-radius:0.5em; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
+   .editlist_data h1              { margin:0; padding-left:0.25em; border-bottom:1px solid; }
+   .editlist_data h1 button       { vertical-align:middle; font-size:50%; }
+   .editlist_data .scroll         { height:calc(100% - 4.5em); overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
+   .editlist_data .scroll         { font-size:80%; line-height:1.2em; }
+   .editlist_data table           { width:100%; margin:0; margin-bottom:0.5em; text-align:left; }
 
-   .editlist_tryit               { width:100%; margin-top:0.5em;}
-   .editlist_tryit h1            { margin:0; border-bottom:1px solid; }
-   .editlist_tryit h1 button     { vertical-align:middle; font-size:50%; }
-   .editlist_tryit blockquote    { margin-right:0; }
-   .editlist_tryit table         { width:100%; margin:0; border:0; padding:0; }
-   .editlist_tryit table td      { margin:0; border:0; padding:0; vertical-align:bottom; }
+   .editlist_tryit                { width:100%; margin-top:0.5em;}
+   .editlist_tryit h1             { margin:0; border-bottom:1px solid; }
+   .editlist_tryit h1 button      { vertical-align:middle; font-size:50%; }
+   .editlist_tryit .databutton    { float:right;margin:0.7em 0 0 0.25em; }
+   .editlist_tryit blockquote     { margin-right:0; }
+   .editlist_tryit table          { width:100%; margin:0; border:0; padding:0; }
+   .editlist_tryit table td       { margin:0; border:0; padding:0; vertical-align:bottom; }
 
-   .editlist_examples            { width:100%; }
-   .editlist_examples h1         { margin:0; border-bottom:1px solid; }
-   .editlist_examples h1 button  { vertical-align:middle; font-size:50%; }
-   .editlist_examples blockquote { margin-right:0; word-break:break-word; break-inside:avoid;}
-   .editlist_examples .scroll    { height:$(maxh)$; clear:right; overflow-y:auto; margin:0; padding:0 0.5em 0.5em 0; }
-   .editlist_examples .scroll    { column-count:$(cols)$; column-fill:auto; }
-   .editlist_examples .scroll p  { margin:0; }
-   .editlist_examples code       { font-size:80%; line-height:1em; }
+   .editlist_examples             { width:100%; }
+   .editlist_examples h1          { margin:0; border-bottom:1px solid; }
+   .editlist_examples h1 button   { vertical-align:middle; font-size:50%; }
+   .editlist_examples .databutton { float:right;margin:0.7em 0 0 0.25em; }
+   .editlist_examples blockquote  { margin-right:0; word-break:break-word; break-inside:avoid;}
+   .editlist_examples .scroll     { height:$(maxh)$; clear:right; overflow-y:auto; margin:0; padding:0 0.5em 0.5em 0; }
+   .editlist_examples .scroll     { column-count:$(cols)$; column-fill:auto; }
+   .editlist_examples .scroll p   { margin:0; }
+   .editlist_examples code        { font-size:80%; line-height:1em; }
    .editlist_examples .mouseover       .fadeIn { opacity:0; transition: opacity 2s; }
    .editlist_examples .mouseover:hover .fadeIn { opacity:1; transition: opacity 1s; }
 &lt;/style&gt;
@@ -10859,7 +10862,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210805134839065" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210805191841782" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
