@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210805024652366" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210805221207941" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10107,13 +10107,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210805024015758" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210805221330173" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210805221206328" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210805221316764" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210805191853595" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210805221144119" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10445,7 +10445,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210805191847836" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210805221137481" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10514,7 +10514,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210805191650696" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210805221125267" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10522,51 +10522,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \define fallback() Try It Now
 \whitespace trim
 
-\define showTiddler(tid,label)
-\define tid() $tid$
-&lt;$vars lf=&quot;
-&quot;&gt;
-&lt;$list filter=&quot;[&lt;tid&gt;is[tiddler]]&quot;&gt;
-   &lt;$button style=&quot;float:right;&quot; tooltip=&quot;delete this tiddler&quot;&gt;
-      {{$:/core/images/delete-button}}
-      &lt;$vars msg={{{ [[Are you sure you want to delete this tiddler:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;tid&gt;] }}}&gt;
-      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
-         &lt;$action-deletetiddler $filter=&quot;[&lt;tid&gt;]&quot;/&gt;
-      &lt;/$action-confirm&gt;
-      &lt;/$vars&gt;
-   &lt;/$button&gt;
-   $label$ &lt;$link to=&lt;&lt;tid&gt;&gt; /&gt;
-   &lt;table&gt;
-      &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[&lt;tid&gt;fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
-      &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
-         &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;
-         &lt;td style=&quot;word-break:break-all;&quot;&gt;
-            &lt;&lt;showTiddler_deleterow field&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;
-         &lt;/td&gt;
-      &lt;/tr&gt;&lt;/$list&gt;
-      &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
-         &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[&lt;tid&gt;indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
-         &lt;$list filter=&quot;[&lt;tid&gt;indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;&lt;tr&gt;
-            &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;
-            &lt;td style=&quot;word-break:break-all;&quot;&gt;
-               &lt;&lt;showTiddler_deleterow index&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;
-            &lt;/td&gt;
-         &lt;/tr&gt;&lt;/$list&gt;
-      &lt;/$list&gt;
-   &lt;/table&gt;
-&lt;/$list&gt;
-\end
-
-\define showTiddler_deleterow(type:field)
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete $type$&quot;&gt;
-   {{$:/core/images/delete-button}}
-   &lt;$vars msg={{{ [[Are you sure you want to delete this $type$:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;$type$name&gt;] }}}&gt;
-   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
-      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tid&gt;&gt; $$type$=&lt;&lt;$type$name&gt;&gt; /&gt;
-   &lt;/$action-confirm&gt;
-   &lt;/$vars&gt;
-&lt;/$button&gt;
-\end
+\define COMMENT() --------------- EXAMPLE VIEWER ---------------
 
 \define showExamples()
 &lt;!-- ADD CODE BUTTON BEFORE EACH &lt;&lt;edit-list&gt;&gt; MACRO --&gt;
@@ -10587,6 +10543,64 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$button&gt;
 &lt;/$vars&gt;
 \end
+
+\define showExamples_options()
+&lt;span style=&quot;float:right;font-size:50%;line-height:2em;margin-top:0.5em;&quot;&gt;
+height:
+&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&quot;height&quot; default=&quot;50vh&quot;&gt;
+   &lt;option&gt;auto&lt;/option&gt;&lt;option&gt;30vh&lt;/option&gt;&lt;option&gt;40vh&lt;/option&gt;&lt;option&gt;50vh&lt;/option&gt;&lt;option&gt;60vh&lt;/option&gt;&lt;option&gt;70vh&lt;/option&gt;
+&lt;/$select&gt;
+columns:
+&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&quot;columns&quot; default=&quot;1&quot;&gt;
+   &lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;
+&lt;/$select&gt;
+&lt;/span&gt;
+\end
+
+\define COMMENT() --------------- EXAMPLE EDITOR ---------------
+
+\define editExamples()
+&lt;$list filter=&quot;[&lt;editor&gt;is[missing]]&quot;&gt;
+   &lt;$button tooltip=&quot;edit examples&quot;  &gt; {{$:/core/images/edit-button}}   &lt;&lt;startEditor&gt;&gt;  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt;
+   &lt;$button tooltip=&quot;cancel changes&quot; &gt; {{$:/core/images/cancel-button}} &lt;&lt;cancelEditor&gt;&gt; &lt;/$button&gt;
+   &lt;$button tooltip=&quot;save changes&quot;   &gt; {{$:/core/images/done-button}}   &lt;&lt;saveEditor&gt;&gt;   &lt;/$button&gt;
+&lt;/$list&gt;
+\end
+
+\define showEditor()
+&lt;$keyboard key=&quot;ctrl-enter&quot; actions=&lt;&lt;saveEditor&gt;&gt;&gt;
+&lt;$keyboard key=&quot;escape&quot;     actions=&lt;&lt;cancelEditor&gt;&gt;&gt;
+   &lt;$edit-text class=&quot;editlist_editor&quot; tiddler=&lt;&lt;editor&gt;&gt; /&gt;
+&lt;/$keyboard&gt;
+&lt;/$keyboard&gt;
+\end
+
+\define startEditor()
+&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;editor&gt;&gt; text={{{ [&lt;examples&gt;get[text]] }}}/&gt;
+\end
+
+\define saveEditor()
+&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; text={{{ [&lt;editor&gt;get[text]] }}}/&gt;
+&lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
+\end
+
+\define cancelEditor()
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$vars msg={{{ [[Are you sure you want to discard changes to]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;examples&gt;] }}}&gt;
+&lt;$list filter=&quot;[{$(editor)$}match{$(examples)$}]&quot;&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[{$(editor)$}!match{$(examples)$}]&quot;&gt;
+   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
+   &lt;/$action-confirm&gt;
+&lt;/$list&gt;
+\end
+
+\define COMMENT() --------------- TRY IT NOW ---------------
 
 \define tryItNow()
 &lt;table&gt;&lt;tr&gt;
@@ -10650,9 +10664,13 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;$vars msg={{{ [[Are you sure you want to save this to:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;examples&gt;] }}}&gt;
 &lt;$button tooltip=&quot;save 'Try it now'&quot;&gt;
    {{$:/core/images/save-button}}
-   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; text=&lt;&lt;new&gt;&gt; /&gt;&lt;/$action-confirm&gt;
+   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; text=&lt;&lt;new&gt;&gt; /&gt;
+   &lt;/$action-confirm&gt;
 &lt;/$button&gt;
 \end
+
+\define COMMENT() --------------- DATA VIEWER ---------------
 
 \define toggleData()
 &lt;$vars show={{{ [&lt;config&gt;getindex[showdata]match[yes]else[no]] }}}&gt;
@@ -10668,15 +10686,6 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/$button&gt;
 \end
 
-\define closeData()
-&lt;span style=&quot;float:right;margin-right:0.5em;margin-top:-0.125em;&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide data&quot;&gt;
-   {{$:/core/images/close-button}}
-   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;showdata&quot; $value=&quot;no&quot; /&gt;
-&lt;/$button&gt;
-&lt;/span&gt;
-\end
-
 \define showData()
 &lt;$wikify name=&quot;target&quot; text=&lt;&lt;tryItNow_getTarget&gt;&gt;&gt;
 &lt;$macrocall $name=&quot;showTiddler&quot; tid=&lt;&lt;target&gt;&gt;   label=&quot;Target:&quot;/&gt;
@@ -10686,6 +10695,52 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;$list filter=&quot;[prefix[$:/state/popup/edit-list/]] -[&lt;config&gt;]&quot;&gt;
    &lt;$macrocall $name=&quot;showTiddler&quot;  tid=&lt;&lt;currentTiddler&gt;&gt;/&gt;
 &lt;/$list&gt;
+\end
+
+\define showTiddler(tid,label)
+\define tid() $tid$
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$list filter=&quot;[&lt;tid&gt;is[tiddler]]&quot;&gt;
+   &lt;$button style=&quot;float:right;&quot; tooltip=&quot;delete this tiddler&quot;&gt;
+      {{$:/core/images/delete-button}}
+      &lt;$vars msg={{{ [[Are you sure you want to delete this tiddler:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;tid&gt;] }}}&gt;
+      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt; $prompt={{{ [&lt;config&gt;getindex[confirm]] }}}&gt;
+         &lt;$action-deletetiddler $filter=&quot;[&lt;tid&gt;]&quot;/&gt;
+      &lt;/$action-confirm&gt;
+      &lt;/$vars&gt;
+   &lt;/$button&gt;
+   $label$ &lt;$link to=&lt;&lt;tid&gt;&gt; /&gt;
+   &lt;table&gt;
+      &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[&lt;tid&gt;fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
+         &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;
+         &lt;td style=&quot;word-break:break-all;&quot;&gt;
+            &lt;&lt;showTiddler_deleterow field&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;
+         &lt;/td&gt;
+      &lt;/tr&gt;&lt;/$list&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
+         &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[&lt;tid&gt;indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
+         &lt;$list filter=&quot;[&lt;tid&gt;indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;&lt;tr&gt;
+            &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;
+            &lt;td style=&quot;word-break:break-all;&quot;&gt;
+               &lt;&lt;showTiddler_deleterow index&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;
+            &lt;/td&gt;
+         &lt;/tr&gt;&lt;/$list&gt;
+      &lt;/$list&gt;
+   &lt;/table&gt;
+&lt;/$list&gt;
+\end
+
+\define showTiddler_deleterow(type:field)
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete $type$&quot;&gt;
+   {{$:/core/images/delete-button}}
+   &lt;$vars msg={{{ [[Are you sure you want to delete this $type$:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;$type$name&gt;] }}}&gt;
+   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt; $prompt={{{ [&lt;config&gt;getindex[confirm]] }}}&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tid&gt;&gt; $$type$=&lt;&lt;$type$name&gt;&gt; /&gt;
+   &lt;/$action-confirm&gt;
+   &lt;/$vars&gt;
+&lt;/$button&gt;
 \end
 
 \define deleteData()
@@ -10698,62 +10753,29 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;$list filter=&quot;[&lt;tids&gt;!match[]]&quot;&gt;
    &lt;$button tooltip=&quot;reset all data (including target)&quot;&gt;
       {{$:/core/images/delete-button}}
-      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-deletetiddler $filter=&quot;[enlist&lt;tids&gt;]&quot;/&gt;&lt;/$action-confirm&gt;
+      &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt; $prompt={{{ [&lt;config&gt;getindex[confirm]] }}}&gt;
+         &lt;$action-deletetiddler $filter=&quot;[enlist&lt;tids&gt;]&quot;/&gt;
+      &lt;/$action-confirm&gt;
    &lt;/$button&gt;
 &lt;/$list&gt;
 \end
 
-\define editExamples()
-&lt;$list filter=&quot;[&lt;editor&gt;is[missing]]&quot;&gt;
-   &lt;$button tooltip=&quot;edit examples&quot;  &gt; {{$:/core/images/edit-button}}   &lt;&lt;startEditor&gt;&gt;  &lt;/$button&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt;
-   &lt;$button tooltip=&quot;cancel changes&quot; &gt; {{$:/core/images/cancel-button}} &lt;&lt;cancelEditor&gt;&gt; &lt;/$button&gt;
-   &lt;$button tooltip=&quot;save changes&quot;   &gt; {{$:/core/images/done-button}}   &lt;&lt;saveEditor&gt;&gt;   &lt;/$button&gt;
-&lt;/$list&gt;
+\define toggleConfirm()
+&lt;$checkbox class=&quot;confirm&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;confirm&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot; default=&quot;yes&quot;&gt;
+   confirm deletions
+&lt;/$checkbox&gt;
 \end
 
-\define showEditor()
-&lt;$keyboard key=&quot;ctrl-enter&quot; actions=&lt;&lt;saveEditor&gt;&gt;&gt;
-&lt;$keyboard key=&quot;escape&quot;     actions=&lt;&lt;cancelEditor&gt;&gt;&gt;
-   &lt;$edit-text class=&quot;editlist_editor&quot; tiddler=&lt;&lt;editor&gt;&gt; /&gt;
-&lt;/$keyboard&gt;
-&lt;/$keyboard&gt;
-\end
-
-\define startEditor()
-&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;editor&gt;&gt; text={{{ [&lt;examples&gt;get[text]] }}}/&gt;
-\end
-
-\define saveEditor()
-&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;examples&gt;&gt; text={{{ [&lt;editor&gt;get[text]] }}}/&gt;
-&lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
-\end
-
-\define cancelEditor()
-&lt;$vars lf=&quot;
-&quot;&gt;
-&lt;$vars msg={{{ [[Are you sure you want to discard changes to]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;examples&gt;] }}}&gt;
-&lt;$list filter=&quot;[{$(editor)$}match{$(examples)$}]&quot;&gt;
-   &lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[{$(editor)$}!match{$(examples)$}]&quot;&gt;
-   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;editor&gt;&gt;/&gt;&lt;/$action-confirm&gt;
-&lt;/$list&gt;
-\end
-
-\define setDisplayOptions()
-&lt;span style=&quot;float:right;font-size:50%;line-height:2em;margin-top:0.5em;&quot;&gt;
-height:
-&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&quot;height&quot; default=&quot;50vh&quot;&gt;
-   &lt;option&gt;auto&lt;/option&gt;&lt;option&gt;30vh&lt;/option&gt;&lt;option&gt;40vh&lt;/option&gt;&lt;option&gt;50vh&lt;/option&gt;&lt;option&gt;60vh&lt;/option&gt;&lt;option&gt;70vh&lt;/option&gt;
-&lt;/$select&gt;
-columns:
-&lt;$select tiddler=&lt;&lt;config&gt;&gt; index=&quot;columns&quot; default=&quot;1&quot;&gt;
-   &lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;
-&lt;/$select&gt;
+\define closeData()
+&lt;span style=&quot;float:right;margin-right:0.5em;margin-top:-0.125em;&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;hide data&quot;&gt;
+   {{$:/core/images/close-button}}
+   &lt;$action-setfield $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;showdata&quot; $value=&quot;no&quot; /&gt;
+&lt;/$button&gt;
 &lt;/span&gt;
 \end
+
+\define COMMENT() --------------- STYLES ---------------
 
 \define setStyles()
 &lt;style&gt;
@@ -10761,7 +10783,8 @@ columns:
    .editlist_data                 { background:ivory; border:1px solid; border-radius:0.5em; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
    .editlist_data h1              { margin:0; padding-left:0.25em; border-bottom:1px solid; }
    .editlist_data h1 button       { vertical-align:middle; font-size:50%; }
-   .editlist_data .scroll         { height:calc(100% - 4.5em); overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
+   .editlist_data h1 .confirm     { vertical-align:middle; font-size:40%; float:right; margin-top:1em; margin-right:0.5em; white-space:nowrap; }
+   .editlist_data .scroll         { height:calc(100% - 4.5em); clear:both; overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
    .editlist_data .scroll         { font-size:80%; line-height:1.2em; }
    .editlist_data table           { width:100%; margin:0; margin-bottom:0.5em; text-align:left; }
 
@@ -10794,6 +10817,8 @@ columns:
 &lt;/$list&gt;
 \end
 
+\define COMMENT() --------------- OUTPUT ---------------
+
 &lt;$vars cols={{{ [&lt;config&gt;getindex[columns]else[0]]   }}}&gt;
 &lt;$vars cols={{{ [&lt;cols&gt;match[1]then[0]else&lt;cols&gt;]    }}}&gt;
 &lt;$vars maxh={{{ [&lt;config&gt;getindex[height]else[50vh]] }}}&gt;
@@ -10803,13 +10828,12 @@ columns:
 &lt;$list filter=&quot;[&lt;config&gt;getindex[showdata]match[yes]]&quot;&gt;
    &lt;style&gt; .editlist_examples, .editlist_tryit { width:60%; } &lt;/style&gt;
    &lt;div class=&quot;editlist_data&quot;&gt;
-      &lt;h1&gt; Data &lt;&lt;deleteData&gt;&gt; &lt;&lt;closeData&gt;&gt; &lt;/h1&gt;
+      &lt;h1&gt; Data &lt;&lt;deleteData&gt;&gt; &lt;&lt;closeData&gt;&gt; &lt;&lt;toggleConfirm&gt;&gt; &lt;/h1&gt;
       &lt;div class=&quot;scroll&quot;&gt; &lt;&lt;showData&gt;&gt; &lt;/div&gt;
    &lt;/div&gt;
 &lt;/$list&gt;
-
 &lt;div class=&quot;editlist_examples&quot;&gt;
-   &lt;h1&gt; Examples &lt;&lt;toggleData&gt;&gt; &lt;&lt;editExamples&gt;&gt; &lt;&lt;setDisplayOptions&gt;&gt; &lt;/h1&gt;
+   &lt;h1&gt; Examples &lt;&lt;toggleData&gt;&gt; &lt;&lt;editExamples&gt;&gt; &lt;&lt;showExamples_options&gt;&gt; &lt;/h1&gt;
    &lt;blockquote&gt;
       &lt;div class=&quot;scroll&quot;&gt;
          &lt;$list filter=&quot;[&lt;editor&gt;is[missing]]&quot;&gt; &lt;&lt;showExamples&gt;&gt; &lt;/$list&gt;
@@ -10817,7 +10841,6 @@ columns:
       &lt;/div&gt;
    &lt;/blockquote&gt;
 &lt;/div&gt;
-
 &lt;div class=&quot;editlist_tryit&quot;&gt;
    &lt;h1&gt; Try it now &lt;&lt;toggleData&gt;&gt; &lt;&lt;tryItNow_save&gt;&gt; &lt;/h1&gt;
    &lt;blockquote&gt; &lt;&lt;tryItNow&gt;&gt; &lt;/blockquote&gt;
@@ -10862,7 +10885,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210805191841782" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210805221132881" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
