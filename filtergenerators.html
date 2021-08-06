@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/config/TiddlyTools/TagCloud</li>
 
+<li>$:/config/TimestampDisable</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -249,6 +251,9 @@ Error message and password prompt
 </div>
 <div created="20210730202238075" modified="20210730202238075" sortorder="count" title="$:/config/TiddlyTools/TagCloud">
 <pre></pre>
+</div>
+<div created="20210806211504662" modified="20210806211504662" title="$:/config/TimestampDisable">
+<pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10299,7 +10304,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 
 * Shows checkboxes for all tags in the file, including shadow tags
 * Select any combination of tags to search for
-* Shows results matching all tags (AND) and one or more tags (OR
+* Shows results matching all tags (AND) and one or more tags (OR)
 &lt;&lt;&lt;
 
 !! [[TiddlyTools/FilterGenerators/TagCloud]]
@@ -10777,7 +10782,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210801140720401" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210806210918827" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10792,8 +10797,9 @@ in
 &lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} re=&quot;[^a-zA-Z0-9\-\_]&quot;&gt;
 &lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$]] }}}&gt;
 &lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g:regexp&lt;re&gt;,[_]addsuffix&lt;qualify&gt;search-replace:g:[--],[-]search-replace:g:[__],[_]] }}}&gt;
-&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
-&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
+&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
+&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
+&lt;$vars input={{{ [[$:/state/focus/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
 &lt;!---------------&gt;
 &lt;!-- VARIABLES --&gt;
 &lt;!---------------&gt;
@@ -10811,11 +10817,17 @@ in
    start=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
+   focusin=&quot;&quot;&quot;
+         &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; modified=&lt;&lt;now &quot;YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;/&gt;&quot;&quot;&quot;
+   focusout=&quot;&quot;&quot;
+         &lt;$action-deletetiddler $tiddler=&lt;&lt;input&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
+      &lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin='&lt;&lt;start&gt;&gt;&lt;&lt;focusin&gt;&gt;' actions-focusout='&lt;&lt;focusout&gt;&gt;'&gt;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
+      &lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin='&lt;&lt;start&gt;&gt;&lt;&lt;focusin&gt;&gt;' actions-focusout='&lt;&lt;focusout&gt;&gt;'&gt;
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
@@ -10864,16 +10876,21 @@ in
    .editlist_input_buttons_$(id)$         { position:absolute; width:max-content; right:0; }
    .editlist_modal_buttons_$(id)$         { position:absolute; width:max-content; left:$(width)$; }
    .editlist_clear_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
+   .editlist_clear_$(id)$:focus.fadeIn    { opacity:1; transition: opacity 1s; }
    .editlist_popup_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
+   .editlist_popup_$(id)$:focus.fadeIn    { opacity:1; transition: opacity 1s; }
    .editlist_save_$(id)$                  { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
    .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; }
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; outline:0; font-size:$(fontsize)$; }
-   .editlist_popup_select_cover_$(id)$    { position:absolute; top:0; left:0; width:100%; height:100%; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;input&gt;is[tiddler]]&quot;&gt;
+   &lt;style&gt; .editlist_clear_$(id)$.fadeIn { opacity:1; } &lt;/style&gt;
+   &lt;style&gt; .editlist_popup_$(id)$.fadeIn { opacity:1; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
    &lt;style&gt; .editlist_popup_wrapper_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
@@ -10888,23 +10905,13 @@ in
 
 \define editlist_input()
 \whitespace trim
-&lt;!-- IF MODAL AND NOT ACTIVE, SHOW EDIT WITH TRIGGERING COVER BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
-   &lt;&lt;edit&gt;&gt;
-   &lt;$button class=&quot;editlist_input_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
-      &lt;&lt;start&gt;&gt;
-   &lt;/$button&gt;
-   &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
-&lt;/$list&gt;
-&lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW EDIT WITH MODAL FOCUS AND KEY HANDLERS --&gt;
-&lt;$list filter=&quot;[&lt;confirm&gt;match[no]] [&lt;confirm&gt;match[yes]then&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
-   &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-   &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-      &lt;$vars focus={{{ [&lt;modal&gt;is[tiddler]then[yes]else&lt;focus&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
-   &lt;/$keyboard&gt;
-   &lt;/$keyboard&gt;
-&lt;/$list&gt;
+&lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
+&lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
+   &lt;$vars focus={{{ [&lt;modal&gt;is[tiddler]then[yes]else&lt;focus&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
+&lt;/$keyboard&gt;
+&lt;/$keyboard&gt;
 &lt;!-- SHOW CLEAR/POPUP AND SAVE/CANCEL BUTTONS --&gt;
+&lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin=&lt;&lt;focusin&gt;&gt; actions-focusout=&lt;&lt;focusout&gt;&gt;&gt;
 &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_save&gt;&gt;&lt;&lt;editlist_cancel&gt;&gt;&lt;/span&gt;
 \end
@@ -10952,8 +10959,8 @@ in
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;$vars tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars val={{{ [&lt;find&gt;match[yes]then&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$vars curr={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars  val={{{ [&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;] }}}&gt;
 &lt;$set name=&quot;all&quot;     filter=&lt;&lt;filter&gt;&gt;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
@@ -10967,21 +10974,11 @@ in
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
    &lt;/div&gt;
-   &lt;!-- IF MODAL AND NOT ACTIVE, SHOW LIST WITH TRIGGERING COVER BUTTON --&gt;
-   &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
+   &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
+   &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
       &lt;&lt;select&gt;&gt;
-      &lt;$button class=&quot;editlist_popup_select_cover_$(id)$ tc-btn-invisible&quot; popup=&lt;&lt;focusPopup&gt;&gt;&gt;
-         &lt;&lt;start&gt;&gt;
-      &lt;/$button&gt;
-   &lt;/$list&gt;
-   &lt;!-- IF DIRECT OR MODAL IS ACTIVE, SHOW LIST WITH KEY HANDLERS --&gt;
-   &lt;$list filter=&quot;[&lt;confirm&gt;!match[yes]] [&lt;modal&gt;is[tiddler]] +[limit[1]]&quot;&gt;
-      &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-      &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-         &lt;&lt;select&gt;&gt;
-      &lt;/$keyboard&gt;
-      &lt;/$keyboard&gt;
-   &lt;/$list&gt;
+   &lt;/$keyboard&gt;
+   &lt;/$keyboard&gt;
 &lt;/div&gt;
 \end
 
