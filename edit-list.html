@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -223,7 +225,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210806101601684" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210806133206956" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10104,16 +10106,19 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
+<div created="20210806131434225" modified="20210806131503199" title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210805221330173" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210806132647945" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210806101558293" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210806101558293" title="$:/StoryList">
+<div created="20210806132617892" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210806132651376" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10236,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210805221144119" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210806132600645" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10445,7 +10450,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210805221137481" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210806132555899" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10514,7 +10519,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210805221125267" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210806132545240" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10536,8 +10541,8 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 
 \define showExamples_code()
 &lt;div style=&quot;word-break:break-word;break-inside:avoid;&quot;&gt;
-   &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and Try it now&quot;&gt;
-      &lt;b&gt;&lt;code&gt;&lt;$text text=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;&lt;/code&gt;&lt;/b&gt;&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
+   &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to Try it now&quot;&gt;
+      &lt;b&gt;&lt;code&gt;&lt;$text text=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;&lt;/code&gt;&lt;/b&gt;
       &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;tryit&quot; $value=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;
       &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;
    &lt;/$button&gt;&lt;br&gt;$2
@@ -10710,21 +10715,23 @@ columns:
       &lt;/$action-confirm&gt;
       &lt;/$vars&gt;
    &lt;/$button&gt;
-   $label$ &lt;$link to=&lt;&lt;tid&gt;&gt; /&gt;
+   &lt;span style=&quot;word-break:break-all;&quot;&gt;$label$ &lt;$link to=&lt;&lt;tid&gt;&gt;/&gt;&lt;/span&gt;
    &lt;table&gt;
       &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[&lt;tid&gt;fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
       &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
          &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;
-         &lt;td style=&quot;word-break:break-all;&quot;&gt;
-            &lt;&lt;showTiddler_deleterow field&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;get&lt;fieldname&gt;] }}}/&gt;
+         &lt;td style=&quot;position:relative;word-break:break-all;padding:0;&quot;&gt;
+            &lt;&lt;showTiddler_deleterow field&gt;&gt;
+            &lt;$edit-text tag=&quot;input&quot; class=&quot;input&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;fieldname&gt;&gt; /&gt;
          &lt;/td&gt;
       &lt;/tr&gt;&lt;/$list&gt;
       &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
          &lt;tr&gt;&lt;th colspan=2&gt;indexes (&lt;$count filter=&quot;[&lt;tid&gt;indexes[]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
          &lt;$list filter=&quot;[&lt;tid&gt;indexes[]sort[]]&quot; variable=&quot;indexname&quot;&gt;&lt;tr&gt;
             &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;
-            &lt;td style=&quot;word-break:break-all;&quot;&gt;
-               &lt;&lt;showTiddler_deleterow index&gt;&gt; &lt;$text text={{{ [&lt;tid&gt;getindex&lt;indexname&gt;] }}}/&gt;
+            &lt;td style=&quot;position:relative;word-break:break-all;padding:0;&quot;&gt;
+               &lt;&lt;showTiddler_deleterow index&gt;&gt;
+               &lt;$edit-text tag=&quot;input&quot; class=&quot;input&quot; tiddler=&lt;&lt;tid&gt;&gt; index=&lt;&lt;indexname&gt;&gt; /&gt;
             &lt;/td&gt;
          &lt;/tr&gt;&lt;/$list&gt;
       &lt;/$list&gt;
@@ -10733,7 +10740,7 @@ columns:
 \end
 
 \define showTiddler_deleterow(type:field)
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;&quot; tooltip=&quot;delete $type$&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;position:absolute;right:0.5em;&quot; tooltip=&quot;delete $type$&quot;&gt;
    {{$:/core/images/delete-button}}
    &lt;$vars msg={{{ [[Are you sure you want to delete this $type$:]addsuffix&lt;lf&gt;addsuffix[   ]addsuffix&lt;$type$name&gt;] }}}&gt;
    &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt; $prompt={{{ [&lt;config&gt;getindex[confirm]] }}}&gt;
@@ -10787,6 +10794,7 @@ columns:
    .editlist_data .scroll         { height:calc(100% - 4.5em); clear:both; overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
    .editlist_data .scroll         { font-size:80%; line-height:1.2em; }
    .editlist_data table           { width:100%; margin:0; margin-bottom:0.5em; text-align:left; }
+   .editlist_data .input          { width:100%; border:0; }
 
    .editlist_tryit                { width:100%; margin-top:0.5em;}
    .editlist_tryit h1             { margin:0; border-bottom:1px solid; }
@@ -10805,8 +10813,6 @@ columns:
    .editlist_examples .scroll     { column-count:$(cols)$; column-fill:auto; }
    .editlist_examples .scroll p   { margin:0; }
    .editlist_examples code        { font-size:80%; line-height:1em; }
-   .editlist_examples .mouseover       .fadeIn { opacity:0; transition: opacity 2s; }
-   .editlist_examples .mouseover:hover .fadeIn { opacity:1; transition: opacity 1s; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;editor&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt;
@@ -10847,7 +10853,7 @@ columns:
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210805134818167" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<div created="20210723184252329" modified="20210806132540970" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
 <pre>!!''field:text''
 
 &lt;&lt;edit-list id:1a tiddler:&quot;Try It Now&quot;&gt;&gt;
@@ -10885,7 +10891,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210805221132881" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210806132551351" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
