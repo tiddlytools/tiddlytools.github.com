@@ -223,7 +223,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210805221207941" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210806101601684" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210805221206328" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210805221316764" title="$:/StoryList">
+<div created="20210806101558293" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210806101558293" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10526,7 +10526,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 
 \define showExamples()
 &lt;!-- ADD CODE BUTTON BEFORE EACH &lt;&lt;edit-list&gt;&gt; MACRO --&gt;
-&lt;$vars search=&quot;(.*)(&lt;&lt;edit-list.*&gt;&gt;)(.*)&quot; replace='$1$(showExamples_code)$&lt;br&gt;$2&lt;br&gt;$3'&gt;
+&lt;$vars search=&quot;(.*)(&lt;&lt;edit-list.*&gt;&gt;)(.*)&quot; replace='$1$(showExamples_code)$$3'&gt;
 &lt;$list filter=&quot;[&lt;examples&gt;get[text]search-replace:g:regexp&lt;search&gt;,&lt;replace&gt;]&quot; variable=&quot;output&quot;&gt;
 
    &lt;&lt;output&gt;&gt;
@@ -10535,13 +10535,13 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 \end
 
 \define showExamples_code()
-&lt;$vars thisline=&quot;&quot;&quot;$2&quot;&quot;&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and Try it now&quot;&gt;
-   &lt;b&gt;&lt;code&gt;&lt;$text text=&lt;&lt;thisline&gt;&gt;/&gt;&lt;/code&gt;&lt;/b&gt;&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
-   &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;tryit&quot; $value=&lt;&lt;thisline&gt;&gt;/&gt;
-   &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&lt;&lt;thisline&gt;&gt;/&gt;
-&lt;/$button&gt;
-&lt;/$vars&gt;
+&lt;div style=&quot;word-break:break-word;break-inside:avoid;&quot;&gt;
+   &lt;$button class=&quot;tc-btn-invisible mouseover&quot; style=&quot;text-align:left;&quot; tooltip=&quot;Copy to clipboard and Try it now&quot;&gt;
+      &lt;b&gt;&lt;code&gt;&lt;$text text=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;&lt;/code&gt;&lt;/b&gt;&lt;span class=&quot;fadeIn&quot;&gt;{{$:/core/images/copy-clipboard}}&lt;/span&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;config&gt;&gt; $index=&quot;tryit&quot; $value=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;
+      &lt;$action-sendmessage $message=&quot;tm-copy-to-clipboard&quot; $param=&quot;&quot;&quot;$2&quot;&quot;&quot;/&gt;
+   &lt;/$button&gt;&lt;br&gt;$2
+&lt;/div&gt;
 \end
 
 \define showExamples_options()
@@ -10800,7 +10800,7 @@ columns:
    .editlist_examples h1          { margin:0; border-bottom:1px solid; }
    .editlist_examples h1 button   { vertical-align:middle; font-size:50%; }
    .editlist_examples .databutton { float:right;margin:0.7em 0 0 0.25em; }
-   .editlist_examples blockquote  { margin-right:0; word-break:break-word; break-inside:avoid;}
+   .editlist_examples blockquote  { margin-right:0; }
    .editlist_examples .scroll     { height:$(maxh)$; clear:right; overflow-y:auto; margin:0; padding:0 0.5em 0.5em 0; }
    .editlist_examples .scroll     { column-count:$(cols)$; column-fill:auto; }
    .editlist_examples .scroll p   { margin:0; }
