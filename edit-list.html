@@ -10107,13 +10107,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210807065549663" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210807143741323" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210807082214282" list="TiddlyTools/Macros/edit-list-vars TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list" modified="20210807102940902" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210807102947316" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210807143758566" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10326,13 +10326,11 @@ TiddlyTools/Macros/edit-list-vars</pre>
    .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 2s; }
    .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 2s; } /* https://www.caniuse.com/css-focus-within */
 
-/*
-    EXPERIMENT: IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE...
+/*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
    .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 2s; }
    .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
    .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
-   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$:focus            { opacity:1; transition:opacity 2s; }
-*/
+   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 2s; }
 
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
