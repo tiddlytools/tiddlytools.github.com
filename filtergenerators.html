@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210806213403020" list="TiddlyTools/Macros/edit-list TiddlyTools/FilterGenerators/PowerSearch" modified="20210806213457650" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10319,11 +10319,11 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 * export or delete the matching tiddlers
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210806213355881" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210807004000955" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
-\define exclude() [prefix[$:/state/modal]] [prefix[$:/state/focus]] [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
+\define exclude() [prefix[$:/state/modal]] [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
 
 \define default_width()   15em
 \define default_columns() 1
@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210806213513083" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210807004054564" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10787,9 +10787,8 @@ in
 &lt;$vars   tid={{{ [[$tiddler$]!match[]else&lt;currentTiddler&gt;] }}} re=&quot;[^a-zA-Z0-9\-\_]&quot;&gt;
 &lt;$vars    id={{{ [[$index$]!match[]else[$field$]] +[addprefix[/]addprefix&lt;tid&gt;addsuffix[_$id$]] }}}&gt;
 &lt;$vars    id={{{ [&lt;id&gt;search-replace[$:/],[]search-replace:g:regexp&lt;re&gt;,[_]addsuffix&lt;qualify&gt;search-replace:g:[--],[-]search-replace:g:[__],[_]] }}}&gt;
-&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
-&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
-&lt;$vars input={{{ [[$:/state/focus/edit-list/]addsuffix&lt;id&gt;] }}}&gt;
+&lt;$vars modal={{{ [[$:/state/modal/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
+&lt;$vars popup={{{ [[$:/state/popup/edit-list/]addsuffix&lt;id&gt;]  }}}&gt;
 &lt;!---------------&gt;
 &lt;!-- VARIABLES --&gt;
 &lt;!---------------&gt;
@@ -10807,17 +10806,13 @@ in
    start=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;
          &lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
-   focusin=&quot;&quot;&quot;
-         &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; modified=&lt;&lt;now &quot;YYYY0MM0DD0hh0mm0ss0XXX&quot;&gt;&gt;/&gt;&quot;&quot;&quot;
-   focusout=&quot;&quot;&quot;
-         &lt;$action-deletetiddler $tiddler=&lt;&lt;input&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin='&lt;&lt;start&gt;&gt;&lt;&lt;focusin&gt;&gt;' actions-focusout='&lt;&lt;focusout&gt;&gt;'&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; focusPopup=&lt;&lt;focusPopup&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin='&lt;&lt;start&gt;&gt;&lt;&lt;focusin&gt;&gt;' actions-focusout='&lt;&lt;focusout&gt;&gt;'&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
@@ -10868,7 +10863,6 @@ in
    .editlist_clear_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
    .editlist_clear_$(id)$:focus.fadeIn    { opacity:1; transition: opacity 1s; }
    .editlist_popup_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
-   .editlist_popup_$(id)$:focus.fadeIn    { opacity:1; transition: opacity 1s; }
    .editlist_save_$(id)$                  { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; }
    .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; }
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
@@ -10877,10 +10871,6 @@ in
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;input&gt;is[tiddler]]&quot;&gt;
-   &lt;style&gt; .editlist_clear_$(id)$.fadeIn { opacity:1; } &lt;/style&gt;
-   &lt;style&gt; .editlist_popup_$(id)$.fadeIn { opacity:1; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
    &lt;style&gt; .editlist_popup_wrapper_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
@@ -10901,7 +10891,7 @@ in
 &lt;/$keyboard&gt;
 &lt;/$keyboard&gt;
 &lt;!-- SHOW CLEAR/POPUP AND SAVE/CANCEL BUTTONS --&gt;
-&lt;$eventcatcher events=&quot;focusin focusout&quot; actions-focusin=&lt;&lt;focusin&gt;&gt; actions-focusout=&lt;&lt;focusout&gt;&gt;&gt;
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
 &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_save&gt;&gt;&lt;&lt;editlist_cancel&gt;&gt;&lt;/span&gt;
 \end
@@ -10920,7 +10910,7 @@ in
 \whitespace trim
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
 \end
