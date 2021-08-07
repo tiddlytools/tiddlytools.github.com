@@ -10113,7 +10113,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210807050111917" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210807065537389" title="$:/StoryList">
+<div created="20210807082214282" list="TiddlyTools/Macros/edit-list-vars TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list" modified="20210807102940902" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10231,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210807065528497" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210807102947316" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10321,15 +10321,21 @@ TiddlyTools/Macros/edit-list-vars</pre>
    .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; }
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
-   .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; outline:0; font-size:$(fontsize)$; }
+   .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; font-size:$(fontsize)$; }
+   .editlist_wrapper_$(id)$              .fadeIn { opacity:0; transition:opacity 0s; }
+   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 2s; }
+   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 2s; } /* https://www.caniuse.com/css-focus-within */
 
-   .editlist_wrapper_$(id)$       .fadeIn                                  { opacity:0; transition:opacity 2s; }
-   .editlist_wrapper_$(id)$:hover .fadeIn                                  { opacity:1; transition:opacity 1s; }
-   .editlist_clear_$(id)$:focus                                            { opacity:1; transition:opacity 1s; }
-   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ &gt; .fadeIn { opacity:1; transition:opacity 1s; }
+/*
+    EXPERIMENT: IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE...
+   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 2s; }
+   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
+   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
+   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$:focus            { opacity:1; transition:opacity 2s; }
+*/
 
 &lt;/style&gt;
-&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
@@ -10369,7 +10375,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \whitespace trim
 &lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10428,7 +10434,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210806132555899" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210807102943210" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10497,7 +10503,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210806132545240" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210807102933578" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10831,7 +10837,7 @@ columns:
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210806132540970" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<div created="20210723184252329" modified="20210807102919566" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
 <pre>!!''field:text''
 
 &lt;&lt;edit-list id:1a tiddler:&quot;Try It Now&quot;&gt;&gt;
@@ -10842,7 +10848,8 @@ columns:
 &lt;&lt;edit-list id:1f tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:1g tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes&gt;&gt;
 &lt;&lt;edit-list id:1h tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes multiple:yes confirm:yes&gt;&gt;
-&lt;&lt;edit-list id:1i tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes find:yes&gt;&gt;
+&lt;&lt;edit-list id:1i tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes&gt;&gt;
+&lt;&lt;edit-list id:1j tiddler:&quot;Try It Now&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5 multiple:yes find:yes&gt;&gt;
 
 !!''field:tags''
 
@@ -10869,7 +10876,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210806132551351" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210807102938888" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
