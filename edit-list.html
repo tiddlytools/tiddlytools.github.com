@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10095,6 +10097,11 @@ Error message and password prompt
 TiddlyTools/Macros/edit-list
 TiddlyTools/Macros/edit-list-vars</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Macros/edit-list/Examples]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10113,7 +10120,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210808023823032" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210808024159504" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10231,7 +10238,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210807143758566" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210808023819040" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10323,15 +10330,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; font-size:$(fontsize)$; }
    .editlist_wrapper_$(id)$              .fadeIn { opacity:0; transition:opacity 0s; }
-   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 2s; }
-   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 2s; } /* https://www.caniuse.com/css-focus-within */
-
-/*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
-   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 2s; }
-   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
-   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
-   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 2s; }
-
+   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 0s; }
+   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 0s; } /* https://www.caniuse.com/css-focus-within */
+    /*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
+   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 0s; }
+   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
+   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
+   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 0s; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
@@ -10344,6 +10349,21 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;match[always]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$(id)$ { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
+
+&lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
+&lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
+\end
+
+\define editlist_styles_setinputwidth()
+&lt;style&gt;
+.editlist_wrapper_$(id)$:hover        .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
+.editlist_wrapper_$(id)$:focus-within .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
+&lt;/style&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
+   &lt;style&gt; .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; } &lt;/style&gt;
 &lt;/$list&gt;
 \end
 
@@ -10363,7 +10383,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \whitespace trim
 &lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
+&lt;$list  filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_clear editlist_clear_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    ''x'' &lt;&lt;clear&gt;&gt;   
 &lt;/$button&gt;
@@ -10432,7 +10452,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210807102943210" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210808022035771" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10501,7 +10521,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210807102933578" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210808021810865" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10700,11 +10720,11 @@ columns:
    &lt;span style=&quot;word-break:break-all;&quot;&gt;$label$ &lt;$link to=&lt;&lt;tid&gt;&gt;/&gt;&lt;/span&gt;
    &lt;table&gt;
       &lt;tr&gt;&lt;th colspan=2&gt;fields (&lt;$count filter=&quot;[&lt;tid&gt;fields[]] -[[title]]&quot;/&gt;):&lt;/th&gt;&lt;/tr&gt;
-      &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
+      &lt;$list filter=&quot;[&lt;tid&gt;fields[]sort[]] -[[title]] -[&lt;tid&gt;indexes[]count[]!match[0]then[text]]&quot; variable=&quot;fieldname&quot;&gt;&lt;tr&gt;
          &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;fieldname&gt;&gt;&lt;/th&gt;
          &lt;td style=&quot;position:relative;word-break:break-all;padding:0;&quot;&gt;
             &lt;&lt;showTiddler_deleterow field&gt;&gt;
-            &lt;$edit-text tag=&quot;input&quot; class=&quot;input&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;fieldname&gt;&gt; /&gt;
+            &lt;$edit-text tag=&quot;textarea&quot; class=&quot;input&quot; rows=1 minHeight=&quot;1em&quot; tiddler=&lt;&lt;tid&gt;&gt; field=&lt;&lt;fieldname&gt;&gt; /&gt;
          &lt;/td&gt;
       &lt;/tr&gt;&lt;/$list&gt;
       &lt;$list filter=&quot;[&lt;tid&gt;indexes[]count[]!match[0]]&quot;&gt;
@@ -10713,7 +10733,7 @@ columns:
             &lt;th style=&quot;text-align:right;width:1%;white-space:nowrap;&quot;&gt;&lt;&lt;indexname&gt;&gt;&lt;/th&gt;
             &lt;td style=&quot;position:relative;word-break:break-all;padding:0;&quot;&gt;
                &lt;&lt;showTiddler_deleterow index&gt;&gt;
-               &lt;$edit-text tag=&quot;input&quot; class=&quot;input&quot; tiddler=&lt;&lt;tid&gt;&gt; index=&lt;&lt;indexname&gt;&gt; /&gt;
+               &lt;$edit-text tag=&quot;textarea&quot; class=&quot;input&quot; rows=1 minHeight=&quot;1em&quot; tiddler=&lt;&lt;tid&gt;&gt; index=&lt;&lt;indexname&gt;&gt; /&gt;
             &lt;/td&gt;
          &lt;/tr&gt;&lt;/$list&gt;
       &lt;/$list&gt;
@@ -10775,8 +10795,9 @@ columns:
    .editlist_data h1 .confirm     { vertical-align:middle; font-size:40%; float:right; margin-top:1em; margin-right:0.5em; white-space:nowrap; }
    .editlist_data .scroll         { height:calc(100% - 4.5em); clear:both; overflow-y:auto; margin:0.5em; margin-bottom:4em; padding:0.5em; }
    .editlist_data .scroll         { font-size:80%; line-height:1.2em; }
-   .editlist_data table           { width:100%; margin:0; margin-bottom:0.5em; text-align:left; }
-   .editlist_data .input          { width:100%; border:0; }
+   .editlist_data table           { width:100%; margin:0; margin-bottom:0.5em; text-align:left; background:white; }
+   .editlist_data table tr        { vertical-align:top; }
+   .editlist_data .input          { width:100%; border:0; padding-top:1px; padding-bottom:0; resize:vertical; }
 
    .editlist_tryit                { width:100%; margin-top:0.5em;}
    .editlist_tryit h1             { margin:0; border-bottom:1px solid; }
@@ -10874,7 +10895,7 @@ columns:
 &lt;&lt;edit-list id:5a tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:always&gt;&gt;
 &lt;&lt;edit-list id:5b tiddler:&quot;Try It Now&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210807102938888" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210808022030300" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
