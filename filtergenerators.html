@@ -10319,7 +10319,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 * export or delete the matching tiddlers
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210807004000955" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210808111347326" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
@@ -10353,67 +10353,67 @@ regexp
 
 \define getTid()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tids&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tidList&gt;]&quot; placeholder=&quot;tiddlers&quot;/&gt;
 \end
 
 \define getPre()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;prefix&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotPre()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notprefix&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;suffix&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotSuff()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;notsuffix&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;shadowList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getTag()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;tag&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getNotTag()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;nottag&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; fontsize=&quot;80%&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;tagsList&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getHas()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;has&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;allFields&gt;]&quot; find=&quot;yes&quot; placeholder=&quot;(none)&quot;/&gt;
 \end
 
 \define getFields()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;field&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;fieldsList&gt;]&quot; placeholder=&quot;title,text,tags&quot;/&gt;
 \end
 
 \define getFlags()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;flags&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;flagsList&gt;]&quot; placeholder=&quot;words&quot;/&gt;
 \end
 
 \define getSort()
 &lt;$macrocall $name=&quot;edit-list&quot; tiddler=&lt;&lt;config&gt;&gt; index=&quot;sort&quot;
-   width=&quot;$(width)$&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
+   width=&quot;$(width)$&quot; stretch=&quot;fit&quot; focusPopup=&quot;yes&quot; confirm=&lt;&lt;confirm&gt;&gt;
    filter=&quot;[enlist&lt;sortList&gt;]&quot; placeholder=&quot;title&quot;/&gt;
 \end
 
@@ -10772,13 +10772,13 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210808101705901" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210808111429845" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
      filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
-   fontsize:&quot;100%&quot;,     stretch:&quot;auto&quot;,   colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10795,8 +10795,8 @@ in
 &lt;$vars
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
-      filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth=&quot;&quot;&quot;$listwidth$&quot;&quot;&quot;
-  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;   scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch=&quot;&quot;&quot;$stretch$&quot;&quot;&quot;
+      filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
+  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot;   scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;     fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
