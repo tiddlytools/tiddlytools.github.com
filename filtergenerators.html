@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210807143758566" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210808023819040" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10864,15 +10864,13 @@ in
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; font-size:$(fontsize)$; }
    .editlist_wrapper_$(id)$              .fadeIn { opacity:0; transition:opacity 0s; }
-   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 2s; }
-   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 2s; } /* https://www.caniuse.com/css-focus-within */
-
-/*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
-   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 2s; }
-   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
-   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 2s; }
-   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 2s; }
-
+   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 0s; }
+   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 0s; } /* https://www.caniuse.com/css-focus-within */
+    /*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
+   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 0s; }
+   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
+   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
+   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 0s; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
@@ -10885,6 +10883,21 @@ in
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;match[always]]&quot;&gt;
    &lt;style&gt; .editlist_popup_select_$(id)$ { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;/$list&gt;
+
+&lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
+&lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
+\end
+
+\define editlist_styles_setinputwidth()
+&lt;style&gt;
+.editlist_wrapper_$(id)$:hover        .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
+.editlist_wrapper_$(id)$:focus-within .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
+&lt;/style&gt;
+&lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
+   &lt;style&gt; .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; } &lt;/style&gt;
 &lt;/$list&gt;
 \end
 
@@ -10904,7 +10917,7 @@ in
 \whitespace trim
 &lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$list filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
+&lt;$list  filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_clear editlist_clear_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    ''x'' &lt;&lt;clear&gt;&gt;   
 &lt;/$button&gt;
