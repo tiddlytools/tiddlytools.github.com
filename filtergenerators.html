@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,13 +10772,13 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210808023819040" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210808101705901" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
      filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,    scroll:&quot;10&quot;,
-   fontsize:&quot;100%&quot;,     stretch:&quot;yes&quot;,    colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;auto&quot;,   colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10862,15 +10862,15 @@ in
    .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; }
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
-   .editlist_popup_select_$(id)$          { width:100% !important; overflow-y:auto; font-size:$(fontsize)$; }
-   .editlist_wrapper_$(id)$              .fadeIn { opacity:0; transition:opacity 0s; }
-   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; transition:opacity 0s; }
-   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; transition:opacity 0s; } /* https://www.caniuse.com/css-focus-within */
+   .editlist_popup_select_$(id)$          { width:$(listwidth)$ !important; overflow-y:auto; font-size:$(fontsize)$; }
+   .editlist_wrapper_$(id)$              .fadeIn { opacity:0; }
+   .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; }
+   .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; } /* https://www.caniuse.com/css-focus-within */
     /*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
-   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; transition:opacity 0s; }
-   .editlist_clear_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
-   .editlist_popup_$(id)$:focus                                          { opacity:1; transition:opacity 0s; }
-   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; transition:opacity 0s; }
+   .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; }
+   .editlist_clear_$(id)$:focus                                          { opacity:1; }
+   .editlist_popup_$(id)$:focus                                          { opacity:1; }
+   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
@@ -10878,11 +10878,8 @@ in
 &lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
    &lt;style&gt; .editlist_popup_wrapper_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;stretch&gt;match[yes]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:100%; width:auto !important; } &lt;/style&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;stretch&gt;match[always]]&quot;&gt;
-   &lt;style&gt; .editlist_popup_select_$(id)$ { min-width:100%; width:auto !important; } &lt;/style&gt;
+&lt;$list filter=&quot;[&lt;stretch&gt;!match[no]]&quot;&gt;
+   &lt;style&gt; .editlist_popup_select_$(id)$:hover, .editlist_popup_select_$(id)$:focus { min-width:$(listwidth)$; width:$(stretch)$ !important; } &lt;/style&gt;
 &lt;/$list&gt;
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
@@ -10893,8 +10890,8 @@ in
 
 \define editlist_styles_setinputwidth()
 &lt;style&gt;
-.editlist_wrapper_$(id)$:hover        .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
-.editlist_wrapper_$(id)$:focus-within .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; }
+.editlist_wrapper_$(id)$:hover        .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; }
+.editlist_wrapper_$(id)$:focus-within .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_input_$(id)$ { width:calc(100% - $(bwidth)$em) !important; transition:width: 0s; } &lt;/style&gt;
