@@ -10100,7 +10100,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Macros/edit-list/Examples]]</pre>
+# [[New Tiddler]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10238,7 +10238,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210809103821834" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210809130839799" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10420,10 +10420,9 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
-&lt;$vars curr={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars  val={{{ [&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;] }}}&gt;
-&lt;$set name=&quot;tags&quot;    filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input:raw[]]&quot;&gt;
-&lt;$set name=&quot;exclude&quot; filter=&quot;[enlist&lt;tags&gt;] :filter[tagging[]count[]match[1]]&quot;&gt; 
+&lt;$set name=&quot;curr&quot;    filter=&quot;[&lt;modal&gt;is[tiddler]else&lt;tid&gt;]&quot;&gt;
+&lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;]&quot;&gt;
+&lt;$set name=&quot;exclude&quot; filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input[]] :filter[tagging[]count[]match[1]]&quot;&gt; 
 &lt;$set name=&quot;all&quot;     filter=&quot;[subfilter&lt;filter&gt;] -[enlist&lt;exclude&gt;]&quot;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
