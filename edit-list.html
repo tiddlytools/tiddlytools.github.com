@@ -10238,7 +10238,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210809185818316" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210809200309179" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10896,7 +10896,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210809034055480" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210809200227533" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10948,7 +10948,7 @@ Some optional features include:
 |type        | //none// |Overrides the default &quot;text&quot; type attribute. See Notes below.|
 |width       | `15em`   |Width of the text input control.  Use &lt;&lt;note_units&gt;&gt;.|
 |filter      | //none// |Use &lt;&lt;note_filters&gt;&gt; to specify the contents of the select list.  If a filter is not provided, no list is displayed.|
-|find        | `no`     |If `yes`, progressively filter the list to show only items that contain the current input.|
+|find        | `no`     |If `yes`, progressively filter the list to show only items that contain the current input. See Notes below.|
 |confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes.|
 |goto        | `no`     |If `yes`, selecting a list item or pressing &lt;kbd&gt;enter&lt;/kbd&gt; views the tiddler whose title matches the current input.|
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
@@ -10989,6 +10989,10 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 * Use `type:color` to ''select an RGB color value from a system-provided popup &quot;color picker&quot;''.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: ''`type:color` input controls can only show RGB color values''.  If a color name is selected, the `type:color` input control displays black, even though the field/index does contain a valid color name.
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
+&lt;&lt;&lt;
+!!''find parameter''
+&lt;&lt;&lt;
+The `find:yes` parameter progressively filters the list contents as you type into the text input control. If you enter several space-separated keywords, the list will ''show only those items that contain __all__ of the keywords'' (//&quot;AND&quot; searching//).  If you use both `find:yes` and `multiple:yes` parameters, the list will ''show all items that contain __any__ of the keywords'' (//&quot;OR&quot; searching//).  Note that when using `multiple:yes`, any item that contains spaces will automatically be enclosed in doubled square brackets when selected (e.g., &quot;[[This item]]&quot;).  This is particularly helpful when `&lt;&lt;edit-list&gt;&gt;` is used to set the &quot;tags&quot; or &quot;list&quot; field of tiddler, as those fields will typically contain multiple space-separated values.
 &lt;&lt;&lt;
 !!''view parameter''
 &lt;&lt;&lt;
@@ -11051,7 +11055,7 @@ where `&lt;&lt;handleClickEvents&gt;&gt;` refers to a separate macro definition 
 &lt;&lt;&lt;
 !!''parameters vs. variables''
 &lt;&lt;&lt;
-For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, an additional macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
+For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, a supplemental macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
 
 To use this macro, ''define the desired variables with `&lt;$vars ...&gt;`'', and then invoke it, like this:
 &lt;pre style=&quot;background:transparent;border:0;margin:0;padding:0;&quot;&gt;
