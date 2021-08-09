@@ -225,7 +225,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210809045540092" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210809225222268" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10120,7 +10120,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210809231646511" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210809231646511" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10238,11 +10238,11 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210809200309179" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210809231824969" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
-     filter:&quot;&quot;,            find:&quot;no&quot;,       goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
+     filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,  listsize:&quot;10&quot;,
    fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
@@ -10419,16 +10419,17 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
-&lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
+&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$set name=&quot;curr&quot;    filter=&quot;[&lt;modal&gt;is[tiddler]else&lt;tid&gt;]&quot;&gt;
-&lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;]&quot; select=0&gt;
+&lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;!match[]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;!match[]then&lt;curr&gt;get&lt;field&gt;]&quot; select=0&gt;
 &lt;$set name=&quot;exclude&quot; filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input[]] :filter[tagging[]count[]match[1]]&quot;&gt; 
 &lt;$set name=&quot;all&quot;     filter=&quot;[subfilter&lt;filter&gt;] -[enlist&lt;exclude&gt;]&quot;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
-&lt;$wikify name=&quot;AND&quot;    text=&lt;&lt;editlist_select_AND&gt;&gt;&gt;
-&lt;$wikify name=&quot;OR&quot;     text=&lt;&lt;editlist_select_OR&gt;&gt;&gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;multiple&gt;match[]]&quot; value=&quot;[enlist&lt;AND&gt;]&quot; emptyValue=&quot;[enlist&lt;OR&gt;]&quot; &gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot;  value=&lt;&lt;search&gt;&gt;      emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
+&lt;$set name=&quot;case&quot;    filter=&quot;[&lt;find&gt;match[OR]] [&lt;find&gt;match[AND]]&quot; value=&quot;casesensitive&quot; emptyValue=&quot;&quot;&gt;
+&lt;$wikify name=&quot;or&quot;        text=&lt;&lt;editlist_select_or&gt;&gt;&gt;
+&lt;$wikify name=&quot;and&quot;       text=&lt;&lt;editlist_select_and&gt;&gt;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match:caseinsensitive[or]]&quot;  value=&quot;[enlist&lt;or&gt;]&quot;  emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match:caseinsensitive[and]]&quot; value=&quot;[enlist&lt;and&gt;]&quot; emptyValue=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
@@ -10447,8 +10448,8 @@ TiddlyTools/Macros/edit-list-vars</pre>
    &lt;/$keyboard&gt;
 &lt;/div&gt;
 \end
-\define editlist_select_OR()  &lt;$list filter=&quot;[enlist&lt;val&gt;sort[]]&quot; variable=&quot;val&quot;&gt; &lt;&lt;editlist_select_AND&gt;&gt; &lt;/$list&gt;
-\define editlist_select_AND() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
+\define editlist_select_or()  &lt;$list filter=&quot;[enlist&lt;val&gt;sort[]]&quot; variable=&quot;val&quot;&gt; &lt;&lt;editlist_select_and&gt;&gt; &lt;/$list&gt;
+\define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(case)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
@@ -10456,7 +10457,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210809034100204" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210809224748933" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10477,7 +10478,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
          type={{{ [[$type$]!is[blank]]         ~[&lt;type&gt;!is[blank]]         ~[[]]         }}}
         width={{{ [[$width$]!is[blank]]        ~[&lt;width&gt;!is[blank]]        ~[[15em]]     }}}
        filter={{{ [[$filter$]!is[blank]]       ~[&lt;filter&gt;!is[blank]]       ~[[]]         }}}
-         find={{{ [[$find$]!is[blank]]         ~[&lt;find&gt;!is[blank]]         ~[[no]]       }}}
+         find={{{ [[$find$]!is[blank]]         ~[&lt;find&gt;!is[blank]]         ~[[]]         }}}
          goto={{{ [[$goto$]!is[blank]]         ~[&lt;goto&gt;!is[blank]]         ~[[no]]       }}}
       confirm={{{ [[$confirm$]!is[blank]]      ~[&lt;confirm&gt;!is[blank]]      ~[[no]]       }}}
         focus={{{ [[$focus$]!is[blank]]        ~[&lt;focus&gt;!is[blank]]        ~[[no]]       }}}
@@ -10872,31 +10873,31 @@ columns:
 &lt;&lt;edit-list id:f tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listwidth:fit focusPopup:yes multiple:yes&gt;&gt;
 
 !!!field:text, list tags, find, fixed height, listwidth vs. stretch
-&lt;&lt;edit-list id:g tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5&gt;&gt;
-&lt;&lt;edit-list id:h tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 listwidth:fit&gt;&gt;
-&lt;&lt;edit-list id:i tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 stretch:fit&gt;&gt;
-&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 stretch:20em&gt;&gt;
-&lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:yes listheight:5 stretch:100%&gt;&gt;
+&lt;&lt;edit-list id:g tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5&gt;&gt;
+&lt;&lt;edit-list id:h tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:and listheight:5 listwidth:fit&gt;&gt;
+&lt;&lt;edit-list id:i tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:or  listheight:5 stretch:fit&gt;&gt;
+&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:AND listheight:5 stretch:20em&gt;&gt;
+&lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:OR  listheight:5 stretch:100%&gt;&gt;
 
 !!!field:tags, list tags, focuspopup, stretch, find
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit&gt;&gt;
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit find:yes&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit find:or&gt;&gt;
 
 !!!field:test, index vs. field
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
 !!!field:color, list colors/colornames, listsize, focuspopup, colors:yes, find, type:color
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:yes&gt;&gt;
-&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:yes type:color&gt;&gt;
+&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or&gt;&gt;
+&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or type:color&gt;&gt;
 
 !!!field:goto, list all tiddlers, find, focusPopup, goto tiddler, fontsize, listwidth vs. stretch
-&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% listwidth:fit&gt;&gt;
-&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:yes focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
+&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% listwidth:fit&gt;&gt;
+&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210809200227533" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210809224719424" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10939,30 +10940,30 @@ Some optional features include:
 |editlist_infotable|k
 |Parameter   | Default  |Description |h
 |tiddler     | //none// |The tiddler in which to save the input. If no tiddler is specified, the current tiddler is used.|
-|field       | `text`   |The field in which to save the input. See Notes below.|
+|field       | `text`   |The field in which to save the input. See Notes.|
 |index       | //none// |The index in which to save the input. Takes precedence over the `field` parameter.|
 |timestamp   | `yes`    |If `no`, the target tiddler's timestamp fields will not be updated when the field or index value is changed.|
 |default     | //none// |Text to display when the target tiddler doesn't exist.|
 |placeholder | //none// |Text to display when the field or index doesn't exist or is blank.|
 |tooltip     | //none// |Text to display when the mouse is hovering over the input control.|
-|type        | //none// |Overrides the default &quot;text&quot; type attribute. See Notes below.|
+|type        | //none// |Overrides the default &quot;text&quot; type attribute. See Notes.|
 |width       | `15em`   |Width of the text input control.  Use &lt;&lt;note_units&gt;&gt;.|
 |filter      | //none// |Use &lt;&lt;note_filters&gt;&gt; to specify the contents of the select list.  If a filter is not provided, no list is displayed.|
-|find        | `no`     |If `yes`, progressively filter the list to show only items that contain the current input. See Notes below.|
+|find        | //none// |Use `and` or `or` to progressively filter the list to show only those items that contain the current input text. See Notes.|
 |confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes.|
 |goto        | `no`     |If `yes`, selecting a list item or pressing &lt;kbd&gt;enter&lt;/kbd&gt; views the tiddler whose title matches the current input.|
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
 |focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
-|cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes below.|
+|cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes.|
 |listwidth   | `100%`   |Width of the list. `100%` matches text input control, `fit`=match widest item, or use &lt;&lt;note_units&gt;&gt;.|
 |stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `fit`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` and `listsize` are ignored.|
 |listsize    | `10`     |Maximum number of lines to display in a popup list before adding a scroll bar.|
 |fontsize    | `100%`   |Size of the font used to display the list items. Use a percentage or &lt;&lt;note_units&gt;&gt;.|
 |colors      | `no`     |If `yes` and a list item is a &lt;&lt;note_colors&gt;&gt;, the item background will show the indicated color.|
-|multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.|
-|view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes below.|
-|id          | //none// |Specifies a unique ID for the combined controls. See Notes below.|
+|multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.  See Notes.|
+|view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes.|
+|id          | //none// |Specifies a unique ID for the combined controls. See Notes.|
 
 &lt;&lt;&lt;
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Notes&lt;/h1&gt;
@@ -10973,7 +10974,7 @@ When a value has been set into a field or index and the mouse pointer is over th
 &lt;&lt;&lt;
 !!''limitations on list selection when using the keyboard''
 &lt;&lt;&lt;
-If `find:yes` is specified and you scroll through the list items ''using the arrow keys, the list control will &quot;lose focus&quot; whenever the selection changes.''  This is because the currently selected value is used to progressively filter the list, causing the list contents to refresh whenever the value changes.
+If `find:and` or `find:or` is specified and you scroll through the list items ''using the arrow keys, the list control will &quot;lose focus&quot; whenever the selection changes.''  This is because the currently selected value is used to progressively filter the list, causing the list contents to refresh whenever the value changes.
 
 A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and you select or enter a value of `$:/tags/Macro`'', as this triggers a system-wide refresh event because ~TiddlyWiki assumes that a new global macro has been declared.
 &lt;&lt;&lt;
@@ -10992,7 +10993,11 @@ There are many other input types, including: `type:email`, `type:number`, `type:
 &lt;&lt;&lt;
 !!''find parameter''
 &lt;&lt;&lt;
-The `find:yes` parameter progressively filters the list contents as you type into the text input control. If you enter several space-separated keywords, the list will ''show only those items that contain __all__ of the keywords'' (//&quot;AND&quot; searching//).  If you use both `find:yes` and `multiple:yes` parameters, the list will ''show all items that contain __any__ of the keywords'' (//&quot;OR&quot; searching//).  Note that when using `multiple:yes`, any item that contains spaces will automatically be enclosed in doubled square brackets when selected (e.g., &quot;[[This item]]&quot;).  This is particularly helpful when `&lt;&lt;edit-list&gt;&gt;` is used to set the &quot;tags&quot; or &quot;list&quot; field of tiddler, as those fields will typically contain multiple space-separated values.
+The `find:...` parameter progressively filters the list contents as you type into the text input control. If you use `find:or` and enter several space-separated keywords, the list will ''show all items that contain __any__ of the specified keywords''.  If you use `find:and`, the list will ''show only those items that contain __all__ of the specified keywords''.  By default, upper and lower case letters are considered identical for matching purposes.  To exactly match upper and lower case letters, use `find:OR` or `find:AND`.
+&lt;&lt;&lt;
+!!''multiple parameter''
+&lt;&lt;&lt;
+The `multiple:yes` parameter allows you to select several items from the list using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.  When using `multiple:yes`, any item that contains spaces will automatically be enclosed in doubled square brackets when selected (e.g., &quot;[[This item]]&quot;).  This is particularly helpful when `&lt;&lt;edit-list&gt;&gt;` is used to set the &quot;tags&quot; or &quot;list&quot; field of tiddler, as those fields will typically contain multiple space-separated values.
 &lt;&lt;&lt;
 !!''view parameter''
 &lt;&lt;&lt;
