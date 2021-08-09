@@ -242,7 +242,7 @@ Error message and password prompt
     &quot;binary&quot;: &quot;&quot;
 }</pre>
 </div>
-<div columns="3" confirm="" created="20210730202157567" modified="20210809104138383" show="show" title="$:/config/TiddlyTools/PowerSearch">
+<div columns="3" confirm="" created="20210730202157567" modified="20210809190449102" show="show" title="$:/config/TiddlyTools/PowerSearch">
 <pre></pre>
 </div>
 <div created="20210730202238075" modified="20210730202238075" sortorder="count" title="$:/config/TiddlyTools/TagCloud">
@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210809131202881" list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" modified="20210809131202881" title="$:/StoryList">
+<div created="20210809190812796" list="TiddlyTools/Macros/edit-list $:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" modified="20210809190812796" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210809130839799" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210809185818316" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10955,11 +10955,14 @@ in
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$set name=&quot;curr&quot;    filter=&quot;[&lt;modal&gt;is[tiddler]else&lt;tid&gt;]&quot;&gt;
-&lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;]&quot;&gt;
+&lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;match[yes]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;match[yes]then&lt;curr&gt;get&lt;field&gt;]&quot; select=0&gt;
 &lt;$set name=&quot;exclude&quot; filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input[]] :filter[tagging[]count[]match[1]]&quot;&gt; 
 &lt;$set name=&quot;all&quot;     filter=&quot;[subfilter&lt;filter&gt;] -[enlist&lt;exclude&gt;]&quot;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot; value=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot; emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
+&lt;$wikify name=&quot;AND&quot;    text=&lt;&lt;editlist_select_AND&gt;&gt;&gt;
+&lt;$wikify name=&quot;OR&quot;     text=&lt;&lt;editlist_select_OR&gt;&gt;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;multiple&gt;match[]]&quot; value=&quot;[enlist&lt;AND&gt;]&quot; emptyValue=&quot;[enlist&lt;OR&gt;]&quot; &gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[yes]]&quot;  value=&lt;&lt;search&gt;&gt;      emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
 &lt;$set name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
@@ -10978,6 +10981,8 @@ in
    &lt;/$keyboard&gt;
 &lt;/div&gt;
 \end
+\define editlist_select_OR()  &lt;$list filter=&quot;[enlist&lt;val&gt;sort[]]&quot; variable=&quot;val&quot;&gt; &lt;&lt;editlist_select_AND&gt;&gt; &lt;/$list&gt;
+\define editlist_select_AND() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
