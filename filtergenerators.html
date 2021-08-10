@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210809233502557" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210810022320183" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10959,11 +10959,14 @@ in
 &lt;$set name=&quot;exclude&quot; filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input[]] :filter[tagging[]count[]match[1]]&quot;&gt; 
 &lt;$set name=&quot;all&quot;     filter=&quot;[subfilter&lt;filter&gt;] -[enlist&lt;exclude&gt;]&quot;&gt;
 &lt;$set name=&quot;total&quot;   filter=&quot;[enlist&lt;all&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;case&quot;    filter=&quot;[&lt;find&gt;match[OR]] [&lt;find&gt;match[AND]]&quot; value=&quot;casesensitive&quot; emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;case&quot;    filter=&quot;[&lt;find&gt;match[MATCH]] [&lt;find&gt;match[OR]] [&lt;find&gt;match[AND]]&quot; value=&quot;casesensitive&quot; emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;find&quot;    filter=&quot;[&lt;find&gt;lowercase[]]&quot;&gt;
+&lt;$set name=&quot;match&quot;   filter=&quot;[&lt;find&gt;match[match]]&quot; value=&quot;literal&quot; emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;flags&quot;   filter=&quot;[&lt;match&gt;!match[]] [&lt;case&gt;!match[]] +[join[,]]&quot;&gt;
 &lt;$wikify name=&quot;or&quot;        text=&lt;&lt;editlist_select_or&gt;&gt;&gt;
 &lt;$wikify name=&quot;and&quot;       text=&lt;&lt;editlist_select_and&gt;&gt;&gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match:caseinsensitive[or]]&quot;  value=&quot;[enlist&lt;or&gt;]&quot;  emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
-&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match:caseinsensitive[and]]&quot; value=&quot;[enlist&lt;and&gt;]&quot; emptyValue=&lt;&lt;search&gt;&gt;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[or]]&quot;                       value=&quot;[enlist&lt;or&gt;]&quot;  emptyValue=&quot;[enlist&lt;all&gt;]&quot;&gt;
+&lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[and]] [&lt;find&gt;match[match]]&quot; value=&quot;[enlist&lt;and&gt;]&quot; emptyValue=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
 &lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
@@ -10974,6 +10977,7 @@ in
    &lt;div class=&quot;editlist_popup_heading_$(id)$&quot;&gt;
       &lt;$text text={{{ [&lt;total&gt;addsuffix[ items]] }}}/&gt;
       &lt;$text text={{{ [&lt;total&gt;!match&lt;found&gt;then[, ]addsuffix&lt;found&gt;addsuffix[ matches]] }}}/&gt;
+      &lt;$text text={{{ [&lt;total&gt;match&lt;found&gt;then&lt;find&gt;!match[]then[, 0 matches]]          }}}/&gt;
    &lt;/div&gt;
    &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
    &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
@@ -10983,7 +10987,7 @@ in
 &lt;/div&gt;
 \end
 \define editlist_select_or()  &lt;$list filter=&quot;[enlist&lt;val&gt;sort[]]&quot; variable=&quot;val&quot;&gt; &lt;&lt;editlist_select_and&gt;&gt; &lt;/$list&gt;
-\define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(case)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
+\define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(flags)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
