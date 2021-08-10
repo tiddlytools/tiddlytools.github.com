@@ -10897,7 +10897,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210810013353059" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210810083801316" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10921,11 +10921,13 @@ columns:
 &lt;&lt;&lt;
 ''The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget.''  It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
 
-Some optional features include:
+Some optional parameters include:
 
-* The `find:...` parameter ''progressively filters the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
-* The `confirm:yes` parameter provides save/cancel/clear buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
-* The `goto:yes` parameter lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:yes`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
+* `find:...` ''progressively filters the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
+* `confirm:yes` provides save/cancel buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
+* `goto:yes` lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:...`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
+* `listwidth:fit` and `stretch:fit` automatically ''set the width of the select list control to match its widest item''.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
+* `colors:yes` recognizes list items that are color values ''displays the color as the item's background'', allowing you to preview the color itself, rather than just selecting a color name or RGB value.
 &lt;&lt;&lt;
 
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Parameters&lt;/h1&gt;
