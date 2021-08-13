@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>TiddlyTools/Time/Clocks</li>
 
+<li>TiddlyTools/Time/ConvertDate</li>
+
 <li>TiddlyTools/Time/CountDown</li>
 
 <li>TiddlyTools/Time/EditDate</li>
@@ -285,7 +287,7 @@ Error message and password prompt
 <div button="start" caption="Timer Example" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20210628154743529" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/SampleTimer" totallist="6.52 36.256 43.475 49.557">
 <pre>@@display:inline-block;&lt;&lt;timer_buttons&gt;&gt; &lt;&lt;timer_elapsed&gt;&gt; &lt;&lt;timer_total&gt;&gt; &lt;&lt;timer_history&gt;&gt;@@</pre>
 </div>
-<div created="20201002222557507" modified="20210730115326273" title="$:/config/TimestampDisable">
+<div created="20201002222557507" modified="20210813214444693" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10162,55 +10164,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home]]
-# [[$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp]]
-# [[$:/config/TiddlyTools/Time]]
-# [[$:/config/Timers/SampleTimer]]
-# [[$:/config/TimestampDisable]]
-# [[$:/DefaultTiddlers]]
-# [[$:/isEncrypted]]
-# [[$:/SiteSubtitle]]
-# [[$:/SiteTitle]]
-# [[$:/status/RequireReloadDueToPluginChange]]
-# [[$:/themes/tiddlywiki/snowwhite]]
-# [[$:/themes/tiddlywiki/vanilla]]
-# [[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]]
-# [[$:/themes/tiddlywiki/vanilla/settings/editorfontfamily]]
-# [[Albert Einstein (1879-1955)]]
-# [[Canada_Holidays.ics]]
-# [[Carl Sagan (1934-1996)]]
-# [[EditDateExample]]
-# [[Marie Curie (1867-1934)]]
-# [[Neil deGrasse Tyson (1958-)]]
-# [[PersonalEvents]]
-# [[SampleAlarms]]
-# [[SampleCountdown]]
-# [[SampleSequence]]
-# [[SampleTimeline]]
-# [[SampleTimers]]
-# [[Summer Science Symposium 2020]]
-# [[Summer Science Symposium 2021]]
-# [[TiddlyTools/Time/action-timeout.js]]
-# [[TiddlyTools/Time/Alarms]]
-# [[TiddlyTools/Time/AutoSaver]]
-# [[TiddlyTools/Time/Calendar]]
-# [[TiddlyTools/Time/Clocks]]
-# [[TiddlyTools/Time/CountDown]]
-# [[TiddlyTools/Time/EditDate]]
-# [[TiddlyTools/Time/Events]]
-# [[TiddlyTools/Time/Info]]
-# [[TiddlyTools/Time/Places]]
-# [[TiddlyTools/Time/Places/Standard]]
-# [[TiddlyTools/Time/Places/Summer]]
-# [[TiddlyTools/Time/Setup]]
-# [[TiddlyTools/Time/SidebarCalendar]]
-# [[TiddlyTools/Time/SidebarClocks]]
-# [[TiddlyTools/Time/Ticker]]
-# [[TiddlyTools/Time/Timers]]
-# [[TiddlyTools/Time/WorldClocks]]
-# [[UK_Holidays.ics]]
-# [[UN_Holidays.ics]]
-# [[US_Holidays.ics]]</pre>
+# [[TiddlyTools/Macros/convertdate.js]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10233,7 +10187,7 @@ SampleSequence</pre>
 <div created="20210705224417963" modified="20210705224417963" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div created="20210705091059720" modified="20210706042242577" title="$:/state/tab/sidebar--595412856">
+<div created="20210705091059720" modified="20210813214557291" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -12491,6 +12445,49 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;&lt;clock analog&gt;&gt;&lt;br&gt;&lt;&lt;clock digital&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div created="20210813204917931" modified="20210813213833939" module-type="macro" tags="" title="TiddlyTools/Time/ConvertDate" type="application/javascript">
+<pre>/*\
+title:TiddlyTools/Time/ConvertDate
+type: application/javascript
+module-type: macro
+source: https://TiddlyTools.com/timer.html
+author: Eric Shulman
+
+Macro to convert a formatted date to another format
+
+Usage: &lt;&lt;convertdate from:inputdate to:outputformat&gt;&gt;
+
+* The input date can use any date format recognized by the Javascript Date.parse() function.
+* Generally this conforms to ISO 8601 standard date format (see https://en.wikipedia.org/wiki/ISO_8601]]).
+* The output format uses TiddlyWiki Date Format codes (see https://tiddlywiki.com/#DateFormat), and defaults to &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;.
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+&quot;use strict&quot;;
+
+/*
+Information about this macro
+*/
+
+exports.name = &quot;convertdate&quot;;
+
+exports.params = [
+	{name: &quot;from&quot;},
+	{name: &quot;to&quot;}
+];
+
+/*
+Run the macro
+*/
+exports.run = function(date,format) {
+	return $tw.utils.formatDateString(new Date(from),to || &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;);
+};
+
+})();</pre>
+</div>
 <div created="20200725211229080" modified="20200924032239927" tags="" title="TiddlyTools/Time/CountDown">
 <pre>\define temp() $:/temp/time/countdown/$(here)$
 
@@ -12742,9 +12739,9 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210730115953719" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210813214003356" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
-\define tids()    [prefix[TiddlyTools/Time]] +[!sort[modified]] [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]] 
+\define tids()    [prefix[TiddlyTools/Time]sort[]] [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]] 
 \define popup()   $:/state/popup/package/time
 \define package()
 ''This package contains &lt;$count filter=&lt;&lt;tids&gt;&gt;/&gt; tiddlers.''
@@ -12753,7 +12750,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 \end
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
-|  source|''http://TiddlyTools.com/timer.html''|
+|  source|''https://TiddlyTools.com/timer.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
 
 &lt;&lt;package&gt;&gt;
@@ -13005,7 +13002,16 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * Note: if the custom action tiddler does not exist when the alarm is triggered, the title of the custom action tiddler will be shown as text in a message box.
 @@
 &lt;&lt;&lt;
+!! [[TiddlyTools/Time/ConvertDate]]
+&lt;&lt;&lt;
+''Defines a Javascript macro that converts date-formatted text to another date format''
 
+@@.resize
+* To convert a date to a different format, use `&lt;&lt;convertdate from:inputdate to:outputformat&gt;&gt;`.
+* The input date can use any date format recognized by the Javascript Date.parse() function.  Generally this conforms to [[ISO 8601 standard date format|https://en.wikipedia.org/wiki/ISO_8601]].
+* The output format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], and defaults to `[UTC]YYYY0MM0DD0hh0mm0ss0XXX`.
+@@
+&lt;&lt;&lt;
 !! [[TiddlyTools/Time/EditDate]]
 &lt;&lt;&lt;
 ''Displays a text input field with &quot;edit-in-place&quot; buttons and a popup monthly calendar to select a date.''
