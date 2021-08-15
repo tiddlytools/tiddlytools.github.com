@@ -157,6 +157,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -193,7 +195,7 @@ Error message and password prompt
 
 <li>TiddlyTools/Settings/Colors/X11Names</li>
 
-<li>TryIt</li>
+<li>TiddlyTools/Time/Calendar</li>
 
 </ul>
 </p>
@@ -225,7 +227,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210810032244343" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210815040410184" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10097,6 +10099,11 @@ Error message and password prompt
 TiddlyTools/Macros/edit-list
 TiddlyTools/Macros/edit-list-vars</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[TiddlyTools/Time/Calendar]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10115,7 +10122,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210815041653340" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210815041653340" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10233,7 +10240,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210810022320183" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210815025711852" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10255,7 +10262,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!---------------&gt;
 &lt;$vars
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
-     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
+     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;        type=&quot;&quot;&quot;$type$&quot;&quot;&quot; width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
   listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
@@ -10303,11 +10310,12 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!-- STYLES AND CONTROLS --&gt;
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
+&lt;$vars calendar={{{ [[TiddlyTools/Time/Calendar]is[tiddler]then&lt;type&gt;match:caseinsensitive[calendar]then[yes]] }}}&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
      style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;&lt;editlist_select&gt;&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot; emptyMessage=&lt;&lt;editlist_select&gt;&gt;&gt; &lt;&lt;editlist_calendar&gt;&gt; &lt;/$list&gt;
 &lt;/div&gt;
 \end
 
@@ -10324,6 +10332,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { min-width:$(width)$; width:$(listwidth)$ !important; overflow-y:auto; font-size:$(fontsize)$; }
+   .editlist_popup_calendar_$(id)$        { font-size:$(fontsize)$; }
    .editlist_wrapper_$(id)$              .fadeIn { opacity:0; }
    .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; }
    .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; } /* https://www.caniuse.com/css-focus-within */
@@ -10384,8 +10393,8 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 \define editlist_popup()
 \whitespace trim
-&lt;!-- IF FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;calendar&gt;!match[]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10450,13 +10459,41 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \define editlist_select_or()  &lt;$list filter=&quot;[enlist&lt;val&gt;sort[]]&quot; variable=&quot;val&quot;&gt; &lt;&lt;editlist_select_and&gt;&gt; &lt;/$list&gt;
 \define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(flags)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
+\define editlist_calendar(format:&quot;YYYY/0MM/0DD&quot;)
+&lt;style&gt;.editdate_format { width:100%; }&lt;/style&gt;
+&lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
+&lt;$vars showday=&lt;&lt;editlist_selectday&gt;&gt; format=&quot;$format$&quot; thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
+&lt;$vars inputid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars yyyy={{{ [&lt;inputid&gt;get[year]else&lt;thisyear&gt;] }}} mm={{{ [&lt;inputid&gt;get[month]else&lt;thismonth&gt;] }}}&gt;
+&lt;$tiddler tiddler=&lt;&lt;inputid&gt;&gt; &gt;
+&lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;popup&quot; class=&quot;tc-popup-keep tc-block-dropdown editlist_popup_calendar_$(id)$&quot; style=&quot;line-height:100%;padding:0.5em;min-width:auto;&quot;&gt;
+   &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; view=&quot;edit&quot; /&gt;
+   &lt;br&gt;format:&lt;br&gt;
+   &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;inputid&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
+&lt;/$reveal&gt;
+\end
+
+\define editlist_selectday()
+\whitespace trim
+&lt;!-- OVERRIDE CALENDAR SHOWDAY() MACRO WITH SIMPLE &quot;SELECTDAY&quot; MACRO --&gt;
+&lt;$vars UTC=&quot;[UTC]&quot;&gt;&lt;$vars template={{{ [&lt;inputid&gt;get[format]else&lt;format&gt;addprefix&lt;UTC&gt;] }}}&gt;
+&lt;$wikify name=&quot;value&quot; text='&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;template&gt;&gt; /&gt;'&gt;
+&lt;$vars btnstyle={{{ [[display:inline !important;width:2.5em;height:2.5em;border:1px solid;background:]addsuffix&lt;foreground&gt;addsuffix[;]] }}}&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;btnstyle&gt;&gt;&gt;
+   &lt;span style={{{ [[color:]addsuffix&lt;numbers&gt;addsuffix[;]] }}}&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
+   &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tiddler&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;value&gt;&gt; /&gt;
+   &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;inputid&gt;&gt; $field=&quot;text&quot; $value=&lt;&lt;value&gt;&gt; /&gt;
+   &lt;$action-deletetiddler $filter=&quot;[&lt;popupid&gt;]&quot; /&gt;
+&lt;/$button&gt;
+\end
+
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
 |  source|''http://TiddlyTools.com/edit-list.html''|
 | updated|''&lt;$view field=&quot;modified&quot; format=&quot;date&quot; template=&quot;DDD, MMM DDth YYYY at 0hh12:0mm:0ssam&quot;/&gt;''|
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210810013449114" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210815022603005" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10866,7 +10903,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; type:date&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; type:password confirm:yes&gt;&gt;
 
-!!!field:text, list tags, listwidth, focuspopup, multiple
+!!!field:text, list tags, listwidth, focusPopup, multiple
 &lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listwidth:fit&gt;&gt;
 &lt;&lt;edit-list id:e tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listwidth:fit focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:f tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listwidth:fit focusPopup:yes multiple:yes&gt;&gt;
@@ -10879,7 +10916,7 @@ columns:
 &lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:AND   listheight:5 stretch:20em&gt;&gt;
 &lt;&lt;edit-list id:l tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:OR    listheight:5 stretch:100%&gt;&gt;
 
-!!!field:tags, list tags, focuspopup, stretch, find
+!!!field:tags, list tags, focusPopup, stretch, find
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit find:or&gt;&gt;
@@ -10888,7 +10925,13 @@ columns:
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
-!!!field:color, list colors/colornames, listsize, focuspopup, colors:yes, find, type:color
+!!!field:date, type:calendar, focusPopup, fontsize, confirm
+&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:date type:calendar&gt;&gt;
+&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes fontsize:70%&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes width:30em; fontsize:&quot;calc(30em * 0.0535)&quot;&gt;&gt;
+&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes fontsize:150% confirm:yes&gt;&gt;
+
+!!!field:color, list colors/colornames, listsize, focusPopup, colors:yes, find, type:color
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or type:color&gt;&gt;
 
@@ -10897,7 +10940,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210810083801316" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210815022510563" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10961,7 +11004,7 @@ Some optional parameters include:
 |stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `fit`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` and `listsize` are ignored.|
 |listsize    | `10`     |Maximum number of lines to display in a popup list before adding a scroll bar.|
-|fontsize    | `100%`   |Size of the font used to display the list items. Use a percentage or &lt;&lt;note_units&gt;&gt;.|
+|fontsize    | `100%`   |Size of the font used to display the popup list (or calendar, if using `type:calendar`). Use a percentage or &lt;&lt;note_units&gt;&gt;.|
 |colors      | `no`     |If `yes` and a list item is a &lt;&lt;note_colors&gt;&gt;, the item background will show the indicated color.|
 |multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.  See Notes.|
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes.|
@@ -10988,8 +11031,9 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 &lt;&lt;&lt;
 You can use the `type:...` parameter to ''display specialized kinds of input fields'' that apply formatting or limits to the text you can enter.  For example:
 
-* Use `type:date` and the input will be restricted to a standard date format and you can ''select a date from a system-provided popup calendar''.  Note that, based on your operating  system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).
-* Use `type:color` to ''select an RGB color value from a system-provided popup &quot;color picker&quot;''.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: ''`type:color` input controls can only show RGB color values''.  If a color name is selected, the `type:color` input control displays black, even though the field/index does contain a valid color name.
+* Use `type:color` to ''select an RGB color value from a system-provided popup &quot;color picker&quot;''.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: ''`type:color` input controls can only show RGB color values''.  If a color //name// is entered or selected, the input control will display black, even though the field/index contains a valid color name.&lt;p/&gt;
+* Use `type:date` to ''restrict the input to a standard date format'' or ''select a date from a system-provided popup calendar''.  Note that, depending upon your operating system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).&lt;p/&gt;
+* If [[TiddlyTools/Time/Calendar]] is installed in the same ~TiddlyWiki as [[TiddlyTools/Macros/edit-list]], you can use `type:calendar` to ''select a date from a custom calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, and tiddler changes. ​See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details.&lt;blockquote&gt;When using `type:calendar`, you can ''set the size of the calendar display'' with the `fontsize:...` parameter; e.g., `fontsize:150%`.&lt;p/&gt;''To have the calendar width match the input width'', use `fontsize:&quot;calc(width * 0.0535)&quot;`, where `width` is the value you provided in the corresponding `width:...` parameter; e.g., `width:30em fontsize:&quot;calc(30em * 0.0535)&quot;`. ''If the `width:...` is a percentage value'', use `fontsize:&quot;calc(width * 4.95)&quot;`; e.g., `width:25% fontsize:&quot;calc(25% * 4.95)&quot;`&lt;/blockquote&gt;
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
@@ -11256,8 +11300,870 @@ WhiteSmoke
 Yellow
 YellowGreen</pre>
 </div>
-<div title="TryIt">
-<pre></pre>
+<div created="20200902213051882" modified="20210630010147882" tags="" title="TiddlyTools/Time/Calendar">
+<pre>\define tt_time_config() $:/config/TiddlyTools/Time
+
+\define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
+\define calendar_colors_popup()        $:/state/popup/calendar/colors/$(currentTiddler)$
+\define calendar_events_menu_popup()   $:/state/popup/calendar/events/menu/$(currentTiddler)$
+\define calendar_events_delete_popup() $:/state/popup/calendar/events/delete/$(currentTiddler)$
+
+\define showyear(yyyy)
+&lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;month&quot;&gt;
+   &lt;$macrocall $name=&quot;showmonth&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;month&gt;&gt; view=&quot;year&quot;/&gt;
+   &lt;$list filter=&quot;[&lt;month&gt;remainder[4]match[0]]&quot; emptyMessage=&quot;&amp;emsp;&quot;&gt;&lt;p/&gt;&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define showmonth(yyyy,mm,view)
+@@display:inline-block;text-align:left;vertical-align:top;
+&lt;$vars   order={{{ [&lt;tt_time_config&gt;get[calendar_order]]        ~[[0 1 2 3 4 5 6]] }}}
+       numbers={{{ [&lt;tt_time_config&gt;get[calendar_numbers]]      ~[[Black;font-size:1.5em;font-weight:bold;]] }}}
+    background={{{ [&lt;tt_time_config&gt;get[calendar_background]]   ~[[LightGray]]   }}}
+    foreground={{{ [&lt;tt_time_config&gt;get[calendar_foreground]]   ~[[White]]       }}}
+       todaybg={{{ [&lt;tt_time_config&gt;get[calendar_today]]        ~[[Gold]]        }}}
+      timersbg={{{ [&lt;tt_time_config&gt;get[calendar_timers]]       ~[[LightYellow]] }}}
+      alarmsbg={{{ [&lt;tt_time_config&gt;get[calendar_alarms]]       ~[[OrangeRed]]   }}}
+      eventsbg={{{ [&lt;tt_time_config&gt;get[calendar_events]]       ~[[LightGreen]]  }}}
+     changesbg={{{ [&lt;tt_time_config&gt;get[calendar_changes]]      ~[[LightBlue]]   }}}
+    showtimers={{{ [&lt;tt_time_config&gt;get[calendar_showtimers]]   ~[[yes]]         }}}
+    showalarms={{{ [&lt;tt_time_config&gt;get[calendar_showalarms]]   ~[[yes]]         }}}
+    showevents={{{ [&lt;tt_time_config&gt;get[calendar_showevents]]   ~[[yes]]         }}}
+  showtiddlers={{{ [&lt;tt_time_config&gt;get[calendar_showtiddlers]] ~[[yes]]         }}}
+    showsystem={{{ [&lt;tt_time_config&gt;get[calendar_showsystem]]   ~[[no]]          }}}
+    showcustom={{{ [&lt;tt_time_config&gt;get[calendar_showcustom]]   ~[[no]]          }}}
+  customfilter={{{ [&lt;tt_time_config&gt;get[calendar_customfilter]]                  }}}&gt;
+&lt;&lt;showheading &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;  &gt;&gt;
+&lt;!-- get tiddlers --&gt;
+&lt;$set name=&quot;tids&quot; filter=&quot;[&lt;showtiddlers&gt;match[yes]]&quot; value=&quot;[!is[system]]&quot;       emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;sys&quot;  filter=&quot;[&lt;showsystem&gt;match[yes]]&quot;   value=&quot;[is[system]]&quot;        emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;cust&quot; filter=&quot;[&lt;showcustom&gt;match[yes]]&quot;   value=&quot;[prefix[$:/config]]&quot; emptyValue=&quot;&quot;&gt;
+&lt;$set name=&quot;cust&quot; filter=&quot;[&lt;showcustom&gt;match[yes]then&lt;customfilter&gt;!match[]]&quot; value=&lt;&lt;customfilter&gt;&gt;  emptyValue=&lt;&lt;cust&gt;&gt;&gt;
+&lt;$set name=&quot;tiddlers&quot; filter=&quot;[subfilter&lt;tids&gt;] [subfilter&lt;sys&gt;] [subfilter&lt;cust&gt;]&quot;&gt;
+&lt;!-- get timers, alarms, and events for this year/month --&gt;
+&lt;$vars mm={{{ [[$mm$]addprefix[0]split[]last[2]join[]] }}}&gt; &lt;!-- ZERO PAD --&gt;
+&lt;$wikify     name=&quot;timers&quot;   text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;gettimers&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+&lt;$wikify     name=&quot;alarms&quot;   text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;getalarms&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+&lt;$wikify     name=&quot;events&quot;   text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;getevents&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; /&gt;&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=&quot;showgrid&quot; yyyy=&quot;$yyyy$&quot; mm=&lt;&lt;mm&gt;&gt; /&gt;
+\end
+
+\define showheading(yyyy,mm,view)
+\whitespace trim
+@@display:block;width:calc(2.5em * 7);white-space:nowrap;text-align:center;
+&lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
+   &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;&lt;showheading_next     &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+&lt;/$reveal&gt;
+&lt;&lt;showheading_title &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$view$&quot;&gt;&gt;
+&lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;edit&quot;&gt;
+      &lt;&lt;controls_settings &quot;tc-btn-invisible&quot; &quot;$view$&quot;&gt;&gt;
+   &lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;$list filter=&quot;[enlist&lt;order&gt;addprefix[$:/language/Date/Short/Day/]]&quot;&gt;
+   &lt;div style=&quot;display:inline-block;width:2.5em;&quot;&gt;
+      @@font-size:0.75em;line-height:100%;''&lt;$text text={{{ [&lt;currentTiddler&gt;get[text]] }}} /&gt;''@@
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define showheading_previous(yyyy,mm)
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:left;&quot; tooltip=&quot;view previous month&quot;&gt;
+   {{$:/core/images/chevron-left}}
+   &lt;$reveal default=&quot;$mm$&quot; type=&quot;gt&quot; text=&quot;1&quot;&gt;    &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [[$mm$]subtract[1]] }}} year=&quot;$yyyy$&quot; /&gt; &lt;/$reveal&gt;
+   &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;1&quot;&gt; &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;12&quot; year={{{ [[$yyyy$]subtract[1]] }}}   /&gt; &lt;/$reveal&gt;
+&lt;/$button&gt;
+\end
+
+\define showheading_next(yyyy,mm)
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;&quot; tooltip=&quot;view next month&quot;&gt;
+   {{$:/core/images/chevron-right}}
+   &lt;$reveal default=&quot;$mm$&quot; type=&quot;lt&quot; text=&quot;12&quot;&gt;    &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [[$mm$]add[1]] }}} year=&quot;$yyyy$&quot; /&gt; &lt;/$reveal&gt;
+   &lt;$reveal default=&quot;$mm$&quot; type=&quot;match&quot; text=&quot;12&quot;&gt; &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;1&quot; year={{{ [[$yyyy$]add[1]] }}}    /&gt; &lt;/$reveal&gt;
+&lt;/$button&gt;
+\end
+
+\define showheading_title(yyyy,mm,view)
+&lt;$vars tooltip={{{ [{!!month}match[]then[$view$]!match[sidebar]then[view this month]else[view entire year]] }}}&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:inline !important;&quot; tooltip=&lt;&lt;tooltip&gt;&gt;&gt;
+   ''&lt;$text text={{{ [[$mm$]addprefix[$:/language/Date/Long/Month/]get[text]] }}}/&gt;&amp;nbsp;$yyyy$''
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;sidebar&quot;&gt;
+      &lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt; &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;$mm$&quot; year=&quot;$yyyy$&quot; /&gt; &lt;/$reveal&gt;
+      &lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot;     year=&quot;$yyyy$&quot; /&gt; &lt;/$reveal&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default=&quot;$view$&quot; type=&quot;match&quot;   text=&quot;sidebar&quot;&gt;
+      &lt;$tiddler tiddler=&quot;TiddlyTools/Time/Calendar&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;calendar_input&gt;&gt; month=&quot;&quot; year=&quot;$yyyy$&quot; /&gt;
+      &lt;$action-navigate /&gt;
+      &lt;/$tiddler&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
+\end
+
+\define showgrid(yyyy,mm)
+\whitespace trim
+@@display:inline-block;white-space:nowrap;border:1px solid;background:$(background)$;
+&lt;!-- day number for first of the month --&gt;
+&lt;$vars date={{{ [[$yyyy$$mm$]addsuffix[01]] }}}&gt;
+&lt;$wikify name=&quot;first&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]ddd&quot; /&gt;&quot;&quot;&quot;&gt;
+&lt;$set    name=&quot;first&quot; filter=&quot;[enlist&lt;order&gt;addprefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]]&quot;&gt;
+&lt;!-- days per month... adjust for leap year --&gt;
+&lt;$vars dpm={{{ [[$yyyy$]remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
+&lt;$vars  dm={{{ [&lt;dpm&gt;split[ ]nth[$mm$]] }}}&gt; &lt;!-- days in this month --&gt;
+&lt;!-- grid --&gt;
+&lt;$list filter=&quot;[range&lt;first&gt;]&quot;&gt;
+   @@display:inline-block;width:2.5em;height:1px;&lt;!-- SPACER --&gt;@@
+&lt;/$list&gt;
+&lt;$list filter=&quot;[range&lt;dm&gt;]&quot; variable=&quot;dd&quot;&gt;
+   &lt;$vars      day={{{ [&lt;dd&gt;addprefix[0]split[]last[2]join[]]   }}}&gt; &lt;!-- ZERO PAD --&gt;
+   &lt;$vars     date={{{ [[$yyyy$$mm$]addsuffix&lt;day&gt;]             }}}&gt;
+   &lt;&lt;showday&gt;&gt;
+   &lt;$list filter=&quot;[&lt;dd&gt;add&lt;first&gt;remainder[7]match[0]]&quot;&gt;&lt;br&gt;&lt;/$list&gt;
+   &lt;/$vars&gt;&lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+
+\define showday()
+\whitespace trim
+&lt;$vars thisdate={{{ [&lt;date&gt;addsuffix[120000000]] }}}&gt;
+&lt;!-- journal title/tags/text --&gt;
+&lt;$vars journalTitle={{$:/config/NewJournal/Title}} journalTags={{$:/config/NewJournal/Tags!!tags}} journalText={{$:/config/NewJournal/Text}}&gt;
+&lt;$wikify name=&quot;journalTitle&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;thisdate&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;journalTitle&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;!-- today's events and changes --&gt;
+&lt;$wikify name=&quot;todays_timers&quot;   text=&lt;&lt;matchitems timers&gt;&gt;&gt;
+&lt;$wikify name=&quot;todays_alarms&quot;   text=&lt;&lt;matchitems alarms&gt;&gt;&gt;
+&lt;$wikify name=&quot;todays_events&quot;   text=&lt;&lt;matchitems events&gt;&gt;&gt;
+&lt;$set name=&quot;created&quot;          filter=&quot;[enlist&lt;tiddlers&gt;sameday:created&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;sort[]]&quot;&gt;
+&lt;$set name=&quot;modified&quot;         filter=&quot;[enlist&lt;tiddlers&gt;sameday:modified&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;!sort[modified]]&quot;&gt;
+&lt;!-- grid button styles and tooltip --&gt;
+&lt;$vars todays_date=&lt;&lt;now &quot;YYYY0MM0DD&quot;&gt;&gt;&gt;
+&lt;$set    name=&quot;haschanges&quot;    filter=&quot;[&lt;created&gt;!match[]] [&lt;modified&gt;!match[]] [&lt;journalTitle&gt;is[tiddler]]&quot;&gt;
+&lt;$set    name=&quot;changesbg&quot;     filter=&quot;[&lt;haschanges&gt;!match[]]&quot;          value={{{ [[background:]addsuffix&lt;changesbg&gt;addsuffix[;text-decoration:underline;]] }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;eventsbg&quot;      filter=&quot;[&lt;todays_events&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;eventsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;timersbg&quot;      filter=&quot;[&lt;todays_timers&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;timersbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;alarmsbg&quot;      filter=&quot;[&lt;todays_alarms&gt;trim[]!match[]]&quot; value={{{ [[background:]addsuffix&lt;alarmsbg&gt;addsuffix[;]]  }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;todaybg&quot;       filter=&quot;[&lt;todays_date&gt;match&lt;date&gt;]&quot;      value={{{ [[background:]addsuffix&lt;todaybg&gt;addsuffix[;]]   }}} emptyValue=&quot;&quot;&gt;
+&lt;$set    name=&quot;todays_events&quot; filter=&quot;[enlist&lt;todays_events&gt;sort[]]&quot;&gt;
+&lt;$wikify name=&quot;colors&quot;          text=&quot;&lt;$list filter=&lt;&lt;todays_events&gt;&gt;&gt;{{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]] }}} &lt;/$list&gt;&quot;&gt;
+&lt;$set    name=&quot;eventsbg&quot;      filter=&quot;[enlist&lt;colors&gt;first[]addprefix[background:]addsuffix[;]else&lt;eventsbg&gt;]&quot;&gt;
+&lt;$vars   btnstyle={{{ [[width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]] }}}&gt;
+&lt;$vars   btnstyle={{{ [&lt;btnstyle&gt;addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;timersbg&gt;addsuffix&lt;alarmsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
+&lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
+&lt;!-- show button/popup --&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
+   &lt;span style=&quot;color:$(numbers)$;&quot;&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
+   position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot;&gt;
+   @@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
+   @@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
+   &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+   &lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+         @@display:block;max-height:$(popup_maxheight)$;overflow:auto;
+            &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
+         @@
+      &lt;/div&gt;
+   &lt;/$list&gt;
+&lt;/$reveal&gt;
+\end
+
+\define showday_viewjournal()
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:inline;width:auto;padding:0;font-size:120%;&quot; to=&lt;&lt;journalTitle&gt;&gt; tooltip=&quot;view Journal&quot;&gt;
+   ''__&lt;&lt;journalTitle&gt;&gt;__''
+&lt;/$button&gt;
+\end
+
+\define showday_editjournal()
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:inline;width:auto;padding:0 0.5em;&quot; tooltip=&quot;edit Journal&quot;&gt;
+   {{$:/core/images/edit-button}}
+   &lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
+      &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text={{{ [&lt;journalTitle&gt;get[]] }}}/&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal type=&quot;match&quot; state=&lt;&lt;journalTitle&gt;&gt; text=&quot;&quot;&gt;
+      &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;journalTitle&gt;&gt; tags=&lt;&lt;journalTags&gt;&gt; text=&lt;&lt;journalText&gt;&gt;/&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
+\end
+
+\define showday_addevent()
+&lt;&lt;controls_events_new id:&quot;/showday&quot; class:&quot;tc-button tt-button&quot; style:&quot;padding:0 0.25em !important;width:auto;&quot; tooltip:&quot;add an event&quot;&gt;&gt;
+\end
+
+\define showday_items(type)
+&lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;limit[1]]&quot;&gt;
+   ''$type$:'' (&lt;$count filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;/&gt;)&lt;br&gt;
+   &lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;&gt;
+      &lt;$vars this_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
+      &lt;$vars this_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
+      &lt;$link to={{{ [&lt;this_link&gt;!match[]else&lt;this_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
+         @@font-style:normal;&lt;$text text=&lt;&lt;this_text&gt;&gt;/&gt;@@
+      &lt;/$link&gt;
+      &lt;/$vars&gt;
+      &lt;/$vars&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define showday_created()
+&lt;$list filter=&quot;[enlist&lt;created&gt;limit[1]]&quot;&gt;
+   ''created:'' (&lt;$count filter=&quot;[enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
+   &lt;$list filter=&quot;[enlist&lt;created&gt;]&quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define showday_modified()
+&lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;limit[1]]&quot;&gt;
+   ''modified:'' (&lt;$count filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
+   &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;] &quot;&gt; &lt;$link tooltip=&quot;view tiddler&quot;/&gt; &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define gettimers(yyyy,mm)
+\import TiddlyTools/Time/Timers
+&lt;$reveal default=&lt;&lt;showtimers&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+&lt;$list filter=&quot;[!has[draft.of]has[startlist]has[stoplist]]&quot;&gt;
+   &lt;$vars timer_name={{{ [&lt;currentTiddler&gt;removeprefix&lt;timer_config&gt;removeprefix[/]] }}} timer_count={{{ [enlist{!!startlist}count[]] }}}&gt;
+   &lt;$list filter=&quot;[range&lt;timer_count&gt;]&quot; variable=&quot;item&quot;&gt;
+      &lt;$vars date={{{ [enlist{!!startlist}nth&lt;item&gt;split[]first[8]join[]] }}}
+            start={{{ [enlist{!!startlist}nth&lt;item&gt;]   }}}
+             stop={{{ [enlist{!!stoplist}nth&lt;item&gt;]    }}}&gt;
+      ``[[``&lt;&lt;date&gt;&gt;;&lt;&lt;currentTiddler&gt;&gt;;&lt;&lt;timer_name&gt;&gt; &lt;$view tiddler=&lt;&lt;start&gt;&gt; field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt;-&lt;$view tiddler=&lt;&lt;stop&gt;&gt;  field=title format=&quot;date&quot; template=&quot;[UTC]0hh:0mm:0ss&quot;/&gt;|&lt;&lt;currentTiddler&gt;&gt;``]]``&lt;br&gt;
+      &lt;/$vars&gt;
+   &lt;/$list&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+
+\define getalarms(yyyy,mm)
+&lt;$reveal default=&lt;&lt;showalarms&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+&lt;$list filter=&quot;[!has[draft.of]has[alarms]]&quot;&gt;
+   &lt;$vars alarms_source={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] }}}&gt;
+   &lt;$list filter=&quot;[enlist{!!alarms}]&quot; variable=&quot;this_alarm&quot;&gt;
+      &lt;$vars freq={{{ [&lt;this_alarm&gt;split[;]nth[1]] }}}
+             date={{{ [&lt;this_alarm&gt;split[;]nth[2]split[-]join[]] }}}
+             time={{{ [&lt;this_alarm&gt;split[;]nth[3]] }}}
+              msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
+      &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;once&quot;&gt;
+         ``[[``&lt;&lt;date&gt;&gt;;&lt;&lt;currentTiddler&gt;&gt;;&lt;&lt;time&gt;&gt; &lt;&lt;msg&gt;&gt;|&lt;&lt;currentTiddler&gt;&gt;``]]``&lt;br&gt;
+      &lt;/$reveal&gt;
+      &lt;/$vars&gt;
+   &lt;/$list&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+
+\define getevents(yyyy,mm)
+&lt;!-- if yyyy and mm are omitted, gets ALL events --&gt;
+&lt;$reveal default=&lt;&lt;showevents&gt;&gt; type=&quot;match&quot; text=&quot;yes&quot;&gt;
+&lt;$list filter=&quot;[tag[events]!has[draft.of]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot; variable=&quot;event_source&quot;&gt;
+      &lt;&lt;getevents_listed &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[suffix[.ics]!has[draft.of]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot; variable=&quot;event_source&quot;&gt;
+      &lt;&lt;getevents_ics &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[timeline]!has[draft.of]]&quot;&gt;
+   &lt;$list filter=&quot;[&lt;tt_time_config&gt;tag&lt;currentTiddler&gt;then&lt;currentTiddler&gt;]&quot; variable=&quot;event_source&quot;&gt;
+      &lt;&lt;getevents_timeline &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
+   &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define getevents_listed(yyyy,mm,convert)
+&lt;$vars eventlist={{{ [&lt;event_source&gt;get[caption]else&lt;event_source&gt;] }}}&gt;
+&lt;$vars eventlist={{{ [&lt;event_source&gt;!match[TiddlyTools/Time/Events]then&lt;eventlist&gt;addsuffix[: ]] }}}&gt;
+&lt;$wikify name=&quot;eventdata&quot; text={{{ [&lt;event_source&gt;get[text]] }}} mode=&quot;inline&quot;&gt;
+&lt;$list filter=&quot;[&lt;eventdata&gt;splitregexp[\n]trim[]!match[]]&quot; variable=&quot;line&quot;&gt;
+   &lt;$vars event_date={{{ [&lt;line&gt;split[;]nth[1]] }}}&gt;
+   &lt;$vars event_text={{{ [&lt;line&gt;split[;]nth[2]] }}}&gt;
+   &lt;$list filter=&quot;[&lt;event_date&gt;prefix[....$mm$]] [&lt;event_date&gt;prefix[$yyyy$$mm$]] +[limit[1]]&quot; variable=&quot;thismonth&quot;&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_source&gt;&gt;;&lt;&lt;eventlist&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+\end
+
+\define getevents_ics(yyyy,mm,convert)
+&lt;!-- get ICS calendar events --&gt;
+&lt;$vars calname={{{ [&lt;event_source&gt;get[text]split[X-WR-CALNAME:]rest[]splitregexp[\n|\r]first[]trim[]addsuffix[: ]] }}}&gt;
+&lt;$list filter=&quot;[&lt;event_source&gt;get[text]split[BEGIN:VEVENT]rest[]trim[]]&quot; variable=&quot;event&quot;&gt;
+   &lt;$set name=&quot;lines&quot; filter=&quot;[&lt;event&gt;splitregexp[\n|\r]!match[]trim[]]&quot;&gt;
+   &lt;$vars event_date={{{ [enlist&lt;lines&gt;removeprefix[DTSTART]split[:]rest[]split[]first[8]join[]!match[]] }}}&gt;
+   &lt;$vars event_text={{{ [enlist&lt;lines&gt;removeprefix[SUMMARY:]] }}}&gt;
+   &lt;$list filter=&quot;[&lt;event_date&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_source&gt;&gt;;&lt;&lt;calname&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+\end
+
+\define getevents_timeline(yyyy,mm,convert)
+&lt;$vars timeline={{{ [&lt;event_source&gt;get[caption]else&lt;event_source&gt;] }}}&gt;
+&lt;$list filter=&quot;[all[]tag&lt;event_source&gt;!has[draft.of]!title&lt;tt_time_config&gt;has[timeline.start]]&quot; variable=&quot;event&quot;&gt;
+   &lt;$vars start={{{ [&lt;event&gt;get[timeline.start]]          }}}&gt;
+   &lt;$vars   end={{{ [&lt;event&gt;get[timeline.end]else&lt;start&gt;] }}}&gt;
+   &lt;$vars  type={{{ [&lt;event&gt;get[timeline.type]]           }}}&gt;
+   &lt;$list filter=&quot;[&lt;end&gt;length[]match[4]] [&lt;type&gt;match[annual]] +[limit[1]]&quot; variable=&quot;annual&quot;&gt;
+      &lt;&lt;getevents_timeline_annual &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$convert$&quot;&gt;&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;end&gt;length[]!match[4]then&lt;type&gt;!match[annual]]&quot;          variable=&quot;range&quot; &gt;
+      &lt;&lt;getevents_timeline_range  &quot;$yyyy$&quot; &quot;$mm$&quot; &quot;$convert$&quot;&gt;&gt;
+   &lt;/$list&gt;
+\end
+
+\define getevents_timeline_annual(yyyy,mm,convert)
+&lt;$vars start={{{ [&lt;start&gt;split[]first[4]join[]]        }}}
+         end={{{ [&lt;end&gt;split[]first[4]join[]]          }}}
+           M={{{ [&lt;start&gt;split[]rest[4]first[2]join[]] }}}
+           D={{{ [&lt;start&gt;split[]rest[6]first[2]join[]] }}}&gt;
+&lt;$list filter=&lt;&lt;getevents_timeline_years&gt;&gt; variable=&quot;Y&quot;&gt;
+   &lt;$list filter=&quot;[&lt;Y&gt;addsuffix&lt;M&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+      &lt;$vars event_text={{{ [&lt;event&gt;get[caption]else&lt;event&gt;] }}}&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;event_source&gt;&gt;;&lt;&lt;timeline&gt;&gt;: &lt;&lt;event_text&gt;&gt;|&lt;&lt;event&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+      &lt;$reveal default=&quot;$convert$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+\end
+\define getevents_timeline_years() [range[$(start)$,$(end)$]]
+
+\define getevents_timeline_range(yyyy,mm,convert)
+&lt;$vars start={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]first[]] }}}
+         end={{{ [&lt;start&gt;] [&lt;end&gt;] +[sort[]last[]] }}}&gt;
+&lt;$vars YS={{{ [&lt;start&gt;split[]first[4]join[]]                   }}}
+       MS={{{ [&lt;start&gt;split[]rest[4]first[2]join[]multiply[1]] }}}
+       DS={{{ [&lt;start&gt;split[]rest[6]first[2]join[]multiply[1]] }}}
+       YE={{{ [&lt;end&gt;split[]first[4]join[]]                     }}}
+       ME={{{ [&lt;end&gt;split[]rest[4]first[2]join[]multiply[1]]   }}}
+       DE={{{ [&lt;end&gt;split[]rest[6]first[2]join[]multiply[1]]   }}}&gt;
+&lt;$list filter=&lt;&lt;getevents_timelineY&gt;&gt; variable=&quot;Y&quot;&gt;
+   &lt;$vars DPM={{{ [&lt;Y&gt;remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
+   &lt;$vars M1={{{ [&lt;Y&gt;match&lt;YS&gt;then&lt;MS&gt;else[1]] }}} M2={{{ [&lt;Y&gt;match&lt;YE&gt;then&lt;ME&gt;else[12]] }}}&gt;
+   &lt;$list filter=&lt;&lt;getevents_timelineM&gt;&gt; variable=&quot;M&quot;&gt;
+      &lt;$vars DM={{{ [&lt;DPM&gt;split[ ]nth&lt;M&gt;] }}}&gt; &lt;!-- days in this month --&gt;
+      &lt;$vars D1={{{ [&lt;Y&gt;match&lt;YS&gt;then&lt;M&gt;match&lt;MS&gt;then&lt;DS&gt;else[1]] }}} D2={{{ [&lt;Y&gt;match&lt;YE&gt;then&lt;M&gt;match&lt;ME&gt;then&lt;DE&gt;else&lt;DM&gt;] }}}&gt;
+      &lt;$list filter=&lt;&lt;getevents_timelineD&gt;&gt; variable=&quot;D&quot;&gt;
+         &lt;$vars M={{{ [&lt;M&gt;addprefix[0]split[]last[2]join[]] }}} D={{{ [&lt;D&gt;addprefix[0]split[]last[2]join[]] }}}&gt;
+         &lt;$list filter=&quot;[&lt;Y&gt;addsuffix&lt;M&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
+            &lt;$vars event_text={{{ [&lt;event&gt;get[caption]else&lt;event&gt;] }}}&gt;
+            &lt;$reveal default=&quot;$convert$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;event_source&gt;&gt;;&lt;&lt;timeline&gt;&gt;: &lt;&lt;event_text&gt;&gt;|&lt;&lt;event&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+            &lt;$reveal default=&quot;$convert$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; ``[[``&lt;&lt;Y&gt;&gt;&lt;&lt;M&gt;&gt;&lt;&lt;D&gt;&gt;;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
+\end
+\define getevents_timelineY() [range[$(YS)$,$(YE)$]]
+\define getevents_timelineM() [range[$(M1)$,$(M2)$]]
+\define getevents_timelineD() [range[$(D1)$,$(D2)$]]
+
+\define matchitems(type)
+&lt;$vars annual_date={{{ [&lt;date&gt;split[]rest[4]join[]addprefix[....]] }}}&gt;
+&lt;$list filter=&quot;[enlist&lt;$type$&gt;removeprefix&lt;date&gt;] [enlist&lt;$type$&gt;removeprefix&lt;annual_date&gt;]&quot;&gt;
+   ``[[``{{{ [&lt;currentTiddler&gt;removeprefix[;]] }}}``]]``&lt;br&gt;
+&lt;/$list&gt;
+\end
+
+\define controls_getyear(default:&quot;&lt;&lt;thisyear&gt;&gt;&quot;,placeholder:&quot;&lt;&lt;thisyear&gt;&gt;&quot;)
+\whitespace trim
+&lt;style&gt; .calEditYear { width:4em; text-align:center; } &lt;/style&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view previous year&quot;&gt;
+   {{$:/core/images/chevron-left}}
+   &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}multiply[1]!match[0]else&lt;thisyear&gt;subtract[1]addprefix[0000]split[]last[4]join[]] }}}/&gt;
+   &lt;/$tiddler&gt;
+&lt;/$button&gt;
+&amp;nbsp;
+&lt;$edit-text tag=&quot;input&quot; class=&quot;calEditYear&quot; tiddler=&lt;&lt;calendar_input&gt;&gt; field=&quot;year&quot; default=$default$ placeholder=$placeholder$ /&gt;
+&amp;nbsp;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view next year&quot;&gt;
+   {{$:/core/images/chevron-right}}
+   &lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+   &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;&quot; year={{{ [{!!year}multiply[1]!match[0]else&lt;thisyear&gt;add[1]addprefix[0000]split[]last[4]join[]] }}}/&gt;
+   &lt;/$tiddler&gt;
+&lt;/$button&gt;
+\end
+
+\define controls_getmonth()
+\whitespace trim
+&lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view previous month&quot;&gt;
+   {{$:/core/images/chevron-left}}
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;gt&quot; text=&quot;1&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [{!!month}!match[]else&lt;thismonth&gt;subtract[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;1&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;12&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;subtract[1]] }}}/&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
+&amp;nbsp;
+&lt;$select field=&quot;month&quot; default=&quot;&quot;&gt;
+   &lt;$list filter=&quot;[range[1,12]]&quot;&gt;
+      &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+         {{{ [&lt;currentTiddler&gt;addprefix[$:/language/Date/Long/Month/]get[text]] }}}
+      &lt;/option&gt;
+   &lt;/$list&gt;
+&lt;/$select&gt;
+&amp;nbsp;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;view next month&quot;&gt;
+   {{$:/core/images/chevron-right}}
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;lt&quot; text=&quot;12&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month={{{ [{!!month}!match[]else&lt;thismonth&gt;add[1]] }}} year={{{ [{!!year}!match[]else&lt;thisyear&gt;] }}} /&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal default={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} type=&quot;match&quot; text=&quot;12&quot;&gt;
+      &lt;$action-setfield $timestamp=&quot;no&quot; month=&quot;1&quot; year={{{ [{!!year}!match[]else&lt;thisyear&gt;add[1]] }}}/&gt;
+   &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;/$tiddler&gt;
+\end
+
+\define controls_reset()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;reset&quot;&gt;
+   {{$:/core/images/close-button}}
+   &lt;$action-deletefield $tiddler=&lt;&lt;calendar_input&gt;&gt; month year /&gt;
+&lt;/$button&gt;
+\end
+
+\define controls_changes()
+&lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_changes]] ~[[LightBlue]] }}}&gt;
+@@float:right;&lt;&lt;controls_colors &quot;changes&quot; &quot;calendar_changes&quot;&gt;&gt;@@
+&lt;$checkbox field=&quot;calendar_showchanges&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
+     checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; calendar_showtiddlers=&quot;yes&quot; calendar_showsystem=&quot;no&quot; calendar_showcustom=&quot;no&quot;/&gt;&quot;&quot;&quot;
+   uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; calendar_showtiddlers=&quot;no&quot;  calendar_showsystem=&quot;no&quot; calendar_showcustom=&quot;no&quot;/&gt;&quot;&quot;&quot;&gt;
+   ''Tiddler changes:''
+&lt;/$checkbox&gt;
+@@display:block;margin-left:1em;
+&lt;$checkbox field=&quot;calendar_showtiddlers&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt; show tiddler changes  &lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox field=&quot;calendar_showsystem&quot; default=&quot;no&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;    show system changes   &lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox field=&quot;calendar_showcustom&quot; default=&quot;no&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;    show filtered changes &lt;/$checkbox&gt;&lt;br&gt;
+&lt;$reveal default={{!!calendar_showcustom}} type=&quot;match&quot; text=&quot;yes&quot;&gt;
+   &lt;style&gt; .calEditCustom { width:100%; } &lt;/style&gt;
+   &lt;$edit-text tag=&quot;input&quot; class=&quot;calEditCustom&quot; field=&quot;calendar_customfilter&quot; default=&quot;[prefix[$:/config]]&quot; placeholder=&quot;[prefix[$:/config]]&quot;/&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_alarms()
+&lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_alarms]] ~[[LightGreen]] }}}&gt;
+@@float:right;&lt;&lt;controls_colors &quot;alarms&quot; &quot;calendar_alarms&quot;&gt;&gt;@@
+&lt;$checkbox field=&quot;calendar_showalarms&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;
+   ''Alarms:''
+&lt;/$checkbox&gt;&lt;br&gt;
+\end
+
+\define controls_timers()
+&lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_timers]] ~[[LightGreen]] }}}&gt;
+@@float:right;&lt;&lt;controls_colors &quot;timers&quot; &quot;calendar_timers&quot;&gt;&gt;@@
+&lt;$checkbox field=&quot;calendar_showtimers&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;&gt;
+   ''Timers:''
+&lt;/$checkbox&gt;&lt;br&gt;
+\end
+
+\define controls_events()
+&lt;&lt;controls_events_toggleall&gt;&gt;
+@@display:block;clear:both;margin-left:1em;
+&lt;&lt;controls_events_list&gt;&gt;
+\end
+
+\define controls_events_toggleall(label:&quot;''Events and Timelines:''&quot;,id:&quot;&quot;)
+&lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[LightGreen]] }}}&gt;
+&lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
+@@float:right;&lt;&lt;controls_colors &quot;all_events_$id$&quot; &quot;calendar_events&quot;&gt;&gt;@@
+@@float:right;margin-right:0.5em;&lt;&lt;controls_events_new &quot;$id$&quot;&gt;&gt;@@
+@@display:block;margin-right:3em;
+&lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; field=&quot;calendar_showevents&quot; default=&quot;yes&quot; checked=&quot;yes&quot; unchecked=&quot;no&quot;
+     checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&lt;&lt;allevents&gt;&gt;/&gt;&quot;&quot;&quot;
+   uncheckactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; tags=&quot;&quot;           /&gt;&quot;&quot;&quot;&gt;
+   $label$
+&lt;/$checkbox&gt;
+\end
+
+\define controls_events_list(id:&quot;&quot;)
+&lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+&lt;$vars defaultcolor={{{ [&lt;tt_time_config&gt;get[calendar_events]] ~[[LightGreen]] }}}&gt;
+&lt;$set name=allevents filter=&quot;[tag[events]] [suffix[.ics]] [tag[timeline]] +[!has[draft.of]sort[caption]] [[TiddlyTools/Time/Events]is[tiddler]]&quot;&gt;
+@@display:block;max-height:25em;overflow:auto;
+&lt;$list filter=&lt;&lt;allevents&gt;&gt;&gt;
+   @@float:right;&lt;&lt;controls_colors &quot;$id$&quot; &quot;eventcolor&quot;&gt;&gt;@@
+   &lt;&lt;controls_events_list_menu &quot;$id$&quot;&gt;&gt;
+   &lt;div style=&quot;max-width:calc(100% - 3em);overflow:hidden;&quot;&gt;
+      &lt;$checkbox tiddler=&lt;&lt;tt_time_config&gt;&gt; tag=&lt;&lt;currentTiddler&gt;&gt;
+         checkactions=&quot;&quot;&quot;&lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot; /&gt;&quot;&quot;&quot;&gt;
+         &lt;$view field=&quot;caption&quot;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$view&gt;
+      &lt;/$checkbox&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define controls_events_list_menu(id:&quot;&quot;)
+&lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[edit, copy, or delete ]] }}}&gt;
+&lt;$vars popupid_menu=&lt;&lt;qualify &quot;$(calendar_events_menu_popup)$$id$&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;float:right;margin-right:0.5em;&quot; popup=&lt;&lt;popupid_menu&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_menu&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/menu-button}}  &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_menu&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-left}} &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_menu&gt;&gt; class=&quot;tc-popup-keep&quot; position=&quot;left&quot;&gt;
+   &lt;div style=&quot;transform:translate(-0.25em,0);&quot;&gt;
+      &lt;&lt;controls_events_list_edit&gt;&gt;
+      &lt;&lt;controls_events_list_copy&gt;&gt;
+      &lt;&lt;controls_events_list_delete &quot;$id$&quot;&gt;&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_list_delete(id:&quot;&quot;)
+&lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[delete ]] }}}&gt;
+&lt;$vars popupid_delete=&lt;&lt;qualify &quot;$(calendar_events_delete_popup)$$id$&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot; popup=&lt;&lt;popupid_delete&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/delete-button}} &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_delete&gt;&gt;&gt;
+   &lt;div class=&quot;tc-drop-down tt-shadowbox&quot; style=&quot;min-width:auto;max-width:20em;padding:0.5em;transform:translate(calc(-100% + 5.5em),0);&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:center;&quot;&gt;
+         Are you sure you want to delete&lt;br&gt;
+         @@font-size:1.5em;line-height:100%;white-space:normal; &lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;?&lt;br&gt;@@
+         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;&quot;&gt; cancel
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_delete&gt;&gt; /&gt;
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
+         &lt;/$button&gt;
+         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;&quot;&gt; delete
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+            &lt;$action-listops $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&quot;-[&lt;currentTiddler&gt;]&quot; /&gt;
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_delete&gt;&gt; /&gt;
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
+         &lt;/$button&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_list_edit()
+&lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[edit ]] }}}&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   {{$:/core/images/edit-button}}
+   &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; /&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
+&lt;/$button&gt;
+\end
+
+\define controls_events_list_copy()
+&lt;$vars caption={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars     tip={{{ [[copy ]addsuffix&lt;caption&gt;addsuffix[ to an event list]] }}}&gt;
+&lt;$set name=&quot;tip&quot; filter=&quot;[&lt;currentTiddler&gt;tag[events]]&quot; value={{{ [[copy ]addsuffix&lt;caption&gt;] }}} emptyValue=&lt;&lt;tip&gt;&gt; &gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot;
+   actions=&lt;&lt;controls_events_list_copy_caption&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   {{$:/core/images/clone-button}}
+   &lt;&lt;controls_events_list_copy_tiddler&gt;&gt;
+   &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
+&lt;/$button&gt;
+\end
+
+\define controls_events_list_copy_tiddler()
+\whitespace trim
+&lt;!-- get event list --&gt;
+&lt;$vars event_source=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[events]]&quot;   value=&quot;getevents_listed&quot;   emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;suffix[.ics]]&quot;  value=&quot;getevents_ics&quot;      emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$set name=&quot;get_by_type&quot; filter=&quot;[&lt;event_source&gt;tag[timeline]]&quot; value=&quot;getevents_timeline&quot; emptyValue=&lt;&lt;get_by_type&gt;&gt;&gt;
+&lt;$wikify name=&quot;eventlist&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&lt;&lt;get_by_type&gt;&gt; convert=&quot;yes&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$vars eventlist={{{ [enlist&lt;eventlist&gt;join&lt;lf&gt;] }}}&gt;
+&lt;!-- strip tidnum and .ics from source tiddler name --&gt;
+&lt;$vars  tidnum={{{ [&lt;currentTiddler&gt;split[ ]last[]multiply[1]!match[0]addprefix[ ]] }}}&gt;
+&lt;$vars basetid={{{ [&lt;currentTiddler&gt;removesuffix&lt;tidnum&gt;else&lt;currentTiddler&gt;] }}}&gt;
+&lt;$vars basetid={{{ [&lt;basetid&gt;removesuffix[.ics]else&lt;basetid&gt;] }}}&gt;
+&lt;!-- make new caption text --&gt;
+&lt;$vars calname={{{ [&lt;currentTiddler&gt;get[text]split[X-WR-CALNAME:]rest[]splitregexp[\n|\r]first[]trim[]] }}}&gt;
+&lt;$vars caption={{{ [{!!caption}!match[]else&lt;calname&gt;] }}}&gt;
+&lt;!-- clone the tiddler --&gt;
+&lt;$action-createtiddler $basetitle=&lt;&lt;basetid&gt;&gt; $savetitle=&quot;$:/state/popup/calendar/copytiddler&quot;
+   type=&quot;text/plain&quot; tags=&quot;events&quot; text=&lt;&lt;eventlist&gt;&gt; caption=&lt;&lt;caption&gt;&gt; eventcolor={{!!eventcolor}} /&gt;
+&lt;!-- select new eventlist --&gt;
+&lt;$action-listops  $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&quot;[{$:/state/popup/calendar/copytiddler}] -[&lt;currentTiddler&gt;]&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot; /&gt;
+\end
+
+\define controls_events_list_copy_caption()
+&lt;$tiddler tiddler={{$:/state/popup/calendar/copytiddler}}&gt;
+&lt;!-- strip number from old caption --&gt;
+&lt;$vars capnum={{{ [{!!caption}split[ ]last[]multiply[1]!match[0]] }}}&gt;
+&lt;$vars oldcap={{{ [{!!caption}removesuffix&lt;capnum&gt;else{!!caption}] }}}&gt;
+&lt;!-- get new caption number from tiddler title --&gt;
+&lt;$vars newnum={{{ [&lt;currentTiddler&gt;split[ ]last[]multiply[1]!match[0]] }}}&gt;
+&lt;$vars newcap={{{ [&lt;oldcap&gt;trim[]!match[]addsuffix[ ]addsuffix&lt;newnum&gt;] }}}&gt;
+&lt;$action-setfield caption=&lt;&lt;newcap&gt;&gt;/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/state/popup/calendar/copytiddler&quot;&gt;
+\end
+
+\define controls_events_new(id,class:&quot;tc-btn-invisible&quot;,style:&quot;&quot;,tooltip:&quot;create a new eventlist or timeline&quot;)
+&lt;$vars popupid_new=&lt;&lt;qualify &quot;$:/state/popup/calendar/add$id$&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;$class$&quot; style=&quot;float:right;$style$;&quot; popup=&lt;&lt;popupid_new&gt;&gt; tooltip=&quot;$tooltip$&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_new&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/new-button}}   &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_new&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}} &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_new&gt;&gt; position=&quot;belowleft&quot;&gt;
+   &lt;div class=&quot;tc-drop-down tt-shadowbox&quot; style=&quot;min-width:auto;max-width:15em;padding:0.5em;&quot;&gt;
+      &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+         &lt;$vars today=&lt;&lt;now YYYY0MM0DD&gt;&gt;&gt;
+         &lt;$vars date={{{ [&lt;date&gt;!match[]else&lt;today&gt;] }}}&gt;
+         &lt;&lt;controls_events_new_list&gt;&gt;
+         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:block;width:100%;padding:0 0.25em;text-align:center;margin-bottom:1px;&quot;&gt;
+            create a new eventlist
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Event List&quot; type=&quot;text/plain&quot; tags=&quot;events&quot;
+               text={{{ [&lt;date&gt;addsuffix[;]addsuffix[enter event description here]] }}} caption=&quot;&quot; eventcolor=&quot;&quot;/&gt;
+         &lt;/$button&gt;
+         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:block;width:100%;padding:0 0.25em;text-align:center;&quot;&gt;
+            create a new timeline
+            &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param=&quot;New Timeline&quot; text=&quot;&quot; tags=&quot;timeline&quot; caption=&quot;&quot; eventcolor=&quot;&quot;/&gt;
+         &lt;/$button&gt;
+         &lt;/$vars&gt;
+         &lt;/$vars&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_new_list()
+&lt;$list filter=&quot;[tag[events]] [tag[timeline]] +[limit[1]]&quot;&gt;
+   &lt;div style=&quot;border:1px solid gray;padding:0 2px;margin-bottom:1px;min-width:100%;max-height:10em;overflow:hidden auto;&quot;&gt;
+      ''add an event:''&lt;br&gt;
+      &lt;$list filter=&quot;[tag[events]] [tag[timeline]] +[!has[draft.of]]&quot;&gt;
+         &lt;$button class=&quot;tc-btn-invisible&quot; style=&quot;display:block;width:100%;padding:0;&quot; actions=&lt;&lt;controls_events_new_actions&gt;&gt;&gt;
+             &lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;
+         &lt;/$button&gt;
+      &lt;/$list&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define controls_events_new_actions()
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;tag[events]]&quot;&gt;
+   &lt;$vars old={{{ [&lt;currentTiddler&gt;get[text]addsuffix&lt;lf&gt;addsuffix&lt;lf&gt;else[]] }}}
+          new={{{ [&lt;date&gt;addsuffix[;]addsuffix[enter event description here]] }}}&gt;
+   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;currentTiddler&gt;&gt; text={{{ [&lt;old&gt;addsuffix&lt;new&gt;] }}} /&gt;
+   &lt;/$vars&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;tag[timeline]]&quot;&gt;
+   &lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; $param={{{ [&lt;currentTiddler&gt;addsuffix[ Event]] }}}
+      text=&quot;&quot; caption=&quot;&quot; tags=&lt;&lt;controls_events_new_tag&gt;&gt; timeline.start=&lt;&lt;date&gt;&gt; timeline.end=&lt;&lt;date&gt;&gt; timeline.type=&quot;&quot; /&gt;
+&lt;/$list&gt;
+&lt;$action-listops  $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&lt;&lt;controls_events_new_tag&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_showevents=&quot;yes&quot;    /&gt;
+&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_new&gt;&gt; /&gt;
+&lt;/$vars&gt;
+\end
+\define controls_events_new_tag() [[$(currentTiddler)$]]
+
+\define controls_events_admin(view)
+&lt;$vars showevents=&quot;yes&quot;&gt;
+&lt;$vars popupid_admin=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_admin&gt;&gt; style=&quot;float:right;margin-right:0.5em;&quot; tooltip=&quot;manage events and timelines&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; &amp;#x1F4C5; &lt;!-- CALENDAR EMOJI --&gt; &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_admin&gt;&gt;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-7.5em;&quot;&gt;
+      &lt;&lt;controls_events_admin_panel &quot;$view$&quot;&gt;&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_admin_panel(view)
+&lt;style&gt;
+   .calEvents table, .calEvents tr, .calEvents td { font-size:100%;border:0;margin:0;padding:2px; }
+   .calEvents a { padding:0; color:black !important; font-style:normal !important; }
+&lt;/style&gt;
+&lt;!-- adjust width to fit content... if in sidebar, use sidebar width --&gt;
+&lt;$vars sidebarwidth={{{ [[width:calc(]addsuffix{$:/themes/tiddlywiki/vanilla/metrics/sidebarwidth}addsuffix[ - 5em);]] }}}&gt;
+&lt;$vars     maxwidth={{{ [&lt;tt_time_config&gt;get[calendar_admin_width]else[auto]] }}}&gt;
+&lt;$vars  normalwidth={{{ [&lt;sidebarwidth&gt;addprefix[min-]addsuffix[width:max-content;max-width:]addsuffix&lt;maxwidth&gt;addsuffix[;]] }}}&gt;
+&lt;div class=&quot;calEvents&quot; style={{{ [[$view$]match[sidebar]then&lt;sidebarwidth&gt;else&lt;normalwidth&gt;] }}}&gt;
+&lt;!-- WFFL OMIT FOR NOW
+   &lt;&lt;controls_events_toggleall &quot;''Events and Timelines:''&quot; &quot;/admin&quot;&gt;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;margin-bottom:0.25em;&quot;&gt;
+       @@display:block;margin-left:1em;&lt;&lt;controls_events_list &quot;/admin&quot;&gt;&gt;@@
+   &lt;/div&gt;
+--&gt;
+   &lt;$vars calendar_input=&lt;&lt;qualify &quot;$:/state/popup/calendar/events&quot;&gt;&gt;&gt;
+   @@float:right;font-size:80%;display:flex; &lt;&lt;controls_getyear &quot;&quot; &quot;all&quot;&gt;&gt;&amp;nbsp;&lt;&lt;controls_reset&gt;&gt;&lt;&lt;controls_events_admin_panel_width &quot;$view$&quot;&gt;&gt;@@
+   &lt;$vars yyyy={{{ [&lt;calendar_input&gt;get[year]multiply[1]!match[0]addprefix[0000]split[]last[4]join[]] }}}&gt;
+   &lt;$wikify name=&quot;all&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;getevents&quot; yyyy=&lt;&lt;yyyy&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+   __''&lt;$text text={{{ [enlist&lt;all&gt;count[]] }}}/&gt; events &lt;$text text={{{ [&lt;yyyy&gt;!match[]addprefix[in ]] }}}/&gt;''__&amp;emsp;
+   &lt;$reveal default={{{ [&lt;all&gt;trim[]] }}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+      &lt;&lt;controls_events_admin_panel_table&gt;&gt;
+   &lt;/$reveal&gt;
+\end
+
+\define controls_events_admin_panel_width(view)
+&lt;$list filter=&quot;[[$view$]!match[sidebar]]&quot; variable=&quot;not-in-sidebar&quot;&gt;
+&lt;$vars popupid_admin_width=&lt;&lt;qualify &quot;$:/state/popup/calendar/events/width&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; popup=&lt;&lt;popupid_admin_width&gt;&gt; style=&quot;float:right;margin-left:0.25em;&quot; tooltip=&quot;set panel width&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin_width&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/options-button}} &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_admin_width&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; $field=&quot;width&quot; $value=&lt;&lt;maxwidth&gt;&gt; /&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_admin_width&gt;&gt;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox&quot; style=&quot;right:-2em;padding:0.5em;min-width:max-content;font-size:10pt;&quot;&gt;
+      ''max panel width:''
+      &lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+         &lt;$keyboard key=&quot;escape&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;&quot;&gt;
+         &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;
+               &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_admin_width={{{ [&lt;popupid_admin_width&gt;get[width]] }}} /&gt;
+               &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt; &quot;&quot;&quot;&gt;
+            &lt;$edit-text tag=&quot;input&quot; class=&quot;calEditYear&quot; tiddler=&lt;&lt;popupid_admin_width&gt;&gt; field=&quot;width&quot; default=&lt;&lt;maxwidth&gt;&gt; placeholder=&quot;auto&quot; focus=&quot;yes&quot; /&gt;
+         &lt;/$keyboard&gt;
+         &lt;/$keyboard&gt;
+         &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;cancel&quot;&gt;
+            {{$:/core/images/close-button}}
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;
+         &lt;/$button&gt;
+         &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;set width&quot;&gt;
+            {{$:/core/images/done-button}}
+            &lt;$action-setfield $timestamp=&quot;no&quot; $tiddler=&lt;&lt;tt_time_config&gt;&gt; calendar_admin_width={{{ [&lt;popupid_admin_width&gt;get[width]] }}} /&gt;
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_admin_width&gt;&gt; /&gt;
+         &lt;/$button&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+\define controls_events_admin_panel_table()
+&lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;margin-top:0.25em&quot;&gt;
+   &lt;div style=&quot;width:100%;max-height:30vh;overflow:auto;font-size:80%;line-height:120%;white-space:normal;&quot;&gt;
+      &lt;table&gt;&lt;$list filter=&quot;[enlist&lt;all&gt;removeprefix[....]addprefix&lt;yyyy&gt;] [enlist&lt;all&gt;!prefix[....]] +[sort[]]&quot;&gt;
+         &lt;$vars event_date={{{ [&lt;currentTiddler&gt;split[;]nth[1]] }}}&gt;
+         &lt;$vars event_text={{{ [&lt;currentTiddler&gt;split[;]nth[3]] }}}&gt;
+         &lt;$vars event_link={{{ [&lt;event_text&gt;split[|]rest[]else&lt;event_text&gt;] }}}&gt;
+         &lt;$vars event_text={{{ [&lt;event_text&gt;split[|]first[]] }}}&gt;
+         &lt;tr&gt;
+         &lt;td style=&quot;text-align:right;vertical-align:top;&quot;&gt;&lt;$text text=&lt;&lt;event_date&gt;&gt;/&gt;&lt;/td&gt;
+         &lt;td style=&quot;text-align:left; vertical-align:top;&quot;&gt;&lt;$link to=&lt;&lt;event_link&gt;&gt;&gt;''&lt;$text text=&lt;&lt;event_text&gt;&gt;/&gt;''&lt;/$link&gt;&lt;/td&gt;
+\end
+
+\define controls_colors(id,colorfield)
+\whitespace trim
+&lt;$vars       currentcolor={{{ [{!!$colorfield$}!match[]else&lt;defaultcolor&gt;] }}}&gt;
+&lt;$vars      popupid_color=&lt;&lt;qualify &quot;$(calendar_colors_popup)$$id$&quot;&gt;&gt;&gt;
+&lt;$vars popupid_color_list=&lt;&lt;qualify &quot;$(calendar_colors_popup)$/list$id$&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_color&gt;&gt; tooltip={{{ [[change color: ]addsuffix&lt;currentcolor&gt;] }}}
+   style={{{ [[display:inline-block;border:1px solid gray;width:1em;height:1em;background:]addsuffix&lt;currentcolor&gt;] }}}&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;popupid_color&gt;&gt; input=&lt;&lt;currentcolor&gt;&gt; /&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color&gt;&gt; position=&quot;left&quot; class=&quot;tc-popup-keep&quot; style=&quot;left:auto;right:0;&quot;&gt;
+   &lt;style&gt; .calColorEdit { outline:none; width:10em;   } &lt;/style&gt;
+   &lt;style&gt; .calColorList { outline:none; width:13.5em; } &lt;/style&gt;
+   &lt;div style=&quot;min-width:auto;padding:0;transform:translate(-0.25em,-0.15em);font-size:90%;position:relative;&quot;&gt;
+      &lt;$keyboard key=&quot;escape&quot; actions=&quot;&lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;&quot;&gt;
+      &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;
+            &lt;$action-setfield $timestamp='no' $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[input]] }}} /&gt;
+            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt; &quot;&quot;&quot;&gt;
+         &lt;$edit-text tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;input&quot; default=&lt;&lt;currentcolor&gt;&gt; placeholder=&lt;&lt;defaultcolor&gt;&gt;
+            class=&quot;calColorEdit tc-popup-handle&quot; focus=&quot;yes&quot; focusPopup=&lt;&lt;popupid_color_list&gt;&gt; /&gt;
+         &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_color_list&gt;&gt;&gt;
+            &lt;$select tiddler=&lt;&lt;popupid_color&gt;&gt; field=&quot;input&quot; size=&quot;10&quot; class=&quot;calColorList&quot;&gt;
+                &lt;$list filter=&lt;&lt;controls_colors_X11names&gt;&gt; variable=&quot;thiscolor&quot;&gt;
+                   &lt;$vars foreground={{{ [enlist&lt;controls_colors_X11names_dark&gt;match&lt;thiscolor&gt;then[LightGray]else[Black]] }}}&gt;
+                   &lt;$vars fontweight={{{ [&lt;popupid_color&gt;get[input]match&lt;thiscolor&gt;then[bold]else[normal]] }}}&gt;
+                   &lt;option style=&lt;&lt;controls_colors_style&gt;&gt;&gt; &lt;&lt;thiscolor&gt;&gt; &lt;/option&gt;
+                   &lt;/$vars&gt;
+                   &lt;/$vars&gt;
+                &lt;/$list&gt;
+            &lt;/$select&gt;
+         &lt;/$reveal&gt;
+      &lt;/$keyboard&gt;
+      &lt;/$keyboard&gt;
+      &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;cancel&quot;&gt;
+         {{$:/core/images/close-button}}
+         &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;
+      &lt;/$button&gt;
+      &lt;$button class=&quot;tc-button&quot; style=&quot;display:inline !important;padding:0 0.25em !important;&quot; tooltip=&quot;save&quot;&gt;
+         {{$:/core/images/done-button}}
+         &lt;$action-setfield $timestamp=&quot;no&quot; $field=&quot;$colorfield$&quot; $value={{{ [&lt;popupid_color&gt;get[input]] }}} /&gt;
+         &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_color&gt;&gt; /&gt;
+      &lt;/$button&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+\define controls_colors_style() color:$(foreground)$;background:$(thiscolor)$;font-weight:$(fontweight)$;
+
+\define controls_colors_X11names()
+AliceBlue AntiqueWhite Aquamarine Azure Beige Bisque Black BlanchedAlmond Blue BlueViolet Brown Burlywood CadetBlue Chartreuse Chocolate Coral CornflowerBlue Cornsilk Crimson Cyan DarkBlue DarkCyan DarkGoldenrod DarkGray DarkGreen DarkKhaki DarkMagenta DarkOliveGreen DarkOrange DarkOrchid DarkRed DarkSalmon DarkSeaGreen DarkSlateBlue DarkSlateGray DarkTurquoise DarkViolet DeepPink DeepSkyBlue DimGray DodgerBlue Firebrick FloralWhite ForestGreen Gainsboro GhostWhite Gold Goldenrod Gray Green GreenYellow Honeydew HotPink IndianRed Ivory Khaki Lavender LavenderBlush LawnGreen LemonChiffon LightBlue LightCoral LightCyan LightGoldenrod LightGoldenrodYellow LightGray LightGreen LightPink LightSalmon LightSeaGreen LightSkyBlue LightSlateBlue LightSlateGray LightSteelBlue LightYellow LimeGreen Linen Magenta Maroon MediumAquamarine MediumBlue MediumOrchid MediumPurple MediumSeaGreen MediumSlateBlue MediumSpringGreen MediumTurquoise MediumVioletRed MidnightBlue MintCream MistyRose Moccasin NavajoWhite Navy NavyBlue OldLace OliveDrab Orange OrangeRed Orchid PaleGoldenrod PaleGreen PaleTurquoise PaleVioletRed PapayaWhip PeachPuff Peru Pink Plum PowderBlue Purple Red RosyBrown RoyalBlue SaddleBrown Salmon SandyBrown SeaGreen Seashell Sienna SkyBlue SlateBlue SlateGray Snow SpringGreen SteelBlue Tan Thistle Tomato Turquoise Violet VioletRed Wheat White WhiteSmoke Yellow YellowGreen
+\end
+
+\define controls_colors_X11names_dark() Black Blue DarkBlue DarkSlateBlue DarkSlateGray MediumBlue MidnightBlue Navy
+
+\define controls_styles()
+&lt;style&gt; .calStyles table, .calStyles tr, .calStyles td { border:0;margin:0;padding:0 0.25em 0.25em 0;white-space:nowrap;line-height:100%; } &lt;/style&gt;
+&lt;$vars popupid_styles=&lt;&lt;qualify &quot;$:/state/popup/calendar/styles&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;popupid_styles&gt;&gt;
+   style=&quot;float:right;&quot; tooltip=&quot;calendar styles&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_styles&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; &amp;#x1F3A8; &lt;!-- PALETTE EMOJI --&gt; &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_styles&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_styles&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;right:-5.5em;&quot;&gt;
+      &lt;$tiddler tiddler=&lt;&lt;tt_time_config&gt;&gt;&gt;
+      ''Calendar styles''
+      &lt;div class=&quot;tt-shadowbox inset calStyles&quot;&gt;
+
+| background|&lt;&lt;controls_styles_edit &quot;calendar_background&quot; &quot;LightGray&quot;&gt;&gt;  |
+| foreground|&lt;&lt;controls_styles_edit &quot;calendar_foreground&quot; &quot;White&quot;&gt;&gt;      |
+|      today|&lt;&lt;controls_styles_edit &quot;calendar_today&quot;      &quot;Gold&quot;&gt;&gt;       |
+|     timers|&lt;&lt;controls_styles_edit &quot;calendar_timers&quot;     &quot;LightGreen&quot;&gt;&gt; |
+|     alarms|&lt;&lt;controls_styles_edit &quot;calendar_alarms&quot;     &quot;LightGreen&quot;&gt;&gt; |
+|     events|&lt;&lt;controls_styles_edit &quot;calendar_events&quot;     &quot;LightGreen&quot;&gt;&gt; |
+|    changes|&lt;&lt;controls_styles_edit &quot;calendar_changes&quot;    &quot;LightBlue&quot;&gt;&gt;  |
+|    numbers|&lt;&lt;controls_styles_edit &quot;calendar_numbers&quot;    &quot;Black;font-size:1.5em;font-weight:bold;&quot;&gt;&gt; |
+\end
+
+\define controls_styles_edit(field,default,width:&quot;15em&quot;)
+&lt;style&gt; .calEdit_$field$ { width:$width$; } &lt;/style&gt;
+&lt;$edit-text tag=&quot;input&quot; class=&quot;calEdit_$field$&quot; field=&quot;$field$&quot; default=&quot;$default$&quot; placeholder=&quot;$default$&quot;/&gt;
+\end
+
+\define controls_settings(class:&quot;tc-button tt-button&quot;,view)
+&lt;style&gt; .controlPanel { min-width:auto;color:black;border:1px solid;padding:0.5em;border-radius:0.5em;text-align:left;font-size:10pt;line-height:140%; } &lt;/style&gt;
+&lt;$vars popupid_settings=&lt;&lt;qualify &quot;$:/state/popup/calendar/settings&quot;&gt;&gt;&gt;
+&lt;span style=&quot;position:relative;&quot;&gt;
+&lt;$button class=&quot;$class$&quot; popup=&lt;&lt;popupid_settings&gt;&gt; tooltip=&quot;calendar settings&quot;&gt;
+   &lt;$reveal state=&lt;&lt;popupid_settings&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/options-button}} &lt;/$reveal&gt;
+   &lt;$reveal state=&lt;&lt;popupid_settings&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}   &lt;/$reveal&gt;
+&lt;/$button&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_settings&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;
+   &lt;div class=&quot;tc-block-dropdown tt-shadowbox controlPanel&quot; style=&quot;max-width:18em;right:-4.75em;&quot;&gt;
+      &lt;&lt;controls_styles&gt;&gt;
+      &lt;&lt;controls_events_admin &quot;$view$&quot;&gt;&gt;
+      ''Calendar settings''
+      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;border-top:1px solid gray;margin-top:0.25em;padding-top:0.5em;clear:both;&quot;&gt;
+         &lt;&lt;controls_events&gt;&gt;
+         &lt;&lt;controls_timers&gt;&gt;
+         &lt;&lt;controls_alarms&gt;&gt;
+         &lt;&lt;controls_changes&gt;&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;/span&gt;
+\end
+
+\define calendar()
+&lt;div style=&quot;text-align:center;&quot;&gt;
+&lt;$vars thisyear=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt; thismonth=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt;&gt;
+Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&amp;emsp;&lt;&lt;controls_reset&gt;&gt;
+&lt;$tiddler tiddler=&lt;&lt;calendar_input&gt;&gt;&gt;
+&lt;$reveal default={{!!month}} type=&quot;match&quot; text=&quot;&quot;&gt; &lt;&lt;controls_settings&gt;&gt; &lt;/$reveal&gt; &lt;p/&gt;
+&lt;$vars yyyy={{{ [{!!year}multiply[1]!match[0]else&lt;thisyear&gt;addprefix[0000]split[]last[4]join[]] }}}
+         mm={{{ [{!!month}!match[]else&lt;thismonth&gt;] }}} popup_position=&quot;above&quot; popup_maxheight=&quot;30em&quot;&gt;
+&lt;$reveal default={{!!month}} type=&quot;match&quot;   text=&quot;&quot;&gt;
+   @@display:block;font-size:70%;line-height:100%;&lt;$macrocall $name=&quot;showyear&quot;  yyyy=&lt;&lt;yyyy&gt;&gt; /&gt;@@
+&lt;/$reveal&gt;
+&lt;$reveal default={{!!month}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   @@display:block;font-size:150%;line-height:100%;&lt;$macrocall $name=&quot;showmonth&quot; yyyy=&lt;&lt;yyyy&gt;&gt; mm=&lt;&lt;mm&gt;&gt; /&gt;@@
+&lt;/$reveal&gt;
+\end
+
+&lt;&lt;calendar&gt;&gt;</pre>
 </div>
 
 
