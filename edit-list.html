@@ -151,6 +151,8 @@ Error message and password prompt
 
 <li>$:/config/Tiddlers/TitleLinks</li>
 
+<li>$:/config/TiddlyTools/Time</li>
+
 <li>$:/config/TimestampDisable</li>
 
 <li>$:/core</li>
@@ -227,7 +229,10 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210816052315094" title="$:/config/TimestampDisable">
+<div calendar_showevents="yes" created="20210816171919922" modified="20210816173239074" tags="[[New Event List]]" title="$:/config/TiddlyTools/Time">
+<pre></pre>
+</div>
+<div created="20210801024453235" modified="20210816174215323" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10116,13 +10121,13 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210816021846800" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210816173546663" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210816060746009" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210816060746009" title="$:/StoryList">
+<div created="20210816163129948" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list" modified="20210816180545348" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10240,7 +10245,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210816052039327" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210816173934568" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10460,14 +10465,14 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(flags)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
 \define editlist_calendar()
-&lt;style&gt;.editdate_format { width:100%; }&lt;/style&gt;
+&lt;style&gt;.editdate_format { width:100%; } .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }&lt;/style&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
-&lt;$vars showday=&lt;&lt;editlist_selectday&gt;&gt;&gt;
+&lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
 &lt;$vars  target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$vars  config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
 &lt;$vars  format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list  filter=&quot;[&lt;config&gt;]&quot;&gt;
-&lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown&quot;
+&lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown editlist_calendar&quot;
    style=&quot;line-height:100%; top:1.5em; padding:0.5em; min-width:auto;&quot;&gt;
    &lt;span style=&quot;font-size:$(fontsize)$; line-height:100%;&quot;&gt;
       &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
@@ -10479,12 +10484,10 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 \define editlist_selectday()
 \whitespace trim
-&lt;!-- OVERRIDE CALENDAR SHOWDAY() MACRO WITH SIMPLE &quot;SELECTDAY&quot; MACRO --&gt;
+&lt;!-- ADD CUSTOM CALENDAR SHOWDAY_POPUP_EXTRAS() MACRO WITH SIMPLE &quot;SELECTDAY&quot; BUTTON --&gt;
 &lt;$vars UTC=&quot;[UTC]&quot;&gt;&lt;$vars template={{{ [&lt;config&gt;get[format]else&lt;format&gt;addprefix&lt;UTC&gt;] }}}&gt;
 &lt;$wikify name=&quot;value&quot; text='&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;template&gt;&gt; /&gt;'&gt;
-&lt;$vars btnstyle={{{ [[display:inline !important;width:2.5em;height:2.5em;border:1px solid;background:]addsuffix&lt;foreground&gt;addsuffix[;]] }}}&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; style=&lt;&lt;btnstyle&gt;&gt;&gt;
-   &lt;span style={{{ [[color:]addsuffix&lt;numbers&gt;addsuffix[;]] }}}&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;text-align:center;width:100%;margin-top:0.25em;&quot;&gt; ''select this date''
    &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;target&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;value&gt;&gt; /&gt;
    &lt;$action-deletetiddler $tiddler=&lt;&lt;popup&gt;&gt; /&gt;
 &lt;/$button&gt;
@@ -10496,7 +10499,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210815222533758" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210816173924888" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10565,7 +10568,7 @@ TO REPLACE TWCore default color field, set $:/config/EditTemplateFields/Visibili
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20210721015652739" modified="20210809034049088" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
+<div created="20210721015652739" modified="20210816173903331" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples">
 <pre>\define config()   $:/state/popup/edit-list/Examples
 \define examples() TiddlyTools/Macros/edit-list/Examples/List
 \define editor()   $:/temp/edit-list/editor/$(examples)$
@@ -10800,7 +10803,7 @@ columns:
 &lt;$vars lf=&quot;
 &quot;&gt;
 &lt;$wikify name=&quot;target&quot; text=&lt;&lt;tryItNow_getTarget&gt;&gt;&gt;
-&lt;$set    name=&quot;tids&quot; filter=&quot;[&lt;target&gt;is[tiddler]] [prefix[$:/state/modal/edit-list/]]&quot;&gt;
+&lt;$set    name=&quot;tids&quot; filter=&quot;[&lt;target&gt;is[tiddler]] [prefix[$:/state/modal/edit-list/]] [prefix[$:/state/popup/edit-list/]] -[&lt;config&gt;]&quot;&gt;
 &lt;$vars    msg=&quot;Are you sure you want to delete these tiddlers:&quot;&gt;
 &lt;$vars    msg={{{ [enlist&lt;tids&gt;addprefix[   ]addprefix&lt;lf&gt;join[]addprefix&lt;msg&gt;] }}}&gt;
 &lt;$list filter=&quot;[&lt;tids&gt;!match[]]&quot;&gt;
@@ -10900,7 +10903,7 @@ columns:
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210723184252329" modified="20210809034042888" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
+<div created="20210723184252329" modified="20210816173855898" tags="TiddlyTools" title="TiddlyTools/Macros/edit-list/Examples/List">
 <pre>!!!field:text, type, confirm
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot;&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; type:date&gt;&gt;
@@ -10943,7 +10946,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210815222519498" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210816173917526" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -11306,7 +11309,7 @@ WhiteSmoke
 Yellow
 YellowGreen</pre>
 </div>
-<div created="20200902213051882" modified="20210630010147882" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210816173941521" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11458,22 +11461,41 @@ YellowGreen</pre>
 &lt;$vars   btnstyle={{{ [&lt;btnstyle&gt;addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;timersbg&gt;addsuffix&lt;alarmsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
 &lt;!-- show button/popup --&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
+&lt;$vars   calendar_popID=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt;&gt;
+&lt;&lt;showday_button&gt;&gt;
+&lt;&lt;showday_popup&gt;&gt;
+\end
+
+\define showday_button()
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;calendar_popID&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
    &lt;span style=&quot;color:$(numbers)$;&quot;&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
+   &lt;&lt;showday_button_actions&gt;&gt; &lt;!-- FOR USE BY CUSTOMIZATIONS --&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
-   position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot;&gt;
-   @@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
-   @@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
-   &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-   &lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
-      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-         @@display:block;max-height:$(popup_maxheight)$;overflow:auto;
-            &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
-         @@
-      &lt;/div&gt;
-   &lt;/$list&gt;
+\end
+
+\define showday_popup()
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;calendar_popID&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
+   position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;line-height:100%;&quot;&gt;
+   &lt;&lt;showday_popup_header&gt;&gt;
+   &lt;&lt;showday_popup_extras&gt;&gt; &lt;!-- FOR USE BY CUSTOMIZATIONS --&gt;
+   &lt;&lt;showday_popup_items&gt;&gt;
 &lt;/$reveal&gt;
+\end
+
+\define showday_popup_header()
+@@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
+@@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+\end
+
+\define showday_popup_items()
+&lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+      @@display:block;max-height:calc( $(popup_maxheight)$ );overflow:auto;
+         &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
+      @@
+   &lt;/div&gt;
+&lt;/$list&gt;
 \end
 
 \define showday_viewjournal()
