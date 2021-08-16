@@ -163,6 +163,16 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/GitHub/Branch</li>
+
+<li>$:/GitHub/Filename</li>
+
+<li>$:/GitHub/Path</li>
+
+<li>$:/GitHub/Repo</li>
+
+<li>$:/GitHub/Username</li>
+
 <li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
@@ -170,6 +180,10 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-2065006209</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
 
@@ -10122,6 +10136,21 @@ TiddlyTools/FilterGenerators/Tags
 TiddlyTools/FilterGenerators/TagCloud
 TiddlyTools/FilterGenerators/PowerSearch</pre>
 </div>
+<div created="20210816070443436" modified="20210816070444105" title="$:/GitHub/Branch">
+<pre>master</pre>
+</div>
+<div created="20210816070425782" modified="20210816070428996" title="$:/GitHub/Filename">
+<pre>filtergenerators.html</pre>
+</div>
+<div created="20210816070440436" modified="20210816070440436" title="$:/GitHub/Path">
+<pre>/</pre>
+</div>
+<div created="20210816070447506" modified="20210816070447506" title="$:/GitHub/Repo">
+<pre>tiddlytools/tiddlytools.github.com</pre>
+</div>
+<div created="20210816070451492" modified="20210816070452971" title="$:/GitHub/Username">
+<pre>ericshulman</pre>
+</div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
@@ -10136,6 +10165,12 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div created="20191212092048536" modified="20191212092148687" title="$:/SiteTitle">
 <pre>~FilterGenerators</pre>
 </div>
+<div created="20210816070401047" modified="20210816070401047" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
+</div>
+<div created="20210816070402769" modified="20210816070402769" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+</div>
 <div created="20210716234618928" modified="20210716234618928" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
@@ -10145,7 +10180,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div created="20210816065500223" list="$:/ControlPanel TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" modified="20210816070353259" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,7 +10807,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210816021457621" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210816052039327" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10794,10 +10829,11 @@ in
 &lt;!---------------&gt;
 &lt;$vars
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
-     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;        type=&quot;&quot;&quot;$type$&quot;&quot;&quot; width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
+     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
   listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10834,7 +10870,7 @@ in
       &lt;$list filter=&quot;[[$goto$]match[yes]]&quot;&gt;
          &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&quot;&quot;&quot;
    reset=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]] [&lt;field&gt;match[text]] +[limit[1]]&quot;&gt;
+      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]]&quot;&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
@@ -10842,12 +10878,12 @@ in
 &lt;!-- STYLES AND CONTROLS --&gt;
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
-&lt;$vars calendar={{{ [[TiddlyTools/Time/Calendar]is[tiddler]then&lt;type&gt;match:caseinsensitive[calendar]then[yes]] }}}&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
      style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot; emptyMessage=&lt;&lt;editlist_select&gt;&gt;&gt; &lt;&lt;editlist_calendar&gt;&gt; &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;match[]] &quot;&gt; &lt;&lt;editlist_select&gt;&gt;   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot;&gt; &lt;&lt;editlist_calendar&gt;&gt; &lt;/$list&gt;
 &lt;/div&gt;
 \end
 
@@ -10886,7 +10922,7 @@ in
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10902,11 +10938,10 @@ in
 
 \define editlist_input()
 \whitespace trim
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
 &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-   &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
    &lt;$vars focus={{{ [&lt;modal&gt;is[tiddler]then[yes]else&lt;focus&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
-   &lt;/$eventcatcher&gt;
    &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
    &lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_save&gt;&gt;&lt;&lt;editlist_cancel&gt;&gt;&lt;/span&gt;
 &lt;/$keyboard&gt;
