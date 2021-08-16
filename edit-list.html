@@ -157,6 +157,18 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/GitHub/Branch</li>
+
+<li>$:/GitHub/Filename</li>
+
+<li>$:/GitHub/Path</li>
+
+<li>$:/GitHub/Repo</li>
+
+<li>$:/GitHub/ServerURL</li>
+
+<li>$:/GitHub/Username</li>
+
 <li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
@@ -164,6 +176,10 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-2065006209</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
 
@@ -227,7 +243,7 @@ Error message and password prompt
 <div created="20200807164533806" modified="20200807164533806" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
 </div>
-<div created="20210801024453235" modified="20210815040410184" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210816052315094" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10099,6 +10115,24 @@ Error message and password prompt
 TiddlyTools/Macros/edit-list
 TiddlyTools/Macros/edit-list-vars</pre>
 </div>
+<div created="20210816070158941" modified="20210816070159548" title="$:/GitHub/Branch">
+<pre>master</pre>
+</div>
+<div created="20210816070143325" modified="20210816070145580" title="$:/GitHub/Filename">
+<pre>edit-list.html</pre>
+</div>
+<div created="20210816070221077" modified="20210816070221077" title="$:/GitHub/Path">
+<pre>/</pre>
+</div>
+<div created="20210816070209994" modified="20210816070209994" title="$:/GitHub/Repo">
+<pre>tiddlytools/tiddlytools.github.com</pre>
+</div>
+<div created="20210816070123923" modified="20210816070125269" title="$:/GitHub/ServerURL">
+<pre>https://api.github.com</pre>
+</div>
+<div created="20210816070230596" modified="20210816070232228" title="$:/GitHub/Username">
+<pre>ericshulman</pre>
+</div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
@@ -10113,6 +10147,12 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
+<div created="20210816070046191" modified="20210816070046191" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
+</div>
+<div created="20210816070048809" modified="20210816070048809" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+</div>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
@@ -10122,7 +10162,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210816015744188" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210816020631111" title="$:/StoryList">
+<div created="20210816070043941" list="$:/ControlPanel TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210816070043941" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10240,7 +10280,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210816021457621" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210816052039327" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
@@ -10262,10 +10302,11 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!---------------&gt;
 &lt;$vars
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
-     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;        type=&quot;&quot;&quot;$type$&quot;&quot;&quot; width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
+     default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width=&quot;&quot;&quot;$width$&quot;&quot;&quot;
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
   listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10302,7 +10343,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
       &lt;$list filter=&quot;[[$goto$]match[yes]]&quot;&gt;
          &lt;$action-navigate $to={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}/&gt;&quot;&quot;&quot;
    reset=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]] [&lt;field&gt;match[text]] +[limit[1]]&quot;&gt;
+      &lt;$list filter=&quot;[&lt;index&gt;!match[]then&lt;tid&gt;get[text]match[{}]]&quot;&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
@@ -10310,12 +10351,12 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!-- STYLES AND CONTROLS --&gt;
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
-&lt;$vars calendar={{{ [[TiddlyTools/Time/Calendar]is[tiddler]then&lt;type&gt;match:caseinsensitive[calendar]then[yes]] }}}&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
      style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
-   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot; emptyMessage=&lt;&lt;editlist_select&gt;&gt;&gt; &lt;&lt;editlist_calendar&gt;&gt; &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;match[]] &quot;&gt; &lt;&lt;editlist_select&gt;&gt;   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot;&gt; &lt;&lt;editlist_calendar&gt;&gt; &lt;/$list&gt;
 &lt;/div&gt;
 \end
 
@@ -10354,7 +10395,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10370,11 +10411,10 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 \define editlist_input()
 \whitespace trim
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
 &lt;$keyboard key=&quot;enter&quot;  actions=&quot;&quot;&quot;&lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
 &lt;$keyboard key=&quot;escape&quot; actions=&quot;&quot;&quot;&lt;&lt;done&gt;&gt;&quot;&quot;&quot;&gt;
-   &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
    &lt;$vars focus={{{ [&lt;modal&gt;is[tiddler]then[yes]else&lt;focus&gt;] }}}&gt;&lt;&lt;edit&gt;&gt;&lt;/$vars&gt;
-   &lt;/$eventcatcher&gt;
    &lt;span class=&quot;editlist_input_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_clear&gt;&gt;&lt;&lt;editlist_popup&gt;&gt;&lt;/span&gt;
    &lt;span class=&quot;editlist_modal_buttons_$(id)$&quot;&gt;&lt;&lt;editlist_save&gt;&gt;&lt;&lt;editlist_cancel&gt;&gt;&lt;/span&gt;
 &lt;/$keyboard&gt;
@@ -10932,7 +10972,7 @@ columns:
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:date type:calendar&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes fontsize:70%&gt;&gt;
-&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes width:30em fontsize:&quot;calc(30em * 0.0555)&quot;&gt;&gt;
+&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes width:30em fontsize:&quot;calc(30em * 0.055)&quot;&gt;&gt;
 
 !!!field:color, list colors/colornames, listsize, focusPopup, colors:yes, find, type:color
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or&gt;&gt;
@@ -11018,7 +11058,10 @@ Some optional parameters include:
 
 !!''clearing the input field''
 &lt;&lt;&lt;
-When a value has been set into a field or index and the mouse pointer is over the text input or listbox controls, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ button will appear in the text input control.  You can use this button to ''quickly clear the input field'' without having to select the text and use the keyboard to erase the input field contents.
+When a value has been set into a field or index, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ button will appear next to the text input control.  You can use this button to ''quickly clear the input field'' without having to select the text and use the keyboard to erase the input field contents.  If `confirm:yes` has been specified, the
+@@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ and
+@@font-size:80%;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;@@ buttons will appear.
+You can then press @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ again, followed by @@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ to clear the input field.
 &lt;&lt;&lt;
 !!''limitations on list selection when using the keyboard''
 &lt;&lt;&lt;
