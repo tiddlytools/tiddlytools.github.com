@@ -10187,7 +10187,7 @@ SampleSequence</pre>
 <div created="20210705224417963" modified="20210705224417963" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
-<div created="20210705091059720" modified="20210813214557291" title="$:/state/tab/sidebar--595412856">
+<div created="20210705091059720" modified="20210816005701620" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -12445,7 +12445,7 @@ Year: &lt;&lt;controls_getyear&gt;&gt; Month: &lt;&lt;controls_getmonth&gt;&gt;&
 &lt;&lt;clock analog&gt;&gt;&lt;br&gt;&lt;&lt;clock digital&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20210813204917931" modified="20210813213833939" module-type="macro" tags="" title="TiddlyTools/Time/ConvertDate" type="application/javascript">
+<div created="20210813204917931" modified="20210816003459259" module-type="macro" tags="" title="TiddlyTools/Time/ConvertDate" type="application/javascript">
 <pre>/*\
 title:TiddlyTools/Time/ConvertDate
 type: application/javascript
@@ -12482,7 +12482,7 @@ exports.params = [
 /*
 Run the macro
 */
-exports.run = function(date,format) {
+exports.run = function(from,to) {
 	return $tw.utils.formatDateString(new Date(from),to || &quot;[UTC]YYYY0MM0DD0hh0mm0ss0XXX&quot;);
 };
 
@@ -12739,7 +12739,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210813214003356" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210816005957405" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define tids()    [prefix[TiddlyTools/Time]sort[]] [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]] 
 \define popup()   $:/state/popup/package/time
@@ -13009,7 +13009,9 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 @@.resize
 * To convert a date to a different format, use `&lt;&lt;convertdate from:inputdate to:outputformat&gt;&gt;`.
 * The input date can use any date format recognized by the Javascript Date.parse() function.  Generally this conforms to [[ISO 8601 standard date format|https://en.wikipedia.org/wiki/ISO_8601]].
-* The output format uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], and defaults to `[UTC]YYYY0MM0DD0hh0mm0ss0XXX`.
+* The output format parameter uses [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]] and defaults to `[UTC]YYYY0MM0DD0hh0mm0ss0XXX`.
+* The default output format automatically includes the [[timezone offset for your current locale|https://en.wikipedia.org/wiki/List_of_UTC_time_offsets]] in the result.
+* To convert to your local time without adjusting for your timezone offset, omit the `[UTC]` from the output format parameter.
 @@
 &lt;&lt;&lt;
 !! [[TiddlyTools/Time/EditDate]]
