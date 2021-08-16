@@ -10164,7 +10164,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Macros/convertdate.js]]</pre>
+# [[TiddlyTools/Time/Calendar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10193,7 +10193,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11449,7 +11449,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20210630010147882" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210816173941521" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11601,22 +11601,41 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$vars   btnstyle={{{ [&lt;btnstyle&gt;addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;timersbg&gt;addsuffix&lt;alarmsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
 &lt;!-- show button/popup --&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
+&lt;$vars   calendar_popID=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt;&gt;
+&lt;&lt;showday_button&gt;&gt;
+&lt;&lt;showday_popup&gt;&gt;
+\end
+
+\define showday_button()
+&lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;calendar_popID&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
    &lt;span style=&quot;color:$(numbers)$;&quot;&gt;&lt;&lt;dd&gt;&gt;&lt;/span&gt;
+   &lt;&lt;showday_button_actions&gt;&gt; &lt;!-- FOR USE BY CUSTOMIZATIONS --&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
-   position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;&quot;&gt;
-   @@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
-   @@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
-   &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-   &lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
-      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-         @@display:block;max-height:$(popup_maxheight)$;overflow:auto;
-            &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
-         @@
-      &lt;/div&gt;
-   &lt;/$list&gt;
+\end
+
+\define showday_popup()
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;calendar_popID&gt;&gt; class=&quot;tc-drop-down tt-shadowbox tc-popup-keep&quot;
+   position=&lt;&lt;popup_position&gt;&gt; style=&quot;min-width:auto;width:max-content;padding:0.5em;font-size:10pt;line-height:100%;&quot;&gt;
+   &lt;&lt;showday_popup_header&gt;&gt;
+   &lt;&lt;showday_popup_extras&gt;&gt; &lt;!-- FOR USE BY CUSTOMIZATIONS --&gt;
+   &lt;&lt;showday_popup_items&gt;&gt;
 &lt;/$reveal&gt;
+\end
+
+\define showday_popup_header()
+@@float:left;white-space:nowrap;  &lt;&lt;showday_viewjournal&gt;&gt; &lt;&lt;showday_editjournal&gt;&gt; &amp;nbsp;@@
+@@float:right;white-space:nowrap; &lt;&lt;showday_addevent&gt;&gt;@@
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+\end
+
+\define showday_popup_items()
+&lt;$list filter=&quot;[&lt;haschanges&gt;!match[]] [&lt;todays_timers&gt;trim[]!match[]] [&lt;todays_alarms&gt;trim[]!match[]] [&lt;todays_events&gt;trim[]!match[]] +[limit[1]]&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;margin-top:0.5em;&quot;&gt;
+      @@display:block;max-height:calc( $(popup_maxheight)$ );overflow:auto;
+         &lt;&lt;showday_items timers&gt;&gt; &lt;&lt;showday_items alarms&gt;&gt; &lt;&lt;showday_items events&gt;&gt; &lt;&lt;showday_created&gt;&gt; &lt;&lt;showday_modified&gt;&gt;
+      @@
+   &lt;/div&gt;
+&lt;/$list&gt;
 \end
 
 \define showday_viewjournal()
