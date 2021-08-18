@@ -10772,13 +10772,13 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210816173934568" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210818221922629" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
-    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
+    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
      filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,  listsize:&quot;10&quot;,
-   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     show:&quot;no&quot;, view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10798,7 +10798,7 @@ in
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
   listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
-    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} show=&quot;&quot;&quot;$show$&quot;&quot;&quot;
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10844,7 +10844,7 @@ in
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
-     style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
+     style={{{ [&lt;listheight&gt;match[1]then&lt;show&gt;match[no]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
    &lt;$list filter=&quot;[&lt;calendar&gt;match[]] &quot;&gt; &lt;&lt;editlist_select&gt;&gt;   &lt;/$list&gt;
@@ -10887,7 +10887,7 @@ in
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then&lt;show&gt;match[no]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10925,8 +10925,8 @@ in
 
 \define editlist_popup()
 \whitespace trim
-&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;calendar&gt;!match[]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT, SHOW POPUP BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;calendar&gt;!match[]then&lt;show&gt;match[no]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10995,18 +10995,29 @@ in
 &lt;style&gt;.editdate_format { width:100%; } .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }&lt;/style&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 &lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
-&lt;$vars  target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars  config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
-&lt;$vars  format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
-&lt;$list  filter=&quot;[&lt;config&gt;]&quot;&gt;
-&lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown editlist_calendar&quot;
-   style=&quot;line-height:100%; top:1.5em; padding:0.5em; min-width:auto;&quot;&gt;
-   &lt;span style=&quot;font-size:$(fontsize)$; line-height:100%;&quot;&gt;
-      &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
-      &lt;div&gt;format:&lt;/div&gt;
-      &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
-   &lt;/span&gt;
-&lt;/$reveal&gt;
+&lt;$vars target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
+&lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
+&lt;$list filter=&quot;[&lt;show&gt;match[no]then&lt;popup&gt;is[tiddler]]&quot; variable=&quot;show_popup_calendar&quot;&gt;
+   &lt;div class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown&quot; style=&quot;top:1.5em; padding:0.5em; width:$(width)$; min-width:auto;&quot;&gt;
+      &lt;&lt;editlist_calendar_show margin:1.25em&gt;&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;show&gt;!match[no]]&quot; variable=&quot;show_fixed_calendar&quot;&gt;
+   &lt;div style=&quot;margin-top:1.75em; width:$(width)$;&quot;&gt;
+      &lt;&lt;editlist_calendar_show&gt;&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define editlist_calendar_show(margin:0em)
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
+&lt;span class=&quot;editlist_calendar&quot; style=&quot;line-height:100%; font-size:calc(($(width)$ - $margin$) * 0.057);&quot;&gt;
+   &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
+   &lt;div&gt;format:&lt;/div&gt;
+   &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
+&lt;/span&gt;
 \end
 
 \define editlist_selectday()
