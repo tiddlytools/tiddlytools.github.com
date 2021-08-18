@@ -167,6 +167,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab--1963855381</li>
+
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-2065006209</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -10118,16 +10124,25 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
+<div created="20210818212711404" modified="20210818212711404" title="$:/state/tab--1963855381">
+<pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
+</div>
+<div created="20210818212709498" modified="20210818213229133" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
+</div>
+<div created="20210818213232275" modified="20210818213232275" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+</div>
 <div created="20210716234618928" modified="20210728063921176" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705093359199" modified="20210816173546663" title="$:/state/tab/sidebar--595412856">
+<div created="20210705093359199" modified="20210818213416753" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210816163129948" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list" modified="20210816180545348" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10239,19 +10254,19 @@ TiddlyTools/Macros/edit-list-vars</pre>
     }
 }</pre>
 </div>
-<div created="20191118105054407" modified="20191118105054407" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
+<div created="20191118105054407" modified="20210818213224123" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210816173934568" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210818221922629" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
-    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;, 
+    default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
      filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
  focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,  listsize:&quot;10&quot;,
-   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
+   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     show:&quot;no&quot;, view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10271,7 +10286,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
   listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
-    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} show=&quot;&quot;&quot;$show$&quot;&quot;&quot;
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10317,7 +10332,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
-     style={{{ [&lt;listheight&gt;match[1]then[margin-bottom:1em;]] }}}
+     style={{{ [&lt;listheight&gt;match[1]then&lt;show&gt;match[no]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
    &lt;$list filter=&quot;[&lt;calendar&gt;match[]] &quot;&gt; &lt;&lt;editlist_select&gt;&gt;   &lt;/$list&gt;
@@ -10360,7 +10375,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then&lt;show&gt;match[no]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10398,8 +10413,8 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 \define editlist_popup()
 \whitespace trim
-&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT LISTBOX, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;calendar&gt;!match[]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT, SHOW POPUP BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;calendar&gt;!match[]then&lt;show&gt;match[no]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10468,18 +10483,29 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;style&gt;.editdate_format { width:100%; } .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }&lt;/style&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 &lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
-&lt;$vars  target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars  config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
-&lt;$vars  format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
-&lt;$list  filter=&quot;[&lt;config&gt;]&quot;&gt;
-&lt;$reveal state=&lt;&lt;popup&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown editlist_calendar&quot;
-   style=&quot;line-height:100%; top:1.5em; padding:0.5em; min-width:auto;&quot;&gt;
-   &lt;span style=&quot;font-size:$(fontsize)$; line-height:100%;&quot;&gt;
-      &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
-      &lt;div&gt;format:&lt;/div&gt;
-      &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
-   &lt;/span&gt;
-&lt;/$reveal&gt;
+&lt;$vars target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
+&lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
+&lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
+&lt;$list filter=&quot;[&lt;show&gt;match[no]then&lt;popup&gt;is[tiddler]]&quot; variable=&quot;show_popup_calendar&quot;&gt;
+   &lt;div class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown&quot; style=&quot;top:1.5em; padding:0.5em; width:$(width)$; min-width:auto;&quot;&gt;
+      &lt;&lt;editlist_calendar_show margin:1.25em&gt;&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;show&gt;!match[no]]&quot; variable=&quot;show_fixed_calendar&quot;&gt;
+   &lt;div style=&quot;margin-top:1.75em; width:$(width)$;&quot;&gt;
+      &lt;&lt;editlist_calendar_show&gt;&gt;
+   &lt;/div&gt;
+&lt;/$list&gt;
+\end
+
+\define editlist_calendar_show(margin:0em)
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
+&lt;span class=&quot;editlist_calendar&quot; style=&quot;line-height:100%; font-size:calc(($(width)$ - $margin$) * 0.057);&quot;&gt;
+   &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
+   &lt;div&gt;format:&lt;/div&gt;
+   &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
+&lt;/span&gt;
 \end
 
 \define editlist_selectday()
@@ -10499,13 +10525,14 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210816173924888" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210818221915571" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
      filter,         find,      goto,    confirm,     focus,
  focusPopup, cancelPopups, listwidth, listheight,  listsize,
-   fontsize,  liststretch,    colors,   multiple,      view
+   fontsize,  liststretch,    colors,   multiple,      show,
+       view
 )
 &lt;!-- WRAPPER TO INVOKE edit-list USING VARIABLES INSTEAD OF MACRO PARAMS --&gt;
 &lt;$vars
@@ -10533,6 +10560,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
      fontsize={{{ [[$fontsize$]!is[blank]]     ~[&lt;fontsize&gt;!is[blank]]     ~[[100%]]     }}}
        colors={{{ [[$colors$]!is[blank]]       ~[&lt;colors&gt;!is[blank]]       ~[[no]]       }}}
      multiple={{{ [[$multiple$]!is[blank]]     ~[&lt;multiple&gt;!is[blank]]     ~[[no]]       }}}
+         show={{{ [[$show$]!is[blank]]         ~[&lt;show&gt;!is[blank]]         ~[[no]]       }}}
          view={{{ [[$view$]!is[blank]]         ~[&lt;view&gt;!is[blank]]         ~[[&lt;&lt;item&gt;&gt;]] }}}
 &gt;
 &lt;$macrocall $name=&quot;edit-list&quot;
@@ -10540,7 +10568,9 @@ TiddlyTools/Macros/edit-list-vars</pre>
     default=&lt;&lt;default&gt;&gt;,     placeholder=&lt;&lt;placeholder&gt;&gt;,    tooltip=&lt;&lt;tooltip&gt;&gt;,         type=&lt;&lt;type&gt;&gt;,          width=&lt;&lt;width&gt;&gt;,
      filter=&lt;&lt;filter&gt;&gt;,             find=&lt;&lt;find&gt;&gt;,              goto=&lt;&lt;goto&gt;&gt;,         confirm=&lt;&lt;confirm&gt;&gt;,       focus=&lt;&lt;focus&gt;&gt;,
  focusPopup=&lt;&lt;focusPopup&gt;&gt;, cancelPopups=&lt;&lt;cancelPopups&gt;&gt;, listwidth=&lt;&lt;listwidth&gt;&gt;, listheight=&lt;&lt;listheight&gt;&gt;, listsize=&lt;&lt;listsize&gt;&gt;,
-   fontsize=&lt;&lt;fontsize&gt;&gt;,    liststretch=&lt;&lt;liststretch&gt;&gt;,     colors=&lt;&lt;colors&gt;&gt;,      multiple=&lt;&lt;multiple&gt;&gt;,       view=&lt;&lt;view&gt;&gt; /&gt;
+   fontsize=&lt;&lt;fontsize&gt;&gt;,    liststretch=&lt;&lt;liststretch&gt;&gt;,     colors=&lt;&lt;colors&gt;&gt;,      multiple=&lt;&lt;multiple&gt;&gt;,       show=&lt;&lt;show&gt;&gt;,
+       view=&lt;&lt;view&gt;&gt;
+/&gt;
 \end
 
 |  author|''[ext[Eric Shulman|mailto:elsdesign@gmail.com]]''|
@@ -10931,11 +10961,11 @@ columns:
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
-!!!field:date, index:date type:calendar, focusPopup, confirm, fontsize
-&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:date type:calendar&gt;&gt;
+!!!field:date, index:date type:calendar, focusPopup, confirm, show, width
+&lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes confirm:yes&gt;&gt;
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes fontsize:70%&gt;&gt;
-&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes width:30em fontsize:&quot;calc(30em * 0.055)&quot;&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes show:yes&gt;&gt;
+&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; index:date type:calendar focusPopup:yes width:30em&gt;&gt;
 
 !!!field:color, list colors/colornames, listsize, focusPopup, colors:yes, find, type:color
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or&gt;&gt;
@@ -10946,7 +10976,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210816173917526" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210818221908622" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10974,7 +11004,7 @@ Some optional parameters include:
 
 * `find:...` ''progressively filters the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
 * `confirm:yes` provides save/cancel buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
-* `goto:yes` lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:...`, you can enter text to match a partial title and then select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
+* `goto:yes` lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:...`, you can enter text to match a partial title and select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
 * `listwidth:fit` and `stretch:fit` automatically ''set the width of the select list control to match its widest item''.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
 * `colors:yes` recognizes list items that are color values ''displays the color as the item's background'', allowing you to preview the color itself, rather than just selecting a color name or RGB value.
 &lt;&lt;&lt;
@@ -11008,11 +11038,12 @@ Some optional parameters include:
 |cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes.|
 |listwidth   | `100%`   |Width of the list. `100%` matches text input control, `fit`=match widest item, or use &lt;&lt;note_units&gt;&gt;.|
 |stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `fit`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
-|listheight  | `1`      |Number of lines to display in the list. If &gt; 1, then the list is always shown, and `focusPopup` and `listsize` are ignored.|
+|listheight  | `1`      |Number of lines to display in the list. If &gt; 1, the list is always shown, and `focusPopup` and `listsize` are ignored.|
 |listsize    | `10`     |Maximum number of lines to display in a popup list before adding a scroll bar.|
 |fontsize    | `100%`   |Size of the font used to display the popup list (or calendar, if using `type:calendar`). Use a percentage or &lt;&lt;note_units&gt;&gt;.|
 |colors      | `no`     |If `yes` and a list item is a &lt;&lt;note_colors&gt;&gt;, the item background will show the indicated color.|
 |multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.  See Notes.|
+|show        | `no`     |If `yes` and `type:calendar` is used, the calendar is always shown, and `focusPopup` is ignored.|
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes.|
 |id          | //none// |Specifies a unique ID for the combined controls. See Notes.|
 
@@ -11024,7 +11055,7 @@ Some optional parameters include:
 When a value has been set into a field or index, an @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ button will appear next to the text input control.  You can use this button to ''quickly clear the input field'' without having to select the text and use the keyboard to erase the input field contents.  If `confirm:yes` has been specified, the
 @@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ and
 @@font-size:80%;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;@@ buttons will appear.
-You can then press @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ again, followed by @@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ to clear the input field.
+Press @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ again, followed by @@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ to clear the input field.
 &lt;&lt;&lt;
 !!''limitations on list selection when using the keyboard''
 &lt;&lt;&lt;
@@ -11034,7 +11065,7 @@ A similar &quot;loss of focus&quot; will occur when ''targeting `field:tags` and
 &lt;&lt;&lt;
 !!''tiddler, field and index parameters''
 &lt;&lt;&lt;
-@@color:red;''CAUTION:''@@ ''When a `tiddler:...` parameter is not specified'', then care should be taken to ''avoid using `field:text` or any `index:...` parameters'', as these will cause `&lt;&lt;edit-list&gt;&gt;` to overwrite the text field of the current tiddler.  Also note that if both `field:...` and `index:...` parameters are omitted, then `field:text` will be used as the default, with the same results as above.
+@@color:red;''CAUTION:''@@ ''When a `tiddler:...` parameter is not specified'', care should be taken to ''avoid using `field:text` or any `index:...` parameters'', as these will cause `&lt;&lt;edit-list&gt;&gt;` to overwrite the text field of the current tiddler.  Also note that if both `field:...` and `index:...` parameters are omitted, `field:text` will be used as the default, with the same results as above.
 &lt;&lt;&lt;
 !!''type parameter''
 &lt;&lt;&lt;
@@ -11042,7 +11073,7 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 
 * Use `type:color` to ''select an RGB color value from a system-provided popup &quot;color picker&quot;''.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: ''`type:color` input controls can only show RGB color values''.  If a color //name// is entered or selected, the input control will display black, even though the field/index contains a valid color name.
 * Use `type:date` to ''restrict the input to a standard date format'' or ''select a date from a system-provided popup calendar''.  Note that, depending upon your operating system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).
-* If [[TiddlyTools/Time/Calendar]] is installed in the same ~TiddlyWiki as [[TiddlyTools/Macros/edit-list]], you can use `type:calendar` to ''select a date from a custom calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, and tiddler changes. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details. ​To ''adjust the size of the calendar, use the `fontsize:...`'' parameter; e.g., `fontsize:150%`.
+* If [[TiddlyTools/Time/Calendar]] is installed, you can use `type:calendar` to ''select a date from a popup calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, Alerts, Timers, and tiddler changes. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details. The calendar display automatically matches the width of the text input control.  If `show:yes` is also specified, the calendar will always be visible, and `focusPopup` is ignored.
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
@@ -11064,7 +11095,7 @@ The `multiple:yes` parameter allows you to select several items from the list us
 &lt;&lt;&lt;
 The `view:&quot;...&quot;` parameter uses ~TiddlyWiki wikitext syntax to render the contents of the selection list.  A variable named `item` is automatically set so that the default parameter value, `view:&quot;&lt;&lt;item&gt;&gt;&quot;` will show the corresponding title for each list item.  This can be overridden to ''show alternative text in the list.''
 
-For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, then the list will show the caption text (if any) for each tiddler title.  Note that while this changes the text displayed in the list, ''the selected value that will be stored into the target field or index will still be the actual `&lt;&lt;item&gt;&gt;` value'' (i.e., the tiddler's title).  Also note that, although the `view:...` parameter uses wikitext syntax, the list will only show plain text content without any special formatting (e.g., no bold/italics, colors, fonts, etc.)
+For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, the list will show the caption text (if any) for each tiddler title.  Note that while this changes the text displayed in the list, ''the selected value that will be stored into the target field or index will still be the actual `&lt;&lt;item&gt;&gt;` value'' (i.e., the tiddler's title).  Also note that, although the `view:...` parameter uses wikitext syntax, the list will only show plain text content without any special formatting (e.g., no bold/italics, colors, fonts, etc.)
 &lt;&lt;&lt;
 !!''cancelPopups parameter''
 &lt;&lt;&lt;
@@ -11123,7 +11154,7 @@ where `&lt;&lt;handleClickEvents&gt;&gt;` refers to a separate macro definition 
 &lt;&lt;&lt;
 For some applications, ''invoking `&lt;&lt;edit-list&gt;&gt;` using variables instead of macro parameters'' can be more useful.  To that end, a supplemental macro definition, `&lt;&lt;edit-list-vars&gt;&gt;` has been provided in [[TiddlyTools/Macros/edit-list-vars]].
 
-To use this macro, ''define the desired variables with `&lt;$vars ...&gt;`'', and then invoke it, like this:
+To use this macro, ''define the desired variables with `&lt;$vars ...&gt;`'', and invoke it, like this:
 &lt;pre style=&quot;background:transparent;border:0;margin:0;padding:0;&quot;&gt;
 
 ```
@@ -11309,7 +11340,7 @@ WhiteSmoke
 Yellow
 YellowGreen</pre>
 </div>
-<div created="20200902213051882" modified="20210816173941521" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210818222527357" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11461,7 +11492,7 @@ YellowGreen</pre>
 &lt;$vars   btnstyle={{{ [&lt;btnstyle&gt;addsuffix&lt;changesbg&gt;addsuffix&lt;eventsbg&gt;addsuffix&lt;timersbg&gt;addsuffix&lt;alarmsbg&gt;addsuffix&lt;todaybg&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
 &lt;!-- show button/popup --&gt;
-&lt;$vars   calendar_popID=&lt;&lt;qualify $:/state/popup/calendar/$(date)$&gt;&gt;&gt;
+&lt;$vars   calendar_popID=&lt;&lt;qualify $:/state/popup/calendar/$(date)$-$(id)$&gt;&gt;&gt;
 &lt;&lt;showday_button&gt;&gt;
 &lt;&lt;showday_popup&gt;&gt;
 \end
@@ -11621,7 +11652,7 @@ YellowGreen</pre>
 &lt;$list filter=&quot;[&lt;event_source&gt;get[text]split[BEGIN:VEVENT]rest[]trim[]]&quot; variable=&quot;event&quot;&gt;
    &lt;$set name=&quot;lines&quot; filter=&quot;[&lt;event&gt;splitregexp[\n|\r]!match[]trim[]]&quot;&gt;
    &lt;$vars event_date={{{ [enlist&lt;lines&gt;removeprefix[DTSTART]split[:]rest[]split[]first[8]join[]!match[]] }}}&gt;
-   &lt;$vars event_text={{{ [enlist&lt;lines&gt;removeprefix[SUMMARY:]] }}}&gt;
+   &lt;$vars event_text={{{ [enlist&lt;lines&gt;removeprefix[SUMMARY]split[:]rest[]join[]] }}}&gt;
    &lt;$list filter=&quot;[&lt;event_date&gt;prefix[$yyyy$$mm$]]&quot; variable=&quot;thismonth&quot;&gt;
       &lt;$reveal default=&quot;$convert$&quot; type=&quot;match&quot;   text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_source&gt;&gt;;&lt;&lt;calname&gt;&gt;&lt;&lt;event_text&gt;&gt;|&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
       &lt;$reveal default=&quot;$convert$&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; ``[[``&lt;&lt;event_date&gt;&gt;;&lt;&lt;event_text&gt;&gt;``]]``&lt;br&gt; &lt;/$reveal&gt;
@@ -11838,30 +11869,16 @@ YellowGreen</pre>
 \end
 
 \define controls_events_list_delete(id:&quot;&quot;)
-&lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;addprefix[delete ]] }}}&gt;
-&lt;$vars popupid_delete=&lt;&lt;qualify &quot;$(calendar_events_delete_popup)$$id$&quot;&gt;&gt;&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot; popup=&lt;&lt;popupid_delete&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt;&gt;
-   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;match&quot;   text=&quot;&quot;&gt; {{$:/core/images/delete-button}} &lt;/$reveal&gt;
-   &lt;$reveal state=&lt;&lt;popupid_delete&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot;&gt; {{$:/core/images/chevron-down}}  &lt;/$reveal&gt;
+&lt;$vars tip={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] +[addprefix[delete ]] }}}&gt;
+&lt;$vars msg={{{ [&lt;currentTiddler&gt;get[caption]else&lt;currentTiddler&gt;] +[addprefix[Are you sure you want to delete &quot;]addsuffix[&quot;?]] }}}&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;padding:0 0.5em;&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+   {{$:/core/images/delete-button}}
+   &lt;$action-confirm $message=&lt;&lt;msg&gt;&gt;&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+      &lt;$action-listops $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&quot;-[&lt;currentTiddler&gt;]&quot; /&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
+   &lt;/$action-confirm&gt;
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popupid_delete&gt;&gt;&gt;
-   &lt;div class=&quot;tc-drop-down tt-shadowbox&quot; style=&quot;min-width:auto;max-width:20em;padding:0.5em;transform:translate(calc(-100% + 5.5em),0);&quot;&gt;
-      &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;text-align:center;&quot;&gt;
-         Are you sure you want to delete&lt;br&gt;
-         @@font-size:1.5em;line-height:100%;white-space:normal; &lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;?&lt;br&gt;@@
-         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;&quot;&gt; cancel
-            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_delete&gt;&gt; /&gt;
-            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
-         &lt;/$button&gt;
-         &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;display:inline !important;width:auto;&quot;&gt; delete
-            &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt;/&gt;
-            &lt;$action-listops $tiddler=&lt;&lt;tt_time_config&gt;&gt; $tags=&quot;-[&lt;currentTiddler&gt;]&quot; /&gt;
-            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_delete&gt;&gt; /&gt;
-            &lt;$action-deletetiddler $tiddler=&lt;&lt;popupid_menu&gt;&gt;   /&gt;
-         &lt;/$button&gt;
-      &lt;/div&gt;
-   &lt;/div&gt;
-&lt;/$reveal&gt;
 \end
 
 \define controls_events_list_edit()
