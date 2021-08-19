@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210818221922629" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210819070410334" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10839,6 +10839,14 @@ in
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;text&quot;/&gt;
          &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;tid&gt;&gt; $field=&quot;type&quot;/&gt;&quot;&quot;&quot;
 &gt;
+&lt;!-------------------------------------------------&gt;
+&lt;!-- FIXUP: SCALE % OR EM FONTSIZE FOR CALENDAR  --&gt;
+&lt;!-- FIXUP: IGNORE % WIDTH FOR CALENDAR          --&gt;
+&lt;!-------------------------------------------------&gt;
+&lt;$vars fontscale={{{ [&lt;fontsize&gt;removesuffix[%]divide[100]] ~[&lt;fontsize&gt;removesuffix[em]] ~[&lt;fontsize&gt;] }}}&gt;
+&lt;$vars fontscale={{{ [&lt;show&gt;match[no]then[1]else&lt;fontscale&gt;] }}}
+&lt;$vars     width={{{ [&lt;calendar&gt;!match[]then&lt;width&gt;suffix[%]then[15em]else&lt;width&gt;] }}}&gt;
+&lt;span      style={{{ [[width:]addsuffix&lt;width&gt;] }}}&gt;
 &lt;!-------------------------&gt;
 &lt;!-- STYLES AND CONTROLS --&gt;
 &lt;!-------------------------&gt;
@@ -10865,6 +10873,8 @@ in
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { min-width:$(width)$; width:$(listwidth)$ !important; overflow-y:auto; font-size:$(fontsize)$; }
+   .editlist_calendar_format_$(id)$       { width:calc(100% * $(fontscale)$); }
+   .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }
    .editlist_wrapper_$(id)$              .fadeIn { opacity:0; }
    .editlist_wrapper_$(id)$:hover        .fadeIn { opacity:1; }
    .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; } /* https://www.caniuse.com/css-focus-within */
@@ -10992,7 +11002,6 @@ in
 \define editlist_select_and() &lt;$list filter=&quot;[enlist&lt;all&gt;search:title:$(flags)$&lt;val&gt;]&quot;&gt; &lt;$text text=&quot;[[&quot;/&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$text text=&quot;]]&quot;/&gt;&lt;br&gt; &lt;/$list&gt;
 
 \define editlist_calendar()
-&lt;style&gt;.editdate_format { width:100%; } .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }&lt;/style&gt;
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 &lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
 &lt;$vars target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
@@ -11000,23 +11009,22 @@ in
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
 &lt;$list filter=&quot;[&lt;show&gt;match[no]then&lt;popup&gt;is[tiddler]]&quot; variable=&quot;show_popup_calendar&quot;&gt;
-   &lt;div class=&quot;tc-popup-keep tc-popup-handle tc-block-dropdown&quot; style=&quot;top:1.5em; padding:0.5em; width:$(width)$; min-width:auto;&quot;&gt;
-      &lt;&lt;editlist_calendar_show margin:1.25em&gt;&gt;
-   &lt;/div&gt;
+   &lt;&lt;editlist_calendar_show style:&quot;top:1.5em;min-width:auto;&quot;&gt;&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;show&gt;!match[no]]&quot; variable=&quot;show_fixed_calendar&quot;&gt;
-   &lt;div style=&quot;margin-top:1.75em; width:$(width)$;&quot;&gt;
-      &lt;&lt;editlist_calendar_show&gt;&gt;
-   &lt;/div&gt;
+   &lt;&lt;editlist_calendar_show style:&quot;position:static;margin-top:1.75em;width:$(width)$;&quot;&gt;&gt;
 &lt;/$list&gt;
 \end
 
-\define editlist_calendar_show(margin:0em)
+\define editlist_calendar_show(style,padding:&quot;0.5em&quot;,margin:&quot;1.25em&quot;)
 &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
-&lt;span class=&quot;editlist_calendar&quot; style=&quot;line-height:100%; font-size:calc(($(width)$ - $margin$) * 0.057);&quot;&gt;
+&lt;div class=&quot;editlist_calendar tc-popup-keep tc-popup-handle tc-block-dropdown&quot; style=&quot;$style$;padding:$padding$;&quot;&gt;
+&lt;span style=&quot;font-size:$(fontsize)$;line-height:100%;&quot;&gt;
+&lt;span style=&quot;font-size:calc(($(width)$ - $margin$) * 0.057);line-height:100%;&quot;&gt;
    &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
    &lt;div&gt;format:&lt;/div&gt;
-   &lt;$edit-text tag=&quot;input&quot; class=&quot;editdate_format&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
+   &lt;$edit-text tag=&quot;input&quot; class=&quot;editlist_calendar_format_$(id)$&quot; tiddler=&lt;&lt;config&gt;&gt; field=&quot;format&quot; default=&lt;&lt;format&gt;&gt; placeholder=&lt;&lt;format&gt;&gt; /&gt;
+&lt;/span&gt;
 &lt;/span&gt;
 \end
 
