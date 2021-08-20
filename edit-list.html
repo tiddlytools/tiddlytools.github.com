@@ -10134,7 +10134,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210820043917054" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210820054251866" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10252,7 +10252,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210820053953681" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210820143341097" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10345,7 +10345,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.5em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { min-width:$(width)$; width:$(listwidth)$ !important; overflow-y:auto; font-size:$(fontsize)$; }
-   .editlist_calendar                     { width:18.75em; height:20em; padding:0.5em; }
+   .editlist_calendar                     { width:18.75em; padding:0.5em; }
    .editlist_calendar_format              { width:17.5em; }
    .editlist_calendar.tc-block-dropdown a { padding-top:0; padding-bottom:0; }
    .editlist_wrapper_$(id)$              .fadeIn { opacity:0; }
@@ -10501,7 +10501,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \define editlist_calendar_show()
 \whitespace trim
 &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
-&lt;div style=&quot;width:$(width)$;height:calc($(height)$ + 1em);&quot;&gt;
+&lt;div style=&quot;height:$(height)$;margin-bottom:0.5em;&quot;&gt;
    &lt;div style=&quot;transform-origin:top left;transform:scale(calc($(emwidth)$ / 18.75));&quot;&gt;
       &lt;div class=&quot;editlist_calendar tc-block-dropdown&quot; style=&quot;margin:0;min-width:auto;&quot;&gt;
          &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
