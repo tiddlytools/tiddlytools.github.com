@@ -167,8 +167,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/modal/edit-list/TryIt_date_b-995326193</li>
-
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
@@ -238,7 +236,7 @@ Error message and password prompt
 <div calendar_showevents="yes" created="20210816171919922" modified="20210816173239074" tags="[[New Event List]]" title="$:/config/TiddlyTools/Time">
 <pre></pre>
 </div>
-<div created="20210801024453235" modified="20210819052110163" title="$:/config/TimestampDisable">
+<div created="20210801024453235" modified="20210820054253504" title="$:/config/TimestampDisable">
 <pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
@@ -10124,9 +10122,6 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191212092048536" modified="20210721193027569" title="$:/SiteTitle">
 <pre>~EditListMacro</pre>
 </div>
-<div created="20210820015248362" modified="20210820015248362" title="$:/state/modal/edit-list/TryIt_date_b-995326193">
-<pre></pre>
-</div>
 <div created="20210819160750504" modified="20210819160826141" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
@@ -10139,7 +10134,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210820043917054" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210820054251866" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10257,7 +10252,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210820021939891" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210820053953681" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10281,7 +10276,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width={{{ [[$width$]match[auto]then[15em]else[$width$]] }}}
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
-  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[fit]then[auto]else[$stretch$]] }}}
+  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
     calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} show=&quot;&quot;&quot;$show$&quot;&quot;&quot;
 &gt;
@@ -10486,12 +10481,15 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
+&lt;$vars   width={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;] ~[&lt;stretch&gt;!match[no]then&lt;stretch&gt;] ~[&lt;width&gt;]   }}}&gt;
+&lt;$vars  height={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;] ~[&lt;stretch&gt;!match[no]then&lt;stretch&gt;] ~[[18.75em]] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[em]] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[in]multiply[6.420]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[cm]multiply[2.530]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[mm]multiply[.2530]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[px]multiply[0.066]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[pt]multiply[0.089]else&lt;emwidth&gt;] }}}&gt;
+&lt;$vars emwidth={{{ [&lt;stretch&gt;match[no]then[]else&lt;emwidth&gt;] }}}&gt;
 &lt;$list  filter=&quot;[&lt;show&gt;match[no]]&quot;&gt;
    &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;&lt;&lt;editlist_calendar_show&gt;&gt;&lt;/$reveal&gt;
 &lt;/$list&gt;
@@ -10503,7 +10501,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \define editlist_calendar_show()
 \whitespace trim
 &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
-&lt;div style=&quot;width:$(width)$;height:calc($(width)$ + 1em);&quot;&gt;
+&lt;div style=&quot;width:$(width)$;height:calc($(height)$ + 1em);&quot;&gt;
    &lt;div style=&quot;transform-origin:top left;transform:scale(calc($(emwidth)$ / 18.75));&quot;&gt;
       &lt;div class=&quot;editlist_calendar tc-block-dropdown&quot; style=&quot;margin:0;min-width:auto;&quot;&gt;
          &lt;$macrocall $name=&quot;showmonth&quot; yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;] }}} view=&quot;edit&quot; /&gt;
@@ -10956,24 +10954,26 @@ columns:
 &lt;&lt;edit-list id:g tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listheight:5&gt;&gt;
 &lt;&lt;edit-list id:h tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:MATCH listheight:5&gt;&gt;
 &lt;&lt;edit-list id:i tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:and   listheight:5 listwidth:fit&gt;&gt;
-&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:or    listheight:5 stretch:fit&gt;&gt;
+&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:or    listheight:5 stretch:yes&gt;&gt;
 &lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:AND   listheight:5 stretch:20em&gt;&gt;
 &lt;&lt;edit-list id:l tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:OR    listheight:5 stretch:100%&gt;&gt;
 
 !!!''field:tags, list tags, focusPopup, stretch, find''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
-&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit&gt;&gt;
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:fit find:or&gt;&gt;
+&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:yes&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes stretch:yes find:or&gt;&gt;
 
 !!!''field:test, index vs. field''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; index:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:test filter:[all[tiddlers+shadows]tags[]sort[]]&gt;&gt;
 
-!!!''field:date, type:calendar, focusPopup, confirm, show, width''
+!!!''field:date, type:calendar, focusPopup, confirm, show, stretch, width''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes&gt;&gt;
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes confirm:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes show:yes&gt;&gt;
-&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes width:30em&gt;&gt;
+&lt;&lt;edit-list id:d tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes stretch:yes&gt;&gt;
+&lt;&lt;edit-list id:e tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes stretch:10em&gt;&gt;
+&lt;&lt;edit-list id:f tiddler:&quot;TryIt&quot; field:date type:calendar focusPopup:yes stretch:yes width:30em&gt;&gt;
 
 !!!''field:color, list colors/colornames, listsize, focusPopup, colors:yes, find, type:color''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:color filter:&quot;#ff0000 #00ff00 #0000ff [{TiddlyTools/Settings/Colors/X11Names}]&quot; listsize:5 focusPopup:yes colors:yes find:or&gt;&gt;
@@ -10981,8 +10981,8 @@ columns:
 
 !!!''field:goto, list all tiddlers, find, focusPopup, goto tiddler, fontsize, listwidth vs. stretch''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% listwidth:fit&gt;&gt;
-&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit&gt;&gt;
-&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:fit confirm:yes&gt;&gt;</pre>
+&lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes&gt;&gt;
+&lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes confirm:yes&gt;&gt;</pre>
 </div>
 <div caption="edit-list" created="20210719102404282" modified="20210820021815309" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
@@ -11013,7 +11013,7 @@ Some optional parameters include:
 * `find:...` ''progressively filters the selection list'' as you type, so that the list __only shows those items that contain the current input text__.
 * `confirm:yes` provides save/cancel buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
 * `goto:yes` lets you ''quickly navigate to any tiddler'' by selecting a list item.  When combined with `find:...`, you can enter text to match a partial title and select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
-* `listwidth:fit` and `stretch:fit` automatically ''set the width of the select list control to match its widest item''.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
+* `listwidth:fit` and `stretch:yes` automatically ''set the width of the select list control to match its widest item''.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
 * `colors:yes` recognizes list items that are color values ''displays the color as the item's background'', allowing you to preview the color itself, rather than just selecting a color name or RGB value.
 &lt;&lt;&lt;
 
@@ -11045,7 +11045,7 @@ Some optional parameters include:
 |focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
 |cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes.|
 |listwidth   | `100%`   |Width of the list. `100%` matches text input control, `fit`=match widest item, or use &lt;&lt;note_units&gt;&gt;.|
-|stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `fit`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
+|stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `yes`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, the list is always shown, and `focusPopup` and `listsize` are ignored.|
 |listsize    | `10`     |Maximum number of lines to display in a popup list before adding a scroll bar.|
 |fontsize    | `100%`   |Size of the font used to display the popup list or calendar. Use `%` or `em` units only.|
@@ -11083,8 +11083,9 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 * Use `type:date` to ''restrict the input to a standard date format'' or ''select a date from a system-provided popup calendar''.  Note that, depending upon your operating system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).&lt;p/&gt;
 * If [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] is installed, you can use `type:calendar` to ''select a date from a popup calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of ''Events, Timelines, Alerts, Timers, and tiddler changes''. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details.
 ** If `show:yes` is specified, the calendar will ''always be visible'', and `focusPopup` is ignored.
-** If `width:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), the calendar will scale to ''match the width of the text input'' control.
-
+** If `stretch:yes` is specified, and `width:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), the size of the calendar will adjust to ''match the width of the text input'' control.
+** If `stretch:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), the size of the calendar will adjust to ''match the indicated width''.
+ 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
 !!''find parameter''
