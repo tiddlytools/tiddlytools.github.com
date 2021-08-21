@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210821053954459" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210821105042302" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -11001,16 +11001,15 @@ in
 &lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
-&lt;$vars   width={{{ [&lt;stretch&gt;match[no]then&lt;width&gt;] ~[&lt;stretch&gt;match[auto]then&lt;width&gt;] ~[&lt;stretch&gt;] }}}&gt;
+&lt;$vars   width={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;else&lt;stretch&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[em]] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[in]multiply[6.420]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[cm]multiply[2.530]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[mm]multiply[.2530]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[px]multiply[0.066]else&lt;emwidth&gt;] }}}&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[pt]multiply[0.089]else&lt;emwidth&gt;] }}}&gt;
-&lt;$vars   scale={{{ [&lt;emwidth&gt;addsuffix[/18.75]] }}}&gt;
-&lt;$vars  spacer={{{ [&lt;stretch&gt;match[no]then[19.75em]] ~[[19.75em*]addsuffix&lt;scale&gt;] }}}&gt;
-&lt;$vars   scale={{{ [&lt;stretch&gt;match[no]then[1]]       ~[&lt;scale&gt;]                    }}}&gt;
+&lt;$vars  spacer={{{ [&lt;stretch&gt;match[no]then[19.75em]] ~[[19.75em*]addsuffix&lt;emwidth&gt;addsuffix[/18.75]] }}}&gt;
+&lt;$vars   scale={{{ [&lt;stretch&gt;match[no]then[1]]       ~[&lt;emwidth&gt;addsuffix[/18.75]]                    }}}&gt;
 &lt;$list  filter=&quot;[&lt;show&gt;match[no]]&quot;&gt;
    &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;&lt;&lt;editlist_calendar_show&gt;&gt;&lt;/$reveal&gt;
 &lt;/$list&gt;
