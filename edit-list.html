@@ -153,6 +153,8 @@ Error message and password prompt
 
 <li>$:/config/TiddlyTools/Time</li>
 
+<li>$:/config/TimestampDisable</li>
+
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -229,6 +231,9 @@ Error message and password prompt
 </div>
 <div calendar_showevents="yes" created="20210816171919922" modified="20210816173239074" tags="[[New Event List]]" title="$:/config/TiddlyTools/Time">
 <pre></pre>
+</div>
+<div created="20210821200211217" modified="20210821200211217" title="$:/config/TimestampDisable">
+<pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10235,7 +10240,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210821141611171" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210821195954248" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10464,26 +10469,26 @@ TiddlyTools/Macros/edit-list-vars</pre>
 &lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
-&lt;!-- GET EMWIDTH FROM WIDTH AND STRETCH --&gt;
 &lt;$vars   width={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;else&lt;stretch&gt;] }}}&gt;
+&lt;!-- CONVERT WIDTH TO EMWIDTH --&gt;
 &lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[em]] }}}&gt;
-&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[in]multiply[6.420]else&lt;emwidth&gt;] }}}&gt;
-&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[cm]multiply[2.530]else&lt;emwidth&gt;] }}}&gt;
-&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[mm]multiply[.2530]else&lt;emwidth&gt;] }}}&gt;
-&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[px]multiply[0.066]else&lt;emwidth&gt;] }}}&gt;
-&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[pt]multiply[0.089]else&lt;emwidth&gt;] }}}&gt;
+&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[in]multiply[6.420]else&lt;emwidth&gt;] }}}&gt; &lt;!-- EMs per inch  --&gt;
+&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[cm]multiply[2.530]else&lt;emwidth&gt;] }}}&gt; &lt;!-- EMs per cm    --&gt;
+&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[mm]multiply[.2530]else&lt;emwidth&gt;] }}}&gt; &lt;!-- EMs per mm    --&gt;
+&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[px]multiply[0.066]else&lt;emwidth&gt;] }}}&gt; &lt;!-- EMs per pixel --&gt;
+&lt;$vars emwidth={{{ [&lt;width&gt;removesuffix[pt]multiply[0.089]else&lt;emwidth&gt;] }}}&gt; &lt;!-- EMs per point --&gt;
 &lt;!-- GET HEIGHT FROM DAYS PER MONTH --&gt;
 &lt;$vars    yyyy={{{ [&lt;config&gt;get[year]else&lt;year&gt;] }}} mm={{{ [&lt;config&gt;get[month]else&lt;month&gt;pad[2]] }}}&gt;
 &lt;$vars    date={{{ [&lt;yyyy&gt;addsuffix&lt;mm&gt;addsuffix[01]] }}}&gt;
 &lt;$wikify  name=&quot;first&quot; text=&quot;&quot;&quot;&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]ddd&quot; /&gt;&quot;&quot;&quot;&gt;
 &lt;$vars   first={{{ [all[shadows]prefix[$:/language/Date/Short/Day/]get[text]allbefore&lt;first&gt;count[]] }}}&gt;
 &lt;$vars     dpm={{{ [&lt;yyyy&gt;remainder[4]match[0]then[31 29 31 30 31 30 31 31 30 31 30 31]else[31 28 31 30 31 30 31 31 30 31 30 31]] }}}&gt;
-&lt;$vars      dm={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;]                            }}}&gt; &lt;!-- days in this month --&gt;
-&lt;$vars    rows={{{ [&lt;first&gt;subtract[1]add&lt;dm&gt;divide[7]add[1]trunc[]] }}}&gt; &lt;!-- rows in this month --&gt;
-&lt;$vars  height={{{ [&lt;rows&gt;multiply[2.5]add[7.25]addsuffix[em]]       }}}&gt; &lt;!-- add height of heading and format input --&gt;
-&lt;!-- SET SCALE AND SPACER FROM STRETCH, EMWIDTH, AND HEIGHT --&gt;
-&lt;$vars   scale={{{ [&lt;stretch&gt;match[no]then[1]]      ~[&lt;emwidth&gt;addsuffix[/18.75]] }}}&gt;
-&lt;$vars  spacer={{{ [&lt;stretch&gt;match[no]then&lt;height&gt;] ~[&lt;height&gt;addsuffix[*]addsuffix&lt;emwidth&gt;addsuffix[/18.75]] }}}&gt;
+&lt;$vars      dm={{{ [&lt;dpm&gt;split[ ]nth&lt;mm&gt;]                            }}}&gt; &lt;!-- days per month --&gt;
+&lt;$vars    rows={{{ [&lt;first&gt;subtract[1]add&lt;dm&gt;divide[7]add[1]trunc[]] }}}&gt; &lt;!-- rows per month --&gt;
+&lt;$vars  height={{{ [&lt;rows&gt;multiply[2.5]add[7.25]addsuffix[em]]       }}}&gt; &lt;!-- rows + heading + format --&gt;
+&lt;!-- SET SCALE AND SPACER --&gt;
+&lt;$vars   scale={{{ [&lt;stretch&gt;match[no]then[1]] ~[&lt;emwidth&gt;addsuffix[/18.75]] }}}&gt; &lt;!-- 18.75 = 7 days + borders + padding --&gt;
+&lt;$vars  spacer={{{ [&lt;height&gt;addsuffix[*]addsuffix&lt;scale&gt;] }}}&gt;
 &lt;!-- SHOW POPUP OR INLINE CALENDAR --&gt;
 &lt;$list filter=&quot;[&lt;show&gt;match[no]]&quot; variable=&quot;show_popup_calendar&quot;&gt;
    &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-popup-keep&quot;&gt;&lt;&lt;editlist_calendar_show&gt;&gt;&lt;/$reveal&gt;
@@ -10526,7 +10531,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210820021935917" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210821195948070" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10979,7 +10984,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210820021815309" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210821195812863" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -11039,8 +11044,8 @@ Some optional parameters include:
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
 |focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
 |cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes.|
-|listwidth   | `100%`   |Width of the list. `100%` matches text input control, `fit`=match widest item, or use &lt;&lt;note_units&gt;&gt;.|
-|stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`, `yes`=stretch to match widest item, or use &lt;&lt;note_units&gt;&gt;.|
+|listwidth   | `100%`   |Width of the list. `100%` matches text input control, `fit` (or `auto`)=match widest item; or, `listwidth:...`=use &lt;&lt;note_units&gt;&gt;.|
+|stretch     | `no`     |Width of the list when hover or focus. `no`=use `listwidth`; `yes` (or `auto`)=match widest item; `stretch:...`=use &lt;&lt;note_units&gt;&gt;.|
 |listheight  | `1`      |Number of lines to display in the list. If &gt; 1, the list is always shown, and `focusPopup` and `listsize` are ignored.|
 |listsize    | `10`     |Maximum number of lines to display in a popup list before adding a scroll bar.|
 |fontsize    | `100%`   |Size of the font used to display the popup list or calendar. Use `%` or `em` units only.|
@@ -11077,9 +11082,10 @@ You can use the `type:...` parameter to ''display specialized kinds of input fie
 * Use `type:color` to ''select an RGB color value from a system-provided popup &quot;color picker&quot;''.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: ''`type:color` input controls can only show RGB color values''.  If a color //name// is entered or selected, the input control will display black, even though the field/index contains a valid color name.&lt;p/&gt;
 * Use `type:date` to ''restrict the input to a standard date format'' or ''select a date from a system-provided popup calendar''.  Note that, depending upon your operating system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).&lt;p/&gt;
 * If [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] is installed, you can use `type:calendar` to ''select a date from a popup calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of ''Events, Timelines, Alerts, Timers, and tiddler changes''. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details.
-** If `show:yes` is specified, the calendar will ''always be visible'', and `focusPopup` is ignored.
-** If `stretch:yes` is specified, and `width:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), the size of the calendar will adjust to ''match the width of the text input'' control.
-** If `stretch:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), the size of the calendar will adjust to ''match the indicated width''.
+** If `show:yes`, the calendar will ''always be visible'', and `focusPopup` is ignored.
+** If `stretch:no`, use ''default calendar width and height''.
+** If `stretch:...` uses `em` or any fixed-size units (`in`,`cm`,`mm`,`px`, or `pt`), resize calendar to ''match the indicated width''.
+** If `stretch:yes` (or `auto`) and `width:...` uses `em` or any fixed-size units, resize calendar to ''match the width of the text input'' control.
  
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
