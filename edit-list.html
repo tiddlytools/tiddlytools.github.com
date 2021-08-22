@@ -10122,7 +10122,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div created="20210822102721418" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210822102721418" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10240,7 +10240,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210822075546332" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210822104120277" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10358,7 +10358,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;show&gt;match[no]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;filter&gt;!match[]then&lt;show&gt;match[no]then[1.50]] [&lt;calendar&gt;!match[]then&lt;show&gt;match[no]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10397,7 +10397,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 \define editlist_popup()
 \whitespace trim
 &lt;!-- IF LIST OR CALENDAR NOT SHOWN, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;$list filter=&quot;[&lt;filter&gt;!match[]] [&lt;calendar&gt;!match[]] +[limit[1]then&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10948,12 +10948,12 @@ columns:
 &lt;&lt;edit-list id:f tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] listwidth:fit focusPopup:yes multiple:yes&gt;&gt;
 
 !!!''field:text, list tags, find, fixed height, listwidth vs. stretch''
-&lt;&lt;edit-list id:g tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] show:5&gt;&gt;
-&lt;&lt;edit-list id:h tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:MATCH show:5&gt;&gt;
-&lt;&lt;edit-list id:i tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:and   show:5 listwidth:fit&gt;&gt;
-&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:or    show:5 stretch:yes&gt;&gt;
-&lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:AND   show:5 stretch:30em&gt;&gt;
-&lt;&lt;edit-list id:l tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:OR    show:5 stretch:30em&gt;&gt;
+&lt;&lt;edit-list id:g tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] show:yes scroll:5&gt;&gt;
+&lt;&lt;edit-list id:h tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:MATCH show:yes scroll:5&gt;&gt;
+&lt;&lt;edit-list id:i tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:and   show:yes scroll:5 listwidth:fit&gt;&gt;
+&lt;&lt;edit-list id:j tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:or    show:yes scroll:5 stretch:yes&gt;&gt;
+&lt;&lt;edit-list id:k tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:AND   show:yes scroll:5 stretch:30em&gt;&gt;
+&lt;&lt;edit-list id:l tiddler:&quot;TryIt&quot; filter:[all[tiddlers+shadows]tags[]sort[]] find:OR    show:yes scroll:5 stretch:30em&gt;&gt;
 
 !!!''field:tags, list tags, focusPopup, stretch, find''
 &lt;&lt;edit-list id:a tiddler:&quot;TryIt&quot; field:tags filter:[all[tiddlers+shadows]tags[]sort[]] focusPopup:yes&gt;&gt;
