@@ -10772,13 +10772,13 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210821195954248" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210822075546332" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
      filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
- focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;, listheight:&quot;1&quot;,  listsize:&quot;10&quot;,
-   fontsize:&quot;100%&quot;,     stretch:&quot;no&quot;,     colors:&quot;no&quot;,     multiple:&quot;no&quot;,     show:&quot;no&quot;, view:&quot;&lt;&lt;item&gt;&gt;&quot;
+ focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;,    stretch:&quot;no&quot;,     show:&quot;no&quot;,
+     scroll:&quot;10&quot;,      fontsize:&quot;100%&quot;,   colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
 &lt;!-----------------&gt;
@@ -10796,9 +10796,9 @@ in
        field={{{ [[$index$]match[]then[$field$]else[]] }}}     index=&quot;&quot;&quot;$index$&quot;&quot;&quot;     timestamp=&quot;&quot;&quot;$timestamp$&quot;&quot;&quot;
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width={{{ [[$width$]match[auto]then[15em]else[$width$]] }}}
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
-  listheight=&quot;&quot;&quot;$listheight$&quot;&quot;&quot; listsize=&quot;&quot;&quot;$listsize$&quot;&quot;&quot;   fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
+      scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;         show=&quot;&quot;&quot;$show$&quot;&quot;&quot;       fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
        focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
-    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} show=&quot;&quot;&quot;$show$&quot;&quot;&quot;
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} 
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10815,7 +10815,7 @@ in
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
          actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
-         &lt;$list filter=&lt;&lt;show&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
+         &lt;$list filter=&lt;&lt;display&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
    option=&quot;&quot;&quot;
       &lt;$vars fg={{{ [enlist&lt;dark&gt;match&lt;item&gt;then[#eee;]] }}}&gt;
       &lt;$vars colors={{{ [[$colors$]match[yes]then[background-color:]addsuffix&lt;item&gt;addsuffix[;color:]addsuffix&lt;fg&gt;] }}}&gt;
@@ -10844,7 +10844,7 @@ in
 &lt;!-------------------------&gt;
 &lt;&lt;editlist_styles&gt;&gt;
 &lt;div class={{{ [[editlist_wrapper editlist_wrapper_]addsuffix&lt;id&gt;] }}}
-     style={{{ [&lt;listheight&gt;match[1]then&lt;show&gt;match[no]then[margin-bottom:1em;]] }}}
+     style={{{ [&lt;show&gt;match[no]then[margin-bottom:1em;]] }}}
      title=&lt;&lt;tooltip&gt;&gt;&gt;
    &lt;&lt;editlist_input&gt;&gt;
    &lt;$list filter=&quot;[&lt;calendar&gt;match[]] &quot;&gt; &lt;&lt;editlist_select&gt;&gt;   &lt;/$list&gt;
@@ -10880,7 +10880,7 @@ in
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;show&gt;!match[no]]&quot;&gt;
    &lt;style&gt; .editlist_popup_wrapper_$(id)$ { position:static !important; margin-top:1.6em; } &lt;/style&gt;
 &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;stretch&gt;!match[no]]&quot;&gt;
@@ -10890,7 +10890,7 @@ in
 
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;]             }}}&gt;
 &lt;$vars currval={{{ [&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] }}}&gt;
-&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;calendar&gt;!match[]then&lt;show&gt;match[no]then[1.50]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]then[1.50]] +[sum[]] }}}&gt;
+&lt;$vars  bwidth={{{ [&lt;currval&gt;!match[]then[1.5]] [&lt;show&gt;match[no]then[1.50]] +[sum[]] }}}&gt;
 &lt;$list filter=&quot;[&lt;width&gt;!match[100%]]&quot;&gt;&lt;&lt;editlist_styles_setinputwidth&gt;&gt;&lt;/$list&gt;
 \end
 
@@ -10928,8 +10928,8 @@ in
 
 \define editlist_popup()
 \whitespace trim
-&lt;!-- IF TYPE IS CALENDAR OR FILTERING AND NOT FIXED-HEIGHT, SHOW POPUP BUTTON --&gt;
-&lt;$list filter=&quot;[&lt;calendar&gt;!match[]then&lt;show&gt;match[no]] [&lt;filter&gt;!match[]then&lt;listheight&gt;match[1]] +[limit[1]]&quot; variable=&quot;show_popup&quot;&gt;
+&lt;!-- IF LIST OR CALENDAR NOT SHOWN, SHOW POPUP BUTTON --&gt;
+&lt;$list filter=&quot;[&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
    &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
@@ -10958,7 +10958,7 @@ in
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
-&lt;$list filter=&quot;[&lt;listheight&gt;!match[1]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
+&lt;$list filter=&quot;[&lt;show&gt;!match[no]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;$set name=&quot;curr&quot;    filter=&quot;[&lt;modal&gt;is[tiddler]else&lt;tid&gt;]&quot;&gt;
 &lt;$set name=&quot;val&quot;     filter=&quot;[&lt;find&gt;!match[]then&lt;curr&gt;getindex&lt;index&gt;] ~[&lt;find&gt;!match[]then&lt;curr&gt;get&lt;field&gt;]&quot; select=0&gt;
 &lt;$set name=&quot;exclude&quot; filter=&quot;[&lt;field&gt;match[tags]then&lt;curr&gt;get[tags]enlist-input[]] :filter[tagging[]count[]match[1]]&quot;&gt; 
@@ -10974,9 +10974,9 @@ in
 &lt;$set name=&quot;search&quot;  filter=&quot;[&lt;find&gt;match[and]] [&lt;find&gt;match[match]]&quot; value=&quot;[enlist&lt;and&gt;]&quot; emptyValue=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;results&quot; filter=&lt;&lt;search&gt;&gt;&gt;
 &lt;$set name=&quot;found&quot;   filter=&quot;[enlist&lt;results&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;show&quot;    filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
-&lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;show&gt;count[]]&quot;&gt;
-&lt;$set name=&quot;size&quot;    filter=&quot;[&lt;listheight&gt;match[1]then&lt;count&gt;min&lt;listsize&gt;max[2]else&lt;listheight&gt;]&quot;&gt;
+&lt;$set name=&quot;display&quot; filter=&quot;[&lt;results&gt;match&lt;val&gt;] [&lt;found&gt;match[0]] +[limit[1]]&quot; value=&lt;&lt;all&gt;&gt; emptyValue=&lt;&lt;results&gt;&gt;&gt;
+&lt;$set name=&quot;count&quot;   filter=&quot;[enlist&lt;display&gt;count[]]&quot;&gt;
+&lt;$set name=&quot;size&quot;    filter=&quot;[&lt;count&gt;min&lt;scroll&gt;max[2]]&quot;&gt;
 &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;start&gt;&gt;&gt;
 &lt;div class=&quot;editlist_popup_wrapper_$(id)$&quot;&gt;
    &lt;div class=&quot;editlist_popup_heading_$(id)$&quot;&gt;
