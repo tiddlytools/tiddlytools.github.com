@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210822104120277" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210823121032595" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10930,8 +10930,15 @@ in
 \whitespace trim
 &lt;!-- IF LIST OR CALENDAR NOT SHOWN, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]] [&lt;calendar&gt;!match[]] +[limit[1]then&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&quot;show list&quot; popup=&quot;$(popup)$&quot;&gt;
-   &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt; &lt;&lt;start&gt;&gt;
+&lt;$vars tip={{{ [&lt;calendar&gt;match[]then[show list]else[show calendar]] }}}&gt;
+&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&lt;&lt;tip&gt;&gt; popup=&quot;$(popup)$&quot;&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;match[]]&quot;&gt; &lt;!-- DOWN TRIANGLE --&gt;
+      &lt;span style=&quot;font-size:70%;&quot;&gt;&amp;#x25BC;&lt;/span&gt;
+   &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;calendar&gt;!match[]]&quot;&gt; &lt;!-- CALENDAR EMOJI --&gt; 
+      &lt;span style=&quot;font-size:90%;margin-left:-0.2em;vertical-align:text-top;&quot;&gt;&amp;#x1F4C5;&lt;/span&gt;
+   &lt;/$list&gt;
+   &lt;&lt;start&gt;&gt;
 &lt;/$button&gt;
 \end
 
