@@ -10122,7 +10122,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210823114552635" list="TiddlyTools/Macros/edit-list/Examples TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" modified="20210823120821119" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10240,7 +10240,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210823121032595" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210824023256271" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10538,7 +10538,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210822071032304" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210824023250225" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10988,7 +10988,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210822070334073" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210824023047384" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -10997,7 +10997,7 @@ columns:
 &lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popup&gt;&gt; class=&quot;tc-drop-down&quot; style=&quot;padding:1em;&quot;&gt;''Package contents''&lt;hr&gt;&lt;$list filter=&lt;&lt;tids&gt;&gt;&gt;&lt;$link/&gt;&lt;/$list&gt;&lt;/$reveal&gt;
 \end
 
-\define note_colors()  [[CSS color name/value|https://en.wikipedia.org/wiki/Web_colors]]
+\define note_colors(plural)  [[CSS color name/value$plural$|https://en.wikipedia.org/wiki/Web_colors]]
 \define note_units()   [[CSS units|https://www.w3schools.com/cssref/css_units.asp]]
 \define note_filters() [[TiddlyWiki filter syntax|https://tiddlywiki.com/#Filter%20Syntax:%5B%5BFilter%20Syntax%5D%5D%20%5B%5BIntroduction%20to%20filter%20notation%5D%5D%20%5B%5BFilter%20Operators%5D%5D]]
 
@@ -11010,15 +11010,16 @@ columns:
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Introduction&lt;/h1&gt;
 
 &lt;&lt;&lt;
-The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget.  It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
+''The `&lt;&lt;edit-list&gt;&gt;` macro combines features of an `&lt;$edit-text&gt;` text input widget and a `&lt;$select&gt;` selection list widget''.  It operates similar to the combination of HTML `&lt;input list=&quot;listname&quot;&gt;` and `&lt;datalist id=&quot;listname&quot;&gt;` elements, and permits you to enter text or select from a list of pre-defined values that are determined by a specified filter.
 
 Some optional parameters include:
 
 * `find:...` progressively filters the selection list as you type, so that the list __only shows those items that contain the current input text__.
-* `confirm:yes` provides save/cancel buttons so you can input text without immediately updating the value stored in the target tiddler.  This feature makes it possible to change values in the current tiddler __without losing the input focus while you type__!
-* `goto:yes` lets you quickly navigate to any tiddler by selecting a list item.  When combined with `find:...`, you can enter text to match a partial title and select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
-* `listwidth:fit` sets the width of the select list to always match its widest item.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
-* `colors:yes` recognizes list items that are color values displays the color as the item's background, allowing you to preview the color itself, rather than just selecting a color name or RGB value.
+* `confirm:yes` provides save/cancel buttons so you can ''input text without immediately updating the value stored in the target tiddler''.  This feature makes it possible to change values in the current tiddler without losing the input focus while you type!
+* `goto:yes` lets you quickly ''navigate to any tiddler by selecting a list item''.  When combined with `find:...`, you can enter text to match a partial title and select a list item or press &lt;kbd&gt;enter&lt;/kbd&gt; to open that tiddler.
+* `listwidth:fit` or `stretch:yes` automatically ''set the width of the select list to fit its widest item''.  This can make it easier to locate and choose from among very wide items that only differ in their ending text.
+* `colors:yes` recognizes list items that are &lt;&lt;note_colors s&gt;&gt; and ''displays the color as the item's background'', allowing you to preview the color itself, rather than just selecting a color name or RGB value.
+* `type:calendar`, combined with [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] lets you ''select a date from a calendar that offers enhanced features'', such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, Alerts, Timers, and tiddler changes.
 &lt;&lt;&lt;
 
 &lt;h1 style=&quot;border-bottom:1px solid;&quot;&gt;Parameters&lt;/h1&gt;
@@ -11084,7 +11085,7 @@ You can use the `type:...` parameter to display specialized kinds of input field
 
 * Use `type:color` to select an RGB color value from a system-provided popup &quot;color picker&quot;.  If you also provide a list of colors (e.g., `filter:&quot;#ff0000 #00ff00 #0000ff&quot;`) and use `colors:yes`, the list item backgrounds will show the indicated colors. You can also pick from a list of standard [[X11 color names|https://en.wikipedia.org/wiki/X11_color_names]] by using a filter like this: `filter:[{TiddlyTools/Settings/Colors/X11Names}]` (see [[TiddlyTools/Settings/Colors/X11Names]]). Note: __`type:color` input controls can only show RGB color values__.  If a color //name// is entered or selected, the input control will display black, even though the field/index contains a valid color name.&lt;p/&gt;
 * Use `type:date` to restrict the input to a standard date format or select a date from a system-provided popup calendar.  Note that, depending upon your operating system and locale, the input format (e.g., &quot;mm/dd/yyyy&quot;) may be different than the format used to store the value in the field/index (e.g., &quot;yyyy-mm-dd&quot;).&lt;p/&gt;
-* If [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] is installed, you can use `type:calendar` to select a date from a custom popup calendar that offers enhanced features, such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, Alerts, Timers, and tiddler changes. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details.
+* If [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] is installed, you can use `type:calendar` to select a date from a custom calendar that offers enhanced features, such as using [[TiddlyWiki Date Format codes|https://tiddlywiki.com/#DateFormat]], as well as tracking of Events, Timelines, Alerts, Timers, and tiddler changes. See [[TiddlyTools Timers|http://TiddlyTools.com/timers.html]] for more details.
 
 There are many other input types, including: `type:email`, `type:number`, `type:password`, `type:file`, `type:search`, etc.  For more details, see references at [[w3schools.com|https://www.w3schools.com/html/html_form_input_types.asp]] and [[mozilla.org|https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types for more information]].
 &lt;&lt;&lt;
@@ -11092,20 +11093,29 @@ There are many other input types, including: `type:email`, `type:number`, `type:
 &lt;&lt;&lt;
 The `stretch:...` parameter automatically adjusts the width of the select list or custom calendar display.
 
-* For a select list, `stretch:no` will match the `listwidth` value.  If the mouse is hovering over the list, or the list has focus, `stretch:yes` will expand the list to match the widest list item, and `stretch:...` will apply a specified width.
-* For a custom calendar (`type:calendar`), `stretch:no` will use the default calendar size, `stretch:yes` will match the width of the text input control, and `stretch:...` will apply a specified width.
-* Note: widths must use `em` or any fixed-size &lt;&lt;note_units&gt;&gt; (`in`,`cm`,`mm`,`px`, or `pt`).  Relative units, such as `%`, `vw`, `vh`, `vmin`, `vmax`, etc. are ignored and treated as if `no` is specified.
+For a selection list:
 
+* `stretch:no` uses the `listwidth` value (or `100%` if no `listwidth` parameter is provided).
+* `stretch:yes` expands the list to fit the widest list item when the mouse is hovering over the list, or the list has focus.
+* `stretch:...` applies a specified width when the mouse is hovering over the list, or the list has focus.
+
+For a custom calendar (`type:calendar`):
+
+* `stretch:no` uses the default calendar size.
+* `stretch:yes` matches the width of the text input control.
+* `stretch:...` applies a specified width.
+
+Note that `stretch:...` widths must use `em` or any fixed-size &lt;&lt;note_units&gt;&gt; (`in`,`cm`,`mm`,`px`, or `pt`).  Relative units, such as `%`, `vw`, `vh`, `vmin`, `vmax`, etc. are ignored and treated as if `no` is specified.
 &lt;&lt;&lt;
 !!''find parameter''
 &lt;&lt;&lt;
-The `find:...` parameter progressively filters the list contents as you type into the text input control.
+The `find:...` parameter progressively filters the list contents as you type into the text input control.  You can use it to find an exact match, or find combinations of space-separated keywords
 
-* Use `find:or` and enter several space-separated keywords to show only items that contain any of the keywords, in any order.
-* Use `find:and` to show only items that contain all of the keywords, in any order.
 * Use `find:match` to show only items that contain the exact text, including whitespace.
+* Use `find:or` and enter several space-separated keywords to show only items that contain //any// of the keywords, in any order.
+* Use `find:and` and enter several space-separated keywords to show only items that contain //all// of the keywords, in any order.
 
-By default, upper/lower case letters are considered identical for matching purposes.  To treat upper/lower case letters as different from each other, use `find:OR`, `find:AND`, or `find:MATCH`.
+By default, upper/lower case letters are considered identical for matching purposes.  To indicate that upper/lower case letters are to be considered different from each other, use capitalized parameters: `find:MATCH`, `find:OR`, or `find:AND`.
 &lt;&lt;&lt;
 !!''multiple parameter''
 &lt;&lt;&lt;
@@ -11127,13 +11137,13 @@ You can override this default handling by using `cancelPopups:no`, so that the c
 &lt;&lt;&lt;
 Each use of `&lt;&lt;edit-list&gt;&gt;` is internally identified by a combination of three values:
 
-# A target tiddlername (the `tiddler:...` parameter)
-# A target fieldname or indexname (the `field:...` or `index:...` parameter)
-# A ~TiddlyWiki system-generated &quot;qualifier number&quot; (based on the tiddler in which the macro occurs)
+# The target tiddlername (the `tiddler:...` parameter)
+# The target fieldname or indexname (the `field:...` or `index:...` parameter)
+# A ~TiddlyWiki system-generated &quot;qualifier number&quot; that is based on the tiddler in which the macro occurs.
 
-Under most circumstances, this combination is sufficient to guarantee that the processing of `&lt;&lt;edit-list&gt;&gt;` events and control elements will operate independently of each other.
+Under most circumstances, this combination is sufficient to guarantee that each instance of `&lt;&lt;edit-list&gt;&gt;` will operate independently of each other.
 
-However, when several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler and field/index, it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure that each instance is uniquely named.  The id value can be any combination of letters and numbers (but //not// punctuation such as `#` or `.` or other special characters), so long as it is different for each affected instance.
+However, if several `&lt;&lt;edit-list&gt;&gt;` macros occur within a single tiddler and target the exact same tiddler and field/index, it is necessary to provide an `id:...` value that will be added to other three identifiers to ensure that each instance is uniquely named.  The id value can be any combination of letters and numbers (but //not// punctuation such as `#` or `.` or other special characters), so long as it is different for each affected instance.
 &lt;&lt;&lt;
 !!''general-purpose CSS classnames''
 &lt;&lt;&lt;
@@ -11143,7 +11153,7 @@ In addition to generating a unique ID for each instance of `&lt;&lt;edit-list&gt
 * .editlist_select - the `&lt;$select&gt;` list
 * .editlist_calendar - the custom [[TiddlyTools/Time/Calendar|https://tiddlytools.com/timer.html#TiddlyTools%2FTime%2FCalendar]] control
 * .editlist_clear - the @@font-size:80%;&lt;$button&gt;''X''&lt;/$button&gt;@@ button
-* .editlist_popup - the @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ button
+* .editlist_popup - the @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ list button or @@font-size:80%;&lt;$button&gt;&amp;#x1F4C5;&lt;/$button&gt;@@ calendar button
 * .editlist_save - the @@font-size:80%;&lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt;@@ button
 * .editlist_cancel - the @@font-size:80%;&lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt;@@ button
 * .editlist_wrapper - the container surrounding all of the above control elements
