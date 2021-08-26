@@ -242,7 +242,7 @@ Error message and password prompt
     &quot;binary&quot;: &quot;&quot;
 }</pre>
 </div>
-<div columns="3" confirm="" created="20210730202157567" modified="20210809233420646" show="show" title="$:/config/TiddlyTools/PowerSearch">
+<div columns="3" confirm="" created="20210730202157567" modified="20210826210633349" show="show" title="$:/config/TiddlyTools/PowerSearch">
 <pre></pre>
 </div>
 <div created="20210730202238075" modified="20210730202238075" sortorder="count" title="$:/config/TiddlyTools/TagCloud">
@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210825190428934" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210826205929191" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10797,28 +10797,29 @@ in
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width={{{ [[$width$]match[auto]then[15em]else[$width$]] }}}
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
       scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;         show=&quot;&quot;&quot;$show$&quot;&quot;&quot;       fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
-       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]match[yes]then&lt;popup&gt;] }}}  multiple={{{ [[$multiple$]match[yes]] }}}
+       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup=&quot;&quot;&quot;$focusPopup$&quot;&quot;&quot; multiple={{{ [[$multiple$]match[yes]] }}}
     calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} 
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
 &lt;!-------------------&gt;
 &lt;$vars
-   focusin=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;focusPopup&gt;!is[blank]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;focusPopup&gt;&gt; text=&quot;show&quot;/&gt;&lt;/$list&gt;&lt;&lt;start&gt;&gt;&quot;&quot;&quot;
-   focusout=&quot;&quot;&quot;
-      &lt;$list filter=&quot;[&lt;focusPopup&gt;!is[blank]]&quot;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;focusPopup&gt;&gt;/&gt;&lt;/$list&gt;&quot;&quot;&quot;
-   start=&quot;&quot;&quot;
+   openpopup=&quot;&quot;&quot;
+      &lt;$action-deletetiddler $filter=&quot;[prefix[$:/state/popup/edit-list/]]&quot;/&gt;&lt;$action-setfield $tiddler=&lt;&lt;popup&gt;&gt; text=&quot;show&quot;/&gt;&quot;&quot;&quot;
+   closepopup=&quot;&quot;&quot;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;popup&gt;&gt;/&gt;&quot;&quot;&quot;
+   startmodal=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;focusin&gt;&gt;&gt;&lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&lt;&lt;focusout&gt;&gt;&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;focusin&gt;&gt;&gt;
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
-         field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt; actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&quot;&gt;
+         field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
+         actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&lt;$list filter='[&lt;confirm&gt;!match[yes]then&lt;multiple&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
          &lt;$list filter=&lt;&lt;display&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
    option=&quot;&quot;&quot;
       &lt;$vars fg={{{ [enlist&lt;dark&gt;match&lt;item&gt;then[#eee;]] }}}&gt;
@@ -10923,22 +10924,23 @@ in
 
 \define editlist_clear()
 \whitespace trim
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&quot;&lt;$list filter='[&lt;confirm&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
 &lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$list  filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
-&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;focusin&gt;&gt;&gt;
 &lt;$button class=&quot;tc-button editlist_clear editlist_clear_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
-   &lt;div style=&quot;transform:translateY(-0.1em);&quot;&gt;''x''&lt;/div&gt; &lt;&lt;clear&gt;&gt;   
+   &lt;div style=&quot;transform:translateY(-0.1em);&quot;&gt;''x''&lt;/div&gt; &lt;&lt;clear&gt;&gt;
 &lt;/$button&gt;
 \end
 
 \define editlist_popup()
 \whitespace trim
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;startmodal&gt;&gt;&gt;
 &lt;!-- IF LIST OR CALENDAR NOT SHOWN, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]] [&lt;calendar&gt;!match[]] +[limit[1]then&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$vars tip={{{ [&lt;popup&gt;is[missing]then[show ]else[hide ]] [&lt;calendar&gt;match[]then[list]else[calendar]] +[join[]] }}}&gt;
 &lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
-   &lt;$list filter=&quot;[&lt;popup&gt;is[missing]]&quot; emptyMessage=&lt;&lt;focusout&gt;&gt;&gt;&lt;&lt;focusin&gt;&gt;&lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;popup&gt;is[missing]]&quot; emptyMessage=&lt;&lt;closepopup&gt;&gt;&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;calendar&gt;match[]]&quot;&gt; &lt;!-- DOWN OR UP TRIANGLE --&gt;
       &lt;div style=&quot;font-size:80%;transform:translateY(-0.04em);&quot;&gt;
       &lt;$list filter=&quot;[&lt;popup&gt;is[missing]]&quot; emptyMessage=&quot;&amp;#x25B2;&quot;&gt;&amp;#x25BC;&lt;/$list&gt;
@@ -10970,6 +10972,8 @@ in
 
 \define editlist_select()
 \whitespace trim
+&lt;$eventcatcher events=&quot;focusin&quot;  actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+&lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
@@ -11012,7 +11016,7 @@ in
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 &lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
 &lt;$vars target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars config=&quot;$:/state/popup/edit-list/calendar/$(id)$&quot;&gt;
+&lt;$vars config=&quot;$:/state/popup/calendar/$(id)$&quot;&gt;
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
 &lt;$vars   width={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;else&lt;stretch&gt;] }}}&gt;
@@ -11046,7 +11050,7 @@ in
 
 \define editlist_calendar_show()
 \whitespace trim
-&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&lt;&lt;focusin&gt;&gt;&gt;
+&lt;$eventcatcher events=&quot;focusin&quot;  actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
 &lt;div style=&quot;height:calc($(spacer)$);&quot;&gt;
    &lt;div style=&quot;transform-origin:top left;transform:scale(calc($(scale)$));&quot;&gt;
       &lt;div class=&quot;editlist_calendar tc-block-dropdown&quot; style=&quot;margin:0;min-width:auto;&quot;&gt;
@@ -11067,7 +11071,8 @@ in
 &lt;$wikify name=&quot;value&quot; text='&lt;$view tiddler=&lt;&lt;date&gt;&gt; field=&quot;title&quot; format=&quot;date&quot; template=&lt;&lt;template&gt;&gt; /&gt;'&gt;
 &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;text-align:center;width:100%;margin-top:0.25em;&quot;&gt; ''select this date''
    &lt;$action-setfield $timestamp=&lt;&lt;timestamp&gt;&gt; $tiddler=&lt;&lt;target&gt;&gt; $field=&lt;&lt;field&gt;&gt; $index=&lt;&lt;index&gt;&gt; $value=&lt;&lt;value&gt;&gt; /&gt;
-   &lt;$action-deletetiddler $filter=&quot;[&lt;calendar_popID&gt;] [&lt;popup&gt;]&quot; /&gt;
+   &lt;$action-deletetiddler $filter=&quot;[&lt;calendar_popID&gt;]&quot; /&gt;
+   &lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;
 &lt;/$button&gt;
 \end
 
