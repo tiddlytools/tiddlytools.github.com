@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210827034351020" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210827061117119" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10817,7 +10817,7 @@ in
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;show&gt;match[no]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
       &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
@@ -11016,7 +11016,7 @@ in
 &lt;$importvariables filter=&quot;TiddlyTools/Time/Calendar&quot;&gt;
 &lt;$vars showday_popup_extras=&lt;&lt;editlist_selectday&gt;&gt;&gt;
 &lt;$vars target={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
-&lt;$vars config=&quot;$:/state/popup/calendar/$(id)$&quot;&gt;
+&lt;$vars config=&quot;$:/state/popup/calendar/config&quot;&gt;
 &lt;$vars format=&quot;YYYY/0MM/0DD&quot; month=&lt;&lt;now &quot;[UTC]MM&quot;&gt;&gt; year=&lt;&lt;now &quot;[UTC]YYYY&quot;&gt;&gt;&gt;
 &lt;$list filter=&quot;[&lt;config&gt;]&quot;&gt;
 &lt;$vars   width={{{ [&lt;stretch&gt;match[auto]then&lt;width&gt;else&lt;stretch&gt;] }}}&gt;
@@ -11050,7 +11050,7 @@ in
 
 \define editlist_calendar_show()
 \whitespace trim
-&lt;$eventcatcher events=&quot;focusin&quot;  actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+&lt;$eventcatcher events=&quot;focusin&quot;  actions-focusin=&quot;&lt;$list filter='[&lt;show&gt;match[no]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
 &lt;div style=&quot;height:calc($(spacer)$);&quot;&gt;
    &lt;div style=&quot;transform-origin:top left;transform:scale(calc($(scale)$));&quot;&gt;
       &lt;div class=&quot;editlist_calendar tc-block-dropdown&quot; style=&quot;margin:0;min-width:auto;&quot;&gt;
