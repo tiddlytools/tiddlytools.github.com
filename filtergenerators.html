@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10772,7 +10772,7 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210826205929191" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210827034351020" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10817,9 +10817,11 @@ in
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
          focus=&lt;&lt;focus&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
+      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
       &lt;$select tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[editlist_select editlist_popup_select_]addsuffix&lt;id&gt;] }}}
          field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; size=&lt;&lt;size&gt;&gt; multiple=&lt;&lt;multiple&gt;&gt;
-         actions=&quot;&lt;$list filter='[&lt;modal&gt;!is[tiddler]]'&gt;&lt;&lt;goto&gt;&gt;&lt;/$list&gt;&lt;$list filter='[&lt;confirm&gt;!match[yes]then&lt;multiple&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
+         actions=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;goto&gt;&gt;&lt;$list filter='[&lt;multiple&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&gt;
          &lt;$list filter=&lt;&lt;display&gt;&gt; variable=&quot;item&quot;&gt; &lt;&lt;option&gt;&gt; &lt;/$list&gt;&quot;&quot;&quot;
    option=&quot;&quot;&quot;
       &lt;$vars fg={{{ [enlist&lt;dark&gt;match&lt;item&gt;then[#eee;]] }}}&gt;
@@ -10862,10 +10864,10 @@ in
    .editlist_input_$(id)$                 { position:absolute; width:100% !important; height:1.5em; }
    .editlist_input_buttons_$(id)$         { position:absolute; width:max-content; right:0; }
    .editlist_modal_buttons_$(id)$         { position:absolute; width:max-content; left:$(width)$; }
-   .editlist_clear_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
-   .editlist_popup_$(id)$                 { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
-   .editlist_save_$(id)$                  { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
-   .editlist_cancel_$(id)$                { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; vertical-align:text-bottom; }
+   .editlist_clear                        { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
+   .editlist_popup                        { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
+   .editlist_save                         { height:1.5em; width:1.5em; padding:0 0.25em 0 0.25em; vertical-align:text-bottom; }
+   .editlist_cancel                       { height:1.5em; width:1.5em; padding:0 0.25em 0 0.30em; vertical-align:text-bottom; }
    .editlist_popup_wrapper_$(id)$         { position:absolute; width:fit-content; min-width:$(listwidth)$; z-index:1; top:1.6em; }
    .editlist_popup_heading_$(id)$         { font-size:80%; line-height:1.2em; text-align:center; background:#eee; border:1px solid gray; border-bottom:0; }
    .editlist_popup_select_$(id)$          { min-width:$(width)$; width:$(listwidth)$ !important; overflow-y:auto; font-size:$(fontsize)$; }
@@ -10878,9 +10880,9 @@ in
    .editlist_wrapper_$(id)$:focus-within .fadeIn { opacity:1; } /* https://www.caniuse.com/css-focus-within */
     /*  FALLBACK IF &quot;FOCUS-WITHIN&quot; NOT AVAILABLE... */
    .editlist_input_$(id)$:focus + .editlist_input_buttons_$(id)$ .fadeIn { opacity:1; }
-   .editlist_clear_$(id)$:focus                                          { opacity:1; }
-   .editlist_popup_$(id)$:focus                                          { opacity:1; }
-   .editlist_clear_$(id)$:focus + editlist_popup_$(id)$                  { opacity:1; }
+   .editlist_clear:focus                                                 { opacity:1; }
+   .editlist_popup:focus                                                 { opacity:1; }
+   .editlist_clear:focus + editlist_popup                                { opacity:1; }
 &lt;/style&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]] [&lt;popup&gt;is[tiddler]] +[limit[1]]&quot;&gt;
    &lt;style&gt; .editlist_wrapper_$(id)$ .fadeIn { opacity:1; } &lt;/style&gt;
@@ -10924,11 +10926,11 @@ in
 
 \define editlist_clear()
 \whitespace trim
-&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&quot;&lt;$list filter='[&lt;confirm&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+&lt;$eventcatcher events=&quot;focusin&quot; actions-focusin=&quot;&lt;$list filter='[&lt;confirm&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&lt;/$list&gt;&quot;&gt;
 &lt;!-- IF INDEX OR FIELD VALUE IS NOT BLANK, SHOW CLEAR BUTTON --&gt;
 &lt;$vars     tid={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}}&gt;
 &lt;$list  filter=&quot;[&lt;tid&gt;getindex&lt;index&gt;] ~[&lt;tid&gt;get&lt;field&gt;] +[!match[]]&quot; variable=&quot;show_clear&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_clear editlist_clear_$(id)$ fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button editlist_clear fadeIn&quot; tooltip=&quot;clear input&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    &lt;div style=&quot;transform:translateY(-0.1em);&quot;&gt;''x''&lt;/div&gt; &lt;&lt;clear&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10939,7 +10941,7 @@ in
 &lt;!-- IF LIST OR CALENDAR NOT SHOWN, SHOW POPUP BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;filter&gt;!match[]] [&lt;calendar&gt;!match[]] +[limit[1]then&lt;show&gt;match[no]]&quot; variable=&quot;show_popup&quot;&gt;
 &lt;$vars tip={{{ [&lt;popup&gt;is[missing]then[show ]else[hide ]] [&lt;calendar&gt;match[]then[list]else[calendar]] +[join[]] }}}&gt;
-&lt;$button class=&quot;tc-button editlist_popup editlist_popup_$(id)$ fadeIn&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button editlist_popup fadeIn&quot; tooltip=&lt;&lt;tip&gt;&gt;&gt;
    &lt;$list filter=&quot;[&lt;popup&gt;is[missing]]&quot; emptyMessage=&lt;&lt;closepopup&gt;&gt;&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;
    &lt;$list filter=&quot;[&lt;calendar&gt;match[]]&quot;&gt; &lt;!-- DOWN OR UP TRIANGLE --&gt;
       &lt;div style=&quot;font-size:80%;transform:translateY(-0.04em);&quot;&gt;
@@ -10956,7 +10958,7 @@ in
 \whitespace trim
 &lt;!-- IF MODAL IS ACTIVE, SHOW SAVE BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_save editlist_save_$(id)$&quot; tooltip=&quot;save&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button editlist_save&quot; tooltip=&quot;save&quot; actions=&lt;&lt;reset&gt;&gt;&gt;
    &lt;div style=&quot;transform:translateY(-0.05em);&quot;&gt;{{$:/core/images/done-button}}&lt;/div&gt; &lt;&lt;save&gt;&gt;&lt;&lt;goto&gt;&gt;&lt;&lt;done&gt;&gt;
 &lt;/$button&gt;
 \end
@@ -10965,15 +10967,13 @@ in
 \whitespace trim
 &lt;!-- IF MODAL IS ACTIVE, SHOW CANCEL BUTTON --&gt;
 &lt;$list filter=&quot;[&lt;modal&gt;is[tiddler]]&quot;&gt;
-&lt;$button class=&quot;tc-button editlist_cancel editlist_cancel_$(id)$&quot; tooltip=&quot;cancel&quot;&gt;
+&lt;$button class=&quot;tc-button editlist_cancel&quot; tooltip=&quot;cancel&quot;&gt;
    &lt;div style=&quot;transform:translateY(-0.05em);&quot;&gt;{{$:/core/images/cancel-button}}&lt;/div&gt; &lt;&lt;done&gt;&gt;
 &lt;/$button&gt;
 \end
 
 \define editlist_select()
 \whitespace trim
-&lt;$eventcatcher events=&quot;focusin&quot;  actions-focusin=&quot;&lt;&lt;openpopup&gt;&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
-&lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
 &lt;!-- IF NOT FILTERING, DON'T SHOW LIST  --&gt;
 &lt;$list  filter=&quot;[&lt;filter&gt;!match[]]&quot; variable=&quot;show_select&quot;&gt;
 &lt;!-- IF FIXED-HEIGHT, OR POPUP IS OPEN, SHOW LIST  --&gt;
