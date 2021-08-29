@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/build</li>
 
+<li>$:/config/edit-list/Examples</li>
+
 <li>$:/config/EditTemplateFields/Visibility/color</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
@@ -152,6 +154,8 @@ Error message and password prompt
 <li>$:/config/Tiddlers/TitleLinks</li>
 
 <li>$:/config/TiddlyTools/Time</li>
+
+<li>$:/config/TimestampDisable</li>
 
 <li>$:/core</li>
 
@@ -213,6 +217,11 @@ Error message and password prompt
 <pre>Built from branch 'tiddlywiki-com' at commit 75589d78d8d381cc52db4637606cf19f4fb3459d of https://github.com/Jermolene/TiddlyWiki5.git at 2020-05-16 18:55:25 UTC
 </pre>
 </div>
+<div created="20210829201015805" modified="20210829201235130" title="$:/config/edit-list/Examples" type="application/json">
+<pre>{
+    &quot;tryit&quot;: &quot;&lt;&lt;edit-list tiddler:\&quot;TryIt\&quot;&gt;&gt;&quot;
+}</pre>
+</div>
 <div created="20210725083359285" modified="20210725083406288" tags="" title="$:/config/EditTemplateFields/Visibility/color">
 <pre>hide</pre>
 </div>
@@ -227,6 +236,9 @@ Error message and password prompt
 </div>
 <div calendar_showevents="yes" created="20210816171919922" modified="20210816173239074" tags="[[New Event List]]" title="$:/config/TiddlyTools/Time">
 <pre></pre>
+</div>
+<div created="20210829194940369" modified="20210829201441221" title="$:/config/TimestampDisable">
+<pre>no</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10233,12 +10245,12 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210827061117119" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210829201134041" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
      filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
- focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;,    stretch:&quot;no&quot;,     show:&quot;no&quot;,
+ focusPopup:&quot;&quot;,    cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;,    stretch:&quot;no&quot;,     show:&quot;no&quot;,
      scroll:&quot;10&quot;,      fontsize:&quot;100%&quot;,   colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
@@ -10258,8 +10270,8 @@ TiddlyTools/Macros/edit-list-vars</pre>
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width={{{ [[$width$]match[auto]then[15em]else[$width$]] }}}
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
       scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;         show=&quot;&quot;&quot;$show$&quot;&quot;&quot;       fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
-       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup=&quot;&quot;&quot;$focusPopup$&quot;&quot;&quot; multiple={{{ [[$multiple$]match[yes]] }}}
-    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} 
+       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]!match[]then&lt;popup&gt;else[$focusPopup$]] }}} multiple={{{ [[$multiple$]match[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10272,11 +10284,11 @@ TiddlyTools/Macros/edit-list-vars</pre>
    startmodal=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
-      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;focusPopup&gt;!match[]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;focusPopup&gt;!match[]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
-         focus=&lt;&lt;focus&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
+         focus=&lt;&lt;focus&gt;&gt; focusPopup={{{ [[$focusPopup$]!match[yes]then[$focusPopup$]] }}} cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
       &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;show&gt;match[no]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
       &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
@@ -10543,7 +10555,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210826205847978" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210829193358743" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -10568,7 +10580,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
          goto={{{ [[$goto$]!is[blank]]         ~[&lt;goto&gt;!is[blank]]         ~[[no]]       }}}
       confirm={{{ [[$confirm$]!is[blank]]      ~[&lt;confirm&gt;!is[blank]]      ~[[no]]       }}}
         focus={{{ [[$focus$]!is[blank]]        ~[&lt;focus&gt;!is[blank]]        ~[[no]]       }}}
-   focusPopup={{{ [[$focusPopup$]!is[blank]]   ~[&lt;focusPopup&gt;!is[blank]]   ~[[no]]       }}}
+   focusPopup={{{ [[$focusPopup$]!is[blank]]   ~[&lt;focusPopup&gt;!is[blank]]   ~[[]]         }}}
  cancelPopups={{{ [[$cancelPopups$]!is[blank]] ~[&lt;cancelPopups&gt;!is[blank]] ~[[yes]]      }}}
     listwidth={{{ [[$listwidth$]!is[blank]]    ~[&lt;listwidth&gt;!is[blank]]    ~[[100%]]     }}}
       stretch={{{ [[$stretch$]!is[blank]]      ~[&lt;stretch&gt;!is[blank]]      ~[[no]]       }}}
@@ -11006,7 +11018,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210826205843136" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210829193309223" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -11065,13 +11077,13 @@ Some optional parameters include:
 |confirm     | `no`     |If `yes`, press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; or &lt;kbd&gt;enter&lt;/kbd&gt; to save changes, &lt;$button&gt;{{$:/core/images/cancel-button}}&lt;/$button&gt; or &lt;kbd&gt;escape&lt;/kbd&gt; to cancel changes.|
 |goto        | `no`     |If `yes`, selecting a list item or pressing &lt;kbd&gt;enter&lt;/kbd&gt; views the tiddler whose title matches the current input.|
 |focus       | `no`     |If `yes`, automatically set focus to the input control after creation.|
-|focusPopup  | `no`     |If `yes`, automatically show the list when the input control gets focus.|
+|focusPopup  | //none// |If `yes` or not blank, shows the list/calendar when the input control gets focus. See Notes.|
 |cancelPopups| `yes`    |If `yes`, when an input control gets focus, it will automatically close any other open popups. See Notes.|
 |listwidth   | `100%`   |Width of the list. `100%` matches the text input control; `fit`=matches the widest list item; otherwise, `listwidth:...`=use &lt;&lt;note_units&gt;&gt;.|
-|show        | `no`     |If `no`, the list or calendar is a popup. If `yes`, the list or calendar is always shown.|
-|stretch     | `no`     |Automatically adjust the width of the select list or calendar display.  See Notes.|
+|show        | `no`     |If `no`, the list/calendar is a popup. If `yes`, the list/calendar is always shown and `focusPopup` is ignored.|
+|stretch     | `no`     |Automatically adjust the width of the list/calendar display.  See Notes.|
 |scroll      | `10`     |Number of items to display in a select list before adding a scroll bar. Must be at least 2 items.|
-|fontsize    | `100%`   |Size of the font used to display the popup list or calendar. Use `%` or `em` units only.|
+|fontsize    | `100%`   |Size of the font used to display the popup list/calendar. Use `%` or `em` units only.|
 |colors      | `no`     |If `yes` and a list item is a &lt;&lt;note_colors&gt;&gt;, the item background will show the indicated color.|
 |multiple    | `no`     |If `yes`, you can select multiple list items using &lt;kbd&gt;ctrl-click&lt;/kbd&gt; for separate items or &lt;kbd&gt;shift-click&lt;/kbd&gt; for a range of items.  See Notes.|
 |view        | `&lt;&lt;item&gt;&gt;` |Alternative text to show for list items.  See Notes.|
@@ -11145,11 +11157,13 @@ The `view:&quot;...&quot;` parameter uses ~TiddlyWiki wikitext syntax to render 
 
 For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&gt;get[caption]else&lt;item&gt;] }}}&quot;`, the list will show the caption text (if any) for each tiddler title.  Note that while this changes the text displayed in the list, the selected value that will be stored into the target field or index will still be the actual `&lt;&lt;item&gt;&gt;` value (i.e., the tiddler's title).  Also note that, although the `view:...` parameter uses wikitext syntax, the list will only show plain text content without any special formatting (e.g., no bold/italics, colors, fonts, etc.)
 &lt;&lt;&lt;
-!!''cancelPopups parameter''
+!!''focusPopup and cancelPopups parameters''
 &lt;&lt;&lt;
-Typically, there should be only one `&lt;&lt;edit-list&gt;&gt;` popup shown at a time.  The default `cancelPopups:yes` parameter ensures that any open popups are automatically closed when the focus is moved to an `&lt;&lt;edit-list&gt;&gt;` text input control.  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior can interfere with the normal display of the containing popup.  You can override the default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.
+If `focusPopup:yes` is specified along with either `filter:...` or `type:calendar`, the `&lt;&lt;edit-list&gt;&gt;` selection list or calendar will automatically be shown when the focus is moved to the text input control.  Alternatively, `focusPopup:...` can specify the title of a state tiddler for a custom popup to be displayed __in addition to__ an `&lt;&lt;edit-list&gt;&gt;` selection list or calendar.
 
-Note that, regardless of the `cancelPopups:...` parameter value, if you press @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ or @@font-size:80%;&lt;$button&gt;&amp;#x1F4C5;&lt;/$button&gt;@@ to show a popup list or calendar, the popup will remain visible until you make a selection or press @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ or @@font-size:80%;&lt;$button&gt;&amp;#x1F4C5;&lt;/$button&gt;@@ again to manually close the popup.
+The default `cancelPopups:yes` parameter ensures that any open popups are automatically closed when the focus is moved to an `&lt;&lt;edit-list&gt;&gt;` text input control.  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior can interfere with the normal display of the containing popup.  You can override the default handling by using `cancelPopups:no`, so that the containing popup will not be automatically closed.
+
+Note that, regardless of the `focusPopup:...` and `cancelPopups:...` parameter values, if you press @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ or @@font-size:80%;&lt;$button&gt;&amp;#x1F4C5;&lt;/$button&gt;@@ to open an `&lt;&lt;edit-list&gt;&gt;` selection list or calendar, the popup will remain visible until you make a selection or move the focus to another `&lt;&lt;edit-list&gt;&gt;` text input control or press @@font-size:80%;&lt;$button&gt;&amp;#x25BC;&lt;/$button&gt;@@ or @@font-size:80%;&lt;$button&gt;&amp;#x1F4C5;&lt;/$button&gt;@@ again to close the popup.
 &lt;&lt;&lt;
 !!''id parameter''
 &lt;&lt;&lt;
