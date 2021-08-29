@@ -10772,12 +10772,12 @@ in
    &lt;/blockquote&gt;
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210827061117119" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210829201134041" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
      filter:&quot;&quot;,            find:&quot;&quot;,         goto:&quot;no&quot;,      confirm:&quot;no&quot;,    focus:&quot;no&quot;,
- focusPopup:&quot;no&quot;,  cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;,    stretch:&quot;no&quot;,     show:&quot;no&quot;,
+ focusPopup:&quot;&quot;,    cancelPopups:&quot;yes&quot;, listwidth:&quot;100%&quot;,    stretch:&quot;no&quot;,     show:&quot;no&quot;,
      scroll:&quot;10&quot;,      fontsize:&quot;100%&quot;,   colors:&quot;no&quot;,     multiple:&quot;no&quot;,     view:&quot;&lt;&lt;item&gt;&gt;&quot;
 )
 \whitespace trim
@@ -10797,8 +10797,8 @@ in
      default=&quot;&quot;&quot;$default$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; tooltip=&quot;&quot;&quot;$tooltip$&quot;&quot;&quot;       width={{{ [[$width$]match[auto]then[15em]else[$width$]] }}}
       filter=&quot;&quot;&quot;$filter$&quot;&quot;&quot;         find=&quot;&quot;&quot;$find$&quot;&quot;&quot;        confirm=&quot;&quot;&quot;$confirm$&quot;&quot;&quot;   listwidth={{{ [[$listwidth$]match[fit]then[auto]else[$listwidth$]] }}}
       scroll=&quot;&quot;&quot;$scroll$&quot;&quot;&quot;         show=&quot;&quot;&quot;$show$&quot;&quot;&quot;       fontsize=&quot;&quot;&quot;$fontsize$&quot;&quot;&quot;    stretch={{{ [[$stretch$]match[yes]then[auto]else[$stretch$]] }}}
-       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup=&quot;&quot;&quot;$focusPopup$&quot;&quot;&quot; multiple={{{ [[$multiple$]match[yes]] }}}
-    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}} 
+       focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot;    focusPopup={{{ [[$focusPopup$]!match[]then&lt;popup&gt;else[$focusPopup$]] }}} multiple={{{ [[$multiple$]match[yes]] }}}
+    calendar={{{ [[$type$]match[calendar]then[TiddlyTools/Time/Calendar]is[tiddler]then[yes]] }}}
 &gt;
 &lt;!-------------------&gt;
 &lt;!-- ABBREVIATIONS --&gt;
@@ -10811,11 +10811,11 @@ in
    startmodal=&quot;&quot;&quot;
       &lt;$list filter=&quot;[&lt;confirm&gt;match[yes]then&lt;modal&gt;!is[tiddler]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;tid&gt;&gt; title=&lt;&lt;modal&gt;&gt;/&gt;&quot;&quot;&quot;
    edit=&quot;&quot;&quot;
-      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
-      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;focusPopup&gt;match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;focusPopup&gt;!match[]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
+      &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;focusPopup&gt;!match[]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
       &lt;$edit-text tiddler={{{ [&lt;modal&gt;is[tiddler]else&lt;tid&gt;] }}} class={{{ [[tc-popup-handle editlist_input editlist_input_]addsuffix&lt;id&gt;] }}}
          tag=&quot;input&quot; type=&quot;$type$&quot; field=&lt;&lt;field&gt;&gt; index=&lt;&lt;index&gt;&gt; default=&lt;&lt;default&gt;&gt; placeholder=&lt;&lt;placeholder&gt;&gt;
-         focus=&lt;&lt;focus&gt;&gt; cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
+         focus=&lt;&lt;focus&gt;&gt; focusPopup={{{ [[$focusPopup$]!match[yes]then[$focusPopup$]] }}} cancelPopups=&quot;$cancelPopups$&quot;/&gt;&quot;&quot;&quot;
    select=&quot;&quot;&quot;
       &lt;$eventcatcher events=&quot;focusin&quot;   actions-focusin=&quot;&lt;$list filter='[&lt;show&gt;match[no]]'&gt;&lt;&lt;openpopup&gt;&gt;&lt;/$list&gt;&lt;&lt;startmodal&gt;&gt;&quot;&gt;
       &lt;$eventcatcher events=&quot;focusout&quot; actions-focusout=&quot;&lt;$list filter='[&lt;confirm&gt;!match[yes]]'&gt;&lt;&lt;closepopup&gt;&gt;&lt;/$list&gt;&quot;&gt;
