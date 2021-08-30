@@ -10127,7 +10127,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210830000239410" list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list" modified="20210830001051110" title="$:/StoryList">
+<div list="TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10245,7 +10245,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div created="20191220105823952" modified="20191220105825639" title="$:/themes/tiddlywiki/vanilla/settings/editorfontfamily">
 <pre>monospace</pre>
 </div>
-<div created="20191214071309583" creator="EricShulman" modified="20210830001058252" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
+<div created="20191214071309583" creator="EricShulman" modified="20210830002743954" modifier="EricShulman" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list">
 <pre>\define edit-list(
          id:&quot;&quot;,         tiddler:&quot;&quot;,        field:&quot;text&quot;,      index:&quot;&quot;,  timestamp:&quot;yes&quot;,
     default:&quot;&quot;,     placeholder:&quot;&quot;,      tooltip:&quot;&quot;,           type:&quot;&quot;,      width:&quot;15em&quot;,
@@ -10555,7 +10555,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 
 &lt;pre style=&quot;font-size:80%;line-height:1em;&quot;&gt;&lt;$text text={{TiddlyTools/Macros/edit-list}}/&gt;&lt;/pre&gt;</pre>
 </div>
-<div created="20210726212021998" modified="20210830001053658" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
+<div created="20210726212021998" modified="20210830002735748" tags="$:/tags/Macro TiddlyTools" title="TiddlyTools/Macros/edit-list-vars">
 <pre>\define edit-list-vars(
          id,      tiddler,     field,     index,  timestamp,
     default,  placeholder,   tooltip,       type,     width, 
@@ -11018,7 +11018,7 @@ columns:
 &lt;&lt;edit-list id:b tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes&gt;&gt;
 &lt;&lt;edit-list id:c tiddler:&quot;TryIt&quot; field:goto filter:[all[tiddlers+shadows]sort[]] find:and focusPopup:yes goto:yes fontsize:80% stretch:yes confirm:yes&gt;&gt;</pre>
 </div>
-<div caption="edit-list" created="20210719102404282" modified="20210830001048765" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
+<div caption="edit-list" created="20210719102404282" modified="20210830002725607" tags="TiddlyTools Macros" title="TiddlyTools/Macros/edit-list/Info">
 <pre>\define tids()    [prefix[TiddlyTools/Macros/edit-list]] [[TiddlyTools/Settings/Colors/X11Names]] +[!sort[modified]]
 \define popup()   $:/state/popup/package/edit-list
 \define package()
@@ -11159,7 +11159,7 @@ For example: if you use `filter:[all[tiddlers]]` and `view:&quot;{{{ [&lt;item&g
 &lt;&lt;&lt;
 !!''focusPopup and cancelPopups parameters''
 &lt;&lt;&lt;
-If `focusPopup:yes` is specified along with either `filter:...` or `type:calendar`, the `&lt;&lt;edit-list&gt;&gt;` selection list or calendar will automatically be shown when the focus is moved to the text input control.  Alternatively, `focusPopup:...` can specify the title of a state tiddler for a custom popup to be displayed __in addition to__ an `&lt;&lt;edit-list&gt;&gt;` selection list or calendar.  See [[TiddlyWiki Popups|https://tiddlywiki.com/#PopupMechanism for more info]].
+If `focusPopup:yes` is specified along with either `filter:...` or `type:calendar`, the `&lt;&lt;edit-list&gt;&gt;` selection list or calendar will automatically be shown when the focus is moved to the text input control.  Alternatively, `focusPopup:...` can specify the title of a state tiddler for a custom popup to be displayed __in addition to__ an `&lt;&lt;edit-list&gt;&gt;` selection list or calendar.  See [[TiddlyWiki Popups|https://tiddlywiki.com/#PopupMechanism]] for more info.
 
 The `cancelPopups:yes` parameter can be used to ensure that any open popups are automatically closed when the focus is moved to an `&lt;&lt;edit-list&gt;&gt;` text input control.  However, if the `&lt;&lt;edit-list&gt;&gt;` macro itself appears within a popup, this behavior can interfere with the normal display of the containing popup, causing it to close as soon as the `&lt;&lt;edit-text&gt;&gt;` text input control gets the focus.
 
