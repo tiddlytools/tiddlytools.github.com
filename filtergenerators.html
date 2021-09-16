@@ -242,7 +242,7 @@ Error message and password prompt
     &quot;binary&quot;: &quot;&quot;
 }</pre>
 </div>
-<div columns="3" confirm="" created="20210730202157567" modified="20210826210633349" show="show" title="$:/config/TiddlyTools/PowerSearch">
+<div columns="3" confirm="" created="20210730202157567" modified="20210916184518115" show="show" title="$:/config/TiddlyTools/PowerSearch">
 <pre></pre>
 </div>
 <div created="20210730202238075" modified="20210730202238075" sortorder="count" title="$:/config/TiddlyTools/TagCloud">
@@ -10145,7 +10145,7 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
+<div list="TiddlyTools/FilterGenerators/Info TiddlyTools/FilterGenerators/Titles TiddlyTools/FilterGenerators/Tags TiddlyTools/FilterGenerators/TagCloud TiddlyTools/FilterGenerators/PowerSearch" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10319,11 +10319,11 @@ TiddlyTools/FilterGenerators/PowerSearch</pre>
 * export or delete the matching tiddlers
 &lt;&lt;&lt;</pre>
 </div>
-<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210809233455373" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
+<div caption="PowerSearch" created="20191212065707527" creator="EricShulman" modified="20210916184507848" modifier="EricShulman" tags="$:/tags/AdvancedSearch TiddlyTools" title="TiddlyTools/FilterGenerators/PowerSearch">
 <pre>\define config()  $:/config/TiddlyTools/PowerSearch
 \define show()    $:/config/TiddlyTools/PowerSearch!!show
 \define options() $:/state/popup/TiddlyTools/PowerSearch/options
-\define exclude() [prefix[$:/state/modal]] [prefix[$:/state/popup]] [prefix[$:/temp/PowerSearch]] [prefix[$:/temp/edit-list]]
+\define exclude() -[prefix[$:/state/modal]] -[prefix[$:/state/popup]] -[prefix[$:/temp/PowerSearch]] -[prefix[$:/temp/edit-list]]
 
 \define default_width()   15em
 \define default_columns() 1
@@ -10431,7 +10431,7 @@ regexp
 \define hasFilter()      has:field[$(has)$]
 \define searchFilter()   search:$(field)$:$(flags)$[$(term)$]
 \define filter()         [all[$(tids)$]$(preFilter)$$(notpreFilter)$$(suffFilter)$$(notsuffFilter)$$(tagFilter)$$(nottagFilter)$$(hasFilter)$$(searchFilter)$sort[$(sort)$]]
-\define filter_exclude() $(filter)$ -[subfilter&lt;exclude&gt;]
+\define filter_exclude() $(filter)$ $(exclude)$
 
 \define doSearch()
 &lt;$vars preFilter={{{ [&lt;pre&gt;!is[blank]then&lt;preFilter&gt;]         }}}
