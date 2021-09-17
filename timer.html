@@ -10181,8 +10181,8 @@ SampleSequence</pre>
 <div created="20210818222552586" modified="20210818222552586" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705091059720" modified="20210830065549600" title="$:/state/tab/sidebar--595412856">
-<pre>TiddlyTools/Time/SidebarCalendar</pre>
+<div created="20210705091059720" modified="20210917154034267" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
@@ -10610,7 +10610,7 @@ Born: October 5, 1958;</pre>
 ....0815;Mom and Dad's Anniversary (1954)
 ....1121;Dad's Birthday (1927)</pre>
 </div>
-<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-01-01;00:00:00;Happy New Year!]] [[once;2021-06-25;10:00:00;Conference Call]] [[once;2021-07-08;10:00:00;Conference Call]] [[once;2021-08-26;10:00:00;Conference Call]]" created="20200717110550625" modified="20210817133313343" tags="" title="SampleAlarms">
+<div alarms="[[Monday;;07:00:00;Time for another work week :(]] [[daily;;12:00:00;Lunch break]] [[Friday;;17:00:00;Weekend starts...  YAY!]] [[once;2021-06-25;10:00:00;Conference Call]] [[once;2021-07-08;10:00:00;Conference Call]] [[once;2021-08-26;10:00:00;Conference Call]] [[once;2022-01-01;--:--:--;Happy New Year!]]" created="20200717110550625" modified="20210917173255040" tags="" title="SampleAlarms">
 <pre>{{||TiddlyTools/Time/Alarms}}</pre>
 </div>
 <div created="20200726025847494" modified="20200924032711633" tags="" title="SampleCountdown">
@@ -10877,7 +10877,7 @@ TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 exports[&quot;action-timeout&quot;] = TimeoutWidget;
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20210515143237385" tags="" title="TiddlyTools/Time/Alarms">
+<div created="20200811043857487" modified="20210917165146464" tags="" title="TiddlyTools/Time/Alarms">
 <pre>\define alarms_input()      $:/temp/time/alarms_input/$(currentTiddler)$
 \define alarms_msg()        $:/temp/time/alarms_msg/$(freq)$/$(this_time)$
 \define alarms_defaultmsg() BEEP! BEEP! BEEP!
@@ -10947,7 +10947,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 
 \define alarms_add()
 &lt;!-- DEFAULTS --&gt;
-&lt;$vars freq=&quot;once&quot; year=&lt;&lt;now YYYY&gt;&gt; month=&lt;&lt;now 0MM&gt;&gt; day=&lt;&lt;now 0DD&gt;&gt; hour=&lt;&lt;now 0hh&gt;&gt; min=&lt;&lt;now 0mm&gt;&gt; sec=&lt;&lt;now 0ss&gt;&gt;&gt;
+&lt;$vars freq=&quot;once&quot; year=&lt;&lt;now YYYY&gt;&gt; month=&lt;&lt;now 0MM&gt;&gt; day=&lt;&lt;now 0DD&gt;&gt; hour=&quot;--&quot; min=&quot;--&quot; sec=&quot;--&quot;&gt;
 &lt;!-- INPUTS --&gt;
 &lt;$vars  freq={{{ [&lt;alarms_input&gt;get[freq]]  ~[&lt;freq&gt;]  }}}&gt;
 &lt;$vars  year={{{ [&lt;alarms_input&gt;get[year]]  ~[&lt;year&gt;]  }}}&gt;
@@ -10965,6 +10965,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$vars   min={{{ [&lt;min&gt;addprefix[00]split[]last[2]join[]]  }}}&gt;
 &lt;$vars   sec={{{ [&lt;sec&gt;addprefix[00]split[]last[2]join[]]  }}}&gt;
 &lt;$vars  time={{{ [&lt;hour&gt;addsuffix[:]addsuffix&lt;min&gt;addsuffix[:]addsuffix&lt;sec&gt;]   }}}&gt;
+&lt;$set   name=&quot;time&quot; filter=&quot;[&lt;freq&gt;!match[once]then&lt;time&gt;match[--:--:--]]&quot; value=&lt;&lt;now &quot;0hh:0mm:0ss&quot;&gt;&gt; emptyValue=&lt;&lt;time&gt;&gt;&gt;
 &lt;!-- ASSEMBLE NEW ALARM --&gt;
 &lt;$vars newalarm={{{ [&lt;freq&gt;addsuffix[;]addsuffix&lt;date&gt;addsuffix[;]addsuffix&lt;time&gt;addsuffix[;]addsuffix&lt;msg&gt;] }}}&gt;
 &lt;!-- ADD/UPDATE ALARMS --&gt;
@@ -11099,11 +11100,13 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$vars freq={{{ [&lt;this_alarm&gt;split[;]nth[1]] }}}
        date={{{ [&lt;this_alarm&gt;split[;]nth[2]] }}}
        time={{{ [&lt;this_alarm&gt;split[;]nth[3]] }}}&gt;
-&lt;$list filter=&quot;[&lt;freq&gt;match[once]]&quot;     &gt; &lt;&lt;date&gt;&gt; at &lt;&lt;time&gt;&gt;  &lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;freq&gt;match[daily]]&quot;    &gt; Every day at &lt;&lt;time&gt;&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;freq&gt;match[once]]&quot;     &gt;  &lt;&lt;date&gt;&gt; at &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;freq&gt;match[daily]]&quot;    &gt; Every day at &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;freq&gt;!match[once]]&quot;    &gt;
-   &lt;$list filter=&quot;[&lt;freq&gt;!match[daily]]&quot;&gt; &lt;&lt;freq&gt;&gt;s at &lt;&lt;time&gt;&gt; &lt;/$list&gt;
+   &lt;$list filter=&quot;[&lt;freq&gt;!match[daily]]&quot;&gt; &lt;&lt;freq&gt;&gt;s at &lt;/$list&gt;
 &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;time&gt;!match[--:--:--]]&quot;&gt; &lt;&lt;time&gt;&gt; &lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;time&gt;match[--:--:--]]&quot;&gt;  &lt;div style=&quot;display:inline-block;width:7ch;text-align:center;&quot;&gt;startup&lt;/div&gt; &lt;/$list&gt;
 \end
 
 \define alarms_check()
@@ -11119,20 +11122,15 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
            msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
    &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;once&quot;&gt;
       &lt;$reveal default=&lt;&lt;date&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_date&gt;&gt;&gt;
-         &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
-            &lt;&lt;alarms_trigger&gt;&gt;
-         &lt;/$reveal&gt;
+         &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt; &lt;&lt;alarms_trigger&gt;&gt; &lt;/$reveal&gt;
+         &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&quot;--:--:--&quot;   &gt; &lt;&lt;alarms_trigger&gt;&gt; &lt;&lt;alarms_replace&gt;&gt; &lt;/$reveal&gt;
       &lt;/$reveal&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;daily&quot;&gt;
-      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
-         &lt;&lt;alarms_trigger&gt;&gt;
-      &lt;/$reveal&gt;
+      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt; &lt;&lt;alarms_trigger&gt;&gt; &lt;/$reveal&gt;
    &lt;/$reveal&gt;
    &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_day&gt;&gt;&gt;
-      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt;
-         &lt;&lt;alarms_trigger&gt;&gt;
-      &lt;/$reveal&gt;
+      &lt;$reveal default=&lt;&lt;time&gt;&gt; type=&quot;match&quot; text=&lt;&lt;this_time&gt;&gt;&gt; &lt;&lt;alarms_trigger&gt;&gt; &lt;/$reveal&gt;
    &lt;/$reveal&gt;
    &lt;/$vars&gt;
 &lt;/$list&gt;
@@ -11144,6 +11142,11 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$list filter=&quot;[&lt;msg&gt;is[tiddler]]&quot;  variable=&quot;do_action&quot;&gt;  &lt;$transclude tiddler=&lt;&lt;msg&gt;&gt; /&gt;      &lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;msg&gt;!is[tiddler]]&quot; variable=&quot;do_message&quot;&gt; &lt;&lt;alarms_message msg:&quot;&quot;&quot;$(msg)$&quot;&quot;&quot;&gt;&gt; &lt;/$list&gt;
 &lt;$vars&gt;
+\end
+
+\define alarms_replace()
+&lt;$vars new_alarm={{{ [&lt;freq&gt;] [&lt;date&gt;] [&lt;this_time&gt;] [&lt;msg&gt;] +[join[;]] }}}&gt;
+&lt;$action-listops $tiddler=&lt;&lt;currentTiddler&gt;&gt; $field=&quot;alarms&quot; $subfilter=&quot;-[&lt;this_alarm&gt;] [&lt;new_alarm&gt;]&quot; /&gt;
 \end
 
 \define alarms_message(msg)
@@ -12591,7 +12594,7 @@ The macro uses the same parameters that are allowed by the ``&lt;$edit-text&gt;`
 20211107;Daylight Saving Time ends
 20211129;Hanukkah (first day)</pre>
 </div>
-<div created="20200711063502632" modified="20210830065511569" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
+<div created="20200711063502632" modified="20210917173211836" sidebarsegmenttag="&lt;&lt;tag &quot;$:/tags/SideBarSegment&quot;&gt;&gt;" tags="TiddlyTools Macros Widgets" title="TiddlyTools/Time/Info">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 \define tids()    [prefix[TiddlyTools/Time]sort[]] [&lt;tt_time_config&gt;] [tag[events]] [suffix[.ics]] [prefix[Sample]] [tag[SampleTimeline]] 
 \define popup()   $:/state/popup/package/time
@@ -12846,8 +12849,8 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 &lt;br&gt;Examples: [[SampleAlarms]]
 
 * To add an alarm, begin by selecting ''Once'', ''Daily'', or a specific ''Day of the week''.
-* If you select Once, select a ''month'', ''date'', and ''year''.  The inputs will default to the current date.
-* Enter the desired ''hours'', ''minutes'' and ''seconds'' using 24-hour notation.  Any inputs left blank will default to the current time.
+* Enter the desired ''hours'', ''minutes'' and ''seconds'' using 24-hour notation.
+* If you selected Once, select a ''month'', ''date'', and ''year''.
 * Enter a message that will be displayed when the alarm is triggered.  If no message is provided a default message will be used.
 * Press &lt;$button&gt;{{$:/core/images/new-button}}&lt;/$button&gt; to save the alarm or &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to reset the inputs. A list of saved alarms will be displayed below the input controls.
 * To change an alarm, press &lt;$button&gt;{{$:/core/images/edit-button}}&lt;/$button&gt; next to that alarm.  Press &lt;$button&gt;{{$:/core/images/done-button}}&lt;/$button&gt; to apply your changes or &lt;$button&gt;{{$:/core/images/close-button}}&lt;/$button&gt; to cancel the changes and reset the inputs.
@@ -12855,6 +12858,8 @@ Note: if the [[Ticker|TiddlyTools/Time/Ticker]] or [[action-timeout.js|TiddlyToo
 * To delete all alarms, press {{$:/core/images/delete-button}} in the &quot;Alarms&quot; heading. You will be asked to confirm before the alarms are deleted.
 * To pause/resume alarms, press {{$:/core/images/timestamp-on}} in the &quot;Alarms&quot; heading.  While paused, {{$:/core/images/timestamp-off}} is displayed and no alarm processing occurs.
 * To create a separate list of alarms in another tiddler, use transclusion ``{{||TiddlyTools/Time/Alarms}}``.
+* Note: if ''Once'' is selected and ''hours'', ''minutes'' and ''seconds'' are left blank, it will define an alarm to be triggered upon startup on the specified date.
+* When a &quot;startup&quot; alarm is triggered, the ''hours'', ''minutes'', and ''seconds'' will be automatically changed to match the time at which it was triggered.
 
 ''To define __custom actions__ to be performed when an alarm is triggered:''
 
