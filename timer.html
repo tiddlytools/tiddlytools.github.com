@@ -10166,7 +10166,7 @@ SampleSequence</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Time/action-timeout.js]]</pre>
+# [[SampleAlarms]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10186,7 +10186,7 @@ SampleSequence</pre>
 <div created="20210818222552586" modified="20210818222552586" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210705091059720" modified="20210918184757636" title="$:/state/tab/sidebar--595412856">
+<div created="20210705091059720" modified="20210919005917769" title="$:/state/tab/sidebar--595412856">
 <pre>TiddlyTools/Time/SidebarCalendar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -11357,7 +11357,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20210818222527357" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210919005525453" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11622,9 +11622,13 @@ set ~AutoSaver interval:&lt;hr&gt;
              date={{{ [&lt;this_alarm&gt;split[;]nth[2]split[-]join[]] }}}
              time={{{ [&lt;this_alarm&gt;split[;]nth[3]] }}}
               msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
+      &lt;$vars time={{{ [&lt;time&gt;match[--:--:--]then[startup:]else&lt;time&gt;] }}}&gt;
+      &lt;$vars  msg={{{ [&lt;msg&gt;match[]then[BEEP! BEEP! BEEP!]else&lt;msg&gt;]  }}}&gt;
       &lt;$reveal default=&lt;&lt;freq&gt;&gt; type=&quot;match&quot; text=&quot;once&quot;&gt;
          ``[[``&lt;&lt;date&gt;&gt;;&lt;&lt;currentTiddler&gt;&gt;;&lt;&lt;time&gt;&gt; &lt;&lt;msg&gt;&gt;|&lt;&lt;currentTiddler&gt;&gt;``]]``&lt;br&gt;
       &lt;/$reveal&gt;
+      &lt;/$vars&gt;
+      &lt;/$vars&gt;
       &lt;/$vars&gt;
    &lt;/$list&gt;
    &lt;/$vars&gt;
