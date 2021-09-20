@@ -10114,8 +10114,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyTools/Time/Calendar]]
-# [[$:/config/TiddlyTools/Time]]</pre>
+# [[TiddlyTools/Time/Calendar]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -11411,13 +11410,18 @@ WhiteSmoke
 Yellow
 YellowGreen</pre>
 </div>
-<div created="20200902213051882" modified="20210920120638396" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210920135325258" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
 \define calendar_colors_popup()        $:/state/popup/calendar/colors/$(currentTiddler)$
 \define calendar_events_menu_popup()   $:/state/popup/calendar/events/menu/$(currentTiddler)$
 \define calendar_events_delete_popup() $:/state/popup/calendar/events/delete/$(currentTiddler)$
+
+\define calendar_boxsize()   2.5em
+\define calendar_barheight() 0.5em
+\define calendar_numposX()   50%
+\define calendar_numposY()   45%
 
 \define showyear(yyyy)
 &lt;$list filter=&quot;[range[1,12]]&quot; variable=&quot;month&quot;&gt;
@@ -11461,7 +11465,7 @@ YellowGreen</pre>
 
 \define showheading(yyyy,mm,view)
 \whitespace trim
-@@display:block;width:calc(2.5em * 7);white-space:nowrap;text-align:center;
+@@display:block;width:calc($(calendar_boxsize)$ * 7);white-space:nowrap;text-align:center;
 &lt;$reveal default=&quot;$view$&quot; type=&quot;nomatch&quot; text=&quot;year&quot;&gt;
    &lt;&lt;showheading_previous &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
    &lt;&lt;showheading_next     &quot;$yyyy$&quot; &quot;$mm$&quot;&gt;&gt;
@@ -11474,7 +11478,7 @@ YellowGreen</pre>
 &lt;/$reveal&gt;
 &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
 &lt;$list filter=&quot;[enlist&lt;order&gt;addprefix[$:/language/Date/Short/Day/]]&quot;&gt;
-   &lt;div style=&quot;display:inline-block;width:2.5em;&quot;&gt;
+   &lt;div style=&quot;display:inline-block;width:$(calendar_boxsize)$;&quot;&gt;
       @@font-size:0.75em;line-height:100%;''&lt;$text text={{{ [&lt;currentTiddler&gt;get[text]] }}} /&gt;''@@
    &lt;/div&gt;
 &lt;/$list&gt;
@@ -11525,7 +11529,7 @@ YellowGreen</pre>
 &lt;$vars  dm={{{ [&lt;dpm&gt;split[ ]nth[$mm$]] }}}&gt; &lt;!-- days in this month --&gt;
 &lt;!-- grid --&gt;
 &lt;$list filter=&quot;[range&lt;first&gt;]&quot;&gt;
-   @@display:inline-block;width:2.5em;height:1px;&lt;!-- SPACER --&gt;@@
+   @@display:inline-block;width:$(calendar_boxsize)$;height:1px;&lt;!-- SPACER --&gt;@@
 &lt;/$list&gt;
 &lt;$list filter=&quot;[range&lt;dm&gt;]&quot; variable=&quot;dd&quot;&gt;
    &lt;$vars      day={{{ [&lt;dd&gt;addprefix[0]split[]last[2]join[]]   }}}&gt; &lt;!-- ZERO PAD --&gt;
@@ -11553,7 +11557,7 @@ YellowGreen</pre>
 &lt;$set    name=&quot;todays_events&quot; filter=&quot;[enlist&lt;todays_events&gt;sort[]]&quot;&gt;
 &lt;$wikify name=&quot;event_colors&quot;    text=&quot;&lt;$list filter=&lt;&lt;todays_events&gt;&gt;&gt;{{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]else&lt;eventsbg&gt;] }}} &lt;/$list&gt;&quot;&gt;
 &lt;!-- grid button styles and tooltip --&gt;
-&lt;$vars   btnstyle={{{ [[position:relative;overflow:hidden;width:2.5em;height:2.5em;border:1px solid;background:$(foreground)$;]] }}}&gt;
+&lt;$vars   btnstyle={{{ [[position:relative;overflow:hidden;width:$(calendar_boxsize)$;height:$(calendar_boxsize)$;border:1px solid;background:$(foreground)$;]] }}}&gt;
 &lt;!-- DISABLED &lt;$vars   btnstyle={{{ [&lt;haschanges&gt;!match[]then&lt;btnstyle&gt;addsuffix[background:]addsuffix&lt;changesbg&gt;addsuffix[;]else&lt;btnstyle&gt;] }}}&gt; --&gt;
 &lt;$vars   btnstyle={{{ [&lt;todays_date&gt;match&lt;date&gt;then&lt;btnstyle&gt;addsuffix[background:]addsuffix&lt;todaybg&gt;else&lt;btnstyle&gt;] }}}&gt;
 &lt;$vars btntooltip={{{ [enlist&lt;todays_events&gt;first[]split[;]nth[2]split[|]first[]] }}}&gt;
@@ -11565,7 +11569,7 @@ YellowGreen</pre>
 
 \define showday_button()
 \whitespace trim
-&lt;$vars numstyle=&quot;color:$(numbers)$;display:inline-block;transform:translateY(-0.1em);&quot;&gt;
+&lt;$vars numstyle=&quot;color:$(numbers)$;position:absolute;top:$(calendar_numposY)$;left:$(calendar_numposX)$;z-index:1;display:inline-block;transform:translate(-50%,-50%);&quot;&gt;
 &lt;!-- DISABLED &lt;$vars numstyle={{{ [&lt;haschanges&gt;!match[]then&lt;numstyle&gt;addsuffix[text-decoration:underline;]else&lt;numstyle&gt;] }}}&gt; --&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; popup=&lt;&lt;calendar_popID&gt;&gt; style=&lt;&lt;btnstyle&gt;&gt; tooltip=&lt;&lt;btntooltip&gt;&gt;&gt;
    &lt;&lt;showday_button_colorbar&gt;&gt;
@@ -11581,9 +11585,9 @@ YellowGreen</pre>
 &lt;$vars colorcount={{{ [&lt;todays_alarms&gt;!match[]then&lt;colorcount&gt;add[1]else&lt;colorcount&gt;]  }}}&gt;
 &lt;$vars colorcount={{{ [&lt;todays_timers&gt;!match[]then&lt;colorcount&gt;add[1]else&lt;colorcount&gt;]  }}}&gt;
 &lt;$vars colorcount={{{ [&lt;haschanges&gt;!match[]then&lt;colorcount&gt;add[1]else&lt;colorcount&gt;]     }}}&gt;
-&lt;$vars colorwidth={{{ [[calc(2.5em / ]addsuffix&lt;colorcount&gt;addsuffix[);]] }}}&gt;
-&lt;$vars colorstyle={{{ [[display:inline-block;vertical-align:top;height:0.35em;width:]addsuffix&lt;colorwidth&gt;] }}}&gt;
-&lt;div style=&quot;position:absolute;bottom:0;left:0;width:2.5em;height:0.35em;border-top:1px solid;&quot;&gt;
+&lt;$vars colorwidth={{{ [[calc($(calendar_boxsize)$ / ]addsuffix&lt;colorcount&gt;addsuffix[);]] }}}&gt;
+&lt;$vars colorstyle={{{ [[display:inline-block;vertical-align:top;height:$(calendar_barheight)$;width:]addsuffix&lt;colorwidth&gt;] }}}&gt;
+&lt;div style=&quot;position:absolute;bottom:0;left:0;width:$(calendar_boxsize)$;height:$(calendar_barheight)$;border-top:1px solid;&quot;&gt;
    &lt;$list filter=&quot;[&lt;todays_alarms&gt;!match[]then&lt;alarmsbg&gt;] [&lt;todays_timers&gt;!match[]then&lt;timersbg&gt;] [enlist&lt;event_colors&gt;] [&lt;haschanges&gt;!match[]then&lt;changesbg&gt;]&quot; variable=&quot;color&quot;&gt;
       &lt;div style={{{ [&lt;colorstyle&gt;addsuffix[background:]addsuffix&lt;color&gt;addsuffix[;]] }}}&gt;&lt;/div&gt;
    &lt;/$list&gt;
