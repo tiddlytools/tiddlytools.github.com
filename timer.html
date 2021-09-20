@@ -10192,7 +10192,7 @@ SampleSequence</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210920132420872" list="TiddlyTools/Time/Calendar TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" modified="20210920132420872" title="$:/StoryList">
+<div list="TiddlyTools/Time/Info SampleTimers SampleAlarms SampleCountdown SampleSequence" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10882,7 +10882,7 @@ TimeoutWidget.prototype.invokeAction = function(triggeringWidget,event) {
 exports[&quot;action-timeout&quot;] = TimeoutWidget;
 })();</pre>
 </div>
-<div created="20200811043857487" modified="20210918174900748" tags="" title="TiddlyTools/Time/Alarms">
+<div created="20200811043857487" modified="20210920145253130" tags="" title="TiddlyTools/Time/Alarms">
 <pre>\define alarms_input()      $:/temp/time/alarms_input/$(currentTiddler)$
 \define alarms_msg()        $:/temp/time/alarms_msg/$(freq)$/$(this_time)$
 \define alarms_defaultmsg() BEEP! BEEP! BEEP!
@@ -11026,12 +11026,15 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
       subtitle=&quot;&quot;&quot;Confirm: delete alarm&quot;&quot;&quot;
       text=&quot;&quot;&quot;
          &lt;$vars this_alarm=&quot;$(this_alarm)$&quot;&gt;
+         &lt;$vars msg={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}}&gt;
          &lt;$importvariables filter=&quot;TiddlyTools/Time/Alarms&quot;&gt;
          @@font-size:2em; ''&lt;&lt;alarms_show&gt;&gt;'' @@&lt;br&gt;
+         @@font-size:1.25em; ''&lt;$text text={{{ [&lt;msg&gt;!match[]else&lt;alarms_defaultmsg&gt;] }}} /&gt;''@@
          &lt;/$importvariables&gt;
-         @@font-size:1.25em; ''&lt;$text text={{{ [&lt;this_alarm&gt;split[;]nth[4]] }}} /&gt;''@@
          &lt;/$vars&gt;
-         @@font-size:1.5em; &lt;p/&gt; Are you sure you want to delete this alarm? @@
+         &lt;/$vars&gt;
+         &lt;br&gt;&amp;nbsp;&lt;br&gt;
+         @@font-size:1.5em; Are you sure you want to delete this alarm? @@
       &quot;&quot;&quot;
       footer=&quot;&quot;&quot;
          &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt; cancel
@@ -11211,7 +11214,7 @@ exports[&quot;action-timeout&quot;] = TimeoutWidget;
 &lt;$reveal state=&lt;&lt;alarms_msg&gt;&gt; type=&quot;match&quot; text=&quot;&quot;&gt;
    &lt;$action-setfield $tiddler=&lt;&lt;alarms_msg&gt;&gt;
       subtitle=&quot;&quot;&quot;&lt;span style=&quot;font-size:1.5em;&quot;&gt; &lt;$text text=&quot;$(currentTiddler)$&quot; /&gt; &lt;/span&gt;&quot;&quot;&quot;
-          text={{{ [[$msg$]!match[]else&lt;alarms_defaultmsg&gt;addprefix[@@font-size:2em;]addsuffix[@@]addprefix[&lt;br&gt;]addprefix&lt;when&gt;] }}}
+          text={{{ [[$msg$]!match[]else&lt;alarms_defaultmsg&gt;addprefix[@@font-size:2em;]addsuffix[@@]addprefix[&lt;br&gt;&amp;nbsp;&lt;br&gt;]addprefix&lt;when&gt;] }}}
         footer=&quot;&quot;&quot;
            &lt;$button class=&quot;tc-button tt-button&quot; message=&quot;tm-close-tiddler&quot;&gt;
               close &lt;$action-deletetiddler $tiddler=&quot;$(alarms_msg)$&quot; /&gt;
