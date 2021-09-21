@@ -10134,7 +10134,7 @@ TiddlyTools/Macros/edit-list-vars</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
+<div list="$:/Import TiddlyTools/Macros/edit-list/Info TiddlyTools/Macros/edit-list TiddlyTools/Macros/edit-list-vars" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11410,7 +11410,7 @@ WhiteSmoke
 Yellow
 YellowGreen</pre>
 </div>
-<div created="20200902213051882" modified="20210920135325258" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20210921102948905" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11550,7 +11550,7 @@ YellowGreen</pre>
 &lt;!-- today's changes, timers, alarms, and events --&gt;
 &lt;$set    name=&quot;created&quot;       filter=&quot;[enlist&lt;tiddlers&gt;sameday:created&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;sort[]]&quot;&gt;
 &lt;$set    name=&quot;modified&quot;      filter=&quot;[enlist&lt;tiddlers&gt;sameday:modified&lt;thisdate&gt;!has[draft.of]!title&lt;journalTitle&gt;!sort[modified]]&quot;&gt;
-&lt;$set    name=&quot;haschanges&quot;    filter=&quot;[&lt;created&gt;!match[]] [&lt;modified&gt;!match[]] [&lt;journalTitle&gt;is[tiddler]]&quot;&gt;
+&lt;$set    name=&quot;haschanges&quot;    filter=&quot;[enlist&lt;created&gt;] [enlist&lt;modified&gt;] [&lt;journalTitle&gt;is[tiddler]]&quot;&gt;
 &lt;$wikify name=&quot;todays_timers&quot;   text=&lt;&lt;matchitems timers&gt;&gt;&gt; &lt;$vars todays_timers={{{ [&lt;todays_timers&gt;trim[]] }}}&gt;
 &lt;$wikify name=&quot;todays_alarms&quot;   text=&lt;&lt;matchitems alarms&gt;&gt;&gt; &lt;$vars todays_alarms={{{ [&lt;todays_alarms&gt;trim[]] }}}&gt;
 &lt;$wikify name=&quot;todays_events&quot;   text=&lt;&lt;matchitems events&gt;&gt;&gt; &lt;$vars todays_events={{{ [&lt;todays_events&gt;trim[]] }}}&gt;
@@ -11587,7 +11587,8 @@ YellowGreen</pre>
 &lt;$vars colorcount={{{ [&lt;haschanges&gt;!match[]then&lt;colorcount&gt;add[1]else&lt;colorcount&gt;]     }}}&gt;
 &lt;$vars colorwidth={{{ [[calc($(calendar_boxsize)$ / ]addsuffix&lt;colorcount&gt;addsuffix[);]] }}}&gt;
 &lt;$vars colorstyle={{{ [[display:inline-block;vertical-align:top;height:$(calendar_barheight)$;width:]addsuffix&lt;colorwidth&gt;] }}}&gt;
-&lt;div style=&quot;position:absolute;bottom:0;left:0;width:$(calendar_boxsize)$;height:$(calendar_barheight)$;border-top:1px solid;&quot;&gt;
+&lt;$vars tip={{{ [enlist&lt;todays_alarms&gt;count[]!match[0]addprefix[alarms:]] [enlist&lt;todays_timers&gt;count[]!match[0]addprefix[timers:]] [enlist:raw&lt;event_colors&gt;count[]!match[0]addprefix[events:]] [enlist&lt;haschanges&gt;count[]!match[0]addprefix[changes:]] +[join[, ]] }}}&gt;
+&lt;div style=&quot;position:absolute;bottom:0;left:0;width:$(calendar_boxsize)$;height:$(calendar_barheight)$;border-top:1px solid;&quot; title=&lt;&lt;tip&gt;&gt;&gt;
    &lt;$list filter=&quot;[&lt;todays_alarms&gt;!match[]then&lt;alarmsbg&gt;] [&lt;todays_timers&gt;!match[]then&lt;timersbg&gt;] [enlist&lt;event_colors&gt;] [&lt;haschanges&gt;!match[]then&lt;changesbg&gt;]&quot; variable=&quot;color&quot;&gt;
       &lt;div style={{{ [&lt;colorstyle&gt;addsuffix[background:]addsuffix&lt;color&gt;addsuffix[;]] }}}&gt;&lt;/div&gt;
    &lt;/$list&gt;
