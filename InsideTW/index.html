@@ -203,8 +203,6 @@ Error message and password prompt
 
 <li>$:/GitHub/Username</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/language/ControlPanel/Saving/GitService/CommitMessage</li>
@@ -818,9 +816,11 @@ Error message and password prompt
 <div created="20191107120408275" creator="EricShulman" modified="20191107120408275" modifier="EricShulman" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div created="20150525051351569" creator="EricShulman" modified="20201025075547932" modifier="EricShulman" title="$:/config/SaverFilter">
-<pre>[all[]] -[[$:/HistoryList]] -[[$:/StoryList]] -[[$:/Import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[[$:/view]] -[prefix[$:/state]] -[prefix[$:/temp]] -[prefix[$:/config]]
--[prefix[$:/language/ControlPanel/Saving/GitService/CommitMessage]] -[[ChangeLog]] -[tag[$:/tags/SavedSettings]]</pre>
+<div created="20150525051351569" creator="EricShulman" modified="20210927110525220" modifier="EricShulman" title="$:/config/SaverFilter">
+<pre>[all[]] -[prefix[$:/HistoryList]] -[prefix[$:/StoryList]] -[status[pending]plugin-type[import]] -[[$:/isEncrypted]] -[[$:/UploadName]] -[prefix[$:/state/]] -[prefix[$:/temp/]]
+-[[$:/Import]] -[[$:/view]] -[prefix[$:/config]]
+-[tag[$:/tags/SavedSettings]]
+-[suffix[GitService/CommitMessage]]</pre>
 </div>
 <div created="20200807011849838" creator="EricShulman" modified="20200807011849838" modifier="EricShulman" title="$:/config/Tiddlers/TitleLinks">
 <pre>yes</pre>
@@ -836,7 +836,7 @@ Error message and password prompt
     &quot;PartsList/System&quot;: &quot;22:23, 3rd December 2019&quot;
 }</pre>
 </div>
-<div created="20150530055529585" creator="EricShulman" modified="20210924152720484" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
+<div created="20150530055529585" creator="EricShulman" modified="20210927110855659" modifier="EricShulman" title="$:/config/TiddlyTools" type="application/json">
 <pre>{
     &quot;Stretch&quot;: &quot;yes&quot;,
     &quot;Path&quot;: &quot;yes&quot;,
@@ -920,10 +920,10 @@ Error message and password prompt
     &quot;has&quot;: &quot;class&quot;
 }</pre>
 </div>
-<div created="20160114050225510" creator="EricShulman" modified="20210924152720483" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
+<div created="20160114050225510" creator="EricShulman" modified="20210927110855658" modifier="EricShulman" title="$:/config/TiddlyTools/ReadOnly">
 <pre>yes</pre>
 </div>
-<div created="20151221094855110" creator="EricShulman" modified="20210924152720484" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
+<div created="20151221094855110" creator="EricShulman" modified="20210927110855658" modifier="EricShulman" title="$:/config/TiddlyTools/TOC" type="application/json">
 <pre></pre>
 </div>
 <div created="20191107120434939" creator="EricShulman" modified="20191219185408196" modifier="EricShulman" title="$:/config/TimestampDisable">
@@ -11293,19 +11293,14 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20201025075839128" creator="EricShulman" modified="20201025075839128" modifier="EricShulman" title="$:/GitHub/Repo">
 <pre>tiddlytools/tiddlytools.github.com</pre>
 </div>
-<div created="20201025075903594" creator="EricShulman" modified="20210924152717633" modifier="EricShulman" title="$:/GitHub/Username">
+<div created="20201025075903594" creator="EricShulman" modified="20210927110853128" modifier="EricShulman" title="$:/GitHub/Username">
 <pre>ericshulman</pre>
-</div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[TiddlyTools/Stylesheet/Scrollbars]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201025095055030" creator="EricShulman" modified="20210924152720485" modifier="EricShulman" title="$:/language/ControlPanel/Saving/GitService/CommitMessage">
-<pre>TiddlyTools/Stylesheet/Scrollbars - custom horizontal scrollbars (webkit only)</pre>
+<div created="20201025095055030" creator="EricShulman" modified="20210927110855659" modifier="EricShulman" title="$:/language/ControlPanel/Saving/GitService/CommitMessage">
+<pre>TiddlyTools/Buttons/SaveChanges - use modal instead of popup, lots of CSS improvements</pre>
 </div>
 <div created="20150316101821466" creator="EricShulman" modified="20191212052850111" modifier="EricShulman" tags="" title="$:/scraps">
 <pre>!!!Open a tiddler directly for editing (avoid recursive renderings!):&lt;br&gt;
@@ -11471,8 +11466,10 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20210705103148951" creator="EricShulman" modified="20210808103146275" modifier="EricShulman" title="$:/state/advancedsearch/currentTab">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20191105045421013" creator="EricShulman" modified="20210914105409140" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="21.09.24.082712">
-<pre>* 21.09.24.082602 TiddlyTools/Stylesheet/Scrollbars - custom horizontal scrollbars (webkit only)
+<div created="20191105045421013" creator="EricShulman" modified="20210914105409140" modifier="EricShulman" title="$:/state/ChangeLog" type="" when="21.09.27.040843">
+<pre>* 21.09.27.040259 TiddlyTools/Buttons/SaveChanges - use modal instead of popup, lots of CSS improvements
+* 21.09.27.040259 $:/config/SaverFilter - updated to match TW5.1.23 default plus extras
+* 21.09.24.082602 TiddlyTools/Stylesheet/Scrollbars - custom horizontal scrollbars (webkit only)
 * 21.09.16.115203 TiddlyTools/FilterGenerators/PowerSearch - fix $(exclude)$ for exports
 * 21.09.14.052416 TiddlyTools/Buttons/SaveChanges - .tc-control-panel table { whitespace:normal }
 * 21.09.14.050658 TiddlyBook/Stylesheet - hide tc-topbar-left and tc-topbar-right
@@ -12681,7 +12678,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 * 15.03.22 through 15.05.24 manual revision notes were spotty at best
 * 15.03.21 Initial release for feedback</pre>
 </div>
-<div created="20210705103133465" creator="EricShulman" modified="20210924152720483" modifier="EricShulman" title="$:/state/sidebar">
+<div created="20210705103133465" creator="EricShulman" modified="20210927110855658" modifier="EricShulman" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210705103148951" creator="EricShulman" modified="20210808103146275" modifier="EricShulman" title="$:/state/tab--1498284803">
@@ -12696,7 +12693,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20210719120946279" creator="EricShulman" modified="20210719120946279" modifier="EricShulman" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210710201146803" creator="EricShulman" modified="20210719121007786" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
+<div created="20210710201146803" creator="EricShulman" modified="20210927110242827" modifier="EricShulman" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -12705,7 +12702,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20151218033701553" creator="E" modified="20151218033703436" modifier="EricShulma" title="$:/status/UserName">
 <pre>EricShulman</pre>
 </div>
-<div created="20210924152659139" creator="EricShulman" list="CoverPage" modified="20210924152720484" modifier="EricShulman" title="$:/StoryList">
+<div created="20210927110855659" creator="EricShulman" list="CoverPage" modified="20210927110855659" modifier="EricShulman" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12844,7 +12841,7 @@ It might be nice to autocalc non-overlapping slidebars when NOT stretching.
 <div created="20171225042307582" creator="EricShulman" modified="20200526050937436" modifier="EricShulman" title="$:/UploadName">
 <pre></pre>
 </div>
-<div created="20160108012457634" creator="EricShulman" modified="20210924152720483" modifier="EricShulman" title="$:/view">
+<div created="20160108012457634" creator="EricShulman" modified="20210927110855658" modifier="EricShulman" title="$:/view">
 <pre>zoomin</pre>
 </div>
 <div caption="About the Author" created="20150212080753104" creator="EricShulman" icon="images/eric3.png" modified="20191211073832304" modifier="EricShulman" tags="Preface" title="AboutTheAuthor">
@@ -16875,70 +16872,56 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 &lt;/$reveal&gt;
 @@</pre>
 </div>
-<div created="20150316090221888" creator="EricShulman" modified="20210914122056383" modifier="EricShulman" tags="$:/tags/TopRightBar" title="TiddlyTools/Buttons/SaveChanges">
-<pre>\define changeLog() $:/state/ChangeLog
+<div caption="{{$:/core/images/save-button}} save changes with notes" created="20150316090221888" creator="EricShulman" modified="20210925132134022" modifier="EricShulman" tags="$:/tags/TopRightBar $:/tags/PageControls" title="TiddlyTools/Buttons/SaveChanges">
+<pre>\whitespace trim
+\define modal() $:/state/popup/savechanges
+\define input() $:/state/popup/savechanges/input
+\define log()   $:/state/ChangeLog
 
-\define show_popup()
-&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt; actions=&lt;&lt;init_popup&gt;&gt;
-   class=&quot;authortools tc-button tt-button&quot; tooltip=&quot;enter revision notes and save changes&quot;&gt;
-   &lt;span class=&quot;tt-savechanges tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
-&lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt; position=&quot;belowleft&quot; class=&quot;tt-savechanges&quot;&gt;
-&lt;style&gt; .tc-story-river{ min-height: calc(100vh - 6em); } &lt;/style&gt; 
-&lt;div class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;text-align:left;position:absolute;right:0;width:35vw;min-width:30em;&quot;&gt;
-   &lt;div style=&quot;float:right;&quot;&gt; &lt;&lt;ok&gt;&gt; &lt;&lt;cancel&gt;&gt; &lt;/div&gt;
-   &lt;&lt;settings&gt;&gt; ''Save changes'' &lt;span style=&quot;font-size:80%;&quot;&gt;{{$:/temp/savechanges!!when}}&lt;/span&gt;
-   &lt;div class=&quot;tt-shadowbox inset clear&quot; style=&quot;margin-top:0.5em;&quot;&gt;
-      &lt;style&gt; .notes { outline:0; border:0; background:transparent; font-family:monospace; width:100%; min-height:10em; } &lt;/style&gt;
-      &lt;$edit-text tiddler=&quot;$:/temp/savechanges&quot; class=&quot;notes&quot; focus=&quot;true&quot; placeholder=&quot;enter notes (optional):&quot; /&gt;
-      &lt;div style=&quot;float:left;font-size:90%;&quot;&gt;  &lt;&lt;toggle_log&gt;&gt;  &lt;/div&gt;
-      &lt;div style=&quot;float:right;font-size:90%;&quot;&gt; &lt;&lt;get_changes&gt;&gt; &lt;/div&gt;
-   &lt;/div&gt;
-   &lt;&lt;show_log&gt;&gt;
+\define show_modal()
+&lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; when=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;modal&gt;&gt; subtitle=&lt;&lt;show_modal_header&gt;&gt; text=&lt;&lt;show_modal_body&gt;&gt; class=&quot;tt-savechanges&quot; /&gt;
+&lt;$action-sendmessage $message=&quot;tm-modal&quot; $param=&lt;&lt;modal&gt;&gt;/&gt;
+\end
+
+\define show_modal_header()
+&lt;$importvariables filter=&quot;TiddlyTools/Buttons/SaveChanges&quot;&gt;
+&lt;span style=&quot;float:right;&quot;&gt; &lt;&lt;ok&gt;&gt; &lt;&lt;cancel&gt;&gt; &lt;/span&gt;
+&lt;&lt;settings&gt;&gt; ''Save changes'' &lt;span style=&quot;font-size:80%;&quot;&gt;&lt;$text text={{{ [&lt;input&gt;get[when]] }}}/&gt;&lt;/span&gt;
+\end
+
+\define show_modal_body()
+&lt;$importvariables filter=&quot;TiddlyTools/Buttons/SaveChanges&quot;&gt;
+&lt;div class=&quot;tt-shadowbox inset&quot;&gt;
+   &lt;$edit-text tiddler=&lt;&lt;input&gt;&gt; class=&quot;notes&quot; focus=&quot;true&quot; placeholder=&quot;enter notes (optional):&quot; /&gt;
+   &lt;div style=&quot;float:left;&quot; &gt; &lt;&lt;toggle_log&gt;&gt;  &lt;/div&gt;
+   &lt;div style=&quot;float:right;&quot;&gt; &lt;&lt;get_changes&gt;&gt; &lt;/div&gt;
 &lt;/div&gt;
-&lt;/$reveal&gt;
-\end
-
-\define init_popup()
-&lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; text=&quot;&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; when=&lt;&lt;now &quot;YY.0MM.0DD.0hh0mm0ss&quot;&gt;&gt;/&gt;
-\end
-
-\define ok()
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save changes&quot;&gt;
-   &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt; ''save file''
-   &lt;!-- NOTE: &lt;&lt;reset_config&gt;&gt; is OPTIONAL... only if defined elsewhere using $:/tags/Macro --&gt;
-   &lt;&lt;reset_config&gt;&gt; &lt;&lt;update_log&gt;&gt; &lt;&lt;set_commitmsg&gt;&gt; &lt;&lt;close_popup&gt;&gt; &lt;&lt;save_file&gt;&gt;
-&lt;/$button&gt;
-\end
-
-\define cancel()
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel save&quot;&gt; ''cancel''
-   &lt;&lt;close_popup&gt;&gt;
-&lt;/$button&gt;
+&lt;&lt;show_log&gt;&gt;
 \end
 
 \define settings()
-&lt;$button class=&quot;tc-button tt-button&quot; popup=&lt;&lt;qualify &quot;$:/state/popup/savechanges/settings&quot;&gt;&gt; tooltip=&quot;saver settings&quot;&gt;
+&lt;$vars popID=&lt;&lt;qualify &quot;$(modal)$/settings&quot;&gt;&gt;&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; popup=&lt;&lt;popID&gt;&gt; tooltip=&quot;saver settings&quot;&gt;
    {{$:/core/images/options-button}}
 &lt;/$button&gt;
-&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;qualify &quot;$:/state/popup/savechanges/settings&quot;&gt;&gt; class=&quot;tc-popup-keep tt-drop-down&quot;&gt;
+&lt;$reveal type=&quot;popup&quot; state=&lt;&lt;popID&gt;&gt; class=&quot;tc-popup-keep tt-drop-down&quot; style=&quot;width:calc(100% - 1.25em);&quot;&gt;
    ''Saver Settings''
    &lt;$button class=&quot;tc-button tt-button&quot; style=&quot;float:right;margin-right:0.5em;&quot; tooltip=&quot;close settings&quot;&gt; ''done''
-      &lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/state/popup/savechanges/settings&quot;&gt;&gt;/&gt;
+      &lt;$action-deletetiddler $tiddler=&lt;&lt;popID&gt;&gt;/&gt;
    &lt;/$button&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;font-size:80%;line-height:1em;&quot;&gt; {{$:/core/ui/ControlPanel/Saving}} &lt;/div&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;font-size:90%;line-height:1em;&quot;&gt; {{$:/core/ui/ControlPanel/Saving}} &lt;/div&gt;
 &lt;/$reveal&gt;
 \end
 
 \define get_changes()
-&lt;$vars notes={{$:/temp/savechanges}} lf=&quot;
+&lt;$vars notes={{{ [&lt;input&gt;get[text]] }}} lf=&quot;
 &quot;&gt;
 &lt;$list filter=&quot;[haschanged[]!prefix[$:/]limit[1]]&quot;&gt;
-&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;get list of changes&quot;&gt; get changes &lt;!--{{$:/core/images/new-button}}--&gt;
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;get list of changes&quot;&gt; {{$:/core/images/new-button}} &lt;!-- ''get changes'' --&gt;
    &lt;$set name=&quot;changes&quot;  filter=&quot;[haschanged[]!sort[modified]!prefix[$:/]addsuffix[ - ]join&lt;lf&gt;]&quot; select=0&gt;
    &lt;$set name=&quot;newnotes&quot; filter=&quot;[&lt;changes&gt;addsuffix&lt;lf&gt;addsuffix&lt;notes&gt;]&quot; select=0&gt;
-   &lt;$action-setfield $tiddler=&quot;$:/temp/savechanges&quot; text=&lt;&lt;newnotes&gt;&gt;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; text=&lt;&lt;newnotes&gt;&gt;/&gt;
    &lt;/$set&gt;
    &lt;/$set&gt;
 &lt;/$button&gt;
@@ -16947,44 +16930,52 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 \end
 
 \define toggle_log()
-&lt;$reveal state=&quot;$:/temp/savechanges/showlog&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show change log&quot;&gt; show log &lt;!--{{$:/core/images/preview-open}}--&gt;
-      &lt;$action-setfield $tiddler=&quot;$:/temp/savechanges/showlog&quot; text=&quot;true&quot;/&gt;
+&lt;$reveal stateTitle=&lt;&lt;input&gt;&gt; stateField=&quot;showlog&quot; type=&quot;match&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;show change log&quot;&gt; {{$:/core/images/preview-open}} &lt;!--''show log''--&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; showlog=&quot;true&quot;/&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
-&lt;$reveal state=&quot;$:/temp/savechanges/showlog&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide change log&quot;&gt; hide log &lt;!--{{$:/core/images/close-button}}--&gt;
-      &lt;$action-deletetiddler $tiddler=&quot;$:/temp/savechanges/showlog&quot;/&gt;
+&lt;$reveal stateTitle=&lt;&lt;input&gt;&gt; stateField=&quot;showlog&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+   &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;hide change log&quot;&gt; {{$:/core/images/close-button}} &lt;!--''hide log''--&gt;
+      &lt;$action-setfield $tiddler=&lt;&lt;input&gt;&gt; $field=&quot;showlog&quot;/&gt;
    &lt;/$button&gt;
    &lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;edit change log&quot;&gt; {{$:/core/images/edit-button}}
-      &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;changeLog&gt;&gt;/&gt;
+      &lt;&lt;close_modal&gt;&gt;
+      &lt;$action-sendmessage $message=&quot;tm-edit-tiddler&quot; $param=&lt;&lt;log&gt;&gt;/&gt;
    &lt;/$button&gt;
 &lt;/$reveal&gt;
 \end
 
 \define show_log()
-&lt;style&gt;
-   .changelog    { font-size:80%; line-height:120%; font-family:monospace; }
-   .changelog ul { list-style-type:none; padding-left:0; padding-right:1.5em; margin:0; }
-&lt;/style&gt;
-&lt;$reveal state=&quot;$:/temp/savechanges/showlog&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-   &lt;div class=&quot;tt-shadowbox inset&quot; style=&quot;clear:both;white-space:nowrap;overflow:auto;margin-top:1.5em;max-height:30vh;&quot;&gt;
-      &lt;$vars tv-wikilinks=&quot;no&quot;&gt;
-      &lt;div class=&quot;changelog&quot;&gt;&lt;$transclude tiddler=&lt;&lt;changeLog&gt;&gt; mode=&quot;block&quot; /&gt;&lt;/div&gt;
-      &lt;/$vars&gt;
-   &lt;/div&gt;
+&lt;$vars tv-wikilinks=&quot;no&quot;&gt;
+&lt;$reveal stateTitle=&lt;&lt;input&gt;&gt; stateField=&quot;showlog&quot; type=&quot;nomatch&quot; text=&quot;&quot; class=&quot;log&quot;&gt;
+   &lt;div class=&quot;tt-shadowbox inset&quot;&gt;&lt;$transclude tiddler=&lt;&lt;log&gt;&gt; mode=&quot;block&quot; /&gt;&lt;/div&gt;
 &lt;/$reveal&gt;
 \end
 
+\define ok()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;save changes&quot;&gt;
+   &lt;span class=&quot;tc-dirty-indicator&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt; ''save file''
+   &lt;!-- NOTE: &lt;&lt;reset_config&gt;&gt; is OPTIONAL... only if defined elsewhere using $:/tags/Macro --&gt;
+   &lt;&lt;reset_config&gt;&gt; &lt;&lt;update_log&gt;&gt; &lt;&lt;set_commitmsg&gt;&gt; &lt;&lt;reset_modal&gt;&gt; &lt;&lt;close_modal&gt;&gt; &lt;&lt;save_file&gt;&gt;
+&lt;/$button&gt;
+\end
+
+\define cancel()
+&lt;$button class=&quot;tc-button tt-button&quot; tooltip=&quot;cancel save&quot;&gt; {{$:/core/images/cancel-button}} ''cancel''
+   &lt;&lt;close_modal&gt;&gt;
+&lt;/$button&gt;
+\end
+
 \define update_log()
-&lt;$vars old={{$(changeLog)$!!text}} notes={{$:/temp/savechanges}} when={{$:/temp/savechanges!!when}} lf=&quot;
+&lt;$vars old={{$(log)$!!text}} notes={{{ [&lt;input&gt;get[text]] }}} when={{{ [&lt;input&gt;get[when]] }}} lf=&quot;
 &quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;changeLog&gt;&gt; $timestamp=&quot;no&quot; when=&lt;&lt;when&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;log&gt;&gt; $timestamp=&quot;no&quot; when=&lt;&lt;when&gt;&gt;/&gt;
 &lt;$reveal default={{{ [&lt;notes&gt;trim[]] }}} type=&quot;nomatch&quot; text=&quot;&quot;&gt;
    &lt;$set name=&quot;stamp&quot; filter=&quot;[&lt;when&gt;addprefix[* ]addsuffix[ ]]&quot;                select=0&gt;
    &lt;$set name=&quot;notes&quot; filter=&quot;[&lt;notes&gt;trim[]split&lt;lf&gt;addprefix&lt;stamp&gt;join&lt;lf&gt;]&quot; select=0&gt;
    &lt;$set name=&quot;new&quot;   filter=&quot;[&lt;notes&gt;addsuffix&lt;lf&gt;addsuffix&lt;old&gt;]&quot;             select=0&gt;
-   &lt;$action-setfield $tiddler=&lt;&lt;changeLog&gt;&gt; $timestamp=&quot;no&quot; text=&lt;&lt;new&gt;&gt;/&gt;
+   &lt;$action-setfield $tiddler=&lt;&lt;log&gt;&gt; $timestamp=&quot;no&quot; text=&lt;&lt;new&gt;&gt;/&gt;
    &lt;/$set&gt;
    &lt;/$set&gt;
    &lt;/$set&gt;
@@ -16993,17 +16984,30 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 \end
 
 \define set_commitmsg()
-&lt;$vars old={{$(changeLog)$!!text}} notes={{$:/temp/savechanges}} lf=&quot;
+&lt;&lt;ignore_commitmsg_changes&gt;&gt;
+&lt;$vars old={{$(log)$!!text}} notes={{{ [&lt;input&gt;get[text]] }}} lf=&quot;
 &quot;&gt;
 &lt;$set name=&quot;txt&quot; value={{{ [&lt;notes&gt;trim[]split&lt;lf&gt;first[]] }}} emptyValue={{{ [&lt;old&gt;trim[]split&lt;lf&gt;first[]split[ ]rest[2]join[ ]] }}}&gt;
 &lt;$action-setfield $tiddler=&quot;$:/language/ControlPanel/Saving/GitService/CommitMessage&quot; text=&lt;&lt;txt&gt;&gt; /&gt;
 &lt;/$set&gt;
-&lt;/$vars&gt;
 \end
 
-\define close_popup()
-&lt;$action-deletetiddler $tiddler=&quot;$:/temp/savechanges&quot;/&gt;
-&lt;$action-deletetiddler $tiddler=&lt;&lt;qualify &quot;$:/state/popup/savechanges&quot;&gt;&gt;/&gt;
+\define ignore_commitmsg_changes()
+&lt;$vars lf=&quot;
+&quot;&gt;
+&lt;$vars exclude=&quot;-[suffix[GitService/CommitMessage]]&quot;&gt;
+&lt;$list filter=&quot;[[$:/config/SaverFilter]!contains:text&lt;exclude&gt;]&quot;&gt;
+   &lt;$action-setfield text={{{ [&lt;currentTiddler&gt;get[text]] [&lt;exclude&gt;] +[join&lt;lf&gt;] }}} /&gt;
+&lt;/$list&gt;
+\end
+
+\define reset_modal()
+&lt;$action-deletetiddler $filter=&quot;[prefix&lt;input&gt;]&quot;/&gt;
+\end
+
+\define close_modal()
+&lt;$action-deletetiddler $tiddler=&lt;&lt;modal&gt;&gt;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&lt;&lt;modal&gt;&gt; /&gt;
 \end
 
 \define save_file()
@@ -17011,33 +17015,39 @@ pre  { box-shadow: 0.3em 0.3em 0.3em rgba(0,0,0,0.5); margin-right:1em; }
 \end
 
 &lt;style&gt;
-.tt-savechanges .tt-drop-down                   { font-size:initial; line-height:120%; margin-top:0.3em; border: 1px solid #999 !important; border-radius:0.5em; padding:0.5em; }
-.tt-savechanges .tt-drop-down                   { background:#ddd; }
+.tt-savechanges .tc-modal                       { border-radius:1em; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
+.tt-savechanges .tc-modal-header                { background:#bbc; border-radius:1em 1em 0 0; padding:0.25em 0.75em 0.00em 0.75em; border-bottom:0; }
+.tt-savechanges .tc-modal-body                  { background:#bbc; border-radius:0 0 1em 1em; padding:0.00em 0.75em 0.25em 0.75em; }
+.tt-savechanges .tc-modal-body p                { margin:0; }
+.tt-savechanges .tc-modal-footer                { display:none; }
+
+.tt-savechanges .tt-drop-down                   { font-size:initial; line-height:1em; margin-top:0.1em; border:1px solid #999 !important; border-radius:0.5em; padding:0.5em; }
+.tt-savechanges .tt-drop-down                   { background:#bbc!important; box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5); }
 .tt-savechanges .tt-drop-down a                 { display:inline; width:auto; padding:0; }
 .tt-savechanges .tt-drop-down .tt-button        { display:inline; width:auto; padding:0.125em 0.5em !important; }
-.tt-savechanges .tt-drop-down .tc-btn-invisible { display:inline; width:auto; padding:0.125em 0.5em !important; }
-.tt-savechanges .tt-drop-down                   { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.3);             transition: box-shadow 1s; }
-.tt-savechanges .tt-drop-down:hover             { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);       transition: box-shadow 1s; }
 
 .tt-savechanges .tt-shadowbox                   { border:1px solid #999; border-radius:0.5em; margin:0; padding:0.5em; }
-.tt-savechanges .tt-shadowbox.inset             { background:#eee;    }
-.tt-savechanges .tt-shadowbox.inset:hover       { background:#f8f8ff; }
-.tt-savechanges .tt-shadowbox                   { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5);             transition: box-shadow 1s }
-.tt-savechanges .tt-shadowbox:hover             { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5);       transition: box-shadow 1s }
-.tt-savechanges .tt-shadowbox.inset             { box-shadow: 0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;       transition: box-shadow 1s, background 1s; }
-.tt-savechanges .tt-shadowbox.inset:hover       { box-shadow: 0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; transition: box-shadow 1s, background 1s; }
+.tt-savechanges .tt-shadowbox.inset             { background:#eee;    box-shadow:0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset;       transition:box-shadow 1s, background 1s; }
+.tt-savechanges .tt-shadowbox.inset:hover       { background:#f8f8ff; box-shadow:0.3em 0.3em 0.6em rgba(102,102,204,0.5) inset; transition:box-shadow 1s, background 1s; }
 
-.tt-savechanges .tt-button                      { text-align:center; padding: 0.2em !important; border: 1px solid #999; border-radius: 0.3em;   }
-.tt-savechanges .tt-button:hover                { opacity: 1.0 !important; border: 1px solid #999 !important; background-color:#ccc !important; }
-.tt-savechanges .tt-button svg                  { fill:inherit !important; }
+.tt-savechanges .tt-button                      { text-align:center; padding:0.1em 0.5em !important; border:1px solid #999; border-radius:0.3em; }
+.tt-savechanges .tt-button:hover                { background-color:#ccc !important; box-shadow:0.3em 0.3em 0.6em rgba(0,0,0,0.5) inset; transition:box-shadow 1s, background 1s; }
 
-.tt-savechanges.tc-dirty-indicator svg          { fill:inherit !important; }
-
+.tt-savechanges .notes                          { outline:0; border:0; background:transparent; font-family:monospace; resize:none; width:100%; height:20vh !important; }
+.tt-savechanges .log .tt-shadowbox              { clear:both; white-space:nowrap; overflow:auto; margin-top:1.25em; min-height:10vh; max-height:30vh; margin-bottom:0.75em; }
+.tt-savechanges .log ul                         { font-size:80%; line-height:1.2em; font-family:monospace; list-style-type:none; padding-left:0; padding-right:1.5em; margin:0; }
 .tt-savechanges .tc-control-panel table         { white-space:normal; }
 .tt-savechanges .tc-control-panel table input   { min-width:15em;     }
+.tt-savechanges .tc-dirty-indicator svg         { fill:inherit !important; }
+
+.tc-topbar        .tt-savechanges.tt-button       { border:0; padding:0 !important; background:none; box-shadow:none; }
+.tc-page-controls .tt-savechanges.tt-button       { border:0; padding:0 !important; background:none; box-shadow:none; cursor:pointer; }
+.tc-page-controls .tt-savechanges.tt-button:hover { border:0 !important; padding:0 !important; background:none !important; box-shadow:none !important; }
 &lt;/style&gt;
 
-&lt;&lt;show_popup&gt;&gt;</pre>
+&lt;$button actions=&lt;&lt;show_modal&gt;&gt; class=&quot;tt-savechanges tc-button tt-button authortools&quot; tooltip=&quot;Save changes with notes&quot;&gt;
+   &lt;span class=&quot;tc-dirty-indicator&quot; style=&quot;filter:drop-shadow(1px 1px 1px rgba(0,0,0,0.5));&quot;&gt;{{$:/core/images/save-button}}&lt;/span&gt;
+&lt;/$button&gt;</pre>
 </div>
 <div created="20150601085028266" creator="EricShulman" modified="20210908141943040" modifier="EricShulman" module-type="widget" tags="" title="TiddlyTools/Cookies/action-setcookie.js" type="application/javascript">
 <pre>/*\
