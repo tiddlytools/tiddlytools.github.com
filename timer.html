@@ -283,7 +283,7 @@ Error message and password prompt
 <div created="20200711141035916" modified="20200711141035916" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/timestamp">
 <pre>show</pre>
 </div>
-<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_admin_width="" calendar_alarms="Red" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="Black;font-size:1.5em;font-weight:bold;" calendar_order="0 1 2 3 4 5 6" calendar_showalarms="yes" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_showtimers="yes" calendar_timers="Orange" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="Black" clock_numbers="Black;font-size:1.5em;" clock_size="15em" clock_ticks="Black" created="20200723071051066" modified="20210921104327592" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="PersonalEvents CA_Holidays_2021 AU_Holidays_2021 UK_Holidays_2021 US_Holidays_2021 TiddlyTools/Time/Events" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
+<div autosave_ask="yes" autosave_hours="01" autosave_mins="00" autosave_secs="00" calendar_admin_width="" calendar_alarms="Red" calendar_background="LightGray" calendar_changes="LightBlue" calendar_customfilter="" calendar_events="LightGreen" calendar_foreground="White" calendar_numbers="Black;font-size:1.5em;font-weight:bold;" calendar_order="0 1 2 3 4 5 6" calendar_showalarms="yes" calendar_showchanges="yes" calendar_showcustom="no" calendar_showevents="yes" calendar_showsystem="no" calendar_showtiddlers="yes" calendar_showtimers="yes" calendar_timers="Orange" calendar_today="Gold" clock_background="LightGray" clock_border="2px solid gray;" clock_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" clock_hands="Black" clock_numbers="Black;font-size:1.5em;" clock_size="15em" clock_ticks="Black" created="20200723071051066" modified="20211002151415112" sidebar_analog="yes" sidebar_analog_size="100" sidebar_calendar_size="100" sidebar_digital="yes" sidebar_digital_size="100" sidebar_format="DDD, YYYY-0MM-0DD 0hh:0mm:0ss" tags="PersonalEvents CA_Holidays_2021 AU_Holidays_2021 UK_Holidays_2021 US_Holidays_2021 TiddlyTools/Time/Events SampleTimeline" timer_format="YYYY-0MM-0DD 0hh:0mm:0ss.0XXX" title="$:/config/TiddlyTools/Time" world_format="ddd, YYYY-0MM-0DD 0hh:0mm:0ss">
 <pre></pre>
 </div>
 <div button="start" caption="Timer Example" created="20200920230420305" elapsedlist="6.52 29.736 7.219 6.082" modified="20210628154743529" showhistory="show" startlist="20200920160427090 20200920230150602 20200922165151899 20200923202809259" stoplist="20200920160433611 20200920230220338 20200922165159119 20200923202815341" title="$:/config/Timers/SampleTimer" totallist="6.52 36.256 43.475 49.557">
@@ -11368,7 +11368,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 
 &lt;&lt;settings&gt;&gt; &lt;br&gt; &lt;&lt;getCountdown&gt;&gt; &lt;&lt;start&gt;&gt; &lt;&lt;pause&gt;&gt; &lt;&lt;stop&gt;&gt; &lt;br&gt; &lt;&lt;status&gt;&gt;</pre>
 </div>
-<div created="20200902213051882" modified="20210921102948905" tags="" title="TiddlyTools/Time/Calendar">
+<div created="20200902213051882" modified="20211002152355425" tags="" title="TiddlyTools/Time/Calendar">
 <pre>\define tt_time_config() $:/config/TiddlyTools/Time
 
 \define calendar_input()               $:/state/popup/calendar/$(currentTiddler)$
@@ -11601,12 +11601,13 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showday_items(type)
+&lt;style&gt; .showday_inline { display:inline !important; padding:0 !important; } &lt;/style&gt;
 &lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;limit[1]]&quot;&gt;
    ''$type$:'' (&lt;$count filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;/&gt;)&lt;br&gt;
    &lt;$list filter=&quot;[enlist&lt;todays_$type$&gt;]&quot;&gt;
       &lt;$vars this_text={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]first[]] }}}&gt;
       &lt;$vars this_link={{{ [&lt;currentTiddler&gt;split[;]nth[2]split[|]rest[]]  }}}&gt;
-      &lt;$link to={{{ [&lt;this_link&gt;!match[]else&lt;this_text&gt;] }}} tooltip=&quot;view tiddler&quot;&gt;
+      &lt;$link to={{{ [&lt;this_link&gt;!match[]else&lt;this_text&gt;] }}} tooltip={{{ [&lt;this_link&gt;!match[]else&lt;this_text&gt;] }}}&gt;
          &lt;&lt;showday_items_color $type$&gt;&gt; @@font-style:normal;color:initial; &lt;$text text=&lt;&lt;this_text&gt;&gt;/&gt;@@
       &lt;/$link&gt;
       &lt;/$vars&gt;
@@ -11616,21 +11617,20 @@ set ~AutoSaver interval:&lt;hr&gt;
 \end
 
 \define showday_items_color(type)
-&lt;!-- WFFL
-&lt;$vars  alarmsbg={{{ [&lt;alarmsbg&gt;addprefix[background:]] }}}&gt;
-&lt;$vars  timersbg={{{ [&lt;timersbg&gt;addprefix[background:]] }}}&gt;
-&lt;$vars changesbg={{{ [&lt;changesbg&gt;addprefix[background:]] }}}&gt;
-&lt;$vars  eventsbg={{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]else&lt;eventsbg&gt;] +[addprefix[background:]] }}}&gt;
---&gt;
-&lt;$vars  eventsbg={{{ [&lt;currentTiddler&gt;split[;]nth[1]get[eventcolor]else&lt;eventsbg&gt;] }}}&gt;
+\whitespace trim
+&lt;$vars src={{{ [&lt;currentTiddler&gt;split[;]nth[1]] }}}&gt;
+&lt;$vars tip={{{ [&lt;src&gt;get[caption]else&lt;src&gt;] }}}&gt;
+&lt;$vars eventsbg={{{ [&lt;src&gt;get[eventcolor]else&lt;eventsbg&gt;] }}}&gt;
+&lt;$link to=&lt;&lt;src&gt;&gt; tooltip=&lt;&lt;tip&gt;&gt; overrideClass=&quot;showday_inline&quot;&gt;
 &lt;div style={{{ [[display:inline-block;width:0.75em;height:0.75em;border:1px solid;background:]addsuffix&lt;$type$bg&gt;addsuffix[;]] }}}&gt;&lt;/div&gt;
+&lt;/$link&gt;
 \end
 
 \define showday_created()
 &lt;$list filter=&quot;[enlist&lt;created&gt;limit[1]]&quot;&gt;
    ''created:'' (&lt;$count filter=&quot;[enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
    &lt;$list filter=&quot;[enlist&lt;created&gt;]&quot;&gt;
-      &lt;$link tooltip=&quot;view tiddler&quot;&gt;
+      &lt;$link tooltip=&lt;&lt;currentTiddler&gt;&gt;&gt;
          &lt;&lt;showday_items_color changes&gt;&gt; @@font-style:normal;color:initial; &lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;@@
       &lt;/$link&gt;
    &lt;/$list&gt;
@@ -11641,7 +11641,7 @@ set ~AutoSaver interval:&lt;hr&gt;
 &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;limit[1]]&quot;&gt;
    ''modified:'' (&lt;$count filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;]&quot;/&gt;)&lt;br&gt;
    &lt;$list filter=&quot;[enlist&lt;modified&gt;!enlist&lt;created&gt;] &quot;&gt;
-      &lt;$link tooltip=&quot;view tiddler&quot;&gt;
+      &lt;$link tooltip=&lt;&lt;currentTiddler&gt;&gt;&gt;
          &lt;&lt;showday_items_color changes&gt;&gt; @@font-style:normal;color:initial; &lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;@@
       &lt;/$link&gt;
    &lt;/$list&gt;
